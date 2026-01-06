@@ -661,6 +661,18 @@
          <lastmod>2026-01-06</lastmod>
     </url>
     <url>
+         <loc>https://w3id.org/altium/cdm/slots/ins_part_insight_informed_by/</loc>
+         <lastmod>2026-01-06</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/ins_part_insight_occurs_in/</loc>
+         <lastmod>2026-01-06</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/ins_part_insight_part/</loc>
+         <lastmod>2026-01-06</lastmod>
+    </url>
+    <url>
          <loc>https://w3id.org/altium/cdm/slots/keyComponents/</loc>
          <lastmod>2026-01-06</lastmod>
     </url>
@@ -714,6 +726,10 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/name/</loc>
+         <lastmod>2026-01-06</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/occurs_in/</loc>
          <lastmod>2026-01-06</lastmod>
     </url>
     <url>

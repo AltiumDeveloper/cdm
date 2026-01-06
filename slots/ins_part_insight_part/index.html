@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://w3id.org/altium/cdm/slots/lib_uses_parts/" rel="canonical"/>
+<link href="https://w3id.org/altium/cdm/slots/ins_part_insight_part/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
-<title>Slot: parts (lib_uses_parts) - Common Data Model (CDM)</title>
+<title>Slot: part (ins_part_insight_part) - Common Data Model (CDM)</title>
 <link href="../../assets/stylesheets/main.2a3383ac.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -24,7 +24,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#slot-parts-lib_uses_parts">
+<a class="md-skip" href="#slot-part-ins_part_insight_part">
           Skip to content
         </a>
 </div>
@@ -48,7 +48,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Slot: parts (lib_uses_parts)
+              Slot: part (ins_part_insight_part)
             
           </span>
 </div>
@@ -172,14 +172,14 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="slot-parts-lib_uses_parts">Slot: parts (lib_uses_parts)</h1>
-<p><em>Parts used in this Activity</em></p>
-<p>URI: <a href="https://w3id.org/altium/cdm/lib_uses_parts">https://w3id.org/altium/cdm/lib_uses_parts</a>
-Alias: lib_uses_parts</p>
+<h1 id="slot-part-ins_part_insight_part">Slot: part (ins_part_insight_part)</h1>
+<p><em>Part associated with this insight</em></p>
+<p>URI: <a href="https://w3id.org/altium/cdm/ins_part_insight_part">https://w3id.org/altium/cdm/ins_part_insight_part</a>
+Alias: ins_part_insight_part</p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../has_input/">has_input</a><ul>
-<li><strong>lib_uses_parts</strong></li>
+<li><a href="../informs/">informs</a><ul>
+<li><strong>ins_part_insight_part</strong></li>
 </ul>
 </li>
 </ul>
@@ -194,32 +194,7 @@ Alias: lib_uses_parts</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/des_harness_project/">des_harness_project</a></td>
-<td>Harness Project defines the design of a cable and wiring harness as a standal...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/pro_consolidated_bom/">pro_consolidated_bom</a></td>
-<td>Consolidated BOM represents the aggregated bill of materials across one or mo...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/des_multiboard_project/">des_multiboard_project</a></td>
-<td>Multiboard Project represents the coordinated design of multiple interconnect...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/pro_bom_wip/">pro_bom_wip</a></td>
-<td>TBD</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/pro_managed_bom/">pro_managed_bom</a></td>
-<td>Managed BOM represents a version-controlled, workspace-stored bill of materia...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/des_project/">des_project</a></td>
+<td><a href="../../classes/ins_part_insight/">ins_part_insight</a></td>
 <td>TBD</td>
 <td>no</td>
 </tr>
@@ -231,26 +206,25 @@ Alias: lib_uses_parts</p>
 <p>Range: <a href="../../classes/lib_part/">lib_part</a></p>
 </li>
 <li>
-<p>Multivalued: True</p>
+<p>Required: True</p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib_uses_parts</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parts used in this Activity</span>
-<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">parts</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ins_part_insight_part</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Part associated with this insight</span>
+<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">part</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/altium/cdm/</span>
-<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_input</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">informs</span>
 <span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
-<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib:uses_parts</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib_uses_parts</span>
+<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ins:PartInsight_part</span>
+<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ins_part_insight_part</span>
 <span class="nt">domain_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">des_project</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pro_bom_wip</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ins_part_insight</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib_part</span>
-<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 </details>
 </article>

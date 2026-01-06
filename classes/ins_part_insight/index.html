@@ -178,7 +178,7 @@
 <div class="grid">
 <div class="admonition quote">
 <p class="admonition-title">Platform API</p>
-<p><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceInsPartInsight">DesWorkspaceInsPartInsight</a></p>
+<p><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceInsInsight">DesWorkspaceInsInsight</a></p>
 </div>
 <div class="admonition quote annotate">
 <p class="admonition-title">GRID (1)</p>
@@ -221,6 +221,58 @@
 
           ins_insight &lt;|-- ins_part_insight
           click ins_insight href "../../classes/ins_insight/"
+
+
+
+
+
+
+
+
+
+
+
+      ins_part_insight --&gt; "1" lib_part : part
+      click lib_part href "../../classes/lib_part/"
+
+
+  class lib_part["Part"]
+
+
+
+      style lib_part fill:#ffe599    
+
+
+
+
+
+
+
+
+
+
+
+      ins_part_insight --&gt; "*" Any : informed by
+      click Any href "../../classes/Any/"
+
+
+  class Any["Any"]
+
+
+
+
+
+
+
+
+
+
+
+      ins_part_insight --&gt; "*" Any : occurs in
+      click Any href "../../classes/Any/"
+
+
+  class Any["Any"]
 
 
 
@@ -293,6 +345,27 @@
 <td>None</td>
 <td><a href="../Entity/">Entity</a></td>
 </tr>
+<tr>
+<td><a href="../../slots/ins_part_insight_part">part</a></td>
+<td><code>1</code></td>
+<td><a href="../lib_part/">lib_part</a></td>
+<td>Part associated with this insight</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/ins_part_insight_informed_by">informed by</a></td>
+<td><code>*</code></td>
+<td><a href="../Any/">Any</a> or <br/><a href="../pro_bom_wip/">pro_bom_wip</a> or <br/><a href="../des_project/">des_project</a></td>
+<td>Entities associated with this insight</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/ins_part_insight_occurs_in">occurs in</a></td>
+<td><code>*</code></td>
+<td><a href="../Any/">Any</a> or <br/><a href="../pro_bom_release/">pro_bom_release</a> or <br/><a href="../des_project_release/">des_project_release</a> or <br/><a href="../lib_component_revision/">lib_component_revision</a></td>
+<td>Entities associated with this insight</td>
+<td>direct</td>
+</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -311,7 +384,7 @@
 </tr>
 <tr>
 <td>platformAPI</td>
-<td>DesWorkspaceInsPartInsight</td>
+<td>DesWorkspaceInsInsight</td>
 </tr>
 </tbody>
 </table>
