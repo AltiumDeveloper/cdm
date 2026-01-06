@@ -2,14 +2,13 @@
 
 # {% if schema.title %}{{ schema.title }}{% else %}{{ schema.name }}{% endif %}
 
+{% set iri = schema.id %}
+IRI: [{{ iri }}]({{ iri }})
+{ .page-subtitle }
+
 {% if schema.description %}{{ schema.description }}{% endif %}
 
-URI: {{ schema.id }}
-
-Name: {{ schema.name }}
-
 {% if include_top_level_diagram %}
-
 ## Schema Diagram
 
 ```{{ gen.mermaid_directive() }}

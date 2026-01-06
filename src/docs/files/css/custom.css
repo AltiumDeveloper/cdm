@@ -5,3 +5,17 @@
 .md-typeset table:not([class]) {
     display: table;
 }
+
+/* ******************************************************** */
+/* Subtitles     */
+/* ******************************************************** */
+.md-typeset h1 { /* Add Line under Header like GitHub */
+  margin: 0px;
+}
+
+.page-subtitle {
+  font-family: monospace;
+  font-size: 0.8em;
+  color: rgb(168, 168, 168);
+  margin-top: 0px;
+}

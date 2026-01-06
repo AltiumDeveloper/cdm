@@ -28,7 +28,11 @@ comments: true
     {%- endif -%}
 {% endmacro %}
 
-# {{ title }} [URI]({{ schemaview.get_uri(element, true, true, false, false) }}) {% if element.deprecated %} <span style="color: red;"><strong> (DEPRECATED) </strong></span> {% endif %}
+# {{ title }}  {% if element.deprecated %} <span style="color: red;"><strong> (DEPRECATED) </strong></span> {% endif %}
+
+{% set iri = schemaview.get_uri(element, true, true, false, false) %}
+IRI: [{{ iri }}]({{ iri }})
+{ .page-subtitle }
 
 {% if element.description %}
 {% set element_description_lines = element.description.split('\n') %}
