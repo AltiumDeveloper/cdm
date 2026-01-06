@@ -27,6 +27,7 @@ classes:
   pro_bom:
     is_a: Meta
     in_subset: procurement
+    abstract: true
     mixin: true
     class_uri: pro:Bom
     title: BOM

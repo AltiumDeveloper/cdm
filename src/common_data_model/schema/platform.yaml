@@ -225,6 +225,7 @@ classes:
 
   SolutionItem:
     is_a: Meta
+    abstract: true
     mixin: true
     title: Solution Item
     slots:
@@ -232,6 +233,7 @@ classes:
 
   HasLifecycle:
     is_a: Meta
+    abstract: true
     mixin: true
     slots:
       - plt_lifecycle_state
