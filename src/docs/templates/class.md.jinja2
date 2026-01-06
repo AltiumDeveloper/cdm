@@ -34,6 +34,9 @@ comments: true
 IRI: [{{ iri }}]({{ iri }})
 { .page-subtitle }
 
+Bounded context: [{{ element.in_subset[0] }}]( ../subsets/{{ element.in_subset[0] }}.md )
+{ .page-subtitle }
+
 {% if element.description %}
 {% set element_description_lines = element.description.split('\n') %}
 {% for element_description_line in element_description_lines %}
