@@ -196,6 +196,7 @@
       hideEmptyMembersBox: true
 ---
  classDiagram
+    direction LR
 
 
   class plt_solution["Solution"]
@@ -263,7 +264,7 @@
   class SolutionItem["Solution Item"]
 
 
-          SolutionItem --&gt; "*" plt_solution: plt_part_of_solution 
+          SolutionItem --&gt; "*" plt_solution: partOfSolution 
           click SolutionItem href "../../classes/SolutionItem/"
 
 
@@ -278,7 +279,7 @@
       style des_project fill:#93c47d    
 
 
-          des_project --&gt; "*" plt_solution: plt_part_of_solution 
+          des_project --&gt; "*" plt_solution: partOfSolution 
           click des_project href "../../classes/des_project/"
 
 
@@ -293,7 +294,7 @@
       style des_multiboard_project fill:#93c47d    
 
 
-          des_multiboard_project --&gt; "*" plt_solution: plt_part_of_solution 
+          des_multiboard_project --&gt; "*" plt_solution: partOfSolution 
           click des_multiboard_project href "../../classes/des_multiboard_project/"
 
 
@@ -308,7 +309,7 @@
       style des_harness_project fill:#93c47d    
 
 
-          des_harness_project --&gt; "*" plt_solution: plt_part_of_solution 
+          des_harness_project --&gt; "*" plt_solution: partOfSolution 
           click des_harness_project href "../../classes/des_harness_project/"
 
 
@@ -323,7 +324,7 @@
       style sft_software_project fill:#3c78d8    
 
 
-          sft_software_project --&gt; "*" plt_solution: plt_part_of_solution 
+          sft_software_project --&gt; "*" plt_solution: partOfSolution 
           click sft_software_project href "../../classes/sft_software_project/"
 
 
@@ -338,7 +339,7 @@
       style sft_ai_model fill:#3c78d8    
 
 
-          sft_ai_model --&gt; "*" plt_solution: plt_part_of_solution 
+          sft_ai_model --&gt; "*" plt_solution: partOfSolution 
           click sft_ai_model href "../../classes/sft_ai_model/"
 
 
@@ -353,7 +354,7 @@
       style sys_esd_document fill:#f1c232    
 
 
-          sys_esd_document --&gt; "*" plt_solution: plt_part_of_solution 
+          sys_esd_document --&gt; "*" plt_solution: partOfSolution 
           click sys_esd_document href "../../classes/sys_esd_document/"
 
 

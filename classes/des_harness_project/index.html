@@ -195,6 +195,7 @@
       hideEmptyMembersBox: true
 ---
  classDiagram
+    direction LR
 
 
   class des_harness_project["Harness Project"]
@@ -329,7 +330,7 @@
 
 
 
-      des_harness_project --&gt; "*" plt_solution : plt_part_of_solution
+      des_harness_project --&gt; "*" plt_solution : partOfSolution
       click plt_solution href "../../classes/plt_solution/"
 
 
@@ -414,7 +415,7 @@
 <td><a href="../des_project/">des_project</a></td>
 </tr>
 <tr>
-<td><a href="../../slots/plt_part_of_solution">plt_part_of_solution</a></td>
+<td><a href="../../slots/plt_part_of_solution">partOfSolution</a></td>
 <td><code>*</code></td>
 <td><a href="../plt_solution/">plt_solution</a></td>
 <td>None</td>

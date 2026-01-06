@@ -196,6 +196,7 @@
       hideEmptyMembersBox: true
 ---
  classDiagram
+    direction LR
 
 
   class sft_software_project["Software Project"]
@@ -308,7 +309,7 @@
 
 
 
-      sft_software_project --&gt; "*" plt_solution : plt_part_of_solution
+      sft_software_project --&gt; "*" plt_solution : partOfSolution
       click plt_solution href "../../classes/plt_solution/"
 
 
@@ -353,7 +354,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../slots/plt_part_of_solution">plt_part_of_solution</a></td>
+<td><a href="../../slots/plt_part_of_solution">partOfSolution</a></td>
 <td><code>*</code></td>
 <td><a href="../plt_solution/">plt_solution</a></td>
 <td>None</td>
