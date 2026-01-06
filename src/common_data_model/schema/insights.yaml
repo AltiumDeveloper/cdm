@@ -39,7 +39,11 @@ classes:
       TBD
     annotations:
       grid: grid:workspace:{workspace-id}:insights:insight/{id}
-      platformAPI: DesWorkspaceInsPartInsight
+      platformAPI: DesWorkspaceInsInsight
+    slots:
+      - ins_part_insight_part
+      - ins_part_insight_informed_by
+      - ins_part_insight_occurs_in
 
 slots:
 
@@ -48,7 +52,40 @@ slots:
     slot_uri: ins:Insight_tasks
     title: tasks
     description: Task associated with this insight
-    domain: Activity
     range: col_task
+    required: false
+    multivalued: true
+
+  ins_part_insight_part: 
+    is_a: informs
+    slot_uri: ins:PartInsight_part
+    title: part
+    description: Part associated with this insight
+    range: lib_part
+    required: true
+    multivalued: false
+
+  ins_part_insight_informed_by: 
+    is_a: informed_by
+    slot_uri: ins:PartInsight_informedBy
+    title: informed by
+    description: Entities associated with this insight
+    range: Any
+    any_of:
+      - range: pro_bom_wip
+      - range: des_project
+    required: false
+    multivalued: true
+
+  ins_part_insight_occurs_in: 
+    is_a: occurs_in
+    slot_uri: ins:PartInsight_occursIn
+    title: occurs in
+    description: Entities associated with this insight
+    range: Any
+    any_of:
+      - range: pro_bom_release
+      - range: des_project_release
+      - range: lib_component_revision
     required: false
     multivalued: true

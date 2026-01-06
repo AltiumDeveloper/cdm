@@ -182,6 +182,11 @@ slots:
     range: Activity
     inverse: informed_by
 
+  occurs_in:
+    abstract: true
+    domain: Activity
+    range: Artifact
+
   ### useful relations
 
   revision_of:
