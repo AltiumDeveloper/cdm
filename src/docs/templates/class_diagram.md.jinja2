@@ -37,7 +37,7 @@
     click {{ gen.name(element) }} href "{{ gen.link_mermaid(element) }}"
       {% for s in schemaview.class_parents(element.name) -%}
         {% set parentElement = schemaview.get_element(s) %}
-        {% if gen.name(parentElement) is not in ["Activity", "Artifact", "Resource"] %}
+        {% if gen.name(parentElement) is not in ["Activity", "Artifact", "Resource"] and not parentElement.mixin %}
           {{ element_style(s) }}
           {{ gen.name(parentElement) }} <|-- {{ gen.name(element) }}
           click {{ gen.name(parentElement) }} href "{{ gen.link_mermaid(parentElement) }}"
