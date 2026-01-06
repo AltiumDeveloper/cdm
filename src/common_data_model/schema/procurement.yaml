@@ -126,31 +126,33 @@ classes:
         required: false
       BomItem_quantity:
         title: quantity
-        description: TBD
+        description: The quantity of the item required to produce one unit.
         range: integer
         multivalued: false
         required: true
       BomItem_primaryElement:
         title: primary element
-        description: TBD
+        description: The primary element chosen for this item.
         range: pro_bom_item_element
         multivalued: false
         required: false   
       BomItem_alternates:
         title: alternates
-        description: TBD
-        range: pro_bom_item_element
+        description: Alternate elements that could be used for this item.
+        range: pro_bom_item_alternate
         required: false
         multivalued: true
       BomItem_substitutes:
         title: substitutes
-        description: TBD
-        range: pro_bom_item_element
+        description: Substitute elements that could be used for this item.
+        range: pro_bom_item_substitute
         required: false
         multivalued: true
     slots:
-      # reusing common slot
       - pro_bom_issues
+    slot_usage:
+      pro_bom_issues:
+        description: Issues associated with this BOM item.
 
   pro_bom_item_element:
     is_a: Resource

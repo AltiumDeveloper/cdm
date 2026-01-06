@@ -1,0 +1,54 @@
+id: https://w3id.org/altium/cdm/insights/
+name: cdm-insights
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ins: https://w3id.org/altium/cdm/insights/
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: ins
+
+subsets:
+  insights:
+    description: >-
+      TBD
+    annotations:
+      style: "fill:#a64d79"
+
+classes:
+
+  ins_insight:
+    is_a: Activity
+    in_subset: insights
+    abstract: true
+    class_uri: ins:Insight
+    title: Insight
+    description: >- 
+      TBD
+    slots:
+      - ins_insight_tasks
+
+  ins_part_insight:
+    is_a: ins_insight
+    in_subset: insights
+    class_uri: ins:PartInsight
+    title: Part Insight
+    description: >-
+      TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:insights:insight/{id}
+      platformAPI: DesWorkspaceInsPartInsight
+
+slots:
+
+  ins_insight_tasks: 
+    is_a: informs
+    slot_uri: ins:Insight_tasks
+    title: tasks
+    description: Task associated with this insight
+    domain: Activity
+    range: col_task
+    required: false
+    multivalued: true

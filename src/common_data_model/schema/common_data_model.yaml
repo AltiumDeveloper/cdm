@@ -6,7 +6,7 @@ description: |-
   Common Data Model (longer description)
 license: MIT
 see_also:
-  - https://altium.github.io/common-data-model
+  - https://github.com/AltiumDeveloper/cdm
 
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -23,6 +23,7 @@ imports:
   - collaboration
   - customization
   - design
+  - insights
   - library
   - procurement
   - supply

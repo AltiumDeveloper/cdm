@@ -171,6 +171,17 @@ slots:
     range: Artifact
     inverse: output_of
 
+  informed_by:
+    abstract: true
+    domain: Activity
+    range: Activity
+
+  informs:
+    abstract: true
+    domain: Activity
+    range: Activity
+    inverse: informed_by
+
   ### useful relations
 
   revision_of:
