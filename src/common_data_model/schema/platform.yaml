@@ -155,6 +155,13 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}
       platformAPI: DesLifeCycleDefinition
+    extensions:
+      - tag: documentation
+        value:
+          - description: Defining Lifecycle Definitions
+            uri: https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions
+          - description: Lifecycle Management
+            uri: https://www.altium.com/documentation/altium-365/lifecycle-management
     attributes:
       LifecycleDefinition_stages:
         title: stages

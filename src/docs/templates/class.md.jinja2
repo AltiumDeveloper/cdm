@@ -30,6 +30,21 @@ comments: true
 
 # {{ title }} [URI]({{ schemaview.get_uri(element, true, true, false, false) }}) {% if element.deprecated %} <span style="color: red;"><strong> (DEPRECATED) </strong></span> {% endif %}
 
+{% if element.description %}
+{% set element_description_lines = element.description.split('\n') %}
+{% for element_description_line in element_description_lines %}
+{{ element_description_line }}
+{% endfor %}
+{% endif %}
+
+{% if 'documentation' in element.extensions %}
+{% set element_documentation = element.extensions["documentation"] %}
+!!! info "Documentation"
+    {% for link in element_documentation.value %}
+    - [{{ link.description }}]({{ link.uri }})
+    {% endfor %}
+{% endif %}
+
 <div class="grid" markdown>
 
 !!! quote "Platform API"
@@ -47,16 +62,11 @@ comments: true
 {{ header }}
 {%- endif -%}
 
-{% if element.description %}
-{% set element_description_lines = element.description.split('\n') %}
-{% for element_description_line in element_description_lines %}
-{{ element_description_line }}
-{% endfor %}
-{% endif %}
-
 {% if element.abstract %}
 *NOTE: this is an abstract class and should not be instantiated directly
 {% endif %}
+
+## Diagram
 
 {% if diagram_type == "er_diagram" %}
 ```{{ gen.mermaid_directive() }}
