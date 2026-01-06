@@ -246,6 +246,7 @@ slots:
 
   plt_part_of_solution:
     is_a: part_of
+    title: partOfSolution
     range: plt_solution
     multivalued: true
     required: false

@@ -32,6 +32,7 @@
       hideEmptyMembersBox: true
 ---
  classDiagram
+    direction LR
     {{ element_style(element) }}
     click {{ gen.name(element) }} href "{{ gen.link_mermaid(element) }}"
       {% for s in schemaview.class_parents(element.name) -%}
