@@ -267,18 +267,15 @@
 
 
 
-      pro_bom_item --&gt; "*" pro_bom_item_element : alternates
-      click pro_bom_item_element href "../../classes/pro_bom_item_element/"
+      pro_bom_item --&gt; "*" pro_bom_item_alternate : alternates
+      click pro_bom_item_alternate href "../../classes/pro_bom_item_alternate/"
 
 
-  class pro_bom_item_element["BOM Item Element"]
-
-
-
-      style pro_bom_item_element fill:#dd7e6b    
+  class pro_bom_item_alternate["BOM Item Alternate"]
 
 
 
+      style pro_bom_item_alternate fill:#dd7e6b    
 
 
 
@@ -287,15 +284,18 @@
 
 
 
-      pro_bom_item --&gt; "*" pro_bom_item_element : substitutes
-      click pro_bom_item_element href "../../classes/pro_bom_item_element/"
-
-
-  class pro_bom_item_element["BOM Item Element"]
 
 
 
-      style pro_bom_item_element fill:#dd7e6b    
+      pro_bom_item --&gt; "*" pro_bom_item_substitute : substitutes
+      click pro_bom_item_substitute href "../../classes/pro_bom_item_substitute/"
+
+
+  class pro_bom_item_substitute["BOM Item Substitute"]
+
+
+
+      style pro_bom_item_substitute fill:#dd7e6b    
 
 
 
@@ -381,7 +381,7 @@
 <td><a href="../../slots/pro_bom_issues">issues</a></td>
 <td><code>*</code></td>
 <td><a href="../pro_bom_issue/">pro_bom_issue</a></td>
-<td>TBD</td>
+<td>Issues associated with this BOM item.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -395,28 +395,28 @@
 <td><a href="../../slots/BomItem_quantity">quantity</a></td>
 <td><code>1</code></td>
 <td><a href="../../types/integer/">integer</a></td>
-<td>TBD</td>
+<td>The quantity of the item required to produce one unit.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/BomItem_primaryElement">primary element</a></td>
 <td><code>0..1</code></td>
 <td><a href="../pro_bom_item_element/">pro_bom_item_element</a></td>
-<td>TBD</td>
+<td>The primary element chosen for this item.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/BomItem_alternates">alternates</a></td>
 <td><code>*</code></td>
-<td><a href="../pro_bom_item_element/">pro_bom_item_element</a></td>
-<td>TBD</td>
+<td><a href="../pro_bom_item_alternate/">pro_bom_item_alternate</a></td>
+<td>Alternate elements that could be used for this item.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/BomItem_substitutes">substitutes</a></td>
 <td><code>*</code></td>
-<td><a href="../pro_bom_item_element/">pro_bom_item_element</a></td>
-<td>TBD</td>
+<td><a href="../pro_bom_item_substitute/">pro_bom_item_substitute</a></td>
+<td>Substitute elements that could be used for this item.</td>
 <td>direct</td>
 </tr>
 </tbody>

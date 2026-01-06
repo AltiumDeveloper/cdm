@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://w3id.org/altium/cdm/classes/col_task/" rel="canonical"/>
+<link href="https://w3id.org/altium/cdm/classes/ins_insight/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
-<title>Task - Common Data Model (CDM)</title>
+<title>Insight - Common Data Model (CDM)</title>
 <link href="../../assets/stylesheets/main.2a3383ac.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -24,7 +24,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#task">
+<a class="md-skip" href="#insight">
           Skip to content
         </a>
 </div>
@@ -48,7 +48,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Task
+              Insight
             
           </span>
 </div>
@@ -172,22 +172,21 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="task">Task</h1>
-<p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/collaboration/Task">https://w3id.org/altium/cdm/collaboration/Task</a></p>
-<p>Task represents a discrete unit of work assigned to a user or team within the design workflow,  used to track progress, responsibility, and completion status for design, review, or management activities.</p>
+<h1 id="insight">Insight</h1>
+<p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/insights/Insight">https://w3id.org/altium/cdm/insights/Insight</a></p>
+<p>TBD</p>
 <div class="grid">
 <div class="admonition quote">
 <p class="admonition-title">Platform API</p>
-<p><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesTask">DesTask</a></p>
 </div>
 <div class="admonition quote annotate">
 <p class="admonition-title">GRID (1)</p>
-<p><code>grid:workspace:{workspace-id}:collaboration:task/{id}</code></p>
 </div>
 <ol>
 <li><img alt="🙋‍♂️" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f64b-200d-2642-fe0f.svg" title=":man_raising_hand:"/> <a href="https://altiumrd.atlassian.net/wiki/x/AQDQmQ">Altium Global Resource ID (aka GRID)</a></li>
 </ol>
 </div>
+<p>*NOTE: this is an abstract class and should not be instantiated directly</p>
 <h2 id="diagram">Diagram</h2>
 <pre class="mermaid"><code>---
   config:
@@ -200,29 +199,14 @@
     direction LR
 
 
-  class col_task["Task"]
+  class ins_insight["Insight"]
 
 
 
-      style col_task fill:#6fa8dc    
+      style ins_insight fill:#a64d79    
 
 
-    click col_task href "../../classes/col_task/"
-
-
-
-
-
-
-
-          col_task : id
-
-
-
-
-
-
-
+    click ins_insight href "../../classes/ins_insight/"
 
 
 
@@ -236,20 +220,46 @@
       style ins_part_insight fill:#a64d79    
 
 
-          ins_part_insight --&gt; "*" col_task: tasks 
-          click ins_part_insight href "../../classes/ins_part_insight/"
+        ins_insight &lt;|-- ins_part_insight
+        click ins_part_insight href "../../classes/ins_part_insight/"
+
+
+
+
+
+
+
+
+      ins_insight --&gt; "*" col_task : tasks
+      click col_task href "../../classes/col_task/"
+
+
+  class col_task["Task"]
+
+
+
+      style col_task fill:#6fa8dc    
+
+
+
+
+
+
+          ins_insight : id
+
+
 
 
 
 </code></pre>
-<h2 id="comments">Comments</h2>
-<p>Each Task has its own identity, state, and assignees, and may be linked to specific design objects, projects, or comments.
-It provides structure and accountability in collaborative design processes, supporting review cycles, issue resolution, and workflow coordination across teams within Altium 365.</p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Entity/">Entity</a><ul>
 <li><a href="../Activity/">Activity</a><ul>
-<li><strong>col_task</strong></li>
+<li><strong>ins_insight</strong><ul>
+<li><a href="../ins_part_insight/">ins_part_insight</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -274,28 +284,16 @@ It provides structure and accountability in collaborative design processes, supp
 <td>None</td>
 <td><a href="../Entity/">Entity</a></td>
 </tr>
+<tr>
+<td><a href="../../slots/ins_insight_tasks">tasks</a></td>
+<td><code>*</code></td>
+<td><a href="../col_task/">col_task</a></td>
+<td>Task associated with this insight</td>
+<td>direct</td>
+</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
-<table>
-<thead>
-<tr>
-<th>property</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>grid</td>
-<td>grid:workspace:{workspace-id}:collaboration:task/{id}</td>
-</tr>
-<tr>
-<td>platformAPI</td>
-<td>DesTask</td>
-</tr>
-</tbody>
-</table>
 <h2 id="__comments">Comments</h2>
 <!-- Insert generated snippet here -->
 <para>

@@ -137,6 +137,14 @@
          <lastmod>2026-01-06</lastmod>
     </url>
     <url>
+         <loc>https://w3id.org/altium/cdm/classes/ins_insight/</loc>
+         <lastmod>2026-01-06</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/ins_part_insight/</loc>
+         <lastmod>2026-01-06</lastmod>
+    </url>
+    <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_component/</loc>
          <lastmod>2026-01-06</lastmod>
     </url>
@@ -637,7 +645,19 @@
          <lastmod>2026-01-06</lastmod>
     </url>
     <url>
+         <loc>https://w3id.org/altium/cdm/slots/informed_by/</loc>
+         <lastmod>2026-01-06</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/informs/</loc>
+         <lastmod>2026-01-06</lastmod>
+    </url>
+    <url>
          <loc>https://w3id.org/altium/cdm/slots/input_of/</loc>
+         <lastmod>2026-01-06</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/ins_insight_tasks/</loc>
          <lastmod>2026-01-06</lastmod>
     </url>
     <url>
@@ -834,6 +854,10 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/design/</loc>
+         <lastmod>2026-01-06</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/subsets/insights/</loc>
          <lastmod>2026-01-06</lastmod>
     </url>
     <url>
