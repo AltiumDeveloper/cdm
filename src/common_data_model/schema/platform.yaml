@@ -151,7 +151,9 @@ classes:
     in_subset: platform
     class_uri: plt:LifecycleDefinition
     title: Lifecycle Definition
-    description: TBD
+    description: >-
+      Defines the set of states that an entity can transition through in its lifecycle. This definition clarifies what stage a revision of
+      an entity has reached in its 'life' and what it can be safely used for. Different entities can have different lifecycle definitions assigned to them.
     annotations:
       grid: grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}
       platformAPI: DesLifeCycleDefinition
