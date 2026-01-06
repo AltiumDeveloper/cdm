@@ -33,7 +33,7 @@ widoco-docs:
 #  $(DOCKER) tools/scripts/run_sparql_tests.sh
 
 gen-schema: 
-	$(RUN) gen-linkml --useuris --metadata --format json --output schema.json --no-materialize-attributes $(SOURCE_SCHEMA_PATH)
+	$(RUN) gen-linkml --useuris --metadata --format json --output google-sheet-schema.json --no-materialize-attributes $(SOURCE_SCHEMA_PATH)
 
 ci-generate: clean install gen-project gendoc gen-schema
 ci-test: lint test

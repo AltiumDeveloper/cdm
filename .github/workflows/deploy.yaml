@@ -1,5 +1,5 @@
 ---
-name: Auto-deployment of common_data_model Documentation
+name: Auto-deployment of common_data_model artifacts
 on:
   push:
     branches: [main]
@@ -38,3 +38,11 @@ jobs:
           make gendoc
           ([ ! -f docs/about.md ] && cp src/docs/about.md docs/) || true
           make mkd-gh-deploy
+
+      - name: Deploy to Google Spreadsheet
+        env:
+          GOOGLE_SHEETS_API: ${{ secrets.GOOGLE_SHEETS_API }}
+          GOOGLE_SHEETS_SECRET: ${{ secrets.GOOGLE_SHEETS_SECRET }}
+        run: |
+          make gen-schema
+          curl --location "$GOOGLE_SHEETS_API" -H "X-API-Key: $GOOGLE_SHEETS_SECRET" -H "Content-Type: application/json" --data-binary "@google-sheet-schema.json"
