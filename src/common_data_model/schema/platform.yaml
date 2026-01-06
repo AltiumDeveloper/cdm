@@ -1,0 +1,254 @@
+id: https://w3id.org/altium/cdm/platform/
+name: cdm-procurement
+prefixes:
+  linkml: https://w3id.org/linkml/
+  core: https://w3id.org/altium/cdm/core/
+  plt: https://w3id.org/altium/cdm/platform/
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: plt
+
+subsets:
+  platform:
+    description: >- 
+      TBD
+    annotations:
+      style: "fill:#cccccc"
+
+classes:
+
+  plt_organization:
+    is_a: Artifact
+    in_subset: platform
+    class_uri: plt:Organization
+    title: Organization
+    description: >-
+      TBD
+    annotations:
+      grid: grid:global::platform:organization/{id}
+      platformAPI: GloOrganization
+
+  plt_user:
+    is_a: Artifact
+    in_subset: platform
+    class_uri: plt:User
+    title: User
+    description: >-
+      TBD
+    annotations:
+      grid: grid:global::platform:user/{id}
+      platformAPI: GloUser
+
+  plt_group:
+    is_a: Artifact
+    in_subset: platform
+    class_uri: plt:UserGroup
+    title: User Group
+    description: >-
+      A way to group multiple users together (e.g. for the purposes of SCIM syncrhonization). User may be a member of multiple groups.
+    annotations:
+      grid: grid:global::platform:group/{id}
+      platformAPI: GloUserGroup
+
+  plt_application:
+    is_a: Artifact
+    in_subset: platform
+    class_uri: plt:Application
+    title: Application
+    description: >-
+      TBD
+    annotations:
+      grid: grid:global::platform:application/{id}
+      platformAPI: GloApp
+
+  plt_subscription:
+    is_a: Artifact
+    in_subset: platform
+    class_uri: plt:EventSubscription
+    title: Subscription
+    description: >-
+      TBD
+    annotations:
+      grid: grid:global::events:subscription/{id}
+      platformAPI: GloEvtSubscription
+
+  plt_workspace:
+    is_a: Artifact
+    in_subset: platform
+    class_uri: plt:Workspace
+    title: Workspace
+    description: >-
+      The top-level entity that plays a role of a closed environment for other entities (members, projects, components, etc.). 
+    comments:
+      - Workspace is scoped to a geographical region and ensures that all workspace-related data is stored in a specific location. 
+        This is a major data governance function of the workspaces. 
+      - Typically an organization has a single workspace but large entirprises may have multiple.
+    annotations:
+      grid: grid:global::platform:workspace/{id}
+      platformAPI: DesWorkspace
+    slots:
+      - plt_workspace_env_configurations
+
+  plt_workspace_user:
+    is_a: Artifact
+    in_subset: platform
+    class_uri: plt:WorkspaceUser
+    title: Workspace User
+    description: >-
+      TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:team:user/{id}
+      platformAPI: DesWorkspaceUser
+
+  plt_workspace_group:
+    is_a: Artifact
+    in_subset: platform
+    class_uri: plt:WorkspaceGroup
+    title: Workspace Group
+    description: >-
+      Workspace Group represents a logical collection of users within a workspace, 
+      used to manage access control, permissions, and collaboration roles across projects and data assets.
+    comments:
+      - Each Workspace Group has its own identity and membership, defining collective rights and responsibilities for its members.  
+      - It simplifies administration and governance by enabling consistent permission management and role-based access 
+        across Altium 365 projects, libraries, and shared resources.
+    annotations:
+      grid: grid:workspace:{workspace-id}:team:group/{id}
+      platformAPI: DesWorkspaceGroup
+
+  plt_solution:
+    is_a: Activity
+    in_subset: platform
+    class_uri: plt:Solution
+    title: Solution
+    description: TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:platform:solution/{id}
+      platformAPI: SolSolution
+    slots:
+      - releases
+      - plt_solution_items
+    slot_usage:
+      releases:
+        range: plt_solution_release
+
+  plt_solution_release:
+    is_a: Artifact
+    in_subset: platform
+    class_uri: plt:SolutionRelease
+    title: Solution Release
+    description: >-
+      Release of the Solution. This is a formal immutable artifact, representing a specific state of the Solution at the time of release.  
+    annotations:
+      lifecycle: DRAFT
+      grid: grid:workspace:{workspace-id}:platform:solution-release/{id}
+
+  plt_lifecycle_definition:
+    is_a: Artifact
+    in_subset: platform
+    class_uri: plt:LifecycleDefinition
+    title: Lifecycle Definition
+    description: TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}
+      platformAPI: DesLifeCycleDefinition
+    attributes:
+      LifecycleDefinition_stages:
+        title: stages
+        description: TBD
+        range: plt_lifecycle_stage
+        multivalued: true
+
+  plt_lifecycle_stage:
+    is_a: Resource  
+    in_subset: platform
+    class_uri: plt:LifecycleStage
+    title: Lifecycle Stage
+    description: TBD
+    annotations:
+      platformAPI: DesLifeCycleStage
+    attributes:
+      LifecycleStage_name:
+        title: name
+        description: TBD
+        range: string
+        multivalued: false
+        required: true
+      LifecycleStage_states:
+        title: states
+        description: TBD
+        range: plt_lifecycle_state
+        multivalued: true 
+        required: true
+
+  plt_lifecycle_state:
+    is_a: Resource
+    in_subset: platform
+    class_uri: plt:LifecycleState
+    title: Lifecycle State
+    description: TBD
+    annotations:
+      platformAPI: DesLifeCycleState
+    attributes:
+      LifecycleState_name:
+        title: name
+        description: TBD
+        range: string
+        multivalued: false
+        required: true
+      # id, description, isAllowedInDesign, isInitialState
+
+
+  plt_naming_scheme:
+    is_a: Artifact
+    in_subset: platform
+    class_uri: plt:NamingScheme
+    title: Revision Naming Scheme
+    description: TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:platform:revision-naming-scheme/{id}
+      platformAPI: DesRevisionNamingScheme
+
+  ### Mixins
+
+  SolutionItem:
+    is_a: Meta
+    mixin: true
+    title: Solution Item
+    slots:
+      - plt_part_of_solution
+
+  HasLifecycle:
+    is_a: Meta
+    mixin: true
+    slots:
+      - plt_lifecycle_state
+
+slots: 
+
+  plt_solution_items:
+    is_a: has_part
+    range: SolutionItem
+    multivalued: true
+    required: false
+
+  plt_part_of_solution:
+    is_a: part_of
+    range: plt_solution
+    multivalued: true
+    required: false
+
+  plt_workspace_env_configurations:
+    is_a: has_part
+    title: environmentConfigurations
+    range: con_env_configuration
+    multivalued: true
+
+  plt_lifecycle_state:
+    title: lifecycleState
+    range: plt_lifecycle_state
+    multivalued: false
+    required: true

@@ -1,0 +1,137 @@
+id: https://w3id.org/altium/cdm/system/
+name: system
+prefixes:
+  linkml: https://w3id.org/linkml/
+  sys: https://w3id.org/altium/cdm/system/
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: sys
+
+subsets:
+  system:
+    title: System Design
+    description: >-
+      Facilitates high-level design planning by defining system architecture, functional relationships, and design constraints. 
+      It helps engineers structure complex projects by integrating requirements management with schematic and PCB design workflows within Altium 365.
+    annotations:
+      style: "fill:#f1c232"
+
+classes:
+
+  sys_esd_document:
+    is_a: Activity
+    in_subset: system 
+    class_uri: sys:ESDDocument
+    title: ESD Document
+    description: TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:system-design:esd/{id}
+    mixins:
+      - SolutionItem
+    attributes:
+      functionalBlocks:
+        is_a: has_part
+        range: sys_functional_block
+        multivalued: true
+        required: false
+
+  sys_functional_block:
+    is_a: Resource
+    in_subset: system 
+    class_uri: sys:FunctionalBlock
+    title: Functional Block
+    description: TBD
+    attributes:
+      name:
+      ports:  
+        is_a: has_part
+        range: sys_port
+        multivalued: true
+        required: false
+      keyComponents:
+        is_a: has_part
+        range: sys_key_component
+        multivalued: true
+        required: false
+      softwareBlocks:
+        is_a: has_part
+        range: sys_software_block
+        multivalued: true
+        required: false
+
+  sys_port:
+    is_a: Resource
+    in_subset: system 
+    class_uri: sys:Port
+    title: Port
+    description: TBD
+    attributes:
+      name:  
+      description:
+
+  sys_key_component:
+    is_a: Resource
+    in_subset: system
+    class_uri: sys:KeyComponent
+    title: Key Component
+    description: TBD
+    slots:
+      - realization
+
+  sys_software_block:
+    is_a: Resource
+    in_subset: system
+    class_uri: sys:SoftwareBlock
+    title: Software Block
+    description: Functional and abstract in nature. A container for Software Components.
+    instantiates:
+      - WithRFLP
+    annotations:
+      rflp: F
+    attributes:
+      softwareComponents:
+        range: sys_software_component
+        required: false
+        multivalued: true
+      associations:
+        range: sys_port_association
+        required: false
+        multivalued: true
+
+  sys_software_component:
+    is_a: Resource
+    in_subset: system
+    class_uri: sys:SoftwareComponent
+    title: Software Component
+    description: Functional in nature, abstracted from but connected to logical implementation. 
+
+  sys_port_association:
+    is_a: Resource
+    in_subset: system
+    class_uri: sys:PortAssociation
+    title: Port Association
+    description: TBD
+    attributes:
+      port:
+        range: sys_port
+        required: true
+        multivalued: false
+
+slots:
+
+  functionalBlocks:
+    range: sys_functional_block
+    multivalued: true
+    required: false
+
+  realization:
+    range: Any
+    any_of:
+      - range: sup_part
+      - range: sup_part_group
+      - range: sup_part_family
+    multivalued: false
+    required: true

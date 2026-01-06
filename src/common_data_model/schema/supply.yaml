@@ -1,0 +1,198 @@
+id: https://w3id.org/altium/cdm/supply
+name: cdm-supply
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  sup: https://w3id.org/altium/cdm/supply/
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: sup
+
+subsets:
+  supply:
+    description: >-
+      Focuses on providing reliable access to component sourcing, availability, pricing, and lifecycle data, 
+      integrating resources like Octopart to support informed procurement decisions. It enables engineers and 
+      procurement teams to seamlessly connect design choices with real-world supply chain constraints within the Altium ecosystem.
+    annotations:
+      style: "fill:#0c559c"
+
+classes:
+
+  sup_part:
+    is_a: Artifact
+    in_subset: supply 
+    class_uri: sup:Part
+    title: Part
+    description: >-
+      Supply Part represents a market-available instance of a manufactured Part, 
+      providing aggregated sourcing data such as pricing, stock levels, and supplier offers.
+    comments:
+      - Each Supply Part has its own identity derived from manufacturer and supplier metadata, and may correspond to multiple suppliers’ listings.  
+      - It bridges the design and supply chain domains by enriching managed Parts with real-time market intelligence, 
+        enabling informed sourcing, alternates evaluation, and procurement optimization within Altium 365.
+    annotations:
+      grid: grid:supply::platform:part/{id}
+      platformAPI: SupPart
+    attributes:
+      Part_mpn:
+        title: mpn
+        description: TBD
+        range: string
+        required: true
+        multivalued: false
+      Part_manufacturer: 
+        title: manufacturer
+        range: sup_company
+        required: true
+        multivalued: false        
+      Part_referenceDesigns:
+        title: reference designs
+        range: sup_reference_design
+        multivalued: true
+
+  sup_offer:
+    is_a: Artifact
+    in_subset: supply
+    class_uri: sup:Offer
+    title: Offer
+    description: >-
+      Supply Offer represents a specific commercial listing of a Part from a supplier, 
+      detailing price breaks, stock availability, lead times, and ordering conditions at a given point in time.
+    comments:
+      - Each Supply Offer has its own identity and is associated with a Supply Part, reflecting one supplier’s current market position.  
+      - It enables designers and procurement teams to evaluate sourcing options dynamically, supporting cost optimization, 
+        risk mitigation, and automated supply validation within the Altium 365 and Octopart ecosystems.
+    annotations:
+      grid: grid:supply::platform:part/{id}/offer/{offerID}
+      platformAPI: SupOffer
+
+  sup_company:
+    is_a: Artifact
+    in_subset: supply
+    class_uri: sup:Company
+    title: Company
+    description: >-
+      Supply Company represents an organization that provides Parts to the market, 
+      acting as a supplier, distributor, or reseller within the electronics supply chain.
+    comments:
+      - Each Supply Company has its own identity and metadata, including contact, regional, and certification details.  
+      - It serves as the authoritative entity behind Supply Offers, enabling traceability, supplier qualification, 
+        and integration of trusted sourcing data across Octopart and Altium 365 workflows.
+    annotations:
+      grid: grid:supply::platform:company/{id}
+
+  sup_part_family:
+    is_a: Artifact
+    in_subset: supply
+    class_uri: sup:PartFamily
+    title: Part Family
+    description: >-
+      TBD
+    attributes:
+      PartFamily_partGroups:
+        title: part groups
+        range: sup_part_group
+        multivalued: true  
+      PartFamily_alternatives:
+        title: alternatives
+        range: sup_part_family
+        multivalued: true  
+    annotations:
+      grid: grid:supply::platform:part-family/{id}
+      platformAPI: SupPartFamily
+
+  sup_part_group:
+    is_a: Artifact
+    in_subset: supply
+    class_uri: sup:PartGroup
+    title: Part Group
+    description: >-
+      TBD
+    annotations:
+      grid: grid:supply::platform:part-group/{id}
+      platformAPI: SupPartGroup
+    attributes:
+      PartGroup_parts:
+        title: parts
+        range: sup_part
+        multivalued: true  
+      PartGroup_alternatives:
+        title: alternatives
+        range: sup_part_group
+        multivalued: true  
+
+  sup_reference_design:
+    is_a: Artifact
+    in_subset: supply
+    class_uri: sup:ReferenceDesign
+    title: Reference Design
+    description: TBD
+    annotations:
+      grid: grid:supply::platform:ref-design/{id}
+      platformAPI: SupReferenceDesign
+
+  sup_solution_template:
+    is_a: Artifact
+    in_subset: supply
+    class_uri: sup:SolutionTemplate
+    title: Solution Template
+    description: TBD
+    aliases:
+      - Reference Solution (obsolete)
+    slots:
+      - sup_eval_kits
+      - sup_software_projects
+    annotations:
+      grid: grid:supply::platform:solution-template/{id}
+      platformAPI: SupSolutionTemplate
+
+  sup_software_project:
+    is_a: Artifact
+    in_subset: supply
+    class_uri: sup:SoftwareProject
+    title: Software Project
+    description: >-
+      TBD
+    slots:
+      - sup_eval_kits
+    annotations:
+      grid: grid:supply::platform:software-project/{id}
+      platformAPI: SupSoftwareProject
+
+  sup_eval_kit:
+    is_a: Artifact
+    in_subset: supply
+    class_uri: sup:EvalKit
+    title: Evaluation Kit
+    description: >-
+      TBD
+    annotations:
+      grid: grid:supply::platform:eval-kit/{id}
+      platformAPI: SupEvalKit
+      lifecycle: DRAFT
+
+slots:
+
+  sup_eval_kits:
+    is_a: has_part
+    slot_uri: sup:consists_of_eval_kits
+    title: evalKits
+    description: Evaluation Kits included in this Artifact
+    domain: Artifact
+    range: sup_eval_kit
+    required: false
+    multivalued: true  
+
+  sup_software_projects:
+    is_a: has_part
+    slot_uri: sup:consists_of_software_projects
+    title: softwareProjects
+    description: Software Projects included in this Artifact
+    domain: Artifact
+    range: sup_software_project
+    required: false
+    multivalued: true  

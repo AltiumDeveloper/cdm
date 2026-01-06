@@ -1,0 +1,70 @@
+id: https://w3id.org/altium/cdm/customization
+name: cdm-customization
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cus: https://w3id.org/altium/cdm/customization/
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: cus
+
+subsets:
+  customization:
+    description: >-
+      TBD
+    annotations:
+      style: "fill:#a2c4c9"
+
+classes:
+
+  cus_script:
+    is_a: Artifact
+    in_subset: customization
+    class_uri: cus:Script
+    title: Script
+    description: TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:scripts:script/{id}
+      platformAPI: GloScrScript
+    slots:
+      - revisions
+    slot_usage:
+      revisions:
+        range: cus_script_version
+
+  cus_script_version:
+    is_a: Artifact
+    in_subset: customization
+    class_uri: cus:ScriptVersion
+    title: Script Version
+    description: TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:scripts:script-version/{id}
+      platformAPI: GloScrScriptVersion
+    attributes:
+      executions:
+        range: cus_script_execution
+        multivalued: true
+
+  cus_script_execution:
+    is_a: Artifact
+    in_subset: customization
+    class_uri: cus:ScriptExecution
+    title: Script Execution
+    description: TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:scripts:script-execution/{id}
+      platformAPI: GloScrScriptExecution
+
+  cus_workflow:
+    is_a: Activity
+    in_subset: customization
+    class_uri: cus:Workflow
+    title: Workflow
+    description: TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:customization:workflow/{id}
+      platformAPI: DesWorkflowDefinition

@@ -1,0 +1,207 @@
+id: https://w3id.org/altium/cdm/design/
+name: cdm-design
+prefixes:
+  linkml: https://w3id.org/linkml/
+  des: https://w3id.org/altium/cdm/design/
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: des
+
+subsets:
+  design:
+    description: >-
+      Provides a comprehensive environment for schematic capture, PCB layout, and simulation. It enables engineers to create, analyze, 
+      and optimize electronic designs with seamless integration into the broader Altium ecosystem.
+    annotations:
+      style: "fill:#93c47d"
+
+classes:
+
+  des_project:
+    is_a: Activity
+    in_subset: design 
+    class_uri: des:Project
+    title: Hardware Project
+    description: TBD
+    aliases:
+      - PCB Project
+    mixins:
+      - SolutionItem
+    annotations:
+      grid: grid:workspace:{workspace-id}:design:project/{id}
+      platformAPI: DesProject
+    attributes:
+      Project_parameters:
+        title: parameters
+        description: TBD
+        range: des_project_parameter
+        multivalued: true
+        required: false
+      Project_variants:
+        title: variants
+        description: TBD
+        range: des_project_variant
+        multivalued: true
+    slots:
+      - releases
+      - lib_uses_parts
+      - lib_uses_components
+    slot_usage:
+      releases:
+        range: des_project_release
+
+  des_project_parameter:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:ProjectParameter
+    title: Project Parameter
+    description: TBD
+    annotations:
+      platformAPI: DesProjectParameter
+    attributes:
+      ProjectParameter_name:
+        title: name
+        description: TBD
+        range: string
+        multivalued: false
+        required: true
+      ProjectParameter_value:
+        title: value
+        description: TBD
+        range: string
+        multivalued: false
+        required: false
+
+  des_project_variant:
+    is_a: Resource
+    in_subset: design 
+    class_uri: des:ProjectVariant
+    title: Hardware Project Variant
+    description: TBD
+    annotations:
+      platformAPI: DesWipVariant
+
+  des_multiboard_project:
+    is_a: des_project
+    in_subset: design 
+    class_uri: des:MultiboardProject
+    title: Multiboard Project
+    description: 
+      Multiboard Project represents the coordinated design of multiple interconnected PCB projects assembled into a single system, 
+      capturing both their logical interconnects and physical arrangements.
+    comments:
+      - Multiboard Project serves as an aggregate that composes individual board Projects into a higher-level system entity, 
+        maintaining identity and traceability across design boundaries. It enables engineers to define harnesses, connectors, and 
+        mechanical fit at the system level, while preserving the autonomy of each board design, thus supporting codesign, simulation, 
+        and integration workflows across ECAD and MCAD domains.
+    annotations:
+      platformAPI: DesProject
+    slots:
+      - des_multiboard_project_projects
+
+  des_harness_project:
+    is_a: des_project
+    in_subset: design 
+    class_uri: des:HarnessProject
+    title: Harness Project
+    description: 
+      Harness Project defines the design of a cable and wiring harness as a standalone yet integrable artifact, capturing connectors, 
+      wires, splices, and pin-to-pin mappings required to implement electrical interconnects between boards and system elements. 
+    comments:
+      - Harness Project provides a structured representation of connectivity at the physical wiring level, complementing schematic and 
+        PCB projects while maintaining its own lifecycle and identity. It enables engineers to design, document, and validate interconnects 
+        in a way that is traceable, manufacturable, and tightly integrated with Multiboard and MCAD workflows within the Altium ecosystem.
+    annotations:
+      platformAPI: DesProject
+
+  des_project_release:
+    is_a: Activity
+    in_subset: design 
+    class_uri: des:ProjectRelease
+    title: Hardware Project Release
+    description: 
+      Project Release captures an immutable snapshot of a PCB design project at a specific point in its lifecycle, packaging all design data, 
+      outputs, and metadata required for manufacturing, assembly, and downstream processes. 
+    comments:
+      - Project Release serves as the authoritative artifact that bridges design and production, ensuring repeatability, traceability, and regulatory compliance. 
+        Its identity is tied to the originating Project but remains stable as a versioned deliverable, enabling teams to collaborate confidently, audit changes, 
+        and integrate with supply chain and PLM systems through Altium 365 and related workflows.
+    annotations:
+      grid: grid:workspace:{workspace-id}:design:project-release/{id}
+      platformAPI: DesRelease
+    mixins:
+      - HasLifecycle
+    slots:
+      - lib_consists_of_components
+
+  des_project_template:
+    is_a: Artifact
+    in_subset: design 
+    class_uri: des:ProjectTemplate
+    title: Project Template
+    description:
+      A project template includes document configurations and settings that you know you will frequently apply to various projects. 
+    comments:
+      - Project templates can include the common document and file types that make up a project, as well as additional reference documentation 
+        and configuration files. Project options configured in a project template will also be applied when creating design projects using this template. 
+        The advantage of using project templates is that a template can contain, if required, a full set of common project files 
+        (including Output Jobs) and ratified project/document options, design rules, parameters, units settings, document title blocks, 
+        grid settings, project release options, and much more.
+      - Project templates can be created for PCB, multi-board and harness project types.
+    annotations:
+      grid: grid:workspace:{workspace-id}:design:project-template/{id}
+      platformAPI: DesProjectTemplate
+    slots:
+      - revisions
+    slot_usage:
+      revisions:
+        range: des_project_template_revision
+
+  des_project_template_revision:
+    is_a: Artifact
+    in_subset: design 
+    class_uri: des:ProjectTemplateRevision
+    title: Project Template Revision
+    description: >-
+      An immutable revision of a project template.
+    annotations:
+      grid: grid:workspace:{workspace-id}:design:project-template-revision/{id}
+      platformAPI: DesProjectTemplateRevision
+    mixins:
+      - HasLifecycle
+
+  des_manufacturing_package:
+    is_a: Artifact
+    in_subset: design 
+    class_uri: des:ManufacturingPackage
+    title: Manufacturing Package
+    description: >-
+      A read-only package that contains a subset of Project Release artifacts that is typically shared with an external party for the purposes 
+      of manufacturing the board (e.g. Manufacturing Package may contain fabrication/assembly files required by the factories, but not the sources of the project)
+    annotations:
+      grid: grid:workspace:{workspace-id}:design:manufacturing-package/{id}
+    slots:
+      - des_manufacturing_package_project_release
+
+slots:
+
+  des_multiboard_project_projects:
+    is_a: has_part
+    slot_uri: des:MultiboardProject_projects
+    title: projects
+    description: The individual PCB projects that make up this Multiboard Project.
+    domain: des_multiboard_project
+    range: des_project
+    multivalued: true
+    required: false
+
+  des_manufacturing_package_project_release:
+    is_a: derived_from
+    slot_uri: des:ManufacturingPackage_projectRelease
+    title: projectRelease
+    description: Manufacturing Packages are created based on a specific Project Release.
+    range: des_project_release
+    required: true

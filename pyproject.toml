@@ -1,0 +1,41 @@
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"
+
+[project]
+name = "common_data_model"
+description = "Common Data Model"
+authors = [
+  {name = "Dmitry Kolomiets", email = "dmitry.kolomiets@altium.com"},
+]
+license = "MIT"
+readme = "README.md"
+include = ["README.md", "src/common_data_model/schema", "project"]
+
+requires-python = ">=3.9,<4.0"
+
+dynamic = ["version"]
+
+dependencies = [
+  "linkml-runtime >=1.1.24",
+]
+
+[tool.poetry]
+requires-poetry = ">=2.0"
+version = "0.0.0"
+
+[tool.poetry.requires-plugins]
+poetry-dynamic-versioning = ">=1.5.2"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs = "git"
+style = "pep440"
+
+[tool.poetry.group.dev.dependencies]
+linkml = "^1.9.4"
+mkdocs-material = ">=8.2.8"
+mkdocs-mermaid2-plugin = ">=1.1.1"
+schemasheets = ">=0.1.14"
+jupyter = ">=1.0.0"
+mknotebooks = ">= 0.8.0"

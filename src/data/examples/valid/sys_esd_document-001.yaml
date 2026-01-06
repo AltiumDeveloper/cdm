@@ -1,0 +1,10 @@
+# Example for a valid data object
+---
+id: "001"
+functionalBlocks:
+  - name: Motor Control
+    ports:
+      - name: port_1
+        description: Port 1 (GPIO)
+      - name: port_2
+        description: Port 2 (UART)          

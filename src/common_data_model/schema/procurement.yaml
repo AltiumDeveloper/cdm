@@ -1,0 +1,263 @@
+id: https://w3id.org/altium/cdm/procurement/
+name: cdm-procurement
+prefixes:
+  linkml: https://w3id.org/linkml/
+  pro: https://w3id.org/altium/cdm/procurement/
+  core: https://w3id.org/altium/cdm/core/
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: pro
+
+subsets:
+  procurement:
+    description: >- 
+      Streamlines the transition from design to sourcing by providing structured BOM management, supplier integration, 
+      and real-time component availability and pricing. It ensures that purchasing decisions are optimized, traceable, 
+      and seamlessly connected to the design process within Altium 365.
+    annotations:
+      style: "fill:#dd7e6b"
+
+classes:
+
+  ### Mixins
+
+  pro_bom:
+    is_a: Meta
+    in_subset: procurement
+    mixin: true
+    class_uri: pro:Bom
+    title: BOM
+    description: Bill of Materials
+    slots:
+      - pro_bom_items
+      - pro_bom_issues
+
+  ### Entities
+
+  pro_bom_wip:
+    is_a: Activity
+    in_subset: procurement
+    class_uri: pro:BomWIP
+    abstract: true
+    title: BOM WIP
+    description: TBD
+    mixins:
+      - pro_bom
+    slots:
+      - releases
+      - lib_uses_parts
+      - lib_uses_components
+    slot_usage:
+      releases:
+        range: pro_bom_release
+      
+  pro_managed_bom:
+    is_a: pro_bom_wip
+    in_subset: procurement
+    class_uri: pro:ManagedBOM
+    title: Managed BOM
+    description: >- 
+      Managed BOM represents a version-controlled, workspace-stored bill of materials derived from a specific Project, 
+      preserving all Part selections, metadata, and supply chain links at a fixed point in time. 
+    comments:
+      - Managed BOM has its own identity and lifecycle, decoupled from the evolving design, and serves as the authoritative 
+        reference for procurement, manufacturing, and compliance processes. It ensures traceability, repeatability, and governance 
+        by locking in sourcing decisions and alternates, while enabling collaboration between engineering, supply chain, 
+        and manufacturing teams within the Altium 365 environment.
+    annotations:
+      grid: grid:workspace:{workspace-id}:procurement:bom/{id}
+      platformAPI: BomWip
+
+  pro_consolidated_bom:
+    is_a: pro_bom_wip
+    in_subset: procurement
+    class_uri: pro:ConsolidatedBOM
+    title: Consolidated BOM
+    description: >- 
+      Consolidated BOM represents the aggregated bill of materials across one or more Projects or variants, combining all required 
+      Parts into a single, unified view for procurement and manufacturing.       
+    comments:
+      - Consolidated BOM provides a supply-chain–ready artifact with its own identity and lifecycle, ensuring traceability back 
+        to the originating designs while normalizing duplicates, alternates, and quantity rollups. It acts as the bridge between 
+        engineering output and enterprise procurement systems, enabling efficient sourcing, cost analysis, and lifecycle validation 
+        across multiple boards or product configurations within the Altium 365 ecosystem.
+    aliases:
+      - Order BOM
+    annotations:
+      grid: grid:workspace:{workspace-id}:procurement:bom/{id}
+      platformAPI: BomWip
+
+  pro_bom_release:
+    is_a: Artifact
+    in_subset: procurement
+    class_uri: pro:BomRelease
+    title: BOM Release
+    description: TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:procurement:bom-release/{id}
+      platformAPI: BomRelease
+    mixins:
+      - pro_bom
+      - HasLifecycle
+    slots:
+      - lib_consists_of_parts
+      - lib_consists_of_components
+
+  ### Resources
+
+  pro_bom_item:
+    is_a: Resource
+    in_subset: procurement
+    class_uri: pro:BomItem
+    title: BOM Item
+    description: TBD
+    annotations:
+      platformAPI: BomItem
+    attributes:
+      BomItem_designators:
+        title: designators
+        description: A list of designators that specify the placements of the item within the schematic.
+        range: string
+        multivalued: true
+        required: false
+      BomItem_quantity:
+        title: quantity
+        description: TBD
+        range: integer
+        multivalued: false
+        required: true
+      BomItem_primaryElement:
+        title: primary element
+        description: TBD
+        range: pro_bom_item_element
+        multivalued: false
+        required: false   
+      BomItem_alternates:
+        title: alternates
+        description: TBD
+        range: pro_bom_item_element
+        required: false
+        multivalued: true
+      BomItem_substitutes:
+        title: substitutes
+        description: TBD
+        range: pro_bom_item_element
+        required: false
+        multivalued: true
+    slots:
+      # reusing common slot
+      - pro_bom_issues
+
+  pro_bom_item_element:
+    is_a: Resource
+    in_subset: procurement
+    class_uri: pro:BomItemElement
+    abstract: true
+    title: BOM Item Element
+    description: An element (part) that might be used for a particular BOM item.
+    annotations:
+      platformAPI: BomItemElement
+    attributes:
+      BomItemElement_mpn:
+        slot_uri: pro:BomItemElement_mpn
+        title: mpn
+        description: TBD
+        range: string
+        required: false
+        multivalued: false
+      BomItemElement_manufacturer:
+        slot_uri: pro:BomItemElement_manufacturer
+        title: manufacturer
+        description: TBD
+        range: string
+        required: false
+        multivalued: false
+      BomItemElement_part:
+        slot_uri: pro:BomItemElement_part
+        title: part
+        description: TBD
+        range: lib_part
+        required: false
+        multivalued: false
+      BomItemElement_component:
+        slot_uri: pro:BomItemElement_component
+        title: component
+        description: TBD
+        range: lib_component_revision
+        required: false
+        multivalued: false
+
+    slots:
+      # reusing common slot 
+      - pro_bom_issues
+
+  pro_bom_item_alternate:
+    is_a: pro_bom_item_element
+    in_subset: procurement
+    class_uri: pro:BomItemAlternate
+    title: BOM Item Alternate
+    description: Alternate is a global replacement of a part by another in all BOMs where it's used.
+    annotations:
+      platformAPI: BomItemAlternate
+
+  pro_bom_item_substitute:
+    is_a: pro_bom_item_element
+    in_subset: procurement
+    class_uri: pro:BomItemSubstitute
+    title: BOM Item Substitute
+    description: Substitute is a replacement of a part by another within an individual BOM.
+    annotations:
+      platformAPI: BomItemSubstitute
+
+  pro_bom_issue:
+    is_a: Resource
+    in_subset: procurement
+    class_uri: pro:BomIssue
+    title: BOM Issue
+    description: TBD
+    annotations:
+      platformAPI: BomIssue
+    attributes:
+      BomIssue_description:
+        slot_uri: pro:BomIssue_description
+        title: description
+        description: TBD
+        range: string
+        required: false
+        multivalued: false
+      BomIssue_howToFix:
+        slot_uri: pro:BomIssue_howToFix
+        title: how to fix
+        description: TBD
+        range: string
+        required: false
+        multivalued: false
+      BomIssue_severity:
+        slot_uri: pro:BomIssue_severity
+        title: severity
+        description: TBD
+        range: string # TBD
+        required: false
+        multivalued: false
+
+slots:
+
+  ### BOM relations
+
+  pro_bom_items:
+    slot_uri: pro:Bom_items
+    title: items
+    range: pro_bom_item
+    required: false
+    multivalued: true
+
+  pro_bom_issues:
+    slot_uri: pro:Bom_issues
+    title: issues
+    description: TBD
+    range: pro_bom_issue
+    required: false
+    multivalued: true

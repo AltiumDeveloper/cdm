@@ -1,0 +1,503 @@
+id: https://w3id.org/altium/cdm/library/
+name: cdm-library
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  lib: https://w3id.org/altium/cdm/library/
+  core: https://w3id.org/altium/cdm/core/
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: lib
+
+subsets:
+  library:
+    description: >- 
+      Ensures centralized control, organization, and standardization of component data, including symbols, footprints, and parameters. 
+      It enables seamless collaboration, versioning, and accessibility of design assets across teams within Altium 365.
+    annotations:
+      style: "fill:#ffe599"
+
+classes:
+
+  lib_component:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:Component
+    title: Component
+    description: >- 
+      Component represents a uniquely identifiable electronic part, defined by both 
+      its abstract design intent and its concrete realizations in manufacturing and supply. 
+    comments:
+      - Component encapsulates schematic symbols, PCB footprints, simulation models, parameters, and lifecycle states, serving as the single 
+        source of truth that links design, procurement, and manufacturing. Its identity persists across revisions, even as attributes 
+        such as supplier availability, footprint variants, or parameter values evolve, making it a cornerstone of consistency and 
+        traceability across Altium Designer, Altium 365, and the broader ECAD–MCAD co-design workflow.
+    annotations:
+      grid: grid:workspace:{workspace-id}:library:component/{id}
+    attributes:
+      Component_parameters:
+        title: parameters
+        description: Component parameters
+        range: lib_component_parameter
+        multivalued: true
+        required: false
+    slots:
+      - revisions
+    slot_usage:
+      revisions:
+        range: lib_component_revision
+        annotations:
+          modeled_as: Vault Item - Revision
+
+  lib_component_revision:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:ComponentRevision
+    title: Component Revision
+    description: Revision of a Component.
+    mixins:
+      - HasLifecycle
+    annotations:
+      grid: grid:workspace:{workspace-id}:library:component-revision/{id}
+      platformAPI: DesComponent
+    attributes:
+      ComponentRevision_parameters:
+        title: parameters
+        description: Component parameters
+        range: lib_component_parameter
+        multivalued: true
+        required: false
+      ComponentRevision_partChoiceList:
+        title: partChoiceList
+        description: List of part choices
+        range: lib_part_choice_list
+        multivalued: false
+        required: true
+    slots:
+      - lib_consists_of_parts
+      - lib_component_revision_template
+      - lib_component_revision_symbols
+      - lib_component_revision_footprints
+      - lib_component_revision_used_by_project_variant
+
+  lib_component_template:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:ComponentTemplate
+    title: Component Template
+    description: >- 
+      Component Template defines a reusable blueprint for creating and managing electronic components with consistent parameters, metadata, and lifecycle policies. 
+    comments:
+      - Component Template establishes the structural and semantic boundaries for Components of a given class (e.g., resistors, ICs, connectors), 
+        ensuring uniformity in attributes such as electrical ratings, supplier links, simulation models, or documentation references. 
+        Its identity is independent of any individual Component but directly governs how Components are instantiated and validated, 
+        making it a key mechanism for enforcing standards, reducing errors, and enabling scalable library management across teams and projects.
+    annotations:
+      grid: grid:workspace:{workspace-id}:library:component-template/{id}
+    slots:
+      - revisions
+    slot_usage:
+      revisions:
+        range: lib_component_template_revision
+
+  lib_component_template_revision:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:ComponentTemplateRevision
+    title: Component Template Revision
+    description: TBD
+    mixins:
+      - HasLifecycle
+    annotations:
+      grid: grid:workspace:{workspace-id}:library:component-template-revision/{id}
+
+  lib_component_parameter:
+    is_a: Resource
+    in_subset: library
+    class_uri: lib:ComponentParameter
+    title: Component Parameter
+    description: TBD
+    annotations:
+      platformAPI: DesComponentParameter
+    attributes:
+      ComponentParameter_name:
+        title: name
+        description: TBD
+        range: string
+        multivalued: false
+        required: true
+      ComponentParameter_value:
+        title: value
+        description: TBD
+        range: string
+        multivalued: false
+        required: false
+      ComponentParameter_type: # TODO define values
+        title: type
+        description: TBD
+        range: string
+        multivalued: false
+        required: false
+
+  lib_symbol:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:Symbol
+    title: Symbol
+    description: >-
+      Symbol represents the logical schematic view of a Component, defining its electrical interface, pins, and attributes 
+      used to express circuit intent in design schematics.
+    comments:
+      - Each Symbol has its own identity and structure, and may be reused across multiple Components or designs.  
+      - It provides the abstract representation of a Component within the schematic domain, ensuring clarity, consistency, 
+        and accurate electrical connectivity throughout the design process.
+    annotations:
+      grid: grid:workspace:{workspace-id}:library:symbol/{id}
+    slots:
+      - revisions
+    slot_usage:
+      revisions:
+        range: lib_symbol_revision
+
+  lib_symbol_revision:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:SymbolRevision
+    title: Symbol Revision
+    description: TBD
+    mixins:
+      - HasLifecycle
+    annotations:
+      grid: grid:workspace:{workspace-id}:library:symbol-revision/{id}
+      platformAPI: DesSymbol
+
+  lib_footprint:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:Footprint
+    title: Footprint
+    description: >-
+      Footprint represents the physical layout definition of a Component on a PCB, 
+      specifying pad geometry, land patterns, and mechanical clearances required for assembly and manufacturing.
+    comments:
+      - Each Footprint has its own identity and lifecycle, and is associated with one or more Components.  
+      - It binds the abstract logical design to its physical implementation, ensuring accurate placement, routing, 
+        and compatibility with fabrication and MCAD workflows within Altium Designer and Altium 365.
+    annotations:
+      grid: grid:workspace:{workspace-id}:library:footprint/{id}
+    slots:
+      - revisions
+    slot_usage:
+      revisions:
+        range: lib_footprint_revision
+
+  lib_footprint_revision:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:FootprintRevision
+    title: Footprint Revision
+    description: TBD
+    mixins:
+      - HasLifecycle
+    annotations:
+      grid: grid:workspace:{workspace-id}:library:footprint-revision/{id}
+      platformAPI: DesFootprint
+
+  lib_part:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:Part
+    title: Part
+    description: TBD
+    aliases:
+      - Managed Part
+    annotations:
+      grid: grid:workspace:{workspace-id}:library:part/{id}
+      platformAPI: DesPart
+
+  lib_datasheet:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:Datasheet
+    title: Datasheet
+    description: >-
+      Datasheet represents a technical document associated with a Component or Part, 
+      providing authoritative specifications, electrical characteristics, and manufacturer information.
+    comments:
+      - Each Datasheet has its own identity and version reference, ensuring consistent access to verified technical details.  
+      - It supports informed design decisions, validation, and compliance by linking engineering data with official manufacturer documentation 
+        across Components and managed libraries within Altium 365.
+    annotations:
+      grid: grid:workspace:{workspace-id}:library:datasheet/{id}
+      platformAPI: DesDatasheet
+
+  lib_part_request:
+    is_a: Activity
+    in_subset: library
+    class_uri: lib:PartRequest
+    title: Part Request
+    description: >-
+      Part Request represents a formal demand from a designer to introduce a new Component or Part into the managed library, 
+      typically triggered when an item is not yet available in the workspace. 
+    comments:
+      - Part Request has its own identity and lifecycle, capturing intent, justification, and required attributes, and serving 
+        as the entry point for librarian or librarian-like roles to validate, enrich, and release the requested item. It connects 
+        design needs with library governance, ensuring that sourcing, compliance, and lifecycle rules are applied consistently 
+        before the Part becomes available for use in projects.
+    annotations:
+      grid: grid:workspace:{workspace-id}:library:part-request/{id}
+
+  lib_reuse_block:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:ReuseBlock
+    title: Reuse Block
+    description: >- 
+      TBD
+    comments:
+      - TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:library:reuse-block/{id}
+      platformAPI: DesReuseBlock
+    slots:
+      - revisions
+    slot_usage:
+      revisions:
+        range: lib_reuse_block_revision
+
+  lib_reuse_block_revision:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:ReuseBlockRevision
+    title: Reuse Block Revision
+    description: TBD
+    mixins:
+      - HasLifecycle
+    annotations:
+      grid: grid:workspace:{workspace-id}:library:reuse-block-revision/{id}
+      platformAPI: DesReuseBlockRevision
+    slots:
+      - lib_consists_of_components
+      - lib_reuse_block_revision_sch_snippet
+      - lib_reuse_block_revision_pcb_snippet
+
+  lib_managed_sheet:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:ManagedSheet
+    title: Managed Sheet
+    description: >- 
+      TBD
+    comments:
+      - TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:library:managed-sheet/{id}
+    slots:
+      - revisions
+    slot_usage:
+      revisions:
+        range: lib_managed_sheet_revision
+
+  lib_managed_sheet_revision:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:ManagedSheetRevision
+    title: Managed Sheet Revision
+    description: TBD
+    mixins:
+      - HasLifecycle
+    annotations:
+      grid: grid:workspace:{workspace-id}:library:managed-sheet-revision/{id}
+    slots:
+      - lib_consists_of_components
+      - lib_managed_sheet_revision_template
+
+  lib_sch_snippet:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:SchSnippet
+    title: SCH Snippet
+    description: TBD
+    slots:
+      - revisions
+    slot_usage:
+      revisions:
+        range: lib_sch_snippet_revision
+
+  lib_sch_snippet_revision:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:SchSnippetRevision
+    title: SCH Snippet Revision
+    description: TBD
+    mixins:
+      - HasLifecycle
+
+  lib_pcb_snippet:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:PcbSnippet
+    title: PCB Snippet
+    description: TBD
+    slots:
+      - revisions
+    slot_usage:
+      revisions:
+        range: lib_pcb_snippet_revision
+
+  lib_pcb_snippet_revision:
+    is_a: Artifact
+    in_subset: library
+    class_uri: lib:PcbSnippetRevision
+    title: PCB Snippet Revision
+    description: TBD
+    mixins:
+      - HasLifecycle
+
+  lib_part_choice_list:
+    is_a: Resource
+    in_subset: library
+    class_uri: lib:PartChoiceList
+    title: Part Choice List
+    description: TBD
+    attributes:
+      PartChoiceList_partChoices:
+        title: partChoices
+        description: List of part choices
+        range: lib_part_choice
+        multivalued: true
+        required: false
+
+  lib_part_choice:
+    is_a: Resource
+    in_subset: library
+    class_uri: lib:PartChoice
+    title: Part Choice
+    description: TBD
+    attributes:
+      PartChoice_rank:
+        title: rank
+        description: Rank of the part choice in the list
+        range: integer
+        multivalued: false
+        required: true
+      PartChoice_part:
+        title: part
+        description: The part associated with this choice
+        range: lib_part
+        multivalued: false
+        required: true
+
+# TODO: part source (?)
+
+slots:
+
+  ### Reusable slots
+
+  lib_uses_parts: 
+    is_a: has_input
+    slot_uri: lib:uses_parts
+    title: parts
+    description: Parts used in this Activity
+    domain: Activity
+    range: lib_part
+    required: false
+    multivalued: true
+
+  lib_consists_of_parts: 
+    is_a: has_part
+    slot_uri: lib:consists_of_parts
+    title: parts
+    description: Parts used in this Artifact
+    domain: Artifact
+    range: lib_part
+    required: false
+    multivalued: true
+
+  lib_uses_components: 
+    is_a: has_input
+    slot_uri: lib:uses_components
+    title: components
+    description: Components used in this Activity
+    domain: Activity
+    range: lib_component_revision
+    required: false
+    multivalued: true
+
+  lib_consists_of_components: 
+    is_a: has_part
+    slot_uri: lib:consists_of_components
+    title: components
+    description: Components used in this Artifact
+    domain: Artifact
+    range: lib_component_revision
+    required: false
+    multivalued: true
+
+  ###
+
+  lib_component_revision_template:
+    is_a: derived_from
+    slot_uri: lib:ComponentRevision_template
+    title: template
+    range: lib_component_template_revision
+    multivalued: false
+    instantiates:
+      - WithVaultLink
+    annotations:
+      modeled_as: Vault Link (rev -> rev)
+      vaultLinkParent: lib:ComponentRevision
+      vaultLinkChild: lib:ComponentTemplateRevision
+
+  lib_component_revision_symbols:
+    is_a: has_part
+    slot_uri: lib:ComponentRevision_symbols
+    title: symbols
+    range: lib_symbol_revision
+    multivalued: true
+    annotations:
+      modeled_as: Vault Link (rev -> rev)
+
+  lib_component_revision_footprints:
+    is_a: has_part
+    slot_uri: lib:ComponentRevision_footprints
+    title: footprints
+    range: lib_footprint_revision
+    multivalued: true
+    annotations:
+      modeled_as: Vault Link (rev -> rev)
+
+  lib_component_revision_used_by_project_variant:
+    is_a: input_of
+    title: used_by_project_variant
+    description: There is a relation per each project/variant where this Component Revision is used.
+    range: des_project
+    multivalued: true
+    annotations:
+      modeled_as: Vault Link (rev -> rev)
+
+  lib_managed_sheet_revision_template:
+    is_a: derived_from
+    slot_uri: lib:ManagedSheetRevision_template
+    title: template
+    range: con_schematic_template_revision
+    multivalued: false
+    annotations:
+      modeled_as: Vault Revision - Revision
+
+  lib_reuse_block_revision_sch_snippet:
+    is_a: has_part
+    slot_uri: lib:ReuseBlockRevision_schSnippet
+    title: sch_snippet
+    range: lib_sch_snippet_revision
+    multivalued: false
+
+  lib_reuse_block_revision_pcb_snippet:
+    is_a: has_part
+    slot_uri: lib:ReuseBlockRevision_pcbSnippet
+    title: pcb_snippet
+    range: lib_pcb_snippet_revision
+    multivalued: false

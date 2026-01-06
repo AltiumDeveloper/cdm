@@ -1,0 +1,69 @@
+id: https://w3id.org/altium/cdm/collaboration
+name: cdm-collaboration
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  col: https://w3id.org/altium/cdm/collaboration/
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: col
+
+subsets:
+  collaboration:
+    description: >-
+      TBD
+    annotations:
+      style: "fill:#6fa8dc"
+
+classes:
+
+  col_task:
+    is_a: Activity
+    in_subset: collaboration 
+    class_uri: col:Task
+    title: Task
+    description: >-
+      Task represents a discrete unit of work assigned to a user or team within the design workflow, 
+      used to track progress, responsibility, and completion status for design, review, or management activities.
+    comments:
+      - Each Task has its own identity, state, and assignees, and may be linked to specific design objects, projects, or comments.  
+      - It provides structure and accountability in collaborative design processes, supporting review cycles, issue resolution, 
+        and workflow coordination across teams within Altium 365.
+    annotations:
+      grid: grid:workspace:{workspace-id}:collaboration:task/{id}
+      platformAPI: DesTask
+
+  col_comment_thread:
+    is_a: Activity
+    in_subset: collaboration
+    class_uri: col:CommentThread
+    title: Comment Thread
+    description: >-
+      Comment Thread represents a structured discussion linked to a specific design object, document, or workspace item, 
+      capturing feedback, decisions, and context directly within the collaborative design environment.
+    comments:
+      - Each Comment Thread has its own identity and lifecycle, grouping related comments and replies into a coherent conversation. 
+      - It serves as a persistent communication artifact that promotes design review transparency, traceability, and cross-team collaboration 
+        within Altium 365 and connected design tools.
+    annotations:
+      grid: grid:workspace:{workspace-id}:collaboration:comment-thread/{id}
+      platformAPI: DesCommentThread
+    attributes:
+      CommentThread_comments: 
+        title: comments
+        description: TBD
+        range: col_comment
+        required: true
+        multivalued: true
+
+  col_comment:
+    is_a: Resource
+    in_subset: collaboration
+    class_uri: col:Comment
+    title: Comment
+    description: TBD
+    annotations:
+      platformAPI: DesComment

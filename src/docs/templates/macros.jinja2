@@ -1,0 +1,14 @@
+{%- macro platform_api_url(element) -%}
+  {%- if 'platformAPI' in element.annotations -%}
+    {%- set camelCase = element.annotations["platformAPI"].value -%}
+    [{{ camelCase }}](https://altiumdeveloper.github.io/platform-api-docs/types/objects/{{ camelCase }})    
+  {%- endif -%}
+{% endmacro -%}
+
+{%- macro slot_title(slot) -%}
+  {{ slot.title if slot.title else gen.name(slot) }}
+{%- endmacro -%}
+
+{%- macro slot_url(slot) -%}
+  [{{ slot_title(slot) }}]( ../../slots/{{slot.name}})
+{%- endmacro -%}

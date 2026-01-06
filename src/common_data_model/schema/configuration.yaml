@@ -1,0 +1,75 @@
+id: https://w3id.org/altium/cdm/configuration
+name: cdm-configuration
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  con: https://w3id.org/altium/cdm/configuration/
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: con
+
+subsets:
+  configuration:
+    description: >-
+      TBD
+    annotations:
+      style: "fill:#ead1dc"
+
+classes:
+
+  con_env_configuration:
+    is_a: Artifact
+    in_subset: configuration
+    class_uri: con:EnvironmentConfiguration
+    title: Environment Configuration
+    description: >-
+      TBD
+    comments:
+      - TBD
+    annotations:
+      grid: 
+    slots:
+      - con_env_configuration_schematic_templates
+
+  con_schematic_template:
+    is_a: Artifact
+    in_subset: configuration
+    class_uri: con:SchematicTemplate
+    title: Schematic Template
+    description: >-
+      TBD
+    comments:
+      - TBD
+    annotations:
+      grid: 
+    slots:
+      - revisions
+    slot_usage:
+      revisions:
+        range: con_schematic_template_revision
+
+  con_schematic_template_revision:
+    is_a: Artifact
+    in_subset: configuration
+    class_uri: con:SchematicTemplateRevision
+    title: Schematic Template Revision
+    description: >-
+      TBD
+    comments:
+      - TBD
+    annotations:
+      grid:  
+
+slots:
+
+  con_env_configuration_schematic_templates:
+    is_a: has_part
+    title: schematic_templates
+    range: con_schematic_template_revision
+    multivalued: true
+    annotations:
+      modeled_as: Vault Item - Revision
+

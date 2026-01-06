@@ -1,0 +1,164 @@
+id: https://w3id.org/altium/cdm/software/
+name: cdm-procurement
+prefixes:
+  linkml: https://w3id.org/linkml/
+  core: https://w3id.org/altium/cdm/core/
+  sft: https://w3id.org/altium/cdm/software/
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: sft
+
+subsets:
+  software:
+    description: >- 
+      TBD
+    annotations:
+      style: "fill:#3c78d8"
+
+classes:
+
+  sft_software_project:
+    is_a: Activity
+    in_subset: software
+    class_uri: sft:SoftwareProject
+    title: Software Project
+    description: TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:software:software-project/{id}
+      platformAPI: SftSoftwareProject
+    mixins:
+      - SolutionItem
+    slots:
+      - releases      
+      - sft_software_project_ai_models
+      - sft_software_project_device_configuration
+      - sft_software_project_latest_build_artifacts
+    slot_usage:
+      releases:
+        range: sft_software_release
+
+  sft_software_release:
+    is_a: Artifact
+    in_subset: software
+    class_uri: sft:SoftwareRelease
+    title: Software Release
+    description: TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:software:software-release/{id}
+    slots:
+      - sft_software_release_ai_models
+      - sft_software_release_build_artifacts
+      - sft_software_release_bom
+    attributes:
+      title:
+        description: Title of the release
+      description:
+        description: Free form text with additional details about the release. Changelog, etc.
+      attachments:
+        description: Additional files associated with the release (reports, documents, etc.)
+        range: BLOB
+
+  sft_device_configuration:
+    is_a: Artifact
+    in_subset: software
+    class_uri: sft:DeviceConfiguration
+    title: Device Configuration
+    description: TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:software:device-configuration/{id}
+      platformAPI: SftDevCfgDeviceConfiguration
+    slots:
+      - revisions
+    slot_usage:
+      revisions:
+        range: sft_device_configuration_revision
+
+  sft_device_configuration_revision:
+    is_a: Artifact
+    in_subset: software
+    class_uri: sft:DeviceConfigurationRevision
+    title: Device Configuration Revision
+    description: TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:software:device-configuration-revision/{id}
+      platformAPI: SftDevCfgDeviceConfigurationRevision
+
+  sft_ai_model:
+    is_a: Artifact
+    in_subset: software
+    class_uri: sft:AIModel
+    title: AI Model
+    description: AI model artifact in context of a workspace
+    comments:
+      - We start with a simple Artifact-like entity without explicit revisions support.
+        The assumption is that if we need revisions going forward, we'll add explicit revision entity,
+        define GRID for it, relations, etc.
+    todos:
+      - Data Content Platform would likely define another (but related) AI model entity - the one
+        that is going to be part of Solution Template. The exact name / definition of the entity is TBD.
+    annotations:
+      grid: grid:workspace:{workspace-id}:software:ai-model/{id}
+    mixins:
+      - SolutionItem
+
+  sft_build_artifact:
+    is_a: Artifact
+    in_subset: software
+    class_uri: sft:BuildArtifact
+    title: Build Artifact
+    description: TBD
+
+  sft_bom:
+    is_a: Artifact
+    in_subset: software
+    class_uri: sft:BOM
+    title: Software BOM
+    description: TBD
+    attributes:
+      software_components: 
+        range: sys_software_component
+        multivalued: true
+
+slots: 
+
+  sft_software_project_device_configuration:
+    is_a: has_output
+    slot_uri: sft:SoftwareProject_deviceConfiguration
+    title: device_configuration
+    description: Device Configuration derived from the project
+    range: sft_device_configuration
+
+  sft_software_project_latest_build_artifacts:
+    is_a: has_output
+    title: latest_build_artifact
+    description: Latest build artifacts produced from the project
+    range: sft_build_artifact
+    multivalued: true
+
+  sft_software_project_ai_models:
+    is_a: has_input
+    title: ai_models
+    description: TBD
+    range: sft_ai_model
+
+  sft_software_release_ai_models:
+    is_a: has_part
+    title: ai_models
+    description: AI model artifacts included into the release.
+    range: sft_ai_model
+
+  sft_software_release_build_artifacts:
+    is_a: has_part
+    title: build_artifacts
+    description: Firmware build artifacts, deployable to the device. May be multiple artifacts if firmware targets multiple chips.
+    range:  sft_build_artifact
+    multivalued: true
+
+  sft_software_release_bom:
+    is_a: has_part
+    title: bom
+    description: Software BOM associated with the release.
+    range:  sft_bom

@@ -1,0 +1,73 @@
+{% from "macros.jinja2" import slot_title with context %}
+
+{% macro element_style(e) %}
+  {% set element = schemaview.get_element(e) %}
+  class {{ gen.name(element) }}["{{ element.title if element.title else gen.name(element) }}"]
+  {% set elementSubsets = element.in_subset %}
+  {%- if elementSubsets %}
+    {% set styleAnnotation = schemaview.get_subset(elementSubsets[0]).annotations["style"] %}
+    {% if styleAnnotation %}
+      style {{ gen.name(element) }} {{ styleAnnotation.value }}    
+    {% endif %}
+  {%- endif %}
+{% endmacro %}
+
+{% macro slot_relationship(element, slot) %}
+  {% if slot.range is not none %}
+      {% set range_element = gen.name(schemaview.get_element(slot.range)) %}
+      {% set relation_label = slot_title(slot) %}
+      {{ gen.name(element) }} --> "{{ gen.cardinality(slot) }}" {{ range_element }} : {{ relation_label }}
+      click {{ range_element }} href "{{ gen.link_mermaid(schemaview.get_element(slot.range)) }}"
+      {{ element_style(slot.range) }}
+  {% endif %}
+{% endmacro %}
+
+{% if true %}
+```{{ gen.mermaid_directive() }}
+---
+  config:
+    layout: elk
+    theme: neutral
+    class:
+      hideEmptyMembersBox: true
+---
+ classDiagram
+    {{ element_style(element) }}
+    click {{ gen.name(element) }} href "{{ gen.link_mermaid(element) }}"
+      {% for s in schemaview.class_parents(element.name) -%}
+        {% set parentElement = schemaview.get_element(s) %}
+        {% if gen.name(parentElement) is not in ["Activity", "Artifact", "Resource"] %}
+          {{ element_style(s) }}
+          {{ gen.name(parentElement) }} <|-- {{ gen.name(element) }}
+          click {{ gen.name(parentElement) }} href "{{ gen.link_mermaid(parentElement) }}"
+        {% endif %}
+      {% endfor %}
+
+      {% for s in schemaview.class_children(element.name) -%}
+        {{ element_style(s) }}
+        {{ gen.name(element) }} <|-- {{ gen.name(schemaview.get_element(s)) }}
+        click {{ gen.name(schemaview.get_element(s)) }} href "{{ gen.link_mermaid(schemaview.get_element(s)) }}"
+      {% endfor %}
+
+      {% for s in schemaview.class_induced_slots(element.name) -%}
+        {% if s.range is not none and s.range in gen.all_type_object_names() %}
+          {{ gen.name(element) }} : {{ slot_title(s) }}
+        {% endif %}
+        {% if s.range is not none and s.range not in gen.all_type_object_names() %}
+          {{ slot_relationship(element, s) }}
+        {% endif %}
+      {% endfor %}
+
+      {% if not element.abstract and schemaview.usage_index().get(element.name) %}
+      {% for usage in schemaview.usage_index().get(element.name) -%}
+        {% set usedByElement = schemaview.get_element(usage.used_by) %}
+        {% set usedBySlot = schemaview.get_slot(usage.slot) %}
+        {% if not usedByElement.abstract %}
+          {{ element_style(usage.used_by) }}
+          {{ gen.name(usedByElement) }} --> "{{ gen.cardinality(schemaview.get_slot(usage.slot)) }}" {{ gen.name(element) }}: {{ slot_title(usedBySlot) }} 
+          click {{ gen.name(usedByElement) }} href "{{ gen.link_mermaid(usedByElement) }}"
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+```
+{% endif %}

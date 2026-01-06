@@ -1,0 +1,195 @@
+id: https://w3id.org/altium/cdm//core/
+name: cdm-core
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  core: https://w3id.org/altium/cdm/core/
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: core
+
+enums:
+
+  Lifecycle:
+    implements:
+      - owl:NamedIndividual
+    permissible_values:
+      DRAFT:
+      EMERGING:
+      ACCEPTED:
+
+  VaultContentType:
+    implements:
+      - owl:NamedIndividual
+    permissible_values:
+      altium-project:
+        annotations:
+          contenTypeId: 16C6919C-C9B4-49F1-B756-7133C0A6963D
+      altium-component:
+      altium-symbol:
+      altium-reuse-block:
+        annotations:
+          contenTypeId: E9AD78C4-DF30-4278-A945-7C2E422802EA
+
+classes:
+
+  Any:
+    class_uri: linkml:Any
+
+  Meta:
+    abstract: true
+
+  Resource:
+    abstract: true
+    instantiates:
+      - WithPlatformAPI
+
+  Entity:
+    abstract: true
+    instantiates:
+      - WithGRID
+      - WithLifecycle
+      - WithPlatformAPI
+    slots:
+      - id
+
+  Artifact:
+    abstract: true
+    is_a: Entity
+
+  Activity:
+    abstract: true
+    is_a: Entity
+
+  ### Annotations
+
+  WithGRID:
+    is_a: Meta
+    attributes:
+      grid:
+        description: GRID template
+        range: GRID
+
+  WithPlatformAPI:
+    is_a: Meta
+    attributes:
+      platformAPI:
+        description: Platform API type name.
+        range: string
+
+  WithLifecycle:
+    is_a: Meta
+    attributes:
+      lifecycle:
+        description: Lifecycle of the type.
+        range: Lifecycle
+
+  WithVault:
+    is_a: Meta
+    attributes:
+      contentType:
+        description: Vault Content Type
+        range: VaultContentType
+
+  WithVaultLink:
+    is_a: Meta
+    attributes:
+      vaultLinkParent:
+        description: Vault Link Parent
+        range: uriorcurie
+      vaultLinkChild:
+        description: Vault Link Parent
+        range: uriorcurie
+      vaultLinkType:
+        description: Vault Link Parent
+        range: string
+
+types:
+  GRID:
+    uri: core:grid
+    base: str
+    description: Globally unique resource ID
+
+  BLOB:
+    uri: core:blob
+    base: str
+    description: Arbitrary binary object
+
+slots:
+  id:
+    identifier: true
+    range: GRID
+
+  ### relation types framework
+
+  derives_into:
+    abstract: true
+    domain: Artifact
+    range: Artifact
+
+  derived_from:
+    abstract: true
+    domain: Artifact
+    range: Artifact
+    inverse: derives_into
+
+  part_of:
+    abstract: true
+    domain: Entity
+    range: Entity
+    transitive: true
+
+  has_part:
+    abstract: true
+    domain: Entity
+    range: Entity
+    transitive: true
+    inverse: part_of
+
+  input_of:
+    abstract: true
+    domain: Artifact
+    range: Activity
+
+  has_input:
+    abstract: true
+    domain: Activity
+    range: Artifact
+    inverse: input_of
+
+  output_of:
+    abstract: true
+    domain: Artifact
+    range: Activity
+
+  has_output:
+    abstract: true
+    domain: Activity
+    range: Artifact
+    inverse: output_of
+
+  ### useful relations
+
+  revision_of:
+    is_a: derived_from
+    required: true
+    multivalued: false
+
+  revisions:
+    is_a: derives_into
+    multivalued: true
+    inverse: revision_of
+
+  release_of:
+    is_a: output_of
+    required: true
+    multivalued: false 
+
+  releases:
+    is_a: has_output
+    required: false
+    multivalued: true
+    inverse: release_of
