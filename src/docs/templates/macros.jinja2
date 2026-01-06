@@ -7,7 +7,11 @@
 
 {%- macro slot_range_url(slot_range) -%}
   {%- set element = schemaview.get_element(slot_range) -%}
+  {%- if element.__class__.__name__ == "ClassDefinition" -%}
   [{{ element.title if element.title else gen.name(element) }}]( ../classes/{{ slot_range }}.md )
+  {%- else -%}
+  {{ gen.link(slot_range) }} 
+  {%- endif -%}
 {%- endmacro -%}
 
 {%- macro slot_title(slot) -%}
