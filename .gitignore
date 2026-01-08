@@ -1,3 +1,8 @@
+#Ignore auto-generated files and folders
+project/
+examples/
+src/common_data_model/datamodel/
+
 schema.json
 /docs/
 /project/docs/
