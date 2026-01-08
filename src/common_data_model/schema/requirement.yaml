@@ -1,0 +1,439 @@
+id: https://w3id.org/altium/cdm/requirement/
+name: cdm-requirement
+prefixes:
+  linkml: https://w3id.org/linkml/
+  req: https://w3id.org/altium/cdm/requirement/
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: req
+
+subsets:
+  requirements:
+    description: >-
+      Captures behavioral, performance, compliance, and process expectations that govern solutions
+      throughout conception, design, verification, and release lifecycle milestones.
+    annotations:
+      style: "fill:#f6b26b"
+
+classes:
+  req_requirement:
+    is_a: Artifact
+    in_subset: requirements
+    class_uri: req:Requirement
+    title: Requirement
+    description: >-
+      A single, testable statement of intent or constraint that governs a solution or process outcome.
+    comments:
+      - Requirements aggregate rationales, acceptance criteria, and trace links needed to drive
+        downstream design and verification.
+    mixins:
+      - HasLifecycle
+    attributes:
+      Requirement_key:
+        title: key
+        description: >-
+          Human-friendly identifier that is unique within a specification context (e.g. SYS-001).
+        range: string
+        required: true
+        multivalued: false
+      Requirement_title:
+        title: title
+        description: Concise human-readable title of the requirement.
+        range: string
+        required: true
+        multivalued: false
+      Requirement_text:
+        title: statement
+        description: Canonical textual form of the requirement.
+        range: string
+        required: true
+        multivalued: false
+      Requirement_rationale:
+        title: rationale
+        description: Justification or reasoning that motivates the requirement intent.
+        range: string
+        required: false
+        multivalued: false
+      Requirement_category:
+        title: category
+        description: Classification such as functional, safety, regulatory, or usability.
+        range: string
+        required: false
+        multivalued: false
+      Requirement_priority:
+        title: priority
+        description: Relative importance or sequencing hint for planning.
+        range: string
+        required: false
+        multivalued: false
+      Requirement_acceptance_criteria:
+        title: acceptanceCriteria
+        description: Objective criteria or measurements that prove the requirement is met.
+        range: string
+        required: false
+        multivalued: true
+      Requirement_owner:
+        title: owner
+        description: Responsible role or team accountable for the requirement.
+        range: string
+        required: false
+        multivalued: false
+      Requirement_source_reference:
+        title: sourceReference
+        description: Link or citation to originating contract, regulation, or customer input.
+        range: uriorcurie
+        required: false
+        multivalued: true
+    slots:
+      - revisions
+      - req_requirement_children
+      - req_requirement_satisfied_by_artifacts
+      - req_requirement_verified_by_activities
+      - req_requirement_traced_from_sources
+    slot_usage:
+      revisions:
+        range: req_requirement_revision
+
+  req_requirement_revision:
+    is_a: Artifact
+    in_subset: requirements
+    class_uri: req:RequirementRevision
+    title: Requirement Revision
+    description: An immutable snapshot of a requirement statement at a specific revision.
+    mixins:
+      - HasLifecycle
+    attributes:
+      RequirementRevision_number:
+        title: number
+        description: Ordinal or semver-like revision number.
+        range: string
+        required: true
+        multivalued: false
+      RequirementRevision_change_summary:
+        title: changeSummary
+        description: Concise description of what changed in this revision.
+        range: string
+        required: false
+        multivalued: false
+    slots:
+      - revision_of
+      - req_revision_derives_from_change
+    slot_usage:
+      revision_of:
+        range: req_requirement
+
+  req_requirement_specification:
+    is_a: Artifact
+    in_subset: requirements
+    class_uri: req:RequirementSpecification
+    title: Requirement Specification
+    description: >-
+      A curated collection of requirements scoped to a program, domain, or release horizon.
+    mixins:
+      - HasLifecycle
+    attributes:
+      RequirementSpecification_title:
+        title: title
+        description: Human-readable title for the specification (e.g. "System Requirements").
+        range: string
+        required: true
+        multivalued: false
+      RequirementSpecification_scope:
+        title: scope
+        description: Narrative describing the boundaries and context of the specification.
+        range: string
+        required: false
+        multivalued: false
+      RequirementSpecification_owner:
+        title: owner
+        description: Role or organization managing this specification.
+        range: string
+        required: false
+        multivalued: false
+    slots:
+      - revisions
+      - req_specification_includes_requirements
+      - req_specification_targets_projects
+      - req_specification_inputs
+    slot_usage:
+      revisions:
+        range: req_requirement_baseline
+
+  req_requirement_baseline:
+    is_a: Artifact
+    in_subset: requirements
+    class_uri: req:RequirementBaseline
+    title: Requirement Baseline
+    description: >-
+      A version-managed release of a specification or subset of requirements approved for execution.
+    mixins:
+      - HasLifecycle
+    attributes:
+      RequirementBaseline_identifier:
+        title: identifier
+        description: Distinguishing label for the approved baseline (e.g. BL-2025.1).
+        range: string
+        required: true
+        multivalued: false
+      RequirementBaseline_notes:
+        title: notes
+        description: Additional context for the approval, deviations, or applicability limits.
+        range: string
+        required: false
+        multivalued: false
+    slots:
+      - req_baseline_of_specification
+      - req_baseline_includes_requirements
+      - req_baseline_targets_project_releases
+
+  req_requirement_change_request:
+    is_a: Activity
+    in_subset: requirements
+    class_uri: req:RequirementChangeRequest
+    title: Requirement Change Request
+    description: Structured workflow item proposing additions, updates, or removals of requirements.
+    mixins:
+      - HasLifecycle
+    attributes:
+      RequirementChangeRequest_reason:
+        title: reason
+        description: Business, technical, or compliance driver motivating the change.
+        range: string
+        required: true
+        multivalued: false
+      RequirementChangeRequest_priority:
+        title: priority
+        description: Handling urgency for backlog triage.
+        range: string
+        required: false
+        multivalued: false
+      RequirementChangeRequest_decision:
+        title: decision
+        description: Outcome such as approved, rejected, or deferred.
+        range: string
+        required: false
+        multivalued: false
+    slots:
+      - req_change_impacts_requirements
+      - req_change_impacts_specifications
+      - req_change_generates_revisions
+
+  req_verification_case:
+    is_a: Activity
+    in_subset: requirements
+    class_uri: req:VerificationCase
+    title: Verification Case
+    description: >-
+      A planned verification procedure or test that produces objective evidence against requirements.
+    mixins:
+      - HasLifecycle
+    attributes:
+      VerificationCase_identifier:
+        title: identifier
+        description: External-facing identifier or document number for the verification case.
+        range: string
+        required: true
+        multivalued: false
+      VerificationCase_method:
+        title: method
+        description: Verification technique such as analysis, inspection, demonstration, or test.
+        range: string
+        required: true
+        multivalued: false
+      VerificationCase_environment:
+        title: environment
+        description: Description of lab, simulation, or operational context for execution.
+        range: string
+        required: false
+        multivalued: false
+      VerificationCase_result:
+        title: result
+        description: Pass/fail or summary of latest execution outcome.
+        range: string
+        required: false
+        multivalued: false
+    slots:
+      - req_verification_validates_requirements
+      - req_verification_uses_artifacts
+      - req_verification_generates_evidence
+      - req_verification_triggers_changes
+
+slots:
+  req_requirement_children:
+    is_a: has_part
+    slot_uri: req:Requirement_children
+    title: children
+    description: Requirements that refine or decompose this requirement.
+    domain: req_requirement
+    range: req_requirement
+    multivalued: true
+    required: false
+    inverse: req_requirement_parent
+
+  req_requirement_parent:
+    is_a: part_of
+    slot_uri: req:Requirement_parent
+    title: parent
+    description: Higher-level requirement that allocates scope to this requirement.
+    domain: req_requirement
+    range: req_requirement
+    multivalued: false
+    required: false
+
+  req_requirement_satisfied_by_artifacts:
+    slot_uri: req:Requirement_satisfiedBy
+    title: satisfiedBy
+    description: Artifacts, designs, or solutions that implement this requirement.
+    domain: req_requirement
+    range: Artifact
+    multivalued: true
+    required: false
+
+  req_requirement_verified_by_activities:
+    slot_uri: req:Requirement_verifiedBy
+    title: verifiedBy
+    description: Verification activities that produce evidence for this requirement.
+    domain: req_requirement
+    range: Activity
+    multivalued: true
+    required: false
+
+  req_requirement_traced_from_sources:
+    slot_uri: req:Requirement_tracedFrom
+    title: tracedFrom
+    description: Upstream sources such as contracts, standards, or customer requests.
+    domain: req_requirement
+    range: Artifact
+    multivalued: true
+    required: false
+
+  req_revision_derives_from_change:
+    slot_uri: req:RequirementRevision_derivesFromChange
+    title: derivesFromChange
+    description: Change request that authorized this requirement revision.
+    domain: req_requirement_revision
+    range: req_requirement_change_request
+    multivalued: false
+    required: false
+
+  req_specification_includes_requirements:
+    is_a: has_part
+    slot_uri: req:RequirementSpecification_requirements
+    title: requirements
+    description: Requirements curated under this specification.
+    domain: req_requirement_specification
+    range: req_requirement
+    multivalued: true
+    required: true
+
+  req_specification_targets_projects:
+    slot_uri: req:RequirementSpecification_targetsProjects
+    title: targetsProjects
+    description: Design or solution projects governed by this specification.
+    domain: req_requirement_specification
+    range: des_project
+    multivalued: true
+    required: false
+
+  req_specification_inputs:
+    slot_uri: req:RequirementSpecification_inputs
+    title: inputs
+    description: Artifacts or agreements that feed this specification.
+    domain: req_requirement_specification
+    range: Artifact
+    multivalued: true
+    required: false
+
+  req_baseline_of_specification:
+    slot_uri: req:RequirementBaseline_ofSpecification
+    title: ofSpecification
+    description: Specification for which this baseline is approved.
+    domain: req_requirement_baseline
+    range: req_requirement_specification
+    multivalued: false
+    required: true
+
+  req_baseline_includes_requirements:
+    is_a: has_part
+    slot_uri: req:RequirementBaseline_includesRequirements
+    title: includesRequirements
+    description: Specific requirements frozen into this baseline.
+    domain: req_requirement_baseline
+    range: req_requirement
+    multivalued: true
+    required: true
+
+  req_baseline_targets_project_releases:
+    slot_uri: req:RequirementBaseline_targetsProjectReleases
+    title: targetsProjectReleases
+    description: Project releases that must comply with this baseline.
+    domain: req_requirement_baseline
+    range: des_project_release
+    multivalued: true
+    required: false
+
+  req_change_impacts_requirements:
+    slot_uri: req:RequirementChange_impactsRequirements
+    title: impactsRequirements
+    description: Requirements directly impacted by the change request.
+    domain: req_requirement_change_request
+    range: req_requirement
+    multivalued: true
+    required: true
+
+  req_change_impacts_specifications:
+    slot_uri: req:RequirementChange_impactsSpecifications
+    title: impactsSpecifications
+    description: Specifications that must be updated when processing the change.
+    domain: req_requirement_change_request
+    range: req_requirement_specification
+    multivalued: true
+    required: false
+
+  req_change_generates_revisions:
+    slot_uri: req:RequirementChange_generatesRevisions
+    title: generatesRevisions
+    description: Requirement revisions produced as the outcome of the change request.
+    domain: req_requirement_change_request
+    range: req_requirement_revision
+    multivalued: true
+    required: false
+
+  req_verification_validates_requirements:
+    slot_uri: req:VerificationCase_validatesRequirements
+    title: validatesRequirements
+    description: Requirements validated by executing this verification case.
+    domain: req_verification_case
+    range: req_requirement
+    multivalued: true
+    required: true
+
+  req_verification_uses_artifacts:
+    slot_uri: req:VerificationCase_usesArtifacts
+    title: usesArtifacts
+    description: Test articles, prototypes, or simulations consumed during verification.
+    domain: req_verification_case
+    range: Artifact
+    multivalued: true
+    required: false
+
+  req_verification_generates_evidence:
+    slot_uri: req:VerificationCase_generatesEvidence
+    title: generatesEvidence
+    description: Reports, datasets, or other artifacts captured as verification evidence.
+    domain: req_verification_case
+    range: Artifact
+    multivalued: true
+    required: false
+
+  req_verification_triggers_changes:
+    slot_uri: req:VerificationCase_triggersChanges
+    title: triggersChanges
+    description: Change requests created due to verification findings.
+    domain: req_verification_case
+    range: req_requirement_change_request
+    multivalued: true
+    required: false
