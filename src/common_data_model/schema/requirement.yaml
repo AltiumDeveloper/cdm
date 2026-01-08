@@ -29,6 +29,9 @@ classes:
     comments:
       - Requirements aggregate rationales, acceptance criteria, and trace links needed to drive
         downstream design and verification.
+    annotations:
+      grid: grid:workspace:{workspace-id}:requirements:requirement/{id}
+      platformAPI: ReqRequirement
     mixins:
       - HasLifecycle
     attributes:
@@ -103,6 +106,9 @@ classes:
     class_uri: req:RequirementRevision
     title: Requirement Revision
     description: An immutable snapshot of a requirement statement at a specific revision.
+    annotations:
+      grid: grid:workspace:{workspace-id}:requirements:requirement-revision/{id}
+      platformAPI: ReqRequirementRevision
     mixins:
       - HasLifecycle
     attributes:
@@ -132,6 +138,9 @@ classes:
     title: Requirement Specification
     description: >-
       A curated collection of requirements scoped to a program, domain, or release horizon.
+    annotations:
+      grid: grid:workspace:{workspace-id}:requirements:specification/{id}
+      platformAPI: ReqRequirementSpecification
     mixins:
       - HasLifecycle
     attributes:
@@ -169,6 +178,9 @@ classes:
     title: Requirement Baseline
     description: >-
       A version-managed release of a specification or subset of requirements approved for execution.
+    annotations:
+      grid: grid:workspace:{workspace-id}:requirements:baseline/{id}
+      platformAPI: ReqRequirementBaseline
     mixins:
       - HasLifecycle
     attributes:
@@ -195,6 +207,9 @@ classes:
     class_uri: req:RequirementChangeRequest
     title: Requirement Change Request
     description: Structured workflow item proposing additions, updates, or removals of requirements.
+    annotations:
+      grid: grid:workspace:{workspace-id}:requirements:change-request/{id}
+      platformAPI: ReqRequirementChangeRequest
     mixins:
       - HasLifecycle
     attributes:
@@ -228,6 +243,9 @@ classes:
     title: Verification Case
     description: >-
       A planned verification procedure or test that produces objective evidence against requirements.
+    annotations:
+      grid: grid:workspace:{workspace-id}:requirements:verification-case/{id}
+      platformAPI: ReqVerificationCase
     mixins:
       - HasLifecycle
     attributes:
