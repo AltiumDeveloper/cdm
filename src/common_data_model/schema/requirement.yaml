@@ -236,6 +236,57 @@ classes:
       - req_change_impacts_specifications
       - req_change_generates_revisions
 
+  req_project:
+    is_a: Activity
+    in_subset: requirements
+    class_uri: req:Project
+    title: Requirements Project
+    description: >-
+      The orchestration space for capturing, evolving, and validating requirements scoped to a product,
+      program increment, or regulatory engagement.
+    comments:
+      - Provides planning scaffolding comparable to Hardware Projects, enabling traceable alignment
+        between requirement deliverables and downstream design artifacts.
+      - >-
+        Future linking ideas: establish cross-domain slots that map requirement projects to design
+        projects, and synchronize milestone states via baselines vs. releases.
+    annotations:
+      grid: grid:workspace:{workspace-id}:requirements:project/{id}
+      platformAPI: ReqProject
+    mixins:
+      - HasLifecycle
+    attributes:
+      RequirementProject_name:
+        title: name
+        description: Compact display name for the requirement effort.
+        range: string
+        required: true
+        multivalued: false
+      RequirementProject_description:
+        title: description
+        description: Longer narrative describing objectives, scope, and constraints.
+        range: string
+        required: false
+        multivalued: false
+      RequirementProject_domain:
+        title: domain
+        description: Domain emphasis such as system, electrical, mechanical, or compliance.
+        range: string
+        required: false
+        multivalued: false
+      RequirementProject_owner:
+        title: owner
+        description: Responsible program, platform team, or external stakeholder.
+        range: string
+        required: false
+        multivalued: false
+    slots:
+      - req_project_specifications
+      - req_project_baselines
+      - req_project_change_requests
+      - req_project_verification_cases
+      - req_project_artifacts
+
   req_verification_case:
     is_a: Activity
     in_subset: requirements
@@ -350,9 +401,9 @@ slots:
   req_specification_targets_projects:
     slot_uri: req:RequirementSpecification_targetsProjects
     title: targetsProjects
-    description: Design or solution projects governed by this specification.
+    description: Requirements projects that receive scope from this specification.
     domain: req_requirement_specification
-    range: des_project
+    range: req_project
     multivalued: true
     required: false
 
@@ -453,5 +504,52 @@ slots:
     description: Change requests created due to verification findings.
     domain: req_verification_case
     range: req_requirement_change_request
+    multivalued: true
+    required: false
+
+  req_project_specifications:
+    is_a: has_part
+    slot_uri: req:Project_specifications
+    title: specifications
+    description: Specifications authored or curated within this requirements project.
+    domain: req_project
+    range: req_requirement_specification
+    multivalued: true
+    required: true
+
+  req_project_baselines:
+    is_a: has_part
+    slot_uri: req:Project_baselines
+    title: baselines
+    description: Baselines approved under this project to govern execution.
+    domain: req_project
+    range: req_requirement_baseline
+    multivalued: true
+    required: false
+
+  req_project_change_requests:
+    slot_uri: req:Project_changeRequests
+    title: changeRequests
+    description: Change requests logged against this requirements project.
+    domain: req_project
+    range: req_requirement_change_request
+    multivalued: true
+    required: false
+
+  req_project_verification_cases:
+    slot_uri: req:Project_verificationCases
+    title: verificationCases
+    description: Verification cases scoped to this project for coverage planning.
+    domain: req_project
+    range: req_verification_case
+    multivalued: true
+    required: false
+
+  req_project_artifacts:
+    slot_uri: req:Project_artifacts
+    title: artifacts
+    description: Supporting artifacts (models, audits, customer inputs) managed by the project.
+    domain: req_project
+    range: Artifact
     multivalued: true
     required: false
