@@ -13,13 +13,13 @@ default_prefix: core
 
 enums:
 
-  Lifecycle:
+  Maturity:
     implements:
       - owl:NamedIndividual
     permissible_values:
-      DRAFT:
-      EMERGING:
-      ACCEPTED:
+      EXPERIMENTAL:
+      PRODUCTION:
+      OBSOLETE:
 
   VaultContentType:
     implements:
@@ -51,7 +51,7 @@ classes:
     abstract: true
     instantiates:
       - WithGRID
-      - WithLifecycle
+      - WithMaturity
       - WithPlatformAPI
     slots:
       - id
@@ -80,12 +80,12 @@ classes:
         description: Platform API type name.
         range: string
 
-  WithLifecycle:
+  WithMaturity:
     is_a: Meta
     attributes:
-      lifecycle:
-        description: Lifecycle of the type.
-        range: Lifecycle
+      maturity:
+        description: Maturity level.
+        range: Maturity
 
   WithVault:
     is_a: Meta

@@ -16,23 +16,6 @@ IRI: [{{ iri }}]({{ iri }})
 ```
 {% endif %}
 
-## GRIDs
-| BC | Class | GRID |
-| --- | --- | --- |
-{% for bc in schemaview.all_subsets().values()|sort(attribute='name') -%}
-{% set classes_in_subset = [] -%}
-{% for c in gen.all_class_objects()|sort(attribute=sort_by) -%}
-    {% if bc.name in c.in_subset -%}
-        {% set _ = classes_in_subset.append(c) -%}
-    {% endif -%}
-{% endfor -%}
-{% for c in classes_in_subset -%}
-{%- if 'grid' in c.annotations -%}
-| {{ gen.link(bc, True) }} | [{{ c.title if c.title else gen.name(c) }} ]( classes/{{ gen.name(c)}}.md ) | ```{{ c.annotations["grid"].value }}``` |
-{% endif -%}
-{% endfor -%}
-{% endfor %}
-
 ## Bounded Contexts
 {% for bc in schemaview.all_subsets().values()|sort(attribute='name') %}
 ### {{ gen.link(bc, True) }}
@@ -60,4 +43,21 @@ IRI: [{{ iri }}]({{ iri }})
 {% endif -%}
 {% endfor %}
 
+{% endfor %}
+
+## GRIDs
+| BC | Class | GRID |
+| --- | --- | --- |
+{% for bc in schemaview.all_subsets().values()|sort(attribute='name') -%}
+{% set classes_in_subset = [] -%}
+{% for c in gen.all_class_objects()|sort(attribute=sort_by) -%}
+    {% if bc.name in c.in_subset -%}
+        {% set _ = classes_in_subset.append(c) -%}
+    {% endif -%}
+{% endfor -%}
+{% for c in classes_in_subset -%}
+{%- if 'grid' in c.annotations -%}
+| {{ gen.link(bc, True) }} | [{{ c.title if c.title else gen.name(c) }} ]( classes/{{ gen.name(c)}}.md ) | ```{{ c.annotations["grid"].value }}``` |
+{% endif -%}
+{% endfor -%}
 {% endfor %}

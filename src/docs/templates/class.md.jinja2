@@ -1,5 +1,12 @@
 ---
 comments: true
+
+{% if 'maturity' in element.annotations -%}
+{%- set maturity = element.annotations["maturity"].value -%}
+tags:
+  - {{ maturity | lower }}
+{%- endif %}
+
 ---
 
 {% from "macros.jinja2" import platform_api_url with context %}
