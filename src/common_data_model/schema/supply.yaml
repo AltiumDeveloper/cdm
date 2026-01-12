@@ -173,7 +173,6 @@ classes:
     annotations:
       grid: grid:supply::platform:eval-kit/{id}
       platformAPI: SupEvalKit
-      lifecycle: DRAFT
 
 slots:
 

@@ -143,7 +143,6 @@ classes:
     description: >-
       Release of the Solution. This is a formal immutable artifact, representing a specific state of the Solution at the time of release.  
     annotations:
-      lifecycle: DRAFT
       grid: grid:workspace:{workspace-id}:platform:solution-release/{id}
 
   plt_lifecycle_definition:

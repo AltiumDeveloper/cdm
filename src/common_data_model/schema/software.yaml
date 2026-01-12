@@ -101,6 +101,7 @@ classes:
         that is going to be part of Solution Template. The exact name / definition of the entity is TBD.
     annotations:
       grid: grid:workspace:{workspace-id}:software:ai-model/{id}
+      maturity: EXPERIMENTAL
     mixins:
       - SolutionItem
 
