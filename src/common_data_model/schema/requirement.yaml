@@ -17,6 +17,7 @@ subsets:
       throughout conception, design, verification, and release lifecycle milestones.
     annotations:
       style: "fill:#f6b26b"
+      maturity: EXPERIMENTAL
 
 classes:
   req_requirement:
@@ -32,8 +33,7 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:requirement/{id}
       platformAPI: ReqRequirement
-    mixins:
-      - HasLifecycle
+      maturity: EXPERIMENTAL
     attributes:
       Requirement_key:
         title: key
@@ -106,11 +106,12 @@ classes:
     class_uri: req:RequirementRevision
     title: Requirement Revision
     description: An immutable snapshot of a requirement statement at a specific revision.
+    mixins:
+      - HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:requirement-revision/{id}
       platformAPI: ReqRequirementRevision
-    mixins:
-      - HasLifecycle
+      maturity: EXPERIMENTAL
     attributes:
       RequirementRevision_number:
         title: number
@@ -141,8 +142,7 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:specification/{id}
       platformAPI: ReqRequirementSpecification
-    mixins:
-      - HasLifecycle
+      maturity: EXPERIMENTAL
     attributes:
       RequirementSpecification_title:
         title: title
@@ -178,11 +178,12 @@ classes:
     title: Requirement Baseline
     description: >-
       A version-managed release of a specification or subset of requirements approved for execution.
+    mixins:
+      - HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:baseline/{id}
       platformAPI: ReqRequirementBaseline
-    mixins:
-      - HasLifecycle
+      maturity: EXPERIMENTAL
     attributes:
       RequirementBaseline_identifier:
         title: identifier
@@ -210,8 +211,7 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:change-request/{id}
       platformAPI: ReqRequirementChangeRequest
-    mixins:
-      - HasLifecycle
+      maturity: EXPERIMENTAL
     attributes:
       RequirementChangeRequest_reason:
         title: reason
@@ -253,8 +253,7 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:project/{id}
       platformAPI: ReqProject
-    mixins:
-      - HasLifecycle
+      maturity: EXPERIMENTAL
     attributes:
       RequirementProject_name:
         title: name
@@ -297,8 +296,7 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:verification-case/{id}
       platformAPI: ReqVerificationCase
-    mixins:
-      - HasLifecycle
+      maturity: EXPERIMENTAL
     attributes:
       VerificationCase_identifier:
         title: identifier
