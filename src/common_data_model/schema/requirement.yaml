@@ -144,14 +144,14 @@ classes:
       platformAPI: ReqRequirementSpecification
       maturity: EXPERIMENTAL
     attributes:
-      RequirementSpecification_title:
-        title: title
-        description: Human-readable title for the specification (e.g. "System Requirements").
+      RequirementSpecification_name:
+        title: name
+        description: Human-readable name for the specification (e.g. "System Requirements").
         range: string
         required: true
         multivalued: false
-      RequirementSpecification_scope:
-        title: scope
+      RequirementSpecification_description:
+        title: description
         description: Narrative describing the boundaries and context of the specification.
         range: string
         required: false
@@ -264,12 +264,6 @@ classes:
       RequirementProject_description:
         title: description
         description: Longer narrative describing objectives, scope, and constraints.
-        range: string
-        required: false
-        multivalued: false
-      RequirementProject_domain:
-        title: domain
-        description: Domain emphasis such as system, electrical, mechanical, or compliance.
         range: string
         required: false
         multivalued: false
