@@ -35,7 +35,7 @@ classes:
       platformAPI: ReqRequirement
       maturity: EXPERIMENTAL
     attributes:
-      Requirement_key:
+      Requirement_identifier:
         title: key
         description: >-
           Human-friendly identifier that is unique within a specification context (e.g. SYS-001).
