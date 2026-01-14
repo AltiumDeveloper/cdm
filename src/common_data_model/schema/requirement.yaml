@@ -32,7 +32,6 @@ classes:
         downstream design and verification.
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:requirement/{id}
-      platformAPI: ReqRequirement
       maturity: EXPERIMENTAL
     attributes:
       Requirement_identifier:
@@ -110,7 +109,6 @@ classes:
       - HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:requirement-revision/{id}
-      platformAPI: ReqRequirementRevision
       maturity: EXPERIMENTAL
     attributes:
       RequirementRevision_number:
@@ -141,7 +139,6 @@ classes:
       A curated collection of requirements scoped to a program, domain, or release horizon.
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:specification/{id}
-      platformAPI: ReqRequirementSpecification
       maturity: EXPERIMENTAL
     attributes:
       RequirementSpecification_name:
@@ -182,7 +179,6 @@ classes:
       - HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:baseline/{id}
-      platformAPI: ReqRequirementBaseline
       maturity: EXPERIMENTAL
     attributes:
       RequirementBaseline_identifier:
@@ -210,7 +206,6 @@ classes:
     description: Structured workflow item proposing additions, updates, or removals of requirements.
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:change-request/{id}
-      platformAPI: ReqRequirementChangeRequest
       maturity: EXPERIMENTAL
     attributes:
       RequirementChangeRequest_reason:
@@ -252,7 +247,6 @@ classes:
         projects, and synchronize milestone states via baselines vs. releases.
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:project/{id}
-      platformAPI: ReqProject
       maturity: EXPERIMENTAL
     attributes:
       RequirementProject_name:
@@ -289,7 +283,6 @@ classes:
       A planned verification procedure or test that produces objective evidence against requirements.
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:verification-case/{id}
-      platformAPI: ReqVerificationCase
       maturity: EXPERIMENTAL
     attributes:
       VerificationCase_identifier:
