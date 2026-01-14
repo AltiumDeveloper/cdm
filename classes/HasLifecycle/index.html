@@ -358,6 +358,28 @@
         click pro_bom_release href "../../classes/pro_bom_release/"
 
 
+  class req_requirement_revision["Requirement Revision"]
+
+
+
+      style req_requirement_revision fill:#f6b26b    
+
+
+        HasLifecycle &lt;|-- req_requirement_revision
+        click req_requirement_revision href "../../classes/req_requirement_revision/"
+
+
+  class req_requirement_baseline["Requirement Baseline"]
+
+
+
+      style req_requirement_baseline fill:#f6b26b    
+
+
+        HasLifecycle &lt;|-- req_requirement_baseline
+        click req_requirement_baseline href "../../classes/req_requirement_baseline/"
+
+
 
 
 
@@ -462,6 +484,14 @@
 <tr>
 <td><a href="../pro_bom_release/">pro_bom_release</a></td>
 <td>TBD</td>
+</tr>
+<tr>
+<td><a href="../req_requirement_revision/">req_requirement_revision</a></td>
+<td>An immutable snapshot of a requirement statement at a specific revision</td>
+</tr>
+<tr>
+<td><a href="../req_requirement_baseline/">req_requirement_baseline</a></td>
+<td>A version-managed release of a specification or subset of requirements approv...</td>
 </tr>
 </tbody>
 </table>

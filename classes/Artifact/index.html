@@ -831,6 +831,50 @@
         click sft_bom href "../../classes/sft_bom/"
 
 
+  class req_requirement["Requirement"]
+
+
+
+      style req_requirement fill:#f6b26b    
+
+
+        Artifact &lt;|-- req_requirement
+        click req_requirement href "../../classes/req_requirement/"
+
+
+  class req_requirement_revision["Requirement Revision"]
+
+
+
+      style req_requirement_revision fill:#f6b26b    
+
+
+        Artifact &lt;|-- req_requirement_revision
+        click req_requirement_revision href "../../classes/req_requirement_revision/"
+
+
+  class req_requirement_specification["Requirement Specification"]
+
+
+
+      style req_requirement_specification fill:#f6b26b    
+
+
+        Artifact &lt;|-- req_requirement_specification
+        click req_requirement_specification href "../../classes/req_requirement_specification/"
+
+
+  class req_requirement_baseline["Requirement Baseline"]
+
+
+
+      style req_requirement_baseline fill:#f6b26b    
+
+
+        Artifact &lt;|-- req_requirement_baseline
+        click req_requirement_baseline href "../../classes/req_requirement_baseline/"
+
+
 
           Artifact : id
 
@@ -897,6 +941,10 @@
 <li><a href="../sft_ai_model/">sft_ai_model</a> [ <a href="../SolutionItem/">SolutionItem</a>]</li>
 <li><a href="../sft_build_artifact/">sft_build_artifact</a></li>
 <li><a href="../sft_bom/">sft_bom</a></li>
+<li><a href="../req_requirement/">req_requirement</a></li>
+<li><a href="../req_requirement_revision/">req_requirement_revision</a> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
+<li><a href="../req_requirement_specification/">req_requirement_specification</a></li>
+<li><a href="../req_requirement_baseline/">req_requirement_baseline</a> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
 </ul>
 </li>
 </ul>

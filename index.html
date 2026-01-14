@@ -248,6 +248,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
+<span class="md-ellipsis">
+      requirements
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#software">
 <span class="md-ellipsis">
       software
@@ -727,6 +734,54 @@
 </tr>
 </tbody>
 </table>
+<h3 id="requirements"><a href="subsets/requirements/">requirements</a></h3>
+<p>Captures behavioral, performance, compliance, and process expectations that govern solutions throughout conception, design, verification, and release lifecycle milestones.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+<th>Platform API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="classes/req_project/">Requirements Project </a></td>
+<td>The orchestration space for capturing, evolving, and validating requirements scoped to a product, program increment, or regulatory engagement.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/req_requirement/">Requirement </a></td>
+<td>A single, testable statement of intent or constraint that governs a solution or process outcome.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/req_requirement_baseline/">Requirement Baseline </a></td>
+<td>A version-managed release of a specification or subset of requirements approved for execution.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/req_requirement_change_request/">Requirement Change Request </a></td>
+<td>Structured workflow item proposing additions, updates, or removals of requirements.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/req_requirement_revision/">Requirement Revision </a></td>
+<td>An immutable snapshot of a requirement statement at a specific revision.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/req_requirement_specification/">Requirement Specification </a></td>
+<td>A curated collection of requirements scoped to a program, domain, or release horizon.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/req_verification_case/">Verification Case </a></td>
+<td>A planned verification procedure or test that produces objective evidence against requirements.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h3 id="software"><a href="subsets/software/">software</a></h3>
 <p>TBD</p>
 <table>
@@ -1115,6 +1170,41 @@
 <td><a href="subsets/procurement/">procurement</a></td>
 <td><a href="classes/pro_managed_bom/">Managed BOM </a></td>
 <td><code>grid:workspace:{workspace-id}:procurement:bom/{id}</code></td>
+</tr>
+<tr>
+<td><a href="subsets/requirements/">requirements</a></td>
+<td><a href="classes/req_project/">Requirements Project </a></td>
+<td><code>grid:workspace:{workspace-id}:requirements:project/{id}</code></td>
+</tr>
+<tr>
+<td><a href="subsets/requirements/">requirements</a></td>
+<td><a href="classes/req_requirement/">Requirement </a></td>
+<td><code>grid:workspace:{workspace-id}:requirements:requirement/{id}</code></td>
+</tr>
+<tr>
+<td><a href="subsets/requirements/">requirements</a></td>
+<td><a href="classes/req_requirement_baseline/">Requirement Baseline </a></td>
+<td><code>grid:workspace:{workspace-id}:requirements:baseline/{id}</code></td>
+</tr>
+<tr>
+<td><a href="subsets/requirements/">requirements</a></td>
+<td><a href="classes/req_requirement_change_request/">Requirement Change Request </a></td>
+<td><code>grid:workspace:{workspace-id}:requirements:change-request/{id}</code></td>
+</tr>
+<tr>
+<td><a href="subsets/requirements/">requirements</a></td>
+<td><a href="classes/req_requirement_revision/">Requirement Revision </a></td>
+<td><code>grid:workspace:{workspace-id}:requirements:requirement-revision/{id}</code></td>
+</tr>
+<tr>
+<td><a href="subsets/requirements/">requirements</a></td>
+<td><a href="classes/req_requirement_specification/">Requirement Specification </a></td>
+<td><code>grid:workspace:{workspace-id}:requirements:specification/{id}</code></td>
+</tr>
+<tr>
+<td><a href="subsets/requirements/">requirements</a></td>
+<td><a href="classes/req_verification_case/">Verification Case </a></td>
+<td><code>grid:workspace:{workspace-id}:requirements:verification-case/{id}</code></td>
 </tr>
 <tr>
 <td><a href="subsets/software/">software</a></td>
