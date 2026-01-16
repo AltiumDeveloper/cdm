@@ -315,13 +315,18 @@ classes:
       - req_verification_generates_evidence
       - req_verification_triggers_changes
 
+  req_artifact:
+    is_a: Resource
+    in_subset: requirements
+    class_uri: req:Artifact
+    title: Requirement Artifact
+
 slots:
   req_requirement_children:
     is_a: has_part
     slot_uri: req:Requirement_children
     title: children
     description: Requirements that refine or decompose this requirement.
-    domain: req_requirement
     range: req_requirement
     multivalued: true
     required: false
@@ -332,7 +337,6 @@ slots:
     slot_uri: req:Requirement_parent
     title: parent
     description: Higher-level requirement that allocates scope to this requirement.
-    domain: req_requirement
     range: req_requirement
     multivalued: false
     required: false
@@ -341,8 +345,7 @@ slots:
     slot_uri: req:Requirement_satisfiedBy
     title: satisfiedBy
     description: Artifacts, designs, or solutions that implement this requirement.
-    domain: req_requirement
-    range: Artifact
+    range: req_artifact
     multivalued: true
     required: false
 
@@ -350,7 +353,6 @@ slots:
     slot_uri: req:Requirement_verifiedBy
     title: verifiedBy
     description: Verification activities that produce evidence for this requirement.
-    domain: req_requirement
     range: Activity
     multivalued: true
     required: false
@@ -359,8 +361,7 @@ slots:
     slot_uri: req:Requirement_tracedFrom
     title: tracedFrom
     description: Upstream sources such as contracts, standards, or customer requests.
-    domain: req_requirement
-    range: Artifact
+    range: req_artifact
     multivalued: true
     required: false
 
@@ -368,7 +369,6 @@ slots:
     slot_uri: req:RequirementRevision_derivesFromChange
     title: derivesFromChange
     description: Change request that authorized this requirement revision.
-    domain: req_requirement_revision
     range: req_requirement_change_request
     multivalued: false
     required: false
@@ -378,7 +378,6 @@ slots:
     slot_uri: req:RequirementSpecification_requirements
     title: requirements
     description: Requirements curated under this specification.
-    domain: req_requirement_specification
     range: req_requirement
     multivalued: true
     required: true
@@ -387,7 +386,6 @@ slots:
     slot_uri: req:RequirementSpecification_targetsProjects
     title: targetsProjects
     description: Requirements projects that receive scope from this specification.
-    domain: req_requirement_specification
     range: req_project
     multivalued: true
     required: false
@@ -396,8 +394,7 @@ slots:
     slot_uri: req:RequirementSpecification_inputs
     title: inputs
     description: Artifacts or agreements that feed this specification.
-    domain: req_requirement_specification
-    range: Artifact
+    range: req_artifact
     multivalued: true
     required: false
 
@@ -405,7 +402,6 @@ slots:
     slot_uri: req:RequirementBaseline_ofSpecification
     title: ofSpecification
     description: Specification for which this baseline is approved.
-    domain: req_requirement_baseline
     range: req_requirement_specification
     multivalued: false
     required: true
@@ -415,7 +411,6 @@ slots:
     slot_uri: req:RequirementBaseline_includesRequirements
     title: includesRequirements
     description: Specific requirements frozen into this baseline.
-    domain: req_requirement_baseline
     range: req_requirement
     multivalued: true
     required: true
@@ -424,7 +419,6 @@ slots:
     slot_uri: req:RequirementBaseline_targetsProjectReleases
     title: targetsProjectReleases
     description: Project releases that must comply with this baseline.
-    domain: req_requirement_baseline
     range: des_project_release
     multivalued: true
     required: false
@@ -433,7 +427,6 @@ slots:
     slot_uri: req:RequirementChange_impactsRequirements
     title: impactsRequirements
     description: Requirements directly impacted by the change request.
-    domain: req_requirement_change_request
     range: req_requirement
     multivalued: true
     required: true
@@ -442,7 +435,6 @@ slots:
     slot_uri: req:RequirementChange_impactsSpecifications
     title: impactsSpecifications
     description: Specifications that must be updated when processing the change.
-    domain: req_requirement_change_request
     range: req_requirement_specification
     multivalued: true
     required: false
@@ -451,7 +443,6 @@ slots:
     slot_uri: req:RequirementChange_generatesRevisions
     title: generatesRevisions
     description: Requirement revisions produced as the outcome of the change request.
-    domain: req_requirement_change_request
     range: req_requirement_revision
     multivalued: true
     required: false
@@ -460,7 +451,6 @@ slots:
     slot_uri: req:VerificationCase_validatesRequirements
     title: validatesRequirements
     description: Requirements validated by executing this verification case.
-    domain: req_verification_case
     range: req_requirement
     multivalued: true
     required: true
@@ -469,8 +459,7 @@ slots:
     slot_uri: req:VerificationCase_usesArtifacts
     title: usesArtifacts
     description: Test articles, prototypes, or simulations consumed during verification.
-    domain: req_verification_case
-    range: Artifact
+    range: req_artifact
     multivalued: true
     required: false
 
@@ -478,8 +467,7 @@ slots:
     slot_uri: req:VerificationCase_generatesEvidence
     title: generatesEvidence
     description: Reports, datasets, or other artifacts captured as verification evidence.
-    domain: req_verification_case
-    range: Artifact
+    range: req_artifact
     multivalued: true
     required: false
 
@@ -487,7 +475,6 @@ slots:
     slot_uri: req:VerificationCase_triggersChanges
     title: triggersChanges
     description: Change requests created due to verification findings.
-    domain: req_verification_case
     range: req_requirement_change_request
     multivalued: true
     required: false
@@ -497,7 +484,6 @@ slots:
     slot_uri: req:Project_specifications
     title: specifications
     description: Specifications authored or curated within this requirements project.
-    domain: req_project
     range: req_requirement_specification
     multivalued: true
     required: true
@@ -507,7 +493,6 @@ slots:
     slot_uri: req:Project_baselines
     title: baselines
     description: Baselines approved under this project to govern execution.
-    domain: req_project
     range: req_requirement_baseline
     multivalued: true
     required: false
@@ -516,7 +501,6 @@ slots:
     slot_uri: req:Project_changeRequests
     title: changeRequests
     description: Change requests logged against this requirements project.
-    domain: req_project
     range: req_requirement_change_request
     multivalued: true
     required: false
@@ -525,7 +509,6 @@ slots:
     slot_uri: req:Project_verificationCases
     title: verificationCases
     description: Verification cases scoped to this project for coverage planning.
-    domain: req_project
     range: req_verification_case
     multivalued: true
     required: false
@@ -534,7 +517,6 @@ slots:
     slot_uri: req:Project_artifacts
     title: artifacts
     description: Supporting artifacts (models, audits, customer inputs) managed by the project.
-    domain: req_project
-    range: Artifact
+    range: req_artifact
     multivalued: true
     required: false
