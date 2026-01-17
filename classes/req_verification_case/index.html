@@ -263,27 +263,35 @@
 
 
 
-      req_verification_case --&gt; "*" Artifact : usesArtifacts
-      click Artifact href "../../classes/Artifact/"
+      req_verification_case --&gt; "*" req_artifact : usesArtifacts
+      click req_artifact href "../../classes/req_artifact/"
 
 
-  class Artifact["Artifact"]
-
-
-
+  class req_artifact["Requirement Artifact"]
 
 
 
-
+      style req_artifact fill:#f6b26b    
 
 
 
 
-      req_verification_case --&gt; "*" Artifact : generatesEvidence
-      click Artifact href "../../classes/Artifact/"
 
 
-  class Artifact["Artifact"]
+
+
+
+
+
+      req_verification_case --&gt; "*" req_artifact : generatesEvidence
+      click req_artifact href "../../classes/req_artifact/"
+
+
+  class req_artifact["Requirement Artifact"]
+
+
+
+      style req_artifact fill:#f6b26b    
 
 
 
@@ -349,66 +357,6 @@
 
 
 
-
-
-
-  class req_verification_case["Verification Case"]
-
-
-
-      style req_verification_case fill:#f6b26b    
-
-
-          req_verification_case --&gt; "1..*" req_verification_case: validatesRequirements 
-          click req_verification_case href "../../classes/req_verification_case/"
-
-
-
-
-
-
-  class req_verification_case["Verification Case"]
-
-
-
-      style req_verification_case fill:#f6b26b    
-
-
-          req_verification_case --&gt; "*" req_verification_case: usesArtifacts 
-          click req_verification_case href "../../classes/req_verification_case/"
-
-
-
-
-
-
-  class req_verification_case["Verification Case"]
-
-
-
-      style req_verification_case fill:#f6b26b    
-
-
-          req_verification_case --&gt; "*" req_verification_case: generatesEvidence 
-          click req_verification_case href "../../classes/req_verification_case/"
-
-
-
-
-
-
-  class req_verification_case["Verification Case"]
-
-
-
-      style req_verification_case fill:#f6b26b    
-
-
-          req_verification_case --&gt; "*" req_verification_case: triggersChanges 
-          click req_verification_case href "../../classes/req_verification_case/"
-
-
-
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
@@ -449,14 +397,14 @@
 <tr>
 <td><a href="../../slots/req_verification_uses_artifacts">usesArtifacts</a></td>
 <td><code>*</code></td>
-<td><a href="../Artifact/">Artifact</a></td>
+<td><a href="../req_artifact/">Requirement Artifact</a></td>
 <td>Test articles, prototypes, or simulations consumed during verification.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/req_verification_generates_evidence">generatesEvidence</a></td>
 <td><code>*</code></td>
-<td><a href="../Artifact/">Artifact</a></td>
+<td><a href="../req_artifact/">Requirement Artifact</a></td>
 <td>Reports, datasets, or other artifacts captured as verification evidence.</td>
 <td>direct</td>
 </tr>

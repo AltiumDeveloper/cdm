@@ -283,11 +283,15 @@
 
 
 
-      req_requirement --&gt; "*" Artifact : satisfiedBy
-      click Artifact href "../../classes/Artifact/"
+      req_requirement --&gt; "*" req_artifact : satisfiedBy
+      click req_artifact href "../../classes/req_artifact/"
 
 
-  class Artifact["Artifact"]
+  class req_artifact["Requirement Artifact"]
+
+
+
+      style req_artifact fill:#f6b26b    
 
 
 
@@ -315,11 +319,15 @@
 
 
 
-      req_requirement --&gt; "*" Artifact : tracedFrom
-      click Artifact href "../../classes/Artifact/"
+      req_requirement --&gt; "*" req_artifact : tracedFrom
+      click req_artifact href "../../classes/req_artifact/"
 
 
-  class Artifact["Artifact"]
+  class req_artifact["Requirement Artifact"]
+
+
+
+      style req_artifact fill:#f6b26b    
 
 
 
@@ -381,66 +389,6 @@
 
 
           req_requirement --&gt; "*" req_requirement: children 
-          click req_requirement href "../../classes/req_requirement/"
-
-
-
-
-
-
-  class req_requirement["Requirement"]
-
-
-
-      style req_requirement fill:#f6b26b    
-
-
-          req_requirement --&gt; "*" req_requirement: children 
-          click req_requirement href "../../classes/req_requirement/"
-
-
-
-
-
-
-  class req_requirement["Requirement"]
-
-
-
-      style req_requirement fill:#f6b26b    
-
-
-          req_requirement --&gt; "*" req_requirement: satisfiedBy 
-          click req_requirement href "../../classes/req_requirement/"
-
-
-
-
-
-
-  class req_requirement["Requirement"]
-
-
-
-      style req_requirement fill:#f6b26b    
-
-
-          req_requirement --&gt; "*" req_requirement: verifiedBy 
-          click req_requirement href "../../classes/req_requirement/"
-
-
-
-
-
-
-  class req_requirement["Requirement"]
-
-
-
-      style req_requirement fill:#f6b26b    
-
-
-          req_requirement --&gt; "*" req_requirement: tracedFrom 
           click req_requirement href "../../classes/req_requirement/"
 
 
@@ -569,7 +517,7 @@
 <tr>
 <td><a href="../../slots/req_requirement_satisfied_by_artifacts">satisfiedBy</a></td>
 <td><code>*</code></td>
-<td><a href="../Artifact/">Artifact</a></td>
+<td><a href="../req_artifact/">Requirement Artifact</a></td>
 <td>Artifacts, designs, or solutions that implement this requirement.</td>
 <td>direct</td>
 </tr>
@@ -583,7 +531,7 @@
 <tr>
 <td><a href="../../slots/req_requirement_traced_from_sources">tracedFrom</a></td>
 <td><code>*</code></td>
-<td><a href="../Artifact/">Artifact</a></td>
+<td><a href="../req_artifact/">Requirement Artifact</a></td>
 <td>Upstream sources such as contracts, standards, or customer requests.</td>
 <td>direct</td>
 </tr>

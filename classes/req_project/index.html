@@ -323,11 +323,15 @@
 
 
 
-      req_project --&gt; "*" Artifact : artifacts
-      click Artifact href "../../classes/Artifact/"
+      req_project --&gt; "*" req_artifact : artifacts
+      click req_artifact href "../../classes/req_artifact/"
 
 
-  class Artifact["Artifact"]
+  class req_artifact["Requirement Artifact"]
+
+
+
+      style req_artifact fill:#f6b26b    
 
 
 
@@ -366,81 +370,6 @@
 
           req_requirement_specification --&gt; "*" req_project: targetsProjects 
           click req_requirement_specification href "../../classes/req_requirement_specification/"
-
-
-
-
-
-
-  class req_project["Requirements Project"]
-
-
-
-      style req_project fill:#f6b26b    
-
-
-          req_project --&gt; "1..*" req_project: specifications 
-          click req_project href "../../classes/req_project/"
-
-
-
-
-
-
-  class req_project["Requirements Project"]
-
-
-
-      style req_project fill:#f6b26b    
-
-
-          req_project --&gt; "*" req_project: baselines 
-          click req_project href "../../classes/req_project/"
-
-
-
-
-
-
-  class req_project["Requirements Project"]
-
-
-
-      style req_project fill:#f6b26b    
-
-
-          req_project --&gt; "*" req_project: changeRequests 
-          click req_project href "../../classes/req_project/"
-
-
-
-
-
-
-  class req_project["Requirements Project"]
-
-
-
-      style req_project fill:#f6b26b    
-
-
-          req_project --&gt; "*" req_project: verificationCases 
-          click req_project href "../../classes/req_project/"
-
-
-
-
-
-
-  class req_project["Requirements Project"]
-
-
-
-      style req_project fill:#f6b26b    
-
-
-          req_project --&gt; "*" req_project: artifacts 
-          click req_project href "../../classes/req_project/"
 
 
 
@@ -508,7 +437,7 @@ Future linking ideas: establish cross-domain slots that map requirement projects
 <tr>
 <td><a href="../../slots/req_project_artifacts">artifacts</a></td>
 <td><code>*</code></td>
-<td><a href="../Artifact/">Artifact</a></td>
+<td><a href="../req_artifact/">Requirement Artifact</a></td>
 <td>Supporting artifacts (models, audits, customer inputs) managed by the project.</td>
 <td>direct</td>
 </tr>

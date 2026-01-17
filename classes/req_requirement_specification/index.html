@@ -303,11 +303,15 @@
 
 
 
-      req_requirement_specification --&gt; "*" Artifact : inputs
-      click Artifact href "../../classes/Artifact/"
+      req_requirement_specification --&gt; "*" req_artifact : inputs
+      click req_artifact href "../../classes/req_artifact/"
 
 
-  class Artifact["Artifact"]
+  class req_artifact["Requirement Artifact"]
+
+
+
+      style req_artifact fill:#f6b26b    
 
 
 
@@ -331,51 +335,6 @@
 
 
 
-
-
-
-
-
-
-  class req_requirement_specification["Requirement Specification"]
-
-
-
-      style req_requirement_specification fill:#f6b26b    
-
-
-          req_requirement_specification --&gt; "1..*" req_requirement_specification: requirements 
-          click req_requirement_specification href "../../classes/req_requirement_specification/"
-
-
-
-
-
-
-  class req_requirement_specification["Requirement Specification"]
-
-
-
-      style req_requirement_specification fill:#f6b26b    
-
-
-          req_requirement_specification --&gt; "*" req_requirement_specification: targetsProjects 
-          click req_requirement_specification href "../../classes/req_requirement_specification/"
-
-
-
-
-
-
-  class req_requirement_specification["Requirement Specification"]
-
-
-
-      style req_requirement_specification fill:#f6b26b    
-
-
-          req_requirement_specification --&gt; "*" req_requirement_specification: inputs 
-          click req_requirement_specification href "../../classes/req_requirement_specification/"
 
 
 
@@ -478,7 +437,7 @@
 <tr>
 <td><a href="../../slots/req_specification_inputs">inputs</a></td>
 <td><code>*</code></td>
-<td><a href="../Artifact/">Artifact</a></td>
+<td><a href="../req_artifact/">Requirement Artifact</a></td>
 <td>Artifacts or agreements that feed this specification.</td>
 <td>direct</td>
 </tr>
