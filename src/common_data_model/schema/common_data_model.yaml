@@ -23,6 +23,7 @@ imports:
   - collaboration
   - customization
   - design
+  - device_model
   - insights
   - library
   - procurement

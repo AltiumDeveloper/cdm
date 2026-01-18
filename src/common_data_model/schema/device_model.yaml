@@ -1,0 +1,723 @@
+id: https://w3id.org/altium/cdm/device-model/
+name: cdm-device-model
+prefixes:
+  linkml: https://w3id.org/linkml/
+  dm: https://w3id.org/altium/cdm/device-model/
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: dm
+
+subsets:
+  device_model:
+    description: >-
+      Provides a comprehensive representation of embedded hardware, including peripherals, 
+      pin multiplexing, and memory maps. This subset defines the constraints necessary 
+      to model valid hardware configurations and perform feasibility analysis—ensuring 
+      a device's physical resources can satisfy specific application use-cases.
+    annotations:
+      style: "fill:#6fa8dc"
+
+enums:
+  Endianness:
+    description: >-
+      Specifies the byte-ordering convention of the processor. 
+      Bi-endian indicates the hardware can be configured for either mode.
+    permissible_values:
+      LittleEndian:
+        title: "Little-endian"
+        description: Least significant byte is stored at the lowest address.
+      BigEndian:
+        title: "Big-endian"
+        description: Most significant byte is stored at the lowest address.
+      BiEndian:
+        title: "Bi-endian"
+        description: Processor supports switching between little and big endian modes.
+  AddressBlockType:
+    description: >-
+      Specifies the type of address block within the device's memory map.
+    permissible_values:
+      Memory:
+        title: "Memory"
+        description: Address block represents a memory region (e.g., RAM, Flash).
+      Peripheral:
+        title: "Peripheral"
+        description: Address block represents a peripheral device (e.g., UART, GPIO).
+  AccessType:
+    description: >-
+      Specifies the access permissions for a register or memory region.
+    permissible_values:
+      ReadOnly:
+        title: "Read-Only"
+        description: The register or memory region can only be read.
+      WriteOnly:
+        title: "Write-Only"
+        description: The register or memory region can only be written to.
+      ReadWrite:
+        title: "Read-Write"
+        description: The register or memory region can be both read from and written to.
+  PortMode:
+    description: >-
+      Defines the primary operational mode of a physical port pin. 
+      Determines if the pin is controlled by the GPIO controller or 
+      routed to a specific peripheral function.
+    permissible_values:
+      Gpio:
+        description: Pin is configured as General Purpose Input/Output.
+      AlternateFunction:
+        description: Pin is routed to a specific peripheral internal signal (e.g., UART TX, SPI CLK).
+  GpioMode:
+    description: >-
+      Defines the specific electrical and logical configuration of a pin 
+      when PortMode is set to Gpio.
+    permissible_values:
+      None:
+        description: No specific GPIO mode assigned (often used for high-impedance or initial state).
+      Input:
+        description: Pin is configured as a digital input.
+      OutputLow:
+        description: Pin is configured as a digital output with a default logic low (0) state.
+      OutputHigh:
+        description: Pin is configured as a digital output with a default logic high (1) state.
+
+classes:
+  dm_has_address_range:
+    mixin: true
+    description: >-
+      A mixin for entities that occupy a specific span of the memory map. 
+      It provides the foundational properties required for addressing and 
+      size-based feasibility checks.
+    attributes:
+      dm_HasAddressRange_start_address:
+        title: startAddress
+        description: The base physical address of the memory region.
+        range: integer
+      dm_HasAddressRange_upper_address:
+        title: upperAddress
+        description: The exclusive upper bound of the memory region.
+        range: integer
+      dm_HasAddressRange_size:
+        title: size
+        description: The total span of the memory region in bytes.
+        range: integer
+
+  dm_fullstack_device_model:
+    is_a: Artifact
+    in_subset: device_model
+    class_uri: dm:FullStackDeviceModel
+    title: FullStackDeviceModel
+    description: >-
+      A digital twin of an embedded hardware device. It exposes the full device model,
+      including interfaces, peripherals, and ports.
+    annotations:
+      grid: grid:global::device-model:device-model/{id}
+      platformAPI: DmDeviceModel
+    attributes:
+      dm_FullStackDeviceModel_mpn:
+        title: deviceMpn
+        description: Manufacturer Part Number (MPN) for the device.
+        range: string
+        required: true
+      dm_FullStackDeviceModel_family:
+        title: deviceFamily
+        description: The family to which the device belongs.
+        range: string
+        required: true
+      dm_FullStackDeviceModel_processors:
+        title: processors
+        description: List of processors included in the device.
+        range: dm_processor
+        multivalued: true
+      dm_FullStackDeviceModel_address_map:
+        title: addressMap
+        description: The hardware address map configuration.
+        range: dm_address_map
+      dm_FullStackDeviceModel_peripherals:
+        title: peripherals
+        description: List of all peripherals available on the device.
+        range: dm_peripheral
+        multivalued: true
+
+  dm_processor:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:Processor
+    title: Processor
+    description: >-
+      Represents a physical processing core. Defining endianness and clock 
+      frequency allows the system to determine if the hardware can meet 
+      the computational and data-ordering requirements of a use-case.
+    annotations:
+      platformAPI: DmProcessor
+    attributes:
+      dm_Processor_name:
+        title: name
+        description: The unique identifier for this processor instance.
+        range: string
+        required: true
+      dm_Processor_core:
+        title: core
+        description: Architectural core type (e.g., Cortex-M4).
+        range: string
+        required: true
+      dm_Processor_endian:
+        title: endian
+        description: >-
+          The byte-ordering capability of the core. If Bi-endian, 
+          the device is considered compatible with both LE and BE use-cases.
+        range: Endianness
+        required: true
+      dm_Processor_clock:
+        title: clock
+        description: The operating frequency in Hz.
+        range: integer
+        required: true
+
+  dm_address_map:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:AddressMap
+    title: AddressMap
+    description: Address map for the device including memory and peripheral regions.
+    attributes:
+      dm_AddressMapModel_segments:
+        title: segments
+        description: >-
+          A collection of memory regions or segments defined within the device's address space. 
+          Each entry describes a specific block of memory.
+        range: dm_address_segment
+        multivalued: true
+
+  dm_address_segment:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:AddressSegment
+    title: AddressSegment
+    description: A contiguous region of the device's memory map.
+    mixins:
+      - dm_has_address_range
+    slots:
+      - description
+    attributes:
+      dm_AddressSegment_name:
+        title: name
+        description: The name of the memory segment.
+        range: string
+      dm_AddressSegment_aliases:
+        title: aliases
+        description: Alternative names for the memory segment.
+        range: string
+        multivalued: true
+      dm_AddressSegment_blocks:
+        title: blocks
+        description: The nested address blocks within the segment
+        range: Resource
+        multivalued: true
+      dm_AddressSegment_peripherals:
+        title: peripherals
+        description: The peripherals associated with this memory segment.
+        range: dm_peripheral
+        multivalued: true
+        inlined: false
+
+  dm_address_block:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:AddressBlock
+    title: AddressBlock
+    description: Address block with start, size, and optional registers and peripherals.
+    mixins:
+      - dm_has_address_range
+    slots:
+      - localId
+      - description
+    attributes:
+      dm_AddressBlock_name:
+        title: name
+        description: The name of the address block.
+        range: string
+      dm_AddressBlock_data_source:
+        title: dataSource
+        description: The source of data for this address block (e.g. RZone, SVD, PinCfg).
+        range: string
+      dm_AddressBlock_type:
+        title: type
+        description: The type of the address block.
+        range: AddressBlockType
+      dm_AddressBlock_memories:
+        title: memories
+        description: List of memory entries associated with this block.
+        range: dm_memory
+        multivalued: true
+      dm_AddressBlock_registers:
+        title: registers
+        range: dm_register
+        multivalued: true
+      dm_AddressBlock_peripheral_instance:
+        title: peripheral_instance
+        description: A peripheral instance associated with this address block.
+        range: dm_peripheral_instance
+        required: false
+        inlined: false
+
+  dm_memory:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:Memory
+    title: Memory
+    description: A memory entry within an address block.
+    attributes:
+      dm_Memory_name:
+        title: name
+        description: The name of the memory entry.
+        range: string
+      dm_Memory_type:
+        title: type
+        description: The type of memory entry.
+        range: string
+      dm_Memory_size:
+        title: size
+        description: The total span of the memory region in bytes.
+        range: integer
+
+  dm_register:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:Register
+    title: Register
+    description: A hardware register within an address block.
+    slots:
+      - description
+    attributes:
+      dm_Register_name:
+        title: name
+        description: The name of the register.
+        range: string
+      dm_Register_address_offset:
+        title: addressOffset
+        description: The offset address of the register within its parent block.
+        range: string
+      dm_Register_size:
+        title: siz
+        description: The size of the register in bytes.
+        range: string
+      dm_Register_access:
+        title: access
+        description: The access type of the register.
+        range: AccessType
+      dm_Register_reset_value:
+        title: resetValue
+        description: The value to reset the register.
+        range: string
+      dm_Register_reset_mask:
+        title: resetMask
+        description: The mask applied during register reset.
+        range: string
+      dm_Register_fields:
+        title: fields
+        description: Bit fields within this register.
+        range: dm_register_field
+        multivalued: true
+
+  dm_register_field:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:RegisterField
+    title: RegisterField
+    description: A bit field within a register.
+    slots:
+      - description
+    attributes:
+      dm_RegisterField_name:
+        title: name
+        description: The name of the register field.
+        range: string
+      dm_RegisterField_lsb:
+        title: lsb
+        description: The least significant bit position of the field.
+        range: integer
+      dm_RegisterField_msb:
+        title: msb
+        description: The most significant bit position of the field.
+        range: integer
+      dm_RegisterField_access:
+        title: access
+        description: The access type of the register field.
+        range: AccessType
+      dm_RegisterField_enums:
+        title: enums
+        description: Enumerated values for the register field.
+        range: dm_field_enum
+        multivalued: true
+
+  dm_field_enum:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:FieldEnum
+    title: FieldEnum
+    description: An enumerated value for a register field.
+    slots:
+      - description
+    attributes:
+      dm_FieldEnum_name:
+        title: name
+        description: The name of the enumerated value.
+        range: string
+      dm_FieldEnum_value:
+        title: value
+        description: The actual value of the enumeration.
+        range: string
+
+  dm_peripheral:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:Peripheral
+    title: Peripheral
+    description: A single peripheral definition, including its instances and properties.
+    slots:
+      - localId
+    attributes:
+      dm_Peripheral_name:
+        title: name
+        description: The name of the peripheral.
+        range: string
+      dm_Peripheral_instances:
+        title: instances
+        description: The list of instances of this peripheral present on the device.
+        range: dm_peripheral_instance
+        multivalued: true
+      dm_Peripheral_properties:
+        title: properties
+        description: Additional properties or metadata associated with the peripheral.
+        range: dm_peripheral_property
+        multivalued: true
+
+  dm_peripheral_instance:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:PeripheralInstance
+    title: PeripheralInstance
+    description: A concrete instance of a peripheral (e.g., SCI0), including available modes.
+    slots:
+      - localId
+    attributes:
+      dm_PeripheralInstance_name:
+        title: name
+        description: The name of the peripheral instance.
+        range: string
+      dm_PeripheralInstance_channel:
+        title: channel
+        description: The specific channel number or instance identifier for the hardware peripheral.
+        range: string
+      dm_PeripheralInstance_software_drivers:
+        title: softwareDrivers
+        description: The list of software drivers compatible with this peripheral instance.
+        range: string
+        multivalued: true
+      dm_PeripheralInstance_roles:
+        title: roles
+        description: The list of roles this peripheral instance can fulfill (e.g., Asynchronous UART).
+        range: dm_peripheral_role
+        multivalued: true
+
+  dm_peripheral_role:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:PeripheralRole
+    title: PeripheralRole
+    description: A specific role that a peripheral instance can fulfill,
+    attributes:
+      dm_PeripheralMode_name:
+        title: name
+        description: Name of the peripheral role (e.g., Asynchronous UART).
+        range: string
+      dm_PeripheralMode_configurations:
+        title: configurations
+        description: The configurations available within this peripheral modes.
+        range: dm_peripheral_configuration
+        multivalued: true
+
+  dm_peripheral_configuration:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:PeripheralConfiguration
+    title: PeripheralConfiguration
+    description: A concrete configuration for a peripheral role, containing pin multiplexing details.
+    slots:
+      - localId
+    attributes:
+      dm_PeripheralConfiguration_pinConfigs:
+        title: name
+        description: The list of pin function to port mappings for this configuration.
+        range: dm_peripheral_pin_config
+        multivalued: true
+      dm_PeripheralConfiguration_pinDependencyConfigs:
+        title: pinDependencyConfigs
+        description: The list of alternative pin configurations that must be applied together with this configuration.
+        range: dm_peripheral_pin_config
+        multivalued: true
+      dm_PeripheralConfiguration_vendorData:
+        title: vendorData
+        description: The vendor-specific data associated with this peripheral configuration.
+        range: dm_peripheral_vendor_property
+        multivalued: true
+        inlined: true
+        inlined_as_list: false
+
+  dm_peripheral_pin_config:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:PeripheralPinConfig
+    title: PeripheralPinConfig
+    description: A specific pin multiplexing configuration within peripheral configuration.
+    attributes:
+      dm_PinConfig_pin_name:
+        title: pinName
+        description: The fully qualified identifier representing the channel, and pin function (e.g., sci0.txt, iic1.scl).
+        range: string
+      dm_PinConfig_pin_value:
+        title: pinValue
+        description: The fully qualified identifier representing the channel, pin function, and physical pin (e.g., sci0.txd.p101, iic1.scl.p402).
+        range: string
+      dm_PinConfig_function:
+        title: function
+        description: The logical pin function name (e.g., TXD, RXD).
+        range: string
+      dm_PinConfig_port:
+        title: port
+        description: The physical port target for the pin function.
+        range: string
+      dm_PinConfig_port_name:
+        title: portName
+        description: The physical port mapping target for the pin function.
+        range: string
+
+  dm_peripheral_pin_dependency_config:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:PeripheralPinDependencyConfig
+    title: PeripheralPinDependencyConfig
+    description: A pin dependency to port mapping entry within peripheral configuration.
+    attributes:
+      dm_PinDependencyConfig_name:
+        title: name
+        description: The name of the pin dependency configuration.
+        range: string
+      dm_PinDependencyConfig_value:
+        title: value
+        description: The value of the pin dependency configuration.
+        range: string
+
+  dm_peripheral_vendor_property:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:PeripheralVendorProperty
+    title: PeripheralVendorProperty
+    description: A vendor-specific property for a peripheral configuration.
+    attributes:
+      dm_PeripheralVendorProperty_name:
+        title: name
+        identifier: true
+        description: The name of the vendor property.
+        range: string
+      dm_PeripheralVendorProperty_value:
+        title: value
+        description: The value of the vendor property.
+        range: string
+
+  dm_peripheral_property:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:PeripheralProperty
+    title: PeripheralProperty
+    description: An additional property or metadata associated with a peripheral.
+    slots:
+      - localId
+      - description
+    attributes:
+      dm_PeripheralProperty_name:
+        title: name
+        description: The name of the peripheral property.
+        range: string
+      dm_PeripheralProperty_options:
+        title: options
+        description: The list of options for this property.
+        range: dm_peripheral_property_option
+        multivalued: true
+
+  dm_peripheral_property_option:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:PeripheralPropertyOption
+    title: PeripheralPropertyOption
+    description: An option for a peripheral property.
+    slots:
+      - localId
+    attributes:
+      dm_PeripheralPropertyOption_name:
+        title: name
+        description: The name of the peripheral property option.
+        range: string
+      dm_PeripheralPropertyOption_value:
+        title: value
+        description: The value of the peripheral property option.
+        range: string
+
+  dm_port:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:Port
+    title: Port
+    description: A physical port on the device, with its functions, configurations, and connections.
+    slots:
+      - localId
+      - description
+    attributes:
+      dm_Port_name:
+        title: name
+        description: The name of the port.
+        range: string
+      dm_Port_symbolic_name:
+        title: symbolicName
+        description: A symbolic name for the port used in code or configuration.
+        range: string
+      dm_Port_pin:
+        title: pin
+        description: The physical pin associated with this port.
+        range: dm_pin
+      dm_Port_functions:
+        title: functions
+        description: The list of functions that this port can perform.
+        range: dm_port_function
+        multivalued: true
+      dm_Port_configurations:
+        title: configurations
+        description: The list of configurations available for this port.
+        range: dm_port_configuration
+        multivalued: true
+      dm_Port_connections:
+        title: connections
+        description: The list of connections associated with this port to other components or signals.
+        range: dm_port_connection
+        multivalued: true
+
+  dm_pin:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:Pin
+    title: Pin
+    description: A physical pin on the device.
+    attributes:
+      dm_Pin_name:
+        title: name
+        identifier: true
+        description: The name of the pin.
+        range: string
+
+  dm_port_function:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:PortFunction
+    title: PortFunction
+    description: A specific function that a port can perform.
+    attributes:
+      dm_PortFunction_name:
+        title: name
+        description: The name of the port function.
+        range: string
+      dm_PortFunction_peripheral_instance:
+        title: peripheralInstance
+        description: The peripheral instance associated with this port function.
+        range: dm_peripheral_instance
+        inlined: false
+
+  dm_port_configuration:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:PortConfiguration
+    title: PortConfiguration
+    description: A specific configuration for a port.
+    slots:
+      - localId
+    attributes:
+      dm_PortConfiguration_name:
+        title: name
+        description: The name of the port configuration.
+        range: string
+      db_PortConfiguration_enum_values:
+        title: enumValues
+        description: The possible values that can be associated with this port configuration.
+        range: dm_port_configuration_enum_value
+        multivalued: true
+
+  dm_port_configuration_enum_value:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:PortConfigurationEnumValue
+    title: PortConfigurationEnumValue
+    description: An enumerated value for a port configuration.
+    slots:
+      - localId
+    attributes:
+      dm_PortConfigurationEnumValue_name:
+        title: name
+        description: The name of the enumerated value.
+        range: string
+      dm_PortConfigurationEnumValue_dependencies:
+        title: dependencies
+        description: The list of dependencies associated with this enumerated value.
+        range: dm_port_configuration_dependency
+        multivalued: true
+
+  dm_port_configuration_dependency:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:PortConfigurationDependency
+    title: PortConfigurationDependency
+    description: A dependency describing how a configuration value maps to GPIO or alternate function usage.
+    attributes:
+      dm_ConfigurationDependency_config_ref:
+        title: configRef
+        description: Root configuration reference token (e.g., P408).
+        range: string
+        required: true
+      dm_ConfigurationDependency_alt_ref:
+        title: altRef
+        description: Full alternative reference string used to derive mode/function tokens.
+        range: string
+      dm_ConfigurationDependency_port:
+        title: port
+        description: Port identifier extracted from the configuration reference (e.g., P000).
+        range: string
+      dm_ConfigurationDependency_port_mode:
+        title: portMode
+        description: Port modo..
+        range: PortMode
+      dm_ConfigurationDependency_gpio_mode:
+        title: gpioMode
+        description: GPIO mode. Meaningful only when portMode == GPIO.
+        range: GpioMode
+      dm_ConfigurationDependency_peripheral_instance_name:
+        title: peripheralInstanceName
+        description: Peripheral instance name for alternate function mode (e.g., SCI0).
+        range: string
+      dm_ConfigurationDependency_function_name:
+        title: functionName
+        description: Peripheral function name for alternate mode (e.g., TXD, RXD).
+        range: string
+
+  dm_port_connection:
+    is_a: Resource
+    in_subset: device_model
+    class_uri: dm:PortConnection
+    title: PortConnection
+    description: A connection from this port to another component or signal.
+    slots:
+      - localId
+    attributes:
+        dm_PortConnection_name:
+            title: name
+            description: The name of the port connection.
+            range: string

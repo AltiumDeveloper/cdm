@@ -122,6 +122,17 @@ slots:
   id:
     identifier: true
     range: GRID
+    description: Globally unique identifier across the whole platform.
+
+  localId:
+    title: id
+    identifier: true
+    range: string
+    description: Local unique identifier within a given context.
+
+  description:
+    range: string
+    description: A brief description of the entity.
 
   ### relation types framework
 
