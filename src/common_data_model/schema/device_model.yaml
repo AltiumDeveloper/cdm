@@ -113,7 +113,7 @@ classes:
       including interfaces, peripherals, and ports.
     annotations:
       grid: grid:global::device-model:device-model/{id}
-      platformAPI: DmDeviceModel
+      platformAPI: DmFullStackDeviceModel
     attributes:
       dm_FullStackDeviceModel_mpn:
         title: deviceMpn
