@@ -304,6 +304,26 @@
 
 
 
+
+
+
+
+
+      dm_fullstack_device_model --&gt; "*" dm_port : ports
+      click dm_port href "../../classes/dm_port/"
+
+
+  class dm_port["Port"]
+
+
+
+      style dm_port fill:#6fa8dc    
+
+
+
+
+
+
           dm_fullstack_device_model : id
 
 
@@ -373,6 +393,13 @@
 <td><code>*</code></td>
 <td><a href="../dm_peripheral/">Peripheral</a></td>
 <td>List of all peripherals available on the device.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/dm_FullStackDeviceModel_ports">ports</a></td>
+<td><code>*</code></td>
+<td><a href="../dm_port/">Port</a></td>
+<td>List of physical ports on the device.</td>
 <td>direct</td>
 </tr>
 </tbody>

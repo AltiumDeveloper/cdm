@@ -981,6 +981,10 @@
          <lastmod>2026-01-18</lastmod>
     </url>
     <url>
+         <loc>https://w3id.org/altium/cdm/slots/dm_FullStackDeviceModel_ports/</loc>
+         <lastmod>2026-01-18</lastmod>
+    </url>
+    <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_FullStackDeviceModel_processors/</loc>
          <lastmod>2026-01-18</lastmod>
     </url>
