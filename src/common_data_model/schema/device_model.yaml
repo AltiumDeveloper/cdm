@@ -139,6 +139,11 @@ classes:
         description: List of all peripherals available on the device.
         range: dm_peripheral
         multivalued: true
+      dm_FullStackDeviceModel_ports:
+        title: ports
+        description: List of physical ports on the device.
+        range: dm_port
+        multivalued: true
 
   dm_processor:
     is_a: Resource
