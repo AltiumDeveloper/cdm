@@ -220,6 +220,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#device_model">
+<span class="md-ellipsis">
+      device_model
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#insights">
 <span class="md-ellipsis">
       insights
@@ -459,6 +466,144 @@
 <td><a href="classes/des_project_variant/">Hardware Project Variant </a></td>
 <td>TBD</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWipVariant">DesWipVariant</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="device_model"><a href="subsets/device_model/">device_model</a></h3>
+<p>Provides a comprehensive representation of embedded hardware, including peripherals,  pin multiplexing, and memory maps. This subset defines the constraints necessary  to model valid hardware configurations and perform feasibility analysis—ensuring  a device's physical resources can satisfy specific application use-cases.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+<th>Platform API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="classes/dm_address_block/">AddressBlock </a></td>
+<td>Address block with start, size, and optional registers and peripherals.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_address_map/">AddressMap </a></td>
+<td>Address map for the device including memory and peripheral regions.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_address_segment/">AddressSegment </a></td>
+<td>A contiguous region of the device's memory map.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_field_enum/">FieldEnum </a></td>
+<td>An enumerated value for a register field.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_fullstack_device_model/">FullStackDeviceModel </a></td>
+<td>A digital twin of an embedded hardware device. It exposes the full device model, including interfaces, peripherals, and ports.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmFullStackDeviceModel">DmFullStackDeviceModel</a></td>
+</tr>
+<tr>
+<td><a href="classes/dm_memory/">Memory </a></td>
+<td>A memory entry within an address block.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_peripheral/">Peripheral </a></td>
+<td>A single peripheral definition, including its instances and properties.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_peripheral_configuration/">PeripheralConfiguration </a></td>
+<td>A concrete configuration for a peripheral role, containing pin multiplexing details.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_peripheral_instance/">PeripheralInstance </a></td>
+<td>A concrete instance of a peripheral (e.g., SCI0), including available modes.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_peripheral_pin_config/">PeripheralPinConfig </a></td>
+<td>A specific pin multiplexing configuration within peripheral configuration.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_peripheral_pin_dependency_config/">PeripheralPinDependencyConfig </a></td>
+<td>A pin dependency to port mapping entry within peripheral configuration.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_peripheral_property/">PeripheralProperty </a></td>
+<td>An additional property or metadata associated with a peripheral.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_peripheral_property_option/">PeripheralPropertyOption </a></td>
+<td>An option for a peripheral property.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_peripheral_role/">PeripheralRole </a></td>
+<td>A specific role that a peripheral instance can fulfill,</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_peripheral_vendor_property/">PeripheralVendorProperty </a></td>
+<td>A vendor-specific property for a peripheral configuration.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_pin/">Pin </a></td>
+<td>A physical pin on the device.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_port/">Port </a></td>
+<td>A physical port on the device, with its functions, configurations, and connections.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_port_configuration/">PortConfiguration </a></td>
+<td>A specific configuration for a port.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_port_configuration_dependency/">PortConfigurationDependency </a></td>
+<td>A dependency describing how a configuration value maps to GPIO or alternate function usage.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_port_configuration_enum_value/">PortConfigurationEnumValue </a></td>
+<td>An enumerated value for a port configuration.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_port_connection/">PortConnection </a></td>
+<td>A connection from this port to another component or signal.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_port_function/">PortFunction </a></td>
+<td>A specific function that a port can perform.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_processor/">Processor </a></td>
+<td>Represents a physical processing core. Defining endianness and clock  frequency allows the system to determine if the hardware can meet  the computational and data-ordering requirements of a use-case.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmProcessor">DmProcessor</a></td>
+</tr>
+<tr>
+<td><a href="classes/dm_register/">Register </a></td>
+<td>A hardware register within an address block.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/dm_register_field/">RegisterField </a></td>
+<td>A bit field within a register.</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -1020,6 +1165,11 @@
 <td><a href="subsets/design/">design</a></td>
 <td><a href="classes/des_project_template_revision/">Project Template Revision </a></td>
 <td><code>grid:workspace:{workspace-id}:design:project-template-revision/{id}</code></td>
+</tr>
+<tr>
+<td><a href="subsets/device_model/">device_model</a></td>
+<td><a href="classes/dm_fullstack_device_model/">FullStackDeviceModel </a></td>
+<td><code>grid:global::device-model:device-model/{id}</code></td>
 </tr>
 <tr>
 <td><a href="subsets/insights/">insights</a></td>

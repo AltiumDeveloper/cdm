@@ -193,6 +193,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="slot-description">Slot: description</h1>
+<p><em>A brief description of the entity.</em></p>
 <p>URI: <a href="https://w3id.org/altium/cdm/description">https://w3id.org/altium/cdm/description</a>
 Alias: description</p>
 <!-- no inheritance hierarchy -->
@@ -207,13 +208,48 @@ Alias: description</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../../classes/dm_address_segment/">dm_address_segment</a></td>
+<td>A contiguous region of the device's memory map</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../../classes/sft_software_release/">sft_software_release</a></td>
 <td>TBD</td>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../../classes/dm_register_field/">dm_register_field</a></td>
+<td>A bit field within a register</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/dm_register/">dm_register</a></td>
+<td>A hardware register within an address block</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/dm_peripheral_property/">dm_peripheral_property</a></td>
+<td>An additional property or metadata associated with a peripheral</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../../classes/sys_port/">sys_port</a></td>
 <td>TBD</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/dm_address_block/">dm_address_block</a></td>
+<td>Address block with start, size, and optional registers and peripherals</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/dm_port/">dm_port</a></td>
+<td>A physical port on the device, with its functions, configurations, and connec...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/dm_field_enum/">dm_field_enum</a></td>
+<td>An enumerated value for a register field</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -226,8 +262,17 @@ Alias: description</p>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A brief description of the entity.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/altium/cdm/</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
 <span class="nt">domain_of</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_address_segment</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_address_block</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_register</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_register_field</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_field_enum</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_peripheral_property</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_port</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sft_software_release</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sys_port</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
