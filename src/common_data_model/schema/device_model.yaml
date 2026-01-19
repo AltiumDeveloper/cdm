@@ -186,6 +186,8 @@ classes:
     class_uri: dm:AddressMap
     title: AddressMap
     description: Address map for the device including memory and peripheral regions.
+    annotations:
+      platformAPI: DmAddressMap
     attributes:
       dm_AddressMapModel_segments:
         title: segments
@@ -201,6 +203,8 @@ classes:
     class_uri: dm:AddressSegment
     title: AddressSegment
     description: A contiguous region of the device's memory map.
+    annotations:
+      platformAPI: DmAddressSegment
     mixins:
       - dm_has_address_range
     slots:
@@ -218,7 +222,7 @@ classes:
       dm_AddressSegment_blocks:
         title: blocks
         description: The nested address blocks within the segment
-        range: Resource
+        range: dm_address_block
         multivalued: true
       dm_AddressSegment_peripherals:
         title: peripherals
@@ -233,6 +237,8 @@ classes:
     class_uri: dm:AddressBlock
     title: AddressBlock
     description: Address block with start, size, and optional registers and peripherals.
+    annotations:
+      platformAPI: DmAddressBlock
     mixins:
       - dm_has_address_range
     slots:
@@ -242,10 +248,6 @@ classes:
       dm_AddressBlock_name:
         title: name
         description: The name of the address block.
-        range: string
-      dm_AddressBlock_data_source:
-        title: dataSource
-        description: The source of data for this address block (e.g. RZone, SVD, PinCfg).
         range: string
       dm_AddressBlock_type:
         title: type
@@ -273,6 +275,8 @@ classes:
     class_uri: dm:Memory
     title: Memory
     description: A memory entry within an address block.
+    annotations:
+      platformAPI: DmMemory
     attributes:
       dm_Memory_name:
         title: name
@@ -293,6 +297,8 @@ classes:
     class_uri: dm:Register
     title: Register
     description: A hardware register within an address block.
+    annotations:
+      platformAPI: DmRegister
     slots:
       - description
     attributes:
@@ -332,6 +338,8 @@ classes:
     class_uri: dm:RegisterField
     title: RegisterField
     description: A bit field within a register.
+    annotations:
+      platformAPI: DmRegisterField
     slots:
       - description
     attributes:
@@ -363,6 +371,8 @@ classes:
     class_uri: dm:FieldEnum
     title: FieldEnum
     description: An enumerated value for a register field.
+    annotations:
+      platformAPI: DmFieldEnum
     slots:
       - description
     attributes:
@@ -381,6 +391,8 @@ classes:
     class_uri: dm:Peripheral
     title: Peripheral
     description: A single peripheral definition, including its instances and properties.
+    annotations:
+      platformAPI: DmPeripheral
     slots:
       - localId
     attributes:
@@ -405,6 +417,8 @@ classes:
     class_uri: dm:PeripheralInstance
     title: PeripheralInstance
     description: A concrete instance of a peripheral (e.g., SCI0), including available modes.
+    annotations:
+      platformAPI: DmPeripheralInstance
     slots:
       - localId
     attributes:
@@ -433,6 +447,8 @@ classes:
     class_uri: dm:PeripheralRole
     title: PeripheralRole
     description: A specific role that a peripheral instance can fulfill,
+    annotations:
+      platformAPI: DmPeripheralRole
     attributes:
       dm_PeripheralMode_name:
         title: name
@@ -450,6 +466,8 @@ classes:
     class_uri: dm:PeripheralConfiguration
     title: PeripheralConfiguration
     description: A concrete configuration for a peripheral role, containing pin multiplexing details.
+    annotations:
+      platformAPI: DmPeripheralConfiguration
     slots:
       - localId
     attributes:
@@ -477,6 +495,8 @@ classes:
     class_uri: dm:PeripheralPinConfig
     title: PeripheralPinConfig
     description: A specific pin multiplexing configuration within peripheral configuration.
+    annotations:
+      platformAPI: DmPeripheralPinConfig
     attributes:
       dm_PinConfig_pin_name:
         title: pinName
@@ -505,6 +525,8 @@ classes:
     class_uri: dm:PeripheralPinDependencyConfig
     title: PeripheralPinDependencyConfig
     description: A pin dependency to port mapping entry within peripheral configuration.
+    annotations:
+      platformAPI: DmPeripheralPinDependencyConfig
     attributes:
       dm_PinDependencyConfig_name:
         title: name
@@ -521,6 +543,8 @@ classes:
     class_uri: dm:PeripheralVendorProperty
     title: PeripheralVendorProperty
     description: A vendor-specific property for a peripheral configuration.
+    annotations:
+      platformAPI: DmPeripheralVendorProperty
     attributes:
       dm_PeripheralVendorProperty_name:
         title: name
@@ -538,6 +562,8 @@ classes:
     class_uri: dm:PeripheralProperty
     title: PeripheralProperty
     description: An additional property or metadata associated with a peripheral.
+    annotations:
+      platformAPI: DmPeripheralProperty
     slots:
       - localId
       - description
@@ -558,6 +584,8 @@ classes:
     class_uri: dm:PeripheralPropertyOption
     title: PeripheralPropertyOption
     description: An option for a peripheral property.
+    annotations:
+      platformAPI: DmPeripheralPropertyOption
     slots:
       - localId
     attributes:
@@ -576,6 +604,8 @@ classes:
     class_uri: dm:Port
     title: Port
     description: A physical port on the device, with its functions, configurations, and connections.
+    annotations:
+      platformAPI: DmPort
     slots:
       - localId
       - description
@@ -614,6 +644,8 @@ classes:
     class_uri: dm:Pin
     title: Pin
     description: A physical pin on the device.
+    annotations:
+      platformAPI: DmPin
     attributes:
       dm_Pin_name:
         title: name
@@ -627,6 +659,8 @@ classes:
     class_uri: dm:PortFunction
     title: PortFunction
     description: A specific function that a port can perform.
+    annotations:
+      platformAPI: DmPortFunction
     attributes:
       dm_PortFunction_name:
         title: name
@@ -644,6 +678,8 @@ classes:
     class_uri: dm:PortConfiguration
     title: PortConfiguration
     description: A specific configuration for a port.
+    annotations:
+      platformAPI: DmPortConfiguration
     slots:
       - localId
     attributes:
@@ -663,6 +699,8 @@ classes:
     class_uri: dm:PortConfigurationEnumValue
     title: PortConfigurationEnumValue
     description: An enumerated value for a port configuration.
+    annotations:
+      platformAPI: DmPortConfigurationEnumValue
     slots:
       - localId
     attributes:
@@ -682,6 +720,8 @@ classes:
     class_uri: dm:PortConfigurationDependency
     title: PortConfigurationDependency
     description: A dependency describing how a configuration value maps to GPIO or alternate function usage.
+    annotations:
+      platformAPI: DmPortConfigurationDependency
     attributes:
       dm_ConfigurationDependency_config_ref:
         title: configRef
@@ -719,6 +759,8 @@ classes:
     class_uri: dm:PortConnection
     title: PortConnection
     description: A connection from this port to another component or signal.
+    annotations:
+      platformAPI: DmPortConnection
     slots:
       - localId
     attributes:
