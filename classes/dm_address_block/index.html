@@ -199,6 +199,7 @@
 <div class="grid">
 <div class="admonition quote">
 <p class="admonition-title">Platform API</p>
+<p><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmAddressBlock">DmAddressBlock</a></p>
 </div>
 <div class="admonition quote annotate">
 <p class="admonition-title">GRID (1)</p>
@@ -245,10 +246,6 @@
 
 
           dm_address_block : name
-
-
-
-          dm_address_block : dataSource
 
 
 
@@ -342,6 +339,23 @@
 
 
 
+
+
+
+
+
+  class dm_address_segment["AddressSegment"]
+
+
+
+      style dm_address_segment fill:#6fa8dc    
+
+
+          dm_address_segment --&gt; "*" dm_address_block: blocks 
+          click dm_address_segment href "../../classes/dm_address_segment/"
+
+
+
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
@@ -405,13 +419,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/dm_AddressBlock_data_source">dataSource</a></td>
-<td><code>0..1</code></td>
-<td><a href="../../types/string/">string</a></td>
-<td>The source of data for this address block (e.g. RZone, SVD, PinCfg).</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../../slots/dm_AddressBlock_type">type</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../enums/AddressBlockType/">AddressBlockType</a></td>
@@ -442,6 +449,21 @@
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>platformAPI</td>
+<td>DmAddressBlock</td>
+</tr>
+</tbody>
+</table>
 <h2 id="__comments">Comments</h2>
 <!-- Insert generated snippet here -->
 <para>

@@ -199,6 +199,7 @@
 <div class="grid">
 <div class="admonition quote">
 <p class="admonition-title">Platform API</p>
+<p><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmAddressSegment">DmAddressSegment</a></p>
 </div>
 <div class="admonition quote annotate">
 <p class="admonition-title">GRID (1)</p>
@@ -253,11 +254,15 @@
 
 
 
-      dm_address_segment --&gt; "*" Resource : blocks
-      click Resource href "../../classes/Resource/"
+      dm_address_segment --&gt; "*" dm_address_block : blocks
+      click dm_address_block href "../../classes/dm_address_block/"
 
 
-  class Resource["Resource"]
+  class dm_address_block["AddressBlock"]
+
+
+
+      style dm_address_block fill:#6fa8dc    
 
 
 
@@ -380,7 +385,7 @@
 <tr>
 <td><a href="../../slots/dm_AddressSegment_blocks">blocks</a></td>
 <td><code>*</code></td>
-<td><a href="../Resource/">Resource</a></td>
+<td><a href="../dm_address_block/">AddressBlock</a></td>
 <td>The nested address blocks within the segment</td>
 <td>direct</td>
 </tr>
@@ -394,6 +399,21 @@
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>platformAPI</td>
+<td>DmAddressSegment</td>
+</tr>
+</tbody>
+</table>
 <h2 id="__comments">Comments</h2>
 <!-- Insert generated snippet here -->
 <para>
