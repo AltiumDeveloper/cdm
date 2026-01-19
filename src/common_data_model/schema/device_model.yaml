@@ -222,7 +222,7 @@ classes:
       dm_AddressSegment_blocks:
         title: blocks
         description: The nested address blocks within the segment
-        range: Resource
+        range: dm_address_block
         multivalued: true
       dm_AddressSegment_peripherals:
         title: peripherals
@@ -248,10 +248,6 @@ classes:
       dm_AddressBlock_name:
         title: name
         description: The name of the address block.
-        range: string
-      dm_AddressBlock_data_source:
-        title: dataSource
-        description: The source of data for this address block (e.g. RZone, SVD, PinCfg).
         range: string
       dm_AddressBlock_type:
         title: type
