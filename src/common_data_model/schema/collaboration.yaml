@@ -20,7 +20,7 @@ subsets:
 
 classes:
 
-  col_task:
+  col_Task:
     is_a: Activity
     in_subset: collaboration 
     class_uri: col:Task
@@ -36,7 +36,7 @@ classes:
       grid: grid:workspace:{workspace-id}:collaboration:task/{id}
       platformAPI: DesTask
 
-  col_comment_thread:
+  col_CommentThread:
     is_a: Activity
     in_subset: collaboration
     class_uri: col:CommentThread
@@ -51,15 +51,10 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:collaboration:comment-thread/{id}
       platformAPI: DesCommentThread
-    attributes:
-      CommentThread_comments: 
-        title: comments
-        description: TBD
-        range: col_comment
-        required: true
-        multivalued: true
+    slots:
+      - col_CommentThread#comments
 
-  col_comment:
+  col_Comment:
     is_a: Resource
     in_subset: collaboration
     class_uri: col:Comment
@@ -67,3 +62,14 @@ classes:
     description: TBD
     annotations:
       platformAPI: DesComment
+
+slots:
+
+  col_CommentThread#comments: 
+    slot_uri: col:CommentThread#comments
+    alias: comments
+    title: comments
+    description: TBD
+    range: col_Comment
+    required: true
+    multivalued: true`

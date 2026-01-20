@@ -177,7 +177,7 @@ classes:
 slots:
 
   sup_eval_kits:
-    is_a: has_part
+    is_a: core_hasPart
     slot_uri: sup:consists_of_eval_kits
     title: evalKits
     description: Evaluation Kits included in this Artifact
@@ -187,7 +187,7 @@ slots:
     multivalued: true  
 
   sup_software_projects:
-    is_a: has_part
+    is_a: core_hasPart
     slot_uri: sup:consists_of_software_projects
     title: softwareProjects
     description: Software Projects included in this Artifact

@@ -129,10 +129,10 @@ classes:
       grid: grid:workspace:{workspace-id}:platform:solution/{id}
       platformAPI: SolSolution
     slots:
-      - releases
+      - core_releases
       - plt_solution_items
     slot_usage:
-      releases:
+      core_releases:
         range: plt_solution_release
 
   plt_solution_release:
@@ -178,6 +178,11 @@ classes:
     description: TBD
     annotations:
       platformAPI: DesLifeCycleStage
+    extensions:
+      - tag: documentation
+        value:
+          - description: Lifecycle Management
+            uri: https://www.altium.com/documentation/altium-365/lifecycle-management
     attributes:
       LifecycleStage_name:
         title: name
@@ -188,11 +193,11 @@ classes:
       LifecycleStage_states:
         title: states
         description: TBD
-        range: plt_lifecycle_state
+        range: plt_LifecycleState
         multivalued: true 
         required: true
 
-  plt_lifecycle_state:
+  plt_LifecycleState:
     is_a: Resource
     in_subset: platform
     class_uri: plt:LifecycleState
@@ -200,6 +205,11 @@ classes:
     description: TBD
     annotations:
       platformAPI: DesLifeCycleState
+    extensions:
+      - tag: documentation
+        value:
+          - description: Lifecycle Management
+            uri: https://www.altium.com/documentation/altium-365/lifecycle-management
     attributes:
       LifecycleState_name:
         title: name
@@ -208,7 +218,6 @@ classes:
         multivalued: false
         required: true
       # id, description, isAllowedInDesign, isInitialState
-
 
   plt_naming_scheme:
     is_a: Artifact
@@ -219,6 +228,12 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:platform:revision-naming-scheme/{id}
       platformAPI: DesRevisionNamingScheme
+    extensions:
+      - tag: documentation
+        value:
+          - description: Defining Revision Naming Schemes for a Workspace
+            uri: https://www.altium.com/documentation/altium-designer/connected-workspace/defining-naming-schemes
+
 
   ### Mixins
 
@@ -234,32 +249,34 @@ classes:
     is_a: Meta
     abstract: true
     mixin: true
-    slots:
-      - plt_lifecycle_state
+    attributes:
+      plt_LifecycleState:
+        title: lifecycleState
+        range: plt_LifecycleState
+        multivalued: false
+        required: true
 
 slots: 
 
   plt_solution_items:
-    is_a: has_part
+    is_a: core_hasPart
+    alias: solutionItems
+    title: solution items
     range: SolutionItem
     multivalued: true
     required: false
 
   plt_part_of_solution:
-    is_a: part_of
-    title: partOfSolution
+    is_a: core_partOf
+    alias: partOfSolution
+    title: part of solution
     range: plt_solution
     multivalued: true
     required: false
 
   plt_workspace_env_configurations:
-    is_a: has_part
-    title: environmentConfigurations
+    is_a: core_hasPart
+    alias: environmentConfigurations
+    title: environment configurations
     range: con_env_configuration
     multivalued: true
-
-  plt_lifecycle_state:
-    title: lifecycleState
-    range: plt_lifecycle_state
-    multivalued: false
-    required: true

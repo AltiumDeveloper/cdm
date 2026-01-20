@@ -1,8 +1,8 @@
-id: https://w3id.org/altium/cdm/device-model/
+id: https://w3id.org/altium/cdm/deviceModel/
 name: cdm-device-model
 prefixes:
   linkml: https://w3id.org/linkml/
-  dm: https://w3id.org/altium/cdm/device-model/
+  dm: https://w3id.org/altium/cdm/deviceModel/
 
 imports:
   - linkml:types
@@ -11,7 +11,7 @@ default_range: string
 default_prefix: dm
 
 subsets:
-  device_model:
+  deviceModel:
     description: >-
       Provides a comprehensive representation of embedded hardware, including peripherals, 
       pin multiplexing, and memory maps. This subset defines the constraints necessary 
@@ -21,10 +21,15 @@ subsets:
       style: "fill:#6fa8dc"
 
 enums:
-  Endianness:
+  dm_Endianness:
+    is_a: Enumeration
+    in_subset: deviceModel
+    enum_uri: dm:Endianness
     description: >-
       Specifies the byte-ordering convention of the processor. 
       Bi-endian indicates the hardware can be configured for either mode.
+    implements:
+      - owl:NamedIndividual
     permissible_values:
       LittleEndian:
         title: "Little-endian"
@@ -35,9 +40,14 @@ enums:
       BiEndian:
         title: "Bi-endian"
         description: Processor supports switching between little and big endian modes.
-  AddressBlockType:
+  dm_AddressBlockType:
+    is_a: Enumeration
+    in_subset: deviceModel
+    enum_uri: dm:AddressBlockType
     description: >-
       Specifies the type of address block within the device's memory map.
+    implements:
+      - owl:NamedIndividual
     permissible_values:
       Memory:
         title: "Memory"
@@ -45,9 +55,14 @@ enums:
       Peripheral:
         title: "Peripheral"
         description: Address block represents a peripheral device (e.g., UART, GPIO).
-  AccessType:
+  dm_AccessType:
+    is_a: Enumeration
+    in_subset: deviceModel
+    enum_uri: dm:AccessType
     description: >-
       Specifies the access permissions for a register or memory region.
+    implements:
+      - owl:NamedIndividual
     permissible_values:
       ReadOnly:
         title: "Read-Only"
@@ -58,17 +73,25 @@ enums:
       ReadWrite:
         title: "Read-Write"
         description: The register or memory region can be both read from and written to.
-  PortMode:
+  dm_PortMode:
+    is_a: Enumeration
+    in_subset: deviceModel
+    enum_uri: dm:PortMode
     description: >-
       Defines the primary operational mode of a physical port pin. 
       Determines if the pin is controlled by the GPIO controller or 
       routed to a specific peripheral function.
+    implements:
+      - owl:NamedIndividual
     permissible_values:
       Gpio:
         description: Pin is configured as General Purpose Input/Output.
       AlternateFunction:
         description: Pin is routed to a specific peripheral internal signal (e.g., UART TX, SPI CLK).
-  GpioMode:
+  dm_GpioMode:
+    is_a: Enumeration
+    in_subset: deviceModel
+    enum_uri: dm:GpioMode
     description: >-
       Defines the specific electrical and logical configuration of a pin 
       when PortMode is set to Gpio.
@@ -83,8 +106,11 @@ enums:
         description: Pin is configured as a digital output with a default logic high (1) state.
 
 classes:
-  dm_has_address_range:
+  dm_HasAddressRange:
+    is_a: Meta
+    abstract: true
     mixin: true
+    class_uri: dm:HasAddressRange
     description: >-
       A mixin for entities that occupy a specific span of the memory map. 
       It provides the foundational properties required for addressing and 
@@ -103,9 +129,9 @@ classes:
         description: The total span of the memory region in bytes.
         range: integer
 
-  dm_fullstack_device_model:
+  dm_FullStackDeviceModel:
     is_a: Artifact
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:FullStackDeviceModel
     title: FullStackDeviceModel
     description: >-
@@ -147,7 +173,7 @@ classes:
 
   dm_processor:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:Processor
     title: Processor
     description: >-
@@ -172,7 +198,7 @@ classes:
         description: >-
           The byte-ordering capability of the core. If Bi-endian, 
           the device is considered compatible with both LE and BE use-cases.
-        range: Endianness
+        range: dm_Endianness
         required: true
       dm_Processor_clock:
         title: clock
@@ -182,7 +208,7 @@ classes:
 
   dm_address_map:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:AddressMap
     title: AddressMap
     description: Address map for the device including memory and peripheral regions.
@@ -197,14 +223,14 @@ classes:
 
   dm_address_segment:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:AddressSegment
     title: AddressSegment
     description: A contiguous region of the device's memory map.
     mixins:
-      - dm_has_address_range
+      - dm_HasAddressRange
     slots:
-      - description
+      - core_description
     attributes:
       dm_AddressSegment_name:
         title: name
@@ -229,15 +255,15 @@ classes:
 
   dm_address_block:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:AddressBlock
     title: AddressBlock
     description: Address block with start, size, and optional registers and peripherals.
     mixins:
-      - dm_has_address_range
+      - dm_HasAddressRange
     slots:
-      - localId
-      - description
+      - core_localId
+      - core_description
     attributes:
       dm_AddressBlock_name:
         title: name
@@ -250,7 +276,7 @@ classes:
       dm_AddressBlock_type:
         title: type
         description: The type of the address block.
-        range: AddressBlockType
+        range: dm_AddressBlockType
       dm_AddressBlock_memories:
         title: memories
         description: List of memory entries associated with this block.
@@ -269,7 +295,7 @@ classes:
 
   dm_memory:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:Memory
     title: Memory
     description: A memory entry within an address block.
@@ -289,12 +315,12 @@ classes:
 
   dm_register:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:Register
     title: Register
     description: A hardware register within an address block.
     slots:
-      - description
+      - core_description
     attributes:
       dm_Register_name:
         title: name
@@ -311,7 +337,7 @@ classes:
       dm_Register_access:
         title: access
         description: The access type of the register.
-        range: AccessType
+        range: dm_AccessType
       dm_Register_reset_value:
         title: resetValue
         description: The value to reset the register.
@@ -328,12 +354,12 @@ classes:
 
   dm_register_field:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:RegisterField
     title: RegisterField
     description: A bit field within a register.
     slots:
-      - description
+      - core_description
     attributes:
       dm_RegisterField_name:
         title: name
@@ -350,7 +376,7 @@ classes:
       dm_RegisterField_access:
         title: access
         description: The access type of the register field.
-        range: AccessType
+        range: dm_AccessType
       dm_RegisterField_enums:
         title: enums
         description: Enumerated values for the register field.
@@ -359,12 +385,12 @@ classes:
 
   dm_field_enum:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:FieldEnum
     title: FieldEnum
     description: An enumerated value for a register field.
     slots:
-      - description
+      - core_description
     attributes:
       dm_FieldEnum_name:
         title: name
@@ -377,12 +403,12 @@ classes:
 
   dm_peripheral:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:Peripheral
     title: Peripheral
     description: A single peripheral definition, including its instances and properties.
     slots:
-      - localId
+      - core_localId
     attributes:
       dm_Peripheral_name:
         title: name
@@ -401,12 +427,12 @@ classes:
 
   dm_peripheral_instance:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:PeripheralInstance
     title: PeripheralInstance
     description: A concrete instance of a peripheral (e.g., SCI0), including available modes.
     slots:
-      - localId
+      - core_localId
     attributes:
       dm_PeripheralInstance_name:
         title: name
@@ -429,7 +455,7 @@ classes:
 
   dm_peripheral_role:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:PeripheralRole
     title: PeripheralRole
     description: A specific role that a peripheral instance can fulfill,
@@ -446,12 +472,12 @@ classes:
 
   dm_peripheral_configuration:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:PeripheralConfiguration
     title: PeripheralConfiguration
     description: A concrete configuration for a peripheral role, containing pin multiplexing details.
     slots:
-      - localId
+      - core_localId
     attributes:
       dm_PeripheralConfiguration_pinConfigs:
         title: name
@@ -473,7 +499,7 @@ classes:
 
   dm_peripheral_pin_config:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:PeripheralPinConfig
     title: PeripheralPinConfig
     description: A specific pin multiplexing configuration within peripheral configuration.
@@ -501,7 +527,7 @@ classes:
 
   dm_peripheral_pin_dependency_config:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:PeripheralPinDependencyConfig
     title: PeripheralPinDependencyConfig
     description: A pin dependency to port mapping entry within peripheral configuration.
@@ -517,7 +543,7 @@ classes:
 
   dm_peripheral_vendor_property:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:PeripheralVendorProperty
     title: PeripheralVendorProperty
     description: A vendor-specific property for a peripheral configuration.
@@ -534,13 +560,13 @@ classes:
 
   dm_peripheral_property:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:PeripheralProperty
     title: PeripheralProperty
     description: An additional property or metadata associated with a peripheral.
     slots:
-      - localId
-      - description
+      - core_localId
+      - core_description
     attributes:
       dm_PeripheralProperty_name:
         title: name
@@ -554,12 +580,12 @@ classes:
 
   dm_peripheral_property_option:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:PeripheralPropertyOption
     title: PeripheralPropertyOption
     description: An option for a peripheral property.
     slots:
-      - localId
+      - core_localId
     attributes:
       dm_PeripheralPropertyOption_name:
         title: name
@@ -572,13 +598,13 @@ classes:
 
   dm_port:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:Port
     title: Port
     description: A physical port on the device, with its functions, configurations, and connections.
     slots:
-      - localId
-      - description
+      - core_localId
+      - core_description
     attributes:
       dm_Port_name:
         title: name
@@ -610,7 +636,7 @@ classes:
 
   dm_pin:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:Pin
     title: Pin
     description: A physical pin on the device.
@@ -623,7 +649,7 @@ classes:
 
   dm_port_function:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:PortFunction
     title: PortFunction
     description: A specific function that a port can perform.
@@ -640,12 +666,12 @@ classes:
 
   dm_port_configuration:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:PortConfiguration
     title: PortConfiguration
     description: A specific configuration for a port.
     slots:
-      - localId
+      - core_localId
     attributes:
       dm_PortConfiguration_name:
         title: name
@@ -659,12 +685,12 @@ classes:
 
   dm_port_configuration_enum_value:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:PortConfigurationEnumValue
     title: PortConfigurationEnumValue
     description: An enumerated value for a port configuration.
     slots:
-      - localId
+      - core_localId
     attributes:
       dm_PortConfigurationEnumValue_name:
         title: name
@@ -678,7 +704,7 @@ classes:
 
   dm_port_configuration_dependency:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:PortConfigurationDependency
     title: PortConfigurationDependency
     description: A dependency describing how a configuration value maps to GPIO or alternate function usage.
@@ -699,11 +725,11 @@ classes:
       dm_ConfigurationDependency_port_mode:
         title: portMode
         description: Port modo..
-        range: PortMode
+        range: dm_PortMode
       dm_ConfigurationDependency_gpio_mode:
         title: gpioMode
         description: GPIO mode. Meaningful only when portMode == GPIO.
-        range: GpioMode
+        range: dm_GpioMode
       dm_ConfigurationDependency_peripheral_instance_name:
         title: peripheralInstanceName
         description: Peripheral instance name for alternate function mode (e.g., SCI0).
@@ -715,12 +741,12 @@ classes:
 
   dm_port_connection:
     is_a: Resource
-    in_subset: device_model
+    in_subset: deviceModel
     class_uri: dm:PortConnection
     title: PortConnection
     description: A connection from this port to another component or signal.
     slots:
-      - localId
+      - core_localId
     attributes:
         dm_PortConnection_name:
             title: name

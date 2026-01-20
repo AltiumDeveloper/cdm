@@ -46,11 +46,11 @@ classes:
         range: des_project_variant
         multivalued: true
     slots:
-      - releases
+      - core_releases
       - lib_uses_parts
       - lib_uses_components
     slot_usage:
-      releases:
+      core_releases:
         range: des_project_release
 
   des_project_parameter:
@@ -155,9 +155,9 @@ classes:
       grid: grid:workspace:{workspace-id}:design:project-template/{id}
       platformAPI: DesProjectTemplate
     slots:
-      - revisions
+      - core_revisions
     slot_usage:
-      revisions:
+      core_revisions:
         range: des_project_template_revision
 
   des_project_template_revision:
@@ -189,7 +189,7 @@ classes:
 slots:
 
   des_multiboard_project_projects:
-    is_a: has_part
+    is_a: core_hasPart
     slot_uri: des:MultiboardProject_projects
     title: projects
     description: The individual PCB projects that make up this Multiboard Project.
@@ -199,7 +199,7 @@ slots:
     required: false
 
   des_manufacturing_package_project_release:
-    is_a: derived_from
+    is_a: core_derivedFrom
     slot_uri: des:ManufacturingPackage_projectRelease
     title: projectRelease
     description: Manufacturing Packages are created based on a specific Project Release.
