@@ -312,15 +312,15 @@
 
 
 
-      des_multiboard_project --&gt; "*" lib_component_revision : components
-      click lib_component_revision href "../../classes/lib_component_revision/"
+      des_multiboard_project --&gt; "*" lib_ComponentRevision : components
+      click lib_ComponentRevision href "../../classes/lib_ComponentRevision/"
 
 
-  class lib_component_revision["Component Revision"]
+  class lib_ComponentRevision["Component Revision"]
 
 
 
-      style lib_component_revision fill:#ffe599    
+      style lib_ComponentRevision fill:#ffe599    
 
 
 
@@ -372,7 +372,7 @@
 
 
 
-      des_multiboard_project --&gt; "*" plt_solution : partOfSolution
+      des_multiboard_project --&gt; "*" plt_solution : part of solution
       click plt_solution href "../../classes/plt_solution/"
 
 
@@ -439,7 +439,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../slots/releases">releases</a></td>
+<td><a href="../../slots/core_releases">releases</a></td>
 <td><code>*</code></td>
 <td><a href="../des_project_release/">Hardware Project Release</a></td>
 <td>None</td>
@@ -455,7 +455,7 @@
 <tr>
 <td><a href="../../slots/lib_uses_components">components</a></td>
 <td><code>*</code></td>
-<td><a href="../lib_component_revision/">Component Revision</a></td>
+<td><a href="../lib_ComponentRevision/">Component Revision</a></td>
 <td>Components used in this Activity</td>
 <td><a href="../des_project/">des_project</a></td>
 </tr>
@@ -474,14 +474,14 @@
 <td><a href="../des_project/">des_project</a></td>
 </tr>
 <tr>
-<td><a href="../../slots/plt_part_of_solution">partOfSolution</a></td>
+<td><a href="../../slots/plt_part_of_solution">part of solution</a></td>
 <td><code>*</code></td>
 <td><a href="../plt_solution/">Solution</a></td>
 <td>None</td>
 <td><a href="../SolutionItem/">SolutionItem</a></td>
 </tr>
 <tr>
-<td><a href="../../slots/id">id</a></td>
+<td><a href="../../slots/core_id">id</a></td>
 <td><code>1</code></td>
 <td><a href="../../types/GRID/">GRID</a></td>
 <td>Globally unique identifier across the whole platform.</td>

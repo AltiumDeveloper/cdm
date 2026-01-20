@@ -193,8 +193,8 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="portconfigurationdependency">PortConfigurationDependency</h1>
-<p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/device-model/PortConfigurationDependency">https://w3id.org/altium/cdm/device-model/PortConfigurationDependency</a></p>
-<p class="page-subtitle">Bounded context: <a href="../../subsets/device_model/">device_model</a></p>
+<p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/deviceModel/PortConfigurationDependency">https://w3id.org/altium/cdm/deviceModel/PortConfigurationDependency</a></p>
+<p class="page-subtitle">Bounded context: <a href="../../subsets/deviceModel/">deviceModel</a></p>
 <p>A dependency describing how a configuration value maps to GPIO or alternate function usage.</p>
 <div class="grid">
 <div class="admonition quote">
@@ -252,27 +252,35 @@
 
 
 
-      dm_port_configuration_dependency --&gt; "0..1" PortMode : portMode
-      click PortMode href "../../enums/PortMode/"
+      dm_port_configuration_dependency --&gt; "0..1" dm_PortMode : portMode
+      click dm_PortMode href "../../enums/dm_PortMode/"
 
 
-  class PortMode["PortMode"]
-
-
-
+  class dm_PortMode["dm_PortMode"]
 
 
 
-
+      style dm_PortMode fill:#6fa8dc    
 
 
 
 
-      dm_port_configuration_dependency --&gt; "0..1" GpioMode : gpioMode
-      click GpioMode href "../../enums/GpioMode/"
 
 
-  class GpioMode["GpioMode"]
+
+
+
+
+
+      dm_port_configuration_dependency --&gt; "0..1" dm_GpioMode : gpioMode
+      click dm_GpioMode href "../../enums/dm_GpioMode/"
+
+
+  class dm_GpioMode["dm_GpioMode"]
+
+
+
+      style dm_GpioMode fill:#6fa8dc    
 
 
 
@@ -350,14 +358,14 @@
 <tr>
 <td><a href="../../slots/dm_ConfigurationDependency_port_mode">portMode</a></td>
 <td><code>0..1</code></td>
-<td><a href="../../enums/PortMode/">PortMode</a></td>
+<td><a href="../../enums/dm_PortMode/">dm_PortMode</a></td>
 <td>Port modo..</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/dm_ConfigurationDependency_gpio_mode">gpioMode</a></td>
 <td><code>0..1</code></td>
-<td><a href="../../enums/GpioMode/">GpioMode</a></td>
+<td><a href="../../enums/dm_GpioMode/">dm_GpioMode</a></td>
 <td>GPIO mode. Meaningful only when portMode == GPIO.</td>
 <td>direct</td>
 </tr>

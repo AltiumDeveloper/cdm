@@ -259,15 +259,15 @@
         click des_project_template_revision href "../../classes/des_project_template_revision/"
 
 
-  class lib_component_revision["Component Revision"]
+  class lib_ComponentRevision["Component Revision"]
 
 
 
-      style lib_component_revision fill:#ffe599    
+      style lib_ComponentRevision fill:#ffe599    
 
 
-        HasLifecycle &lt;|-- lib_component_revision
-        click lib_component_revision href "../../classes/lib_component_revision/"
+        HasLifecycle &lt;|-- lib_ComponentRevision
+        click lib_ComponentRevision href "../../classes/lib_ComponentRevision/"
 
 
   class lib_component_template_revision["Component Template Revision"]
@@ -347,15 +347,15 @@
         click lib_pcb_snippet_revision href "../../classes/lib_pcb_snippet_revision/"
 
 
-  class pro_bom_release["BOM Release"]
+  class pro_BomRelease["BOM Release"]
 
 
 
-      style pro_bom_release fill:#dd7e6b    
+      style pro_BomRelease fill:#dd7e6b    
 
 
-        HasLifecycle &lt;|-- pro_bom_release
-        click pro_bom_release href "../../classes/pro_bom_release/"
+        HasLifecycle &lt;|-- pro_BomRelease
+        click pro_BomRelease href "../../classes/pro_BomRelease/"
 
 
   class req_requirement_revision["Requirement Revision"]
@@ -386,15 +386,15 @@
 
 
 
-      HasLifecycle --&gt; "1" plt_lifecycle_state : lifecycleState
-      click plt_lifecycle_state href "../../classes/plt_lifecycle_state/"
+      HasLifecycle --&gt; "1" plt_LifecycleState : lifecycleState
+      click plt_LifecycleState href "../../classes/plt_LifecycleState/"
 
 
-  class plt_lifecycle_state["Lifecycle State"]
+  class plt_LifecycleState["Lifecycle State"]
 
 
 
-      style plt_lifecycle_state fill:#cccccc    
+      style plt_LifecycleState fill:#cccccc    
 
 
 
@@ -424,9 +424,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../slots/plt_lifecycle_state">lifecycleState</a></td>
+<td><a href="../../slots/plt_LifecycleState">lifecycleState</a></td>
 <td><code>1</code></td>
-<td><a href="../plt_lifecycle_state/">Lifecycle State</a></td>
+<td><a href="../plt_LifecycleState/">Lifecycle State</a></td>
 <td>None</td>
 <td>direct</td>
 </tr>
@@ -450,7 +450,7 @@
 <td>An immutable revision of a project template</td>
 </tr>
 <tr>
-<td><a href="../lib_component_revision/">lib_component_revision</a></td>
+<td><a href="../lib_ComponentRevision/">lib_ComponentRevision</a></td>
 <td>Revision of a Component</td>
 </tr>
 <tr>
@@ -482,7 +482,7 @@
 <td>TBD</td>
 </tr>
 <tr>
-<td><a href="../pro_bom_release/">pro_bom_release</a></td>
+<td><a href="../pro_BomRelease/">pro_BomRelease</a></td>
 <td>TBD</td>
 </tr>
 <tr>

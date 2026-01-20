@@ -323,7 +323,7 @@
 
 
 
-      sft_software_project --&gt; "*" plt_solution : partOfSolution
+      sft_software_project --&gt; "*" plt_solution : part of solution
       click plt_solution href "../../classes/plt_solution/"
 
 
@@ -341,6 +341,23 @@
           sft_software_project : id
 
 
+
+
+
+
+
+
+
+
+  class system_FunctionalBlock["Functional Block"]
+
+
+
+      style system_FunctionalBlock fill:#f1c232    
+
+
+          system_FunctionalBlock --&gt; "0..1" sft_software_project: implemented by 
+          click system_FunctionalBlock href "../../classes/system_FunctionalBlock/"
 
 
 
@@ -368,21 +385,21 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../slots/plt_part_of_solution">partOfSolution</a></td>
+<td><a href="../../slots/plt_part_of_solution">part of solution</a></td>
 <td><code>*</code></td>
 <td><a href="../plt_solution/">Solution</a></td>
 <td>None</td>
 <td><a href="../SolutionItem/">SolutionItem</a></td>
 </tr>
 <tr>
-<td><a href="../../slots/id">id</a></td>
+<td><a href="../../slots/core_id">id</a></td>
 <td><code>1</code></td>
 <td><a href="../../types/GRID/">GRID</a></td>
 <td>Globally unique identifier across the whole platform.</td>
 <td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
-<td><a href="../../slots/releases">releases</a></td>
+<td><a href="../../slots/core_releases">releases</a></td>
 <td><code>*</code></td>
 <td><a href="../sft_software_release/">Software Release</a></td>
 <td>None</td>

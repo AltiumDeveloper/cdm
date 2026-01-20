@@ -275,26 +275,6 @@
 
 
 
-
-
-
-
-
-      sft_software_release --&gt; "0..1" sft_bom : bom
-      click sft_bom href "../../classes/sft_bom/"
-
-
-  class sft_bom["Software BOM"]
-
-
-
-      style sft_bom fill:#3c78d8    
-
-
-
-
-
-
           sft_software_release : title
 
 
@@ -354,7 +334,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../slots/id">id</a></td>
+<td><a href="../../slots/core_id">id</a></td>
 <td><code>1</code></td>
 <td><a href="../../types/GRID/">GRID</a></td>
 <td>Globally unique identifier across the whole platform.</td>
@@ -372,13 +352,6 @@
 <td><code>*</code></td>
 <td><a href="../sft_build_artifact/">Build Artifact</a></td>
 <td>Firmware build artifacts, deployable to the device. May be multiple artifacts if firmware targets multiple chips.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/sft_software_release_bom">bom</a></td>
-<td><code>0..1</code></td>
-<td><a href="../sft_bom/">Software BOM</a></td>
-<td>Software BOM associated with the release.</td>
 <td>direct</td>
 </tr>
 <tr>

@@ -193,8 +193,8 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="addressblock">AddressBlock</h1>
-<p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/device-model/AddressBlock">https://w3id.org/altium/cdm/device-model/AddressBlock</a></p>
-<p class="page-subtitle">Bounded context: <a href="../../subsets/device_model/">device_model</a></p>
+<p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/deviceModel/AddressBlock">https://w3id.org/altium/cdm/deviceModel/AddressBlock</a></p>
+<p class="page-subtitle">Bounded context: <a href="../../subsets/deviceModel/">deviceModel</a></p>
 <p>Address block with start, size, and optional registers and peripherals.</p>
 <div class="grid">
 <div class="admonition quote">
@@ -254,11 +254,15 @@
 
 
 
-      dm_address_block --&gt; "0..1" AddressBlockType : type
-      click AddressBlockType href "../../enums/AddressBlockType/"
+      dm_address_block --&gt; "0..1" dm_AddressBlockType : type
+      click dm_AddressBlockType href "../../enums/dm_AddressBlockType/"
 
 
-  class AddressBlockType["AddressBlockType"]
+  class dm_AddressBlockType["dm_AddressBlockType"]
+
+
+
+      style dm_AddressBlockType fill:#6fa8dc    
 
 
 
@@ -360,7 +364,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Resource/">Resource</a><ul>
-<li><strong>dm_address_block</strong> [ <a href="../dm_has_address_range/">dm_has_address_range</a>]</li>
+<li><strong>dm_address_block</strong> [ <a href="../dm_HasAddressRange/">dm_HasAddressRange</a>]</li>
 </ul>
 </li>
 </ul>
@@ -381,31 +385,31 @@
 <td><code>0..1</code></td>
 <td><a href="../../types/integer/">integer</a></td>
 <td>The base physical address of the memory region.</td>
-<td><a href="../dm_has_address_range/">dm_has_address_range</a></td>
+<td><a href="../dm_HasAddressRange/">dm_HasAddressRange</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/dm_HasAddressRange_upper_address">upperAddress</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../types/integer/">integer</a></td>
 <td>The exclusive upper bound of the memory region.</td>
-<td><a href="../dm_has_address_range/">dm_has_address_range</a></td>
+<td><a href="../dm_HasAddressRange/">dm_HasAddressRange</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/dm_HasAddressRange_size">size</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../types/integer/">integer</a></td>
 <td>The total span of the memory region in bytes.</td>
-<td><a href="../dm_has_address_range/">dm_has_address_range</a></td>
+<td><a href="../dm_HasAddressRange/">dm_HasAddressRange</a></td>
 </tr>
 <tr>
-<td><a href="../../slots/localId">id</a></td>
+<td><a href="../../slots/core_localId">id</a></td>
 <td><code>1</code></td>
 <td><a href="../../types/string/">string</a></td>
 <td>Local unique identifier within a given context.</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/description">description</a></td>
+<td><a href="../../slots/core_description">description</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../types/string/">string</a></td>
 <td>A brief description of the entity.</td>
@@ -421,7 +425,7 @@
 <tr>
 <td><a href="../../slots/dm_AddressBlock_type">type</a></td>
 <td><code>0..1</code></td>
-<td><a href="../../enums/AddressBlockType/">AddressBlockType</a></td>
+<td><a href="../../enums/dm_AddressBlockType/">dm_AddressBlockType</a></td>
 <td>The type of the address block.</td>
 <td>direct</td>
 </tr>

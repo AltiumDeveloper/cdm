@@ -292,30 +292,30 @@
 
 
 
-  class ins_part_insight["Part Insight"]
+  class ins_PartInsight["Part Insight"]
 
 
 
-      style ins_part_insight fill:#a64d79    
+      style ins_PartInsight fill:#a64d79    
 
 
-          ins_part_insight --&gt; "1" lib_part: part 
-          click ins_part_insight href "../../classes/ins_part_insight/"
-
-
-
+          ins_PartInsight --&gt; "1" lib_part: part 
+          click ins_PartInsight href "../../classes/ins_PartInsight/"
 
 
 
-  class lib_component_revision["Component Revision"]
 
 
 
-      style lib_component_revision fill:#ffe599    
+  class lib_ComponentRevision["Component Revision"]
 
 
-          lib_component_revision --&gt; "*" lib_part: parts 
-          click lib_component_revision href "../../classes/lib_component_revision/"
+
+      style lib_ComponentRevision fill:#ffe599    
+
+
+          lib_ComponentRevision --&gt; "*" lib_part: parts 
+          click lib_ComponentRevision href "../../classes/lib_ComponentRevision/"
 
 
 
@@ -340,78 +340,78 @@
 
 
 
-  class pro_managed_bom["Managed BOM"]
+  class pro_ManagedBOM["Managed BOM"]
 
 
 
-      style pro_managed_bom fill:#dd7e6b    
+      style pro_ManagedBOM fill:#dd7e6b    
 
 
-          pro_managed_bom --&gt; "*" lib_part: parts 
-          click pro_managed_bom href "../../classes/pro_managed_bom/"
-
-
-
-
-
-
-  class pro_consolidated_bom["Consolidated BOM"]
-
-
-
-      style pro_consolidated_bom fill:#dd7e6b    
-
-
-          pro_consolidated_bom --&gt; "*" lib_part: parts 
-          click pro_consolidated_bom href "../../classes/pro_consolidated_bom/"
+          pro_ManagedBOM --&gt; "*" lib_part: parts 
+          click pro_ManagedBOM href "../../classes/pro_ManagedBOM/"
 
 
 
 
 
 
-  class pro_bom_release["BOM Release"]
+  class pro_ConsolidatedBOM["Consolidated BOM"]
 
 
 
-      style pro_bom_release fill:#dd7e6b    
+      style pro_ConsolidatedBOM fill:#dd7e6b    
 
 
-          pro_bom_release --&gt; "*" lib_part: parts 
-          click pro_bom_release href "../../classes/pro_bom_release/"
-
-
-
-
-
-
-
-
-
-  class pro_bom_item_alternate["BOM Item Alternate"]
-
-
-
-      style pro_bom_item_alternate fill:#dd7e6b    
-
-
-          pro_bom_item_alternate --&gt; "0..1" lib_part: part 
-          click pro_bom_item_alternate href "../../classes/pro_bom_item_alternate/"
+          pro_ConsolidatedBOM --&gt; "*" lib_part: parts 
+          click pro_ConsolidatedBOM href "../../classes/pro_ConsolidatedBOM/"
 
 
 
 
 
 
-  class pro_bom_item_substitute["BOM Item Substitute"]
+  class pro_BomRelease["BOM Release"]
 
 
 
-      style pro_bom_item_substitute fill:#dd7e6b    
+      style pro_BomRelease fill:#dd7e6b    
 
 
-          pro_bom_item_substitute --&gt; "0..1" lib_part: part 
-          click pro_bom_item_substitute href "../../classes/pro_bom_item_substitute/"
+          pro_BomRelease --&gt; "*" lib_part: parts 
+          click pro_BomRelease href "../../classes/pro_BomRelease/"
+
+
+
+
+
+
+
+
+
+  class pro_BomItemAlternate["BOM Item Alternate"]
+
+
+
+      style pro_BomItemAlternate fill:#dd7e6b    
+
+
+          pro_BomItemAlternate --&gt; "0..1" lib_part: part 
+          click pro_BomItemAlternate href "../../classes/pro_BomItemAlternate/"
+
+
+
+
+
+
+  class pro_BomItemSubstitute["BOM Item Substitute"]
+
+
+
+      style pro_BomItemSubstitute fill:#dd7e6b    
+
+
+          pro_BomItemSubstitute --&gt; "0..1" lib_part: part 
+          click pro_BomItemSubstitute href "../../classes/pro_BomItemSubstitute/"
 
 
 
@@ -439,7 +439,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../slots/id">id</a></td>
+<td><a href="../../slots/core_id">id</a></td>
 <td><code>1</code></td>
 <td><a href="../../types/GRID/">GRID</a></td>
 <td>Globally unique identifier across the whole platform.</td>

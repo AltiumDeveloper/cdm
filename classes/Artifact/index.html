@@ -457,15 +457,15 @@
         click des_manufacturing_package href "../../classes/des_manufacturing_package/"
 
 
-  class dm_fullstack_device_model["FullStackDeviceModel"]
+  class dm_FullStackDeviceModel["FullStackDeviceModel"]
 
 
 
-      style dm_fullstack_device_model fill:#6fa8dc    
+      style dm_FullStackDeviceModel fill:#6fa8dc    
 
 
-        Artifact &lt;|-- dm_fullstack_device_model
-        click dm_fullstack_device_model href "../../classes/dm_fullstack_device_model/"
+        Artifact &lt;|-- dm_FullStackDeviceModel
+        click dm_FullStackDeviceModel href "../../classes/dm_FullStackDeviceModel/"
 
 
   class lib_component["Component"]
@@ -479,15 +479,15 @@
         click lib_component href "../../classes/lib_component/"
 
 
-  class lib_component_revision["Component Revision"]
+  class lib_ComponentRevision["Component Revision"]
 
 
 
-      style lib_component_revision fill:#ffe599    
+      style lib_ComponentRevision fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_component_revision
-        click lib_component_revision href "../../classes/lib_component_revision/"
+        Artifact &lt;|-- lib_ComponentRevision
+        click lib_ComponentRevision href "../../classes/lib_ComponentRevision/"
 
 
   class lib_component_template["Component Template"]
@@ -666,15 +666,15 @@
         click lib_pcb_snippet_revision href "../../classes/lib_pcb_snippet_revision/"
 
 
-  class pro_bom_release["BOM Release"]
+  class pro_BomRelease["BOM Release"]
 
 
 
-      style pro_bom_release fill:#dd7e6b    
+      style pro_BomRelease fill:#dd7e6b    
 
 
-        Artifact &lt;|-- pro_bom_release
-        click pro_bom_release href "../../classes/pro_bom_release/"
+        Artifact &lt;|-- pro_BomRelease
+        click pro_BomRelease href "../../classes/pro_BomRelease/"
 
 
   class sup_part["Part"]
@@ -831,17 +831,6 @@
         click sft_build_artifact href "../../classes/sft_build_artifact/"
 
 
-  class sft_bom["Software BOM"]
-
-
-
-      style sft_bom fill:#3c78d8    
-
-
-        Artifact &lt;|-- sft_bom
-        click sft_bom href "../../classes/sft_bom/"
-
-
   class req_requirement["Requirement"]
 
 
@@ -918,9 +907,9 @@
 <li><a href="../des_project_template/">des_project_template</a></li>
 <li><a href="../des_project_template_revision/">des_project_template_revision</a> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
 <li><a href="../des_manufacturing_package/">des_manufacturing_package</a></li>
-<li><a href="../dm_fullstack_device_model/">dm_fullstack_device_model</a></li>
+<li><a href="../dm_FullStackDeviceModel/">dm_FullStackDeviceModel</a></li>
 <li><a href="../lib_component/">lib_component</a></li>
-<li><a href="../lib_component_revision/">lib_component_revision</a> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
+<li><a href="../lib_ComponentRevision/">lib_ComponentRevision</a> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
 <li><a href="../lib_component_template/">lib_component_template</a></li>
 <li><a href="../lib_component_template_revision/">lib_component_template_revision</a> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
 <li><a href="../lib_symbol/">lib_symbol</a></li>
@@ -937,7 +926,7 @@
 <li><a href="../lib_sch_snippet_revision/">lib_sch_snippet_revision</a> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
 <li><a href="../lib_pcb_snippet/">lib_pcb_snippet</a></li>
 <li><a href="../lib_pcb_snippet_revision/">lib_pcb_snippet_revision</a> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
-<li><a href="../pro_bom_release/">pro_bom_release</a> [ <a href="../pro_bom/">pro_bom</a> <a href="../HasLifecycle/">HasLifecycle</a>]</li>
+<li><a href="../pro_BomRelease/">pro_BomRelease</a> [ <a href="../pro_Bom/">pro_Bom</a> <a href="../HasLifecycle/">HasLifecycle</a>]</li>
 <li><a href="../sup_part/">sup_part</a></li>
 <li><a href="../sup_offer/">sup_offer</a></li>
 <li><a href="../sup_company/">sup_company</a></li>
@@ -952,7 +941,6 @@
 <li><a href="../sft_device_configuration_revision/">sft_device_configuration_revision</a></li>
 <li><a href="../sft_ai_model/">sft_ai_model</a> [ <a href="../SolutionItem/">SolutionItem</a>]</li>
 <li><a href="../sft_build_artifact/">sft_build_artifact</a></li>
-<li><a href="../sft_bom/">sft_bom</a></li>
 <li><a href="../req_requirement/">req_requirement</a></li>
 <li><a href="../req_requirement_revision/">req_requirement_revision</a> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
 <li><a href="../req_requirement_specification/">req_requirement_specification</a></li>
@@ -975,7 +963,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../slots/id">id</a></td>
+<td><a href="../../slots/core_id">id</a></td>
 <td><code>1</code></td>
 <td><a href="../../types/GRID/">GRID</a></td>
 <td>Globally unique identifier across the whole platform.</td>

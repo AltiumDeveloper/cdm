@@ -193,8 +193,8 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="addresssegment">AddressSegment</h1>
-<p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/device-model/AddressSegment">https://w3id.org/altium/cdm/device-model/AddressSegment</a></p>
-<p class="page-subtitle">Bounded context: <a href="../../subsets/device_model/">device_model</a></p>
+<p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/deviceModel/AddressSegment">https://w3id.org/altium/cdm/deviceModel/AddressSegment</a></p>
+<p class="page-subtitle">Bounded context: <a href="../../subsets/deviceModel/">deviceModel</a></p>
 <p>A contiguous region of the device's memory map.</p>
 <div class="grid">
 <div class="admonition quote">
@@ -324,7 +324,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Resource/">Resource</a><ul>
-<li><strong>dm_address_segment</strong> [ <a href="../dm_has_address_range/">dm_has_address_range</a>]</li>
+<li><strong>dm_address_segment</strong> [ <a href="../dm_HasAddressRange/">dm_HasAddressRange</a>]</li>
 </ul>
 </li>
 </ul>
@@ -345,24 +345,24 @@
 <td><code>0..1</code></td>
 <td><a href="../../types/integer/">integer</a></td>
 <td>The base physical address of the memory region.</td>
-<td><a href="../dm_has_address_range/">dm_has_address_range</a></td>
+<td><a href="../dm_HasAddressRange/">dm_HasAddressRange</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/dm_HasAddressRange_upper_address">upperAddress</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../types/integer/">integer</a></td>
 <td>The exclusive upper bound of the memory region.</td>
-<td><a href="../dm_has_address_range/">dm_has_address_range</a></td>
+<td><a href="../dm_HasAddressRange/">dm_HasAddressRange</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/dm_HasAddressRange_size">size</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../types/integer/">integer</a></td>
 <td>The total span of the memory region in bytes.</td>
-<td><a href="../dm_has_address_range/">dm_has_address_range</a></td>
+<td><a href="../dm_HasAddressRange/">dm_HasAddressRange</a></td>
 </tr>
 <tr>
-<td><a href="../../slots/description">description</a></td>
+<td><a href="../../slots/core_description">description</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../types/string/">string</a></td>
 <td>A brief description of the entity.</td>

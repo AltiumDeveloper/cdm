@@ -238,26 +238,26 @@
         click plt_lifecycle_stage href "../../classes/plt_lifecycle_stage/"
 
 
-  class plt_lifecycle_state["Lifecycle State"]
+  class plt_LifecycleState["Lifecycle State"]
 
 
 
-      style plt_lifecycle_state fill:#cccccc    
+      style plt_LifecycleState fill:#cccccc    
 
 
-        Resource &lt;|-- plt_lifecycle_state
-        click plt_lifecycle_state href "../../classes/plt_lifecycle_state/"
+        Resource &lt;|-- plt_LifecycleState
+        click plt_LifecycleState href "../../classes/plt_LifecycleState/"
 
 
-  class col_comment["Comment"]
+  class col_Comment["Comment"]
 
 
 
-      style col_comment fill:#6fa8dc    
+      style col_Comment fill:#6fa8dc    
 
 
-        Resource &lt;|-- col_comment
-        click col_comment href "../../classes/col_comment/"
+        Resource &lt;|-- col_Comment
+        click col_Comment href "../../classes/col_Comment/"
 
 
   class des_project_parameter["Project Parameter"]
@@ -579,103 +579,147 @@
         click lib_part_choice href "../../classes/lib_part_choice/"
 
 
-  class pro_bom_item["BOM Item"]
+  class pro_BomItem["BOM Item"]
 
 
 
-      style pro_bom_item fill:#dd7e6b    
+      style pro_BomItem fill:#dd7e6b    
 
 
-        Resource &lt;|-- pro_bom_item
-        click pro_bom_item href "../../classes/pro_bom_item/"
+        Resource &lt;|-- pro_BomItem
+        click pro_BomItem href "../../classes/pro_BomItem/"
 
 
-  class pro_bom_item_element["BOM Item Element"]
-
-
-
-      style pro_bom_item_element fill:#dd7e6b    
-
-
-        Resource &lt;|-- pro_bom_item_element
-        click pro_bom_item_element href "../../classes/pro_bom_item_element/"
-
-
-  class pro_bom_issue["BOM Issue"]
+  class pro_BomItemElement["BOM Item Element"]
 
 
 
-      style pro_bom_issue fill:#dd7e6b    
+      style pro_BomItemElement fill:#dd7e6b    
 
 
-        Resource &lt;|-- pro_bom_issue
-        click pro_bom_issue href "../../classes/pro_bom_issue/"
+        Resource &lt;|-- pro_BomItemElement
+        click pro_BomItemElement href "../../classes/pro_BomItemElement/"
 
 
-  class sys_functional_block["Functional Block"]
-
-
-
-      style sys_functional_block fill:#f1c232    
-
-
-        Resource &lt;|-- sys_functional_block
-        click sys_functional_block href "../../classes/sys_functional_block/"
-
-
-  class sys_port["Port"]
+  class pro_BomIssue["BOM Issue"]
 
 
 
-      style sys_port fill:#f1c232    
+      style pro_BomIssue fill:#dd7e6b    
 
 
-        Resource &lt;|-- sys_port
-        click sys_port href "../../classes/sys_port/"
+        Resource &lt;|-- pro_BomIssue
+        click pro_BomIssue href "../../classes/pro_BomIssue/"
 
 
-  class sys_key_component["Key Component"]
-
-
-
-      style sys_key_component fill:#f1c232    
-
-
-        Resource &lt;|-- sys_key_component
-        click sys_key_component href "../../classes/sys_key_component/"
-
-
-  class sys_software_block["Software Block"]
+  class sft_PinAssignmentModel["Device pin assgnment"]
 
 
 
-      style sys_software_block fill:#f1c232    
+      style sft_PinAssignmentModel fill:#3c78d8    
 
 
-        Resource &lt;|-- sys_software_block
-        click sys_software_block href "../../classes/sys_software_block/"
+        Resource &lt;|-- sft_PinAssignmentModel
+        click sft_PinAssignmentModel href "../../classes/sft_PinAssignmentModel/"
 
 
-  class sys_software_component["Software Component"]
-
-
-
-      style sys_software_component fill:#f1c232    
-
-
-        Resource &lt;|-- sys_software_component
-        click sys_software_component href "../../classes/sys_software_component/"
-
-
-  class sys_port_association["Port Association"]
+  class sft_PinAssignment["Device pin assgnment"]
 
 
 
-      style sys_port_association fill:#f1c232    
+      style sft_PinAssignment fill:#3c78d8    
 
 
-        Resource &lt;|-- sys_port_association
-        click sys_port_association href "../../classes/sys_port_association/"
+        Resource &lt;|-- sft_PinAssignment
+        click sft_PinAssignment href "../../classes/sft_PinAssignment/"
+
+
+  class system_FunctionalBlock["Functional Block"]
+
+
+
+      style system_FunctionalBlock fill:#f1c232    
+
+
+        Resource &lt;|-- system_FunctionalBlock
+        click system_FunctionalBlock href "../../classes/system_FunctionalBlock/"
+
+
+  class system_Port["Port"]
+
+
+
+      style system_Port fill:#f1c232    
+
+
+        Resource &lt;|-- system_Port
+        click system_Port href "../../classes/system_Port/"
+
+
+  class system_KeyComponent["Key Component"]
+
+
+
+      style system_KeyComponent fill:#f1c232    
+
+
+        Resource &lt;|-- system_KeyComponent
+        click system_KeyComponent href "../../classes/system_KeyComponent/"
+
+
+  class system_SoftwareComponent["Software Component"]
+
+
+
+      style system_SoftwareComponent fill:#f1c232    
+
+
+        Resource &lt;|-- system_SoftwareComponent
+        click system_SoftwareComponent href "../../classes/system_SoftwareComponent/"
+
+
+  class system_PortAssociation["Port Association"]
+
+
+
+      style system_PortAssociation fill:#f1c232    
+
+
+        Resource &lt;|-- system_PortAssociation
+        click system_PortAssociation href "../../classes/system_PortAssociation/"
+
+
+  class system_Connection["Connection"]
+
+
+
+      style system_Connection fill:#f1c232    
+
+
+        Resource &lt;|-- system_Connection
+        click system_Connection href "../../classes/system_Connection/"
+
+
+  class system_Endpoint["Connection"]
+
+
+
+      style system_Endpoint fill:#f1c232    
+
+
+        Resource &lt;|-- system_Endpoint
+        click system_Endpoint href "../../classes/system_Endpoint/"
+
+
+  class system_Parameter["Parameter"]
+
+
+
+      style system_Parameter fill:#f1c232    
+
+
+        Resource &lt;|-- system_Parameter
+        click system_Parameter href "../../classes/system_Parameter/"
 
 
   class req_artifact["Requirement Artifact"]
@@ -697,14 +741,14 @@
 <ul>
 <li><strong>Resource</strong><ul>
 <li><a href="../plt_lifecycle_stage/">plt_lifecycle_stage</a></li>
-<li><a href="../plt_lifecycle_state/">plt_lifecycle_state</a></li>
-<li><a href="../col_comment/">col_comment</a></li>
+<li><a href="../plt_LifecycleState/">plt_LifecycleState</a></li>
+<li><a href="../col_Comment/">col_Comment</a></li>
 <li><a href="../des_project_parameter/">des_project_parameter</a></li>
 <li><a href="../des_project_variant/">des_project_variant</a></li>
 <li><a href="../dm_processor/">dm_processor</a></li>
 <li><a href="../dm_address_map/">dm_address_map</a></li>
-<li><a href="../dm_address_segment/">dm_address_segment</a> [ <a href="../dm_has_address_range/">dm_has_address_range</a>]</li>
-<li><a href="../dm_address_block/">dm_address_block</a> [ <a href="../dm_has_address_range/">dm_has_address_range</a>]</li>
+<li><a href="../dm_address_segment/">dm_address_segment</a> [ <a href="../dm_HasAddressRange/">dm_HasAddressRange</a>]</li>
+<li><a href="../dm_address_block/">dm_address_block</a> [ <a href="../dm_HasAddressRange/">dm_HasAddressRange</a>]</li>
 <li><a href="../dm_memory/">dm_memory</a></li>
 <li><a href="../dm_register/">dm_register</a></li>
 <li><a href="../dm_register_field/">dm_register_field</a></li>
@@ -728,15 +772,19 @@
 <li><a href="../lib_component_parameter/">lib_component_parameter</a></li>
 <li><a href="../lib_part_choice_list/">lib_part_choice_list</a></li>
 <li><a href="../lib_part_choice/">lib_part_choice</a></li>
-<li><a href="../pro_bom_item/">pro_bom_item</a></li>
-<li><a href="../pro_bom_item_element/">pro_bom_item_element</a></li>
-<li><a href="../pro_bom_issue/">pro_bom_issue</a></li>
-<li><a href="../sys_functional_block/">sys_functional_block</a></li>
-<li><a href="../sys_port/">sys_port</a></li>
-<li><a href="../sys_key_component/">sys_key_component</a></li>
-<li><a href="../sys_software_block/">sys_software_block</a></li>
-<li><a href="../sys_software_component/">sys_software_component</a></li>
-<li><a href="../sys_port_association/">sys_port_association</a></li>
+<li><a href="../pro_BomItem/">pro_BomItem</a></li>
+<li><a href="../pro_BomItemElement/">pro_BomItemElement</a></li>
+<li><a href="../pro_BomIssue/">pro_BomIssue</a></li>
+<li><a href="../sft_PinAssignmentModel/">sft_PinAssignmentModel</a></li>
+<li><a href="../sft_PinAssignment/">sft_PinAssignment</a></li>
+<li><a href="../system_FunctionalBlock/">system_FunctionalBlock</a></li>
+<li><a href="../system_Port/">system_Port</a></li>
+<li><a href="../system_KeyComponent/">system_KeyComponent</a></li>
+<li><a href="../system_SoftwareComponent/">system_SoftwareComponent</a></li>
+<li><a href="../system_PortAssociation/">system_PortAssociation</a></li>
+<li><a href="../system_Connection/">system_Connection</a></li>
+<li><a href="../system_Endpoint/">system_Endpoint</a></li>
+<li><a href="../system_Parameter/">system_Parameter</a></li>
 <li><a href="../req_artifact/">req_artifact</a></li>
 </ul>
 </li>

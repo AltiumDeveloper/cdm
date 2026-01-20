@@ -270,24 +270,24 @@
         click sft_ai_model href "../../classes/sft_ai_model/"
 
 
-  class sys_esd_document["ESD Document"]
+  class system_ESDDocument["ESD Document"]
 
 
 
-      style sys_esd_document fill:#f1c232    
+      style system_ESDDocument fill:#f1c232    
 
 
-        SolutionItem &lt;|-- sys_esd_document
-        click sys_esd_document href "../../classes/sys_esd_document/"
-
-
-
-
+        SolutionItem &lt;|-- system_ESDDocument
+        click system_ESDDocument href "../../classes/system_ESDDocument/"
 
 
 
 
-      SolutionItem --&gt; "*" plt_solution : partOfSolution
+
+
+
+
+      SolutionItem --&gt; "*" plt_solution : part of solution
       click plt_solution href "../../classes/plt_solution/"
 
 
@@ -325,7 +325,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../slots/plt_part_of_solution">partOfSolution</a></td>
+<td><a href="../../slots/plt_part_of_solution">part of solution</a></td>
 <td><code>*</code></td>
 <td><a href="../plt_solution/">Solution</a></td>
 <td>None</td>
@@ -355,7 +355,7 @@
 <td>AI model artifact in context of a workspace</td>
 </tr>
 <tr>
-<td><a href="../sys_esd_document/">sys_esd_document</a></td>
+<td><a href="../system_ESDDocument/">system_ESDDocument</a></td>
 <td>TBD</td>
 </tr>
 </tbody>

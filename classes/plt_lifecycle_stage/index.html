@@ -196,6 +196,12 @@
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/platform/LifecycleStage">https://w3id.org/altium/cdm/platform/LifecycleStage</a></p>
 <p class="page-subtitle">Bounded context: <a href="../../subsets/platform/">platform</a></p>
 <p>TBD</p>
+<div class="admonition info">
+<p class="admonition-title">Documentation</p>
+<ul>
+<li><a href="https://www.altium.com/documentation/altium-365/lifecycle-management">Lifecycle Management</a></li>
+</ul>
+</div>
 <div class="grid">
 <div class="admonition quote">
 <p class="admonition-title">Platform API</p>
@@ -244,15 +250,15 @@
 
 
 
-      plt_lifecycle_stage --&gt; "1..*" plt_lifecycle_state : states
-      click plt_lifecycle_state href "../../classes/plt_lifecycle_state/"
+      plt_lifecycle_stage --&gt; "1..*" plt_LifecycleState : states
+      click plt_LifecycleState href "../../classes/plt_LifecycleState/"
 
 
-  class plt_lifecycle_state["Lifecycle State"]
+  class plt_LifecycleState["Lifecycle State"]
 
 
 
-      style plt_lifecycle_state fill:#cccccc    
+      style plt_LifecycleState fill:#cccccc    
 
 
 
@@ -308,7 +314,7 @@
 <tr>
 <td><a href="../../slots/LifecycleStage_states">states</a></td>
 <td><code>1..*</code></td>
-<td><a href="../plt_lifecycle_state/">Lifecycle State</a></td>
+<td><a href="../plt_LifecycleState/">Lifecycle State</a></td>
 <td>TBD</td>
 <td>direct</td>
 </tr>
