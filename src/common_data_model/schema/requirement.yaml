@@ -90,13 +90,13 @@ classes:
         required: false
         multivalued: true
     slots:
-      - revisions
+      - core_revisions
       - req_requirement_children
       - req_requirement_satisfied_by_artifacts
       - req_requirement_verified_by_activities
       - req_requirement_traced_from_sources
     slot_usage:
-      revisions:
+      core_revisions:
         range: req_requirement_revision
 
   req_requirement_revision:
@@ -124,10 +124,10 @@ classes:
         required: false
         multivalued: false
     slots:
-      - revision_of
+      - core_revisionOf
       - req_revision_derives_from_change
     slot_usage:
-      revision_of:
+      core_revisionOf:
         range: req_requirement
 
   req_requirement_specification:
@@ -160,12 +160,12 @@ classes:
         required: false
         multivalued: false
     slots:
-      - revisions
+      - core_revisions
       - req_specification_includes_requirements
       - req_specification_targets_projects
       - req_specification_inputs
     slot_usage:
-      revisions:
+      core_revisions:
         range: req_requirement_baseline
 
   req_requirement_baseline:
@@ -323,7 +323,7 @@ classes:
 
 slots:
   req_requirement_children:
-    is_a: has_part
+    is_a: core_hasPart
     slot_uri: req:Requirement_children
     title: children
     description: Requirements that refine or decompose this requirement.
@@ -333,7 +333,7 @@ slots:
     inverse: req_requirement_parent
 
   req_requirement_parent:
-    is_a: part_of
+    is_a: core_partOf
     slot_uri: req:Requirement_parent
     title: parent
     description: Higher-level requirement that allocates scope to this requirement.
@@ -374,7 +374,7 @@ slots:
     required: false
 
   req_specification_includes_requirements:
-    is_a: has_part
+    is_a: core_hasPart
     slot_uri: req:RequirementSpecification_requirements
     title: requirements
     description: Requirements curated under this specification.
@@ -407,7 +407,7 @@ slots:
     required: true
 
   req_baseline_includes_requirements:
-    is_a: has_part
+    is_a: core_hasPart
     slot_uri: req:RequirementBaseline_includesRequirements
     title: includesRequirements
     description: Specific requirements frozen into this baseline.
@@ -480,7 +480,7 @@ slots:
     required: false
 
   req_project_specifications:
-    is_a: has_part
+    is_a: core_hasPart
     slot_uri: req:Project_specifications
     title: specifications
     description: Specifications authored or curated within this requirements project.
@@ -489,7 +489,7 @@ slots:
     required: true
 
   req_project_baselines:
-    is_a: has_part
+    is_a: core_hasPart
     slot_uri: req:Project_baselines
     title: baselines
     description: Baselines approved under this project to govern execution.

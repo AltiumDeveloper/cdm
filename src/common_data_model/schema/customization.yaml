@@ -30,9 +30,9 @@ classes:
       grid: grid:workspace:{workspace-id}:scripts:script/{id}
       platformAPI: GloScrScript
     slots:
-      - revisions
+      - core_revisions
     slot_usage:
-      revisions:
+      core_revisions:
         range: cus_script_version
 
   cus_script_version:

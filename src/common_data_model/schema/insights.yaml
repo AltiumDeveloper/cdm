@@ -19,7 +19,7 @@ subsets:
 
 classes:
 
-  ins_insight:
+  ins_Insight:
     is_a: Activity
     in_subset: insights
     abstract: true
@@ -28,10 +28,10 @@ classes:
     description: >- 
       TBD
     slots:
-      - ins_insight_tasks
+      - ins_Insight#tasks
 
-  ins_part_insight:
-    is_a: ins_insight
+  ins_PartInsight:
+    is_a: ins_Insight
     in_subset: insights
     class_uri: ins:PartInsight
     title: Part Insight
@@ -41,51 +41,55 @@ classes:
       grid: grid:workspace:{workspace-id}:insights:insight/{id}
       platformAPI: DesWorkspaceInsInsight
     slots:
-      - ins_part_insight_part
-      - ins_part_insight_informed_by
-      - ins_part_insight_occurs_in
+      - ins_PartInsight#part
+      - ins_PartInsight#informedBy
+      - ins_PartInsight#occursIn
 
 slots:
 
-  ins_insight_tasks: 
-    is_a: informs
-    slot_uri: ins:Insight_tasks
+  ins_Insight#tasks: 
+    is_a: core_informs
+    slot_uri: ins:Insight#tasks
+    alias: tasks
     title: tasks
     description: Task associated with this insight
-    range: col_task
+    range: col_Task
     required: false
     multivalued: true
 
-  ins_part_insight_part: 
-    is_a: informs
-    slot_uri: ins:PartInsight_part
+  ins_PartInsight#part:
+    is_a: core_informs
+    slot_uri: ins:PartInsight#part
+    alias: part
     title: part
     description: Part associated with this insight
     range: lib_part
     required: true
     multivalued: false
 
-  ins_part_insight_informed_by: 
-    is_a: informed_by
-    slot_uri: ins:PartInsight_informedBy
+  ins_PartInsight#informedBy: 
+    is_a: core_informedBy
+    slot_uri: ins:PartInsight#informedBy
+    alias: informedBy
     title: informed by
     description: Entities associated with this insight
     range: Any
     any_of:
-      - range: pro_bom_wip
+      - range: pro_BomWIP
       - range: des_project
     required: false
     multivalued: true
 
-  ins_part_insight_occurs_in: 
-    is_a: occurs_in
-    slot_uri: ins:PartInsight_occursIn
+  ins_PartInsight#occursIn: 
+    is_a: core_occursIn
+    slot_uri: ins:PartInsight#occursIn
+    alias: occursIn
     title: occurs in
     description: Entities associated with this insight
     range: Any
     any_of:
-      - range: pro_bom_release
+      - range: pro_BomRelease
       - range: des_project_release
-      - range: lib_component_revision
+      - range: lib_ComponentRevision
     required: false
     multivalued: true

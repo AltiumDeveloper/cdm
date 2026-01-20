@@ -19,6 +19,7 @@ generator_args:
     mergeimports: true
   jsonschema:
     mergeimports: true
+    title_from: title
   jsonldcontext:
     mergeimports: true
   python:

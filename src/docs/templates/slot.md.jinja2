@@ -21,7 +21,7 @@
     {%- endif -%}
 {% endmacro %}
 
-# Slot: {{ title }} {% if element.deprecated %} <span style="color: red;"><strong> (DEPRECATED) </strong></span> {% endif %}
+# Field: {{ title }} {% if element.deprecated %} <span style="color: red;"><strong> (DEPRECATED) </strong></span> {% endif %}
 
 {%- if header -%}
 {{ header }}
@@ -38,9 +38,11 @@ _{{ element_description_line }}_
 * __NOTE__: this is an abstract slot and should not be populated directly
 {% endif %}
 
-URI: {{ gen.uri_link(element) }}
+{% set iri = schemaview.get_uri(element, true, true, false, false) %}
+IRI: [{{ iri }}]({{ iri }})
+{ .page-subtitle }
 
-{%- if element.alias %}
+{% if element.alias %}
 Alias: {{ element.alias }}
 {% endif -%}
 
@@ -61,7 +63,8 @@ Alias: {{ element.alias }}
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 {% for c in classes_by_slot -%}
-| {{ gen.link(c) }} | {{ schemaview.get_class(c).description|enshorten }} | {% if c in schemaview.get_classes_modifying_slot(element) %} yes {% else %} no {% endif %} |
+{%- set class_element = schemaview.get_class(c) -%}
+| [{{ class_element.title if class_element.title else gen.name(class_element) }} ]( ../classes/{{ gen.name(class_element)}}.md ) | {{ schemaview.get_class(c).description|enshorten }} | {% if c in schemaview.get_classes_modifying_slot(element) %} yes {% else %} no {% endif %} |
 {% endfor %}
 
 {% endif %}

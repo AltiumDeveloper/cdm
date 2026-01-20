@@ -13,7 +13,11 @@ default_prefix: core
 
 enums:
 
+  Enumeration:
+
   Maturity:
+    is_a: Enumeration
+    enum_uri: core:Maturity
     implements:
       - owl:NamedIndividual
     permissible_values:
@@ -22,6 +26,8 @@ enums:
       OBSOLETE:
 
   VaultContentType:
+    is_a: Enumeration
+    enum_uri: core:VaultContentType
     implements:
       - owl:NamedIndividual
     permissible_values:
@@ -47,6 +53,9 @@ classes:
     instantiates:
       - WithPlatformAPI
 
+  Event:
+    abstract: true
+
   Entity:
     abstract: true
     instantiates:
@@ -54,7 +63,7 @@ classes:
       - WithMaturity
       - WithPlatformAPI
     slots:
-      - id
+      - core_id
 
   Artifact:
     abstract: true
@@ -119,104 +128,184 @@ types:
     description: Arbitrary binary object
 
 slots:
-  id:
+
+  ### commont slots to be reused across bounded contexts 
+
+  core_id:
+    slot_uri: core:id
+    alias: id
+    title: id
     identifier: true
     range: GRID
     description: Globally unique identifier across the whole platform.
 
-  localId:
+  core_localId:
+    slot_uri: core:localId
+    alias: id
     title: id
     identifier: true
     range: string
     description: Local unique identifier within a given context.
 
-  description:
+  core_description:
+    slot_uri: core:description
+    alias: description
+    title: description
     range: string
     description: A brief description of the entity.
 
+  core_name:
+    slot_uri: core:name
+    alias: name
+    title: name
+    range: string
+    description: A short name of the entity.
+
   ### relation types framework
 
-  derives_into:
+  core_derivesInto:
     abstract: true
+    slot_uri: core:derivesInto
+    alias: derivesInto
+    title: derives into
     domain: Artifact
     range: Artifact
 
-  derived_from:
+  core_derivedFrom:
     abstract: true
+    slot_uri: core:derivedFrom
+    alias: derivedFrom
+    title: derived from
     domain: Artifact
     range: Artifact
-    inverse: derives_into
+    inverse: core_derivesInto
 
-  part_of:
+  core_partOf:
     abstract: true
+    slot_uri: core:partOf
+    alias: partOf
+    title: part of
     domain: Entity
     range: Entity
     transitive: true
 
-  has_part:
+  core_hasPart:
     abstract: true
+    slot_uri: core:hasPart
+    alias: hasPart
+    title: has part
     domain: Entity
     range: Entity
     transitive: true
-    inverse: part_of
+    inverse: core_partOf
 
-  input_of:
+  core_inputOf:
     abstract: true
+    slot_uri: core:inputOf
+    alias: inputOf
+    title: input of
     domain: Artifact
     range: Activity
 
-  has_input:
+  core_hasInput:
     abstract: true
+    slot_uri: core:hasInput
+    alias: hasInput
+    title: has input
     domain: Activity
     range: Artifact
-    inverse: input_of
+    inverse: core_inputOf
 
-  output_of:
+  core_outputOf:
     abstract: true
+    slot_uri: core:outputOf
+    alias: outputOf
+    title: output of
     domain: Artifact
     range: Activity
 
-  has_output:
+  core_hasOutput:
     abstract: true
+    slot_uri: core:hasOutput
+    alias: hasOutput
+    title: has output
     domain: Activity
     range: Artifact
-    inverse: output_of
+    inverse: core_outputOf
 
-  informed_by:
+  core_informedBy:
     abstract: true
+    slot_uri: core:informedBy
+    alias: informedBy
+    title: informed by
     domain: Activity
     range: Activity
 
-  informs:
+  core_informs:
     abstract: true
+    slot_uri: core:informs
+    alias: informs
+    title: informs
     domain: Activity
     range: Activity
-    inverse: informed_by
+    inverse: core_informedBy
 
-  occurs_in:
+  core_occursIn:
     abstract: true
+    slot_uri: core:occursIn
+    alias: occursIn
+    title: occurs in
     domain: Activity
     range: Artifact
 
   ### useful relations
 
-  revision_of:
-    is_a: derived_from
+  core_implementedBy:
+    is_a: core_informs
+    slot_uri: core:implementedBy
+    alias: implementedBy
+    title: implemented by
+    domain: Activity
+    range: Activity
+
+  core_implements:
+    is_a: core_informedBy
+    slot_uri: core:implements
+    alias: implements
+    title: implements
+    domain: Activity
+    range: Activity
+    inverse: core_implementedBy
+
+  core_revisionOf:
+    is_a: core_derivedFrom
+    slot_uri: core:revisionOf
+    alias: revisionOf
+    title: revision of
     required: true
     multivalued: false
 
-  revisions:
-    is_a: derives_into
+  core_revisions:
+    is_a: core_derivesInto
+    slot_uri: core:revisions
+    alias: revisions
+    title: revisions
     multivalued: true
-    inverse: revision_of
+    inverse: core_revisionOf
 
-  release_of:
-    is_a: output_of
+  core_releaseOf:
+    is_a: core_outputOf
+    slot_uri: core:releaseOf
+    alias: releaseOf
+    title: release of
     required: true
     multivalued: false 
 
-  releases:
-    is_a: has_output
+  core_releases:
+    is_a: core_hasOutput
+    slot_uri: core:releases
+    alias: releases
+    title: releases
     required: false
     multivalued: true
-    inverse: release_of
+    inverse: core_releaseOf

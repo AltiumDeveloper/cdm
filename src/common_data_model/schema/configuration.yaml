@@ -46,9 +46,9 @@ classes:
     annotations:
       grid: 
     slots:
-      - revisions
+      - core_revisions
     slot_usage:
-      revisions:
+      core_revisions:
         range: con_schematic_template_revision
 
   con_schematic_template_revision:
@@ -66,7 +66,7 @@ classes:
 slots:
 
   con_env_configuration_schematic_templates:
-    is_a: has_part
+    is_a: core_hasPart
     title: schematic_templates
     range: con_schematic_template_revision
     multivalued: true

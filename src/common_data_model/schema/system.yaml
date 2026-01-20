@@ -19,119 +19,317 @@ subsets:
     annotations:
       style: "fill:#f1c232"
 
+enums:
+
+  system_PortType:
+    is_a: Enumeration
+    in_subset: system
+    enum_uri: sys:PortType
+    implements:
+      - owl:NamedIndividual
+    permissible_values:
+      UART:
+      GPIO:
+      I2C:
+      PWM:
+      ADC:
+      SPI:
+      CAN:
+      USB:
+      DAC:
+      DISPLAY:
+      ETHERNET:
+      IRQ:
+      CAMERA:
+      AUDIO:
+      CD/MMC:
+      # ???
+      POWER_MCU:
+
 classes:
 
-  sys_esd_document:
+  system_ESDDocument:
     is_a: Activity
-    in_subset: system 
+    in_subset: system
     class_uri: sys:ESDDocument
     title: ESD Document
     description: TBD
     annotations:
       grid: grid:workspace:{workspace-id}:system-design:esd/{id}
+      platformAPI: SysEsdDocument
     mixins:
       - SolutionItem
-    attributes:
-      functionalBlocks:
-        is_a: has_part
-        range: sys_functional_block
-        multivalued: true
-        required: false
+    slots:
+      - system_parameters
+      - system_ESDDocument_functionalBlocks
+      - system_ESDDocument_connections
 
-  sys_functional_block:
+  system_FunctionalBlock:
     is_a: Resource
     in_subset: system 
     class_uri: sys:FunctionalBlock
     title: Functional Block
-    description: TBD
-    attributes:
-      name:
-      ports:  
-        is_a: has_part
-        range: sys_port
-        multivalued: true
-        required: false
-      keyComponents:
-        is_a: has_part
-        range: sys_key_component
-        multivalued: true
-        required: false
-      softwareBlocks:
-        is_a: has_part
-        range: sys_software_block
-        multivalued: true
-        required: false
+    description: >-
+      Represents a logical block within a PCB design (e.g., MCU subsystem, LED driver block), including parameters, 
+      key components, ports, and associations.
+    slots:
+      - core_localId
+      - core_name
+      - core_implementedBy
+      - system_parameters
+      - system_FunctionalBlock#portAssociations
+      - system_FunctionalBlock_ports
+      - system_FunctionalBlock_keyComponents
+      - system_FunctionalBlock_softwareComponents
+    slot_usage:
+      core_implementedBy:
+        range: Any
+        any_of:
+          - range: des_project
+          - range: sft_software_project
+      system_FunctionalBlock#portAssociations:
+        inlined: true
+        inlined_as_list: true
 
-  sys_port:
+  system_Port:
     is_a: Resource
     in_subset: system 
     class_uri: sys:Port
     title: Port
     description: TBD
-    attributes:
-      name:  
-      description:
+    slots:
+      - core_localId
+      - core_name
+      - system_parameters
+      - system_Port_association
 
-  sys_key_component:
+  system_KeyComponent:
     is_a: Resource
     in_subset: system
     class_uri: sys:KeyComponent
     title: Key Component
     description: TBD
     slots:
-      - realization
+      - core_localId
+      - core_name
+      - system_parameters
+      - system_KeyComponent#softwareComponents
 
-  sys_software_block:
-    is_a: Resource
-    in_subset: system
-    class_uri: sys:SoftwareBlock
-    title: Software Block
-    description: Functional and abstract in nature. A container for Software Components.
-    instantiates:
-      - WithRFLP
-    annotations:
-      rflp: F
-    attributes:
-      softwareComponents:
-        range: sys_software_component
-        required: false
-        multivalued: true
-      associations:
-        range: sys_port_association
-        required: false
-        multivalued: true
-
-  sys_software_component:
+  system_SoftwareComponent:
     is_a: Resource
     in_subset: system
     class_uri: sys:SoftwareComponent
     title: Software Component
     description: Functional in nature, abstracted from but connected to logical implementation. 
+    slots:
+      - core_localId
+      - core_name
+      - system_parameters
+      - system_SoftwareComponent#portAssociations
+      - system_SoftwareComponent#keyComponent
+    slot_usage:
+      system_SoftwareComponent#portAssociations:
+        inlined: false
 
-  sys_port_association:
+  system_PortAssociation:
     is_a: Resource
     in_subset: system
     class_uri: sys:PortAssociation
     title: Port Association
     description: TBD
+    slots:
+      - core_localId
+      - system_PortAssociation_port
+      - system_PortAssociation_softwareComponent
+      - system_PortAssociation_portType
+
+
+  system_Connection:
+    is_a: Resource
+    in_subset: system
+    class_uri: sys:Connection
+    title: Connection
+    description: >-
+      TBD
+    slots:
+      - core_localId
+      - core_name
+      - system_parameters
+      - system_Connection#endpoints
+
+  system_Endpoint:
+    is_a: Resource
+    in_subset: system
+    class_uri: sys:Connection
+    title: Connection
+    description: >-
+      TBD
+    slots:
+      - system_Endpoint#functionalBlock
+      - system_Endpoint#port
+      
+  system_Parameter:
+    is_a: Resource
+    in_subset: system
+    class_uri: sys:Parameter
+    title: Parameter
+    description: >-
+      Name–value parameter associated with functional blocks, ports, or other system design resources.
     attributes:
-      port:
-        range: sys_port
+      system_Parameter_value:
+        alias: value
+        title: value
+        range: string
         required: true
-        multivalued: false
+    slots:
+      - core_localId
+      - core_name
+
 
 slots:
 
-  functionalBlocks:
-    range: sys_functional_block
+  system_ESDDocument_functionalBlocks:
+    slot_uri: sys:ESDDocument#functionalBlocks
+    alias: functionalBlocks
+    title: functional blocks
+    description: TBD
+    range: system_FunctionalBlock
     multivalued: true
     required: false
+    inlined: true
+    inlined_as_list: true
+  system_ESDDocument_connections:
+    slot_uri: sys:ESDDocument#connections
+    alias: connections
+    title: connections
+    range: system_Connection
+    multivalued: true
+    required: false
+    inlined: true
+    inlined_as_list: true
 
-  realization:
-    range: Any
-    any_of:
-      - range: sup_part
-      - range: sup_part_group
-      - range: sup_part_family
-    multivalued: false
+  system_FunctionalBlock_ports:  
+    slot_uri: sys:FunctionalBlock#ports
+    alias: ports
+    title: ports
+    range: system_Port
+    multivalued: true
+    required: false
+    inlined: true
+    inlined_as_list: true
+  system_FunctionalBlock_keyComponents:
+    slot_uri: sys:FunctionalBlock#keyComponents
+    alias: keyComponents
+    title: key components
+    range: system_KeyComponent
+    multivalued: true
+    required: false
+    inlined: true
+    inlined_as_list: true
+  system_FunctionalBlock_softwareComponents:
+    slot_uri: sys:FunctionalBlock#softwareComponents
+    alias: softwareComponents
+    title: software components
+    range: system_SoftwareComponent
+    multivalued: true
+    required: false
+    inlined: true
+    inlined_as_list: true
+  system_FunctionalBlock#portAssociations:
+    slot_uri: sys:FunctionalBlock#portAssociations
+    alias: portsAssociations
+    title: ports associations
+    range: system_PortAssociation
+    multivalued: true
+    required: false
+    inlined: true
+    inlined_as_list: true
+
+  system_SoftwareComponent#keyComponent:
+    slot_uri: sys:SoftwareComponent#keyComponent
+    alias: parentKeyComponentId
+    title: key component
+    range: system_KeyComponent
     required: true
+    multivalued: false
+  system_SoftwareComponent#portAssociations:
+    slot_uri: sys:SoftwareComponent#portAssociations
+    alias: portsAssociationsIds
+    title: port associations
+    range: system_PortAssociation
+    required: true
+    multivalued: true
+
+  system_KeyComponent#softwareComponents:
+    slot_uri: sys:KeyComponent#softwareComponents
+    alias: childSoftwareComponentsIds
+    title: software components
+    range: system_SoftwareComponent
+    required: false
+    multivalued: true
+
+  system_PortAssociation_port:
+    slot_uri: sys:PortAssociation#port
+    alias: portId
+    title: port
+    range: system_Port
+    required: true
+    multivalued: false
+  system_PortAssociation_softwareComponent:
+    slot_uri: sys:PortAssociation#softwareComponent
+    alias: softwareComponentId
+    title: software component
+    range: system_SoftwareComponent
+    required: true
+    multivalued: false
+  system_PortAssociation_portType:
+    slot_uri: sys:PortAssociation#portType
+    alias: portLibraryName
+    title: port type
+    range: system_PortType
+    required: true
+    multivalued: false
+
+  system_Port_association:
+    slot_uri: sys:Port#association
+    alias: associationId
+    title: association
+    range: system_PortAssociation
+    multivalued: false
+    required: false
+    inlined: false
+
+  system_Connection#endpoints:
+    slot_uri: sys:Connection#endpoints
+    alias: endpoints
+    title: endpoints
+    range: system_Endpoint
+    required: true
+    multivalued: true
+
+  system_Endpoint#functionalBlock:
+    slot_uri: sys:Endpoint#functionalBlock
+    alias: functionalBlockId
+    title: functional block
+    range: system_FunctionalBlock
+    required: true
+    multivalued: false
+
+  system_Endpoint#port:
+    slot_uri: sys:Endpoint#port
+    alias: portId
+    title: port
+    range: system_Port
+    required: true
+    multivalued: false
+
+  system_parameters:
+    slot_uri: sys:parameters
+    alias: parameters
+    title: parameters
+    description: TBD
+    range: system_Parameter
+    multivalued: true
+    required: true
+    inlined: true
+    inlined_as_list: true
