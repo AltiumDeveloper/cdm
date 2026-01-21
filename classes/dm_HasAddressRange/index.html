@@ -260,12 +260,19 @@
         click dm_address_block href "../../classes/dm_address_block/"
 
 
+  class dm_register["Register"]
+
+
+
+      style dm_register fill:#6fa8dc    
+
+
+        dm_HasAddressRange &lt;|-- dm_register
+        click dm_register href "../../classes/dm_register/"
+
+
 
           dm_HasAddressRange : startAddress
-
-
-
-          dm_HasAddressRange : upperAddress
 
 
 
@@ -297,16 +304,9 @@
 <tbody>
 <tr>
 <td><a href="../../slots/dm_HasAddressRange_start_address">startAddress</a></td>
-<td><code>0..1</code></td>
+<td><code>1</code></td>
 <td><a href="../../types/integer/">integer</a></td>
 <td>The base physical address of the memory region.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/dm_HasAddressRange_upper_address">upperAddress</a></td>
-<td><code>0..1</code></td>
-<td><a href="../../types/integer/">integer</a></td>
-<td>The exclusive upper bound of the memory region.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -334,6 +334,10 @@
 <tr>
 <td><a href="../dm_address_block/">dm_address_block</a></td>
 <td>Address block with start, size, and optional registers and peripherals</td>
+</tr>
+<tr>
+<td><a href="../dm_register/">dm_register</a></td>
+<td>A hardware register within an address block</td>
 </tr>
 </tbody>
 </table>

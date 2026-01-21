@@ -208,8 +208,28 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../../classes/dm_peripheral_configuration/">PeripheralConfiguration </a></td>
+<td>A concrete configuration for a peripheral role, containing pin multiplexing d...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/dm_port_configuration_enum_value/">PortConfigurationEnumValue </a></td>
+<td>An enumerated value for a port configuration</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/dm_peripheral_instance/">PeripheralInstance </a></td>
+<td>A concrete instance of a peripheral (e</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../../classes/system_FunctionalBlock/">Functional Block </a></td>
 <td>Represents a logical block within a PCB design (e</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_KeyComponent/">Key Component </a></td>
+<td>TBD</td>
 <td>no</td>
 </tr>
 <tr>
@@ -218,23 +238,28 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/dm_peripheral_configuration/">PeripheralConfiguration </a></td>
-<td>A concrete configuration for a peripheral role, containing pin multiplexing d...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../../classes/dm_port/">Port </a></td>
 <td>A physical port on the device, with its functions, configurations, and connec...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/dm_peripheral/">Peripheral </a></td>
-<td>A single peripheral definition, including its instances and properties</td>
+<td><a href="../../classes/system_PortAssociation/">Port Association </a></td>
+<td>TBD</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_PortAssociation/">Port Association </a></td>
+<td><a href="../../classes/system_Port/">Port </a></td>
 <td>TBD</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SoftwareComponent/">Software Component </a></td>
+<td>Functional in nature, abstracted from but connected to logical implementation</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/dm_peripheral/">Peripheral </a></td>
+<td>A single peripheral definition, including its instances and properties</td>
 <td>no</td>
 </tr>
 <tr>
@@ -248,48 +273,8 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/dm_peripheral_property/">PeripheralProperty </a></td>
-<td>An additional property or metadata associated with a peripheral</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/dm_peripheral_instance/">PeripheralInstance </a></td>
-<td>A concrete instance of a peripheral (e</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../../classes/dm_port_configuration/">PortConfiguration </a></td>
 <td>A specific configuration for a port</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_KeyComponent/">Key Component </a></td>
-<td>TBD</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_SoftwareComponent/">Software Component </a></td>
-<td>Functional in nature, abstracted from but connected to logical implementation</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_Port/">Port </a></td>
-<td>TBD</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/dm_peripheral_property_option/">PeripheralPropertyOption </a></td>
-<td>An option for a peripheral property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/dm_address_block/">AddressBlock </a></td>
-<td>Address block with start, size, and optional registers and peripherals</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/dm_port_configuration_enum_value/">PortConfigurationEnumValue </a></td>
-<td>An enumerated value for a port configuration</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -314,12 +299,9 @@
 <span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
 <span class="nt">domain_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_address_block</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_peripheral</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_peripheral_instance</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_peripheral_configuration</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_peripheral_property</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_peripheral_property_option</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_port</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_port_configuration</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_port_configuration_enum_value</span>

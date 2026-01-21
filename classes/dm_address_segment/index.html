@@ -195,7 +195,7 @@
 <h1 id="addresssegment">AddressSegment</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/deviceModel/AddressSegment">https://w3id.org/altium/cdm/deviceModel/AddressSegment</a></p>
 <p class="page-subtitle">Bounded context: <a href="../../subsets/deviceModel/">deviceModel</a></p>
-<p>A contiguous region of the device's memory map.</p>
+<p>A contiguous region of the device's memory map. Each segment can represent either  a memory or a peripheral region.</p>
 <div class="grid">
 <div class="admonition quote">
 <p class="admonition-title">Platform API</p>
@@ -293,10 +293,6 @@
 
 
 
-          dm_address_segment : upperAddress
-
-
-
           dm_address_segment : size
 
 
@@ -342,16 +338,9 @@
 <tbody>
 <tr>
 <td><a href="../../slots/dm_HasAddressRange_start_address">startAddress</a></td>
-<td><code>0..1</code></td>
+<td><code>1</code></td>
 <td><a href="../../types/integer/">integer</a></td>
 <td>The base physical address of the memory region.</td>
-<td><a href="../dm_HasAddressRange/">dm_HasAddressRange</a></td>
-</tr>
-<tr>
-<td><a href="../../slots/dm_HasAddressRange_upper_address">upperAddress</a></td>
-<td><code>0..1</code></td>
-<td><a href="../../types/integer/">integer</a></td>
-<td>The exclusive upper bound of the memory region.</td>
 <td><a href="../dm_HasAddressRange/">dm_HasAddressRange</a></td>
 </tr>
 <tr>
@@ -372,14 +361,14 @@
 <td><a href="../../slots/dm_AddressSegment_name">name</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../types/string/">string</a></td>
-<td>The name of the memory segment.</td>
+<td>The name of the address segment.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/dm_AddressSegment_aliases">aliases</a></td>
 <td><code>*</code></td>
 <td><a href="../../types/string/">string</a></td>
-<td>Alternative names for the memory segment.</td>
+<td>Alternative names for the segment.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -393,7 +382,7 @@
 <td><a href="../../slots/dm_AddressSegment_peripherals">peripherals</a></td>
 <td><code>*</code></td>
 <td><a href="../dm_peripheral/">Peripheral</a></td>
-<td>The peripherals associated with this memory segment.</td>
+<td>The peripherals associated with this segment.</td>
 <td>direct</td>
 </tr>
 </tbody>

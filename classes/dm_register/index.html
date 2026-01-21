@@ -235,19 +235,13 @@
 
 
 
+
+
           dm_register : description
 
 
 
           dm_register : name
-
-
-
-          dm_register : addressOffset
-
-
-
-          dm_register : siz
 
 
 
@@ -299,6 +293,14 @@
 
 
 
+          dm_register : startAddress
+
+
+
+          dm_register : size
+
+
+
 
 
 
@@ -322,7 +324,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Resource/">Resource</a><ul>
-<li><strong>dm_register</strong></li>
+<li><strong>dm_register</strong> [ <a href="../dm_HasAddressRange/">dm_HasAddressRange</a>]</li>
 </ul>
 </li>
 </ul>
@@ -339,6 +341,20 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../../slots/dm_HasAddressRange_start_address">startAddress</a></td>
+<td><code>1</code></td>
+<td><a href="../../types/integer/">integer</a></td>
+<td>The base physical address of the memory region.</td>
+<td><a href="../dm_HasAddressRange/">dm_HasAddressRange</a></td>
+</tr>
+<tr>
+<td><a href="../../slots/dm_HasAddressRange_size">size</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/integer/">integer</a></td>
+<td>The total span of the memory region in bytes.</td>
+<td><a href="../dm_HasAddressRange/">dm_HasAddressRange</a></td>
+</tr>
+<tr>
 <td><a href="../../slots/core_description">description</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../types/string/">string</a></td>
@@ -350,20 +366,6 @@
 <td><code>0..1</code></td>
 <td><a href="../../types/string/">string</a></td>
 <td>The name of the register.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/dm_Register_address_offset">addressOffset</a></td>
-<td><code>0..1</code></td>
-<td><a href="../../types/string/">string</a></td>
-<td>The offset address of the register within its parent block.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/dm_Register_size">siz</a></td>
-<td><code>0..1</code></td>
-<td><a href="../../types/string/">string</a></td>
-<td>The size of the register in bytes.</td>
 <td>direct</td>
 </tr>
 <tr>

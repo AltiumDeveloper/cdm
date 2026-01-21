@@ -243,11 +243,7 @@
 
 
 
-          dm_peripheral_instance : channel
-
-
-
-          dm_peripheral_instance : softwareDrivers
+          dm_peripheral_instance : unit
 
 
 
@@ -256,15 +252,15 @@
 
 
 
-      dm_peripheral_instance --&gt; "*" dm_peripheral_role : roles
-      click dm_peripheral_role href "../../classes/dm_peripheral_role/"
+      dm_peripheral_instance --&gt; "*" dm_peripheral_mode : modes
+      click dm_peripheral_mode href "../../classes/dm_peripheral_mode/"
 
 
-  class dm_peripheral_role["PeripheralRole"]
+  class dm_peripheral_mode["PeripheralMode"]
 
 
 
-      style dm_peripheral_role fill:#6fa8dc    
+      style dm_peripheral_mode fill:#6fa8dc    
 
 
 
@@ -355,24 +351,17 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/dm_PeripheralInstance_channel">channel</a></td>
+<td><a href="../../slots/dm_PeripheralInstance_unit">unit</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../types/string/">string</a></td>
-<td>The specific channel number or instance identifier for the hardware peripheral.</td>
+<td>The specific hardware unit index for the peripheral instance.</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/dm_PeripheralInstance_software_drivers">softwareDrivers</a></td>
+<td><a href="../../slots/dm_PeripheralInstance_modes">modes</a></td>
 <td><code>*</code></td>
-<td><a href="../../types/string/">string</a></td>
-<td>The list of software drivers compatible with this peripheral instance.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/dm_PeripheralInstance_roles">roles</a></td>
-<td><code>*</code></td>
-<td><a href="../dm_peripheral_role/">PeripheralRole</a></td>
-<td>The list of roles this peripheral instance can fulfill (e.g., Asynchronous UART).</td>
+<td><a href="../dm_peripheral_mode/">PeripheralMode</a></td>
+<td>The list of modes this peripheral instance can fulfill (e.g., Asynchronous UART).</td>
 <td>direct</td>
 </tr>
 </tbody>

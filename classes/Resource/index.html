@@ -392,15 +392,15 @@
         click dm_peripheral_instance href "../../classes/dm_peripheral_instance/"
 
 
-  class dm_peripheral_role["PeripheralRole"]
+  class dm_peripheral_mode["PeripheralMode"]
 
 
 
-      style dm_peripheral_role fill:#6fa8dc    
+      style dm_peripheral_mode fill:#6fa8dc    
 
 
-        Resource &lt;|-- dm_peripheral_role
-        click dm_peripheral_role href "../../classes/dm_peripheral_role/"
+        Resource &lt;|-- dm_peripheral_mode
+        click dm_peripheral_mode href "../../classes/dm_peripheral_mode/"
 
 
   class dm_peripheral_configuration["PeripheralConfiguration"]
@@ -434,39 +434,6 @@
 
         Resource &lt;|-- dm_peripheral_pin_dependency_config
         click dm_peripheral_pin_dependency_config href "../../classes/dm_peripheral_pin_dependency_config/"
-
-
-  class dm_peripheral_vendor_property["PeripheralVendorProperty"]
-
-
-
-      style dm_peripheral_vendor_property fill:#6fa8dc    
-
-
-        Resource &lt;|-- dm_peripheral_vendor_property
-        click dm_peripheral_vendor_property href "../../classes/dm_peripheral_vendor_property/"
-
-
-  class dm_peripheral_property["PeripheralProperty"]
-
-
-
-      style dm_peripheral_property fill:#6fa8dc    
-
-
-        Resource &lt;|-- dm_peripheral_property
-        click dm_peripheral_property href "../../classes/dm_peripheral_property/"
-
-
-  class dm_peripheral_property_option["PeripheralPropertyOption"]
-
-
-
-      style dm_peripheral_property_option fill:#6fa8dc    
-
-
-        Resource &lt;|-- dm_peripheral_property_option
-        click dm_peripheral_property_option href "../../classes/dm_peripheral_property_option/"
 
 
   class dm_port["Port"]
@@ -750,18 +717,15 @@
 <li><a href="../dm_address_segment/">dm_address_segment</a> [ <a href="../dm_HasAddressRange/">dm_HasAddressRange</a>]</li>
 <li><a href="../dm_address_block/">dm_address_block</a> [ <a href="../dm_HasAddressRange/">dm_HasAddressRange</a>]</li>
 <li><a href="../dm_memory/">dm_memory</a></li>
-<li><a href="../dm_register/">dm_register</a></li>
+<li><a href="../dm_register/">dm_register</a> [ <a href="../dm_HasAddressRange/">dm_HasAddressRange</a>]</li>
 <li><a href="../dm_register_field/">dm_register_field</a></li>
 <li><a href="../dm_field_enum/">dm_field_enum</a></li>
 <li><a href="../dm_peripheral/">dm_peripheral</a></li>
 <li><a href="../dm_peripheral_instance/">dm_peripheral_instance</a></li>
-<li><a href="../dm_peripheral_role/">dm_peripheral_role</a></li>
+<li><a href="../dm_peripheral_mode/">dm_peripheral_mode</a></li>
 <li><a href="../dm_peripheral_configuration/">dm_peripheral_configuration</a></li>
 <li><a href="../dm_peripheral_pin_config/">dm_peripheral_pin_config</a></li>
 <li><a href="../dm_peripheral_pin_dependency_config/">dm_peripheral_pin_dependency_config</a></li>
-<li><a href="../dm_peripheral_vendor_property/">dm_peripheral_vendor_property</a></li>
-<li><a href="../dm_peripheral_property/">dm_peripheral_property</a></li>
-<li><a href="../dm_peripheral_property_option/">dm_peripheral_property_option</a></li>
 <li><a href="../dm_port/">dm_port</a></li>
 <li><a href="../dm_pin/">dm_pin</a></li>
 <li><a href="../dm_port_function/">dm_port_function</a></li>

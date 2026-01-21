@@ -213,8 +213,8 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/dm_address_block/">AddressBlock </a></td>
-<td>Address block with start, size, and optional registers and peripherals</td>
+<td><a href="../../classes/dm_register/">Register </a></td>
+<td>A hardware register within an address block</td>
 <td>no</td>
 </tr>
 <tr>
@@ -222,11 +222,21 @@
 <td>A mixin for entities that occupy a specific span of the memory map</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../../classes/dm_address_block/">AddressBlock </a></td>
+<td>Address block with start, size, and optional registers and peripherals</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../../types/integer/">integer</a></li>
+<li>
+<p>Range: <a href="../../types/integer/">integer</a></p>
+</li>
+<li>
+<p>Required: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -235,11 +245,13 @@
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The base physical address of the memory region.</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">startAddress</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/altium/cdm/</span>
+<span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_HasAddressRange_start_address</span>
 <span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_HasAddressRange</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_HasAddressRange</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
 </article>

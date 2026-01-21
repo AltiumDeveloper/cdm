@@ -284,37 +284,17 @@
 
 
 
-      dm_peripheral_configuration --&gt; "*" dm_peripheral_vendor_property : vendorData
-      click dm_peripheral_vendor_property href "../../classes/dm_peripheral_vendor_property/"
 
 
-  class dm_peripheral_vendor_property["PeripheralVendorProperty"]
-
-
-
-      style dm_peripheral_vendor_property fill:#6fa8dc    
+  class dm_peripheral_mode["PeripheralMode"]
 
 
 
+      style dm_peripheral_mode fill:#6fa8dc    
 
 
-
-
-
-
-
-
-
-
-  class dm_peripheral_role["PeripheralRole"]
-
-
-
-      style dm_peripheral_role fill:#6fa8dc    
-
-
-          dm_peripheral_role --&gt; "*" dm_peripheral_configuration: configurations 
-          click dm_peripheral_role href "../../classes/dm_peripheral_role/"
+          dm_peripheral_mode --&gt; "*" dm_peripheral_configuration: configurations 
+          click dm_peripheral_mode href "../../classes/dm_peripheral_mode/"
 
 
 
@@ -357,13 +337,6 @@
 <td><code>*</code></td>
 <td><a href="../dm_peripheral_pin_config/">PeripheralPinConfig</a></td>
 <td>The list of alternative pin configurations that must be applied together with this configuration.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/dm_PeripheralConfiguration_vendorData">vendorData</a></td>
-<td><code>*</code></td>
-<td><a href="../dm_peripheral_vendor_property/">PeripheralVendorProperty</a></td>
-<td>The vendor-specific data associated with this peripheral configuration.</td>
 <td>direct</td>
 </tr>
 </tbody>

@@ -237,10 +237,6 @@
 
 
 
-          dm_address_block : id
-
-
-
           dm_address_block : description
 
 
@@ -333,10 +329,6 @@
 
 
 
-          dm_address_block : upperAddress
-
-
-
           dm_address_block : size
 
 
@@ -382,16 +374,9 @@
 <tbody>
 <tr>
 <td><a href="../../slots/dm_HasAddressRange_start_address">startAddress</a></td>
-<td><code>0..1</code></td>
+<td><code>1</code></td>
 <td><a href="../../types/integer/">integer</a></td>
 <td>The base physical address of the memory region.</td>
-<td><a href="../dm_HasAddressRange/">dm_HasAddressRange</a></td>
-</tr>
-<tr>
-<td><a href="../../slots/dm_HasAddressRange_upper_address">upperAddress</a></td>
-<td><code>0..1</code></td>
-<td><a href="../../types/integer/">integer</a></td>
-<td>The exclusive upper bound of the memory region.</td>
 <td><a href="../dm_HasAddressRange/">dm_HasAddressRange</a></td>
 </tr>
 <tr>
@@ -400,13 +385,6 @@
 <td><a href="../../types/integer/">integer</a></td>
 <td>The total span of the memory region in bytes.</td>
 <td><a href="../dm_HasAddressRange/">dm_HasAddressRange</a></td>
-</tr>
-<tr>
-<td><a href="../../slots/core_localId">id</a></td>
-<td><code>1</code></td>
-<td><a href="../../types/string/">string</a></td>
-<td>Local unique identifier within a given context.</td>
-<td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/core_description">description</a></td>
@@ -440,7 +418,7 @@
 <td><a href="../../slots/dm_AddressBlock_registers">registers</a></td>
 <td><code>*</code></td>
 <td><a href="../dm_register/">Register</a></td>
-<td>None</td>
+<td>List of registers contained within this address block.</td>
 <td>direct</td>
 </tr>
 <tr>
