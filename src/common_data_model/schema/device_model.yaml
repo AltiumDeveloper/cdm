@@ -118,11 +118,8 @@ classes:
     attributes:
       dm_HasAddressRange_start_address:
         title: startAddress
+        identifier: true
         description: The base physical address of the memory region.
-        range: integer
-      dm_HasAddressRange_upper_address:
-        title: upperAddress
-        description: The exclusive upper bound of the memory region.
         range: integer
       dm_HasAddressRange_size:
         title: size
@@ -218,7 +215,7 @@ classes:
       dm_AddressMapModel_segments:
         title: segments
         description: >-
-          A collection of memory regions or segments defined within the device's address space. 
+          A collection of memory segments defined within the device's address space. 
           Each entry describes a specific block of memory.
         range: dm_address_segment
         multivalued: true
@@ -228,7 +225,9 @@ classes:
     in_subset: deviceModel
     class_uri: dm:AddressSegment
     title: AddressSegment
-    description: A contiguous region of the device's memory map.
+    description: >-
+      A contiguous region of the device's memory map. Each segment can represent either 
+      a memory or a peripheral region.
     annotations:
       platformAPI: DmAddressSegment
     mixins:
@@ -238,11 +237,11 @@ classes:
     attributes:
       dm_AddressSegment_name:
         title: name
-        description: The name of the memory segment.
+        description: The name of the address segment.
         range: string
       dm_AddressSegment_aliases:
         title: aliases
-        description: Alternative names for the memory segment.
+        description: Alternative names for the segment.
         range: string
         multivalued: true
       dm_AddressSegment_blocks:
@@ -252,7 +251,7 @@ classes:
         multivalued: true
       dm_AddressSegment_peripherals:
         title: peripherals
-        description: The peripherals associated with this memory segment.
+        description: The peripherals associated with this segment.
         range: dm_peripheral
         multivalued: true
         inlined: false
@@ -268,7 +267,6 @@ classes:
     mixins:
       - dm_HasAddressRange
     slots:
-      - core_localId
       - core_description
     attributes:
       dm_AddressBlock_name:
@@ -286,6 +284,7 @@ classes:
         multivalued: true
       dm_AddressBlock_registers:
         title: registers
+        description: List of registers contained within this address block.
         range: dm_register
         multivalued: true
       dm_AddressBlock_peripheral_instance:
@@ -325,20 +324,14 @@ classes:
     description: A hardware register within an address block.
     annotations:
       platformAPI: DmRegister
+    mixins:
+      - dm_HasAddressRange
     slots:
       - core_description
     attributes:
       dm_Register_name:
         title: name
         description: The name of the register.
-        range: string
-      dm_Register_address_offset:
-        title: addressOffset
-        description: The offset address of the register within its parent block.
-        range: string
-      dm_Register_size:
-        title: siz
-        description: The size of the register in bytes.
         range: string
       dm_Register_access:
         title: access
@@ -431,11 +424,6 @@ classes:
         description: The list of instances of this peripheral present on the device.
         range: dm_peripheral_instance
         multivalued: true
-      dm_Peripheral_properties:
-        title: properties
-        description: Additional properties or metadata associated with the peripheral.
-        range: dm_peripheral_property
-        multivalued: true
 
   dm_peripheral_instance:
     is_a: Resource
@@ -452,33 +440,28 @@ classes:
         title: name
         description: The name of the peripheral instance.
         range: string
-      dm_PeripheralInstance_channel:
-        title: channel
-        description: The specific channel number or instance identifier for the hardware peripheral.
+      dm_PeripheralInstance_unit:
+        title: unit
+        description: The specific hardware unit index for the peripheral instance.
         range: string
-      dm_PeripheralInstance_software_drivers:
-        title: softwareDrivers
-        description: The list of software drivers compatible with this peripheral instance.
-        range: string
-        multivalued: true
-      dm_PeripheralInstance_roles:
-        title: roles
-        description: The list of roles this peripheral instance can fulfill (e.g., Asynchronous UART).
-        range: dm_peripheral_role
+      dm_PeripheralInstance_modes:
+        title: modes
+        description: The list of modes this peripheral instance can fulfill (e.g., Asynchronous UART).
+        range: dm_peripheral_mode
         multivalued: true
 
-  dm_peripheral_role:
+  dm_peripheral_mode:
     is_a: Resource
     in_subset: deviceModel
-    class_uri: dm:PeripheralRole
-    title: PeripheralRole
-    description: A specific role that a peripheral instance can fulfill,
+    class_uri: dm:PeripheralMode
+    title: PeripheralMode
+    description: A specific mode that a peripheral instance can fulfill,
     annotations:
-      platformAPI: DmPeripheralRole
+      platformAPI: DmPeripheralMode
     attributes:
       dm_PeripheralMode_name:
         title: name
-        description: Name of the peripheral role (e.g., Asynchronous UART).
+        description: Name of the peripheral mode (e.g., Asynchronous UART).
         range: string
       dm_PeripheralMode_configurations:
         title: configurations
@@ -507,13 +490,6 @@ classes:
         description: The list of alternative pin configurations that must be applied together with this configuration.
         range: dm_peripheral_pin_config
         multivalued: true
-      dm_PeripheralConfiguration_vendorData:
-        title: vendorData
-        description: The vendor-specific data associated with this peripheral configuration.
-        range: dm_peripheral_vendor_property
-        multivalued: true
-        inlined: true
-        inlined_as_list: false
 
   dm_peripheral_pin_config:
     is_a: Resource
@@ -561,67 +537,6 @@ classes:
       dm_PinDependencyConfig_value:
         title: value
         description: The value of the pin dependency configuration.
-        range: string
-
-  dm_peripheral_vendor_property:
-    is_a: Resource
-    in_subset: deviceModel
-    class_uri: dm:PeripheralVendorProperty
-    title: PeripheralVendorProperty
-    description: A vendor-specific property for a peripheral configuration.
-    annotations:
-      platformAPI: DmPeripheralVendorProperty
-    attributes:
-      dm_PeripheralVendorProperty_name:
-        title: name
-        identifier: true
-        description: The name of the vendor property.
-        range: string
-      dm_PeripheralVendorProperty_value:
-        title: value
-        description: The value of the vendor property.
-        range: string
-
-  dm_peripheral_property:
-    is_a: Resource
-    in_subset: deviceModel
-    class_uri: dm:PeripheralProperty
-    title: PeripheralProperty
-    description: An additional property or metadata associated with a peripheral.
-    annotations:
-      platformAPI: DmPeripheralProperty
-    slots:
-      - core_localId
-      - core_description
-    attributes:
-      dm_PeripheralProperty_name:
-        title: name
-        description: The name of the peripheral property.
-        range: string
-      dm_PeripheralProperty_options:
-        title: options
-        description: The list of options for this property.
-        range: dm_peripheral_property_option
-        multivalued: true
-
-  dm_peripheral_property_option:
-    is_a: Resource
-    in_subset: deviceModel
-    class_uri: dm:PeripheralPropertyOption
-    title: PeripheralPropertyOption
-    description: An option for a peripheral property.
-    annotations:
-      platformAPI: DmPeripheralPropertyOption
-    slots:
-      - core_localId
-    attributes:
-      dm_PeripheralPropertyOption_name:
-        title: name
-        description: The name of the peripheral property option.
-        range: string
-      dm_PeripheralPropertyOption_value:
-        title: value
-        description: The value of the peripheral property option.
         range: string
 
   dm_port:
