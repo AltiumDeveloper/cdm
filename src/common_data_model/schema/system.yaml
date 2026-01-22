@@ -48,10 +48,10 @@ enums:
 
 classes:
 
-  system_ESDDocument:
+  system_EsdDocument:
     is_a: Activity
     in_subset: system
-    class_uri: sys:ESDDocument
+    class_uri: sys:EsdDocument
     title: ESD Document
     description: TBD
     annotations:
@@ -61,8 +61,8 @@ classes:
       - SolutionItem
     slots:
       - system_parameters
-      - system_ESDDocument_functionalBlocks
-      - system_ESDDocument_connections
+      - system_EsdDocument_functionalBlocks
+      - system_EsdDocument_connections
 
   system_FunctionalBlock:
     is_a: Resource
@@ -188,7 +188,7 @@ classes:
 
 slots:
 
-  system_ESDDocument_functionalBlocks:
+  system_EsdDocument_functionalBlocks:
     slot_uri: sys:ESDDocument#functionalBlocks
     alias: functionalBlocks
     title: functional blocks
@@ -198,7 +198,7 @@ slots:
     required: false
     inlined: true
     inlined_as_list: true
-  system_ESDDocument_connections:
+  system_EsdDocument_connections:
     slot_uri: sys:ESDDocument#connections
     alias: connections
     title: connections
