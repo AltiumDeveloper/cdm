@@ -238,10 +238,6 @@
 
 
 
-          system_Parameter : name
-
-
-
           system_Parameter : value
 
 
@@ -253,15 +249,15 @@
 
 
 
-  class system_ESDDocument["ESD Document"]
+  class system_EsdDocument["ESD Document"]
 
 
 
-      style system_ESDDocument fill:#f1c232    
+      style system_EsdDocument fill:#f1c232    
 
 
-          system_ESDDocument --&gt; "1..*" system_Parameter: parameters 
-          click system_ESDDocument href "../../classes/system_ESDDocument/"
+          system_EsdDocument --&gt; "1..*" system_Parameter: parameters 
+          click system_EsdDocument href "../../classes/system_EsdDocument/"
 
 
 
@@ -365,13 +361,6 @@
 <td><code>1</code></td>
 <td><a href="../../types/string/">string</a></td>
 <td>Local unique identifier within a given context.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/core_name">name</a></td>
-<td><code>0..1</code></td>
-<td><a href="../../types/string/">string</a></td>
-<td>A short name of the entity.</td>
 <td>direct</td>
 </tr>
 <tr>

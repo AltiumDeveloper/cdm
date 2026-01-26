@@ -270,15 +270,30 @@
 
 
 
-  class dm_FullStackDeviceModel["FullStackDeviceModel"]
+  class dm_configured_device_model["ConfiguredDeviceModel"]
 
 
 
-      style dm_FullStackDeviceModel fill:#6fa8dc    
+      style dm_configured_device_model fill:#6fa8dc    
 
 
-          dm_FullStackDeviceModel --&gt; "*" dm_peripheral: peripherals 
-          click dm_FullStackDeviceModel href "../../classes/dm_FullStackDeviceModel/"
+          dm_configured_device_model --&gt; "*" dm_peripheral: peripherals 
+          click dm_configured_device_model href "../../classes/dm_configured_device_model/"
+
+
+
+
+
+
+  class dm_fullstack_device_model["FullStackDeviceModel"]
+
+
+
+      style dm_fullstack_device_model fill:#6fa8dc    
+
+
+          dm_fullstack_device_model --&gt; "*" dm_peripheral: peripherals 
+          click dm_fullstack_device_model href "../../classes/dm_fullstack_device_model/"
 
 
 

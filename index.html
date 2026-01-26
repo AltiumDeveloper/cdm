@@ -496,12 +496,17 @@
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmAddressSegment">DmAddressSegment</a></td>
 </tr>
 <tr>
+<td><a href="classes/dm_configured_device_model/">ConfiguredDeviceModel </a></td>
+<td>A digital twin of an embedded hardware device as configured for a specific use-case. It exposes the device model filtered to specific device configuration.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmConfiguredDeviceModel">DmConfiguredDeviceModel</a></td>
+</tr>
+<tr>
 <td><a href="classes/dm_field_enum/">FieldEnum </a></td>
 <td>An enumerated value for a register field.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmFieldEnum">DmFieldEnum</a></td>
 </tr>
 <tr>
-<td><a href="classes/dm_FullStackDeviceModel/">FullStackDeviceModel </a></td>
+<td><a href="classes/dm_fullstack_device_model/">FullStackDeviceModel </a></td>
 <td>A digital twin of an embedded hardware device. It exposes the full device model, including interfaces, peripherals, and ports.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmFullStackDeviceModel">DmFullStackDeviceModel</a></td>
 </tr>
@@ -959,6 +964,16 @@
 <td></td>
 </tr>
 <tr>
+<td><a href="classes/sft_software_bom/">Software BOM </a></td>
+<td>A Software Bill of Materials (SBOM) is a formal record containing the details  of drivers, middlewares, and application libraries used in the embedded system. in building software.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SftSoftwareBom">SftSoftwareBom</a></td>
+</tr>
+<tr>
+<td><a href="classes/sft_software_component/">Software Component </a></td>
+<td>A Software Component represents a single component in a Software Bill of Materials (SBOM). It includes details such as the component's name, version, and dependencies.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SftSoftwareComponent">SftSoftwareComponent</a></td>
+</tr>
+<tr>
 <td><a href="classes/sft_software_project/">Software Project </a></td>
 <td>TBD</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SftSoftwareProject">SftSoftwareProject</a></td>
@@ -1050,7 +1065,7 @@
 <td></td>
 </tr>
 <tr>
-<td><a href="classes/system_ESDDocument/">ESD Document </a></td>
+<td><a href="classes/system_EsdDocument/">ESD Document </a></td>
 <td>TBD</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysEsdDocument">SysEsdDocument</a></td>
 </tr>
@@ -1080,8 +1095,18 @@
 <td></td>
 </tr>
 <tr>
+<td><a href="classes/system_Sim/">System Information Model </a></td>
+<td>The System Information Model (SIM) is a high-level abstraction layer that provides a unified,  system-centric view of objects derived from multiple independent domains  (e.g., Electronic Systems Design, Software, Hardware). Rather than forcing every domain to understand the internal data structures of every other domain,  the SIM establishes a canonical representation. Each participating domain maintains a mapping layer  that translates its local objects into this shared system-level format.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSystemInformationModel">SysSystemInformationModel</a></td>
+</tr>
+<tr>
 <td><a href="classes/system_SoftwareComponent/">Software Component </a></td>
 <td>Functional in nature, abstracted from but connected to logical implementation.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/system_SoftwareProject/">Software Project </a></td>
+<td>TBD</td>
 <td></td>
 </tr>
 </tbody>
@@ -1168,8 +1193,13 @@
 </tr>
 <tr>
 <td><a href="subsets/deviceModel/">deviceModel</a></td>
-<td><a href="classes/dm_FullStackDeviceModel/">FullStackDeviceModel </a></td>
-<td><code>grid:global::device-model:device-model/{id}</code></td>
+<td><a href="classes/dm_configured_device_model/">ConfiguredDeviceModel </a></td>
+<td><code>grid:workspace:{workspace-id}:device-model:configured-dm/{id}</code></td>
+</tr>
+<tr>
+<td><a href="subsets/deviceModel/">deviceModel</a></td>
+<td><a href="classes/dm_fullstack_device_model/">FullStackDeviceModel </a></td>
+<td><code>grid:global::device-model:fullstack-dm/{id}</code></td>
 </tr>
 <tr>
 <td><a href="subsets/insights/">insights</a></td>
@@ -1433,8 +1463,13 @@
 </tr>
 <tr>
 <td><a href="subsets/system/">system</a></td>
-<td><a href="classes/system_ESDDocument/">ESD Document </a></td>
+<td><a href="classes/system_EsdDocument/">ESD Document </a></td>
 <td><code>grid:workspace:{workspace-id}:system-design:esd/{id}</code></td>
+</tr>
+<tr>
+<td><a href="subsets/system/">system</a></td>
+<td><a href="classes/system_Sim/">System Information Model </a></td>
+<td><code>grid:workspace:{workspace-id}:system-design:sim/{id}</code></td>
 </tr>
 </tbody>
 </table>
