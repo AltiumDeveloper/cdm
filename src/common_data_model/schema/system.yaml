@@ -66,7 +66,7 @@ classes:
 
   system_FunctionalBlock:
     is_a: Resource
-    in_subset: system 
+    in_subset: system
     class_uri: sys:FunctionalBlock
     title: Functional Block
     description: >-
@@ -93,7 +93,7 @@ classes:
 
   system_Port:
     is_a: Resource
-    in_subset: system 
+    in_subset: system
     class_uri: sys:Port
     title: Port
     description: TBD
@@ -120,7 +120,7 @@ classes:
     in_subset: system
     class_uri: sys:SoftwareComponent
     title: Software Component
-    description: Functional in nature, abstracted from but connected to logical implementation. 
+    description: Functional in nature, abstracted from but connected to logical implementation.
     slots:
       - core_localId
       - core_name
@@ -167,7 +167,7 @@ classes:
     slots:
       - system_Endpoint#functionalBlock
       - system_Endpoint#port
-      
+
   system_Parameter:
     is_a: Resource
     in_subset: system
@@ -183,8 +183,52 @@ classes:
         required: true
     slots:
       - core_localId
-      - core_name
 
+  system_SoftwareProject:
+    is_a: Resource
+    in_subset: system
+    class_uri: sys:SoftwareProject
+    title: Software Project
+    description: TBD
+    slots:
+      - core_localId
+      - core_implementedBy
+    slot_usage:
+      core_implementedBy:
+        range: Any
+        any_of:
+          - range: sft_software_project
+
+  system_Sim:
+    is_a: Artifact
+    in_subset: system
+    class_uri: sys:SystemInformationModel
+    title: System Information Model
+    annotations:
+      platformAPI: SysSystemInformationModel
+      grid: grid:workspace:{workspace-id}:system-design:sim/{id}
+    description: >-
+      The System Information Model (SIM) is a high-level abstraction layer that provides a unified, 
+      system-centric view of objects derived from multiple independent domains 
+      (e.g., Electronic Systems Design, Software, Hardware).
+      Rather than forcing every domain to understand the internal data structures of every other domain, 
+      the SIM establishes a canonical representation. Each participating domain maintains a mapping layer 
+      that translates its local objects into this shared system-level format.
+    attributes:
+      system_Sim_esdDocument:
+        title: esdDocument
+        range: system_EsdDocument
+        required: true
+      system_Sim_deviceModels:
+        title: deviceModels
+        range: dm_configured_device_model
+        multivalued: true
+        required: true
+      system_Sim_softwareModels:
+        title: softwareModels
+        range: sft_software_bom
+        multivalued: true
+        required: true
 
 slots:
 
@@ -208,7 +252,7 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  system_FunctionalBlock_ports:  
+  system_FunctionalBlock_ports:
     slot_uri: sys:FunctionalBlock#ports
     alias: ports
     title: ports
