@@ -126,7 +126,23 @@ classes:
         description: The total span of the memory region in bytes.
         range: integer
 
-  dm_FullStackDeviceModel:
+  dm_configured_device_model:
+    is_a: Artifact
+    in_subset: deviceModel
+    class_uri: dm:ConfiguredDeviceModel
+    title: ConfiguredDeviceModel
+    description: >-
+      A digital twin of an embedded hardware device as configured for a specific use-case.
+      It exposes the device model filtered to specific device configuration.
+    annotations:
+      grid: grid:workspace:{workspace-id}:device-model:configured-dm/{id}
+      platformAPI: DmConfiguredDeviceModel
+    slots:
+      - dm_mpn
+      - dm_peripherals
+      - dm_ports
+
+  dm_fullstack_device_model:
     is_a: Artifact
     in_subset: deviceModel
     class_uri: dm:FullStackDeviceModel
@@ -135,14 +151,13 @@ classes:
       A digital twin of an embedded hardware device. It exposes the full device model,
       including interfaces, peripherals, and ports.
     annotations:
-      grid: grid:global::device-model:device-model/{id}
+      grid: grid:global::device-model:fullstack-dm/{id}
       platformAPI: DmFullStackDeviceModel
+    slots:
+      - dm_mpn
+      - dm_peripherals
+      - dm_ports
     attributes:
-      dm_FullStackDeviceModel_mpn:
-        title: deviceMpn
-        description: Manufacturer Part Number (MPN) for the device.
-        range: string
-        required: true
       dm_FullStackDeviceModel_family:
         title: deviceFamily
         description: The family to which the device belongs.
@@ -157,16 +172,7 @@ classes:
         title: addressMap
         description: The hardware address map configuration.
         range: dm_address_map
-      dm_FullStackDeviceModel_peripherals:
-        title: peripherals
-        description: List of all peripherals available on the device.
-        range: dm_peripheral
-        multivalued: true
-      dm_FullStackDeviceModel_ports:
-        title: ports
-        description: List of physical ports on the device.
-        range: dm_port
-        multivalued: true
+
 
   dm_processor:
     is_a: Resource
@@ -705,7 +711,24 @@ classes:
     slots:
       - core_localId
     attributes:
-        dm_PortConnection_name:
-            title: name
-            description: The name of the port connection.
-            range: string
+      dm_PortConnection_name:
+        title: name
+        description: The name of the port connection.
+        range: string
+
+slots:
+  dm_mpn:
+    title: deviceMpn
+    description: Manufacturer Part Number (MPN) for the device.
+    range: string
+    required: true
+  dm_peripherals:
+    title: peripherals
+    description: List of all peripherals available on the device.
+    range: dm_peripheral
+    multivalued: true
+  dm_ports:
+    title: ports
+    description: List of physical ports on the device.
+    range: dm_port
+    multivalued: true
