@@ -422,14 +422,17 @@ classes:
       - core_localId
     attributes:
       dm_Peripheral_name:
+        alias: name
         title: name
         description: The name of the peripheral.
         range: string
       dm_Peripheral_instances:
+        alias: instances
         title: instances
         description: The list of instances of this peripheral present on the device.
         range: dm_peripheral_instance
         multivalued: true
+        inlined: true
 
   dm_peripheral_instance:
     is_a: Resource
@@ -443,18 +446,22 @@ classes:
       - core_localId
     attributes:
       dm_PeripheralInstance_name:
+        alias: name
         title: name
         description: The name of the peripheral instance.
         range: string
       dm_PeripheralInstance_unit:
+        alias: unit
         title: unit
         description: The specific hardware unit index for the peripheral instance.
         range: string
       dm_PeripheralInstance_modes:
+        alias: modes
         title: modes
         description: The list of modes this peripheral instance can fulfill (e.g., Asynchronous UART).
         range: dm_peripheral_mode
         multivalued: true
+        inlined: true
 
   dm_peripheral_mode:
     is_a: Resource
@@ -466,14 +473,17 @@ classes:
       platformAPI: DmPeripheralMode
     attributes:
       dm_PeripheralMode_name:
+        alias: name
         title: name
         description: Name of the peripheral mode (e.g., Asynchronous UART).
         range: string
       dm_PeripheralMode_configurations:
+        alias: configurations
         title: configurations
         description: The configurations available within this peripheral modes.
         range: dm_peripheral_configuration
         multivalued: true
+        inlined: true
 
   dm_peripheral_configuration:
     is_a: Resource
@@ -487,15 +497,19 @@ classes:
       - core_localId
     attributes:
       dm_PeripheralConfiguration_pinConfigs:
-        title: name
+        alias: pinConfigs
+        title: pinConfigs
         description: The list of pin function to port mappings for this configuration.
         range: dm_peripheral_pin_config
         multivalued: true
+        inlined: true
       dm_PeripheralConfiguration_pinDependencyConfigs:
+        alias: pinDependencyConfigs
         title: pinDependencyConfigs
         description: The list of alternative pin configurations that must be applied together with this configuration.
-        range: dm_peripheral_pin_config
+        range: dm_peripheral_pin_dependency_config
         multivalued: true
+        inlined: true
 
   dm_peripheral_pin_config:
     is_a: Resource
@@ -507,22 +521,27 @@ classes:
       platformAPI: DmPeripheralPinConfig
     attributes:
       dm_PinConfig_pin_name:
+        alias: pinName
         title: pinName
         description: The fully qualified identifier representing the channel, and pin function (e.g., sci0.txt, iic1.scl).
         range: string
       dm_PinConfig_pin_value:
+        alias: pinValue
         title: pinValue
         description: The fully qualified identifier representing the channel, pin function, and physical pin (e.g., sci0.txd.p101, iic1.scl.p402).
         range: string
       dm_PinConfig_function:
+        alias: function
         title: function
         description: The logical pin function name (e.g., TXD, RXD).
         range: string
       dm_PinConfig_port:
+        alias: port
         title: port
         description: The physical port target for the pin function.
         range: string
       dm_PinConfig_port_name:
+        alias: portName
         title: portName
         description: The physical port mapping target for the pin function.
         range: string
@@ -537,10 +556,12 @@ classes:
       platformAPI: DmPeripheralPinDependencyConfig
     attributes:
       dm_PinDependencyConfig_name:
+        alias: name
         title: name
         description: The name of the pin dependency configuration.
         range: string
       dm_PinDependencyConfig_value:
+        alias: value
         title: value
         description: The value of the pin dependency configuration.
         range: string
@@ -558,32 +579,41 @@ classes:
       - core_description
     attributes:
       dm_Port_name:
+        alias: name
         title: name
         description: The name of the port.
         range: string
       dm_Port_symbolic_name:
+        alias: symbolicName
         title: symbolicName
         description: A symbolic name for the port used in code or configuration.
         range: string
       dm_Port_pin:
+        alias: pin
         title: pin
         description: The physical pin associated with this port.
         range: dm_pin
       dm_Port_functions:
+        alias: functions
         title: functions
         description: The list of functions that this port can perform.
         range: dm_port_function
         multivalued: true
+        inlined: true
       dm_Port_configurations:
+        alias: configurations
         title: configurations
         description: The list of configurations available for this port.
         range: dm_port_configuration
         multivalued: true
+        inlined: true
       dm_Port_connections:
+        alias: connections
         title: connections
         description: The list of connections associated with this port to other components or signals.
         range: dm_port_connection
         multivalued: true
+        inlined: true
 
   dm_pin:
     is_a: Resource
@@ -595,6 +625,7 @@ classes:
       platformAPI: DmPin
     attributes:
       dm_Pin_name:
+        alias: name
         title: name
         identifier: true
         description: The name of the pin.
@@ -610,10 +641,12 @@ classes:
       platformAPI: DmPortFunction
     attributes:
       dm_PortFunction_name:
+        alias: name
         title: name
         description: The name of the port function.
         range: string
       dm_PortFunction_peripheral_instance:
+        alias: peripheralInstance
         title: peripheralInstance
         description: The peripheral instance associated with this port function.
         range: dm_peripheral_instance
@@ -729,9 +762,11 @@ slots:
     description: List of all peripherals available on the device.
     range: dm_peripheral
     multivalued: true
+    inlined: true
   dm_ports:
     alias: ports
     title: ports
     description: List of physical ports on the device.
     range: dm_port
     multivalued: true
+    inlined: true
