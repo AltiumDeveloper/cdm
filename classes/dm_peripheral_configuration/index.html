@@ -244,7 +244,7 @@
 
 
 
-      dm_peripheral_configuration --&gt; "*" dm_peripheral_pin_config : name
+      dm_peripheral_configuration --&gt; "*" dm_peripheral_pin_config : pinConfigs
       click dm_peripheral_pin_config href "../../classes/dm_peripheral_pin_config/"
 
 
@@ -264,15 +264,15 @@
 
 
 
-      dm_peripheral_configuration --&gt; "*" dm_peripheral_pin_config : pinDependencyConfigs
-      click dm_peripheral_pin_config href "../../classes/dm_peripheral_pin_config/"
+      dm_peripheral_configuration --&gt; "*" dm_peripheral_pin_dependency_config : pinDependencyConfigs
+      click dm_peripheral_pin_dependency_config href "../../classes/dm_peripheral_pin_dependency_config/"
 
 
-  class dm_peripheral_pin_config["PeripheralPinConfig"]
+  class dm_peripheral_pin_dependency_config["PeripheralPinDependencyConfig"]
 
 
 
-      style dm_peripheral_pin_config fill:#6fa8dc    
+      style dm_peripheral_pin_dependency_config fill:#6fa8dc    
 
 
 
@@ -326,7 +326,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/dm_PeripheralConfiguration_pinConfigs">name</a></td>
+<td><a href="../../slots/dm_PeripheralConfiguration_pinConfigs">pinConfigs</a></td>
 <td><code>*</code></td>
 <td><a href="../dm_peripheral_pin_config/">PeripheralPinConfig</a></td>
 <td>The list of pin function to port mappings for this configuration.</td>
@@ -335,7 +335,7 @@
 <tr>
 <td><a href="../../slots/dm_PeripheralConfiguration_pinDependencyConfigs">pinDependencyConfigs</a></td>
 <td><code>*</code></td>
-<td><a href="../dm_peripheral_pin_config/">PeripheralPinConfig</a></td>
+<td><a href="../dm_peripheral_pin_dependency_config/">PeripheralPinDependencyConfig</a></td>
 <td>The list of alternative pin configurations that must be applied together with this configuration.</td>
 <td>direct</td>
 </tr>
