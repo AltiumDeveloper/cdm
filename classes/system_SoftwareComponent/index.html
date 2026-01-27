@@ -247,7 +247,7 @@
 
 
 
-      system_SoftwareComponent --&gt; "1..*" system_Parameter : parameters
+      system_SoftwareComponent --&gt; "*" system_Parameter : parameters
       click system_Parameter href "../../classes/system_Parameter/"
 
 
@@ -267,7 +267,7 @@
 
 
 
-      system_SoftwareComponent --&gt; "1..*" system_PortAssociation : port associations
+      system_SoftwareComponent --&gt; "*" system_PortAssociation : port associations
       click system_PortAssociation href "../../classes/system_PortAssociation/"
 
 
@@ -387,20 +387,20 @@
 </tr>
 <tr>
 <td><a href="../../slots/system_parameters">parameters</a></td>
-<td><code>1..*</code></td>
+<td><code>*</code></td>
 <td><a href="../system_Parameter/">Parameter</a></td>
 <td>TBD</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/system_SoftwareComponent#portAssociations">port associations</a></td>
-<td><code>1..*</code></td>
+<td><a href="../../slots/system_SoftwareComponent_portAssociations">port associations</a></td>
+<td><code>*</code></td>
 <td><a href="../system_PortAssociation/">Port Association</a></td>
 <td>None</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/system_SoftwareComponent#keyComponent">key component</a></td>
+<td><a href="../../slots/system_SoftwareComponent_keyComponent">key component</a></td>
 <td><code>1</code></td>
 <td><a href="../system_KeyComponent/">Key Component</a></td>
 <td>None</td>

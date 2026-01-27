@@ -240,7 +240,7 @@
 
 
 
-      sft_software_bom --&gt; "1..*" sft_software_component : components
+      sft_software_bom --&gt; "*" sft_software_component : components
       click sft_software_component href "../../classes/sft_software_component/"
 
 
@@ -252,6 +252,10 @@
 
 
 
+
+
+
+          sft_software_bom : id
 
 
 
@@ -269,7 +273,7 @@
       style system_Sim fill:#f1c232    
 
 
-          system_Sim --&gt; "1..*" sft_software_bom: softwareModels 
+          system_Sim --&gt; "*" sft_software_bom: software models 
           click system_Sim href "../../classes/system_Sim/"
 
 
@@ -277,8 +281,11 @@
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Resource/">Resource</a><ul>
+<li><a href="../Entity/">Entity</a><ul>
+<li><a href="../Artifact/">Artifact</a><ul>
 <li><strong>sft_software_bom</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -295,8 +302,15 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../../slots/core_id">id</a></td>
+<td><code>1</code></td>
+<td><a href="../../types/GRID/">GRID</a></td>
+<td>Globally unique identifier across the whole platform.</td>
+<td><a href="../Entity/">Entity</a></td>
+</tr>
+<tr>
 <td><a href="../../slots/sft_SoftwareBom_components">components</a></td>
-<td><code>1..*</code></td>
+<td><code>*</code></td>
 <td><a href="../sft_software_component/">Software Component</a></td>
 <td>The list of software components included in the SBOM.</td>
 <td>direct</td>

@@ -241,18 +241,15 @@
 
 
 
-      system_Sim --&gt; "1" system_EsdDocument : esdDocument
-      click system_EsdDocument href "../../classes/system_EsdDocument/"
+      system_Sim --&gt; "0..1" system_ESDDocument : functional model
+      click system_ESDDocument href "../../classes/system_ESDDocument/"
 
 
-  class system_EsdDocument["ESD Document"]
-
-
-
-      style system_EsdDocument fill:#f1c232    
+  class system_ESDDocument["ESD Document"]
 
 
 
+      style system_ESDDocument fill:#f1c232    
 
 
 
@@ -261,7 +258,10 @@
 
 
 
-      system_Sim --&gt; "1..*" dm_configured_device_model : deviceModels
+
+
+
+      system_Sim --&gt; "*" dm_configured_device_model : device models
       click dm_configured_device_model href "../../classes/dm_configured_device_model/"
 
 
@@ -281,7 +281,7 @@
 
 
 
-      system_Sim --&gt; "1..*" sft_software_bom : softwareModels
+      system_Sim --&gt; "*" sft_software_bom : software models
       click sft_software_bom href "../../classes/sft_software_bom/"
 
 
@@ -333,22 +333,22 @@
 <td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
-<td><a href="../../slots/system_Sim_esdDocument">esdDocument</a></td>
-<td><code>1</code></td>
-<td><a href="../system_EsdDocument/">ESD Document</a></td>
+<td><a href="../../slots/system_Sim_functionalModel">functional model</a></td>
+<td><code>0..1</code></td>
+<td><a href="../system_ESDDocument/">ESD Document</a></td>
 <td>None</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/system_Sim_deviceModels">deviceModels</a></td>
-<td><code>1..*</code></td>
+<td><a href="../../slots/system_Sim_deviceModels">device models</a></td>
+<td><code>*</code></td>
 <td><a href="../dm_configured_device_model/">ConfiguredDeviceModel</a></td>
 <td>None</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/system_Sim_softwareModels">softwareModels</a></td>
-<td><code>1..*</code></td>
+<td><a href="../../slots/system_Sim_softwareModels">software models</a></td>
+<td><code>*</code></td>
 <td><a href="../sft_software_bom/">Software BOM</a></td>
 <td>None</td>
 <td>direct</td>

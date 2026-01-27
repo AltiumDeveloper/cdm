@@ -238,6 +238,10 @@
 
 
 
+          system_Parameter : name
+
+
+
           system_Parameter : value
 
 
@@ -249,15 +253,15 @@
 
 
 
-  class system_EsdDocument["ESD Document"]
+  class system_ESDDocument["ESD Document"]
 
 
 
-      style system_EsdDocument fill:#f1c232    
+      style system_ESDDocument fill:#f1c232    
 
 
-          system_EsdDocument --&gt; "1..*" system_Parameter: parameters 
-          click system_EsdDocument href "../../classes/system_EsdDocument/"
+          system_ESDDocument --&gt; "*" system_Parameter: parameters 
+          click system_ESDDocument href "../../classes/system_ESDDocument/"
 
 
 
@@ -271,7 +275,7 @@
       style system_FunctionalBlock fill:#f1c232    
 
 
-          system_FunctionalBlock --&gt; "1..*" system_Parameter: parameters 
+          system_FunctionalBlock --&gt; "*" system_Parameter: parameters 
           click system_FunctionalBlock href "../../classes/system_FunctionalBlock/"
 
 
@@ -286,7 +290,7 @@
       style system_Port fill:#f1c232    
 
 
-          system_Port --&gt; "1..*" system_Parameter: parameters 
+          system_Port --&gt; "*" system_Parameter: parameters 
           click system_Port href "../../classes/system_Port/"
 
 
@@ -301,7 +305,7 @@
       style system_KeyComponent fill:#f1c232    
 
 
-          system_KeyComponent --&gt; "1..*" system_Parameter: parameters 
+          system_KeyComponent --&gt; "*" system_Parameter: parameters 
           click system_KeyComponent href "../../classes/system_KeyComponent/"
 
 
@@ -316,7 +320,7 @@
       style system_SoftwareComponent fill:#f1c232    
 
 
-          system_SoftwareComponent --&gt; "1..*" system_Parameter: parameters 
+          system_SoftwareComponent --&gt; "*" system_Parameter: parameters 
           click system_SoftwareComponent href "../../classes/system_SoftwareComponent/"
 
 
@@ -331,7 +335,7 @@
       style system_Connection fill:#f1c232    
 
 
-          system_Connection --&gt; "1..*" system_Parameter: parameters 
+          system_Connection --&gt; "*" system_Parameter: parameters 
           click system_Connection href "../../classes/system_Connection/"
 
 
@@ -361,6 +365,13 @@
 <td><code>1</code></td>
 <td><a href="../../types/string/">string</a></td>
 <td>Local unique identifier within a given context.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/core_name">name</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/string/">string</a></td>
+<td>A short name of the entity.</td>
 <td>direct</td>
 </tr>
 <tr>

@@ -391,37 +391,37 @@
         click con_schematic_template_revision href "../../classes/con_schematic_template_revision/"
 
 
-  class cus_script["Script"]
+  class cus_Script["Script"]
 
 
 
-      style cus_script fill:#a2c4c9    
+      style cus_Script fill:#a2c4c9    
 
 
-        Artifact &lt;|-- cus_script
-        click cus_script href "../../classes/cus_script/"
+        Artifact &lt;|-- cus_Script
+        click cus_Script href "../../classes/cus_Script/"
 
 
-  class cus_script_version["Script Version"]
-
-
-
-      style cus_script_version fill:#a2c4c9    
-
-
-        Artifact &lt;|-- cus_script_version
-        click cus_script_version href "../../classes/cus_script_version/"
-
-
-  class cus_script_execution["Script Execution"]
+  class cus_ScriptVersion["Script Version"]
 
 
 
-      style cus_script_execution fill:#a2c4c9    
+      style cus_ScriptVersion fill:#a2c4c9    
 
 
-        Artifact &lt;|-- cus_script_execution
-        click cus_script_execution href "../../classes/cus_script_execution/"
+        Artifact &lt;|-- cus_ScriptVersion
+        click cus_ScriptVersion href "../../classes/cus_ScriptVersion/"
+
+
+  class cus_ScriptExecution["Script Execution"]
+
+
+
+      style cus_ScriptExecution fill:#a2c4c9    
+
+
+        Artifact &lt;|-- cus_ScriptExecution
+        click cus_ScriptExecution href "../../classes/cus_ScriptExecution/"
 
 
   class des_project_template["Project Template"]
@@ -842,6 +842,17 @@
         click sft_build_artifact href "../../classes/sft_build_artifact/"
 
 
+  class sft_software_bom["Software BOM"]
+
+
+
+      style sft_software_bom fill:#3c78d8    
+
+
+        Artifact &lt;|-- sft_software_bom
+        click sft_software_bom href "../../classes/sft_software_bom/"
+
+
   class system_Sim["System Information Model"]
 
 
@@ -923,9 +934,9 @@
 <li><a href="../con_env_configuration/">con_env_configuration</a></li>
 <li><a href="../con_schematic_template/">con_schematic_template</a></li>
 <li><a href="../con_schematic_template_revision/">con_schematic_template_revision</a></li>
-<li><a href="../cus_script/">cus_script</a></li>
-<li><a href="../cus_script_version/">cus_script_version</a></li>
-<li><a href="../cus_script_execution/">cus_script_execution</a></li>
+<li><a href="../cus_Script/">cus_Script</a></li>
+<li><a href="../cus_ScriptVersion/">cus_ScriptVersion</a></li>
+<li><a href="../cus_ScriptExecution/">cus_ScriptExecution</a></li>
 <li><a href="../des_project_template/">des_project_template</a></li>
 <li><a href="../des_project_template_revision/">des_project_template_revision</a> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
 <li><a href="../des_manufacturing_package/">des_manufacturing_package</a></li>
@@ -964,6 +975,7 @@
 <li><a href="../sft_device_configuration_revision/">sft_device_configuration_revision</a></li>
 <li><a href="../sft_ai_model/">sft_ai_model</a> [ <a href="../SolutionItem/">SolutionItem</a>]</li>
 <li><a href="../sft_build_artifact/">sft_build_artifact</a></li>
+<li><a href="../sft_software_bom/">sft_software_bom</a></li>
 <li><a href="../system_Sim/">system_Sim</a></li>
 <li><a href="../req_requirement/">req_requirement</a></li>
 <li><a href="../req_requirement_revision/">req_requirement_revision</a> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
