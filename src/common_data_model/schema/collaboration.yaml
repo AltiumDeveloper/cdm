@@ -52,7 +52,7 @@ classes:
       grid: grid:workspace:{workspace-id}:collaboration:comment-thread/{id}
       platformAPI: DesCommentThread
     slots:
-      - col_CommentThread#comments
+      - col_CommentThread_comments
 
   col_Comment:
     is_a: Resource
@@ -65,8 +65,8 @@ classes:
 
 slots:
 
-  col_CommentThread#comments: 
-    slot_uri: col:CommentThread#comments
+  col_CommentThread_comments: 
+    slot_uri: col:CommentThread_comments
     alias: comments
     title: comments
     description: TBD

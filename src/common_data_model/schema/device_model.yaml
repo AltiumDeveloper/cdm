@@ -718,16 +718,19 @@ classes:
 
 slots:
   dm_mpn:
+    alias: mpn
     title: deviceMpn
     description: Manufacturer Part Number (MPN) for the device.
     range: string
     required: true
   dm_peripherals:
+    alias: peripherals
     title: peripherals
     description: List of all peripherals available on the device.
     range: dm_peripheral
     multivalued: true
   dm_ports:
+    alias: ports
     title: ports
     description: List of physical ports on the device.
     range: dm_port

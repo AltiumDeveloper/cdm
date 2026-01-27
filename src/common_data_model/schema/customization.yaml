@@ -20,7 +20,7 @@ subsets:
 
 classes:
 
-  cus_script:
+  cus_Script:
     is_a: Artifact
     in_subset: customization
     class_uri: cus:Script
@@ -33,9 +33,9 @@ classes:
       - core_revisions
     slot_usage:
       core_revisions:
-        range: cus_script_version
+        range: cus_ScriptVersion
 
-  cus_script_version:
+  cus_ScriptVersion:
     is_a: Artifact
     in_subset: customization
     class_uri: cus:ScriptVersion
@@ -46,10 +46,10 @@ classes:
       platformAPI: GloScrScriptVersion
     attributes:
       executions:
-        range: cus_script_execution
+        range: cus_ScriptExecution
         multivalued: true
 
-  cus_script_execution:
+  cus_ScriptExecution:
     is_a: Artifact
     in_subset: customization
     class_uri: cus:ScriptExecution
@@ -58,8 +58,10 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:scripts:script-execution/{id}
       platformAPI: GloScrScriptExecution
+    slots:
+      - cus_ScriptExecution_emits
 
-  cus_workflow:
+  cus_Workflow:
     is_a: Activity
     in_subset: customization
     class_uri: cus:Workflow
@@ -68,3 +70,19 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:customization:workflow/{id}
       platformAPI: DesWorkflowDefinition
+
+  cus_ScriptExecutionCompleted:
+    is_a: Event
+    in_subset: customization
+    class_uri: cus:ScriptExecutionCompleted
+    title: Script Execution Completed
+    description: TBD
+
+slots:
+
+  cus_ScriptExecution_emits:
+    alias: emits
+    title: emits
+    range: Any
+    any_of:
+      - range: cus_ScriptExecutionCompleted

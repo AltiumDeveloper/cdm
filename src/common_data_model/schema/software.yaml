@@ -169,7 +169,7 @@ classes:
     description: TBD
 
   sft_software_bom:
-    is_a: Resource
+    is_a: Artifact
     in_subset: software
     class_uri: sft:SoftwareBom
     title: Software BOM
@@ -180,12 +180,15 @@ classes:
       of drivers, middlewares, and application libraries used in the embedded system.
       in building software.
     attributes:
-        sft_SoftwareBom_components:
-            title: components
-            description: The list of software components included in the SBOM.
-            range: sft_software_component
-            multivalued: true
-            required: true
+      sft_SoftwareBom_components:
+        alias: components
+        title: components
+        description: The list of software components included in the SBOM.
+        range: sft_software_component
+        multivalued: true
+        required: false
+        inlined: true
+        inlined_as_list: true
 
   sft_software_component:
     is_a: Resource
@@ -202,14 +205,17 @@ classes:
       - core_name
     attributes:
       sft_SoftwareComponent_version:
+        alias: version
         title:  version
         description: Version of the software component
         required: false
       sft_SoftwareComponent_vendor:
+        alias: vendor
         title: vendor
         description: Vendor of the software component
         required: false
       sft_SoftwareComponent_dependencies:
+        alias: dependencies
         title: dependencies
         description: The components that this component depends on.
         range: sft_software_component

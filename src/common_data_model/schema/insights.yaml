@@ -28,7 +28,7 @@ classes:
     description: >- 
       TBD
     slots:
-      - ins_Insight#tasks
+      - ins_Insight_tasks
 
   ins_PartInsight:
     is_a: ins_Insight
@@ -41,13 +41,13 @@ classes:
       grid: grid:workspace:{workspace-id}:insights:insight/{id}
       platformAPI: DesWorkspaceInsInsight
     slots:
-      - ins_PartInsight#part
-      - ins_PartInsight#informedBy
-      - ins_PartInsight#occursIn
+      - ins_PartInsight_part
+      - ins_PartInsight_informedBy
+      - ins_PartInsight_occursIn
 
 slots:
 
-  ins_Insight#tasks: 
+  ins_Insight_tasks: 
     is_a: core_informs
     slot_uri: ins:Insight#tasks
     alias: tasks
@@ -57,7 +57,7 @@ slots:
     required: false
     multivalued: true
 
-  ins_PartInsight#part:
+  ins_PartInsight_part:
     is_a: core_informs
     slot_uri: ins:PartInsight#part
     alias: part
@@ -67,7 +67,7 @@ slots:
     required: true
     multivalued: false
 
-  ins_PartInsight#informedBy: 
+  ins_PartInsight_informedBy: 
     is_a: core_informedBy
     slot_uri: ins:PartInsight#informedBy
     alias: informedBy
@@ -80,7 +80,7 @@ slots:
     required: false
     multivalued: true
 
-  ins_PartInsight#occursIn: 
+  ins_PartInsight_occursIn: 
     is_a: core_occursIn
     slot_uri: ins:PartInsight#occursIn
     alias: occursIn

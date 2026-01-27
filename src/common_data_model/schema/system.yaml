@@ -48,10 +48,10 @@ enums:
 
 classes:
 
-  system_EsdDocument:
+  system_ESDDocument:
     is_a: Activity
     in_subset: system
-    class_uri: sys:EsdDocument
+    class_uri: sys:ESDDocument
     title: ESD Document
     description: TBD
     annotations:
@@ -61,12 +61,12 @@ classes:
       - SolutionItem
     slots:
       - system_parameters
-      - system_EsdDocument_functionalBlocks
-      - system_EsdDocument_connections
+      - system_ESDDocument_functionalBlocks
+      - system_ESDDocument_connections
 
   system_FunctionalBlock:
     is_a: Resource
-    in_subset: system
+    in_subset: system 
     class_uri: sys:FunctionalBlock
     title: Functional Block
     description: >-
@@ -77,7 +77,7 @@ classes:
       - core_name
       - core_implementedBy
       - system_parameters
-      - system_FunctionalBlock#portAssociations
+      - system_FunctionalBlock_portAssociations
       - system_FunctionalBlock_ports
       - system_FunctionalBlock_keyComponents
       - system_FunctionalBlock_softwareComponents
@@ -87,13 +87,13 @@ classes:
         any_of:
           - range: des_project
           - range: sft_software_project
-      system_FunctionalBlock#portAssociations:
+      system_FunctionalBlock_portAssociations:
         inlined: true
         inlined_as_list: true
 
   system_Port:
     is_a: Resource
-    in_subset: system
+    in_subset: system 
     class_uri: sys:Port
     title: Port
     description: TBD
@@ -113,22 +113,22 @@ classes:
       - core_localId
       - core_name
       - system_parameters
-      - system_KeyComponent#softwareComponents
+      - system_KeyComponent_softwareComponents
 
   system_SoftwareComponent:
     is_a: Resource
     in_subset: system
     class_uri: sys:SoftwareComponent
     title: Software Component
-    description: Functional in nature, abstracted from but connected to logical implementation.
+    description: Functional in nature, abstracted from but connected to logical implementation. 
     slots:
       - core_localId
       - core_name
       - system_parameters
-      - system_SoftwareComponent#portAssociations
-      - system_SoftwareComponent#keyComponent
+      - system_SoftwareComponent_portAssociations
+      - system_SoftwareComponent_keyComponent
     slot_usage:
-      system_SoftwareComponent#portAssociations:
+      system_SoftwareComponent_portAssociations:
         inlined: false
 
   system_PortAssociation:
@@ -155,7 +155,7 @@ classes:
       - core_localId
       - core_name
       - system_parameters
-      - system_Connection#endpoints
+      - system_Connection_endpoints
 
   system_Endpoint:
     is_a: Resource
@@ -165,9 +165,9 @@ classes:
     description: >-
       TBD
     slots:
-      - system_Endpoint#functionalBlock
-      - system_Endpoint#port
-
+      - system_Endpoint_functionalBlock
+      - system_Endpoint_port
+      
   system_Parameter:
     is_a: Resource
     in_subset: system
@@ -183,6 +183,7 @@ classes:
         required: true
     slots:
       - core_localId
+      - core_name
 
   system_SoftwareProject:
     is_a: Resource
@@ -214,26 +215,38 @@ classes:
       Rather than forcing every domain to understand the internal data structures of every other domain, 
       the SIM establishes a canonical representation. Each participating domain maintains a mapping layer 
       that translates its local objects into this shared system-level format.
-    attributes:
-      system_Sim_esdDocument:
-        title: esdDocument
-        range: system_EsdDocument
-        required: true
-      system_Sim_deviceModels:
-        title: deviceModels
-        range: dm_configured_device_model
-        multivalued: true
-        required: true
-      system_Sim_softwareModels:
-        title: softwareModels
-        range: sft_software_bom
-        multivalued: true
-        required: true
+    slots:
+      - system_Sim_functionalModel
+      - system_Sim_deviceModels
+      - system_Sim_softwareModels
 
 slots:
 
-  system_EsdDocument_functionalBlocks:
-    slot_uri: sys:ESDDocument#functionalBlocks
+  system_Sim_functionalModel:
+    alias: functionalModel
+    title: functional model
+    range: system_ESDDocument
+    required: false
+    inlined: true
+  system_Sim_deviceModels:
+    alias: deviceModels
+    title: device models
+    range: dm_configured_device_model
+    multivalued: true
+    required: false
+    inlined: true
+    inlined_as_list: true
+  system_Sim_softwareModels:
+    alias: softwareModels
+    title: software models
+    range: sft_software_bom
+    multivalued: true
+    required: false
+    inlined: true
+    inlined_as_list: true
+
+  system_ESDDocument_functionalBlocks:
+    slot_uri: sys:ESDDocument_functionalBlocks
     alias: functionalBlocks
     title: functional blocks
     description: TBD
@@ -242,8 +255,8 @@ slots:
     required: false
     inlined: true
     inlined_as_list: true
-  system_EsdDocument_connections:
-    slot_uri: sys:ESDDocument#connections
+  system_ESDDocument_connections:
+    slot_uri: sys:ESDDocument_connections
     alias: connections
     title: connections
     range: system_Connection
@@ -252,8 +265,8 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  system_FunctionalBlock_ports:
-    slot_uri: sys:FunctionalBlock#ports
+  system_FunctionalBlock_ports:  
+    slot_uri: sys:FunctionalBlock_ports
     alias: ports
     title: ports
     range: system_Port
@@ -262,7 +275,7 @@ slots:
     inlined: true
     inlined_as_list: true
   system_FunctionalBlock_keyComponents:
-    slot_uri: sys:FunctionalBlock#keyComponents
+    slot_uri: sys:FunctionalBlock_keyComponents
     alias: keyComponents
     title: key components
     range: system_KeyComponent
@@ -271,7 +284,7 @@ slots:
     inlined: true
     inlined_as_list: true
   system_FunctionalBlock_softwareComponents:
-    slot_uri: sys:FunctionalBlock#softwareComponents
+    slot_uri: sys:FunctionalBlock_softwareComponents
     alias: softwareComponents
     title: software components
     range: system_SoftwareComponent
@@ -279,8 +292,8 @@ slots:
     required: false
     inlined: true
     inlined_as_list: true
-  system_FunctionalBlock#portAssociations:
-    slot_uri: sys:FunctionalBlock#portAssociations
+  system_FunctionalBlock_portAssociations:
+    slot_uri: sys:FunctionalBlock_portAssociations
     alias: portsAssociations
     title: ports associations
     range: system_PortAssociation
@@ -289,23 +302,23 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  system_SoftwareComponent#keyComponent:
-    slot_uri: sys:SoftwareComponent#keyComponent
+  system_SoftwareComponent_keyComponent:
+    slot_uri: sys:SoftwareComponent_keyComponent
     alias: parentKeyComponentId
     title: key component
     range: system_KeyComponent
     required: true
     multivalued: false
-  system_SoftwareComponent#portAssociations:
-    slot_uri: sys:SoftwareComponent#portAssociations
+  system_SoftwareComponent_portAssociations:
+    slot_uri: sys:SoftwareComponent_portAssociations
     alias: portsAssociationsIds
     title: port associations
     range: system_PortAssociation
-    required: true
+    required: false
     multivalued: true
 
-  system_KeyComponent#softwareComponents:
-    slot_uri: sys:KeyComponent#softwareComponents
+  system_KeyComponent_softwareComponents:
+    slot_uri: sys:KeyComponent_softwareComponents
     alias: childSoftwareComponentsIds
     title: software components
     range: system_SoftwareComponent
@@ -313,21 +326,21 @@ slots:
     multivalued: true
 
   system_PortAssociation_port:
-    slot_uri: sys:PortAssociation#port
+    slot_uri: sys:PortAssociation_port
     alias: portId
     title: port
     range: system_Port
     required: true
     multivalued: false
   system_PortAssociation_softwareComponent:
-    slot_uri: sys:PortAssociation#softwareComponent
+    slot_uri: sys:PortAssociation_softwareComponent
     alias: softwareComponentId
     title: software component
     range: system_SoftwareComponent
     required: true
     multivalued: false
   system_PortAssociation_portType:
-    slot_uri: sys:PortAssociation#portType
+    slot_uri: sys:PortAssociation_portType
     alias: portLibraryName
     title: port type
     range: system_PortType
@@ -335,7 +348,7 @@ slots:
     multivalued: false
 
   system_Port_association:
-    slot_uri: sys:Port#association
+    slot_uri: sys:Port_association
     alias: associationId
     title: association
     range: system_PortAssociation
@@ -343,24 +356,24 @@ slots:
     required: false
     inlined: false
 
-  system_Connection#endpoints:
-    slot_uri: sys:Connection#endpoints
+  system_Connection_endpoints:
+    slot_uri: sys:Connection_endpoints
     alias: endpoints
     title: endpoints
     range: system_Endpoint
     required: true
     multivalued: true
 
-  system_Endpoint#functionalBlock:
-    slot_uri: sys:Endpoint#functionalBlock
+  system_Endpoint_functionalBlock:
+    slot_uri: sys:Endpoint_functionalBlock
     alias: functionalBlockId
     title: functional block
     range: system_FunctionalBlock
     required: true
     multivalued: false
 
-  system_Endpoint#port:
-    slot_uri: sys:Endpoint#port
+  system_Endpoint_port:
+    slot_uri: sys:Endpoint_port
     alias: portId
     title: port
     range: system_Port
@@ -374,6 +387,6 @@ slots:
     description: TBD
     range: system_Parameter
     multivalued: true
-    required: true
+    required: false
     inlined: true
     inlined_as_list: true
