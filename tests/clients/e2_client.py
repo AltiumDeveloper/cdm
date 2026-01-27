@@ -9,7 +9,7 @@ class E2Client(SIMClient):
     baseline: SIM
 
     def __init__(self, model: cdm.SftSoftwareBom = None) -> None:
-        self.model = model if model else cdm.SftSoftwareBom(id="unique_sbom_id", components=[])
+        self.model = model if model else cdm.SftSoftwareBom(id="sbom-1", components=[])
         pass
 
     def push_to_sim(self, sim: SIM):
