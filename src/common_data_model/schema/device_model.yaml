@@ -168,6 +168,8 @@ classes:
         description: List of processors included in the device.
         range: dm_processor
         multivalued: true
+        inlined: true
+        inlined_as_list: true
       dm_FullStackDeviceModel_address_map:
         title: addressMap
         description: The hardware address map configuration.
@@ -225,6 +227,8 @@ classes:
           Each entry describes a specific block of memory.
         range: dm_address_segment
         multivalued: true
+        inlined: true
+        inlined_as_list: true
 
   dm_address_segment:
     is_a: Resource
@@ -255,6 +259,8 @@ classes:
         description: The nested address blocks within the segment
         range: dm_address_block
         multivalued: true
+        inlined: true
+        inlined_as_list: true
       dm_AddressSegment_peripherals:
         title: peripherals
         description: The peripherals associated with this segment.
@@ -293,6 +299,8 @@ classes:
         description: List of registers contained within this address block.
         range: dm_register
         multivalued: true
+        inlined: true
+        inlined_as_list: true
       dm_AddressBlock_peripheral_instance:
         title: peripheral_instance
         description: A peripheral instance associated with this address block.
@@ -356,6 +364,8 @@ classes:
         description: Bit fields within this register.
         range: dm_register_field
         multivalued: true
+        inlined: true
+        inlined_as_list: true
 
   dm_register_field:
     is_a: Resource
@@ -389,6 +399,8 @@ classes:
         description: Enumerated values for the register field.
         range: dm_field_enum
         multivalued: true
+        inlined: true
+        inlined_as_list: true
 
   dm_field_enum:
     is_a: Resource
@@ -433,6 +445,7 @@ classes:
         range: dm_peripheral_instance
         multivalued: true
         inlined: true
+        inlined_as_list: true
 
   dm_peripheral_instance:
     is_a: Resource
@@ -462,6 +475,7 @@ classes:
         range: dm_peripheral_mode
         multivalued: true
         inlined: true
+        inlined_as_list: true
 
   dm_peripheral_mode:
     is_a: Resource
@@ -484,6 +498,7 @@ classes:
         range: dm_peripheral_configuration
         multivalued: true
         inlined: true
+        inlined_as_list: true
 
   dm_peripheral_configuration:
     is_a: Resource
@@ -503,6 +518,7 @@ classes:
         range: dm_peripheral_pin_config
         multivalued: true
         inlined: true
+        inlined_as_list: true
       dm_PeripheralConfiguration_pinDependencyConfigs:
         alias: pinDependencyConfigs
         title: pinDependencyConfigs
@@ -510,6 +526,7 @@ classes:
         range: dm_peripheral_pin_dependency_config
         multivalued: true
         inlined: true
+        inlined_as_list: true
 
   dm_peripheral_pin_config:
     is_a: Resource
@@ -600,6 +617,7 @@ classes:
         range: dm_port_function
         multivalued: true
         inlined: true
+        inlined_as_list: true
       dm_Port_configurations:
         alias: configurations
         title: configurations
@@ -607,6 +625,7 @@ classes:
         range: dm_port_configuration
         multivalued: true
         inlined: true
+        inlined_as_list: true
       dm_Port_connections:
         alias: connections
         title: connections
@@ -614,6 +633,7 @@ classes:
         range: dm_port_connection
         multivalued: true
         inlined: true
+        inlined_as_list: true
 
   dm_pin:
     is_a: Resource
@@ -672,6 +692,8 @@ classes:
         description: The possible values that can be associated with this port configuration.
         range: dm_port_configuration_enum_value
         multivalued: true
+        inlined: true
+        inlined_as_list: true
 
   dm_port_configuration_enum_value:
     is_a: Resource
@@ -693,6 +715,8 @@ classes:
         description: The list of dependencies associated with this enumerated value.
         range: dm_port_configuration_dependency
         multivalued: true
+        inlined: true
+        inlined_as_list: true
 
   dm_port_configuration_dependency:
     is_a: Resource
