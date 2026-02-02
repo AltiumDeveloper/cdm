@@ -1,14 +1,31 @@
+import os
+
 from linkml_runtime.dumpers import json_dumper
 
 from tests.clients.esd_client import ESDClient
 import common_data_model.datamodel.common_data_model as cdm
 
+def assert_sdm_matches_expected(sdm, expected_filepath: str):
+    sdm_json = json_dumper.dumps(sdm, inject_type=False)
+    print("SDM:\n" + sdm_json)
+    print("")
+    with open(os.path.join(os.path.dirname(__file__), expected_filepath)) as f:
+        expected_json = f.read()
+    assert sdm_json == expected_json
 
-def test_esd_client():
+def test_esd_basic_flow():
     esd = ESDClient()
 
     hw_project = esd.add_hardware_project()
     sw_project = esd.add_software_project()
+
+    wifi = esd.add_sw_library_item(
+        name="WiFi",
+        vendor="Renesas",
+        ecosystem="FSP",
+        package_name="module.driver.wifi_da16xxx",
+        category=cdm.SystemSmSoftwareComponentCategory.DRIVER,
+    )
 
     mcu = esd.add_functional_block(title="MCU", hw_project=hw_project)
     mcu_uart = esd.add_port(mcu, cdm.SystemPortType.UART)
@@ -21,7 +38,7 @@ def test_esd_client():
     mcu_hw_comp = esd.add_hardware_component(mcu, "R7FA6M3AH3CFB")
     _ = esd.add_hardware_component(wifi_ble, "DA16600MOD-AAE4WA32")
 
-    _ = esd.add_software_component(mcu, mcu_hw_comp, "WiFi Common", sw_project)
+    _ = esd.add_software_component(mcu, mcu_hw_comp, wifi, sw_project)
 
     esd.configure_device(
         hw_component=mcu_hw_comp,
@@ -89,8 +106,7 @@ def test_esd_client():
     )
 
     sdm = esd.compile_sdm()
-    print("\n" + json_dumper.dumps(sdm, inject_type=False))
-
+    assert_sdm_matches_expected(sdm, "data/esd_basic_flow.json")
 
 # def test_add_port_flow():
 #     """Happy path scenario - ESD updates SIM first, adding a new functional block, e2 studio pulls the latest

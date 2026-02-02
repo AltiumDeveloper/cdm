@@ -1,0 +1,129 @@
+{
+  "id": "sdm-1",
+  "functionalModel": {
+    "id": "esd-1",
+    "functionalBlocks": [
+      {
+        "id": "fb-1",
+        "name": "MCU"
+      },
+      {
+        "id": "fb-2",
+        "name": "WiFi + BLE"
+      }
+    ],
+    "connections": [
+      {
+        "id": "conn-1",
+        "endpoints": [
+          {
+            "functionalBlockId": "fb-1",
+            "portId": "port-1"
+          },
+          {
+            "functionalBlockId": "fb-2",
+            "portId": "port-1"
+          }
+        ]
+      }
+    ]
+  },
+  "deviceModels": [
+    {
+      "id": "device-1",
+      "mpn": "R7FA6M3AH3CFB",
+      "peripherals": {
+        "sci": {
+          "id": "sci",
+          "name": "Connectivity:SCI",
+          "instances": {
+            "sci9": {
+              "id": "sci9",
+              "name": "SCI9",
+              "unit": "9",
+              "modes": [
+                {
+                  "name": "Asynchronous UART",
+                  "configurations": {
+                    "sci9.mode.asynchronous.a": {
+                      "id": "sci9.mode.asynchronous.a",
+                      "pinConfigs": [
+                        {
+                          "pinName": "sci9.rxd",
+                          "pinValue": "sci9.rxd.p202",
+                          "function": "RXD",
+                          "portName": "P202"
+                        },
+                        {
+                          "pinName": "sci9.txd",
+                          "pinValue": "sci9.txd.p203",
+                          "function": "TXD",
+                          "portName": "P203"
+                        }
+                      ],
+                      "pinDependencyConfigs": [
+                        {
+                          "name": "ci9.pairing",
+                          "value": "sci9.pairing.a"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "ports": {
+        "p202": {
+          "id": "p202",
+          "name": "P202",
+          "pin": "46",
+          "functions": [
+            {
+              "name": "RXD_MISO"
+            }
+          ]
+        },
+        "p203": {
+          "id": "p203",
+          "name": "P203",
+          "pin": "45",
+          "functions": [
+            {
+              "name": "TXD_MOSI"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "softwareModels": [
+    {
+      "id": "sp-1",
+      "softwareComponents": [
+        {
+          "id": "sc-2",
+          "name": "WiFi",
+          "specification": {
+            "name": "module.driver.wifi_da16xxx",
+            "category": "DRIVER",
+            "ecosystem": "FSP",
+            "vendor": "Renesas"
+          }
+        }
+      ],
+      "deviceModelId": "device-1"
+    }
+  ],
+  "hardwareModels": [
+    {
+      "id": "hp-1",
+      "functionalBlockIds": [
+        "fb-1",
+        "fb-2"
+      ]
+    }
+  ]
+}

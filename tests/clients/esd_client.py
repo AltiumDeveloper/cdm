@@ -9,6 +9,8 @@ class ESDClient:
 
     latest_sdm: cdm.SystemSystemModel
 
+    sw_library: dict[str, cdm.SystemSmSoftwareSpecification] = {}
+
     def __init__(
         self,
         model: cdm.SystemESDDocument = None,
@@ -26,6 +28,15 @@ class ESDClient:
                 hardwareModels=[],
             )
         )
+
+    def add_sw_library_item(self, name: str, vendor: str, ecosystem: str, package_name: str, category: cdm.SystemSmSoftwareComponentCategory) -> str:
+        self.sw_library[name] = cdm.SystemSmSoftwareSpecification(
+            name=package_name,
+            vendor=vendor,
+            ecosystem=ecosystem,
+            category=category,
+        )
+        return name
 
     def add_functional_block(
         self, title: str, hw_project: cdm.SystemHardwareProject | None
@@ -155,7 +166,7 @@ class ESDClient:
                     id=con.id,
                     endpoints=[
                         cdm.SystemSmEndpoint(
-                            functionalBlock=e.functionalBlockId, port=e.portId
+                            functionalBlockId=e.functionalBlockId, portId=e.portId
                         )
                         for e in con.endpoints
                     ],
@@ -169,7 +180,7 @@ class ESDClient:
                 cdm.SystemSmHardwareModel(
                     id=hp.id,
                     implementedBy=hp.implementedBy,
-                    functionalBlocks=hp.functionalBlocks,
+                    functionalBlockIds=hp.functionalBlocks,
                 )
             )
 
@@ -185,6 +196,7 @@ class ESDClient:
                     cdm.SystemSmSoftwareComponent(
                         id=sc.id,
                         name=sc.name,
+                        specification=self.sw_library.get(sc.name, None)
                     )
                     for sc in sw_components
                 ],
@@ -194,12 +206,12 @@ class ESDClient:
                 hw_component = sw_components[0].parentKeyComponentId
                 # Add blank device model for hardware component if not already present
                 if hw_component not in self.deviceModels:
-                    self.deviceModels[hw_component] = cdm.SystemSmDeviceModel(
+                    self.deviceModels[hw_component] = cdm.DmConfiguredDeviceModel(
                         id=f"dm-{len(self.deviceModels) + 1}",
-                        deviceMpn=hw_components[hw_component].name,
+                        mpn=hw_components[hw_component].name,
                         peripherals=[],
                     )
-                sw_model.deviceModel = self.deviceModels[hw_component].id
+                sw_model.deviceModelId = self.deviceModels[hw_component].id
 
             sdm.softwareModels.append(sw_model)
 

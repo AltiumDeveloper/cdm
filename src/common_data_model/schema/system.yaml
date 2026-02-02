@@ -53,7 +53,7 @@ enums:
       # ???
       POWER_MCU:
 
-  system_SmComponentCategory:
+  system_SmSoftwareComponentCategory:
       description: High-level classification of software components.
       permissible_values:
         DRIVER:
@@ -394,7 +394,7 @@ classes:
       - system_parameters
     attributes:
       system_SmHardwareComponent_deviceModel:
-        alias: deviceModel
+        alias: deviceModelId
         title: device model
         description: A device model associated with this hardware component.
         range: dm_configured_device_model
@@ -444,13 +444,13 @@ classes:
       Represents an endpoint of a connection.
     attributes:
       system_SmEndpoint_functionalBlock:
-        alias: functionalBlock
+        alias: functionalBlockId
         title: functional block
         description: Functional block associated with this endpoint.
         range: system_SmFunctionalBlock
         required: true
       system_SmEndpoint_port:
-        alias: port
+        alias: portId
         title: port
         description: Port associated with this endpoint.
         range: system_SmPort
@@ -481,7 +481,7 @@ classes:
         inlined: true
         inlined_as_list: true
       system_SmSoftwareModel_deviceModel:
-        alias: deviceModel
+        alias: deviceModelId
         title: device model
         description: A device model associated with this software model.
         range: dm_configured_device_model
@@ -511,7 +511,7 @@ classes:
         range: system_SmSoftwareSpecification
         description: The specification of this software component.
       system_SmSoftwareComponent_dependencies:
-        alias: dependencies
+        alias: dependencyIds
         title: dependencies
         description: The software components that this component depends on.
         range: system_SmSoftwareComponent
@@ -532,7 +532,7 @@ classes:
       system_SmSoftwareSpecification_category:
         alias: category
         title: category
-        range: system_SmComponentCategory
+        range: system_SmSoftwareComponentCategory
         description: The architectural role of this specification (e.g. DRIVER).
       system_SmSoftwareSpecification_ecosystem:
         alias: ecosystem
@@ -568,7 +568,7 @@ classes:
       - core_implementedBy
     attributes:
       system_SmHardwareModel_functionalBlocks:
-        alias: functionalBlocks
+        alias: functionalBlockIds
         title: functional blocks
         description: A functional blocks associated with this hardware model.
         range: system_SmFunctionalBlock
