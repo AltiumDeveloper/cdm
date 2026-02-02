@@ -31,6 +31,18 @@ jobs:
       - name: Install dependencies.
         run: poetry install
 
+      - name: Build artifacts.
+        run: |
+          make gen-project
+
+      - name: Publish latest artifacts for convinient consumption.
+        uses: softprops/action-gh-release@v2
+        with:
+          name: vLatest
+          body: Latest release with convinient access to the CDM artifacts
+          files: |
+            project/jsonschema/common_data_model.schema.json
+
       - name: Build documentation.
         run: |
           mkdir -p docs
