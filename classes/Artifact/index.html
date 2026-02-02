@@ -457,17 +457,6 @@
         click des_manufacturing_package href "../../classes/des_manufacturing_package/"
 
 
-  class dm_configured_device_model["ConfiguredDeviceModel"]
-
-
-
-      style dm_configured_device_model fill:#6fa8dc    
-
-
-        Artifact &lt;|-- dm_configured_device_model
-        click dm_configured_device_model href "../../classes/dm_configured_device_model/"
-
-
   class dm_fullstack_device_model["FullStackDeviceModel"]
 
 
@@ -842,26 +831,15 @@
         click sft_build_artifact href "../../classes/sft_build_artifact/"
 
 
-  class sft_software_bom["Software BOM"]
+  class system_SystemModel["System  Model"]
 
 
 
-      style sft_software_bom fill:#3c78d8    
+      style system_SystemModel fill:#f1c232    
 
 
-        Artifact &lt;|-- sft_software_bom
-        click sft_software_bom href "../../classes/sft_software_bom/"
-
-
-  class system_Sim["System Information Model"]
-
-
-
-      style system_Sim fill:#f1c232    
-
-
-        Artifact &lt;|-- system_Sim
-        click system_Sim href "../../classes/system_Sim/"
+        Artifact &lt;|-- system_SystemModel
+        click system_SystemModel href "../../classes/system_SystemModel/"
 
 
   class req_requirement["Requirement"]
@@ -940,7 +918,6 @@
 <li><a href="../des_project_template/">des_project_template</a></li>
 <li><a href="../des_project_template_revision/">des_project_template_revision</a> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
 <li><a href="../des_manufacturing_package/">des_manufacturing_package</a></li>
-<li><a href="../dm_configured_device_model/">dm_configured_device_model</a></li>
 <li><a href="../dm_fullstack_device_model/">dm_fullstack_device_model</a></li>
 <li><a href="../lib_component/">lib_component</a></li>
 <li><a href="../lib_ComponentRevision/">lib_ComponentRevision</a> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
@@ -975,8 +952,7 @@
 <li><a href="../sft_device_configuration_revision/">sft_device_configuration_revision</a></li>
 <li><a href="../sft_ai_model/">sft_ai_model</a> [ <a href="../SolutionItem/">SolutionItem</a>]</li>
 <li><a href="../sft_build_artifact/">sft_build_artifact</a></li>
-<li><a href="../sft_software_bom/">sft_software_bom</a></li>
-<li><a href="../system_Sim/">system_Sim</a></li>
+<li><a href="../system_SystemModel/">system_SystemModel</a></li>
 <li><a href="../req_requirement/">req_requirement</a></li>
 <li><a href="../req_requirement_revision/">req_requirement_revision</a> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
 <li><a href="../req_requirement_specification/">req_requirement_specification</a></li>

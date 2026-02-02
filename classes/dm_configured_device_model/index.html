@@ -203,7 +203,6 @@
 </div>
 <div class="admonition quote annotate">
 <p class="admonition-title">GRID (1)</p>
-<p><code>grid:workspace:{workspace-id}:device-model:configured-dm/{id}</code></p>
 </div>
 <ol>
 <li><img alt="🙋‍♂️" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f64b-200d-2642-fe0f.svg" title=":man_raising_hand:"/> <a href="https://altiumrd.atlassian.net/wiki/x/AQDQmQ">Altium Global Resource ID (aka GRID)</a></li>
@@ -233,6 +232,10 @@
 
 
 
+
+
+
+          dm_configured_device_model : id
 
 
 
@@ -280,7 +283,6 @@
 
 
 
-          dm_configured_device_model : id
 
 
 
@@ -288,29 +290,53 @@
 
 
 
+  class system_SystemModel["System  Model"]
 
 
 
-  class system_Sim["System Information Model"]
+      style system_SystemModel fill:#f1c232    
+
+
+          system_SystemModel --&gt; "*" dm_configured_device_model: device models 
+          click system_SystemModel href "../../classes/system_SystemModel/"
 
 
 
-      style system_Sim fill:#f1c232    
 
 
-          system_Sim --&gt; "*" dm_configured_device_model: device models 
-          click system_Sim href "../../classes/system_Sim/"
+
+  class system_SmHardwareComponent["Hardware Component"]
+
+
+
+      style system_SmHardwareComponent fill:#f1c232    
+
+
+          system_SmHardwareComponent --&gt; "0..1" dm_configured_device_model: device model 
+          click system_SmHardwareComponent href "../../classes/system_SmHardwareComponent/"
+
+
+
+
+
+
+  class system_SmSoftwareModel["Software Model"]
+
+
+
+      style system_SmSoftwareModel fill:#f1c232    
+
+
+          system_SmSoftwareModel --&gt; "0..1" dm_configured_device_model: device model 
+          click system_SmSoftwareModel href "../../classes/system_SmSoftwareModel/"
 
 
 
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Entity/">Entity</a><ul>
-<li><a href="../Artifact/">Artifact</a><ul>
+<li><a href="../Resource/">Resource</a><ul>
 <li><strong>dm_configured_device_model</strong></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -327,11 +353,11 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../slots/core_id">id</a></td>
+<td><a href="../../slots/core_localId">id</a></td>
 <td><code>1</code></td>
-<td><a href="../../types/GRID/">GRID</a></td>
-<td>Globally unique identifier across the whole platform.</td>
-<td><a href="../Entity/">Entity</a></td>
+<td><a href="../../types/string/">string</a></td>
+<td>Local unique identifier within a given context.</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/dm_mpn">deviceMpn</a></td>
@@ -366,10 +392,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>grid</td>
-<td>grid:workspace:{workspace-id}:device-model:configured-dm/{id}</td>
-</tr>
 <tr>
 <td>platformAPI</td>
 <td>DmConfiguredDeviceModel</td>

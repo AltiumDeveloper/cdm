@@ -493,14 +493,6 @@
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/sft_software_bom/</loc>
-         <lastmod>2026-02-02</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/sft_software_component/</loc>
-         <lastmod>2026-02-02</lastmod>
-    </url>
-    <url>
          <loc>https://w3id.org/altium/cdm/classes/sft_software_project/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
@@ -561,6 +553,10 @@
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
+         <loc>https://w3id.org/altium/cdm/classes/system_HardwareProject/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
          <loc>https://w3id.org/altium/cdm/classes/system_KeyComponent/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
@@ -577,7 +573,43 @@
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/system_Sim/</loc>
+         <loc>https://w3id.org/altium/cdm/classes/system_SmConnection/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/system_SmEndpoint/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/system_SmFunctionalBlock/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/system_SmFunctionalModel/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/system_SmHardwareComponent/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/system_SmHardwareModel/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/system_SmPort/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/system_SmSoftwareComponent/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/system_SmSoftwareModel/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/system_SmSoftwareSpecification/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
@@ -586,6 +618,10 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SoftwareProject/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/system_SystemModel/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
@@ -622,6 +658,10 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/enums/system_PortType/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/enums/system_SmComponentCategory/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
@@ -1509,22 +1549,6 @@
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/sft_SoftwareBom_components/</loc>
-         <lastmod>2026-02-02</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/slots/sft_SoftwareComponent_dependencies/</loc>
-         <lastmod>2026-02-02</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/slots/sft_SoftwareComponent_vendor/</loc>
-         <lastmod>2026-02-02</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/slots/sft_SoftwareComponent_version/</loc>
-         <lastmod>2026-02-02</lastmod>
-    </url>
-    <url>
          <loc>https://w3id.org/altium/cdm/slots/sft_software_project_ai_models/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
@@ -1565,6 +1589,14 @@
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_ESDDocument_hardwareProjects/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_ESDDocument_softwareProjects/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
          <loc>https://w3id.org/altium/cdm/slots/system_Endpoint_functionalBlock/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
@@ -1586,6 +1618,10 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_FunctionalBlock_softwareComponents/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_HardwareProject_hardwareComponents/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
@@ -1613,15 +1649,71 @@
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/system_Sim_deviceModels/</loc>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmConnection_endpoints/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/system_Sim_functionalModel/</loc>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmEndpoint_functionalBlock/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/system_Sim_softwareModels/</loc>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmEndpoint_port/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmFunctionalBlock_hardwareComponents/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmFunctionalBlock_ports/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmFunctionalModel_connections/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmFunctionalModel_functionalBlocks/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmHardwareComponent_deviceModel/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmHardwareModel_functionalBlocks/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmSoftwareComponent_dependencies/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmSoftwareComponent_specification/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmSoftwareModel_deviceModel/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmSoftwareModel_softwareComponents/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmSoftwareSpecification_category/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmSoftwareSpecification_ecosystem/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmSoftwareSpecification_vendor/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmSoftwareSpecification_version/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
@@ -1630,6 +1722,26 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SoftwareComponent_portAssociations/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SoftwareProject_softwareComponents/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SystemModel_deviceModels/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SystemModel_functionalModel/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SystemModel_hardwareModels/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SystemModel_softwareModels/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
@@ -1698,6 +1810,10 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/supply/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/subsets/system-sdm/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>

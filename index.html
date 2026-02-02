@@ -282,6 +282,13 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#system-sdm">
+<span class="md-ellipsis">
+      system-sdm
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -969,16 +976,6 @@
 <td></td>
 </tr>
 <tr>
-<td><a href="classes/sft_software_bom/">Software BOM </a></td>
-<td>A Software Bill of Materials (SBOM) is a formal record containing the details  of drivers, middlewares, and application libraries used in the embedded system. in building software.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SftSoftwareBom">SftSoftwareBom</a></td>
-</tr>
-<tr>
-<td><a href="classes/sft_software_component/">Software Component </a></td>
-<td>A Software Component represents a single component in a Software Bill of Materials (SBOM). It includes details such as the component's name, version, and dependencies.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SftSoftwareComponent">SftSoftwareComponent</a></td>
-</tr>
-<tr>
 <td><a href="classes/sft_software_project/">Software Project </a></td>
 <td>TBD</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SftSoftwareProject">SftSoftwareProject</a></td>
@@ -1080,6 +1077,11 @@
 <td></td>
 </tr>
 <tr>
+<td><a href="classes/system_HardwareProject/">Hardware Project </a></td>
+<td>TBD</td>
+<td></td>
+</tr>
+<tr>
 <td><a href="classes/system_KeyComponent/">Key Component </a></td>
 <td>TBD</td>
 <td></td>
@@ -1100,11 +1102,6 @@
 <td></td>
 </tr>
 <tr>
-<td><a href="classes/system_Sim/">System Information Model </a></td>
-<td>The System Information Model (SIM) is a high-level abstraction layer that provides a unified,  system-centric view of objects derived from multiple independent domains  (e.g., Electronic Systems Design, Software, Hardware). Rather than forcing every domain to understand the internal data structures of every other domain,  the SIM establishes a canonical representation. Each participating domain maintains a mapping layer  that translates its local objects into this shared system-level format.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSystemInformationModel">SysSystemInformationModel</a></td>
-</tr>
-<tr>
 <td><a href="classes/system_SoftwareComponent/">Software Component </a></td>
 <td>Functional in nature, abstracted from but connected to logical implementation.</td>
 <td></td>
@@ -1113,6 +1110,74 @@
 <td><a href="classes/system_SoftwareProject/">Software Project </a></td>
 <td>TBD</td>
 <td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="system-sdm"><a href="subsets/system-sdm/">system-sdm</a></h3>
+<p>TBD</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+<th>Platform API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="classes/system_SmConnection/">Connection </a></td>
+<td>Represents a connection between functional blocks.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSmConnection">SysSmConnection</a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SmEndpoint/">Endpoint </a></td>
+<td>Represents an endpoint of a connection.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSmEndpoint">SysSmEndpoint</a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SmFunctionalBlock/">Functional Block </a></td>
+<td>Represents a logical block within a system functional model.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSmFunctionalBlock">SysSmFunctionalBlock</a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SmFunctionalModel/">Functional Model </a></td>
+<td>Captures the functional aspects of the system design, focusing on the behavior and interactions of functional blocks.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSmFunctionalModel">SysSmFunctionalModel</a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SmHardwareComponent/">Hardware Component </a></td>
+<td>Represents a hardware component within a system design.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSmHardwareComponent">SysSmHardwareComponent</a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SmHardwareModel/">Hardware Model </a></td>
+<td>Captures the hardware components and their interactions within the system design.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSmHardwareModel">SysSmHardwareModel</a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SmPort/">Port </a></td>
+<td>Represents a port within a system design.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSmPort">SysSmPort</a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SmSoftwareComponent/">Software Component </a></td>
+<td>Represents a software component instance and its dependencies.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSmSoftwareComponent">SysSmSoftwareComponent</a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SmSoftwareModel/">Software Model </a></td>
+<td>Captures the software components and their interactions within the system design.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSmSoftwareModel">SysSmSoftwareModel</a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SmSoftwareSpecification/">Software Specification </a></td>
+<td>The "blueprint" for a software component. Captures the identity and  classification of the software independently of any specific instance.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSmSoftwareSpecification">SysSmSoftwareSpecification</a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SystemModel/">System  Model </a></td>
+<td>A high-level system model that captures the overall system architecture, crossing boundary between  functional and logical domains (e.g., hardware and software).</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSystemModel">SysSystemModel</a></td>
 </tr>
 </tbody>
 </table>
@@ -1195,11 +1260,6 @@
 <td><a href="subsets/design/">design</a></td>
 <td><a href="classes/des_project_template_revision/">Project Template Revision </a></td>
 <td><code>grid:workspace:{workspace-id}:design:project-template-revision/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/deviceModel/">deviceModel</a></td>
-<td><a href="classes/dm_configured_device_model/">ConfiguredDeviceModel </a></td>
-<td><code>grid:workspace:{workspace-id}:device-model:configured-dm/{id}</code></td>
 </tr>
 <tr>
 <td><a href="subsets/deviceModel/">deviceModel</a></td>
@@ -1472,9 +1532,9 @@
 <td><code>grid:workspace:{workspace-id}:system-design:esd/{id}</code></td>
 </tr>
 <tr>
-<td><a href="subsets/system/">system</a></td>
-<td><a href="classes/system_Sim/">System Information Model </a></td>
-<td><code>grid:workspace:{workspace-id}:system-design:sim/{id}</code></td>
+<td><a href="subsets/system-sdm/">system-sdm</a></td>
+<td><a href="classes/system_SystemModel/">System  Model </a></td>
+<td><code>grid:workspace:{workspace-id}:system-design:system-model/{id}</code></td>
 </tr>
 </tbody>
 </table>

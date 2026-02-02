@@ -303,6 +303,46 @@
 
 
 
+      system_ESDDocument --&gt; "*" system_HardwareProject : hardware projects
+      click system_HardwareProject href "../../classes/system_HardwareProject/"
+
+
+  class system_HardwareProject["Hardware Project"]
+
+
+
+      style system_HardwareProject fill:#f1c232    
+
+
+
+
+
+
+
+
+
+
+
+      system_ESDDocument --&gt; "*" system_SoftwareProject : software projects
+      click system_SoftwareProject href "../../classes/system_SoftwareProject/"
+
+
+  class system_SoftwareProject["Software Project"]
+
+
+
+      style system_SoftwareProject fill:#f1c232    
+
+
+
+
+
+
+
+
+
+
+
       system_ESDDocument --&gt; "*" plt_solution : part of solution
       click plt_solution href "../../classes/plt_solution/"
 
@@ -329,15 +369,15 @@
 
 
 
-  class system_Sim["System Information Model"]
+  class system_SmFunctionalModel["Functional Model"]
 
 
 
-      style system_Sim fill:#f1c232    
+      style system_SmFunctionalModel fill:#f1c232    
 
 
-          system_Sim --&gt; "0..1" system_ESDDocument: functional model 
-          click system_Sim href "../../classes/system_Sim/"
+          system_SmFunctionalModel --&gt; "0..1" system_ESDDocument: implemented by 
+          click system_SmFunctionalModel href "../../classes/system_SmFunctionalModel/"
 
 
 
@@ -397,6 +437,20 @@
 <td><code>*</code></td>
 <td><a href="../system_Connection/">Connection</a></td>
 <td>None</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/system_ESDDocument_hardwareProjects">hardware projects</a></td>
+<td><code>*</code></td>
+<td><a href="../system_HardwareProject/">Hardware Project</a></td>
+<td>Hardware projects associated with this ESD document.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/system_ESDDocument_softwareProjects">software projects</a></td>
+<td><code>*</code></td>
+<td><a href="../system_SoftwareProject/">Software Project</a></td>
+<td>Software projects associated with this ESD document.</td>
 <td>direct</td>
 </tr>
 </tbody>

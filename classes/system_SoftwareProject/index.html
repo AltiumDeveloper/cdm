@@ -256,6 +256,43 @@
 
 
 
+
+
+
+      system_SoftwareProject --&gt; "*" system_SoftwareComponent : software components
+      click system_SoftwareComponent href "../../classes/system_SoftwareComponent/"
+
+
+  class system_SoftwareComponent["Software Component"]
+
+
+
+      style system_SoftwareComponent fill:#f1c232    
+
+
+
+
+
+
+
+
+
+
+
+
+
+  class system_ESDDocument["ESD Document"]
+
+
+
+      style system_ESDDocument fill:#f1c232    
+
+
+          system_ESDDocument --&gt; "*" system_SoftwareProject: software projects 
+          click system_ESDDocument href "../../classes/system_ESDDocument/"
+
+
+
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
@@ -288,6 +325,13 @@
 <td><code>0..1</code></td>
 <td><a href="../sft_software_project/">Software Project</a></td>
 <td>None</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/system_SoftwareProject_softwareComponents">software components</a></td>
+<td><code>*</code></td>
+<td><a href="../system_SoftwareComponent/">Software Component</a></td>
+<td>Software components associated with this software project.</td>
 <td>direct</td>
 </tr>
 </tbody>

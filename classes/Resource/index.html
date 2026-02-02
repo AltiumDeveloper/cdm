@@ -282,6 +282,17 @@
         click des_project_variant href "../../classes/des_project_variant/"
 
 
+  class dm_configured_device_model["ConfiguredDeviceModel"]
+
+
+
+      style dm_configured_device_model fill:#6fa8dc    
+
+
+        Resource &lt;|-- dm_configured_device_model
+        click dm_configured_device_model href "../../classes/dm_configured_device_model/"
+
+
   class dm_processor["Processor"]
 
 
@@ -601,17 +612,6 @@
         click sft_PinAssignment href "../../classes/sft_PinAssignment/"
 
 
-  class sft_software_component["Software Component"]
-
-
-
-      style sft_software_component fill:#3c78d8    
-
-
-        Resource &lt;|-- sft_software_component
-        click sft_software_component href "../../classes/sft_software_component/"
-
-
   class system_FunctionalBlock["Functional Block"]
 
 
@@ -711,6 +711,127 @@
         click system_SoftwareProject href "../../classes/system_SoftwareProject/"
 
 
+  class system_HardwareProject["Hardware Project"]
+
+
+
+      style system_HardwareProject fill:#f1c232    
+
+
+        Resource &lt;|-- system_HardwareProject
+        click system_HardwareProject href "../../classes/system_HardwareProject/"
+
+
+  class system_SmFunctionalModel["Functional Model"]
+
+
+
+      style system_SmFunctionalModel fill:#f1c232    
+
+
+        Resource &lt;|-- system_SmFunctionalModel
+        click system_SmFunctionalModel href "../../classes/system_SmFunctionalModel/"
+
+
+  class system_SmFunctionalBlock["Functional Block"]
+
+
+
+      style system_SmFunctionalBlock fill:#f1c232    
+
+
+        Resource &lt;|-- system_SmFunctionalBlock
+        click system_SmFunctionalBlock href "../../classes/system_SmFunctionalBlock/"
+
+
+  class system_SmHardwareComponent["Hardware Component"]
+
+
+
+      style system_SmHardwareComponent fill:#f1c232    
+
+
+        Resource &lt;|-- system_SmHardwareComponent
+        click system_SmHardwareComponent href "../../classes/system_SmHardwareComponent/"
+
+
+  class system_SmPort["Port"]
+
+
+
+      style system_SmPort fill:#f1c232    
+
+
+        Resource &lt;|-- system_SmPort
+        click system_SmPort href "../../classes/system_SmPort/"
+
+
+  class system_SmConnection["Connection"]
+
+
+
+      style system_SmConnection fill:#f1c232    
+
+
+        Resource &lt;|-- system_SmConnection
+        click system_SmConnection href "../../classes/system_SmConnection/"
+
+
+  class system_SmEndpoint["Endpoint"]
+
+
+
+      style system_SmEndpoint fill:#f1c232    
+
+
+        Resource &lt;|-- system_SmEndpoint
+        click system_SmEndpoint href "../../classes/system_SmEndpoint/"
+
+
+  class system_SmSoftwareModel["Software Model"]
+
+
+
+      style system_SmSoftwareModel fill:#f1c232    
+
+
+        Resource &lt;|-- system_SmSoftwareModel
+        click system_SmSoftwareModel href "../../classes/system_SmSoftwareModel/"
+
+
+  class system_SmSoftwareComponent["Software Component"]
+
+
+
+      style system_SmSoftwareComponent fill:#f1c232    
+
+
+        Resource &lt;|-- system_SmSoftwareComponent
+        click system_SmSoftwareComponent href "../../classes/system_SmSoftwareComponent/"
+
+
+  class system_SmSoftwareSpecification["Software Specification"]
+
+
+
+      style system_SmSoftwareSpecification fill:#f1c232    
+
+
+        Resource &lt;|-- system_SmSoftwareSpecification
+        click system_SmSoftwareSpecification href "../../classes/system_SmSoftwareSpecification/"
+
+
+  class system_SmHardwareModel["Hardware Model"]
+
+
+
+      style system_SmHardwareModel fill:#f1c232    
+
+
+        Resource &lt;|-- system_SmHardwareModel
+        click system_SmHardwareModel href "../../classes/system_SmHardwareModel/"
+
+
   class req_artifact["Requirement Artifact"]
 
 
@@ -734,6 +855,7 @@
 <li><a href="../col_Comment/">col_Comment</a></li>
 <li><a href="../des_project_parameter/">des_project_parameter</a></li>
 <li><a href="../des_project_variant/">des_project_variant</a></li>
+<li><a href="../dm_configured_device_model/">dm_configured_device_model</a></li>
 <li><a href="../dm_processor/">dm_processor</a></li>
 <li><a href="../dm_address_map/">dm_address_map</a></li>
 <li><a href="../dm_address_segment/">dm_address_segment</a> [ <a href="../dm_HasAddressRange/">dm_HasAddressRange</a>]</li>
@@ -763,7 +885,6 @@
 <li><a href="../pro_BomIssue/">pro_BomIssue</a></li>
 <li><a href="../sft_PinAssignmentModel/">sft_PinAssignmentModel</a></li>
 <li><a href="../sft_PinAssignment/">sft_PinAssignment</a></li>
-<li><a href="../sft_software_component/">sft_software_component</a></li>
 <li><a href="../system_FunctionalBlock/">system_FunctionalBlock</a></li>
 <li><a href="../system_Port/">system_Port</a></li>
 <li><a href="../system_KeyComponent/">system_KeyComponent</a></li>
@@ -773,6 +894,17 @@
 <li><a href="../system_Endpoint/">system_Endpoint</a></li>
 <li><a href="../system_Parameter/">system_Parameter</a></li>
 <li><a href="../system_SoftwareProject/">system_SoftwareProject</a></li>
+<li><a href="../system_HardwareProject/">system_HardwareProject</a></li>
+<li><a href="../system_SmFunctionalModel/">system_SmFunctionalModel</a></li>
+<li><a href="../system_SmFunctionalBlock/">system_SmFunctionalBlock</a></li>
+<li><a href="../system_SmHardwareComponent/">system_SmHardwareComponent</a></li>
+<li><a href="../system_SmPort/">system_SmPort</a></li>
+<li><a href="../system_SmConnection/">system_SmConnection</a></li>
+<li><a href="../system_SmEndpoint/">system_SmEndpoint</a></li>
+<li><a href="../system_SmSoftwareModel/">system_SmSoftwareModel</a></li>
+<li><a href="../system_SmSoftwareComponent/">system_SmSoftwareComponent</a></li>
+<li><a href="../system_SmSoftwareSpecification/">system_SmSoftwareSpecification</a></li>
+<li><a href="../system_SmHardwareModel/">system_SmHardwareModel</a></li>
 <li><a href="../req_artifact/">req_artifact</a></li>
 </ul>
 </li>
