@@ -235,8 +235,6 @@
 
 
 
-          system_SmHardwareModel : id
-
 
 
           system_SmHardwareModel : name
@@ -264,6 +262,26 @@
 
 
 
+      system_SmHardwareModel --&gt; "*" system_SmHardwareComponent : hardware components
+      click system_SmHardwareComponent href "../../classes/system_SmHardwareComponent/"
+
+
+  class system_SmHardwareComponent["Hardware Component"]
+
+
+
+      style system_SmHardwareComponent fill:#f1c232    
+
+
+
+
+
+
+
+
+
+
+
       system_SmHardwareModel --&gt; "*" system_SmFunctionalBlock : functional blocks
       click system_SmFunctionalBlock href "../../classes/system_SmFunctionalBlock/"
 
@@ -273,6 +291,30 @@
 
 
       style system_SmFunctionalBlock fill:#f1c232    
+
+
+
+
+
+
+          system_SmHardwareModel : id
+
+
+
+
+
+
+
+
+      system_SmHardwareModel --&gt; "*" system_SmClientMetadata : metadata
+      click system_SmClientMetadata href "../../classes/system_SmClientMetadata/"
+
+
+  class system_SmClientMetadata["Domain Metadata"]
+
+
+
+      style system_SmClientMetadata fill:#f1c232    
 
 
 
@@ -302,7 +344,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Resource/">Resource</a><ul>
-<li><strong>system_SmHardwareModel</strong></li>
+<li><strong>system_SmHardwareModel</strong> [ <a href="../system_SmMappableEntity/">system_SmMappableEntity</a>]</li>
 </ul>
 </li>
 </ul>
@@ -323,7 +365,14 @@
 <td><code>1</code></td>
 <td><a href="../../types/string/">string</a></td>
 <td>Local unique identifier within a given context.</td>
-<td>direct</td>
+<td><a href="../system_SmMappableEntity/">system_SmMappableEntity</a></td>
+</tr>
+<tr>
+<td><a href="../../slots/system_SmMappableEntity_metadata">metadata</a></td>
+<td><code>*</code></td>
+<td><a href="../system_SmClientMetadata/">Domain Metadata</a></td>
+<td>Client-specific metadata associated with this entity.</td>
+<td><a href="../system_SmMappableEntity/">system_SmMappableEntity</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/core_name">name</a></td>
@@ -337,6 +386,13 @@
 <td><code>0..1</code></td>
 <td><a href="../des_project/">Hardware Project</a></td>
 <td>None</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/system_SmHardwareModel_hardwareComponents">hardware components</a></td>
+<td><code>*</code></td>
+<td><a href="../system_SmHardwareComponent/">Hardware Component</a></td>
+<td>The hardware components that make up this hardware model.</td>
 <td>direct</td>
 </tr>
 <tr>

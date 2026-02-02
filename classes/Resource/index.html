@@ -722,6 +722,17 @@
         click system_HardwareProject href "../../classes/system_HardwareProject/"
 
 
+  class system_SmClientMetadata["Domain Metadata"]
+
+
+
+      style system_SmClientMetadata fill:#f1c232    
+
+
+        Resource &lt;|-- system_SmClientMetadata
+        click system_SmClientMetadata href "../../classes/system_SmClientMetadata/"
+
+
   class system_SmFunctionalModel["Functional Model"]
 
 
@@ -742,17 +753,6 @@
 
         Resource &lt;|-- system_SmFunctionalBlock
         click system_SmFunctionalBlock href "../../classes/system_SmFunctionalBlock/"
-
-
-  class system_SmHardwareComponent["Hardware Component"]
-
-
-
-      style system_SmHardwareComponent fill:#f1c232    
-
-
-        Resource &lt;|-- system_SmHardwareComponent
-        click system_SmHardwareComponent href "../../classes/system_SmHardwareComponent/"
 
 
   class system_SmPort["Port"]
@@ -832,6 +832,17 @@
         click system_SmHardwareModel href "../../classes/system_SmHardwareModel/"
 
 
+  class system_SmHardwareComponent["Hardware Component"]
+
+
+
+      style system_SmHardwareComponent fill:#f1c232    
+
+
+        Resource &lt;|-- system_SmHardwareComponent
+        click system_SmHardwareComponent href "../../classes/system_SmHardwareComponent/"
+
+
   class req_artifact["Requirement Artifact"]
 
 
@@ -895,16 +906,17 @@
 <li><a href="../system_Parameter/">system_Parameter</a></li>
 <li><a href="../system_SoftwareProject/">system_SoftwareProject</a></li>
 <li><a href="../system_HardwareProject/">system_HardwareProject</a></li>
-<li><a href="../system_SmFunctionalModel/">system_SmFunctionalModel</a></li>
-<li><a href="../system_SmFunctionalBlock/">system_SmFunctionalBlock</a></li>
-<li><a href="../system_SmHardwareComponent/">system_SmHardwareComponent</a></li>
-<li><a href="../system_SmPort/">system_SmPort</a></li>
-<li><a href="../system_SmConnection/">system_SmConnection</a></li>
+<li><a href="../system_SmClientMetadata/">system_SmClientMetadata</a></li>
+<li><a href="../system_SmFunctionalModel/">system_SmFunctionalModel</a> [ <a href="../system_SmMappableEntity/">system_SmMappableEntity</a>]</li>
+<li><a href="../system_SmFunctionalBlock/">system_SmFunctionalBlock</a> [ <a href="../system_SmMappableEntity/">system_SmMappableEntity</a>]</li>
+<li><a href="../system_SmPort/">system_SmPort</a> [ <a href="../system_SmMappableEntity/">system_SmMappableEntity</a>]</li>
+<li><a href="../system_SmConnection/">system_SmConnection</a> [ <a href="../system_SmMappableEntity/">system_SmMappableEntity</a>]</li>
 <li><a href="../system_SmEndpoint/">system_SmEndpoint</a></li>
-<li><a href="../system_SmSoftwareModel/">system_SmSoftwareModel</a></li>
-<li><a href="../system_SmSoftwareComponent/">system_SmSoftwareComponent</a></li>
+<li><a href="../system_SmSoftwareModel/">system_SmSoftwareModel</a> [ <a href="../system_SmMappableEntity/">system_SmMappableEntity</a>]</li>
+<li><a href="../system_SmSoftwareComponent/">system_SmSoftwareComponent</a> [ <a href="../system_SmMappableEntity/">system_SmMappableEntity</a>]</li>
 <li><a href="../system_SmSoftwareSpecification/">system_SmSoftwareSpecification</a></li>
-<li><a href="../system_SmHardwareModel/">system_SmHardwareModel</a></li>
+<li><a href="../system_SmHardwareModel/">system_SmHardwareModel</a> [ <a href="../system_SmMappableEntity/">system_SmMappableEntity</a>]</li>
+<li><a href="../system_SmHardwareComponent/">system_SmHardwareComponent</a> [ <a href="../system_SmMappableEntity/">system_SmMappableEntity</a>]</li>
 <li><a href="../req_artifact/">req_artifact</a></li>
 </ul>
 </li>

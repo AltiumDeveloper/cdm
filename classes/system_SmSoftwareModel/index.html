@@ -235,8 +235,6 @@
 
 
 
-          system_SmSoftwareModel : id
-
 
 
           system_SmSoftwareModel : name
@@ -299,6 +297,30 @@
 
 
 
+          system_SmSoftwareModel : id
+
+
+
+
+
+
+
+
+      system_SmSoftwareModel --&gt; "*" system_SmClientMetadata : metadata
+      click system_SmClientMetadata href "../../classes/system_SmClientMetadata/"
+
+
+  class system_SmClientMetadata["Domain Metadata"]
+
+
+
+      style system_SmClientMetadata fill:#f1c232    
+
+
+
+
+
+
 
 
 
@@ -322,7 +344,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Resource/">Resource</a><ul>
-<li><strong>system_SmSoftwareModel</strong></li>
+<li><strong>system_SmSoftwareModel</strong> [ <a href="../system_SmMappableEntity/">system_SmMappableEntity</a>]</li>
 </ul>
 </li>
 </ul>
@@ -343,7 +365,14 @@
 <td><code>1</code></td>
 <td><a href="../../types/string/">string</a></td>
 <td>Local unique identifier within a given context.</td>
-<td>direct</td>
+<td><a href="../system_SmMappableEntity/">system_SmMappableEntity</a></td>
+</tr>
+<tr>
+<td><a href="../../slots/system_SmMappableEntity_metadata">metadata</a></td>
+<td><code>*</code></td>
+<td><a href="../system_SmClientMetadata/">Domain Metadata</a></td>
+<td>Client-specific metadata associated with this entity.</td>
+<td><a href="../system_SmMappableEntity/">system_SmMappableEntity</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/core_name">name</a></td>

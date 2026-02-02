@@ -573,6 +573,10 @@
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
+         <loc>https://w3id.org/altium/cdm/classes/system_SmClientMetadata/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SmConnection/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
@@ -594,6 +598,10 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SmHardwareModel/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/system_SmMappableEntity/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
@@ -661,7 +669,7 @@
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/enums/system_SmComponentCategory/</loc>
+         <loc>https://w3id.org/altium/cdm/enums/system_SmSoftwareComponentCategory/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
@@ -1649,6 +1657,10 @@
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmClientMetadata_clientId/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SmConnection_endpoints/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
@@ -1682,6 +1694,14 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SmHardwareModel_functionalBlocks/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmHardwareModel_hardwareComponents/</loc>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmMappableEntity_metadata/</loc>
          <lastmod>2026-02-02</lastmod>
     </url>
     <url>
