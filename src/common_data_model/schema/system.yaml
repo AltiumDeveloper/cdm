@@ -92,6 +92,7 @@ classes:
         range: system_HardwareProject
         multivalued: true
         inlined: true
+        inlined_as_list: true
       system_ESDDocument_softwareProjects:
         alias: softwareProjects
         title: software projects
@@ -99,6 +100,7 @@ classes:
         range: system_SoftwareProject
         multivalued: true
         inlined: true
+        inlined_as_list: true
 
   system_FunctionalBlock:
     is_a: Resource
@@ -284,15 +286,16 @@ classes:
         title: functional model
         description: A functional model associated with the system model.
         range: system_SmFunctionalModel
-        required: true
+        required: false
         inlined: true
       system_SystemModel_deviceModels:
         alias: deviceModels
         title: device models
         description: A device models associated with this system model.
-        range: system_SmDeviceModel
+        range: dm_configured_device_model
         multivalued: true
         inlined: true
+        inlined_as_list: true
       system_SystemModel_softwareModels:
         alias: softwareModels
         title: software models
@@ -300,6 +303,7 @@ classes:
         range: system_SmSoftwareModel
         multivalued: true
         inlined: true
+        inlined_as_list: true
       system_SystemModel_hardwareModels:
         alias: hardwareModels
         title: hardware models
@@ -307,6 +311,7 @@ classes:
         range: system_SmHardwareModel
         multivalued: true
         inlined: true
+        inlined_as_list: true
 
   # SDM: Functional Model
   system_SmFunctionalModel:
@@ -330,6 +335,7 @@ classes:
         range: system_SmFunctionalBlock
         multivalued: true
         inlined: true
+        inlined_as_list: true
       system_SmFunctionalModel_connections:
         alias: connections
         title: connections
@@ -337,6 +343,7 @@ classes:
         range: system_SmConnection
         multivalued: true
         inlined: true
+        inlined_as_list: true
     slot_usage:
       core_implementedBy:
         range: Any
@@ -355,7 +362,6 @@ classes:
       - core_localId
       - core_name
       - system_parameters
-      - system_SmFunctionalBlock_hardwareModel
     attributes:
       system_SmFunctionalBlock_hardwareComponents:
         alias: hardwareComponents
@@ -364,6 +370,7 @@ classes:
         range: system_SmHardwareComponent
         multivalued: true
         inlined: true
+        inlined_as_list: true
       system_SmFunctionalBlock_ports:
         alias: ports
         title: ports
@@ -371,6 +378,7 @@ classes:
         range: system_SmPort
         multivalued: true
         inlined: true
+        inlined_as_list: true
   system_SmHardwareComponent:
     is_a: Resource
     in_subset: system-sdm
@@ -384,7 +392,12 @@ classes:
       - core_localId
       - core_name
       - system_parameters
-      - system_SmHardwareComponent_deviceModel
+    attributes:
+      system_SmHardwareComponent_deviceModel:
+        alias: deviceModel
+        title: device model
+        description: A device model associated with this hardware component.
+        range: dm_configured_device_model
   system_SmPort:
     is_a: Resource
     in_subset: system-sdm
@@ -419,6 +432,7 @@ classes:
         range: system_SmEndpoint
         multivalued: true
         inlined: true
+        inlined_as_list: true
   system_SmEndpoint:
     is_a: Resource
     in_subset: system-sdm
@@ -442,160 +456,6 @@ classes:
         range: system_SmPort
         required: true
 
-  # SDM: Device Model
-  system_SmDeviceModel:
-    is_a: Resource
-    in_subset: system-sdm
-    class_uri: sys:SmDeviceModel
-    title: Device Model
-    annotations:
-      platformAPI: SysSmDeviceModel
-    description: >-
-      Captures configuration and characteristics of physical devices used in the system design.
-    slots:
-      - core_localId
-      - system_SmDeviceModel_hardwareComponent
-      - system_SmDeviceModel_softwareModels
-    attributes:
-      system_SmDeviceModel_deviceMpn:
-        alias: deviceMpn
-        title: device mpn
-        description: Manufacturer Part Number of the device.
-        range: string
-        required: true
-      system_SmDeviceModel_peripherals:
-        alias: peripherals
-        title: peripherals
-        description: The list of peripherals available on the device.
-        range: system_SmPeripheral
-        multivalued: true
-        inlined: true
-  system_SmPeripheral:
-    is_a: Resource
-    in_subset: system-sdm
-    class_uri: sys:SmPeripheral
-    title: Peripheral
-    annotations:
-      platformAPI: SysSmPeripheral
-    description: A peripheral available on the device.
-    slots:
-      - core_localId
-    attributes:
-      system_SmPeripheral_instances:
-        alias: instances
-        title: instances
-        description: The list of instances of this peripheral present on the device.
-        range: system_SmPeripheralInstance
-        multivalued: true
-        inlined: true
-  system_SmPeripheralInstance:
-    is_a: Resource
-    in_subset: system-sdm
-    class_uri: sys:SmPeripheralInstance
-    title: Peripheral Instance
-    annotations:
-      platformAPI: SysSmPeripheralInstance
-    description: A concrete instance of a peripheral (e.g., SCI0) on the device.
-    slots:
-      - core_localId
-      - system_parameters
-    attributes:
-      system_SmPeripheralInstance_unit:
-        alias: unit
-        title: unit
-        description: The specific hardware unit index for the peripheral instance.
-        range: string
-      system_SmPeripheralInstance_modes:
-        alias: modes
-        title: modes
-        description: The list of modes this peripheral instance can fulfill (e.g., Asynchronous UART).
-        range: system_SmPeripheralMode
-        multivalued: true
-        inlined: true
-  system_SmPeripheralMode:
-    is_a: Resource
-    in_subset: system-sdm
-    class_uri: sys:SmPeripheralMode
-    title: Peripheral Mode
-    annotations:
-      platformAPI: SysSmPeripheralMode
-    description: A specific mode that a peripheral instance can fulfill.
-    slots:
-      - core_localId
-      - core_name
-    attributes:
-      system_SmPeripheralMode_configurations:
-        alias: configurations
-        title: configurations
-        description: The configurations available within this peripheral modes.
-        range: system_SmPeripheralConfiguration
-        multivalued: true
-        inlined: true
-  system_SmPeripheralConfiguration:
-    is_a: Resource
-    in_subset: system-sdm
-    class_uri: sys:SmPeripheralConfiguration
-    title: Peripheral Configuration
-    annotations:
-      platformAPI: SysSmPeripheralConfiguration
-    description: A concrete configuration for a peripheral role, containing pin multiplexing details.
-    slots:
-      - core_localId
-      - core_name
-    attributes:
-      system_SmPeripheralConfiguration_pinConfigs:
-        alias: pinConfigs
-        title: pinConfigs
-        description: The list of pin function to port mappings for this configuration.
-        range: system_SmPeripheralPinConfig
-        multivalued: true
-        inlined: true
-      system_SmPeripheralConfiguration_pinDependencyConfigs:
-        alias: pinDependencyConfigs
-        title: pinDependencyConfigs
-        description: The list of alternative pin configurations that must be applied together with this configuration.
-        range: system_SmPeripheralPinDependencyConfig
-        multivalued: true
-        inlined: true
-  system_SmPeripheralPinConfig:
-    is_a: Resource
-    in_subset: system-sdm
-    class_uri: sys:SmPeripheralPinConfig
-    title: Peripheral Pin Configuration
-    annotations:
-      platformAPI: SysSmPeripheralPinConfig
-    description: A specific pin multiplexing configuration within peripheral configuration.
-    attributes:
-      system_SmPeripheralPinConfig_pinName:
-        alias: pinName
-        title: pin name
-        description: The identifier for a specific functional signal within a peripheral instance (e.g., the logical transmit or clock line).
-        range: string
-      system_SmPeripheralPinConfig_pinValue:
-        alias: pinValue
-        title: pin value
-        description: The specific physical pin or hardware resource assigned to fulfill the functional signal requirement.
-        range: string
-  system_SmPeripheralPinDependencyConfig:
-    is_a: Resource
-    in_subset: system-sdm
-    class_uri: sys:SmPeripheralPinDependencyConfig
-    title: Peripheral Pin Dependency Configuration
-    annotations:
-      platformAPI: SysSmPeripheralPinDependencyConfig
-    description: A pin configuration that must be applied together with another peripheral configuration.
-    attributes:
-      dm_PinDependencyConfig_name:
-        alias: name
-        title: name
-        description: The name of the pin dependency configuration.
-        range: string
-      dm_PinDependencyConfig_value:
-        alias: value
-        title: value
-        description: The value of the pin dependency configuration.
-        range: string
-
   # SDM: Software Model
   system_SmSoftwareModel:
     is_a: Resource
@@ -610,7 +470,7 @@ classes:
       - core_localId
       - core_name
       - core_implementedBy
-      - system_SmSoftwareModel_deviceModel
+
     attributes:
       system_SmSoftwareModel_softwareComponents:
         alias: softwareComponents
@@ -619,6 +479,13 @@ classes:
         range: system_SmSoftwareComponent
         multivalued: true
         inlined: true
+        inlined_as_list: true
+      system_SmSoftwareModel_deviceModel:
+        alias: deviceModel
+        title: device model
+        description: A device model associated with this software model.
+        range: dm_configured_device_model
+        required: false
     slot_usage:
       core_implementedBy:
         range: Any
@@ -642,7 +509,6 @@ classes:
         alias: specification
         title: specification
         range: system_SmSoftwareSpecification
-        required: true
         description: The specification of this software component.
       system_SmSoftwareComponent_dependencies:
         alias: dependencies
@@ -700,7 +566,13 @@ classes:
       - core_localId
       - core_name
       - core_implementedBy
-      - system_SmHardwareModel_functionalBlocks
+    attributes:
+      system_SmHardwareModel_functionalBlocks:
+        alias: functionalBlocks
+        title: functional blocks
+        description: A functional blocks associated with this hardware model.
+        range: system_SmFunctionalBlock
+        multivalued: true
     slot_usage:
       core_implementedBy:
         range: Any
@@ -855,51 +727,3 @@ slots:
     required: false
     inlined: true
     inlined_as_list: true
-
-  # Interlinking between Hardware Component and Device Model
-  system_SmHardwareComponent_deviceModel:
-    slot_uri: sys:SmHardwareComponent_deviceModel
-    alias: deviceModel
-    title: device model
-    description: A device model associated with this hardware component.
-    range: system_SmDeviceModel
-  system_SmDeviceModel_hardwareComponent:
-    slot_uri: sys:SmDeviceModel_hardwareComponent
-    alias: hardwareComponent
-    title: hardware component
-    description: A hardware component associated with this device model.
-    range: system_SmHardwareComponent
-    inverse: system_SmHardwareComponent_deviceModel
-
-  # Interlinking between Software Model and Device Model
-  system_SmSoftwareModel_deviceModel:
-    slot_uri: sys:SmSoftwareModel_deviceModel
-    alias: deviceModel
-    title: device model
-    description: A device model associated with this software model.
-    range: system_SmDeviceModel
-    required: true
-  system_SmDeviceModel_softwareModels:
-    slot_uri: sys:SmDeviceModel_softwareModels
-    alias: softwareModels
-    title: software models
-    description: A software models associated with this device model.
-    range: system_SmSoftwareModel
-    multivalued: true
-    inverse: system_SmSoftwareModel_deviceModel
-
-  # Interlinking between Functional Block and Hardware Model
-  system_SmHardwareModel_functionalBlocks:
-    slot_uri: sys:SmHardwareModel_functionalBlocks
-    alias: functionalBlocks
-    title: functional blocks
-    description: A functional blocks associated with this hardware model.
-    range: system_SmFunctionalBlock
-    multivalued: true
-  system_SmFunctionalBlock_hardwareModel:
-    slot_uri: sys:SmFunctionalBlock_hardwareModel
-    alias: hardwareModel
-    title: hardware model
-    description: A hardware model associated with this functional block.
-    range: system_SmHardwareModel
-    inverse: system_SmHardwareModel_functionalBlocks
