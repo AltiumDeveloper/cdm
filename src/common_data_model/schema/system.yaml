@@ -18,6 +18,13 @@ subsets:
       It helps engineers structure complex projects by integrating requirements management with schematic and PCB design workflows within Altium 365.
     annotations:
       style: "fill:#f1c232"
+  system-sdm:
+    title: System Design - System Data Model
+    description: TBD
+    annotations:
+      style: "fill:#f1c232"
+
+
 
 enums:
 
@@ -46,6 +53,20 @@ enums:
       # ???
       POWER_MCU:
 
+  system_SmComponentCategory:
+      description: High-level classification of software components.
+      permissible_values:
+        DRIVER:
+          description: Low-level HAL/drivers interacting with hardware.
+        MIDDLEWARE:
+          description: Functional stacks (e.g., Motor Control, USB, TCP/IP).
+        OPERATING_SYSTEM:
+          description: Kernel or RTOS components.
+        APPLICATION:
+          description: High-level logic, AI models, or user-defined code.
+        LIBRARY:
+          description: Static utility code or mathematical libraries.
+
 classes:
 
   system_ESDDocument:
@@ -63,10 +84,25 @@ classes:
       - system_parameters
       - system_ESDDocument_functionalBlocks
       - system_ESDDocument_connections
+    attributes:
+      system_ESDDocument_hardwareProjects:
+        alias: hardwareProjects
+        title: hardware projects
+        description: Hardware projects associated with this ESD document.
+        range: system_HardwareProject
+        multivalued: true
+        inlined: true
+      system_ESDDocument_softwareProjects:
+        alias: softwareProjects
+        title: software projects
+        description: Software projects associated with this ESD document.
+        range: system_SoftwareProject
+        multivalued: true
+        inlined: true
 
   system_FunctionalBlock:
     is_a: Resource
-    in_subset: system 
+    in_subset: system
     class_uri: sys:FunctionalBlock
     title: Functional Block
     description: >-
@@ -93,7 +129,7 @@ classes:
 
   system_Port:
     is_a: Resource
-    in_subset: system 
+    in_subset: system
     class_uri: sys:Port
     title: Port
     description: TBD
@@ -120,7 +156,7 @@ classes:
     in_subset: system
     class_uri: sys:SoftwareComponent
     title: Software Component
-    description: Functional in nature, abstracted from but connected to logical implementation. 
+    description: Functional in nature, abstracted from but connected to logical implementation.
     slots:
       - core_localId
       - core_name
@@ -167,7 +203,7 @@ classes:
     slots:
       - system_Endpoint_functionalBlock
       - system_Endpoint_port
-      
+
   system_Parameter:
     is_a: Resource
     in_subset: system
@@ -194,56 +230,485 @@ classes:
     slots:
       - core_localId
       - core_implementedBy
+    attributes:
+      system_SoftwareProject_softwareComponents:
+        alias: softwareComponents
+        title: software components
+        description: Software components associated with this software project.
+        range: system_SoftwareComponent
+        multivalued: true
     slot_usage:
       core_implementedBy:
         range: Any
         any_of:
           - range: sft_software_project
 
-  system_Sim:
-    is_a: Artifact
+  system_HardwareProject:
+    is_a: Resource
     in_subset: system
-    class_uri: sys:SystemInformationModel
-    title: System Information Model
-    annotations:
-      platformAPI: SysSystemInformationModel
-      grid: grid:workspace:{workspace-id}:system-design:sim/{id}
-    description: >-
-      The System Information Model (SIM) is a high-level abstraction layer that provides a unified, 
-      system-centric view of objects derived from multiple independent domains 
-      (e.g., Electronic Systems Design, Software, Hardware).
-      Rather than forcing every domain to understand the internal data structures of every other domain, 
-      the SIM establishes a canonical representation. Each participating domain maintains a mapping layer 
-      that translates its local objects into this shared system-level format.
+    class_uri: sys:HardwareProject
+    title: Hardware Project
+    description: TBD
     slots:
-      - system_Sim_functionalModel
-      - system_Sim_deviceModels
-      - system_Sim_softwareModels
+      - core_localId
+      - core_implementedBy
+    attributes:
+      system_HardwareProject_hardwareComponents:
+        alias: functionalBlocks
+        title: functional blocks
+        description: Functional blocks associated with this hardware project.
+        range: system_FunctionalBlock
+        multivalued: true
+    slot_usage:
+      core_implementedBy:
+        range: Any
+        any_of:
+          - range: des_project
+
+  system_SystemModel:
+    is_a: Artifact
+    in_subset: system-sdm
+    class_uri: sys:SystemModel
+    title: System  Model
+    annotations:
+      platformAPI: SysSystemModel
+      grid: grid:workspace:{workspace-id}:system-design:system-model/{id}
+    description: >-
+      A high-level system model that captures the overall system architecture, crossing boundary between 
+      functional and logical domains (e.g., hardware and software).
+    slots:
+      - core_name
+    attributes:
+      system_SystemModel_functionalModel:
+        alias: functionalModel
+        title: functional model
+        description: A functional model associated with the system model.
+        range: system_SmFunctionalModel
+        required: true
+        inlined: true
+      system_SystemModel_deviceModels:
+        alias: deviceModels
+        title: device models
+        description: A device models associated with this system model.
+        range: system_SmDeviceModel
+        multivalued: true
+        inlined: true
+      system_SystemModel_softwareModels:
+        alias: softwareModels
+        title: software models
+        description: A software models associated with this system model.
+        range: system_SmSoftwareModel
+        multivalued: true
+        inlined: true
+      system_SystemModel_hardwareModels:
+        alias: hardwareModels
+        title: hardware models
+        description: A hardware models associated with this system model.
+        range: system_SmHardwareModel
+        multivalued: true
+        inlined: true
+
+  # SDM: Functional Model
+  system_SmFunctionalModel:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmFunctionalModel
+    title: Functional Model
+    annotations:
+      platformAPI: SysSmFunctionalModel
+    description: >-
+      Captures the functional aspects of the system design, focusing on the behavior and interactions of functional blocks.
+    slots:
+      - core_localId
+      - core_name
+      - core_implementedBy
+    attributes:
+      system_SmFunctionalModel_functionalBlocks:
+        alias: functionalBlocks
+        title: functional blocks
+        description: Functional blocks that make up this functional model.
+        range: system_SmFunctionalBlock
+        multivalued: true
+        inlined: true
+      system_SmFunctionalModel_connections:
+        alias: connections
+        title: connections
+        description: Connections between functional blocks in this functional model.
+        range: system_SmConnection
+        multivalued: true
+        inlined: true
+    slot_usage:
+      core_implementedBy:
+        range: Any
+        any_of:
+          - range: system_ESDDocument
+  system_SmFunctionalBlock:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmFunctionalBlock
+    title: Functional Block
+    annotations:
+      platformAPI: SysSmFunctionalBlock
+    description: >-
+      Represents a logical block within a system functional model.
+    slots:
+      - core_localId
+      - core_name
+      - system_parameters
+      - system_SmFunctionalBlock_hardwareModel
+    attributes:
+      system_SmFunctionalBlock_hardwareComponents:
+        alias: hardwareComponents
+        title: hardware components
+        description: Hardware components associated with this functional block.
+        range: system_SmHardwareComponent
+        multivalued: true
+        inlined: true
+      system_SmFunctionalBlock_ports:
+        alias: ports
+        title: ports
+        description: Ports associated with this functional block.
+        range: system_SmPort
+        multivalued: true
+        inlined: true
+  system_SmHardwareComponent:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmHardwareComponent
+    title: Hardware Component
+    annotations:
+      platformAPI: SysSmHardwareComponent
+    description: >-
+      Represents a hardware component within a system design.
+    slots:
+      - core_localId
+      - core_name
+      - system_parameters
+      - system_SmHardwareComponent_deviceModel
+  system_SmPort:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmPort
+    title: Port
+    annotations:
+      platformAPI: SysSmPort
+    description: >-
+      Represents a port within a system design.
+    slots:
+      - core_localId
+      - core_name
+      - system_parameters
+  system_SmConnection:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmConnection
+    title: Connection
+    annotations:
+      platformAPI: SysSmConnection
+    description: >-
+      Represents a connection between functional blocks.
+    slots:
+      - core_localId
+      - core_name
+      - system_parameters
+    attributes:
+      system_SmConnection_endpoints:
+        alias: endpoints
+        title: endpoints
+        description: Endpoints of the connection.
+        range: system_SmEndpoint
+        multivalued: true
+        inlined: true
+  system_SmEndpoint:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmEndpoint
+    title: Endpoint
+    annotations:
+      platformAPI: SysSmEndpoint
+    description: >-
+      Represents an endpoint of a connection.
+    attributes:
+      system_SmEndpoint_functionalBlock:
+        alias: functionalBlock
+        title: functional block
+        description: Functional block associated with this endpoint.
+        range: system_SmFunctionalBlock
+        required: true
+      system_SmEndpoint_port:
+        alias: port
+        title: port
+        description: Port associated with this endpoint.
+        range: system_SmPort
+        required: true
+
+  # SDM: Device Model
+  system_SmDeviceModel:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmDeviceModel
+    title: Device Model
+    annotations:
+      platformAPI: SysSmDeviceModel
+    description: >-
+      Captures configuration and characteristics of physical devices used in the system design.
+    slots:
+      - core_localId
+      - system_SmDeviceModel_hardwareComponent
+      - system_SmDeviceModel_softwareModels
+    attributes:
+      system_SmDeviceModel_deviceMpn:
+        alias: deviceMpn
+        title: device mpn
+        description: Manufacturer Part Number of the device.
+        range: string
+        required: true
+      system_SmDeviceModel_peripherals:
+        alias: peripherals
+        title: peripherals
+        description: The list of peripherals available on the device.
+        range: system_SmPeripheral
+        multivalued: true
+        inlined: true
+  system_SmPeripheral:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmPeripheral
+    title: Peripheral
+    annotations:
+      platformAPI: SysSmPeripheral
+    description: A peripheral available on the device.
+    slots:
+      - core_localId
+    attributes:
+      system_SmPeripheral_instances:
+        alias: instances
+        title: instances
+        description: The list of instances of this peripheral present on the device.
+        range: system_SmPeripheralInstance
+        multivalued: true
+        inlined: true
+  system_SmPeripheralInstance:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmPeripheralInstance
+    title: Peripheral Instance
+    annotations:
+      platformAPI: SysSmPeripheralInstance
+    description: A concrete instance of a peripheral (e.g., SCI0) on the device.
+    slots:
+      - core_localId
+      - system_parameters
+    attributes:
+      system_SmPeripheralInstance_unit:
+        alias: unit
+        title: unit
+        description: The specific hardware unit index for the peripheral instance.
+        range: string
+      system_SmPeripheralInstance_modes:
+        alias: modes
+        title: modes
+        description: The list of modes this peripheral instance can fulfill (e.g., Asynchronous UART).
+        range: system_SmPeripheralMode
+        multivalued: true
+        inlined: true
+  system_SmPeripheralMode:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmPeripheralMode
+    title: Peripheral Mode
+    annotations:
+      platformAPI: SysSmPeripheralMode
+    description: A specific mode that a peripheral instance can fulfill.
+    slots:
+      - core_localId
+      - core_name
+    attributes:
+      system_SmPeripheralMode_configurations:
+        alias: configurations
+        title: configurations
+        description: The configurations available within this peripheral modes.
+        range: system_SmPeripheralConfiguration
+        multivalued: true
+        inlined: true
+  system_SmPeripheralConfiguration:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmPeripheralConfiguration
+    title: Peripheral Configuration
+    annotations:
+      platformAPI: SysSmPeripheralConfiguration
+    description: A concrete configuration for a peripheral role, containing pin multiplexing details.
+    slots:
+      - core_localId
+      - core_name
+    attributes:
+      system_SmPeripheralConfiguration_pinConfigs:
+        alias: pinConfigs
+        title: pinConfigs
+        description: The list of pin function to port mappings for this configuration.
+        range: system_SmPeripheralPinConfig
+        multivalued: true
+        inlined: true
+      system_SmPeripheralConfiguration_pinDependencyConfigs:
+        alias: pinDependencyConfigs
+        title: pinDependencyConfigs
+        description: The list of alternative pin configurations that must be applied together with this configuration.
+        range: system_SmPeripheralPinDependencyConfig
+        multivalued: true
+        inlined: true
+  system_SmPeripheralPinConfig:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmPeripheralPinConfig
+    title: Peripheral Pin Configuration
+    annotations:
+      platformAPI: SysSmPeripheralPinConfig
+    description: A specific pin multiplexing configuration within peripheral configuration.
+    attributes:
+      system_SmPeripheralPinConfig_pinName:
+        alias: pinName
+        title: pin name
+        description: The identifier for a specific functional signal within a peripheral instance (e.g., the logical transmit or clock line).
+        range: string
+      system_SmPeripheralPinConfig_pinValue:
+        alias: pinValue
+        title: pin value
+        description: The specific physical pin or hardware resource assigned to fulfill the functional signal requirement.
+        range: string
+  system_SmPeripheralPinDependencyConfig:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmPeripheralPinDependencyConfig
+    title: Peripheral Pin Dependency Configuration
+    annotations:
+      platformAPI: SysSmPeripheralPinDependencyConfig
+    description: A pin configuration that must be applied together with another peripheral configuration.
+    attributes:
+      dm_PinDependencyConfig_name:
+        alias: name
+        title: name
+        description: The name of the pin dependency configuration.
+        range: string
+      dm_PinDependencyConfig_value:
+        alias: value
+        title: value
+        description: The value of the pin dependency configuration.
+        range: string
+
+  # SDM: Software Model
+  system_SmSoftwareModel:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmSoftwareModel
+    title: Software Model
+    annotations:
+      platformAPI: SysSmSoftwareModel
+    description: >-
+      Captures the software components and their interactions within the system design.
+    slots:
+      - core_localId
+      - core_name
+      - core_implementedBy
+      - system_SmSoftwareModel_deviceModel
+    attributes:
+      system_SmSoftwareModel_softwareComponents:
+        alias: softwareComponents
+        title: software components
+        description: The software components that make up this software model.
+        range: system_SmSoftwareComponent
+        multivalued: true
+        inlined: true
+    slot_usage:
+      core_implementedBy:
+        range: Any
+        any_of:
+          - range: sft_software_project
+  system_SmSoftwareComponent:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmSoftwareComponent
+    title: Software Component
+    annotations:
+      platformAPI: SysSmSoftwareComponent
+    description: >-
+      Represents a software component instance and its dependencies.
+    slots:
+      - core_localId
+      - core_name
+      - system_parameters
+    attributes:
+      system_SmSoftwareComponent_specification:
+        alias: specification
+        title: specification
+        range: system_SmSoftwareSpecification
+        required: true
+        description: The specification of this software component.
+      system_SmSoftwareComponent_dependencies:
+        alias: dependencies
+        title: dependencies
+        description: The software components that this component depends on.
+        range: system_SmSoftwareComponent
+        multivalued: true
+  system_SmSoftwareSpecification:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmSoftwareSpecification
+    title: Software Specification
+    annotations:
+        platformAPI: SysSmSoftwareSpecification
+    description: >-
+      The "blueprint" for a software component. Captures the identity and 
+      classification of the software independently of any specific instance.
+    slots:
+      - core_name
+    attributes:
+      system_SmSoftwareSpecification_category:
+        alias: category
+        title: category
+        range: system_SmComponentCategory
+        description: The architectural role of this specification (e.g. DRIVER).
+      system_SmSoftwareSpecification_ecosystem:
+        alias: ecosystem
+        title: ecosystem
+        range: string
+        description: The platform or framework (e.g., FSP).
+      system_SmSoftwareSpecification_vendor:
+        alias: vendor
+        title: vendor
+        range: string
+        description: The organization providing the software (e.g. Renesas).
+      system_SmSoftwareSpecification_version:
+        alias: version
+        title: version
+        range: string
+    slot_usage:
+        core_name:
+            description: The identifier within the ecosystem (e.g., module.driver.uart).
+
+  # SDM: Hardware Model
+  system_SmHardwareModel:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmHardwareModel
+    title: Hardware Model
+    annotations:
+      platformAPI: SysSmHardwareModel
+    description: >-
+      Captures the hardware components and their interactions within the system design.
+    slots:
+      - core_localId
+      - core_name
+      - core_implementedBy
+      - system_SmHardwareModel_functionalBlocks
+    slot_usage:
+      core_implementedBy:
+        range: Any
+        any_of:
+          - range: des_project
 
 slots:
 
-  system_Sim_functionalModel:
-    alias: functionalModel
-    title: functional model
-    range: system_ESDDocument
-    required: false
-    inlined: true
-  system_Sim_deviceModels:
-    alias: deviceModels
-    title: device models
-    range: dm_configured_device_model
-    multivalued: true
-    required: false
-    inlined: true
-    inlined_as_list: true
-  system_Sim_softwareModels:
-    alias: softwareModels
-    title: software models
-    range: sft_software_bom
-    multivalued: true
-    required: false
-    inlined: true
-    inlined_as_list: true
 
   system_ESDDocument_functionalBlocks:
     slot_uri: sys:ESDDocument_functionalBlocks
@@ -265,7 +730,7 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  system_FunctionalBlock_ports:  
+  system_FunctionalBlock_ports:
     slot_uri: sys:FunctionalBlock_ports
     alias: ports
     title: ports
@@ -390,3 +855,51 @@ slots:
     required: false
     inlined: true
     inlined_as_list: true
+
+  # Interlinking between Hardware Component and Device Model
+  system_SmHardwareComponent_deviceModel:
+    slot_uri: sys:SmHardwareComponent_deviceModel
+    alias: deviceModel
+    title: device model
+    description: A device model associated with this hardware component.
+    range: system_SmDeviceModel
+  system_SmDeviceModel_hardwareComponent:
+    slot_uri: sys:SmDeviceModel_hardwareComponent
+    alias: hardwareComponent
+    title: hardware component
+    description: A hardware component associated with this device model.
+    range: system_SmHardwareComponent
+    inverse: system_SmHardwareComponent_deviceModel
+
+  # Interlinking between Software Model and Device Model
+  system_SmSoftwareModel_deviceModel:
+    slot_uri: sys:SmSoftwareModel_deviceModel
+    alias: deviceModel
+    title: device model
+    description: A device model associated with this software model.
+    range: system_SmDeviceModel
+    required: true
+  system_SmDeviceModel_softwareModels:
+    slot_uri: sys:SmDeviceModel_softwareModels
+    alias: softwareModels
+    title: software models
+    description: A software models associated with this device model.
+    range: system_SmSoftwareModel
+    multivalued: true
+    inverse: system_SmSoftwareModel_deviceModel
+
+  # Interlinking between Functional Block and Hardware Model
+  system_SmHardwareModel_functionalBlocks:
+    slot_uri: sys:SmHardwareModel_functionalBlocks
+    alias: functionalBlocks
+    title: functional blocks
+    description: A functional blocks associated with this hardware model.
+    range: system_SmFunctionalBlock
+    multivalued: true
+  system_SmFunctionalBlock_hardwareModel:
+    slot_uri: sys:SmFunctionalBlock_hardwareModel
+    alias: hardwareModel
+    title: hardware model
+    description: A hardware model associated with this functional block.
+    range: system_SmHardwareModel
+    inverse: system_SmHardwareModel_functionalBlocks
