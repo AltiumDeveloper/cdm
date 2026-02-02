@@ -127,7 +127,7 @@ classes:
         range: integer
 
   dm_configured_device_model:
-    is_a: Artifact
+    is_a: Resource
     in_subset: deviceModel
     class_uri: dm:ConfiguredDeviceModel
     title: ConfiguredDeviceModel
@@ -135,9 +135,9 @@ classes:
       A digital twin of an embedded hardware device as configured for a specific use-case.
       It exposes the device model filtered to specific device configuration.
     annotations:
-      grid: grid:workspace:{workspace-id}:device-model:configured-dm/{id}
       platformAPI: DmConfiguredDeviceModel
     slots:
+      - core_localId
       - dm_mpn
       - dm_peripherals
       - dm_ports

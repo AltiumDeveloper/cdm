@@ -168,60 +168,6 @@ classes:
     title: Build Artifact
     description: TBD
 
-  sft_software_bom:
-    is_a: Artifact
-    in_subset: software
-    class_uri: sft:SoftwareBom
-    title: Software BOM
-    annotations:
-      platformAPI: SftSoftwareBom
-    description: >-
-      A Software Bill of Materials (SBOM) is a formal record containing the details 
-      of drivers, middlewares, and application libraries used in the embedded system.
-      in building software.
-    attributes:
-      sft_SoftwareBom_components:
-        alias: components
-        title: components
-        description: The list of software components included in the SBOM.
-        range: sft_software_component
-        multivalued: true
-        required: false
-        inlined: true
-        inlined_as_list: true
-
-  sft_software_component:
-    is_a: Resource
-    in_subset: software
-    class_uri: sft:SoftwareComponent
-    title: Software Component
-    annotations:
-      platformAPI: SftSoftwareComponent
-    description: >-
-      A Software Component represents a single component in a Software Bill of Materials (SBOM).
-      It includes details such as the component's name, version, and dependencies.
-    slots:
-      - core_localId
-      - core_name
-    attributes:
-      sft_SoftwareComponent_version:
-        alias: version
-        title:  version
-        description: Version of the software component
-        required: false
-      sft_SoftwareComponent_vendor:
-        alias: vendor
-        title: vendor
-        description: Vendor of the software component
-        required: false
-      sft_SoftwareComponent_dependencies:
-        alias: dependencies
-        title: dependencies
-        description: The components that this component depends on.
-        range: sft_software_component
-        multivalued: true
-        required: false
-
 slots: 
 
   sft_software_project_device_configuration:
