@@ -1,28 +1,126 @@
 {
-  "id": "sdm-1",
+  "id": "guid-1",
   "functionalModel": {
-    "id": "esd-1",
+    "id": "guid-2",
     "functionalBlocks": [
       {
-        "id": "fb-1",
-        "name": "MCU"
+        "id": "guid-5",
+        "name": "MCU",
+        "hardwareComponentIds": [
+          "guid-3"
+        ],
+        "ports": [
+          {
+            "id": "guid-4",
+            "name": "UART",
+            "parameters": [
+              {
+                "id": "param-1",
+                "value": "UART",
+                "name": "Type"
+              }
+            ],
+            "metadata": [
+              {
+                "clientId": "esd",
+                "parameters": [
+                  {
+                    "id": "local-id",
+                    "value": "port-1"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "clientId": "esd",
+            "parameters": [
+              {
+                "id": "local-id",
+                "value": "fb-1"
+              }
+            ]
+          }
+        ]
       },
       {
-        "id": "fb-2",
-        "name": "WiFi + BLE"
+        "id": "guid-6",
+        "name": "WiFi + BLE",
+        "hardwareComponentIds": [
+          "guid-3"
+        ],
+        "ports": [
+          {
+            "id": "guid-4",
+            "name": "UART",
+            "parameters": [
+              {
+                "id": "param-1",
+                "value": "UART",
+                "name": "Type"
+              }
+            ],
+            "metadata": [
+              {
+                "clientId": "esd",
+                "parameters": [
+                  {
+                    "id": "local-id",
+                    "value": "port-1"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "clientId": "esd",
+            "parameters": [
+              {
+                "id": "local-id",
+                "value": "fb-2"
+              }
+            ]
+          }
+        ]
       }
     ],
     "connections": [
       {
-        "id": "conn-1",
+        "id": "guid-7",
         "endpoints": [
           {
-            "functionalBlockId": "fb-1",
-            "portId": "port-1"
+            "functionalBlockId": "guid-5",
+            "portId": "guid-4"
           },
           {
-            "functionalBlockId": "fb-2",
-            "portId": "port-1"
+            "functionalBlockId": "guid-6",
+            "portId": "guid-4"
+          }
+        ],
+        "metadata": [
+          {
+            "clientId": "esd",
+            "parameters": [
+              {
+                "id": "local-id",
+                "value": "conn-1"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "metadata": [
+      {
+        "clientId": "esd",
+        "parameters": [
+          {
+            "id": "local-id",
+            "value": "esd-1"
           }
         ]
       }
@@ -30,22 +128,22 @@
   },
   "deviceModels": [
     {
-      "id": "device-1",
+      "id": "guid-8",
       "mpn": "R7FA6M3AH3CFB",
       "peripherals": {
         "sci": {
           "id": "sci",
           "name": "Connectivity:SCI",
-          "instances": {
-            "sci9": {
+          "instances": [
+            {
               "id": "sci9",
               "name": "SCI9",
               "unit": "9",
               "modes": [
                 {
                   "name": "Asynchronous UART",
-                  "configurations": {
-                    "sci9.mode.asynchronous.a": {
+                  "configurations": [
+                    {
                       "id": "sci9.mode.asynchronous.a",
                       "pinConfigs": [
                         {
@@ -68,11 +166,11 @@
                         }
                       ]
                     }
-                  }
+                  ]
                 }
               ]
             }
-          }
+          ]
         }
       },
       "ports": {
@@ -96,33 +194,111 @@
             }
           ]
         }
-      }
+      },
+      "metadata": [
+        {
+          "clientId": "esd",
+          "parameters": [
+            {
+              "id": "local-id",
+              "value": "device-1"
+            }
+          ]
+        }
+      ]
     }
   ],
   "softwareModels": [
     {
-      "id": "sp-1",
+      "id": "guid-11",
       "softwareComponents": [
         {
-          "id": "sc-2",
+          "id": "guid-10",
           "name": "WiFi",
           "specification": {
             "name": "module.driver.wifi_da16xxx",
             "category": "DRIVER",
             "ecosystem": "FSP",
             "vendor": "Renesas"
-          }
+          },
+          "metadata": [
+            {
+              "clientId": "esd",
+              "parameters": [
+                {
+                  "id": "local-id",
+                  "value": "sc-2"
+                }
+              ]
+            }
+          ]
         }
       ],
-      "deviceModelId": "device-1"
+      "deviceModelId": "guid-8",
+      "metadata": [
+        {
+          "clientId": "esd",
+          "parameters": [
+            {
+              "id": "local-id",
+              "value": "sp-1"
+            }
+          ]
+        }
+      ]
     }
   ],
   "hardwareModels": [
     {
-      "id": "hp-1",
+      "id": "guid-9",
+      "hardwareComponents": [
+        {
+          "id": "guid-3",
+          "name": "R7FA6M3AH3CFB",
+          "deviceModelId": "guid-8",
+          "metadata": [
+            {
+              "clientId": "esd",
+              "parameters": [
+                {
+                  "id": "local-id",
+                  "value": "kc-1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "guid-3",
+          "name": "DA16600MOD-AAE4WA32",
+          "deviceModelId": "guid-8",
+          "metadata": [
+            {
+              "clientId": "esd",
+              "parameters": [
+                {
+                  "id": "local-id",
+                  "value": "kc-1"
+                }
+              ]
+            }
+          ]
+        }
+      ],
       "functionalBlockIds": [
-        "fb-1",
-        "fb-2"
+        "guid-5",
+        "guid-6"
+      ],
+      "metadata": [
+        {
+          "clientId": "esd",
+          "parameters": [
+            {
+              "id": "local-id",
+              "value": "hp-1"
+            }
+          ]
+        }
       ]
     }
   ]

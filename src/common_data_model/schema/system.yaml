@@ -54,18 +54,18 @@ enums:
       POWER_MCU:
 
   system_SmSoftwareComponentCategory:
-      description: High-level classification of software components.
-      permissible_values:
-        DRIVER:
-          description: Low-level HAL/drivers interacting with hardware.
-        MIDDLEWARE:
-          description: Functional stacks (e.g., Motor Control, USB, TCP/IP).
-        OPERATING_SYSTEM:
-          description: Kernel or RTOS components.
-        APPLICATION:
-          description: High-level logic, AI models, or user-defined code.
-        LIBRARY:
-          description: Static utility code or mathematical libraries.
+    description: High-level classification of software components.
+    permissible_values:
+      DRIVER:
+        description: Low-level HAL/drivers interacting with hardware.
+      MIDDLEWARE:
+        description: Functional stacks (e.g., Motor Control, USB, TCP/IP).
+      OPERATING_SYSTEM:
+        description: Kernel or RTOS components.
+      APPLICATION:
+        description: High-level logic, AI models, or user-defined code.
+      LIBRARY:
+        description: Static utility code or mathematical libraries.
 
 classes:
 
@@ -267,6 +267,42 @@ classes:
         any_of:
           - range: des_project
 
+  # System Data Model (SDM)
+  system_SmMappableEntity:
+    is_a: Meta
+    abstract: true
+    mixin: true
+    class_uri: dm:SmEntity
+    description: >-
+      A mixin for entities within the System Data Model (SDM) that are mappable to domain-specific concepts
+    slots:
+      core_localId
+    attributes:
+      system_SmMappableEntity_metadata:
+        alias: metadata
+        title: metadata
+        description: Client-specific metadata associated with this entity.
+        range: system_SmClientMetadata
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+  system_SmClientMetadata:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: dm:SmClientMetadata
+    title: Domain Metadata
+    description: >-
+      Captures metadata specific to a particular client (e.g., ESD, AD, E2Studio).
+    slots:
+      - system_parameters
+    attributes:
+      system_SmClientMetadata_clientId:
+        alias: clientId
+        title: client id
+        description: The client identifier (e.g., "ESD", "AD", "E2Studio") this metadata are associated with.
+        range: string
+        required: true
+
   system_SystemModel:
     is_a: Artifact
     in_subset: system-sdm
@@ -323,8 +359,9 @@ classes:
       platformAPI: SysSmFunctionalModel
     description: >-
       Captures the functional aspects of the system design, focusing on the behavior and interactions of functional blocks.
+    mixins:
+      - system_SmMappableEntity
     slots:
-      - core_localId
       - core_name
       - core_implementedBy
     attributes:
@@ -358,19 +395,18 @@ classes:
       platformAPI: SysSmFunctionalBlock
     description: >-
       Represents a logical block within a system functional model.
+    mixins:
+      - system_SmMappableEntity
     slots:
-      - core_localId
       - core_name
       - system_parameters
     attributes:
       system_SmFunctionalBlock_hardwareComponents:
-        alias: hardwareComponents
+        alias: hardwareComponentIds
         title: hardware components
         description: Hardware components associated with this functional block.
         range: system_SmHardwareComponent
         multivalued: true
-        inlined: true
-        inlined_as_list: true
       system_SmFunctionalBlock_ports:
         alias: ports
         title: ports
@@ -379,25 +415,6 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-  system_SmHardwareComponent:
-    is_a: Resource
-    in_subset: system-sdm
-    class_uri: sys:SmHardwareComponent
-    title: Hardware Component
-    annotations:
-      platformAPI: SysSmHardwareComponent
-    description: >-
-      Represents a hardware component within a system design.
-    slots:
-      - core_localId
-      - core_name
-      - system_parameters
-    attributes:
-      system_SmHardwareComponent_deviceModel:
-        alias: deviceModelId
-        title: device model
-        description: A device model associated with this hardware component.
-        range: dm_configured_device_model
   system_SmPort:
     is_a: Resource
     in_subset: system-sdm
@@ -407,8 +424,9 @@ classes:
       platformAPI: SysSmPort
     description: >-
       Represents a port within a system design.
+    mixins:
+      - system_SmMappableEntity
     slots:
-      - core_localId
       - core_name
       - system_parameters
   system_SmConnection:
@@ -420,8 +438,9 @@ classes:
       platformAPI: SysSmConnection
     description: >-
       Represents a connection between functional blocks.
+    mixins:
+      - system_SmMappableEntity
     slots:
-      - core_localId
       - core_name
       - system_parameters
     attributes:
@@ -466,11 +485,11 @@ classes:
       platformAPI: SysSmSoftwareModel
     description: >-
       Captures the software components and their interactions within the system design.
+    mixins:
+      - system_SmMappableEntity
     slots:
-      - core_localId
       - core_name
       - core_implementedBy
-
     attributes:
       system_SmSoftwareModel_softwareComponents:
         alias: softwareComponents
@@ -500,8 +519,9 @@ classes:
       platformAPI: SysSmSoftwareComponent
     description: >-
       Represents a software component instance and its dependencies.
+    mixins:
+      - system_SmMappableEntity
     slots:
-      - core_localId
       - core_name
       - system_parameters
     attributes:
@@ -522,7 +542,7 @@ classes:
     class_uri: sys:SmSoftwareSpecification
     title: Software Specification
     annotations:
-        platformAPI: SysSmSoftwareSpecification
+      platformAPI: SysSmSoftwareSpecification
     description: >-
       The "blueprint" for a software component. Captures the identity and 
       classification of the software independently of any specific instance.
@@ -549,8 +569,8 @@ classes:
         title: version
         range: string
     slot_usage:
-        core_name:
-            description: The identifier within the ecosystem (e.g., module.driver.uart).
+      core_name:
+        description: The identifier within the ecosystem (e.g., module.driver.uart).
 
   # SDM: Hardware Model
   system_SmHardwareModel:
@@ -562,11 +582,20 @@ classes:
       platformAPI: SysSmHardwareModel
     description: >-
       Captures the hardware components and their interactions within the system design.
+    mixins:
+      - system_SmMappableEntity
     slots:
-      - core_localId
       - core_name
       - core_implementedBy
     attributes:
+      system_SmHardwareModel_hardwareComponents:
+        alias: hardwareComponents
+        title: hardware components
+        description: The hardware components that make up this hardware model.
+        range: system_SmHardwareComponent
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
       system_SmHardwareModel_functionalBlocks:
         alias: functionalBlockIds
         title: functional blocks
@@ -578,6 +607,26 @@ classes:
         range: Any
         any_of:
           - range: des_project
+  system_SmHardwareComponent:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmHardwareComponent
+    title: Hardware Component
+    annotations:
+      platformAPI: SysSmHardwareComponent
+    description: >-
+      Represents a hardware component / part.
+    mixins:
+      - system_SmMappableEntity
+    slots:
+      - core_name
+      - system_parameters
+    attributes:
+      system_SmHardwareComponent_deviceModel:
+        alias: deviceModelId
+        title: device model
+        description: A device model associated with this hardware component.
+        range: dm_configured_device_model
 
 slots:
 

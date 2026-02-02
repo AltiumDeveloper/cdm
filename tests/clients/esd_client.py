@@ -1,16 +1,37 @@
+import uuid
 from copy import deepcopy
+from typing import Dict, Any
 
 import common_data_model.datamodel.common_data_model as cdm
 
 
+class IdMapper:
+    def __init__(self, name: str) -> None:
+        self.counter = 1
+        self.name = name
+        self.mapping: dict[str, str] = {}
+
+    def map_id(self, original_id: str) -> str:
+        try:
+            return self.mapping[original_id]
+        except KeyError:
+            self.mapping[original_id] = "guid-" + str(self.counter)
+            self.counter += 1
+            return self.mapping[original_id]
+
+    def map_entity(self, entity: Any) -> Any:
+        original_id = entity.id
+        entity.id = self.map_id(entity.id)
+        entity.metadata = [
+            cdm.SystemSmClientMetadata(
+                clientId=self.name,
+                parameters=[cdm.SystemParameter(id="local-id", value=original_id)],
+            )
+        ]
+        return entity
+
+
 class ESDClient:
-    model: cdm.SystemESDDocument
-    deviceModels: dict[str, cdm.DmConfiguredDeviceModel] = {}
-
-    latest_sdm: cdm.SystemSystemModel
-
-    sw_library: dict[str, cdm.SystemSmSoftwareSpecification] = {}
-
     def __init__(
         self,
         model: cdm.SystemESDDocument = None,
@@ -28,8 +49,18 @@ class ESDClient:
                 hardwareModels=[],
             )
         )
+        self.deviceModels: Dict[str, cdm.DmConfiguredDeviceModel] = {}
+        self.sw_library: Dict[str, cdm.SystemSmSoftwareSpecification] = {}
+        self.id_mapper = IdMapper(name="esd")
 
-    def add_sw_library_item(self, name: str, vendor: str, ecosystem: str, package_name: str, category: cdm.SystemSmSoftwareComponentCategory) -> str:
+    def add_sw_library_item(
+        self,
+        name: str,
+        vendor: str,
+        ecosystem: str,
+        package_name: str,
+        category: cdm.SystemSmSoftwareComponentCategory,
+    ) -> str:
         self.sw_library[name] = cdm.SystemSmSoftwareSpecification(
             name=package_name,
             vendor=vendor,
@@ -104,9 +135,9 @@ class ESDClient:
         """Helper to add a port to a functional block in the ESD model"""
         port = cdm.SystemPort(
             id=f"port-{len(block.ports) + 1}",
-            name=name or port_type,
+            name=name or port_type.text,
             parameters=[
-                cdm.SystemParameter(id="param-1", name="Type", value=str(port_type)),
+                cdm.SystemParameter(id="param-1", name="Type", value=port_type.text),
             ],
         )
         block.ports.append(port)
@@ -140,18 +171,34 @@ class ESDClient:
         """Compile the System (Data) Model from the current ESD state"""
         # Fully replace functional model
         sdm = deepcopy(self.latest_sdm)
+        sdm.id = self.id_mapper.map_id(self.latest_sdm.id)
         if sdm.functionalModel is None:
-            sdm.functionalModel = cdm.SystemSmFunctionalModel(id=self.model.id)
+            sdm.functionalModel = self.id_mapper.map_entity(cdm.SystemSmFunctionalModel(id=self.model.id))
 
+        fb_blocks = dict()
         sw_components = dict()
         hw_components = dict()
 
         sdm.functionalModel.functionalBlocks = []
         for fb in self.model.functionalBlocks:
+            fb_blocks[fb.id] = fb
             sdm.functionalModel.functionalBlocks.append(
-                cdm.SystemSmFunctionalBlock(
-                    id=fb.id,
-                    name=fb.name,
+                self.id_mapper.map_entity(
+                    cdm.SystemSmFunctionalBlock(
+                        id=fb.id,
+                        name=fb.name,
+                        hardwareComponentIds=[
+                            self.id_mapper.map_id(x.id) for x in fb.keyComponents
+                        ],
+                        ports=[
+                            self.id_mapper.map_entity(
+                                cdm.SystemSmPort(
+                                    id=p.id, name=p.name, parameters=p.parameters
+                                )
+                            )
+                            for p in fb.ports
+                        ],
+                    )
                 )
             )
 
@@ -162,44 +209,65 @@ class ESDClient:
 
         for con in self.model.connections:
             sdm.functionalModel.connections.append(
-                cdm.SystemSmConnection(
-                    id=con.id,
-                    endpoints=[
-                        cdm.SystemSmEndpoint(
-                            functionalBlockId=e.functionalBlockId, portId=e.portId
-                        )
-                        for e in con.endpoints
-                    ],
+                self.id_mapper.map_entity(
+                    cdm.SystemSmConnection(
+                        id=con.id,
+                        endpoints=[
+                            cdm.SystemSmEndpoint(
+                                functionalBlockId=self.id_mapper.map_id(
+                                    e.functionalBlockId
+                                ),
+                                portId=self.id_mapper.map_id(e.portId),
+                            )
+                            for e in con.endpoints
+                        ],
+                    )
                 )
             )
 
         # Fully replace hardware model
         sdm.hardwareModels = []
         for hp in self.model.hardwareProjects:
-            sdm.hardwareModels.append(
-                cdm.SystemSmHardwareModel(
-                    id=hp.id,
-                    implementedBy=hp.implementedBy,
-                    functionalBlockIds=hp.functionalBlocks,
-                )
+            hw_model = cdm.SystemSmHardwareModel(
+                id=hp.id,
+                implementedBy=hp.implementedBy,
+                hardwareComponents=[],
+                functionalBlockIds=[],
             )
+
+            for fbId in hp.functionalBlocks:
+                hw_model.functionalBlockIds.append(self.id_mapper.map_id(fbId))
+                for kc in fb_blocks[fbId].keyComponents:
+                    hw_comp = cdm.SystemSmHardwareComponent(id=kc.id, name=kc.name)
+                    if kc.id in self.deviceModels:
+                        hw_comp.deviceModelId = self.id_mapper.map_id(
+                            self.deviceModels[kc.id].id
+                        )
+                    hw_model.hardwareComponents.append(
+                        self.id_mapper.map_entity(hw_comp)
+                    )
+            sdm.hardwareModels.append(self.id_mapper.map_entity(hw_model))
 
         # Fully replace software model
         sdm.softwareModels = []
         for sp in self.model.softwareProjects:
             sw_components = [sw_components[sc_id] for sc_id in sp.softwareComponents]
 
-            sw_model = cdm.SystemSmSoftwareModel(
-                id=sp.id,
-                implementedBy=sp.implementedBy,
-                softwareComponents=[
-                    cdm.SystemSmSoftwareComponent(
-                        id=sc.id,
-                        name=sc.name,
-                        specification=self.sw_library.get(sc.name, None)
-                    )
-                    for sc in sw_components
-                ],
+            sw_model = self.id_mapper.map_entity(
+                cdm.SystemSmSoftwareModel(
+                    id=sp.id,
+                    implementedBy=sp.implementedBy,
+                    softwareComponents=[
+                        self.id_mapper.map_entity(
+                            cdm.SystemSmSoftwareComponent(
+                                id=sc.id,
+                                name=sc.name,
+                                specification=self.sw_library.get(sc.name, None),
+                            )
+                        )
+                        for sc in sw_components
+                    ],
+                )
             )
 
             if sw_components:
@@ -211,14 +279,17 @@ class ESDClient:
                         mpn=hw_components[hw_component].name,
                         peripherals=[],
                     )
-                sw_model.deviceModelId = self.deviceModels[hw_component].id
+
+                sw_model.deviceModelId = self.id_mapper.map_id(
+                    self.deviceModels[hw_component].id
+                )
 
             sdm.softwareModels.append(sw_model)
 
         # Fully replace device model
         sdm.deviceModels = []
         for dm in self.deviceModels.values():
-            sdm.deviceModels.append(dm)
+            sdm.deviceModels.append(self.id_mapper.map_entity(dm))
 
         return sdm
 
