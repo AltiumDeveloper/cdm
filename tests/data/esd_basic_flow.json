@@ -130,8 +130,8 @@
     {
       "id": "guid-8",
       "mpn": "R7FA6M3AH3CFB",
-      "peripherals": {
-        "sci": {
+      "peripherals": [
+        {
           "id": "sci",
           "name": "Connectivity:SCI",
           "instances": [
@@ -172,9 +172,9 @@
             }
           ]
         }
-      },
-      "ports": {
-        "p202": {
+      ],
+      "ports": [
+        {
           "id": "p202",
           "name": "P202",
           "pin": "46",
@@ -184,7 +184,7 @@
             }
           ]
         },
-        "p203": {
+        {
           "id": "p203",
           "name": "P203",
           "pin": "45",
@@ -194,7 +194,7 @@
             }
           ]
         }
-      },
+      ],
       "metadata": [
         {
           "clientId": "esd",
