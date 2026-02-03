@@ -265,15 +265,15 @@
 
 
 
-      system_SystemModel --&gt; "*" dm_configured_device_model : device models
-      click dm_configured_device_model href "../../classes/dm_configured_device_model/"
+      system_SystemModel --&gt; "*" system_SmDeviceModel : device models
+      click system_SmDeviceModel href "../../classes/system_SmDeviceModel/"
 
 
-  class dm_configured_device_model["ConfiguredDeviceModel"]
+  class system_SmDeviceModel["Device Model"]
 
 
 
-      style dm_configured_device_model fill:#6fa8dc    
+      style system_SmDeviceModel fill:#f1c232    
 
 
 
@@ -373,7 +373,7 @@
 <tr>
 <td><a href="../../slots/system_SystemModel_deviceModels">device models</a></td>
 <td><code>*</code></td>
-<td><a href="../dm_configured_device_model/">ConfiguredDeviceModel</a></td>
+<td><a href="../system_SmDeviceModel/">Device Model</a></td>
 <td>A device models associated with this system model.</td>
 <td>direct</td>
 </tr>
