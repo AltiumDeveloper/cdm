@@ -787,6 +787,7 @@ slots:
     range: dm_peripheral
     multivalued: true
     inlined: true
+    inlined_as_list: true
   dm_ports:
     alias: ports
     title: ports
@@ -794,3 +795,4 @@ slots:
     range: dm_port
     multivalued: true
     inlined: true
+    inlined_as_list: true

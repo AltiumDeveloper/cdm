@@ -429,6 +429,25 @@ classes:
     slots:
       - core_name
       - system_parameters
+    attributes:
+      system_SmPort_hardwareComponent:
+        alias: hardwareComponentId
+        title: hardware component
+        description: The hardware component associated with this port.
+        range: system_SmHardwareComponent
+        required: false
+      system_SmPort_softwareComponent:
+        alias: softwareComponentId
+        title: software component
+        description: The software component associated with this port.
+        range: system_SmSoftwareComponent
+        required: false
+      system_SmPort_peripheralInstance:
+        alias: peripheralInstanceId
+        title: peripheral instance
+        description: The peripheral instance associated with this port.
+        range: dm_peripheral_instance
+        required: false
   system_SmConnection:
     is_a: Resource
     in_subset: system-sdm
@@ -554,6 +573,14 @@ classes:
         description: The software components that this component depends on.
         range: system_SmSoftwareComponent
         multivalued: true
+      system_SmSoftwareComponent_peripheralInstance:
+        alias: peripheralInstanceId
+        title: peripheral instance
+        description: >- 
+          The peripheral associated with this software component. 
+          Used by drivers to bind to specific hardware peripherals.
+        range: dm_peripheral_instance
+        required: false
   system_SmSoftwareSpecification:
     is_a: Resource
     in_subset: system-sdm
