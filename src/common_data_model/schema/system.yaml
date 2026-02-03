@@ -328,7 +328,7 @@ classes:
         alias: deviceModels
         title: device models
         description: A device models associated with this system model.
-        range: dm_configured_device_model
+        range: system_SmDeviceModel
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -474,6 +474,24 @@ classes:
         description: Port associated with this endpoint.
         range: system_SmPort
         required: true
+
+  # SDM: Device Model
+  system_SmDeviceModel:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SmDeviceModel
+    title: Device Model
+    annotations:
+      platformAPI: SysSmDeviceModel
+    description: >-
+      Represents a device model within the system design.
+    mixins:
+      - system_SmMappableEntity
+    slots:
+      - core_localId
+      - dm_mpn
+      - dm_peripherals
+      - dm_ports
 
   # SDM: Software Model
   system_SmSoftwareModel:

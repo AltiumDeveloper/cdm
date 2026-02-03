@@ -35,9 +35,11 @@ jobs:
       - name: Build artifacts.
         run: |
           make gen-project
+          make gen-sdm-schema
 
       - name: Publish latest artifacts for convinient consumption.
         uses: softprops/action-gh-release@v2
         with:
           files: |
             project/jsonschema/common_data_model.schema.json
+            project/jsonschema/system_data_model.schema.json

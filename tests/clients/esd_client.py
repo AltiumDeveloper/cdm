@@ -49,7 +49,7 @@ class ESDClient:
                 hardwareModels=[],
             )
         )
-        self.deviceModels: Dict[str, cdm.DmConfiguredDeviceModel] = {}
+        self.deviceModels: Dict[str, cdm.SystemSmDeviceModel] = {}
         self.sw_library: Dict[str, cdm.SystemSmSoftwareSpecification] = {}
         self.id_mapper = IdMapper(name="esd")
 
@@ -162,7 +162,7 @@ class ESDClient:
         return connection
 
     def configure_device(
-        self, hw_component: cdm.SystemKeyComponent, device: cdm.DmConfiguredDeviceModel
+        self, hw_component: cdm.SystemKeyComponent, device: cdm.SystemSmDeviceModel
     ) -> None:
         """Simulate device configuration via (RA) Device Modeler"""
         self.deviceModels[hw_component.id] = device

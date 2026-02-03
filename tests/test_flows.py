@@ -42,7 +42,7 @@ def test_esd_basic_flow():
 
     esd.configure_device(
         hw_component=mcu_hw_comp,
-        device=cdm.DmConfiguredDeviceModel(
+        device=cdm.SystemSmDeviceModel(
             id="device-1",
             mpn="R7FA6M3AH3CFB",
             peripherals=[
