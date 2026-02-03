@@ -1,0 +1,107 @@
+id: https://w3id.org/altium/cdm/ota/
+name: cdm-ota
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ota: https://w3id.org/altium/cdm/ota/
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: ota
+
+subsets:
+  ota:
+    description: >-
+      Over the Air (OTA) related entities
+    annotations:
+      style: "fill:#d29292"
+
+enums:
+
+  ota_DeviceStatus:
+    is_a: Enumeration
+    in_subset: ota
+    enum_uri: ota:DeviceStatus
+    implements:
+      - owl:NamedIndividual
+    permissible_values:
+      NotSeen:
+      Error:
+      UpToDate:
+      UpdatePending:
+      Outdated:
+      UpdateScheduled:
+
+classes:
+
+  ota_Device:
+    is_a: Artifact
+    in_subset: ota
+    class_uri: ota:Device
+    title: Device
+    description: >- 
+      TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:ota:device/{id}
+      maturity: EXPERIMENTAL
+    slots:
+      - core_name
+    attributes:
+      ota_Device_status:
+        alias: status
+        title: status
+        description: Current device status
+        range: ota_DeviceStatus
+        multivalued: false
+      ota_Device_fleets:
+        alias: fleets
+        title: fleets
+        description: Fleets this device belongs to
+        range: ota_Fleet
+        multivalued: true
+      ota_Device_packages:
+        alias: packages
+        title: packages
+        description: Installed packages, if known
+        range: ota_Package
+        multivalued: true
+
+  ota_Fleet:
+    is_a: Artifact
+    in_subset: ota
+    class_uri: ota:Fleet
+    title: Fleet
+    description: >- 
+      TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:ota:fleet/{id}
+      maturity: EXPERIMENTAL
+    slots:
+      - core_name
+    attributes:
+      ota_Fleet_devices:
+        alias: devices
+        title: devices
+        description: Devices in this fleet
+        range: ota_Device
+        multivalued: true
+
+  ota_Package:
+    is_a: Artifact
+    in_subset: ota
+    class_uri: ota:Package
+    title: Package
+    description: >- 
+      TBD
+    annotations:
+      grid: grid:workspace:{workspace-id}:ota:package/{id}
+      maturity: EXPERIMENTAL
+    slots:
+      - core_name
+    attributes:
+      ota_Package_version:
+        alias: version
+        title: version
+        description: Package version
+        range: string
+        multivalued: false
