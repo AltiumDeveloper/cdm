@@ -301,6 +301,26 @@
 
 
 
+
+
+
+
+
+      system_SmSoftwareComponent --&gt; "0..1" dm_peripheral_instance : peripheral instance
+      click dm_peripheral_instance href "../../classes/dm_peripheral_instance/"
+
+
+  class dm_peripheral_instance["PeripheralInstance"]
+
+
+
+      style dm_peripheral_instance fill:#6fa8dc    
+
+
+
+
+
+
           system_SmSoftwareComponent : id
 
 
@@ -326,6 +346,21 @@
 
 
 
+
+
+
+
+
+
+  class system_SmPort["Port"]
+
+
+
+      style system_SmPort fill:#f1c232    
+
+
+          system_SmPort --&gt; "0..1" system_SmSoftwareComponent: software component 
+          click system_SmPort href "../../classes/system_SmPort/"
 
 
 
@@ -419,6 +454,13 @@
 <td><code>*</code></td>
 <td><a href="./">Software Component</a></td>
 <td>The software components that this component depends on.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/system_SmSoftwareComponent_peripheralInstance">peripheral instance</a></td>
+<td><code>0..1</code></td>
+<td><a href="../dm_peripheral_instance/">PeripheralInstance</a></td>
+<td>The peripheral associated with this software component.  Used by drivers to bind to specific hardware peripherals.</td>
 <td>direct</td>
 </tr>
 </tbody>

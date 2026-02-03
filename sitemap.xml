@@ -1745,7 +1745,23 @@
          <lastmod>2026-02-03</lastmod>
     </url>
     <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmPort_hardwareComponent/</loc>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmPort_peripheralInstance/</loc>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmPort_softwareComponent/</loc>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SmSoftwareComponent_dependencies/</loc>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmSoftwareComponent_peripheralInstance/</loc>
          <lastmod>2026-02-03</lastmod>
     </url>
     <url>

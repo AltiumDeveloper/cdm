@@ -261,6 +261,66 @@
 
 
 
+
+
+
+
+
+      system_SmPort --&gt; "0..1" system_SmHardwareComponent : hardware component
+      click system_SmHardwareComponent href "../../classes/system_SmHardwareComponent/"
+
+
+  class system_SmHardwareComponent["Hardware Component"]
+
+
+
+      style system_SmHardwareComponent fill:#f1c232    
+
+
+
+
+
+
+
+
+
+
+
+      system_SmPort --&gt; "0..1" system_SmSoftwareComponent : software component
+      click system_SmSoftwareComponent href "../../classes/system_SmSoftwareComponent/"
+
+
+  class system_SmSoftwareComponent["Software Component"]
+
+
+
+      style system_SmSoftwareComponent fill:#f1c232    
+
+
+
+
+
+
+
+
+
+
+
+      system_SmPort --&gt; "0..1" dm_peripheral_instance : peripheral instance
+      click dm_peripheral_instance href "../../classes/dm_peripheral_instance/"
+
+
+  class dm_peripheral_instance["PeripheralInstance"]
+
+
+
+      style dm_peripheral_instance fill:#6fa8dc    
+
+
+
+
+
+
           system_SmPort : id
 
 
@@ -365,6 +425,27 @@
 <td><code>*</code></td>
 <td><a href="../system_Parameter/">Parameter</a></td>
 <td>TBD</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/system_SmPort_hardwareComponent">hardware component</a></td>
+<td><code>0..1</code></td>
+<td><a href="../system_SmHardwareComponent/">Hardware Component</a></td>
+<td>The hardware component associated with this port.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/system_SmPort_softwareComponent">software component</a></td>
+<td><code>0..1</code></td>
+<td><a href="../system_SmSoftwareComponent/">Software Component</a></td>
+<td>The software component associated with this port.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/system_SmPort_peripheralInstance">peripheral instance</a></td>
+<td><code>0..1</code></td>
+<td><a href="../dm_peripheral_instance/">PeripheralInstance</a></td>
+<td>The peripheral instance associated with this port.</td>
 <td>direct</td>
 </tr>
 </tbody>
