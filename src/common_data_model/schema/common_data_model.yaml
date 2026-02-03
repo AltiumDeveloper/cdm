@@ -26,6 +26,7 @@ imports:
   - device_model
   - insights
   - library
+  - ota
   - procurement
   - supply
   - software
