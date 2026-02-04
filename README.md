@@ -30,7 +30,7 @@ Use the `make` command to generate project artefacts:
 
 ## Key Documents
 - **AGENTS.md** — Rules for humans and automated agents modifying the schema  
-- *src/common_data_model/schema** — Organized via LinkML subsets  
+- **src/common_data_model/schema** — Organized via LinkML subsets  
 - **Generated Artifacts** — JSON Schema, SHACL, Pydantic models  
 
 ## How to Contribute
