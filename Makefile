@@ -56,10 +56,6 @@ ifdef LINKML_GENERATORS_TYPESCRIPT_ARGS
 GEN_TS_ARGS += ${LINKML_GENERATORS_TYPESCRIPT_ARGS}
 endif
 
-JSON_SCHEMA_DIR = $(DEST)/jsonschema
-JSON_SCHEMA_PATH = $(JSON_SCHEMA_DIR)/$(SCHEMA_NAME).schema.json
-
-
 # basename of a YAML file in model/
 .PHONY: all clean setup gen-project gen-examples gendoc git-init-add git-init git-add git-commit git-status
 
@@ -120,18 +116,6 @@ deploy: all mkd-gh-deploy
 
 compile-sheets:
 	$(RUN) sheets2linkml --gsheet-id $(SHEET_ID) $(SHEET_TABS) > $(SHEET_MODULE_PATH).tmp && mv $(SHEET_MODULE_PATH).tmp $(SHEET_MODULE_PATH)
-
-.PHONY: gen-sdm-schema
-gen-sdm-schema:
-	python3 prune-schema.py \
-		"$(JSON_SCHEMA_PATH)" \
-		"$(JSON_SCHEMA_DIR)/system_data_model.schema.json" \
-		"SystemSystemModel" \
-		"System Data Model"
-
-$(DEST)/jsonschema:
-	mkdir -p $@
-	mkdir -p tmp
 
 # In future this will be done by conversion
 gen-examples:
