@@ -32,8 +32,43 @@ widoco-docs:
 # sparql:
 #  $(DOCKER) tools/scripts/run_sparql_tests.sh
 
+###
+### Full JSON output for downstream processing
+###
+
 gen-schema: 
 	$(RUN) gen-linkml --useuris --metadata --format json --output google-sheet-schema.json --no-materialize-attributes $(SOURCE_SCHEMA_PATH)
 
-ci-generate: clean install gen-project gendoc gen-schema
+###
+### JSON schema generation
+###
+
+JSON_SCHEMA_DIR = $(DEST)/jsonschema
+JSON_SCHEMA_PATH = $(JSON_SCHEMA_DIR)/$(SCHEMA_NAME).schema.json
+
+.PHONY: gen-sdm-schema
+
+$(DEST)/jsonschema:
+	mkdir -p $@
+	mkdir -p tmp
+
+gen-sdm-schema:
+	python3 prune-schema.py \
+		"$(JSON_SCHEMA_PATH)" \
+		"$(JSON_SCHEMA_DIR)/system_data_model.schema.json" \
+		"SystemSystemModel" \
+		"System Data Model"
+
+gen-esd-schema:
+	python3 prune-schema.py \
+		"$(JSON_SCHEMA_PATH)" \
+		"$(JSON_SCHEMA_DIR)/esd_compiled_model.schema.json" \
+		"SystemESDDocument" \
+		"ESD Compiled Model"
+
+###
+### CI targets
+###
+
+ci-generate: clean install gen-project gen-schema gen-sdm-schema gen-esd-schema
 ci-test: lint test
