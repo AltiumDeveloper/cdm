@@ -267,26 +267,6 @@
 
 
 
-      system_SoftwareComponent --&gt; "*" system_PortAssociation : port associations
-      click system_PortAssociation href "../../classes/system_PortAssociation/"
-
-
-  class system_PortAssociation["Port Association"]
-
-
-
-      style system_PortAssociation fill:#f1c232    
-
-
-
-
-
-
-
-
-
-
-
       system_SoftwareComponent --&gt; "1" system_KeyComponent : key component
       click system_KeyComponent href "../../classes/system_KeyComponent/"
 
@@ -296,6 +276,26 @@
 
 
       style system_KeyComponent fill:#f1c232    
+
+
+
+
+
+
+
+
+
+
+
+      system_SoftwareComponent --&gt; "*" system_PortAssociation : port associations
+      click system_PortAssociation href "../../classes/system_PortAssociation/"
+
+
+  class system_PortAssociation["Port Association"]
+
+
+
+      style system_PortAssociation fill:#f1c232    
 
 
 
@@ -408,16 +408,16 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/system_SoftwareComponent_portAssociations">port associations</a></td>
-<td><code>*</code></td>
-<td><a href="../system_PortAssociation/">Port Association</a></td>
+<td><a href="../../slots/system_SoftwareComponent_keyComponent">key component</a></td>
+<td><code>1</code></td>
+<td><a href="../system_KeyComponent/">Key Component</a></td>
 <td>None</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/system_SoftwareComponent_keyComponent">key component</a></td>
-<td><code>1</code></td>
-<td><a href="../system_KeyComponent/">Key Component</a></td>
+<td><a href="../../slots/system_SoftwareComponent_portAssociations">port associations</a></td>
+<td><code>*</code></td>
+<td><a href="../system_PortAssociation/">Port Association</a></td>
 <td>None</td>
 <td>direct</td>
 </tr>

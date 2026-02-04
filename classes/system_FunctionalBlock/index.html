@@ -283,26 +283,6 @@
 
 
 
-      system_FunctionalBlock --&gt; "*" system_PortAssociation : ports associations
-      click system_PortAssociation href "../../classes/system_PortAssociation/"
-
-
-  class system_PortAssociation["Port Association"]
-
-
-
-      style system_PortAssociation fill:#f1c232    
-
-
-
-
-
-
-
-
-
-
-
       system_FunctionalBlock --&gt; "*" system_Port : ports
       click system_Port href "../../classes/system_Port/"
 
@@ -352,6 +332,26 @@
 
 
       style system_SoftwareComponent fill:#f1c232    
+
+
+
+
+
+
+
+
+
+
+
+      system_FunctionalBlock --&gt; "*" system_PortAssociation : ports associations
+      click system_PortAssociation href "../../classes/system_PortAssociation/"
+
+
+  class system_PortAssociation["Port Association"]
+
+
+
+      style system_PortAssociation fill:#f1c232    
 
 
 
@@ -456,13 +456,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/system_FunctionalBlock_portAssociations">ports associations</a></td>
-<td><code>*</code></td>
-<td><a href="../system_PortAssociation/">Port Association</a></td>
-<td>None</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../../slots/system_FunctionalBlock_ports">ports</a></td>
 <td><code>*</code></td>
 <td><a href="../system_Port/">Port</a></td>
@@ -480,6 +473,13 @@
 <td><a href="../../slots/system_FunctionalBlock_softwareComponents">software components</a></td>
 <td><code>*</code></td>
 <td><a href="../system_SoftwareComponent/">Software Component</a></td>
+<td>None</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/system_FunctionalBlock_portAssociations">ports associations</a></td>
+<td><code>*</code></td>
+<td><a href="../system_PortAssociation/">Port Association</a></td>
 <td>None</td>
 <td>direct</td>
 </tr>
