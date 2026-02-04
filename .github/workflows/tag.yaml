@@ -36,7 +36,7 @@ jobs:
         run: |
           make ci-generate
 
-      - name: Publish latest artifacts for convinient consumption.
+      - name: Publish latest artifacts for convenient consumption.
         uses: softprops/action-gh-release@v2
         with:
           files: |
