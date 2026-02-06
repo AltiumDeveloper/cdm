@@ -317,6 +317,11 @@ classes:
     slots:
       - core_name
     attributes:
+      system_SystemModel_version:
+        alias: version
+        title: version
+        description: Version of the system model, used for tracking changes over time.
+        range: integer
       system_SystemModel_functionalModel:
         alias: functionalModel
         title: functional model

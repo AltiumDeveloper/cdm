@@ -43,6 +43,7 @@ class ESDClient:
             if latest_sdm
             else cdm.SystemSystemModel(
                 id="sdm-1",
+                version=0,
                 functionalModel=None,
                 deviceModels=[],
                 softwareModels=[],
@@ -104,7 +105,7 @@ class ESDClient:
     ) -> cdm.SystemKeyComponent:
         """Helper to add a key-component to a functional block in the ESD model"""
         component = cdm.SystemKeyComponent(
-            id=f"kc-{len(block.keyComponents) + 1}", name=mpn
+            id=f"{block.id}.kc-{len(block.keyComponents) + 1}", name=mpn
         )
         block.keyComponents.append(component)
         return component
@@ -118,7 +119,7 @@ class ESDClient:
     ) -> cdm.SystemSoftwareComponent:
         """Helper to add a key-component to a functional block in the ESD model"""
         component = cdm.SystemSoftwareComponent(
-            id=f"sc-{len(block.keyComponents) + 1}",
+            id=f"{block.id}.sc-{len(block.keyComponents) + 1}",
             name=name,
             parentKeyComponentId=key_comp.id,
         )
@@ -172,6 +173,7 @@ class ESDClient:
         # Fully replace functional model
         sdm = deepcopy(self.latest_sdm)
         sdm.id = self.id_mapper.map_id(self.latest_sdm.id)
+        sdm.version = self.latest_sdm.version + 1
         if sdm.functionalModel is None:
             sdm.functionalModel = self.id_mapper.map_entity(cdm.SystemSmFunctionalModel(id=self.model.id))
 
@@ -274,10 +276,11 @@ class ESDClient:
                 hw_component = sw_components[0].parentKeyComponentId
                 # Add blank device model for hardware component if not already present
                 if hw_component not in self.deviceModels:
-                    self.deviceModels[hw_component] = cdm.DmConfiguredDeviceModel(
+                    self.deviceModels[hw_component] = cdm.SystemSmDeviceModel(
                         id=f"dm-{len(self.deviceModels) + 1}",
                         mpn=hw_components[hw_component].name,
                         peripherals=[],
+                        ports=[],
                     )
 
                 sw_model.deviceModelId = self.id_mapper.map_id(
