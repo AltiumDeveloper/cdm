@@ -244,6 +244,26 @@
 
 
 
+      dm_peripheral_configuration --&gt; "*" dm_peripheral_parameter : parameters
+      click dm_peripheral_parameter href "../../classes/dm_peripheral_parameter/"
+
+
+  class dm_peripheral_parameter["PeripheralParameter"]
+
+
+
+      style dm_peripheral_parameter fill:#6fa8dc    
+
+
+
+
+
+
+
+
+
+
+
       dm_peripheral_configuration --&gt; "*" dm_peripheral_pin_config : pinConfigs
       click dm_peripheral_pin_config href "../../classes/dm_peripheral_pin_config/"
 
@@ -323,6 +343,13 @@
 <td><code>1</code></td>
 <td><a href="../../types/string/">string</a></td>
 <td>Local unique identifier within a given context.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/dm_PeripheralConfiguration_parameters">parameters</a></td>
+<td><code>*</code></td>
+<td><a href="../dm_peripheral_parameter/">PeripheralParameter</a></td>
+<td>The list of parameters associated with this peripheral configuration.</td>
 <td>direct</td>
 </tr>
 <tr>
