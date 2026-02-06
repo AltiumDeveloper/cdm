@@ -1,5 +1,6 @@
 {
   "id": "guid-1",
+  "version": 1,
   "functionalModel": {
     "id": "guid-2",
     "functionalBlocks": [
@@ -46,10 +47,10 @@
         ]
       },
       {
-        "id": "guid-6",
+        "id": "guid-7",
         "name": "WiFi + BLE",
         "hardwareComponentIds": [
-          "guid-3"
+          "guid-6"
         ],
         "ports": [
           {
@@ -90,14 +91,14 @@
     ],
     "connections": [
       {
-        "id": "guid-7",
+        "id": "guid-8",
         "endpoints": [
           {
             "functionalBlockId": "guid-5",
             "portId": "guid-4"
           },
           {
-            "functionalBlockId": "guid-6",
+            "functionalBlockId": "guid-7",
             "portId": "guid-4"
           }
         ],
@@ -128,7 +129,7 @@
   },
   "deviceModels": [
     {
-      "id": "guid-8",
+      "id": "guid-9",
       "mpn": "R7FA6M3AH3CFB",
       "peripherals": [
         {
@@ -145,6 +146,16 @@
                   "configurations": [
                     {
                       "id": "sci9.mode.asynchronous.a",
+                      "parameters": [
+                        {
+                          "name": "fspDriverId",
+                          "value": "module.driver.uart_on_sci_uart"
+                        },
+                        {
+                          "name": "fspConfigId",
+                          "value": "sci9.mode"
+                        }
+                      ],
                       "pinConfigs": [
                         {
                           "pinName": "sci9.rxd",
@@ -210,10 +221,10 @@
   ],
   "softwareModels": [
     {
-      "id": "guid-11",
+      "id": "guid-12",
       "softwareComponents": [
         {
-          "id": "guid-10",
+          "id": "guid-11",
           "name": "WiFi",
           "specification": {
             "name": "module.driver.wifi_da16xxx",
@@ -227,14 +238,14 @@
               "parameters": [
                 {
                   "id": "local-id",
-                  "value": "sc-2"
+                  "value": "fb-1.sc-2"
                 }
               ]
             }
           ]
         }
       ],
-      "deviceModelId": "guid-8",
+      "deviceModelId": "guid-9",
       "metadata": [
         {
           "clientId": "esd",
@@ -250,35 +261,34 @@
   ],
   "hardwareModels": [
     {
-      "id": "guid-9",
+      "id": "guid-10",
       "hardwareComponents": [
         {
           "id": "guid-3",
           "name": "R7FA6M3AH3CFB",
-          "deviceModelId": "guid-8",
+          "deviceModelId": "guid-9",
           "metadata": [
             {
               "clientId": "esd",
               "parameters": [
                 {
                   "id": "local-id",
-                  "value": "kc-1"
+                  "value": "fb-1.kc-1"
                 }
               ]
             }
           ]
         },
         {
-          "id": "guid-3",
+          "id": "guid-6",
           "name": "DA16600MOD-AAE4WA32",
-          "deviceModelId": "guid-8",
           "metadata": [
             {
               "clientId": "esd",
               "parameters": [
                 {
                   "id": "local-id",
-                  "value": "kc-1"
+                  "value": "fb-2.kc-1"
                 }
               ]
             }
@@ -287,7 +297,7 @@
       ],
       "functionalBlockIds": [
         "guid-5",
-        "guid-6"
+        "guid-7"
       ],
       "metadata": [
         {

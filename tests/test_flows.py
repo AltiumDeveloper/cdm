@@ -60,6 +60,16 @@ def test_esd_basic_flow():
                                     configurations=[
                                         cdm.DmPeripheralConfiguration(
                                             id="sci9.mode.asynchronous.a",
+                                            parameters=[
+                                                cdm.DmPeripheralParameter(
+                                                    name="fspDriverId",
+                                                    value="module.driver.uart_on_sci_uart",
+                                                ),
+                                                cdm.DmPeripheralParameter(
+                                                    name="fspConfigId",
+                                                    value="sci9.mode",
+                                                )
+                                            ],
                                             pinConfigs=[
                                                 cdm.DmPeripheralPinConfig(
                                                     pinName="sci9.rxd",

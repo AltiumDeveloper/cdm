@@ -511,6 +511,14 @@ classes:
     slots:
       - core_localId
     attributes:
+      dm_PeripheralConfiguration_parameters:
+        alias: parameters
+        title: parameters
+        description: The list of parameters associated with this peripheral configuration.
+        range: dm_peripheral_parameter
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
       dm_PeripheralConfiguration_pinConfigs:
         alias: pinConfigs
         title: pinConfigs
@@ -582,6 +590,29 @@ classes:
         title: value
         description: The value of the pin dependency configuration.
         range: string
+
+  dm_peripheral_parameter:
+    is_a: Resource
+    in_subset: deviceModel
+    class_uri: dm:PeripheralParameter
+    title: PeripheralParameter
+    description: A paramter associated with peripheral instance configuration.
+    annotations:
+      platformAPI: DmPeripheralParameters
+    attributes:
+      dm_PeripheralParameters_name:
+        alias: name
+        title: name
+        description: The name of the peripheral parameter.
+        range: string
+        required: true
+        identifier: true
+      dm_PeripheralParameters_value:
+        alias: value
+        title: value
+        description: The value of the peripheral parameter.
+        range: string
+        required: true
 
   dm_port:
     is_a: Resource
