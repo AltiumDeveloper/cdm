@@ -322,6 +322,7 @@ classes:
         title: version
         description: Version of the system model, used for tracking changes over time.
         range: integer
+        required: true
       system_SystemModel_functionalModel:
         alias: functionalModel
         title: functional model
