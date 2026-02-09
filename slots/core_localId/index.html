@@ -208,18 +208,23 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/dm_port_connection/">PortConnection </a></td>
-<td>A connection from this port to another component or signal</td>
+<td><a href="../../classes/system_SmSoftwareModel/">Software Model </a></td>
+<td>Captures the software components and their interactions within the system des...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_PortAssociation/">Port Association </a></td>
+<td><a href="../../classes/system_SoftwareProject/">Software Project </a></td>
 <td>TBD</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_FunctionalBlock/">Functional Block </a></td>
-<td>Represents a logical block within a PCB design (e</td>
+<td><a href="../../classes/dm_port_configuration_enum_value/">PortConfigurationEnumValue </a></td>
+<td>An enumerated value for a port configuration</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/dm_port_configuration/">PortConfiguration </a></td>
+<td>A specific configuration for a port</td>
 <td>no</td>
 </tr>
 <tr>
@@ -228,13 +233,8 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_Parameter/">Parameter </a></td>
-<td>Name–value parameter associated with functional blocks, ports, or other syste...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_SmFunctionalBlock/">Functional Block </a></td>
-<td>Represents a logical block within a system functional model</td>
+<td><a href="../../classes/dm_port/">Port </a></td>
+<td>A physical port on the device, with its functions, configurations, and connec...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -243,12 +243,7 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SmSoftwareModel/">Software Model </a></td>
-<td>Captures the software components and their interactions within the system des...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_KeyComponent/">Key Component </a></td>
+<td><a href="../../classes/system_Connection/">Connection </a></td>
 <td>TBD</td>
 <td>no</td>
 </tr>
@@ -258,23 +253,8 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SmHardwareComponent/">Hardware Component </a></td>
-<td>Represents a hardware component / part</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_SoftwareProject/">Software Project </a></td>
-<td>TBD</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/dm_port_configuration/">PortConfiguration </a></td>
-<td>A specific configuration for a port</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/dm_configured_device_model/">ConfiguredDeviceModel </a></td>
-<td>A digital twin of an embedded hardware device as configured for a specific us...</td>
+<td><a href="../../classes/dm_peripheral_configuration/">PeripheralConfiguration </a></td>
+<td>A concrete configuration for a peripheral role, containing pin multiplexing d...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -283,7 +263,32 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../../classes/system_FunctionalBlock/">Functional Block </a></td>
+<td>Represents a logical block within a PCB design (e</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../../classes/system_Port/">Port </a></td>
+<td>TBD</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/dm_configured_device_model/">ConfiguredDeviceModel </a></td>
+<td>A digital twin of an embedded hardware device as configured for a specific us...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/dm_port_connection/">PortConnection </a></td>
+<td>A connection from this port to another component or signal</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SmFunctionalBlock/">Functional Block </a></td>
+<td>Represents a logical block within a system functional model</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_KeyComponent/">Key Component </a></td>
 <td>TBD</td>
 <td>no</td>
 </tr>
@@ -293,38 +298,8 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/dm_port/">Port </a></td>
-<td>A physical port on the device, with its functions, configurations, and connec...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_SmMappableEntity/">system_SmMappableEntity </a></td>
-<td>A mixin for entities within the System Data Model (SDM) that are mappable to ...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_SmSoftwareComponent/">Software Component </a></td>
-<td>Represents a software component instance and its dependencies</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_Connection/">Connection </a></td>
+<td><a href="../../classes/system_PortAssociation/">Port Association </a></td>
 <td>TBD</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_SoftwareComponent/">Software Component </a></td>
-<td>Functional in nature, abstracted from but connected to logical implementation</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/dm_port_configuration_enum_value/">PortConfigurationEnumValue </a></td>
-<td>An enumerated value for a port configuration</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_SmConnection/">Connection </a></td>
-<td>Represents a connection between functional blocks</td>
 <td>no</td>
 </tr>
 <tr>
@@ -333,13 +308,38 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/dm_peripheral_configuration/">PeripheralConfiguration </a></td>
-<td>A concrete configuration for a peripheral role, containing pin multiplexing d...</td>
+<td><a href="../../classes/system_SmSoftwareComponent/">Software Component </a></td>
+<td>Represents a software component instance and its dependencies</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../../classes/dm_peripheral_instance/">PeripheralInstance </a></td>
 <td>A concrete instance of a peripheral (e</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SmConnection/">Connection </a></td>
+<td>Represents a connection between functional blocks</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SmHardwareComponent/">Hardware Component </a></td>
+<td>Represents a hardware component / part</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_Parameter/">Parameter </a></td>
+<td>Name–value parameter associated with functional blocks, ports, or other syste...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SoftwareComponent/">Software Component </a></td>
+<td>Functional in nature, abstracted from but connected to logical implementation</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SmMappableEntity/">system_SmMappableEntity </a></td>
+<td>A mixin for entities within the System Data Model (SDM) that are mappable to ...</td>
 <td>no</td>
 </tr>
 </tbody>
