@@ -294,8 +294,8 @@ classes:
   system_Endpoint:
     is_a: Resource
     in_subset: system
-    class_uri: sys:Connection
-    title: Connection
+    class_uri: sys:Endpoint
+    title: Endpoint
     description: >-
       TBD
     attributes:
@@ -417,7 +417,7 @@ classes:
     class_uri: sys:SystemModel
     title: System  Model
     annotations:
-      platformAPI: SysSystemModel
+      platformAPI: SysSdmSystemModel
       grid: grid:workspace:{workspace-id}:system-design:system-model/{id}
     description: >-
       A high-level system model that captures the overall system architecture, crossing boundary between 
@@ -470,7 +470,7 @@ classes:
     class_uri: sys:SmFunctionalModel
     title: Functional Model
     annotations:
-      platformAPI: SysSmFunctionalModel
+      platformAPI: SysSdmFunctionalModel
     description: >-
       Captures the functional aspects of the system design, focusing on the behavior and interactions of functional blocks.
     mixins:
@@ -506,7 +506,7 @@ classes:
     class_uri: sys:SmFunctionalBlock
     title: Functional Block
     annotations:
-      platformAPI: SysSmFunctionalBlock
+      platformAPI: SysSdmFunctionalBlock
     description: >-
       Represents a logical block within a system functional model.
     mixins:
@@ -535,7 +535,7 @@ classes:
     class_uri: sys:SmPort
     title: Port
     annotations:
-      platformAPI: SysSmPort
+      platformAPI: SysSdmPort
     description: >-
       Represents a port within a system design.
     mixins:
@@ -568,7 +568,7 @@ classes:
     class_uri: sys:SmConnection
     title: Connection
     annotations:
-      platformAPI: SysSmConnection
+      platformAPI: SysSdmConnection
     description: >-
       Represents a connection between functional blocks.
     mixins:
@@ -591,7 +591,7 @@ classes:
     class_uri: sys:SmEndpoint
     title: Endpoint
     annotations:
-      platformAPI: SysSmEndpoint
+      platformAPI: SysSdmEndpoint
     description: >-
       Represents an endpoint of a connection.
     attributes:
@@ -615,7 +615,7 @@ classes:
     class_uri: sys:SmDeviceModel
     title: Device Model
     annotations:
-      platformAPI: SysSmDeviceModel
+      platformAPI: SysSdmDeviceModel
     description: >-
       Represents a device model within the system design.
     mixins:
@@ -633,7 +633,7 @@ classes:
     class_uri: sys:SmSoftwareModel
     title: Software Model
     annotations:
-      platformAPI: SysSmSoftwareModel
+      platformAPI: SysSdmSoftwareModel
     description: >-
       Captures the software components and their interactions within the system design.
     mixins:
@@ -667,7 +667,7 @@ classes:
     class_uri: sys:SmSoftwareComponent
     title: Software Component
     annotations:
-      platformAPI: SysSmSoftwareComponent
+      platformAPI: SysSdmSoftwareComponent
     description: >-
       Represents a software component instance and its dependencies.
     mixins:
@@ -701,7 +701,7 @@ classes:
     class_uri: sys:SmSoftwareSpecification
     title: Software Specification
     annotations:
-      platformAPI: SysSmSoftwareSpecification
+      platformAPI: SysSdmSoftwareSpecification
     description: >-
       The "blueprint" for a software component. Captures the identity and 
       classification of the software independently of any specific instance.
@@ -738,7 +738,7 @@ classes:
     class_uri: sys:SmHardwareModel
     title: Hardware Model
     annotations:
-      platformAPI: SysSmHardwareModel
+      platformAPI: SysSdmHardwareModel
     description: >-
       Captures the hardware components and their interactions within the system design.
     mixins:
@@ -772,7 +772,7 @@ classes:
     class_uri: sys:SmHardwareComponent
     title: Hardware Component
     annotations:
-      platformAPI: SysSmHardwareComponent
+      platformAPI: SysSdmHardwareComponent
     description: >-
       Represents a hardware component / part.
     mixins:
