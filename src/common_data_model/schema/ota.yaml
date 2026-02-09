@@ -39,7 +39,7 @@ classes:
     in_subset: ota
     class_uri: ota:Device
     title: Device
-    description: >- 
+    description: >-
       TBD
     annotations:
       grid: grid:workspace:{workspace-id}:ota:device/{id}
@@ -47,6 +47,36 @@ classes:
     slots:
       - core_name
     attributes:
+      ota_Device_uuid:
+        alias: uuid
+        title: uuid
+        description: External UUID for the device (e.g. Torizon deviceUuid)
+        range: string
+        multivalued: false
+      ota_Device_device_id:
+        alias: device_id
+        title: device_id
+        description: External device identifier (e.g. Torizon deviceId)
+        range: string
+        multivalued: false
+      ota_Device_hardware_id:
+        alias: hardware_id
+        title: hardware_id
+        description: Hardware identifier indicating device type/model
+        range: string
+        multivalued: false
+      ota_Device_name:
+        alias: name
+        title: name
+        description: Device name (from Torizon DeviceInfoBasic.deviceName)
+        range: string
+        multivalued: false
+      ota_Device_hibernated:
+        alias: hibernated
+        title: hibernated
+        description: Whether the device is in hibernation (from Torizon DeviceInfoBasic.hibernated)
+        range: boolean
+        multivalued: false
       ota_Device_status:
         alias: status
         title: status
@@ -59,6 +89,7 @@ classes:
         description: Fleets this device belongs to
         range: ota_Fleet
         multivalued: true
+        inverse: ota_Fleet_devices
       ota_Device_packages:
         alias: packages
         title: packages
@@ -71,7 +102,7 @@ classes:
     in_subset: ota
     class_uri: ota:Fleet
     title: Fleet
-    description: >- 
+    description: >-
       TBD
     annotations:
       grid: grid:workspace:{workspace-id}:ota:fleet/{id}
@@ -79,12 +110,19 @@ classes:
     slots:
       - core_name
     attributes:
+      ota_Fleet_fleet_id:
+        alias: fleet_id
+        title: fleet_id
+        description: External fleet identifier (e.g. Torizon fleetId / uuid)
+        range: string
+        multivalued: false
       ota_Fleet_devices:
         alias: devices
         title: devices
         description: Devices in this fleet
         range: ota_Device
         multivalued: true
+        inverse: ota_Device_fleets
 
   ota_Package:
     is_a: Artifact
@@ -99,9 +137,40 @@ classes:
     slots:
       - core_name
     attributes:
+      ota_Package_package_id:
+        alias: package_id
+        title: package_id
+        description: Package identifier (e.g. {name}-{version} in Torizon).
+        range: string
+        multivalued: false
+      ota_Package_name:
+        alias: name
+        title: name
+        description: Package name.
+        range: string
+        multivalued: false
       ota_Package_version:
         alias: version
         title: version
         description: Package version
         range: string
         multivalued: false
+      ota_Package_size:
+        alias: size
+        title: size
+        description: Package size in bytes.
+        range: integer
+        multivalued: false
+      ota_Package_hashes:
+        alias: hashes
+        title: hashes
+        description: >-
+          Package checksums as a JSON string map (e.g. {"sha256":"..."}), matching Torizon Package.hashes.
+        range: string
+        multivalued: false
+      ota_Package_hardware_ids:
+        alias: hardware_ids
+        title: hardware_ids
+        description: Hardware identifiers this package targets.
+        range: string
+        multivalued: true
