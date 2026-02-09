@@ -544,6 +544,18 @@ classes:
       - core_name
       - system_parameters
     attributes:
+      system_SmPort_quantity:
+        alias: quantity
+        title: quantity
+        description: The number of identical ports represented by this port instance (e.g., 4 UART ports).
+        range: integer
+        required: true
+      system_SmPort_portType:
+        alias: portType
+        title: port type
+        description: The type of this port (e.g., UART, GPIO, I2C).
+        range: system_PortType
+        required: false
       system_SmPort_hardwareComponent:
         alias: hardwareComponentId
         title: hardware component
