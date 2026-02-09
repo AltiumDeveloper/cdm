@@ -1769,6 +1769,14 @@
          <lastmod>2026-02-09</lastmod>
     </url>
     <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmPort_portType/</loc>
+         <lastmod>2026-02-09</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/system_SmPort_quantity/</loc>
+         <lastmod>2026-02-09</lastmod>
+    </url>
+    <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SmPort_softwareComponent/</loc>
          <lastmod>2026-02-09</lastmod>
     </url>
