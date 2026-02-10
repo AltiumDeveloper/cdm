@@ -429,7 +429,7 @@ classes:
         alias: version
         title: version
         description: Latest version of the system model.
-        range: integer
+        range: system_SystemModelVersion
         required: true
       system_SystemModel_versions:
         alias: versions
