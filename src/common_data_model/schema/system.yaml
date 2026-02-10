@@ -412,16 +412,43 @@ classes:
         required: true
 
   system_SystemModel:
-    is_a: Artifact
+    is_a: Activity
     in_subset: system-sdm
     class_uri: sys:SystemModel
     title: System  Model
     annotations:
       platformAPI: SysSdmSystemModel
-      grid: grid:workspace:{workspace-id}:system-design:system-model/{id}
+      grid: grid:workspace:{workspace-id}:system-design:sdm/{id}
+    slots:
+      - core_name
     description: >-
       A high-level system model that captures the overall system architecture, crossing boundary between 
       functional and logical domains (e.g., hardware and software).
+    attributes:
+      system_SystemModel_latest:
+        alias: version
+        title: version
+        description: Latest version of the system model.
+        range: integer
+        required: true
+      system_SystemModel_versions:
+        alias: versions
+        title: versions
+        description: Versions  of the system model, used for tracking changes over time.
+        range: system_SystemModelVersion
+        multivalued: true
+        required: false
+
+  system_SystemModelVersion:
+    is_a: Artifact
+    in_subset: system-sdm
+    class_uri: sys:SystemModelVersion
+    title: System  Model Version
+    annotations:
+      platformAPI: SysSdmSystemModelVersion
+      grid: grid:workspace:{workspace-id}:system-design:sdm-version/{id}
+    description: >-
+      A specific version of a system model, capturing the state of the system design at a particular point in time.
     slots:
       - core_name
     attributes:
