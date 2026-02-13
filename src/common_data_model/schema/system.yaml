@@ -425,9 +425,9 @@ classes:
       A high-level system model that captures the overall system architecture, crossing boundary between 
       functional and logical domains (e.g., hardware and software).
     attributes:
-      system_SystemModel_latest:
-        alias: version
-        title: version
+      system_SystemModel_latestVersion:
+        alias: latestVersion
+        title: latest version
         description: Latest version of the system model.
         range: system_SystemModelVersion
         required: true
