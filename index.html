@@ -1229,6 +1229,11 @@
 <td>A high-level system model that captures the overall system architecture, crossing boundary between  functional and logical domains (e.g., hardware and software).</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSystemModel">SysSdmSystemModel</a></td>
 </tr>
+<tr>
+<td><a href="classes/system_SystemModelVersion/">System  Model Version </a></td>
+<td>A specific version of a system model, capturing the state of the system design at a particular point in time.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSystemModelVersion">SysSdmSystemModelVersion</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="grids">GRIDs</h2>
@@ -1599,7 +1604,12 @@
 <tr>
 <td><a href="subsets/system-sdm/">system-sdm</a></td>
 <td><a href="classes/system_SystemModel/">System  Model </a></td>
-<td><code>grid:workspace:{workspace-id}:system-design:system-model/{id}</code></td>
+<td><code>grid:workspace:{workspace-id}:system-design:sdm/{id}</code></td>
+</tr>
+<tr>
+<td><a href="subsets/system-sdm/">system-sdm</a></td>
+<td><a href="classes/system_SystemModelVersion/">System  Model Version </a></td>
+<td><code>grid:workspace:{workspace-id}:system-design:sdm-version/{id}</code></td>
 </tr>
 </tbody>
 </table>

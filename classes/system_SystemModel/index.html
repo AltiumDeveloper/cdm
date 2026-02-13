@@ -203,7 +203,7 @@
 </div>
 <div class="admonition quote annotate">
 <p class="admonition-title">GRID (1)</p>
-<p><code>grid:workspace:{workspace-id}:system-design:system-model/{id}</code></p>
+<p><code>grid:workspace:{workspace-id}:system-design:sdm/{id}</code></p>
 </div>
 <ol>
 <li><img alt="🙋‍♂️" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f64b-200d-2642-fe0f.svg" title=":man_raising_hand:"/> <a href="https://altiumrd.atlassian.net/wiki/x/AQDQmQ">Altium Global Resource ID (aka GRID)</a></li>
@@ -240,44 +240,20 @@
 
 
 
-          system_SystemModel : version
 
 
 
 
 
+      system_SystemModel --&gt; "1" system_SystemModelVersion : latest version
+      click system_SystemModelVersion href "../../classes/system_SystemModelVersion/"
+
+
+  class system_SystemModelVersion["System  Model Version"]
 
 
 
-      system_SystemModel --&gt; "0..1" system_SmFunctionalModel : functional model
-      click system_SmFunctionalModel href "../../classes/system_SmFunctionalModel/"
-
-
-  class system_SmFunctionalModel["Functional Model"]
-
-
-
-      style system_SmFunctionalModel fill:#f1c232    
-
-
-
-
-
-
-
-
-
-
-
-      system_SystemModel --&gt; "*" system_SmDeviceModel : device models
-      click system_SmDeviceModel href "../../classes/system_SmDeviceModel/"
-
-
-  class system_SmDeviceModel["Device Model"]
-
-
-
-      style system_SmDeviceModel fill:#f1c232    
+      style system_SystemModelVersion fill:#f1c232    
 
 
 
@@ -289,35 +265,15 @@
 
 
 
-      system_SystemModel --&gt; "*" system_SmSoftwareModel : software models
-      click system_SmSoftwareModel href "../../classes/system_SmSoftwareModel/"
+      system_SystemModel --&gt; "*" system_SystemModelVersion : versions
+      click system_SystemModelVersion href "../../classes/system_SystemModelVersion/"
 
 
-  class system_SmSoftwareModel["Software Model"]
-
-
-
-      style system_SmSoftwareModel fill:#f1c232    
+  class system_SystemModelVersion["System  Model Version"]
 
 
 
-
-
-
-
-
-
-
-
-      system_SystemModel --&gt; "*" system_SmHardwareModel : hardware models
-      click system_SmHardwareModel href "../../classes/system_SmHardwareModel/"
-
-
-  class system_SmHardwareModel["Hardware Model"]
-
-
-
-      style system_SmHardwareModel fill:#f1c232    
+      style system_SystemModelVersion fill:#f1c232    
 
 
 
@@ -334,7 +290,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Entity/">Entity</a><ul>
-<li><a href="../Artifact/">Artifact</a><ul>
+<li><a href="../Activity/">Activity</a><ul>
 <li><strong>system_SystemModel</strong></li>
 </ul>
 </li>
@@ -368,38 +324,17 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/system_SystemModel_version">version</a></td>
+<td><a href="../../slots/system_SystemModel_latestVersion">latest version</a></td>
 <td><code>1</code></td>
-<td><a href="../../types/integer/">integer</a></td>
-<td>Version of the system model, used for tracking changes over time.</td>
+<td><a href="../system_SystemModelVersion/">System  Model Version</a></td>
+<td>Latest version of the system model.</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/system_SystemModel_functionalModel">functional model</a></td>
-<td><code>0..1</code></td>
-<td><a href="../system_SmFunctionalModel/">Functional Model</a></td>
-<td>A functional model associated with the system model.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/system_SystemModel_deviceModels">device models</a></td>
+<td><a href="../../slots/system_SystemModel_versions">versions</a></td>
 <td><code>*</code></td>
-<td><a href="../system_SmDeviceModel/">Device Model</a></td>
-<td>A device models associated with this system model.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/system_SystemModel_softwareModels">software models</a></td>
-<td><code>*</code></td>
-<td><a href="../system_SmSoftwareModel/">Software Model</a></td>
-<td>A software models associated with this system model.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/system_SystemModel_hardwareModels">hardware models</a></td>
-<td><code>*</code></td>
-<td><a href="../system_SmHardwareModel/">Hardware Model</a></td>
-<td>A hardware models associated with this system model.</td>
+<td><a href="../system_SystemModelVersion/">System  Model Version</a></td>
+<td>Versions  of the system model, used for tracking changes over time.</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -420,7 +355,7 @@
 </tr>
 <tr>
 <td>grid</td>
-<td>grid:workspace:{workspace-id}:system-design:system-model/{id}</td>
+<td>grid:workspace:{workspace-id}:system-design:sdm/{id}</td>
 </tr>
 </tbody>
 </table>
