@@ -208,43 +208,23 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/system_SmPort/">Port </a></td>
-<td>Represents a port within a system design</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_SmConnection/">Connection </a></td>
-<td>Represents a connection between functional blocks</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_SmHardwareComponent/">Hardware Component </a></td>
-<td>Represents a hardware component / part</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_Port/">Port </a></td>
-<td>TBD</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../../classes/system_ESDDocument/">ESD Document </a></td>
 <td>TBD</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SmSoftwareComponent/">Software Component </a></td>
-<td>Represents a software component instance and its dependencies</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_Connection/">Connection </a></td>
+<td><a href="../../classes/system_KeyComponent/">Key Component </a></td>
 <td>TBD</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SoftwareComponent/">Software Component </a></td>
-<td>Functional in nature, abstracted from but connected to logical implementation</td>
+<td><a href="../../classes/system_SdmPort/">Port </a></td>
+<td>Represents a port within a system design</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SdmHardwareComponent/">Hardware Component </a></td>
+<td>Represents a hardware component / part</td>
 <td>no</td>
 </tr>
 <tr>
@@ -253,17 +233,37 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SmClientMetadata/">Domain Metadata </a></td>
+<td><a href="../../classes/system_SdmClientMetadata/">Domain Metadata </a></td>
 <td>Captures metadata specific to a particular client (e</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SmFunctionalBlock/">Functional Block </a></td>
+<td><a href="../../classes/system_SdmFunctionalBlock/">Functional Block </a></td>
 <td>Represents a logical block within a system functional model</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_KeyComponent/">Key Component </a></td>
+<td><a href="../../classes/system_SdmConnection/">Connection </a></td>
+<td>Represents a connection between functional blocks</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SoftwareComponent/">Software Component </a></td>
+<td>Functional in nature, abstracted from but connected to logical implementation</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_Connection/">Connection </a></td>
+<td>TBD</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SdmSoftwareComponent/">Software Component </a></td>
+<td>Represents a software component instance and its dependencies</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_Port/">Port </a></td>
 <td>TBD</td>
 <td>no</td>
 </tr>
@@ -294,12 +294,12 @@
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_KeyComponent</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SoftwareComponent</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_Connection</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SmClientMetadata</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SmFunctionalBlock</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SmPort</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SmConnection</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SmSoftwareComponent</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SmHardwareComponent</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmClientMetadata</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmFunctionalBlock</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmPort</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmConnection</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmSoftwareComponent</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmHardwareComponent</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_Parameter</span>
 <span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>

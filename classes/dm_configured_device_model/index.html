@@ -290,30 +290,30 @@
 
 
 
-  class system_SmSoftwareModel["Software Model"]
+  class system_SdmSoftwareModel["Software Model"]
 
 
 
-      style system_SmSoftwareModel fill:#f1c232    
+      style system_SdmSoftwareModel fill:#f1c232    
 
 
-          system_SmSoftwareModel --&gt; "0..1" dm_configured_device_model: device model 
-          click system_SmSoftwareModel href "../../classes/system_SmSoftwareModel/"
-
-
-
+          system_SdmSoftwareModel --&gt; "0..1" dm_configured_device_model: device model 
+          click system_SdmSoftwareModel href "../../classes/system_SdmSoftwareModel/"
 
 
 
-  class system_SmHardwareComponent["Hardware Component"]
 
 
 
-      style system_SmHardwareComponent fill:#f1c232    
+  class system_SdmHardwareComponent["Hardware Component"]
 
 
-          system_SmHardwareComponent --&gt; "0..1" dm_configured_device_model: device model 
-          click system_SmHardwareComponent href "../../classes/system_SmHardwareComponent/"
+
+      style system_SdmHardwareComponent fill:#f1c232    
+
+
+          system_SdmHardwareComponent --&gt; "0..1" dm_configured_device_model: device model 
+          click system_SdmHardwareComponent href "../../classes/system_SdmHardwareComponent/"
 
 
 
