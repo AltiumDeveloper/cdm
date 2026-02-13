@@ -51,7 +51,7 @@ enums:
       # ???
       POWER_MCU:
 
-  system_SmSoftwareComponentCategory:
+  system_SdmSoftwareComponentCategory:
     description: High-level classification of software components.
     permissible_values:
       DRIVER:
@@ -376,42 +376,42 @@ classes:
           - range: des_project
 
   # System Data Model (SDM)
-  system_SmMappableEntity:
+  system_SdmMappableEntity:
     is_a: Meta
     abstract: true
     mixin: true
-    class_uri: dm:SmEntity
+    class_uri: sys:SdmEntity
     description: >-
       A mixin for entities within the System Data Model (SDM) that are mappable to domain-specific concepts
     slots:
       core_localId
     attributes:
-      system_SmMappableEntity_metadata:
+      system_SdmMappableEntity_metadata:
         alias: metadata
         title: metadata
         description: Client-specific metadata associated with this entity.
-        range: system_SmClientMetadata
+        range: system_SdmClientMetadata
         multivalued: true
         inlined: true
         inlined_as_list: true
-  system_SmClientMetadata:
+  system_SdmClientMetadata:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: dm:SmClientMetadata
+    class_uri: sys:SdmClientMetadata
     title: Domain Metadata
     description: >-
       Captures metadata specific to a particular client (e.g., ESD, AD, E2Studio).
     slots:
       - system_parameters
     attributes:
-      system_SmClientMetadata_clientId:
+      system_SdmClientMetadata_clientId:
         alias: clientId
         title: client id
         description: The client identifier (e.g., "ESD", "AD", "E2Studio") this metadata are associated with.
         range: string
         required: true
 
-  system_SystemModel:
+  system_SdmSystemModel:
     is_a: Activity
     in_subset: system-sdm
     class_uri: sys:SystemModel
@@ -425,21 +425,21 @@ classes:
       A high-level system model that captures the overall system architecture, crossing boundary between 
       functional and logical domains (e.g., hardware and software).
     attributes:
-      system_SystemModel_latestVersion:
+      system_SdmSystemModel_latestVersion:
         alias: latestVersion
         title: latest version
         description: Latest version of the system model.
-        range: system_SystemModelVersion
+        range: system_SdmSystemModelVersion
         required: true
-      system_SystemModel_versions:
+      system_SdmSystemModel_versions:
         alias: versions
         title: versions
         description: Versions  of the system model, used for tracking changes over time.
-        range: system_SystemModelVersion
+        range: system_SdmSystemModelVersion
         multivalued: true
         required: false
 
-  system_SystemModelVersion:
+  system_SdmSystemModelVersion:
     is_a: Artifact
     in_subset: system-sdm
     class_uri: sys:SystemModelVersion
@@ -452,73 +452,73 @@ classes:
     slots:
       - core_name
     attributes:
-      system_SystemModel_version:
+      system_SdmSystemModel_version:
         alias: version
         title: version
         description: Version of the system model, used for tracking changes over time.
         range: integer
         required: true
-      system_SystemModel_functionalModel:
+      system_SdmSystemModel_functionalModel:
         alias: functionalModel
         title: functional model
         description: A functional model associated with the system model.
-        range: system_SmFunctionalModel
+        range: system_SdmFunctionalModel
         required: false
         inlined: true
-      system_SystemModel_deviceModels:
+      system_SdmSystemModel_deviceModels:
         alias: deviceModels
         title: device models
         description: A device models associated with this system model.
-        range: system_SmDeviceModel
+        range: system_SdmDeviceModel
         multivalued: true
         inlined: true
         inlined_as_list: true
-      system_SystemModel_softwareModels:
+      system_SdmSystemModel_softwareModels:
         alias: softwareModels
         title: software models
         description: A software models associated with this system model.
-        range: system_SmSoftwareModel
+        range: system_SdmSoftwareModel
         multivalued: true
         inlined: true
         inlined_as_list: true
-      system_SystemModel_hardwareModels:
+      system_SdmSystemModel_hardwareModels:
         alias: hardwareModels
         title: hardware models
         description: A hardware models associated with this system model.
-        range: system_SmHardwareModel
+        range: system_SdmHardwareModel
         multivalued: true
         inlined: true
         inlined_as_list: true
 
   # SDM: Functional Model
-  system_SmFunctionalModel:
+  system_SdmFunctionalModel:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmFunctionalModel
+    class_uri: sys:SdmFunctionalModel
     title: Functional Model
     annotations:
       platformAPI: SysSdmFunctionalModel
     description: >-
       Captures the functional aspects of the system design, focusing on the behavior and interactions of functional blocks.
     mixins:
-      - system_SmMappableEntity
+      - system_SdmMappableEntity
     slots:
       - core_name
       - core_implementedBy
     attributes:
-      system_SmFunctionalModel_functionalBlocks:
+      system_SdmFunctionalModel_functionalBlocks:
         alias: functionalBlocks
         title: functional blocks
         description: Functional blocks that make up this functional model.
-        range: system_SmFunctionalBlock
+        range: system_SdmFunctionalBlock
         multivalued: true
         inlined: true
         inlined_as_list: true
-      system_SmFunctionalModel_connections:
+      system_SdmFunctionalModel_connections:
         alias: connections
         title: connections
         description: Connections between functional blocks in this functional model.
-        range: system_SmConnection
+        range: system_SdmConnection
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -527,138 +527,138 @@ classes:
         range: Any
         any_of:
           - range: system_ESDDocument
-  system_SmFunctionalBlock:
+  system_SdmFunctionalBlock:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmFunctionalBlock
+    class_uri: sys:SdmFunctionalBlock
     title: Functional Block
     annotations:
       platformAPI: SysSdmFunctionalBlock
     description: >-
       Represents a logical block within a system functional model.
     mixins:
-      - system_SmMappableEntity
+      - system_SdmMappableEntity
     slots:
       - core_name
       - system_parameters
     attributes:
-      system_SmFunctionalBlock_hardwareComponents:
+      system_SdmFunctionalBlock_hardwareComponents:
         alias: hardwareComponentIds
         title: hardware components
         description: Hardware components associated with this functional block.
-        range: system_SmHardwareComponent
+        range: system_SdmHardwareComponent
         multivalued: true
-      system_SmFunctionalBlock_ports:
+      system_SdmFunctionalBlock_ports:
         alias: ports
         title: ports
         description: Ports associated with this functional block.
-        range: system_SmPort
+        range: system_SdmPort
         multivalued: true
         inlined: true
         inlined_as_list: true
-  system_SmPort:
+  system_SdmPort:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmPort
+    class_uri: sys:SdmPort
     title: Port
     annotations:
       platformAPI: SysSdmPort
     description: >-
       Represents a port within a system design.
     mixins:
-      - system_SmMappableEntity
+      - system_SdmMappableEntity
     slots:
       - core_name
       - system_parameters
     attributes:
-      system_SmPort_quantity:
+      system_SdmPort_quantity:
         alias: quantity
         title: quantity
         description: The number of identical ports represented by this port instance (e.g., 4 UART ports).
         range: integer
         required: true
-      system_SmPort_portType:
+      system_SdmPort_portType:
         alias: portType
         title: port type
         description: The type of this port (e.g., UART, GPIO, I2C).
         range: system_PortType
         required: false
-      system_SmPort_hardwareComponent:
+      system_SdmPort_hardwareComponent:
         alias: hardwareComponentId
         title: hardware component
         description: The hardware component associated with this port.
-        range: system_SmHardwareComponent
+        range: system_SdmHardwareComponent
         required: false
-      system_SmPort_softwareComponent:
+      system_SdmPort_softwareComponent:
         alias: softwareComponentId
         title: software component
         description: The software component associated with this port.
-        range: system_SmSoftwareComponent
+        range: system_SdmSoftwareComponent
         required: false
-      system_SmPort_peripheralInstance:
+      system_SdmPort_peripheralInstance:
         alias: peripheralInstanceId
         title: peripheral instance
         description: The peripheral instance associated with this port.
         range: dm_peripheral_instance
         required: false
-  system_SmConnection:
+  system_SdmConnection:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmConnection
+    class_uri: sys:SdmConnection
     title: Connection
     annotations:
       platformAPI: SysSdmConnection
     description: >-
       Represents a connection between functional blocks.
     mixins:
-      - system_SmMappableEntity
+      - system_SdmMappableEntity
     slots:
       - core_name
       - system_parameters
     attributes:
-      system_SmConnection_endpoints:
+      system_SdmConnection_endpoints:
         alias: endpoints
         title: endpoints
         description: Endpoints of the connection.
-        range: system_SmEndpoint
+        range: system_SdmEndpoint
         multivalued: true
         inlined: true
         inlined_as_list: true
-  system_SmEndpoint:
+  system_SdmEndpoint:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmEndpoint
+    class_uri: sys:SdmEndpoint
     title: Endpoint
     annotations:
       platformAPI: SysSdmEndpoint
     description: >-
       Represents an endpoint of a connection.
     attributes:
-      system_SmEndpoint_functionalBlock:
+      system_SdmEndpoint_functionalBlock:
         alias: functionalBlockId
         title: functional block
         description: Functional block associated with this endpoint.
-        range: system_SmFunctionalBlock
+        range: system_SdmFunctionalBlock
         required: true
-      system_SmEndpoint_port:
+      system_SdmEndpoint_port:
         alias: portId
         title: port
         description: Port associated with this endpoint.
-        range: system_SmPort
+        range: system_SdmPort
         required: true
 
   # SDM: Device Model
-  system_SmDeviceModel:
+  system_SdmDeviceModel:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmDeviceModel
+    class_uri: sys:SdmDeviceModel
     title: Device Model
     annotations:
       platformAPI: SysSdmDeviceModel
     description: >-
       Represents a device model within the system design.
     mixins:
-      - system_SmMappableEntity
+      - system_SdmMappableEntity
     slots:
       - core_localId
       - dm_mpn
@@ -666,30 +666,30 @@ classes:
       - dm_ports
 
   # SDM: Software Model
-  system_SmSoftwareModel:
+  system_SdmSoftwareModel:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmSoftwareModel
+    class_uri: sys:SdmSoftwareModel
     title: Software Model
     annotations:
       platformAPI: SysSdmSoftwareModel
     description: >-
       Captures the software components and their interactions within the system design.
     mixins:
-      - system_SmMappableEntity
+      - system_SdmMappableEntity
     slots:
       - core_name
       - core_implementedBy
     attributes:
-      system_SmSoftwareModel_softwareComponents:
+      system_SdmSoftwareModel_softwareComponents:
         alias: softwareComponents
         title: software components
         description: The software components that make up this software model.
-        range: system_SmSoftwareComponent
+        range: system_SdmSoftwareComponent
         multivalued: true
         inlined: true
         inlined_as_list: true
-      system_SmSoftwareModel_deviceModel:
+      system_SdmSoftwareModel_deviceModel:
         alias: deviceModelId
         title: device model
         description: A device model associated with this software model.
@@ -700,33 +700,33 @@ classes:
         range: Any
         any_of:
           - range: sft_software_project
-  system_SmSoftwareComponent:
+  system_SdmSoftwareComponent:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmSoftwareComponent
+    class_uri: sys:SdmSoftwareComponent
     title: Software Component
     annotations:
       platformAPI: SysSdmSoftwareComponent
     description: >-
       Represents a software component instance and its dependencies.
     mixins:
-      - system_SmMappableEntity
+      - system_SdmMappableEntity
     slots:
       - core_name
       - system_parameters
     attributes:
-      system_SmSoftwareComponent_specification:
+      system_SdmSoftwareComponent_specification:
         alias: specification
         title: specification
-        range: system_SmSoftwareSpecification
+        range: system_SdmSoftwareSpecification
         description: The specification of this software component.
-      system_SmSoftwareComponent_dependencies:
+      system_SdmSoftwareComponent_dependencies:
         alias: dependencyIds
         title: dependencies
         description: The software components that this component depends on.
-        range: system_SmSoftwareComponent
+        range: system_SdmSoftwareComponent
         multivalued: true
-      system_SmSoftwareComponent_peripheralInstance:
+      system_SdmSoftwareComponent_peripheralInstance:
         alias: peripheralInstanceId
         title: peripheral instance
         description: >- 
@@ -734,10 +734,10 @@ classes:
           Used by drivers to bind to specific hardware peripherals.
         range: dm_peripheral_instance
         required: false
-  system_SmSoftwareSpecification:
+  system_SdmSoftwareSpecification:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmSoftwareSpecification
+    class_uri: sys:SdmSoftwareSpecification
     title: Software Specification
     annotations:
       platformAPI: SysSdmSoftwareSpecification
@@ -747,22 +747,22 @@ classes:
     slots:
       - core_name
     attributes:
-      system_SmSoftwareSpecification_category:
+      system_SdmSoftwareSpecification_category:
         alias: category
         title: category
-        range: system_SmSoftwareComponentCategory
+        range: system_SdmSoftwareComponentCategory
         description: The architectural role of this specification (e.g. DRIVER).
-      system_SmSoftwareSpecification_ecosystem:
+      system_SdmSoftwareSpecification_ecosystem:
         alias: ecosystem
         title: ecosystem
         range: string
         description: The platform or framework (e.g., FSP).
-      system_SmSoftwareSpecification_vendor:
+      system_SdmSoftwareSpecification_vendor:
         alias: vendor
         title: vendor
         range: string
         description: The organization providing the software (e.g. Renesas).
-      system_SmSoftwareSpecification_version:
+      system_SdmSoftwareSpecification_version:
         alias: version
         title: version
         range: string
@@ -771,56 +771,56 @@ classes:
         description: The identifier within the ecosystem (e.g., module.driver.uart).
 
   # SDM: Hardware Model
-  system_SmHardwareModel:
+  system_SdmHardwareModel:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmHardwareModel
+    class_uri: sys:SdmHardwareModel
     title: Hardware Model
     annotations:
       platformAPI: SysSdmHardwareModel
     description: >-
       Captures the hardware components and their interactions within the system design.
     mixins:
-      - system_SmMappableEntity
+      - system_SdmMappableEntity
     slots:
       - core_name
       - core_implementedBy
     attributes:
-      system_SmHardwareModel_hardwareComponents:
+      system_SdmHardwareModel_hardwareComponents:
         alias: hardwareComponents
         title: hardware components
         description: The hardware components that make up this hardware model.
-        range: system_SmHardwareComponent
+        range: system_SdmHardwareComponent
         multivalued: true
         inlined: true
         inlined_as_list: true
-      system_SmHardwareModel_functionalBlocks:
+      system_SdmHardwareModel_functionalBlocks:
         alias: functionalBlockIds
         title: functional blocks
         description: A functional blocks associated with this hardware model.
-        range: system_SmFunctionalBlock
+        range: system_SdmFunctionalBlock
         multivalued: true
     slot_usage:
       core_implementedBy:
         range: Any
         any_of:
           - range: des_project
-  system_SmHardwareComponent:
+  system_SdmHardwareComponent:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmHardwareComponent
+    class_uri: sys:SdmHardwareComponent
     title: Hardware Component
     annotations:
       platformAPI: SysSdmHardwareComponent
     description: >-
       Represents a hardware component / part.
     mixins:
-      - system_SmMappableEntity
+      - system_SdmMappableEntity
     slots:
       - core_name
       - system_parameters
     attributes:
-      system_SmHardwareComponent_deviceModel:
+      system_SdmHardwareComponent_deviceModel:
         alias: deviceModelId
         title: device model
         description: A device model associated with this hardware component.

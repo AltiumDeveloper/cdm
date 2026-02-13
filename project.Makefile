@@ -56,7 +56,7 @@ gen-sdm-schema:
 	python3 prune-schema.py \
 		"$(JSON_SCHEMA_PATH)" \
 		"$(JSON_SCHEMA_DIR)/system_data_model.schema.json" \
-		"SystemSystemModel" \
+		"SystemSdmSystemModelVersion" \
 		"System Data Model"
 
 gen-esd-schema:
