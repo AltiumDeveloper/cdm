@@ -53,22 +53,16 @@ classes:
         description: External UUID for the device (e.g. Torizon deviceUuid)
         range: string
         multivalued: false
-      ota_Device_device_id:
-        alias: device_id
-        title: device_id
+      ota_Device_deviceId:
+        alias: deviceId
+        title: device ID
         description: External device identifier (e.g. Torizon deviceId)
         range: string
         multivalued: false
-      ota_Device_hardware_id:
-        alias: hardware_id
-        title: hardware_id
+      ota_Device_hardwareId:
+        alias: hardwareId
+        title: hardware ID
         description: Hardware identifier indicating device type/model
-        range: string
-        multivalued: false
-      ota_Device_name:
-        alias: name
-        title: name
-        description: Device name (from Torizon DeviceInfoBasic.deviceName)
         range: string
         multivalued: false
       ota_Device_hibernated:
@@ -110,12 +104,6 @@ classes:
     slots:
       - core_name
     attributes:
-      ota_Fleet_fleet_id:
-        alias: fleet_id
-        title: fleet_id
-        description: External fleet identifier (e.g. Torizon fleetId / uuid)
-        range: string
-        multivalued: false
       ota_Fleet_devices:
         alias: devices
         title: devices
@@ -137,18 +125,6 @@ classes:
     slots:
       - core_name
     attributes:
-      ota_Package_package_id:
-        alias: package_id
-        title: package_id
-        description: Package identifier (e.g. {name}-{version} in Torizon).
-        range: string
-        multivalued: false
-      ota_Package_name:
-        alias: name
-        title: name
-        description: Package name.
-        range: string
-        multivalued: false
       ota_Package_version:
         alias: version
         title: version
@@ -168,9 +144,9 @@ classes:
           Package checksums as a JSON string map (e.g. {"sha256":"..."}), matching Torizon Package.hashes.
         range: string
         multivalued: false
-      ota_Package_hardware_ids:
-        alias: hardware_ids
-        title: hardware_ids
+      ota_Package_hardwareIds:
+        alias: hardwareIds
+        title: hardware Ids
         description: Hardware identifiers this package targets.
         range: string
         multivalued: true
