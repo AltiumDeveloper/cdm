@@ -494,7 +494,7 @@ classes:
   system_SdmFunctionalModel:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmFunctionalModel
+    class_uri: sys:SdmFunctionalModel
     title: Functional Model
     annotations:
       platformAPI: SysSdmFunctionalModel
@@ -530,7 +530,7 @@ classes:
   system_SdmFunctionalBlock:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmFunctionalBlock
+    class_uri: sys:SdmFunctionalBlock
     title: Functional Block
     annotations:
       platformAPI: SysSdmFunctionalBlock
@@ -559,7 +559,7 @@ classes:
   system_SdmPort:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmPort
+    class_uri: sys:SdmPort
     title: Port
     annotations:
       platformAPI: SysSdmPort
@@ -604,7 +604,7 @@ classes:
   system_SdmConnection:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmConnection
+    class_uri: sys:SdmConnection
     title: Connection
     annotations:
       platformAPI: SysSdmConnection
@@ -627,7 +627,7 @@ classes:
   system_SdmEndpoint:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmEndpoint
+    class_uri: sys:SdmEndpoint
     title: Endpoint
     annotations:
       platformAPI: SysSdmEndpoint
@@ -651,7 +651,7 @@ classes:
   system_SdmDeviceModel:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmDeviceModel
+    class_uri: sys:SdmDeviceModel
     title: Device Model
     annotations:
       platformAPI: SysSdmDeviceModel
@@ -669,7 +669,7 @@ classes:
   system_SdmSoftwareModel:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmSoftwareModel
+    class_uri: sys:SdmSoftwareModel
     title: Software Model
     annotations:
       platformAPI: SysSdmSoftwareModel
@@ -703,7 +703,7 @@ classes:
   system_SdmSoftwareComponent:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmSoftwareComponent
+    class_uri: sys:SdmSoftwareComponent
     title: Software Component
     annotations:
       platformAPI: SysSdmSoftwareComponent
@@ -737,7 +737,7 @@ classes:
   system_SdmSoftwareSpecification:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmSoftwareSpecification
+    class_uri: sys:SdmSoftwareSpecification
     title: Software Specification
     annotations:
       platformAPI: SysSdmSoftwareSpecification
@@ -774,7 +774,7 @@ classes:
   system_SdmHardwareModel:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmHardwareModel
+    class_uri: sys:SdmHardwareModel
     title: Hardware Model
     annotations:
       platformAPI: SysSdmHardwareModel
@@ -808,7 +808,7 @@ classes:
   system_SdmHardwareComponent:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SmHardwareComponent
+    class_uri: sys:SdmHardwareComponent
     title: Hardware Component
     annotations:
       platformAPI: SysSdmHardwareComponent
