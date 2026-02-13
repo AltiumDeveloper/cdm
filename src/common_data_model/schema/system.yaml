@@ -380,7 +380,7 @@ classes:
     is_a: Meta
     abstract: true
     mixin: true
-    class_uri: dm:SmEntity
+    class_uri: sys:SdmEntity
     description: >-
       A mixin for entities within the System Data Model (SDM) that are mappable to domain-specific concepts
     slots:
@@ -397,7 +397,7 @@ classes:
   system_SdmClientMetadata:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: dm:SmClientMetadata
+    class_uri: sys:SdmClientMetadata
     title: Domain Metadata
     description: >-
       Captures metadata specific to a particular client (e.g., ESD, AD, E2Studio).
