@@ -39,7 +39,7 @@ classes:
     in_subset: ota
     class_uri: ota:Device
     title: Device
-    description: >- 
+    description: >-
       TBD
     annotations:
       grid: grid:workspace:{workspace-id}:ota:device/{id}
@@ -47,6 +47,30 @@ classes:
     slots:
       - core_name
     attributes:
+      ota_Device_uuid:
+        alias: uuid
+        title: uuid
+        description: External UUID for the device (e.g. Torizon deviceUuid)
+        range: string
+        multivalued: false
+      ota_Device_deviceId:
+        alias: deviceId
+        title: device ID
+        description: External device identifier (e.g. Torizon deviceId)
+        range: string
+        multivalued: false
+      ota_Device_hardwareId:
+        alias: hardwareId
+        title: hardware ID
+        description: Hardware identifier indicating device type/model
+        range: string
+        multivalued: false
+      ota_Device_hibernated:
+        alias: hibernated
+        title: hibernated
+        description: Whether the device is in hibernation (from Torizon DeviceInfoBasic.hibernated)
+        range: boolean
+        multivalued: false
       ota_Device_status:
         alias: status
         title: status
@@ -59,6 +83,7 @@ classes:
         description: Fleets this device belongs to
         range: ota_Fleet
         multivalued: true
+        inverse: ota_Fleet_devices
       ota_Device_packages:
         alias: packages
         title: packages
@@ -71,7 +96,7 @@ classes:
     in_subset: ota
     class_uri: ota:Fleet
     title: Fleet
-    description: >- 
+    description: >-
       TBD
     annotations:
       grid: grid:workspace:{workspace-id}:ota:fleet/{id}
@@ -85,6 +110,7 @@ classes:
         description: Devices in this fleet
         range: ota_Device
         multivalued: true
+        inverse: ota_Device_fleets
 
   ota_Package:
     is_a: Artifact
@@ -105,3 +131,22 @@ classes:
         description: Package version
         range: string
         multivalued: false
+      ota_Package_size:
+        alias: size
+        title: size
+        description: Package size in bytes.
+        range: integer
+        multivalued: false
+      ota_Package_hashes:
+        alias: hashes
+        title: hashes
+        description: >-
+          Package checksums as a JSON string map (e.g. {"sha256":"..."}), matching Torizon Package.hashes.
+        range: string
+        multivalued: false
+      ota_Package_hardwareIds:
+        alias: hardwareIds
+        title: hardware Ids
+        description: Hardware identifiers this package targets.
+        range: string
+        multivalued: true
