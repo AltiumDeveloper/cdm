@@ -47,12 +47,6 @@ classes:
     slots:
       - core_name
     attributes:
-      ota_Device_uuid:
-        alias: uuid
-        title: uuid
-        description: External UUID for the device (e.g. Torizon deviceUuid)
-        range: string
-        multivalued: false
       ota_Device_deviceId:
         alias: deviceId
         title: device ID
