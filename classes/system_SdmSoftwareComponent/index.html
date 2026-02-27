@@ -237,6 +237,28 @@
 
 
 
+
+
+
+
+
+
+
+      system_SdmSoftwareComponent --&gt; "0..1" system_SdmSoftwareStackInstance : implemented by
+      click system_SdmSoftwareStackInstance href "../../classes/system_SdmSoftwareStackInstance/"
+
+
+  class system_SdmSoftwareStackInstance["Software Stack Instance"]
+
+
+
+      style system_SdmSoftwareStackInstance fill:#f1c232    
+
+
+
+
+
+
           system_SdmSoftwareComponent : name
 
 
@@ -261,87 +283,11 @@
 
 
 
-
-
-
-
-
-      system_SdmSoftwareComponent --&gt; "0..1" system_SdmSoftwareSpecification : specification
-      click system_SdmSoftwareSpecification href "../../classes/system_SdmSoftwareSpecification/"
-
-
-  class system_SdmSoftwareSpecification["Software Specification"]
-
-
-
-      style system_SdmSoftwareSpecification fill:#f1c232    
-
-
-
-
-
-
-
-
-
-
-
-      system_SdmSoftwareComponent --&gt; "*" system_SdmSoftwareComponent : dependencies
-      click system_SdmSoftwareComponent href "../../classes/system_SdmSoftwareComponent/"
-
-
-  class system_SdmSoftwareComponent["Software Component"]
-
-
-
-      style system_SdmSoftwareComponent fill:#f1c232    
-
-
-
-
-
-
-
-
-
-
-
-      system_SdmSoftwareComponent --&gt; "0..1" dm_peripheral_instance : peripheral instance
-      click dm_peripheral_instance href "../../classes/dm_peripheral_instance/"
-
-
-  class dm_peripheral_instance["PeripheralInstance"]
-
-
-
-      style dm_peripheral_instance fill:#6fa8dc    
-
-
-
-
-
-
           system_SdmSoftwareComponent : id
 
 
 
-
-
-
-
-
-      system_SdmSoftwareComponent --&gt; "*" system_SdmClientMetadata : metadata
-      click system_SdmClientMetadata href "../../classes/system_SdmClientMetadata/"
-
-
-  class system_SdmClientMetadata["Domain Metadata"]
-
-
-
-      style system_SdmClientMetadata fill:#f1c232    
-
-
-
+          system_SdmSoftwareComponent : sdmReferenceDesignator
 
 
 
@@ -379,26 +325,11 @@
 
 
 
-
-
-
-  class system_SdmSoftwareComponent["Software Component"]
-
-
-
-      style system_SdmSoftwareComponent fill:#f1c232    
-
-
-          system_SdmSoftwareComponent --&gt; "*" system_SdmSoftwareComponent: dependencies 
-          click system_SdmSoftwareComponent href "../../classes/system_SdmSoftwareComponent/"
-
-
-
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Resource/">Resource</a><ul>
-<li><strong>system_SdmSoftwareComponent</strong> [ <a href="../system_SdmMappableEntity/">system_SdmMappableEntity</a>]</li>
+<li><strong>system_SdmSoftwareComponent</strong> [ <a href="../system_SdmMappableEntity/">system_SdmMappableEntity</a> <a href="../system_HasSdmReferenceDesignator/">system_HasSdmReferenceDesignator</a>]</li>
 </ul>
 </li>
 </ul>
@@ -422,11 +353,18 @@
 <td><a href="../system_SdmMappableEntity/">system_SdmMappableEntity</a></td>
 </tr>
 <tr>
-<td><a href="../../slots/system_SdmMappableEntity_metadata">metadata</a></td>
-<td><code>*</code></td>
-<td><a href="../system_SdmClientMetadata/">Domain Metadata</a></td>
-<td>Client-specific metadata associated with this entity.</td>
-<td><a href="../system_SdmMappableEntity/">system_SdmMappableEntity</a></td>
+<td><a href="../../slots/system_HasSdmReferenceDesignator_sdmReferenceDesignator">sdmReferenceDesignator</a></td>
+<td><code>1</code></td>
+<td><a href="../../types/string/">string</a></td>
+<td>Reference designator</td>
+<td><a href="../system_HasSdmReferenceDesignator/">system_HasSdmReferenceDesignator</a></td>
+</tr>
+<tr>
+<td><a href="../../slots/core_implementedBy">implemented by</a></td>
+<td><code>0..1</code></td>
+<td><a href="../system_SdmSoftwareStackInstance/">Software Stack Instance</a></td>
+<td>None</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/core_name">name</a></td>
@@ -440,27 +378,6 @@
 <td><code>*</code></td>
 <td><a href="../system_Parameter/">Parameter</a></td>
 <td>TBD</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/system_SdmSoftwareComponent_specification">specification</a></td>
-<td><code>0..1</code></td>
-<td><a href="../system_SdmSoftwareSpecification/">Software Specification</a></td>
-<td>The specification of this software component.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/system_SdmSoftwareComponent_dependencies">dependencies</a></td>
-<td><code>*</code></td>
-<td><a href="./">Software Component</a></td>
-<td>The software components that this component depends on.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/system_SdmSoftwareComponent_peripheralInstance">peripheral instance</a></td>
-<td><code>0..1</code></td>
-<td><a href="../dm_peripheral_instance/">PeripheralInstance</a></td>
-<td>The peripheral associated with this software component.  Used by drivers to bind to specific hardware peripherals.</td>
 <td>direct</td>
 </tr>
 </tbody>

@@ -208,13 +208,23 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/system_SdmHardwareComponent/">Hardware Component </a></td>
-<td>Represents a hardware component / part</td>
+<td><a href="../../classes/system_SdmHardwareModel/">Hardware Model </a></td>
+<td>Captures the hardware components and their interactions within the system des...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/ota_Package/">Package </a></td>
-<td>TBD</td>
+<td><a href="../../classes/system_SdmSystemModelVersion/">System  Model Version </a></td>
+<td>A specific version of a system model, capturing the state of the system desig...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SdmSoftwareModel/">Software Model </a></td>
+<td>Captures the software components and their interactions within the system des...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SdmSystemModel/">System  Model </a></td>
+<td>A high-level system model that captures the overall system architecture, cros...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -228,31 +238,6 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SdmConnection/">Connection </a></td>
-<td>Represents a connection between functional blocks</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_Parameter/">Parameter </a></td>
-<td>Name–value parameter associated with functional blocks, ports, or other syste...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_SdmPort/">Port </a></td>
-<td>Represents a port within a system design</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_SdmFunctionalBlock/">Functional Block </a></td>
-<td>Represents a logical block within a system functional model</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_Connection/">Connection </a></td>
-<td>TBD</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../../classes/ota_Device/">Device </a></td>
 <td>TBD</td>
 <td>no</td>
@@ -263,23 +248,33 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SdmSystemModelVersion/">System  Model Version </a></td>
-<td>A specific version of a system model, capturing the state of the system desig...</td>
+<td><a href="../../classes/system_Parameter/">Parameter </a></td>
+<td>Name–value parameter associated with functional blocks, ports, or other syste...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SdmSystemModel/">System  Model </a></td>
-<td>A high-level system model that captures the overall system architecture, cros...</td>
+<td><a href="../../classes/system_SdmSoftwareStackInstance/">Software Stack Instance </a></td>
+<td>Represents a software stack instance and its dependencies</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SdmFunctionalModel/">Functional Model </a></td>
-<td>Captures the functional aspects of the system design, focusing on the behavio...</td>
+<td><a href="../../classes/system_SdmConnection/">Connection </a></td>
+<td>Represents a connection between functional blocks</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_Port/">Port </a></td>
+<td><a href="../../classes/system_SdmHardwareComponent/">Hardware Component </a></td>
+<td>Represents a hardware component / part</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_Connection/">Connection </a></td>
 <td>TBD</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SdmPort/">Port </a></td>
+<td>Represents a port within a system design</td>
 <td>no</td>
 </tr>
 <tr>
@@ -293,18 +288,28 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../../classes/system_SdmFunctionalBlock/">Functional Block </a></td>
+<td>Represents a logical block within a system functional model</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../../classes/system_FunctionalBlock/">Functional Block </a></td>
 <td>Represents a logical block within a PCB design (e</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SdmSoftwareModel/">Software Model </a></td>
-<td>Captures the software components and their interactions within the system des...</td>
+<td><a href="../../classes/ota_Package/">Package </a></td>
+<td>TBD</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SdmHardwareModel/">Hardware Model </a></td>
-<td>Captures the hardware components and their interactions within the system des...</td>
+<td><a href="../../classes/system_Port/">Port </a></td>
+<td>TBD</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SdmFunctionalModel/">Functional Model </a></td>
+<td>Captures the functional aspects of the system design, focusing on the behavio...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -340,6 +345,7 @@
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmConnection</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmSoftwareModel</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmSoftwareComponent</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmSoftwareStackInstance</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmSoftwareSpecification</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmHardwareModel</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmHardwareComponent</span>

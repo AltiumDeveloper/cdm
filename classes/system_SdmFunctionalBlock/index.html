@@ -237,6 +237,8 @@
 
 
 
+
+
           system_SdmFunctionalBlock : name
 
 
@@ -305,23 +307,7 @@
 
 
 
-
-
-
-
-
-      system_SdmFunctionalBlock --&gt; "*" system_SdmClientMetadata : metadata
-      click system_SdmClientMetadata href "../../classes/system_SdmClientMetadata/"
-
-
-  class system_SdmClientMetadata["Domain Metadata"]
-
-
-
-      style system_SdmClientMetadata fill:#f1c232    
-
-
-
+          system_SdmFunctionalBlock : sdmReferenceDesignator
 
 
 
@@ -378,7 +364,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Resource/">Resource</a><ul>
-<li><strong>system_SdmFunctionalBlock</strong> [ <a href="../system_SdmMappableEntity/">system_SdmMappableEntity</a>]</li>
+<li><strong>system_SdmFunctionalBlock</strong> [ <a href="../system_SdmMappableEntity/">system_SdmMappableEntity</a> <a href="../system_HasSdmReferenceDesignator/">system_HasSdmReferenceDesignator</a>]</li>
 </ul>
 </li>
 </ul>
@@ -402,11 +388,11 @@
 <td><a href="../system_SdmMappableEntity/">system_SdmMappableEntity</a></td>
 </tr>
 <tr>
-<td><a href="../../slots/system_SdmMappableEntity_metadata">metadata</a></td>
-<td><code>*</code></td>
-<td><a href="../system_SdmClientMetadata/">Domain Metadata</a></td>
-<td>Client-specific metadata associated with this entity.</td>
-<td><a href="../system_SdmMappableEntity/">system_SdmMappableEntity</a></td>
+<td><a href="../../slots/system_HasSdmReferenceDesignator_sdmReferenceDesignator">sdmReferenceDesignator</a></td>
+<td><code>1</code></td>
+<td><a href="../../types/string/">string</a></td>
+<td>Reference designator</td>
+<td><a href="../system_HasSdmReferenceDesignator/">system_HasSdmReferenceDesignator</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/core_name">name</a></td>
