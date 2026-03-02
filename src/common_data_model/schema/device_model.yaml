@@ -138,6 +138,7 @@ classes:
       platformAPI: DmConfiguredDeviceModel
     slots:
       - core_localId
+      - dm_boardName
       - dm_mpn
       - dm_peripherals
       - dm_ports
@@ -805,6 +806,12 @@ classes:
         range: string
 
 slots:
+  dm_boardName:
+    alias: boardName
+    title: board name
+    description: Board name for the device
+    range: string
+    required: false
   dm_mpn:
     alias: mpn
     title: deviceMpn

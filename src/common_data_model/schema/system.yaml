@@ -666,6 +666,7 @@ classes:
       - system_SdmMappableEntity
     slots:
       - core_localId
+      - dm_boardName
       - dm_mpn
       - dm_peripherals
       - dm_ports
@@ -695,6 +696,14 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+      system_SdmSoftwareModel_softwareStackInstances:
+        alias: softwareStackInstances
+        title: software stack instances
+        description: The stack instances used by this software model.
+        range: system_SdmSoftwareStackInstance
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
       system_SdmSoftwareModel_deviceModel:
         alias: deviceModelId
         title: device model
@@ -716,15 +725,25 @@ classes:
     description: >-
       Represents a software component instance and its dependencies.
     mixins:
-      - system_SdmMappableEntity
       - system_HasSdmReferenceDesignator
     slots:
       - core_implementedBy
+      - core_localId
       - core_name
       - system_parameters
+    attributes:
+      system_SdmSoftwareComponent_libraryComponentId:
+        slot_uri: sys:SdmSoftwareComponent_libraryComponentId
+        alias: libraryComponentId
+        title: library component
+        description: The id of the library software component
+        range: string
+        multivalued: false
+        required: false
     slot_usage:
       core_implementedBy:
         range: system_SdmSoftwareStackInstance
+        multivalued: true
 
   system_SdmSoftwareStackInstance:
     is_a: Resource
@@ -736,6 +755,7 @@ classes:
     description: >-
       Represents a software stack instance and its dependencies.
     slots:
+      - core_localId
       - core_name
       - system_parameters
     attributes:
