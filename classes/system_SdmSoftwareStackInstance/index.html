@@ -235,6 +235,10 @@
 
 
 
+          system_SdmSoftwareStackInstance : id
+
+
+
           system_SdmSoftwareStackInstance : name
 
 
@@ -326,6 +330,21 @@
 
 
 
+  class system_SdmSoftwareModel["Software Model"]
+
+
+
+      style system_SdmSoftwareModel fill:#f1c232    
+
+
+          system_SdmSoftwareModel --&gt; "*" system_SdmSoftwareStackInstance: software stack instances 
+          click system_SdmSoftwareModel href "../../classes/system_SdmSoftwareModel/"
+
+
+
+
+
+
   class system_SdmSoftwareComponent["Software Component"]
 
 
@@ -373,6 +392,13 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../../slots/core_localId">id</a></td>
+<td><code>1</code></td>
+<td><a href="../../types/string/">string</a></td>
+<td>Local unique identifier within a given context.</td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../../slots/core_name">name</a></td>
 <td><code>0..1</code></td>

@@ -242,9 +242,7 @@
 
 
 
-
-
-      system_SdmSoftwareComponent --&gt; "0..1" system_SdmSoftwareStackInstance : implemented by
+      system_SdmSoftwareComponent --&gt; "*" system_SdmSoftwareStackInstance : implemented by
       click system_SdmSoftwareStackInstance href "../../classes/system_SdmSoftwareStackInstance/"
 
 
@@ -256,6 +254,10 @@
 
 
 
+
+
+
+          system_SdmSoftwareComponent : id
 
 
 
@@ -283,7 +285,7 @@
 
 
 
-          system_SdmSoftwareComponent : id
+          system_SdmSoftwareComponent : library component
 
 
 
@@ -329,7 +331,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Resource/">Resource</a><ul>
-<li><strong>system_SdmSoftwareComponent</strong> [ <a href="../system_SdmMappableEntity/">system_SdmMappableEntity</a> <a href="../system_HasSdmReferenceDesignator/">system_HasSdmReferenceDesignator</a>]</li>
+<li><strong>system_SdmSoftwareComponent</strong> [ <a href="../system_HasSdmReferenceDesignator/">system_HasSdmReferenceDesignator</a>]</li>
 </ul>
 </li>
 </ul>
@@ -346,13 +348,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../slots/core_localId">id</a></td>
-<td><code>1</code></td>
-<td><a href="../../types/string/">string</a></td>
-<td>Local unique identifier within a given context.</td>
-<td><a href="../system_SdmMappableEntity/">system_SdmMappableEntity</a></td>
-</tr>
-<tr>
 <td><a href="../../slots/system_HasSdmReferenceDesignator_sdmReferenceDesignator">sdmReferenceDesignator</a></td>
 <td><code>1</code></td>
 <td><a href="../../types/string/">string</a></td>
@@ -361,9 +356,16 @@
 </tr>
 <tr>
 <td><a href="../../slots/core_implementedBy">implemented by</a></td>
-<td><code>0..1</code></td>
+<td><code>*</code></td>
 <td><a href="../system_SdmSoftwareStackInstance/">Software Stack Instance</a></td>
 <td>None</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/core_localId">id</a></td>
+<td><code>1</code></td>
+<td><a href="../../types/string/">string</a></td>
+<td>Local unique identifier within a given context.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -378,6 +380,13 @@
 <td><code>*</code></td>
 <td><a href="../system_Parameter/">Parameter</a></td>
 <td>TBD</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/system_SdmSoftwareComponent_libraryComponentId">library component</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/string/">string</a></td>
+<td>The id of the library software component</td>
 <td>direct</td>
 </tr>
 </tbody>

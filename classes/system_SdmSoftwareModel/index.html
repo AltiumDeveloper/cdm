@@ -284,6 +284,26 @@
 
 
 
+      system_SdmSoftwareModel --&gt; "*" system_SdmSoftwareStackInstance : software stack instances
+      click system_SdmSoftwareStackInstance href "../../classes/system_SdmSoftwareStackInstance/"
+
+
+  class system_SdmSoftwareStackInstance["Software Stack Instance"]
+
+
+
+      style system_SdmSoftwareStackInstance fill:#f1c232    
+
+
+
+
+
+
+
+
+
+
+
       system_SdmSoftwareModel --&gt; "0..1" dm_configured_device_model : device model
       click dm_configured_device_model href "../../classes/dm_configured_device_model/"
 
@@ -379,6 +399,13 @@
 <td><code>*</code></td>
 <td><a href="../system_SdmSoftwareComponent/">Software Component</a></td>
 <td>The software components that make up this software model.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/system_SdmSoftwareModel_softwareStackInstances">software stack instances</a></td>
+<td><code>*</code></td>
+<td><a href="../system_SdmSoftwareStackInstance/">Software Stack Instance</a></td>
+<td>The stack instances used by this software model.</td>
 <td>direct</td>
 </tr>
 <tr>
