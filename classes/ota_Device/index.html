@@ -242,6 +242,18 @@
 
 
 
+          ota_Device : device ID
+
+
+
+          ota_Device : hardware ID
+
+
+
+          ota_Device : hibernated
+
+
+
 
 
 
@@ -360,6 +372,27 @@
 <td><code>0..1</code></td>
 <td><a href="../../types/string/">string</a></td>
 <td>A short name of the entity.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/ota_Device_deviceId">device ID</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/string/">string</a></td>
+<td>External device identifier (e.g. Torizon deviceId)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/ota_Device_hardwareId">hardware ID</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/string/">string</a></td>
+<td>Hardware identifier indicating device type/model</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/ota_Device_hibernated">hibernated</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/boolean/">boolean</a></td>
+<td>Whether the device is in hibernation (from Torizon DeviceInfoBasic.hibernated)</td>
 <td>direct</td>
 </tr>
 <tr>

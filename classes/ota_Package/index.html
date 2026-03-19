@@ -246,6 +246,18 @@
 
 
 
+          ota_Package : size
+
+
+
+          ota_Package : hashes
+
+
+
+          ota_Package : hardware Ids
+
+
+
           ota_Package : id
 
 
@@ -311,6 +323,27 @@
 <td><code>0..1</code></td>
 <td><a href="../../types/string/">string</a></td>
 <td>Package version</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/ota_Package_size">size</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/integer/">integer</a></td>
+<td>Package size in bytes.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/ota_Package_hashes">hashes</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/string/">string</a></td>
+<td>Package checksums as a JSON string map (e.g. {"sha256":"..."}), matching Torizon Package.hashes.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/ota_Package_hardwareIds">hardware Ids</a></td>
+<td><code>*</code></td>
+<td><a href="../../types/string/">string</a></td>
+<td>Hardware identifiers this package targets.</td>
 <td>direct</td>
 </tr>
 </tbody>
