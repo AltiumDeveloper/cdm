@@ -35,6 +35,7 @@ classes:
       maturity: EXPERIMENTAL
     attributes:
       Requirement_identifier:
+        slot_uri: req:Requirement_identifier
         title: key
         description: >-
           Human-friendly identifier that is unique within a specification context (e.g. SYS-001).
@@ -42,48 +43,56 @@ classes:
         required: true
         multivalued: false
       Requirement_title:
+        slot_uri: req:Requirement_title
         title: title
         description: Concise human-readable title of the requirement.
         range: string
         required: true
         multivalued: false
       Requirement_text:
+        slot_uri: req:Requirement_text
         title: statement
         description: Canonical textual form of the requirement.
         range: string
         required: true
         multivalued: false
       Requirement_rationale:
+        slot_uri: req:Requirement_rationale
         title: rationale
         description: Justification or reasoning that motivates the requirement intent.
         range: string
         required: false
         multivalued: false
       Requirement_category:
+        slot_uri: req:Requirement_category
         title: category
         description: Classification such as functional, safety, regulatory, or usability.
         range: string
         required: false
         multivalued: false
       Requirement_priority:
+        slot_uri: req:Requirement_priority
         title: priority
         description: Relative importance or sequencing hint for planning.
         range: string
         required: false
         multivalued: false
       Requirement_acceptance_criteria:
+        slot_uri: req:Requirement_acceptance_criteria
         title: acceptanceCriteria
         description: Objective criteria or measurements that prove the requirement is met.
         range: string
         required: false
         multivalued: true
       Requirement_owner:
+        slot_uri: req:Requirement_owner
         title: owner
         description: Responsible role or team accountable for the requirement.
         range: string
         required: false
         multivalued: false
       Requirement_source_reference:
+        slot_uri: req:Requirement_source_reference
         title: sourceReference
         description: Link or citation to originating contract, regulation, or customer input.
         range: uriorcurie
@@ -112,12 +121,14 @@ classes:
       maturity: EXPERIMENTAL
     attributes:
       RequirementRevision_number:
+        slot_uri: req:RequirementRevision_number
         title: number
         description: Ordinal or semver-like revision number.
         range: string
         required: true
         multivalued: false
       RequirementRevision_change_summary:
+        slot_uri: req:RequirementRevision_change_summary
         title: changeSummary
         description: Concise description of what changed in this revision.
         range: string
@@ -142,18 +153,21 @@ classes:
       maturity: EXPERIMENTAL
     attributes:
       RequirementSpecification_name:
+        slot_uri: req:RequirementSpecification_name
         title: name
         description: Human-readable name for the specification (e.g. "System Requirements").
         range: string
         required: true
         multivalued: false
       RequirementSpecification_description:
+        slot_uri: req:RequirementSpecification_description
         title: description
         description: Narrative describing the boundaries and context of the specification.
         range: string
         required: false
         multivalued: false
       RequirementSpecification_owner:
+        slot_uri: req:RequirementSpecification_owner
         title: owner
         description: Role or organization managing this specification.
         range: string
@@ -182,12 +196,14 @@ classes:
       maturity: EXPERIMENTAL
     attributes:
       RequirementBaseline_identifier:
+        slot_uri: req:RequirementBaseline_identifier
         title: identifier
         description: Distinguishing label for the approved baseline (e.g. BL-2025.1).
         range: string
         required: true
         multivalued: false
       RequirementBaseline_notes:
+        slot_uri: req:RequirementBaseline_notes
         title: notes
         description: Additional context for the approval, deviations, or applicability limits.
         range: string
@@ -209,18 +225,21 @@ classes:
       maturity: EXPERIMENTAL
     attributes:
       RequirementChangeRequest_reason:
+        slot_uri: req:RequirementChangeRequest_reason
         title: reason
         description: Business, technical, or compliance driver motivating the change.
         range: string
         required: true
         multivalued: false
       RequirementChangeRequest_priority:
+        slot_uri: req:RequirementChangeRequest_priority
         title: priority
         description: Handling urgency for backlog triage.
         range: string
         required: false
         multivalued: false
       RequirementChangeRequest_decision:
+        slot_uri: req:RequirementChangeRequest_decision
         title: decision
         description: Outcome such as approved, rejected, or deferred.
         range: string
@@ -250,18 +269,21 @@ classes:
       maturity: EXPERIMENTAL
     attributes:
       RequirementProject_name:
+        slot_uri: req:Project_name
         title: name
         description: Compact display name for the requirement effort.
         range: string
         required: true
         multivalued: false
       RequirementProject_description:
+        slot_uri: req:Project_description
         title: description
         description: Longer narrative describing objectives, scope, and constraints.
         range: string
         required: false
         multivalued: false
       RequirementProject_owner:
+        slot_uri: req:Project_owner
         title: owner
         description: Responsible program, platform team, or external stakeholder.
         range: string
@@ -286,24 +308,28 @@ classes:
       maturity: EXPERIMENTAL
     attributes:
       VerificationCase_identifier:
+        slot_uri: req:VerificationCase_identifier
         title: identifier
         description: External-facing identifier or document number for the verification case.
         range: string
         required: true
         multivalued: false
       VerificationCase_method:
+        slot_uri: req:VerificationCase_method
         title: method
         description: Verification technique such as analysis, inspection, demonstration, or test.
         range: string
         required: true
         multivalued: false
       VerificationCase_environment:
+        slot_uri: req:VerificationCase_environment
         title: environment
         description: Description of lab, simulation, or operational context for execution.
         range: string
         required: false
         multivalued: false
       VerificationCase_result:
+        slot_uri: req:VerificationCase_result
         title: result
         description: Pass/fail or summary of latest execution outcome.
         range: string

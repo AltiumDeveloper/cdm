@@ -48,18 +48,21 @@ classes:
       - core_name
     attributes:
       ota_Device_status:
+        slot_uri: ota:Device_status
         alias: status
         title: status
         description: Current device status
         range: ota_DeviceStatus
         multivalued: false
       ota_Device_fleets:
+        slot_uri: ota:Device_fleets
         alias: fleets
         title: fleets
         description: Fleets this device belongs to
         range: ota_Fleet
         multivalued: true
       ota_Device_packages:
+        slot_uri: ota:Device_packages
         alias: packages
         title: packages
         description: Installed packages, if known
@@ -80,6 +83,7 @@ classes:
       - core_name
     attributes:
       ota_Fleet_devices:
+        slot_uri: ota:Fleet_devices
         alias: devices
         title: devices
         description: Devices in this fleet
@@ -100,6 +104,7 @@ classes:
       - core_name
     attributes:
       ota_Package_version:
+        slot_uri: ota:Package_version
         alias: version
         title: version
         description: Package version

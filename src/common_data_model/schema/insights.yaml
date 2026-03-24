@@ -75,7 +75,7 @@ slots:
     description: Entities associated with this insight
     range: Any
     any_of:
-      - range: pro_BomWIP
+      - range: pro_bom_wip
       - range: des_project
     required: false
     multivalued: true
@@ -88,8 +88,8 @@ slots:
     description: Entities associated with this insight
     range: Any
     any_of:
-      - range: pro_BomRelease
+      - range: pro_bom_release
       - range: des_project_release
-      - range: lib_ComponentRevision
+      - range: lib_component_revision
     required: false
     multivalued: true

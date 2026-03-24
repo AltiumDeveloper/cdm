@@ -101,6 +101,7 @@ classes:
         inlined: true
         inlined_as_list: true
       system_ESDDocument_hardwareProjects:
+        slot_uri: sys:ESDDocument_hardwareProjects
         alias: hardwareProjects
         title: hardware projects
         description: Hardware projects associated with this ESD document.
@@ -109,6 +110,7 @@ classes:
         inlined: true
         inlined_as_list: true
       system_ESDDocument_softwareProjects:
+        slot_uri: sys:ESDDocument_softwareProjects
         alias: softwareProjects
         title: software projects
         description: Software projects associated with this ESD document.
@@ -323,6 +325,7 @@ classes:
       Name–value parameter associated with functional blocks, ports, or other system design resources.
     attributes:
       system_Parameter_value:
+        slot_uri: sys:Parameter_value
         alias: value
         title: value
         range: string
@@ -342,6 +345,7 @@ classes:
       - core_implementedBy
     attributes:
       system_SoftwareProject_softwareComponents:
+        slot_uri: sys:SoftwareProject_softwareComponents
         alias: softwareComponents
         title: software components
         description: Software components associated with this software project.
@@ -364,6 +368,7 @@ classes:
       - core_implementedBy
     attributes:
       system_HardwareProject_hardwareComponents:
+        slot_uri: sys:HardwareProject_hardwareComponents
         alias: functionalBlocks
         title: functional blocks
         description: Functional blocks associated with this hardware project.
@@ -414,6 +419,7 @@ classes:
       - system_parameters
     attributes:
       system_SdmClientMetadata_clientId:
+        slot_uri: sys:SdmClientMetadata_clientId
         alias: clientId
         title: client id
         description: The client identifier (e.g., "ESD", "AD", "E2Studio") this metadata are associated with.
@@ -435,12 +441,14 @@ classes:
       functional and logical domains (e.g., hardware and software).
     attributes:
       system_SdmSystemModel_latestVersion:
+        slot_uri: sys:SystemModel_latestVersion
         alias: latestVersion
         title: latest version
         description: Latest version of the system model.
         range: system_SdmSystemModelVersion
         required: true
       system_SdmSystemModel_versions:
+        slot_uri: sys:SystemModel_versions
         alias: versions
         title: versions
         description: Versions  of the system model, used for tracking changes over time.
@@ -462,12 +470,14 @@ classes:
       - core_name
     attributes:
       system_SdmSystemModel_version:
+        slot_uri: sys:SystemModelVersion_system_SdmSystemModel_version
         alias: version
         title: version
         description: Version of the system model, used for tracking changes over time.
         range: integer
         required: true
       system_SdmSystemModel_functionalModel:
+        slot_uri: sys:SystemModelVersion_system_SdmSystemModel_functionalModel
         alias: functionalModel
         title: functional model
         description: A functional model associated with the system model.
@@ -475,6 +485,7 @@ classes:
         required: false
         inlined: true
       system_SdmSystemModel_deviceModels:
+        slot_uri: sys:SystemModelVersion_system_SdmSystemModel_deviceModels
         alias: deviceModels
         title: device models
         description: A device models associated with this system model.
@@ -483,6 +494,7 @@ classes:
         inlined: true
         inlined_as_list: true
       system_SdmSystemModel_softwareModels:
+        slot_uri: sys:SystemModelVersion_system_SdmSystemModel_softwareModels
         alias: softwareModels
         title: software models
         description: A software models associated with this system model.
@@ -491,6 +503,7 @@ classes:
         inlined: true
         inlined_as_list: true
       system_SdmSystemModel_hardwareModels:
+        slot_uri: sys:SystemModelVersion_system_SdmSystemModel_hardwareModels
         alias: hardwareModels
         title: hardware models
         description: A hardware models associated with this system model.
@@ -516,6 +529,7 @@ classes:
       - core_implementedBy
     attributes:
       system_SdmFunctionalModel_functionalBlocks:
+        slot_uri: sys:SdmFunctionalModel_functionalBlocks
         alias: functionalBlocks
         title: functional blocks
         description: Functional blocks that make up this functional model.
@@ -524,6 +538,7 @@ classes:
         inlined: true
         inlined_as_list: true
       system_SdmFunctionalModel_connections:
+        slot_uri: sys:SdmFunctionalModel_connections
         alias: connections
         title: connections
         description: Connections between functional blocks in this functional model.
@@ -553,12 +568,14 @@ classes:
       - system_parameters
     attributes:
       system_SdmFunctionalBlock_hardwareComponents:
+        slot_uri: sys:SdmFunctionalBlock_hardwareComponents
         alias: hardwareComponentIds
         title: hardware components
         description: Hardware components associated with this functional block.
         range: system_SdmHardwareComponent
         multivalued: true
       system_SdmFunctionalBlock_ports:
+        slot_uri: sys:SdmFunctionalBlock_ports
         alias: ports
         title: ports
         description: Ports associated with this functional block.
@@ -583,24 +600,28 @@ classes:
       - system_parameters
     attributes:
       system_SdmPort_portType:
+        slot_uri: sys:SdmPort_portType
         alias: portType
         title: port type
         description: The type of this port (e.g., UART, GPIO, I2C).
         range: system_PortType
         required: false
       system_SdmPort_hardwareComponent:
+        slot_uri: sys:SdmPort_hardwareComponent
         alias: hardwareComponentId
         title: hardware component
         description: The hardware component associated with this port.
         range: system_SdmHardwareComponent
         required: false
       system_SdmPort_softwareComponent:
+        slot_uri: sys:SdmPort_softwareComponent
         alias: softwareComponentId
         title: software component
         description: The software component associated with this port.
         range: system_SdmSoftwareComponent
         required: false
       system_SdmPort_peripheralInstance:
+        slot_uri: sys:SdmPort_peripheralInstance
         alias: peripheralInstanceId
         title: peripheral instance
         description: The peripheral instance associated with this port.
@@ -622,6 +643,7 @@ classes:
       - system_parameters
     attributes:
       system_SdmConnection_endpoints:
+        slot_uri: sys:SdmConnection_endpoints
         alias: endpoints
         title: endpoints
         description: Endpoints of the connection.
@@ -640,12 +662,14 @@ classes:
       Represents an endpoint of a connection.
     attributes:
       system_SdmEndpoint_functionalBlock:
+        slot_uri: sys:SdmEndpoint_functionalBlock
         alias: functionalBlockId
         title: functional block
         description: Functional block associated with this endpoint.
         range: system_SdmFunctionalBlock
         required: true
       system_SdmEndpoint_port:
+        slot_uri: sys:SdmEndpoint_port
         alias: portId
         title: port
         description: Port associated with this endpoint.
@@ -689,6 +713,7 @@ classes:
       - core_implementedBy
     attributes:
       system_SdmSoftwareModel_softwareComponents:
+        slot_uri: sys:SdmSoftwareModel_softwareComponents
         alias: softwareComponents
         title: software components
         description: The software components that make up this software model.
@@ -697,6 +722,7 @@ classes:
         inlined: true
         inlined_as_list: true
       system_SdmSoftwareModel_softwareStackInstances:
+        slot_uri: sys:SdmSoftwareModel_softwareStackInstances
         alias: softwareStackInstances
         title: software stack instances
         description: The stack instances used by this software model.
@@ -705,6 +731,7 @@ classes:
         inlined: true
         inlined_as_list: true
       system_SdmSoftwareModel_deviceModel:
+        slot_uri: sys:SdmSoftwareModel_deviceModel
         alias: deviceModelId
         title: device model
         description: A device model associated with this software model.
@@ -800,21 +827,25 @@ classes:
       - core_name
     attributes:
       system_SdmSoftwareSpecification_category:
+        slot_uri: sys:SdmSoftwareSpecification_category
         alias: category
         title: category
         range: system_SdmSoftwareComponentCategory
         description: The architectural role of this specification (e.g. DRIVER).
       system_SdmSoftwareSpecification_ecosystem:
+        slot_uri: sys:SdmSoftwareSpecification_ecosystem
         alias: ecosystem
         title: ecosystem
         range: string
         description: The platform or framework (e.g., FSP).
       system_SdmSoftwareSpecification_vendor:
+        slot_uri: sys:SdmSoftwareSpecification_vendor
         alias: vendor
         title: vendor
         range: string
         description: The organization providing the software (e.g. Renesas).
       system_SdmSoftwareSpecification_version:
+        slot_uri: sys:SdmSoftwareSpecification_version
         alias: version
         title: version
         range: string
@@ -840,6 +871,7 @@ classes:
       - core_implementedBy
     attributes:
       system_SdmHardwareModel_hardwareComponents:
+        slot_uri: sys:SdmHardwareModel_hardwareComponents
         alias: hardwareComponents
         title: hardware components
         description: The hardware components that make up this hardware model.
@@ -848,6 +880,7 @@ classes:
         inlined: true
         inlined_as_list: true
       system_SdmHardwareModel_functionalBlocks:
+        slot_uri: sys:SdmHardwareModel_functionalBlocks
         alias: functionalBlockIds
         title: functional blocks
         description: A functional blocks associated with this hardware model.
@@ -875,6 +908,7 @@ classes:
       - system_parameters
     attributes:
       system_SdmHardwareComponent_deviceModel:
+        slot_uri: sys:SdmHardwareComponent_deviceModel
         alias: deviceModelId
         title: device model
         description: A device model associated with this hardware component.

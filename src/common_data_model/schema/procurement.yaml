@@ -24,7 +24,7 @@ classes:
 
   ### Mixins
 
-  pro_Bom:
+  pro_bom:
     is_a: Meta
     in_subset: procurement
     abstract: true
@@ -38,7 +38,7 @@ classes:
 
   ### Entities
 
-  pro_BomWIP:
+  pro_bom_wip:
     is_a: Activity
     in_subset: procurement
     class_uri: pro:BomWIP
@@ -46,17 +46,17 @@ classes:
     title: BOM WIP
     description: TBD
     mixins:
-      - pro_Bom
+      - pro_bom
     slots:
       - core_releases
       - lib_uses_parts
       - lib_uses_components
     slot_usage:
       core_releases:
-        range: pro_BomRelease
+        range: pro_bom_release
       
-  pro_ManagedBOM:
-    is_a: pro_BomWIP
+  pro_managed_bom:
+    is_a: pro_bom_wip
     in_subset: procurement
     class_uri: pro:ManagedBOM
     title: Managed BOM
@@ -72,8 +72,8 @@ classes:
       grid: grid:workspace:{workspace-id}:procurement:bom/{id}
       platformAPI: BomWip
 
-  pro_ConsolidatedBOM:
-    is_a: pro_BomWIP
+  pro_consolidated_bom:
+    is_a: pro_bom_wip
     in_subset: procurement
     class_uri: pro:ConsolidatedBOM
     title: Consolidated BOM
@@ -91,7 +91,7 @@ classes:
       grid: grid:workspace:{workspace-id}:procurement:bom/{id}
       platformAPI: BomWip
 
-  pro_BomRelease:
+  pro_bom_release:
     is_a: Artifact
     in_subset: procurement
     class_uri: pro:BomRelease
@@ -101,7 +101,7 @@ classes:
       grid: grid:workspace:{workspace-id}:procurement:bom-release/{id}
       platformAPI: BomRelease
     mixins:
-      - pro_Bom
+      - pro_bom
       - HasLifecycle
     slots:
       - lib_consists_of_parts
@@ -109,7 +109,7 @@ classes:
 
   ### Resources
 
-  pro_BomItem:
+  pro_bom_item:
     is_a: Resource
     in_subset: procurement
     class_uri: pro:BomItem
@@ -119,38 +119,38 @@ classes:
       platformAPI: BomItem
     attributes:
       BomItem_designators:
-        alias: designators
+        slot_uri: pro:BomItem_designators
         title: designators
         description: A list of designators that specify the placements of the item within the schematic.
         range: string
         multivalued: true
         required: false
       BomItem_quantity:
-        alias: quantity
+        slot_uri: pro:BomItem_quantity
         title: quantity
         description: The quantity of the item required to produce one unit.
         range: integer
         multivalued: false
         required: true
       BomItem_primaryElement:
-        alias: primaryElement
+        slot_uri: pro:BomItem_primaryElement
         title: primary element
         description: The primary element chosen for this item.
-        range: pro_BomItemElement
+        range: pro_bom_item_element
         multivalued: false
         required: false   
       BomItem_alternates:
-        alias: alternates
+        slot_uri: pro:BomItem_alternates
         title: alternates
         description: Alternate elements that could be used for this item.
-        range: pro_BomItemAlternate
+        range: pro_bom_item_alternate
         required: false
         multivalued: true
       BomItem_substitutes:
-        alias: substitutes
+        slot_uri: pro:BomItem_substitutes
         title: substitutes
         description: Substitute elements that could be used for this item.
-        range: pro_BomItemSubstitute
+        range: pro_bom_item_substitute
         required: false
         multivalued: true
     slots:
@@ -159,7 +159,7 @@ classes:
       pro_bom_issues:
         description: Issues associated with this BOM item.
 
-  pro_BomItemElement:
+  pro_bom_item_element:
     is_a: Resource
     in_subset: procurement
     class_uri: pro:BomItemElement
@@ -194,7 +194,7 @@ classes:
         slot_uri: pro:BomItemElement_component
         title: component
         description: TBD
-        range: lib_ComponentRevision
+        range: lib_component_revision
         required: false
         multivalued: false
 
@@ -202,8 +202,8 @@ classes:
       # reusing common slot 
       - pro_bom_issues
 
-  pro_BomItemAlternate:
-    is_a: pro_BomItemElement
+  pro_bom_item_alternate:
+    is_a: pro_bom_item_element
     in_subset: procurement
     class_uri: pro:BomItemAlternate
     title: BOM Item Alternate
@@ -211,8 +211,8 @@ classes:
     annotations:
       platformAPI: BomItemAlternate
 
-  pro_BomItemSubstitute:
-    is_a: pro_BomItemElement
+  pro_bom_item_substitute:
+    is_a: pro_bom_item_element
     in_subset: procurement
     class_uri: pro:BomItemSubstitute
     title: BOM Item Substitute
@@ -220,7 +220,7 @@ classes:
     annotations:
       platformAPI: BomItemSubstitute
 
-  pro_BomIssue:
+  pro_bom_issue:
     is_a: Resource
     in_subset: procurement
     class_uri: pro:BomIssue
@@ -257,18 +257,15 @@ slots:
 
   pro_bom_items:
     slot_uri: pro:Bom_items
-    alias: items
     title: items
-    range: pro_BomItem
+    range: pro_bom_item
     required: false
     multivalued: true
 
   pro_bom_issues:
-    slot_uri: pro:issues
-    alias: issues
+    slot_uri: pro:Bom_issues
     title: issues
-    
     description: TBD
-    range: pro_BomIssue
+    range: pro_bom_issue
     required: false
     multivalued: true

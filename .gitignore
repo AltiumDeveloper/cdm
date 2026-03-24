@@ -139,3 +139,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.gitnexus
+
+# Local agent and design artifacts
+.ralph/
+.claude/
+.planning
+Kame_fmu_desingdata.json

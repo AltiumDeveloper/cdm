@@ -39,17 +39,20 @@ classes:
       platformAPI: SupPart
     attributes:
       Part_mpn:
+        slot_uri: sup:Part_mpn
         title: mpn
         description: TBD
         range: string
         required: true
         multivalued: false
       Part_manufacturer: 
+        slot_uri: sup:Part_manufacturer
         title: manufacturer
         range: sup_company
         required: true
         multivalued: false        
       Part_referenceDesigns:
+        slot_uri: sup:Part_referenceDesigns
         title: reference designs
         range: sup_reference_design
         multivalued: true
@@ -94,10 +97,12 @@ classes:
       TBD
     attributes:
       PartFamily_partGroups:
+        slot_uri: sup:PartFamily_partGroups
         title: part groups
         range: sup_part_group
         multivalued: true  
       PartFamily_alternatives:
+        slot_uri: sup:PartFamily_alternatives
         title: alternatives
         range: sup_part_family
         multivalued: true  
@@ -117,10 +122,12 @@ classes:
       platformAPI: SupPartGroup
     attributes:
       PartGroup_parts:
+        slot_uri: sup:PartGroup_parts
         title: parts
         range: sup_part
         multivalued: true  
       PartGroup_alternatives:
+        slot_uri: sup:PartGroup_alternatives
         title: alternatives
         range: sup_part_group
         multivalued: true  

@@ -46,6 +46,7 @@ classes:
       platformAPI: GloScrScriptVersion
     attributes:
       executions:
+        slot_uri: cus:ScriptVersion_executions
         range: cus_ScriptExecution
         multivalued: true
 
@@ -81,6 +82,7 @@ classes:
 slots:
 
   cus_ScriptExecution_emits:
+    slot_uri: cus:ScriptExecution_emits
     alias: emits
     title: emits
     range: Any
