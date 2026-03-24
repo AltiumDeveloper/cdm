@@ -53,10 +53,13 @@ classes:
       - sft_software_release_build_artifacts
     attributes:
       title:
+        slot_uri: sft:SoftwareRelease_title
         description: Title of the release
       description:
+        slot_uri: sft:SoftwareRelease_description
         description: Free form text with additional details about the release. Changelog, etc.
       attachments:
+        slot_uri: sft:SoftwareRelease_attachments
         description: Additional files associated with the release (reports, documents, etc.)
         range: BLOB
 
@@ -86,6 +89,7 @@ classes:
       platformAPI: SftDevCfgDeviceConfigurationRevision
     attributes:
       sft_DeviceConfigurationRevision_pinModel:
+        slot_uri: sft:DeviceConfigurationRevision_pinModel
         alias: pinModel
         title: pin model
         description: TBD
@@ -101,6 +105,7 @@ classes:
     description: TBD
     attributes:
       sft_PinAssignmentModel_pins:
+        slot_uri: sft:PinAssingmentModel_sft_PinAssignmentModel_pins
         alias: pins
         title: pins
         description: TBD
@@ -118,24 +123,28 @@ classes:
     description: TBD
     attributes:
       sft_PinAssignment_pinNumber:
+        slot_uri: sft:PinAssingment_sft_PinAssignment_pinNumber
         alias: pinNumber
         title: pin number
         description: TBD
         range: integer
         required: true
       sft_PinAssignment_pinName:
+        slot_uri: sft:PinAssingment_sft_PinAssignment_pinName
         alias: pinName
         title: pin name
         description: TBD
         range: string
         required: true
       sft_PinAssignment_pinFunction:
+        slot_uri: sft:PinAssingment_sft_PinAssignment_pinFunction
         alias: pinFunction
         title: pin function
         description: TBD
         range: string
         required: true
       sft_PinAssignment_symbolicName:
+        slot_uri: sft:PinAssingment_sft_PinAssignment_symbolicName
         alias: symbolicName
         title: symbolic name
         description: TBD
@@ -179,6 +188,7 @@ slots:
 
   sft_software_project_latest_build_artifacts:
     is_a: core_hasOutput
+    slot_uri: sft:SoftwareProject_latestBuildArtifacts
     title: latest_build_artifact
     description: Latest build artifacts produced from the project
     range: sft_build_artifact
@@ -186,18 +196,21 @@ slots:
 
   sft_software_project_ai_models:
     is_a: core_hasInput
+    slot_uri: sft:SoftwareProject_aiModels
     title: ai_models
     description: TBD
     range: sft_ai_model
 
   sft_software_release_ai_models:
     is_a: core_hasPart
+    slot_uri: sft:SoftwareRelease_aiModels
     title: ai_models
     description: AI model artifacts included into the release.
     range: sft_ai_model
 
   sft_software_release_build_artifacts:
     is_a: core_hasPart
+    slot_uri: sft:SoftwareRelease_buildArtifacts
     title: build_artifacts
     description: Firmware build artifacts, deployable to the device. May be multiple artifacts if firmware targets multiple chips.
     range:  sft_build_artifact

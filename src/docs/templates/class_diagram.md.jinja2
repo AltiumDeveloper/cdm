@@ -7,7 +7,7 @@
   {%- if elementSubsets %}
     {% set styleAnnotation = schemaview.get_subset(elementSubsets[0]).annotations["style"] %}
     {% if styleAnnotation %}
-      style {{ gen.name(element) }} {{ styleAnnotation.value }}    
+      style {{ gen.name(element) }} {{ styleAnnotation.value }}
     {% endif %}
   {%- endif %}
 {% endmacro %}
@@ -63,9 +63,9 @@
       {% for usage in schemaview.usage_index().get(element.name) -%}
         {% set usedByElement = schemaview.get_element(usage.used_by) %}
         {% set usedBySlot = schemaview.get_slot(usage.slot) %}
-        {% if not usedByElement.abstract %}
+        {% if usage.used_by != element.name and not usedByElement.abstract %}
           {{ element_style(usage.used_by) }}
-          {{ gen.name(usedByElement) }} --> "{{ gen.cardinality(schemaview.get_slot(usage.slot)) }}" {{ gen.name(element) }}: {{ slot_title(usedBySlot) }} 
+          {{ gen.name(usedByElement) }} --> "{{ gen.cardinality(schemaview.get_slot(usage.slot)) }}" {{ gen.name(element) }}: {{ slot_title(usedBySlot) }}
           click {{ gen.name(usedByElement) }} href "{{ gen.link_mermaid(usedByElement) }}"
         {% endif %}
       {% endfor %}

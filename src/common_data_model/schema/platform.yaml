@@ -165,6 +165,7 @@ classes:
             uri: https://www.altium.com/documentation/altium-365/lifecycle-management
     attributes:
       LifecycleDefinition_stages:
+        slot_uri: plt:LifecycleDefinition_stages
         title: stages
         description: TBD
         range: plt_lifecycle_stage
@@ -185,12 +186,14 @@ classes:
             uri: https://www.altium.com/documentation/altium-365/lifecycle-management
     attributes:
       LifecycleStage_name:
+        slot_uri: plt:LifecycleStage_name
         title: name
         description: TBD
         range: string
         multivalued: false
         required: true
       LifecycleStage_states:
+        slot_uri: plt:LifecycleStage_states
         title: states
         description: TBD
         range: plt_LifecycleState
@@ -212,6 +215,7 @@ classes:
             uri: https://www.altium.com/documentation/altium-365/lifecycle-management
     attributes:
       LifecycleState_name:
+        slot_uri: plt:LifecycleState_name
         title: name
         description: TBD
         range: string
@@ -251,6 +255,7 @@ classes:
     mixin: true
     attributes:
       plt_LifecycleState:
+        slot_uri: plt:HasLifecycle_plt_LifecycleState
         title: lifecycleState
         range: plt_LifecycleState
         multivalued: false
@@ -260,6 +265,7 @@ slots:
 
   plt_solution_items:
     is_a: core_hasPart
+    slot_uri: plt:Solution_items
     alias: solutionItems
     title: solution items
     range: SolutionItem
@@ -268,6 +274,7 @@ slots:
 
   plt_part_of_solution:
     is_a: core_partOf
+    slot_uri: plt:SolutionItem_partOfSolution
     alias: partOfSolution
     title: part of solution
     range: plt_solution
@@ -276,6 +283,7 @@ slots:
 
   plt_workspace_env_configurations:
     is_a: core_hasPart
+    slot_uri: plt:Workspace_environmentConfigurations
     alias: environmentConfigurations
     title: environment configurations
     range: con_env_configuration

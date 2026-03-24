@@ -79,6 +79,7 @@ classes:
     is_a: Meta
     attributes:
       grid:
+        slot_uri: core:WithGRID_grid
         description: GRID template
         range: GRID
 
@@ -86,6 +87,7 @@ classes:
     is_a: Meta
     attributes:
       platformAPI:
+        slot_uri: core:WithPlatformAPI_platformAPI
         description: Platform API type name.
         range: string
 
@@ -93,6 +95,7 @@ classes:
     is_a: Meta
     attributes:
       maturity:
+        slot_uri: core:WithMaturity_maturity
         description: Maturity level.
         range: Maturity
 
@@ -100,6 +103,7 @@ classes:
     is_a: Meta
     attributes:
       contentType:
+        slot_uri: core:WithVault_contentType
         description: Vault Content Type
         range: VaultContentType
 
@@ -107,12 +111,15 @@ classes:
     is_a: Meta
     attributes:
       vaultLinkParent:
+        slot_uri: core:WithVaultLink_vaultLinkParent
         description: Vault Link Parent
         range: uriorcurie
       vaultLinkChild:
+        slot_uri: core:WithVaultLink_vaultLinkChild
         description: Vault Link Parent
         range: uriorcurie
       vaultLinkType:
+        slot_uri: core:WithVaultLink_vaultLinkType
         description: Vault Link Parent
         range: string
 

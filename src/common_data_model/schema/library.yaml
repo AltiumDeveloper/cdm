@@ -39,6 +39,7 @@ classes:
       grid: grid:workspace:{workspace-id}:library:component/{id}
     attributes:
       Component_parameters:
+        slot_uri: lib:Component_parameters
         title: parameters
         description: Component parameters
         range: lib_component_parameter
@@ -48,11 +49,11 @@ classes:
       - core_revisions
     slot_usage:
       core_revisions:
-        range: lib_ComponentRevision
+        range: lib_component_revision
         annotations:
           modeled_as: Vault Item - Revision
 
-  lib_ComponentRevision:
+  lib_component_revision:
     is_a: Artifact
     in_subset: library
     class_uri: lib:ComponentRevision
@@ -65,12 +66,14 @@ classes:
       platformAPI: DesComponent
     attributes:
       ComponentRevision_parameters:
+        slot_uri: lib:ComponentRevision_parameters
         title: parameters
         description: Component parameters
         range: lib_component_parameter
         multivalued: true
         required: false
       ComponentRevision_partChoiceList:
+        slot_uri: lib:ComponentRevision_partChoiceList
         title: partChoiceList
         description: List of part choices
         range: lib_part_choice_list
@@ -123,19 +126,25 @@ classes:
     annotations:
       platformAPI: DesComponentParameter
     attributes:
-      ComponentParameter_name:
+      lib_ComponentParameter_name:
+        slot_uri: lib:ComponentParameter_name
+        alias: name
         title: name
         description: TBD
         range: string
         multivalued: false
         required: true
-      ComponentParameter_value:
+      lib_ComponentParameter_value:
+        slot_uri: lib:ComponentParameter_value
+        alias: value
         title: value
         description: TBD
         range: string
         multivalued: false
         required: false
-      ComponentParameter_type: # TODO define values
+      lib_ComponentParameter_type: # TODO define values
+        slot_uri: lib:ComponentParameter_type
+        alias: type
         title: type
         description: TBD
         range: string
@@ -365,6 +374,7 @@ classes:
     description: TBD
     attributes:
       PartChoiceList_partChoices:
+        slot_uri: lib:PartChoiceList_partChoices
         title: partChoices
         description: List of part choices
         range: lib_part_choice
@@ -379,12 +389,14 @@ classes:
     description: TBD
     attributes:
       PartChoice_rank:
+        slot_uri: lib:PartChoice_rank
         title: rank
         description: Rank of the part choice in the list
         range: integer
         multivalued: false
         required: true
       PartChoice_part:
+        slot_uri: lib:PartChoice_part
         title: part
         description: The part associated with this choice
         range: lib_part
@@ -423,7 +435,7 @@ slots:
     title: components
     description: Components used in this Activity
     domain: Activity
-    range: lib_ComponentRevision
+    range: lib_component_revision
     required: false
     multivalued: true
 
@@ -433,7 +445,7 @@ slots:
     title: components
     description: Components used in this Artifact
     domain: Artifact
-    range: lib_ComponentRevision
+    range: lib_component_revision
     required: false
     multivalued: true
 
@@ -472,6 +484,7 @@ slots:
 
   lib_component_revision_used_by_project_variant:
     is_a: core_inputOf
+    slot_uri: lib:ComponentRevision_usedByProjectVariant
     title: used_by_project_variant
     description: There is a relation per each project/variant where this Component Revision is used.
     range: des_project

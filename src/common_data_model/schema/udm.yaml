@@ -1,0 +1,965 @@
+id: https://w3id.org/altium/cdm/udm/
+name: cdm-udm
+prefixes:
+  linkml: https://w3id.org/linkml/
+  udm: https://w3id.org/altium/cdm/udm/
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: udm
+
+enums:
+
+  udm_ComponentVariationKind:
+    description: >-
+      How a component varies within a project variant context.
+    enum_uri: udm:ComponentVariationKind
+    in_subset: udm
+    permissible_values:
+      NOT_FITTED:
+        description: Component is excluded from this variant's assembly
+      ALTERNATE:
+        description: An alternate component is substituted in this variant
+
+  udm_NetItemKind:
+    description: >-
+      Classification of connection points within a net.
+    enum_uri: udm:NetItemKind
+    in_subset: udm
+    permissible_values:
+      PIN:
+        description: Component pin connection
+      SHEET_ENTRY:
+        description: Cross-sheet connector
+      NET_LABEL:
+        description: Net name label
+      PORT:
+        description: Sheet port
+      POWER_OBJECT:
+        description: Power or ground symbol
+
+  udm_PinElectricalType:
+    is_a: Enumeration
+    enum_uri: udm:PinElectricalType
+    implements:
+      - owl:NamedIndividual
+    in_subset: udm
+    permissible_values:
+      INPUT:
+        description: Pin accepts signals into the component
+      IO:
+        description: Pin is bidirectional, capable of both input and output
+      OUTPUT:
+        description: Pin drives signals out of the component
+      OPEN_COLLECTOR:
+        description: Pin has an open-collector (open-drain) output stage requiring an external pull-up
+      PASSIVE:
+        description: Pin has no active drive capability (e.g., resistor, capacitor, connector pin)
+      HI_Z:
+        description: Pin can be placed in a high-impedance (tri-state) condition
+      OPEN_EMITTER:
+        description: Pin has an open-emitter output stage requiring an external pull-down
+      POWER:
+        description: Pin is a power supply or ground connection
+
+  udm_ComponentKind:
+    is_a: Enumeration
+    enum_uri: udm:ComponentKind
+    implements:
+      - owl:NamedIndividual
+    in_subset: udm
+    permissible_values:
+      STANDARD:
+        description: Standard component included in BOM and placed on board
+      MECHANICAL:
+        description: Mechanical component (e.g., mounting hole, heatsink) with physical footprint but no electrical function
+      GRAPHICAL:
+        description: Graphical symbol used for documentation or annotation, not placed on board
+      NET_TIE_BOM:
+        description: Net tie component that appears in the BOM, used to short nets intentionally
+      NET_TIE_NO_BOM:
+        description: Net tie component excluded from BOM, used for internal net shorting in layout
+      STANDARD_NO_BOM:
+        description: Standard component excluded from BOM (e.g., test point, fiducial)
+      JUMPER:
+        description: Jumper component providing a configurable connection between nets
+
+  udm_HarnessWiringType:
+    is_a: Enumeration
+    enum_uri: udm:HarnessWiringType
+    implements:
+      - owl:NamedIndividual
+    in_subset: udm
+    permissible_values:
+      WIRE:
+        description: Standalone single conductor
+      CABLE:
+        description: Multi-conductor assembly with shields and twists
+      CAVITY:
+        description: Connector cavity or socket for harness pin mapping
+
+subsets:
+  udm:
+    description: >-
+      Unified Data Model — a self-contained top-level domain that owns all concepts
+      extracted from ModelsProvider, covering design hierarchy, library, procurement,
+      and cross-domain identity under a single namespace.
+    annotations:
+      style: "fill:#a4c2f4"
+
+classes:
+
+  udm_Project:
+    is_a: Activity
+    in_subset: udm
+    class_uri: udm:Project
+    title: UDM Project
+    description: >-
+      A hardware design project in the Unified Data Model, serving as the top-level
+      container for design artifacts, documents, and variant configurations.
+    aliases:
+      - PCB Project
+    mixins:
+      - SolutionItem
+    annotations:
+      grid: grid:workspace:{workspace-id}:udm:project/{id}
+      platformAPI: DesProject
+    slots:
+      - core_releases
+      - udm_Project_documents
+    slot_usage:
+      core_releases:
+        range: udm_ProjectRelease
+    attributes:
+      Project_name:
+        slot_uri: udm:Project_name
+        alias: name
+        title: name
+        description: Display name of the UDM project.
+        range: string
+        multivalued: false
+        required: true
+      Project_description:
+        slot_uri: udm:Project_description
+        alias: description
+        title: description
+        description: A brief textual description of the project.
+        range: string
+        multivalued: false
+        required: false
+      udm_Project_parameters:
+        slot_uri: udm:Project_parameters
+        alias: parameters
+        title: parameters
+        description: Project-level parameters that control design rules, output settings, and project metadata.
+        range: udm_ProjectParameter
+        multivalued: true
+        required: false
+      udm_Project_variants:
+        slot_uri: udm:Project_variants
+        alias: variants
+        title: variants
+        description: Named variant configurations defined for this project, each specifying per-component assembly variations.
+        range: udm_ProjectVariant
+        multivalued: true
+
+  udm_ProjectParameter:
+    is_a: Resource
+    in_subset: udm
+    class_uri: udm:ProjectParameter
+    title: Project Parameter
+    description: >-
+      A key-value parameter attached to a hardware project, controlling design rules,
+      output generation settings, or project-level metadata visible in the Properties panel.
+    annotations:
+      platformAPI: DesProjectParameter
+    attributes:
+      udm_ProjectParameter_name:
+        slot_uri: udm:ProjectParameter_name
+        alias: name
+        title: name
+        description: Parameter key name (e.g. "CurrentOutputType", "BoardThickness").
+        range: string
+        multivalued: false
+        required: true
+      udm_ProjectParameter_value:
+        slot_uri: udm:ProjectParameter_value
+        alias: value
+        title: value
+        description: Parameter value as a string (e.g. "Gerber Files", "1.60mm").
+        range: string
+        multivalued: false
+        required: false
+
+  udm_ProjectVariant:
+    is_a: Resource
+    in_subset: udm
+    class_uri: udm:ProjectVariant
+    title: Hardware Project Variant
+    description: >-
+      A named configuration variant of a hardware project that specifies how components
+      behave differently from the base design (e.g. not fitted, alternate parts).
+    annotations:
+      platformAPI: DesWipVariant
+    attributes:
+      Variant_name:
+        slot_uri: udm:Variant_name
+        alias: name
+        title: name
+        description: Display name of this project variant
+        range: string
+        multivalued: false
+        required: true
+      Variant_uniqueId:
+        slot_uri: udm:Variant_uniqueId
+        alias: uniqueId
+        title: uniqueId
+        description: Unique identifier for this variant within its project
+        range: string
+        multivalued: false
+        required: true
+    slots:
+      - udm_ProjectVariant_variations
+
+  udm_ProjectRelease:
+    is_a: Activity
+    in_subset: udm
+    class_uri: udm:ProjectRelease
+    title: Hardware Project Release
+    description: >-
+      Project Release captures an immutable snapshot of a PCB design project at a specific point in its lifecycle, packaging all design data,
+      outputs, and metadata required for manufacturing, assembly, and downstream processes.
+    comments:
+      - Project Release serves as the authoritative artifact that bridges design and production, ensuring repeatability, traceability, and regulatory compliance.
+        Its identity is tied to the originating Project but remains stable as a versioned deliverable, enabling teams to collaborate confidently, audit changes,
+        and integrate with supply chain and PLM systems through Altium 365 and related workflows.
+    annotations:
+      grid: grid:workspace:{workspace-id}:udm:project-release/{id}
+      platformAPI: DesRelease
+    mixins:
+      - HasLifecycle
+
+  udm_DesignDocument:
+    is_a: Artifact
+    in_subset: udm
+    class_uri: udm:DesignDocument
+    title: Design Document
+    description: >-
+      A schematic or PCB document within a hardware project. Each document contains
+      components, nets, and connectivity information for one sheet of a design.
+    comments:
+      - Modelled from DocumentDto (Altium.Models.Document). The documentId field serves
+        as the persistent identifier. Documents are versioned artifacts within a project.
+    annotations:
+      grid: grid:workspace:{workspace-id}:udm:document/{id}
+    attributes:
+      Document_documentId:
+        slot_uri: udm:Document_documentId
+        alias: documentId
+        title: documentId
+        description: Persistent document identifier (e.g. "MDQDMCEN")
+        range: string
+        multivalued: false
+        required: true
+      Document_entityName:
+        slot_uri: udm:Document_entityName
+        alias: entityName
+        title: entityName
+        description: File name of the document (e.g. "Kame_fmu.SchDoc")
+        range: string
+        multivalued: false
+        required: false
+      Document_physicalDesignator:
+        slot_uri: udm:Document_physicalDesignator
+        alias: physicalDesignator
+        title: physicalDesignator
+        description: Physical designator for multi-channel designs
+        range: string
+        multivalued: false
+        required: false
+    slots:
+      - udm_Document_components
+      - udm_Document_nets
+
+  udm_DesignComponent:
+    is_a: Resource
+    in_subset: udm
+    class_uri: udm:DesignComponent
+    title: Design Component
+    description: >-
+      A placed component instance on a schematic sheet. References a library component
+      revision via typed identity links for traceability.
+    comments:
+      - Modelled from SchComponentDto (Altium.Models.Document). Placed instance on a
+        schematic — no independent lifecycle. Parts and pins are nested under this entity.
+        Vault GUID strings excluded from UDM — use udm_Component_librarySource for typed traceability.
+    attributes:
+      Component_uniqueId:
+        slot_uri: udm:Component_uniqueId
+        alias: uniqueId
+        title: uniqueId
+        description: Unique component identifier within the design
+        range: string
+        multivalued: false
+        required: true
+      Component_designator:
+        slot_uri: udm:Component_designator
+        alias: designator
+        title: designator
+        description: Component designator (e.g. "R1", "U3")
+        range: string
+        multivalued: false
+        required: false
+      Component_variantId:
+        slot_uri: udm:Component_variantId
+        alias: variantId
+        title: variantId
+        description: Variant context identifier for this component
+        range: string
+        multivalued: false
+        required: false
+      Component_variationKind:
+        slot_uri: udm:Component_variationKind
+        alias: variationKind
+        title: variationKind
+        description: How this component varies in a given variant context
+        range: udm_ComponentVariationKind
+        multivalued: false
+        required: false
+      Component_pins:
+        slot_uri: udm:Component_pins
+        alias: pins
+        title: pins
+        description: Pins on this component instance
+        range: udm_DesignPin
+        multivalued: true
+        required: false
+    slots:
+      - udm_Component_variant
+      - udm_Component_librarySource
+
+  udm_DesignNet:
+    is_a: Resource
+    in_subset: udm
+    class_uri: udm:DesignNet
+    title: Design Net
+    description: >-
+      An electrical net within a design document, representing a named set of
+      electrically connected points.
+    comments:
+      - Modelled from JSON — no C# DTO backing identified in DocumentDto. Minimal model
+        with name only. Future enrichment when provider team confirms net data source.
+    attributes:
+      Net_name:
+        slot_uri: udm:Net_name
+        alias: name
+        title: name
+        description: Net name (e.g. "GND", "VCC", "NetC1_2")
+        range: string
+        multivalued: false
+        required: true
+
+  udm_DesignPin:
+    is_a: Resource
+    in_subset: udm
+    class_uri: udm:DesignPin
+    title: Design Pin
+    description: >-
+      A pin on a placed component instance within a design document. Minimal model —
+      rich pin metadata lives on the library PinDto.
+    comments:
+      - Design pins are placed instances referencing richer library pin definitions.
+        Fields modelled from JSON (components > parts > pins path). No design-domain
+        pin C# DTO found.
+    attributes:
+      DesignPin_uniqueId:
+        slot_uri: udm:DesignPin_uniqueId
+        alias: uniqueId
+        title: uniqueId
+        description: Unique pin identifier within the component
+        range: string
+        multivalued: false
+        required: false
+      DesignPin_name:
+        slot_uri: udm:DesignPin_name
+        alias: name
+        title: name
+        description: Pin name
+        range: string
+        multivalued: false
+        required: false
+      DesignPin_number:
+        slot_uri: udm:DesignPin_number
+        alias: number
+        title: number
+        description: Pin number (e.g. "1", "2", "A1")
+        range: string
+        multivalued: false
+        required: false
+
+  udm_DesignVariant:
+    is_a: Resource
+    in_subset: udm
+    class_uri: udm:DesignVariant
+    title: Design Variant
+    description: >-
+      A per-component variation record within a variant context, specifying how a
+      component behaves in a given project variant (e.g. not fitted, alternate).
+    comments:
+      - Modelled from JSON variant.variations[] data. Each record links a component
+        to its variation kind in a specific project variant. No C# source at
+        ProjectVariantDto level.
+    attributes:
+      DesignVariant_name:
+        slot_uri: udm:DesignVariant_name
+        alias: name
+        title: name
+        description: Component designator this variation applies to
+        range: string
+        multivalued: false
+        required: false
+      DesignVariant_kind:
+        slot_uri: udm:DesignVariant_kind
+        alias: kind
+        title: kind
+        description: Variation type for this component in this variant context
+        range: udm_ComponentVariationKind
+        multivalued: false
+        required: false
+
+  # --- Library Domain (Pin Hierarchy) ---
+
+  udm_PinParameter:
+    is_a: Resource
+    in_subset: udm
+    class_uri: udm:PinParameter
+    title: Pin Parameter
+    description: A named parameter associated with a specific pin, capturing pin-level electrical or physical characteristics such as propagation delay constraints or package-specific measurements.
+    attributes:
+      PinParameter_name:
+        slot_uri: udm:PinParameter_name
+        alias: name
+        title: name
+        description: Name of the pin parameter
+        range: string
+        multivalued: false
+        required: true
+      PinParameter_value:
+        slot_uri: udm:PinParameter_value
+        alias: value
+        title: value
+        description: Value of the pin parameter
+        range: string
+        multivalued: false
+        required: false
+      PinParameter_type:
+        slot_uri: udm:PinParameter_type
+        alias: type
+        title: type
+        description: Data type or category of the pin parameter value
+        range: string
+        multivalued: false
+        required: false
+
+  udm_PinFunction:
+    is_a: Resource
+    in_subset: udm
+    class_uri: udm:PinFunction
+    title: Pin Function
+    description: An alternate function assignment for a pin, representing a secondary electrical role the pin can serve in multi-function components.
+    attributes:
+      PinFunction_name:
+        slot_uri: udm:PinFunction_name
+        alias: name
+        title: name
+        description: Name of the alternate pin function
+        range: string
+        multivalued: false
+        required: true
+      PinFunction_electricalType:
+        slot_uri: udm:PinFunction_electricalType
+        alias: electricalType
+        title: electricalType
+        description: Electrical type of the pin when operating in this alternate function
+        range: udm_PinElectricalType
+        multivalued: false
+        required: false
+
+  udm_Pin:
+    is_a: Resource
+    in_subset: udm
+    class_uri: udm:Pin
+    title: Pin
+    description: A pin on a schematic symbol revision, defining one electrical connection point with its designator, electrical type, and optional parameters and alternate functions.
+    attributes:
+      Pin_name:
+        slot_uri: udm:Pin_name
+        alias: name
+        title: name
+        description: Display name of the pin
+        range: string
+        multivalued: false
+        required: true
+      Pin_designator:
+        slot_uri: udm:Pin_designator
+        alias: designator
+        title: designator
+        description: Unique designator identifying the pin within its parent symbol (e.g., "1", "A3", "VCC")
+        range: string
+        multivalued: false
+        required: true
+      Pin_description:
+        slot_uri: udm:Pin_description
+        alias: description
+        title: description
+        description: Human-readable description of the pin purpose or function
+        range: string
+        multivalued: false
+        required: false
+      Pin_electricalType:
+        slot_uri: udm:Pin_electricalType
+        alias: electricalType
+        title: electricalType
+        description: Electrical classification of the pin determining its behavior in electrical rule checks
+        range: udm_PinElectricalType
+        multivalued: false
+        required: false
+      Pin_propagationDelay:
+        slot_uri: udm:Pin_propagationDelay
+        alias: propagationDelay
+        title: propagationDelay
+        description: Signal propagation delay through this pin in nanoseconds
+        range: string
+        multivalued: false
+        required: false
+      Pin_packageLength:
+        slot_uri: udm:Pin_packageLength
+        alias: packageLength
+        title: packageLength
+        description: Physical trace length from the pin pad to the die inside the package
+        range: string
+        multivalued: false
+        required: false
+      Pin_partId:
+        slot_uri: udm:Pin_partId
+        alias: partId
+        title: partId
+        description: Identifier of the multi-part section this pin belongs to within a multi-part component
+        range: string
+        multivalued: false
+        required: false
+      Pin_parameters:
+        slot_uri: udm:Pin_parameters
+        alias: parameters
+        title: parameters
+        description: Collection of pin-level parameters
+        range: udm_PinParameter
+        multivalued: true
+        required: false
+      Pin_functions:
+        slot_uri: udm:Pin_functions
+        alias: functions
+        title: functions
+        description: List of alternate pin function assignments
+        range: udm_PinFunction
+        multivalued: true
+        required: false
+
+  # --- BOM Domain (Variants, Items, Mixins) ---
+
+  udm_ComponentRevisionRef:
+    is_a: Resource
+    in_subset: udm
+    class_uri: udm:ComponentRevisionRef
+    title: Component Revision Reference
+    description: >-
+      A lightweight identity reference to a library component revision, used for
+      cross-domain traceability from design components to their library source
+      without importing CDM library classes.
+    comments:
+      - This class represents the GRID identity target. The actual component revision
+        metadata lives in the CDM library domain. UDM consumers resolve the GRID to
+        obtain full details.
+    annotations:
+      grid: grid:workspace:{workspace-id}:udm:component-revision-ref/{id}
+
+  udm_Bom:
+    is_a: Meta
+    abstract: true
+    mixin: true
+    in_subset: udm
+    class_uri: udm:Bom
+    title: BOM
+    description: Bill of Materials mixin providing variant-scoped BOM grouping.
+    slots:
+      - udm_Bom_variants
+
+  udm_BomVariant:
+    is_a: Resource
+    in_subset: udm
+    class_uri: udm:BomVariant
+    title: BOM Variant
+    description: >-
+      Variant-scoped grouping of BOM items, representing a single project variant's bill of materials.
+      The "NoVariant" sentinel indicates the base (unvaried) BOM.
+    annotations:
+      modelsProvider: BomVariantData
+    attributes:
+      BomVariant_variantId:
+        slot_uri: udm:BomVariant_variantId
+        alias: variantId
+        title: variant ID
+        description: >-
+          Variant unique name identifying which project variant this BOM grouping represents.
+          The value "NoVariant" indicates the base (unvaried) BOM.
+        range: string
+        multivalued: false
+        required: true
+      BomVariant_items:
+        slot_uri: udm:BomVariant_items
+        alias: items
+        title: items
+        description: BOM line items scoped to this variant.
+        range: udm_BomItem
+        multivalued: true
+        required: false
+    slots:
+      - udm_BomVariant_designVariant
+
+  udm_BomItem:
+    is_a: Resource
+    in_subset: udm
+    class_uri: udm:BomItem
+    title: BOM Item
+    description: >-
+      BOM item capturing ModelsProvider-extracted fields for design-to-procurement traceability.
+    attributes:
+      BomItem_designItemId:
+        slot_uri: udm:BomItem_designItemId
+        alias: designItemId
+        title: design item ID
+        description: Design item identifier linking this BOM item to its source schematic component.
+        range: string
+        multivalued: false
+        required: false
+      BomItem_description:
+        slot_uri: udm:BomItem_description
+        alias: description
+        title: description
+        description: Component description from the design library.
+        range: string
+        multivalued: false
+        required: false
+      BomItem_comment:
+        slot_uri: udm:BomItem_comment
+        alias: comment
+        title: comment
+        description: Component comment field from the schematic, typically containing the component value.
+        range: string
+        multivalued: false
+        required: false
+      BomItem_mpn:
+        slot_uri: udm:BomItem_mpn
+        alias: mpn
+        title: manufacturer part number
+        description: >-
+          Manufacturer part number extracted from the project BOM.
+          Distinct from element-level MPNs which represent sourcing-specific part numbers.
+        range: string
+        multivalued: false
+        required: false
+
+  udm_ManagedBOMVersion:
+    is_a: Meta
+    abstract: true
+    mixin: true
+    in_subset: udm
+    class_uri: udm:ManagedBOMVersion
+    title: Managed BOM Version
+    description: Mixin providing the BOM format version attribute extracted from ModelsProvider BomData.
+    attributes:
+      ManagedBOMVersion_version:
+        slot_uri: udm:ManagedBOMVersion_version
+        alias: version
+        title: version
+        description: BOM format version from the project file (e.g., "1.0.0.0").
+        range: string
+        multivalued: false
+        required: false
+
+  # --- Library Domain (Mixin, Component Parameter, Harness) ---
+
+  udm_ComponentParameter:
+    is_a: Resource
+    in_subset: udm
+    class_uri: udm:ComponentParameter
+    title: Component Parameter
+    description: Component Parameter is a named key-value attribute attached to a library component, conveying electrical, mechanical, or administrative properties.
+    attributes:
+      udm_ComponentParameter_name:
+        slot_uri: udm:ComponentParameter_name
+        alias: name
+        title: name
+        description: The identifying name of the parameter, such as "Resistance", "Voltage", or "Manufacturer Part Number".
+        range: string
+        multivalued: false
+        required: true
+      udm_ComponentParameter_value:
+        slot_uri: udm:ComponentParameter_value
+        alias: value
+        title: value
+        description: The value of the parameter, expressed as a string regardless of the underlying data type.
+        range: string
+        multivalued: false
+        required: false
+      udm_ComponentParameter_type:
+        slot_uri: udm:ComponentParameter_type
+        alias: type
+        title: type
+        description: The data type or classification of the parameter value, distinguishing string, numeric, boolean, or URL parameters.
+        range: string
+        multivalued: false
+        required: false
+
+  udm_HasLibraryComponentFields:
+    is_a: Meta
+    abstract: true
+    mixin: true
+    in_subset: udm
+    class_uri: udm:HasLibraryComponentFields
+    title: Library Component Fields
+    description: >-
+      Shared metadata fields for reusable library components. Applied to both
+      schematic symbol revisions and harness wirings — any independently identifiable
+      component in the library that can be placed on a design diagram.
+    attributes:
+      LibraryComponent_designItemId:
+        slot_uri: udm:LibraryComponent_designItemId
+        alias: designItemId
+        title: designItemId
+        description: Library design item identifier for this component
+        range: string
+        multivalued: false
+        required: false
+      LibraryComponent_designator:
+        slot_uri: udm:LibraryComponent_designator
+        alias: designator
+        title: designator
+        description: Reference designator assigned to this component when placed
+        range: string
+        multivalued: false
+        required: false
+      LibraryComponent_description:
+        slot_uri: udm:LibraryComponent_description
+        alias: description
+        title: description
+        description: Human-readable description of this library component
+        range: string
+        multivalued: false
+        required: false
+      LibraryComponent_comment:
+        slot_uri: udm:LibraryComponent_comment
+        alias: comment
+        title: comment
+        description: Component comment field
+        range: string
+        multivalued: false
+        required: false
+      LibraryComponent_kind:
+        slot_uri: udm:LibraryComponent_kind
+        alias: kind
+        title: kind
+        description: Classification of the component kind
+        range: udm_ComponentKind
+        multivalued: false
+        required: false
+      LibraryComponent_parameters:
+        slot_uri: udm:LibraryComponent_parameters
+        alias: parameters
+        title: parameters
+        description: Collection of name-value parameters for this library component
+        range: udm_ComponentParameter
+        multivalued: true
+        required: false
+
+  udm_HarnessWiring:
+    is_a: Artifact
+    in_subset: udm
+    class_uri: udm:HarnessWiring
+    title: Harness Wiring
+    description: >-
+      Harness Wiring represents a wiring element in a harness library — a wire, cable, or cavity
+      that defines the physical interconnect characteristics for cable and wiring harness designs.
+    comments:
+      - Harness wirings capture conductor counts, colors, gauges, shielding, and twist specifications
+        required for manufacturing and routing of physical interconnects between boards and system elements.
+      - Wire is a standalone single conductor. Cable is a multi-conductor assembly with shields and twists.
+        Cavity is a connector socket for harness pin mapping.
+    mixins:
+      - HasLifecycle
+      - udm_HasLibraryComponentFields
+    annotations:
+      grid: grid:workspace:{workspace-id}:udm:harness-wiring/{id}
+    attributes:
+      HarnessWiring_wiringType:
+        slot_uri: udm:HarnessWiring_wiringType
+        alias: wiringType
+        title: wiringType
+        description: Classification of this wiring element as wire, cable, or cavity
+        range: udm_HarnessWiringType
+        multivalued: false
+        required: true
+      HarnessWiring_conductorsCount:
+        slot_uri: udm:HarnessWiring_conductorsCount
+        alias: conductorsCount
+        title: conductorsCount
+        description: Number of individual conductors in this wiring element. 0 for standalone wire.
+        range: integer
+        multivalued: false
+        required: false
+      HarnessWiring_colors:
+        slot_uri: udm:HarnessWiring_colors
+        alias: colors
+        title: colors
+        description: Wire colors (named colors like 'Blue' or hex codes like '#1111EE')
+        range: string
+        multivalued: true
+        required: false
+      HarnessWiring_gauges:
+        slot_uri: udm:HarnessWiring_gauges
+        alias: gauges
+        title: gauges
+        description: Wire gauge values (stored as strings for flexibility)
+        range: string
+        multivalued: true
+        required: false
+      HarnessWiring_shieldsCount:
+        slot_uri: udm:HarnessWiring_shieldsCount
+        alias: shieldsCount
+        title: shieldsCount
+        description: Number of shields in this wiring element
+        range: integer
+        multivalued: false
+        required: false
+      HarnessWiring_twistsCount:
+        slot_uri: udm:HarnessWiring_twistsCount
+        alias: twistsCount
+        title: twistsCount
+        description: Number of twists in this wiring element
+        range: integer
+        multivalued: false
+        required: false
+      HarnessWiring_twistRates:
+        slot_uri: udm:HarnessWiring_twistRates
+        alias: twistRates
+        title: twistRates
+        description: Twist rate values (stored as strings for flexibility)
+        range: string
+        multivalued: true
+        required: false
+
+slots:
+
+  udm_Project_documents:
+    is_a: core_hasPart
+    slot_uri: udm:Project_documents
+    alias: documents
+    title: documents
+    description: Design documents contained in this UDM project.
+    domain: udm_Project
+    range: udm_DesignDocument
+    multivalued: true
+    required: false
+
+  udm_Document_components:
+    is_a: core_hasPart
+    slot_uri: udm:Document_components
+    alias: components
+    title: components
+    description: Components placed on this design document.
+    domain: udm_DesignDocument
+    range: udm_DesignComponent
+    multivalued: true
+    required: false
+
+  udm_Document_nets:
+    is_a: core_hasPart
+    slot_uri: udm:Document_nets
+    alias: nets
+    title: nets
+    description: Electrical nets defined in this design document.
+    domain: udm_DesignDocument
+    range: udm_DesignNet
+    multivalued: true
+    required: false
+
+  udm_ProjectVariant_variations:
+    is_a: core_hasPart
+    slot_uri: udm:Variant_variations
+    alias: variations
+    title: variations
+    description: Per-component variation records in this variant.
+    domain: udm_ProjectVariant
+    range: udm_DesignVariant
+    multivalued: true
+    required: false
+
+  udm_Component_variant:
+    is_a: core_derivedFrom
+    slot_uri: udm:Component_variant
+    alias: variant
+    title: variant
+    description: >-
+      Typed relationship linking a design component to the project variant
+      context in which it appears, replacing string-based variantId correlation
+      with a semantic cross-reference.
+    domain: udm_DesignComponent
+    range: udm_ProjectVariant
+    multivalued: false
+    required: false
+
+  udm_SymbolRevision_pins:
+    is_a: core_hasPart
+    slot_uri: udm:SymbolRevision_pins
+    alias: pins
+    title: pins
+    description: Collection of pins belonging to a symbol revision
+    range: udm_Pin
+    multivalued: true
+
+  udm_Bom_variants:
+    slot_uri: udm:Bom_variants
+    alias: variants
+    title: variants
+    description: Variant-scoped BOM groupings, each containing items for a specific project variant.
+    range: udm_BomVariant
+    required: false
+    multivalued: true
+
+  udm_BomVariant_designVariant:
+    is_a: core_derivedFrom
+    slot_uri: udm:BomVariant_designVariant
+    alias: designVariant
+    title: designVariant
+    description: >-
+      Typed cross-domain link from a BOM variant to the design project variant
+      it represents, using UDM-internal references.
+    domain: udm_BomVariant
+    range: udm_ProjectVariant
+    multivalued: false
+    required: false
+
+  udm_Component_librarySource:
+    is_a: core_derivedFrom
+    slot_uri: udm:Component_librarySource
+    alias: librarySource
+    title: librarySource
+    description: >-
+      Typed relationship linking a design component to its source library
+      component revision reference, providing GRID-based traceability.
+    domain: udm_DesignComponent
+    range: udm_ComponentRevisionRef
+    multivalued: false
+    required: false

@@ -20,6 +20,444 @@ subsets:
 
 classes:
 
+  des_udm_design_export:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:udmDesignExport
+    title: udm design export
+    description: A udm representation of a project design export that contains CAD design data.
+    tree_root: true
+    attributes:
+      data:
+        slot_uri: des:udmDesignExport_data
+        range: des_udm_export_data
+        required: true
+      extensions:
+        slot_uri: des:udmDesignExport_extensions
+        range: des_udm_export_extensions
+        required: false
+
+  des_udm_export_data:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:udmExportData
+    description: Wraps the exported udm design payload for a project.
+    attributes:
+      design:
+        slot_uri: des:udmExportData_design
+        range: des_udm_export_design
+        required: true
+
+  des_udm_export_design:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:udmExportDesign
+    description: Holds the udm design view for a project export.
+    attributes:
+      preview:
+        slot_uri: des:udmExportDesign_preview
+        range: des_udm_design_preview
+        required: true
+
+  des_udm_design_preview:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:udmDesignPreview
+    description: Stores the latest available udm design preview for a project.
+    attributes:
+      latestGeneration:
+        slot_uri: des:udmDesignPreview_latestGeneration
+        range: des_udm_design_generation
+        required: true
+
+  des_udm_design_generation:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:udmDesignGeneration
+    description: Captures the generation status and payload for a udm design export.
+    attributes:
+      status:
+        slot_uri: des:udmDesignGeneration_status
+        range: des_generation_status
+        required: true
+      message:
+        slot_uri: des:udmDesignGeneration_message
+        range: string
+        required: false
+      designData:
+        slot_uri: des:udmDesignGeneration_designData
+        range: des_udm_design_data
+        required: true
+
+  des_udm_design_data:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:udmDesignData
+    description: Contains the CAD design documents, variants, and configuration for the project's udm view.
+    attributes:
+      documents:
+        slot_uri: des:udmDesignData_documents
+        range: des_design_document
+        multivalued: true
+        required: false
+      variants:
+        slot_uri: des:udmDesignData_variants
+        range: des_design_variant
+        multivalued: true
+        required: false
+      configuration:
+        slot_uri: des:udmDesignData_configuration
+        range: des_design_configuration
+        required: false
+
+  des_udm_export_extensions:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:udmExportExtensions
+    description: Carries optional metadata associated with a udm design export request.
+    attributes:
+      requestId:
+        slot_uri: des:udmExportExtensions_requestId
+        range: string
+        required: false
+
+  des_design_configuration:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:DesignConfiguration
+    attributes:
+      customChecks:
+        slot_uri: des:DesignConfiguration_customChecks
+        range: des_design_custom_check
+        multivalued: true
+        required: false
+
+  des_design_custom_check:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:DesignCustomCheck
+    attributes:
+      customCheckId:
+        slot_uri: des:DesignCustomCheck_customCheckId
+        range: string
+        required: true
+      des_DesignCustomCheck_name:
+        slot_uri: des:DesignCustomCheck_name
+        alias: name
+        range: string
+        required: true
+      errorReportLevel:
+        slot_uri: des:DesignCustomCheck_errorReportLevel
+        range: des_error_report_level
+        required: true
+
+  des_design_document:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:DesignDocument
+    attributes:
+      documentId:
+        slot_uri: des:DesignDocument_documentId
+        range: string
+        required: true
+      components:
+        slot_uri: des:DesignDocument_components
+        range: des_design_component
+        multivalued: true
+        required: false
+      nets:
+        slot_uri: des:DesignDocument_nets
+        range: des_design_net
+        multivalued: true
+        required: false
+
+  des_design_component:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:DesignComponent
+    attributes:
+      uniqueId:
+        slot_uri: des:DesignComponent_uniqueId
+        range: string
+        required: true
+      physicalDesignator:
+        slot_uri: des:DesignComponent_physicalDesignator
+        range: string
+        required: false
+      logicalDesignator:
+        slot_uri: des:DesignComponent_logicalDesignator
+        range: string
+        required: false
+      parameters:
+        slot_uri: des:DesignComponent_parameters
+        range: des_design_parameter
+        multivalued: true
+        required: false
+      parts:
+        slot_uri: des:DesignComponent_parts
+        range: des_design_component_part
+        multivalued: true
+        required: false
+
+  des_design_component_part:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:DesignComponentPart
+    attributes:
+      uniqueId:
+        slot_uri: des:DesignComponentPart_uniqueId
+        range: string
+        required: true
+      logicalDesignator:
+        slot_uri: des:DesignComponentPart_logicalDesignator
+        range: string
+        required: false
+      physicalDesignator:
+        slot_uri: des:DesignComponentPart_physicalDesignator
+        range: string
+        required: false
+      vaultGuid:
+        slot_uri: des:DesignComponentPart_vaultGuid
+        range: string
+        required: false
+      itemGuid:
+        slot_uri: des:DesignComponentPart_itemGuid
+        range: string
+        required: false
+      revisionGuid:
+        slot_uri: des:DesignComponentPart_revisionGuid
+        range: string
+        required: false
+      variantId:
+        slot_uri: des:DesignComponentPart_variantId
+        range: string
+        required: false
+      variationKind:
+        slot_uri: des:DesignComponentPart_variationKind
+        range: des_component_variation_kind
+        required: false
+      parameters:
+        slot_uri: des:DesignComponentPart_parameters
+        range: des_design_parameter
+        multivalued: true
+        required: false
+      boundingRectangle:
+        slot_uri: des:DesignComponentPart_boundingRectangle
+        range: des_bounding_rectangle
+        required: false
+      location:
+        slot_uri: des:DesignComponentPart_location
+        range: des_location
+        required: false
+      pins:
+        slot_uri: des:DesignComponentPart_pins
+        range: des_design_pin
+        multivalued: true
+        required: false
+
+  des_design_parameter:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:DesignParameter
+    attributes:
+      des_DesignParameter_name:
+        slot_uri: des:DesignParameter_name
+        alias: name
+        range: string
+        required: true
+      value:
+        slot_uri: des:DesignParameter_value
+        range: string
+        required: false
+
+  des_design_pin:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:DesignPin
+    attributes:
+      uniqueId:
+        slot_uri: des:DesignPin_uniqueId
+        range: string
+        required: true
+      des_DesignPin_name:
+        slot_uri: des:DesignPin_name
+        alias: name
+        range: string
+        required: false
+      number:
+        slot_uri: des:DesignPin_number
+        range: string
+        required: false
+      location:
+        slot_uri: des:DesignPin_location
+        range: des_location
+        required: false
+      boundingRectangle:
+        slot_uri: des:DesignPin_boundingRectangle
+        range: des_bounding_rectangle
+        required: false
+
+  des_design_net:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:DesignNet
+    attributes:
+      uniqueId:
+        slot_uri: des:DesignNet_uniqueId
+        range: string
+        required: false
+      des_DesignNet_name:
+        slot_uri: des:DesignNet_name
+        alias: name
+        range: string
+        required: false
+      calculatedNetName:
+        slot_uri: des:DesignNet_calculatedNetName
+        range: string
+        required: false
+      color:
+        slot_uri: des:DesignNet_color
+        range: integer
+        required: false
+      parameters:
+        slot_uri: des:DesignNet_parameters
+        range: des_design_parameter
+        multivalued: true
+        required: false
+      boundingRectangle:
+        slot_uri: des:DesignNet_boundingRectangle
+        range: des_bounding_rectangle
+        required: false
+      location:
+        slot_uri: des:DesignNet_location
+        range: des_location
+        required: false
+      netItems:
+        slot_uri: des:DesignNet_netItems
+        range: des_design_net_item
+        multivalued: true
+        required: false
+      pins:
+        slot_uri: des:DesignNet_pins
+        range: des_design_pin
+        multivalued: true
+        required: false
+      lines:
+        slot_uri: des:DesignNet_lines
+        range: des_design_line
+        multivalued: true
+        required: false
+
+  des_design_net_item:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:DesignNetItem
+    attributes:
+      kind:
+        slot_uri: des:DesignNetItem_kind
+        range: des_net_item_kind
+        required: true
+      uniqueId:
+        slot_uri: des:DesignNetItem_uniqueId
+        range: string
+        required: true
+
+  des_design_line:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:DesignLine
+    attributes:
+      uniqueId:
+        slot_uri: des:DesignLine_uniqueId
+        range: string
+        required: true
+      boundingRectangle:
+        slot_uri: des:DesignLine_boundingRectangle
+        range: des_bounding_rectangle
+        required: false
+      location:
+        slot_uri: des:DesignLine_location
+        range: des_location
+        required: false
+
+  des_bounding_rectangle:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:BoundingRectangle
+    attributes:
+      left:
+        slot_uri: des:BoundingRectangle_left
+        range: integer
+        required: true
+      bottom:
+        slot_uri: des:BoundingRectangle_bottom
+        range: integer
+        required: true
+      right:
+        slot_uri: des:BoundingRectangle_right
+        range: integer
+        required: true
+      top:
+        slot_uri: des:BoundingRectangle_top
+        range: integer
+        required: true
+
+  des_location:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:Location
+    attributes:
+      x:
+        slot_uri: des:Location_x
+        range: integer
+        required: true
+      y:
+        slot_uri: des:Location_y
+        range: integer
+        required: true
+
+  des_design_variant:
+    is_a: des_project_variant
+    in_subset: design
+    class_uri: des:DesignVariant
+    attributes:
+      des_DesignVariant_name:
+        slot_uri: des:DesignVariant_name
+        alias: name
+        range: string
+        required: true
+      variantGuid:
+        slot_uri: des:DesignVariant_variantGuid
+        range: string
+        required: true
+      variations:
+        slot_uri: des:DesignVariant_variations
+        range: des_design_variant_variation
+        multivalued: true
+        required: false
+
+  des_design_variant_variation:
+    is_a: Resource
+    in_subset: design
+    class_uri: des:DesignVariantVariation
+    attributes:
+      componentDesignator:
+        slot_uri: des:DesignVariantVariation_componentDesignator
+        range: string
+        required: true
+      componentUniqueId:
+        slot_uri: des:DesignVariantVariation_componentUniqueId
+        range: string
+        required: true
+      kind:
+        slot_uri: des:DesignVariantVariation_kind
+        range: des_component_variation_kind
+        required: true
+      alternatePart:
+        slot_uri: des:DesignVariantVariation_alternatePart
+        range: string
+        required: false
+
   des_project:
     is_a: Activity
     in_subset: design 
@@ -34,13 +472,17 @@ classes:
       grid: grid:workspace:{workspace-id}:design:project/{id}
       platformAPI: DesProject
     attributes:
-      Project_parameters:
+      des_Project_parameters:
+        slot_uri: des:Project_parameters
+        alias: parameters
         title: parameters
         description: TBD
         range: des_project_parameter
         multivalued: true
         required: false
-      Project_variants:
+      des_Project_variants:
+        slot_uri: des:Project_variants
+        alias: variants
         title: variants
         description: TBD
         range: des_project_variant
@@ -62,13 +504,17 @@ classes:
     annotations:
       platformAPI: DesProjectParameter
     attributes:
-      ProjectParameter_name:
+      des_ProjectParameter_name:
+        slot_uri: des:ProjectParameter_name
+        alias: name
         title: name
         description: TBD
         range: string
         multivalued: false
         required: true
-      ProjectParameter_value:
+      des_ProjectParameter_value:
+        slot_uri: des:ProjectParameter_value
+        alias: value
         title: value
         description: TBD
         range: string
@@ -186,8 +632,78 @@ classes:
     slots:
       - des_manufacturing_package_project_release
 
+enums:
+
+  des_generation_status:
+    permissible_values:
+      COMPLETED:
+      FAILED:
+      IN_PROGRESS:
+
+  des_error_report_level:
+    permissible_values:
+      NO_REPORT:
+      WARNING:
+      ERROR:
+
+  des_net_item_kind:
+    permissible_values:
+      Sheet Entry:
+      Pin:
+      Net Label:
+      Port:
+      Power Object:
+
+  des_component_variation_kind:
+    permissible_values:
+      NOT_FITTED:
+      eVariation_NotFitted:
+      eVariation_Alternate:
+
 slots:
 
+  uniqueId:
+    slot_uri: des:uniqueId
+    range: string
+    required: false
+
+  logicalDesignator:
+    slot_uri: des:logicalDesignator
+    range: string
+    required: false
+
+  physicalDesignator:
+    slot_uri: des:physicalDesignator
+    range: string
+    required: false
+
+  parameters:
+    slot_uri: des:parameters
+    range: des_design_parameter
+    multivalued: true
+    required: false
+
+  boundingRectangle:
+    slot_uri: des:boundingRectangle
+    range: des_bounding_rectangle
+    required: false
+
+  location:
+    slot_uri: des:location
+    range: des_location
+    required: false
+
+  pins:
+    slot_uri: des:pins
+    range: des_design_pin
+    multivalued: true
+    required: false
+
+  kind:
+    slot_uri: des:kind
+    range: string
+    required: false
+ 
   des_multiboard_project_projects:
     is_a: core_hasPart
     slot_uri: des:MultiboardProject_projects

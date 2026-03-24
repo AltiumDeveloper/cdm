@@ -67,6 +67,7 @@ slots:
 
   con_env_configuration_schematic_templates:
     is_a: core_hasPart
+    slot_uri: con:EnvironmentConfiguration_schematicTemplates
     title: schematic_templates
     range: con_schematic_template_revision
     multivalued: true
