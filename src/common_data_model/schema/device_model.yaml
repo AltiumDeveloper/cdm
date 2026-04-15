@@ -479,7 +479,7 @@ classes:
         inlined_as_list: true
       dm_PeripheralInstance_interfaceType:
         alias: interfaceType
-        title: interface type
+        title: interfaceType
         description: The generic interface this peripheral instance is configured as.
         range: string
 
