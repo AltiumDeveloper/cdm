@@ -477,6 +477,11 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+      dm_PeripheralInstance_interfaceType:
+        alias: interfaceType
+        title: interfaceType
+        description: The generic interface this peripheral instance is configured as.
+        range: string
 
   dm_peripheral_mode:
     is_a: Resource
