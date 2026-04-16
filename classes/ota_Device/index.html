@@ -242,6 +242,26 @@
 
 
 
+
+
+
+
+
+      ota_Device --&gt; "*" ota_Fleet : fleets
+      click ota_Fleet href "../../classes/ota_Fleet/"
+
+
+  class ota_Fleet["Fleet"]
+
+
+
+      style ota_Fleet fill:#d29292    
+
+
+
+
+
+
           ota_Device : device ID
 
 
@@ -268,26 +288,6 @@
 
 
       style ota_DeviceStatus fill:#d29292    
-
-
-
-
-
-
-
-
-
-
-
-      ota_Device --&gt; "*" ota_Fleet : fleets
-      click ota_Fleet href "../../classes/ota_Fleet/"
-
-
-  class ota_Fleet["Fleet"]
-
-
-
-      style ota_Fleet fill:#d29292    
 
 
 
@@ -375,6 +375,13 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../../slots/ota_Device_fleets">fleets</a></td>
+<td><code>*</code></td>
+<td><a href="../ota_Fleet/">Fleet</a></td>
+<td>Fleets this device belongs to</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../../slots/ota_Device_deviceId">device ID</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../types/string/">string</a></td>
@@ -400,13 +407,6 @@
 <td><code>0..1</code></td>
 <td><a href="../../enums/ota_DeviceStatus/">ota_DeviceStatus</a></td>
 <td>Current device status</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/ota_Device_fleets">fleets</a></td>
-<td><code>*</code></td>
-<td><a href="../ota_Fleet/">Fleet</a></td>
-<td>Fleets this device belongs to</td>
 <td>direct</td>
 </tr>
 <tr>
