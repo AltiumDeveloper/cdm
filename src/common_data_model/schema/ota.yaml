@@ -32,6 +32,28 @@ enums:
       Outdated:
       UpdateScheduled:
 
+slots:
+
+  ota_Device_fleets:
+    slot_uri: ota:Device_fleets
+    alias: fleets
+    title: fleets
+    description: Fleets this device belongs to
+    range: ota_Fleet
+    multivalued: true
+    required: false
+    inverse: ota_Fleet_devices
+
+  ota_Fleet_devices:
+    slot_uri: ota:Fleet_devices
+    alias: devices
+    title: devices
+    description: Devices in this fleet
+    range: ota_Device
+    multivalued: true
+    required: false
+    inverse: ota_Device_fleets
+
 classes:
 
   ota_Device:
@@ -46,6 +68,7 @@ classes:
       maturity: EXPERIMENTAL
     slots:
       - core_name
+      - ota_Device_fleets
     attributes:
       ota_Device_deviceId:
         alias: deviceId
@@ -71,13 +94,6 @@ classes:
         description: Current device status
         range: ota_DeviceStatus
         multivalued: false
-      ota_Device_fleets:
-        alias: fleets
-        title: fleets
-        description: Fleets this device belongs to
-        range: ota_Fleet
-        multivalued: true
-        inverse: ota_Fleet_devices
       ota_Device_packages:
         alias: packages
         title: packages
@@ -97,14 +113,7 @@ classes:
       maturity: EXPERIMENTAL
     slots:
       - core_name
-    attributes:
-      ota_Fleet_devices:
-        alias: devices
-        title: devices
-        description: Devices in this fleet
-        range: ota_Device
-        multivalued: true
-        inverse: ota_Device_fleets
+      - ota_Fleet_devices
 
   ota_Package:
     is_a: Artifact
