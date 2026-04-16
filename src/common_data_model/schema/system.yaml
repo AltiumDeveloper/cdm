@@ -467,6 +467,12 @@ classes:
         description: Version of the system model, used for tracking changes over time.
         range: integer
         required: true
+      system_SdmSystemModel_schemaVersion:
+        alias: schemaVersion
+        title: schema version
+        description: The semantic version of the SDM schema this model version conforms to, used for compatibility checks.
+        range: string
+        required: false
       system_SdmSystemModel_functionalModel:
         alias: functionalModel
         title: functional model
