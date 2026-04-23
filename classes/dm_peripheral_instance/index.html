@@ -276,6 +276,26 @@
 
 
 
+      dm_peripheral_instance --&gt; "0..1" dm_PeripheralVirtualization : virtualization
+      click dm_PeripheralVirtualization href "../../enums/dm_PeripheralVirtualization/"
+
+
+  class dm_PeripheralVirtualization["dm_PeripheralVirtualization"]
+
+
+
+      style dm_PeripheralVirtualization fill:#6fa8dc    
+
+
+
+
+
+
+
+
+
+
+
 
 
   class dm_address_block["AddressBlock"]
@@ -403,6 +423,13 @@
 <td><code>0..1</code></td>
 <td><a href="../../types/string/">string</a></td>
 <td>The generic interface this peripheral instance is configured as.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/dm_PeripheralInstance_virtualization">virtualization</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../enums/dm_PeripheralVirtualization/">dm_PeripheralVirtualization</a></td>
+<td>Specifies how this peripheral instance is virtualized, indicating whether the instance represents a single, non-virtualized peripheral or a channel-virtualized peripheral where individual functions act as separate interface instances.</td>
 <td>direct</td>
 </tr>
 </tbody>

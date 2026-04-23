@@ -255,6 +255,10 @@
 
 
 
+          dm_peripheral_pin_config : channel
+
+
+
 
 
 
@@ -327,6 +331,13 @@
 <td><code>0..1</code></td>
 <td><a href="../../types/string/">string</a></td>
 <td>The physical port mapping target for the pin function.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/dm_PinConfig_channel">channel</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/string/">string</a></td>
+<td>Identifies the specific virtualized channel used by this pin configuration. This field is applicable only when the associated peripheral instance uses channel-based virtualization and must uniquely identify the peripheral instance and function combination (for example, "adc0.an100"). Not all functions or signals associated with a peripheral instance necessarily implement the peripheral interface itself; auxiliary signals such as trigger or control inputs (for example, ADC external trigger inputs like ADTRG0) do not require a channel designation.</td>
 <td>direct</td>
 </tr>
 </tbody>
