@@ -104,6 +104,27 @@ enums:
         description: Pin is configured as a digital output with a default logic low (0) state.
       OutputHigh:
         description: Pin is configured as a digital output with a default logic high (1) state.
+  dm_PeripheralVirtualization:
+    is_a: Enumeration
+    in_subset: deviceModel
+    enum_uri: dm:PeripheralVirtualization
+    description: >-
+      Defines the virtualization model used by a peripheral interface, describing
+      whether the peripheral is implemented as a single, non-virtualized instance
+      or as multiple virtualized instances mapped to individual functional
+      channels.
+    permissible_values:
+      None:
+        description: >-
+          No virtualization. All associated functions collectively implement a
+          single peripheral interface instance (for example, SCI0 on RA devices).
+      Channel:
+        description: >-
+          Channel-based virtualization. Each individual function represents an
+          independent channel and implements the peripheral interface type
+          separately (for example, ADC on RA devices where each ANxxx function
+          corresponds to an ADC channel).
+
 
 classes:
   dm_HasAddressRange:
@@ -482,6 +503,15 @@ classes:
         title: interfaceType
         description: The generic interface this peripheral instance is configured as.
         range: string
+      dm_PeripheralInstance_virtualization:
+        alias: virtualization
+        title: virtualization
+        description: >-
+          Specifies how this peripheral instance is virtualized, indicating whether
+          the instance represents a single, non-virtualized peripheral or a
+          channel-virtualized peripheral where individual functions act as separate
+          interface instances.
+        range: dm_PeripheralVirtualization
 
   dm_peripheral_mode:
     is_a: Resource
@@ -575,6 +605,19 @@ classes:
         alias: portName
         title: portName
         description: The physical port mapping target for the pin function.
+        range: string
+      dm_PinConfig_channel:
+        alias: channel
+        title: channel
+        description: >-
+          Identifies the specific virtualized channel used by this pin configuration.
+          This field is applicable only when the associated peripheral instance uses
+          channel-based virtualization and must uniquely identify the peripheral
+          instance and function combination (for example, "adc0.an100"). Not all
+          functions or signals associated with a peripheral instance necessarily
+          implement the peripheral interface itself; auxiliary signals such as trigger
+          or control inputs (for example, ADC external trigger inputs like ADTRG0)
+          do not require a channel designation.
         range: string
 
   dm_peripheral_pin_dependency_config:
