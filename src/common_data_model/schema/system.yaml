@@ -525,14 +525,14 @@ classes:
         slot_uri: sys:SdmSystemModelVersionMetadata_createdAt
         alias: createdAt
         title: created at
-        description: The date and time when the version was created.
+        description: The date and time when the SDM version was created.
         range: datetime
         required: true
       system_SdmSystemModelVersionMetadata_createdBy:
         slot_uri: sys:SdmSystemModelVersionMetadata_createdBy
         alias: createdBy
         title: created by
-        description: The user that created this schema version.
+        description: The user that created this SDM version.
         range: plt_workspace_user
         required: true
         inlined: false
@@ -540,7 +540,7 @@ classes:
         slot_uri: sys:SdmSystemModelVersionMetadata_authoringClient
         alias: authoringClient
         title: authoring client
-        description: The application client used to create this schema version.
+        description: The application client used to create this SDM version.
         range: system_SdmAuthoringClient
         required: true
         inlined: true
@@ -548,7 +548,7 @@ classes:
         slot_uri: sys:SdmSystemModelVersionMetadata_tags
         alias: tags
         title: tags
-        description: The tags associated with this schema version.
+        description: The tags associated with this SDM version.
         range: string
         multivalued: true
         required: true
