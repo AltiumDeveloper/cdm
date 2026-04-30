@@ -505,6 +505,7 @@ classes:
         inlined: true
         inlined_as_list: true
       system_SdmSystemModelVersion_metadata:
+        slot_uri: sys:SdmSystemModelVersion_metadata
         alias: metadata
         title: metadata
         description: Metadata associated with this system model version.
@@ -521,12 +522,14 @@ classes:
       Metadata associated with a specific version of a system model, capturing provenance information.
     attributes:
       system_SdmSystemModelVersionMetadata_createdAt:
+        slot_uri: sys:SdmSystemModelVersionMetadata_createdAt
         alias: createdAt
         title: created at
         description: The date and time when the version was created.
         range: datetime
         required: true
       system_SdmSystemModelVersionMetadata_createdBy:
+        slot_uri: sys:SdmSystemModelVersionMetadata_createdBy
         alias: createdBy
         title: created by
         description: The user that created this schema version.
@@ -534,6 +537,7 @@ classes:
         required: true
         inlined: false
       system_SdmSystemModelVersionMetadata_authoringClient:
+        slot_uri: sys:SdmSystemModelVersionMetadata_authoringClient
         alias: authoringClient
         title: authoring client
         description: The application client used to create this schema version.
@@ -541,6 +545,7 @@ classes:
         required: true
         inlined: true
       system_SdmSystemModelVersionMetadata_tags:
+        slot_uri: sys:SdmSystemModelVersionMetadata_tags
         alias: tags
         title: tags
         description: The tags associated with this schema version.
@@ -558,6 +563,7 @@ classes:
       Identifies the application client used to create a system model version.
     attributes:
       system_SdmAuthoringClient_application:
+        slot_uri: sys:SdmAuthoringClient_application
         alias: application
         title: application
         description: The platform application associated with this client.
@@ -565,12 +571,14 @@ classes:
         required: true
         inlined: false
       system_SdmAuthoringClient_name:
+        slot_uri: sys:SdmAuthoringClient_name
         alias: name
         title: name
         description: The name of the client.
         range: string
         required: false
       system_SdmAuthoringClient_version:
+        slot_uri: sys:SdmAuthoringClient_version
         alias: version
         title: version
         description: The version of the client.
