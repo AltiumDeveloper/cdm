@@ -504,6 +504,64 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+      system_SdmSystemModelVersion_metadata:
+        alias: metadata
+        title: metadata
+        description: Metadata associated with this system model version.
+        range: system_SdmSystemModelVersionMetadata
+        required: false
+        inlined: true
+
+  system_SdmSystemModelVersionMetadata:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SdmSystemModelVersionMetadata
+    title: System Model Version Metadata
+    description: >-
+      Metadata associated with a specific version of a system model, capturing provenance information.
+    attributes:
+      system_SdmSystemModelVersionMetadata_createdAt:
+        alias: createdAt
+        title: created at
+        description: The date and time when the version was created.
+        range: datetime
+        required: true
+      system_SdmSystemModelVersionMetadata_createdBy:
+        alias: createdBy
+        title: created by
+        description: The creator of this schema version.
+        range: system_SdmCreator
+        required: true
+        inlined: true
+      system_SdmSystemModelVersionMetadata_tags:
+        alias: tags
+        title: tags
+        description: The tags associated with this schema version.
+        range: string
+        multivalued: true
+        required: true
+        inlined_as_list: true
+
+  system_SdmCreator:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SdmCreator
+    title: Creator
+    description: >-
+      Identifies the creator of a system model version.
+    attributes:
+      system_SdmCreator_appId:
+        alias: appId
+        title: app id
+        description: The ID of the OAuth app that created the schema version.
+        range: string
+        required: true
+      system_SdmCreator_userId:
+        alias: userId
+        title: user id
+        description: The ID of the user that created the schema version.
+        range: string
+        required: true
 
   # SDM: Functional Model
   system_SdmFunctionalModel:
