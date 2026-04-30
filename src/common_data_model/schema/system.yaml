@@ -529,8 +529,15 @@ classes:
       system_SdmSystemModelVersionMetadata_createdBy:
         alias: createdBy
         title: created by
-        description: The creator of this schema version.
-        range: system_SdmCreator
+        description: The user that created this schema version.
+        range: plt_workspace_user
+        required: true
+        inlined: false
+      system_SdmSystemModelVersionMetadata_authoringClient:
+        alias: authoringClient
+        title: authoring client
+        description: The application client used to create this schema version.
+        range: system_SdmAuthoringClient
         required: true
         inlined: true
       system_SdmSystemModelVersionMetadata_tags:
@@ -542,26 +549,33 @@ classes:
         required: true
         inlined_as_list: true
 
-  system_SdmCreator:
+  system_SdmAuthoringClient:
     is_a: Resource
     in_subset: system-sdm
-    class_uri: sys:SdmCreator
-    title: Creator
+    class_uri: sys:SdmAuthoringClient
+    title: Authoring Client
     description: >-
-      Identifies the creator of a system model version.
+      Identifies the application client used to create a system model version.
     attributes:
-      system_SdmCreator_appId:
-        alias: appId
-        title: app id
-        description: The ID of the OAuth app that created the schema version.
-        range: string
+      system_SdmAuthoringClient_application:
+        alias: application
+        title: application
+        description: The platform application associated with this client.
+        range: plt_application
         required: true
-      system_SdmCreator_userId:
-        alias: userId
-        title: user id
-        description: The ID of the user that created the schema version.
+        inlined: false
+      system_SdmAuthoringClient_name:
+        alias: name
+        title: name
+        description: The name of the client.
         range: string
-        required: true
+        required: false
+      system_SdmAuthoringClient_version:
+        alias: version
+        title: version
+        description: The version of the client.
+        range: string
+        required: false
 
   # SDM: Functional Model
   system_SdmFunctionalModel:
