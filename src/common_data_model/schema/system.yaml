@@ -504,6 +504,86 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+      system_SdmSystemModelVersion_metadata:
+        slot_uri: sys:SdmSystemModelVersion_metadata
+        alias: metadata
+        title: metadata
+        description: Metadata associated with this system model version.
+        range: system_SdmSystemModelVersionMetadata
+        required: false
+        inlined: true
+
+  system_SdmSystemModelVersionMetadata:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SdmSystemModelVersionMetadata
+    title: System Model Version Metadata
+    description: >-
+      Metadata associated with a specific version of a system model, capturing provenance information.
+    attributes:
+      system_SdmSystemModelVersionMetadata_createdAt:
+        slot_uri: sys:SdmSystemModelVersionMetadata_createdAt
+        alias: createdAt
+        title: created at
+        description: The date and time when the SDM version was created.
+        range: datetime
+        required: true
+      system_SdmSystemModelVersionMetadata_createdBy:
+        slot_uri: sys:SdmSystemModelVersionMetadata_createdBy
+        alias: createdBy
+        title: created by
+        description: The user that created this SDM version.
+        range: plt_workspace_user
+        required: true
+        inlined: false
+      system_SdmSystemModelVersionMetadata_authoringApplication:
+        slot_uri: sys:SdmSystemModelVersionMetadata_authoringApplication
+        alias: authoringApplication
+        title: authoring application
+        description: The application used to create this SDM version.
+        range: system_SdmAuthoringApplication
+        required: true
+        inlined: true
+      system_SdmSystemModelVersionMetadata_tags:
+        slot_uri: sys:SdmSystemModelVersionMetadata_tags
+        alias: tags
+        title: tags
+        description: The tags associated with this SDM version.
+        range: string
+        multivalued: true
+        required: true
+        inlined_as_list: true
+
+  system_SdmAuthoringApplication:
+    is_a: Resource
+    in_subset: system-sdm
+    class_uri: sys:SdmAuthoringApplication
+    title: Authoring Application
+    description: >-
+      Identifies the application used to create a system model version.
+    attributes:
+      system_SdmAuthoringApplication_application:
+        slot_uri: sys:SdmAuthoringApplication_application
+        alias: applicationId
+        title: application
+        description: The platform application associated with this authoring application.
+        range: plt_application
+        required: true
+        inlined: false
+      system_SdmAuthoringApplication_name:
+        slot_uri: sys:SdmAuthoringApplication_name
+        alias: name
+        title: name
+        description: The name of the application.
+        range: string
+        required: false
+      system_SdmAuthoringApplication_version:
+        slot_uri: sys:SdmAuthoringApplication_version
+        alias: version
+        title: version
+        description: The version of the application.
+        range: string
+        required: false
 
   # SDM: Functional Model
   system_SdmFunctionalModel:
