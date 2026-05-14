@@ -92,7 +92,7 @@ classes:
         multivalued: false
         required: false
         instantiates:
-          - WithVaultLink
+          - core_WithVaultLink
         annotations:
           modeled_as: Vault Link (rev -> rev)
           vaultLinkParent: lib:ComponentRevision
