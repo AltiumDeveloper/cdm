@@ -21,7 +21,7 @@ subsets:
 classes:
 
   des_Project:
-    is_a: Activity
+    is_a: core_Activity
     in_subset: design 
     class_uri: des:Project
     title: Hardware Project
@@ -59,7 +59,7 @@ classes:
         range: des_ProjectRelease
 
   des_ProjectParameter:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: design
     class_uri: des:ProjectParameter
     title: Project Parameter
@@ -85,7 +85,7 @@ classes:
         required: false
 
   des_ProjectVariant:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: design 
     class_uri: des:ProjectVariant
     title: Hardware Project Variant
@@ -135,7 +135,7 @@ classes:
       platformAPI: DesProject
 
   des_ProjectRelease:
-    is_a: Activity
+    is_a: core_Activity
     in_subset: design 
     class_uri: des:ProjectRelease
     title: Hardware Project Release
@@ -155,7 +155,7 @@ classes:
       - lib_consists_of_components
 
   des_ProjectTemplate:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: design 
     class_uri: des:ProjectTemplate
     title: Project Template
@@ -178,7 +178,7 @@ classes:
         range: des_ProjectTemplateRevision
 
   des_ProjectTemplateRevision:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: design 
     class_uri: des:ProjectTemplateRevision
     title: Project Template Revision
@@ -191,7 +191,7 @@ classes:
       - plt_HasLifecycle
 
   des_ManufacturingPackage:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: design 
     class_uri: des:ManufacturingPackage
     title: Manufacturing Package
@@ -212,7 +212,7 @@ classes:
         multivalued: false
 
   des_RuleCheck:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: design
     class_uri: des:RuleCheck
     title: Rule Check
@@ -223,7 +223,7 @@ classes:
       maturity: EXPERIMENTAL
 
   des_RuleCheckExecution:
-    is_a: Activity
+    is_a: core_Activity
     in_subset: design
     class_uri: des:RuleCheckExecution
     title: Rule Check Execution

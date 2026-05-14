@@ -21,7 +21,7 @@ subsets:
 classes:
 
   cus_Script:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: customization
     class_uri: cus:Script
     title: Script
@@ -36,7 +36,7 @@ classes:
         range: cus_ScriptVersion
 
   cus_ScriptVersion:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: customization
     class_uri: cus:ScriptVersion
     title: Script Version
@@ -55,7 +55,7 @@ classes:
         required: false
 
   cus_ScriptExecution:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: customization
     class_uri: cus:ScriptExecution
     title: Script Execution
@@ -76,7 +76,7 @@ classes:
           - range: cus_ScriptExecutionCompleted
 
   cus_Workflow:
-    is_a: Activity
+    is_a: core_Activity
     in_subset: customization
     class_uri: cus:Workflow
     title: Workflow
@@ -86,7 +86,7 @@ classes:
       platformAPI: DesWorkflowDefinition
 
   cus_ScriptExecutionCompleted:
-    is_a: Event
+    is_a: core_Event
     in_subset: customization
     class_uri: cus:ScriptExecutionCompleted
     title: Script Execution Completed

@@ -11,6 +11,11 @@ imports:
 default_range: string
 default_prefix: core
 
+subsets:
+  core:
+    description: >-
+      The core subset contains abstract base classes and mixins shared by all CDM bounded contexts.
+
 enums:
 
   Enumeration:
@@ -44,67 +49,129 @@ classes:
 
   Any:
     class_uri: linkml:Any
-
-  Meta:
+  core_Meta:
     abstract: true
+    class_uri: core:Meta
+    in_subset: core
+    title: Meta
+    description: >-
+      Abstract base for all CDM mixin classes. Provides a common root for mixins
+      without participating in the main Entity hierarchy.
 
-  Resource:
+  core_Resource:
     abstract: true
+    class_uri: core:Resource
+    in_subset: core
+    title: Resource
+    description: >-
+      Abstract base for lightweight platform-accessible objects that have API access
+      but are not Entities; they carry no GRID and no versioning lifecycle.
     instantiates:
-      - WithPlatformAPI
+      - core_WithPlatformAPI
 
-  Event:
+  core_Event:
     abstract: true
+    class_uri: core:Event
+    in_subset: core
+    title: Event
+    description: >-
+      Abstract base for domain events. Events carry no GRID and no versioning lifecycle;
+      they represent things that happened rather than persistent domain objects.
 
-  Entity:
+  core_Entity:
     abstract: true
+    class_uri: core:Entity
+    in_subset: core
+    title: Entity
+    description: >-
+      Abstract base for all identifiable, versioned, platform-accessible domain objects.
+      Carries a GRID, maturity level, and platform API reference.
     instantiates:
-      - WithGRID
-      - WithMaturity
-      - WithPlatformAPI
+      - core_WithGRID
+      - core_WithMaturity
+      - core_WithPlatformAPI
     slots:
       - core_id
 
-  Artifact:
+  core_Artifact:
     abstract: true
-    is_a: Entity
+    class_uri: core:Artifact
+    in_subset: core
+    title: Artifact
+    description: >-
+      Abstract base for persistent data objects that are created, stored, versioned,
+      and consumed. Examples: components, documents, system models.
+    is_a: core_Entity
 
-  Activity:
+  core_Activity:
     abstract: true
-    is_a: Entity
+    class_uri: core:Activity
+    in_subset: core
+    title: Activity
+    description: >-
+      Abstract base for process and work objects — things that happen, use inputs,
+      and produce outputs. Examples: projects, releases, design workflows.
+    is_a: core_Entity
 
   ### Annotations
 
-  WithGRID:
-    is_a: Meta
+  core_WithGRID:
+    is_a: core_Meta
+    class_uri: core:WithGRID
+    in_subset: core
+    title: With GRID
+    description: >-
+      Mixin that adds a GRID annotation slot to a class.
     attributes:
       grid:
         description: GRID template
         range: GRID
 
-  WithPlatformAPI:
-    is_a: Meta
+  core_WithPlatformAPI:
+    is_a: core_Meta
+    class_uri: core:WithPlatformAPI
+    in_subset: core
+    title: With Platform API
+    description: >-
+      Mixin that adds a platformAPI annotation slot identifying the platform API type name.
     attributes:
       platformAPI:
         description: Platform API type name.
         range: string
 
-  WithMaturity:
-    is_a: Meta
+  core_WithMaturity:
+    is_a: core_Meta
+    class_uri: core:WithMaturity
+    in_subset: core
+    title: With Maturity
+    description: >-
+      Mixin that adds a maturity annotation slot indicating the lifecycle readiness level.
     attributes:
       maturity:
         description: Maturity level.
         range: Maturity
 
-  WithVault:
-    is_a: Meta
+  core_WithVault:
+    is_a: core_Meta
+    class_uri: core:WithVault
+    in_subset: core
+    title: With Vault
+    description: >-
+      Mixin that adds a vault content type annotation to a class, indicating how its content
+      is stored in the platform vault.
     attributes:
       contentType:
         description: Vault Content Type
         range: VaultContentType
 
-  WithVaultLink:
-    is_a: Meta
+  core_WithVaultLink:
+    is_a: core_Meta
+    class_uri: core:WithVaultLink
+    in_subset: core
+    title: With Vault Link
+    description: >-
+      Mixin that adds vault link parent, child, and type annotation slots for tracking
+      hierarchical vault relationships.
     attributes:
       vaultLinkParent:
         description: Vault Link Parent
@@ -168,16 +235,20 @@ slots:
     slot_uri: core:derivesInto
     alias: derivesInto
     title: derives into
-    domain: Artifact
-    range: Artifact
+    description: >-
+      One artifact is produced from or superseded by another artifact.
+    domain: core_Artifact
+    range: core_Artifact
 
   core_derivedFrom:
     abstract: true
     slot_uri: core:derivedFrom
     alias: derivedFrom
     title: derived from
-    domain: Artifact
-    range: Artifact
+    description: >-
+      Reverse of derivesInto — this artifact was produced from another artifact.
+    domain: core_Artifact
+    range: core_Artifact
     inverse: core_derivesInto
 
   core_partOf:
@@ -185,8 +256,10 @@ slots:
     slot_uri: core:partOf
     alias: partOf
     title: part of
-    domain: Entity
-    range: Entity
+    description: >-
+      Compositional containment (child to parent). Transitive.
+    domain: core_Entity
+    range: core_Entity
     transitive: true
 
   core_hasPart:
@@ -194,8 +267,10 @@ slots:
     slot_uri: core:hasPart
     alias: hasPart
     title: has part
-    domain: Entity
-    range: Entity
+    description: >-
+      Compositional containment (parent to child). Transitive. Inverse of partOf.
+    domain: core_Entity
+    range: core_Entity
     transitive: true
     inverse: core_partOf
 
@@ -204,16 +279,20 @@ slots:
     slot_uri: core:inputOf
     alias: inputOf
     title: input of
-    domain: Artifact
-    range: Activity
+    description: >-
+      This artifact is consumed by the referenced activity.
+    domain: core_Artifact
+    range: core_Activity
 
   core_hasInput:
     abstract: true
     slot_uri: core:hasInput
     alias: hasInput
     title: has input
-    domain: Activity
-    range: Artifact
+    description: >-
+      The activity references its consumed artifacts. Inverse of inputOf.
+    domain: core_Activity
+    range: core_Artifact
     inverse: core_inputOf
 
   core_outputOf:
@@ -221,16 +300,20 @@ slots:
     slot_uri: core:outputOf
     alias: outputOf
     title: output of
-    domain: Artifact
-    range: Activity
+    description: >-
+      This artifact was produced by the referenced activity.
+    domain: core_Artifact
+    range: core_Activity
 
   core_hasOutput:
     abstract: true
     slot_uri: core:hasOutput
     alias: hasOutput
     title: has output
-    domain: Activity
-    range: Artifact
+    description: >-
+      The activity references its produced artifacts. Inverse of outputOf.
+    domain: core_Activity
+    range: core_Artifact
     inverse: core_outputOf
 
   core_informedBy:
@@ -238,16 +321,20 @@ slots:
     slot_uri: core:informedBy
     alias: informedBy
     title: informed by
-    domain: Activity
-    range: Activity
+    description: >-
+      This activity uses knowledge from or is dependent on another activity.
+    domain: core_Activity
+    range: core_Activity
 
   core_informs:
     abstract: true
     slot_uri: core:informs
     alias: informs
     title: informs
-    domain: Activity
-    range: Activity
+    description: >-
+      This activity provides knowledge to another activity. Inverse of informedBy.
+    domain: core_Activity
+    range: core_Activity
     inverse: core_informedBy
 
   core_occursIn:
@@ -255,8 +342,10 @@ slots:
     slot_uri: core:occursIn
     alias: occursIn
     title: occurs in
-    domain: Activity
-    range: Artifact
+    description: >-
+      This activity is scoped within the context of the referenced artifact.
+    domain: core_Activity
+    range: core_Artifact
 
   ### useful relations
 
@@ -265,16 +354,20 @@ slots:
     slot_uri: core:implementedBy
     alias: implementedBy
     title: implemented by
-    domain: Activity
-    range: Activity
+    description: >-
+      This activity is implemented by another activity (e.g. a requirement implemented by a design).
+    domain: core_Activity
+    range: core_Activity
 
   core_implements:
     is_a: core_informedBy
     slot_uri: core:implements
     alias: implements
     title: implements
-    domain: Activity
-    range: Activity
+    description: >-
+      This activity implements a requirement or specification activity. Inverse of implementedBy.
+    domain: core_Activity
+    range: core_Activity
     inverse: core_implementedBy
 
   core_revisionOf:
@@ -282,6 +375,8 @@ slots:
     slot_uri: core:revisionOf
     alias: revisionOf
     title: revision of
+    description: >-
+      A versioned snapshot derived from a prior artifact version.
     required: true
     multivalued: false
 
@@ -290,6 +385,8 @@ slots:
     slot_uri: core:revisions
     alias: revisions
     title: revisions
+    description: >-
+      The set of versioned snapshots derived from this artifact. Inverse of revisionOf.
     multivalued: true
     inverse: core_revisionOf
 
@@ -298,14 +395,18 @@ slots:
     slot_uri: core:releaseOf
     alias: releaseOf
     title: release of
+    description: >-
+      A release artifact produced by an activity.
     required: true
-    multivalued: false 
+    multivalued: false
 
   core_releases:
     is_a: core_hasOutput
     slot_uri: core:releases
     alias: releases
     title: releases
+    description: >-
+      The release artifacts produced by this activity. Inverse of releaseOf.
     required: false
     multivalued: true
     inverse: core_releaseOf

@@ -25,7 +25,7 @@ classes:
   ### Mixins
 
   pro_Bom:
-    is_a: Meta
+    is_a: core_Meta
     in_subset: procurement
     abstract: true
     mixin: true
@@ -47,7 +47,7 @@ classes:
   ### Entities
 
   pro_BomWIP:
-    is_a: Activity
+    is_a: core_Activity
     in_subset: procurement
     class_uri: pro:BomWIP
     abstract: true
@@ -100,7 +100,7 @@ classes:
       platformAPI: BomWip
 
   pro_BomRelease:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: procurement
     class_uri: pro:BomRelease
     title: BOM Release
@@ -118,7 +118,7 @@ classes:
   ### Resources
 
   pro_BomItem:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: procurement
     class_uri: pro:BomItem
     title: BOM Item
@@ -173,7 +173,7 @@ classes:
         description: Issues associated with this BOM item.
 
   pro_BomItemElement:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: procurement
     class_uri: pro:BomItemElement
     abstract: true
@@ -238,7 +238,7 @@ classes:
       platformAPI: BomItemSubstitute
 
   pro_BomIssue:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: procurement
     class_uri: pro:BomIssue
     title: BOM Issue

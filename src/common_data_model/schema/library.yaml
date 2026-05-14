@@ -23,7 +23,7 @@ subsets:
 classes:
 
   lib_Component:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:Component
     title: Component
@@ -55,7 +55,7 @@ classes:
           modeled_as: Vault Item - Revision
 
   lib_ComponentRevision:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:ComponentRevision
     title: Component Revision
@@ -134,7 +134,7 @@ classes:
       - lib_consists_of_parts
 
   lib_ComponentTemplate:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:ComponentTemplate
     title: Component Template
@@ -155,7 +155,7 @@ classes:
         range: lib_ComponentTemplateRevision
 
   lib_ComponentTemplateRevision:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:ComponentTemplateRevision
     title: Component Template Revision
@@ -167,7 +167,7 @@ classes:
       platformAPI: DesComponentTemplateRevision
 
   lib_ComponentParameter:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: library
     class_uri: lib:ComponentParameter
     title: Component Parameter
@@ -201,7 +201,7 @@ classes:
         required: false
 
   lib_Symbol:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:Symbol
     title: Symbol
@@ -221,7 +221,7 @@ classes:
         range: lib_SymbolRevision
 
   lib_SymbolRevision:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:SymbolRevision
     title: Symbol Revision
@@ -233,7 +233,7 @@ classes:
       platformAPI: DesSymbol
 
   lib_Footprint:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:Footprint
     title: Footprint
@@ -253,7 +253,7 @@ classes:
         range: lib_FootprintRevision
 
   lib_FootprintRevision:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:FootprintRevision
     title: Footprint Revision
@@ -265,7 +265,7 @@ classes:
       platformAPI: DesFootprint
 
   lib_Part:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:Part
     title: Part
@@ -277,7 +277,7 @@ classes:
       platformAPI: DesPart
 
   lib_Datasheet:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:Datasheet
     title: Datasheet
@@ -293,7 +293,7 @@ classes:
       platformAPI: DesDatasheet
 
   lib_PartRequest:
-    is_a: Activity
+    is_a: core_Activity
     in_subset: library
     class_uri: lib:PartRequest
     title: Part Request
@@ -309,7 +309,7 @@ classes:
       grid: grid:workspace:{workspace-id}:library:part-request/{id}
 
   lib_ReuseBlock:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:ReuseBlock
     title: Reuse Block
@@ -327,7 +327,7 @@ classes:
         range: lib_ReuseBlockRevision
 
   lib_ReuseBlockRevision:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:ReuseBlockRevision
     title: Reuse Block Revision
@@ -360,7 +360,7 @@ classes:
         required: false
 
   lib_ManagedSheet:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:ManagedSheet
     title: Managed Sheet
@@ -377,7 +377,7 @@ classes:
         range: lib_ManagedSheetRevision
 
   lib_ManagedSheetRevision:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:ManagedSheetRevision
     title: Managed Sheet Revision
@@ -402,7 +402,7 @@ classes:
           modeled_as: Vault Revision - Revision
 
   lib_SchSnippet:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:SchSnippet
     title: SCH Snippet
@@ -414,7 +414,7 @@ classes:
         range: lib_SchSnippetRevision
 
   lib_SchSnippetRevision:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:SchSnippetRevision
     title: SCH Snippet Revision
@@ -423,7 +423,7 @@ classes:
       - plt_HasLifecycle
 
   lib_PcbSnippet:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:PcbSnippet
     title: PCB Snippet
@@ -435,7 +435,7 @@ classes:
         range: lib_PcbSnippetRevision
 
   lib_PcbSnippetRevision:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: library
     class_uri: lib:PcbSnippetRevision
     title: PCB Snippet Revision
@@ -444,7 +444,7 @@ classes:
       - plt_HasLifecycle
 
   lib_PartChoiceList:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: library
     class_uri: lib:PartChoiceList
     title: Part Choice List
@@ -460,7 +460,7 @@ classes:
         required: false
 
   lib_PartChoice:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: library
     class_uri: lib:PartChoice
     title: Part Choice
@@ -495,7 +495,7 @@ slots:
     alias: usesParts
     title: parts
     description: Parts used in this Activity
-    domain: Activity
+    domain: core_Activity
     range: lib_Part
     required: false
     multivalued: true
@@ -506,7 +506,7 @@ slots:
     alias: consistsOfParts
     title: parts
     description: Parts used in this Artifact
-    domain: Artifact
+    domain: core_Artifact
     range: lib_Part
     required: false
     multivalued: true
@@ -517,7 +517,7 @@ slots:
     alias: usesComponents
     title: components
     description: Components used in this Activity
-    domain: Activity
+    domain: core_Activity
     range: lib_ComponentRevision
     required: false
     multivalued: true
@@ -528,7 +528,7 @@ slots:
     alias: consistsOfComponents
     title: components
     description: Components used in this Artifact
-    domain: Artifact
+    domain: core_Artifact
     range: lib_ComponentRevision
     required: false
     multivalued: true

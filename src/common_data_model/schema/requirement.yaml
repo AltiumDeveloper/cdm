@@ -21,7 +21,7 @@ subsets:
 
 classes:
   req_Requirement:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: requirements
     class_uri: req:Requirement
     title: Requirement
@@ -143,7 +143,7 @@ classes:
         alias: verifiedByActivities
         title: verified by activities
         description: Verification activities that produce evidence for this requirement.
-        range: Activity
+        range: core_Activity
         multivalued: true
         required: false
       req_Requirement_tracedFromSources:
@@ -156,7 +156,7 @@ classes:
         required: false
 
   req_RequirementRevision:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: requirements
     class_uri: req:RequirementRevision
     title: Requirement Revision
@@ -198,7 +198,7 @@ classes:
         required: false
 
   req_RequirementSpecification:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: requirements
     class_uri: req:RequirementSpecification
     title: Requirement Specification
@@ -264,7 +264,7 @@ classes:
         required: false
 
   req_RequirementBaseline:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: requirements
     class_uri: req:RequirementBaseline
     title: Requirement Baseline
@@ -319,7 +319,7 @@ classes:
         required: false
 
   req_RequirementChangeRequest:
-    is_a: Activity
+    is_a: core_Activity
     in_subset: requirements
     class_uri: req:RequirementChangeRequest
     title: Requirement Change Request
@@ -378,7 +378,7 @@ classes:
         required: false
 
   req_Project:
-    is_a: Activity
+    is_a: core_Activity
     in_subset: requirements
     class_uri: req:Project
     title: Requirements Project
@@ -463,7 +463,7 @@ classes:
         required: false
 
   req_VerificationCase:
-    is_a: Activity
+    is_a: core_Activity
     in_subset: requirements
     class_uri: req:VerificationCase
     title: Verification Case
@@ -539,7 +539,7 @@ classes:
         required: false
 
   req_Artifact:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: requirements
     class_uri: req:Artifact
     title: Requirement Artifact

@@ -128,7 +128,7 @@ enums:
 
 classes:
   dm_HasAddressRange:
-    is_a: Meta
+    is_a: core_Meta
     abstract: true
     mixin: true
     class_uri: dm:HasAddressRange
@@ -148,7 +148,7 @@ classes:
         range: integer
 
   dm_configured_device_model:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:ConfiguredDeviceModel
     title: ConfiguredDeviceModel
@@ -165,7 +165,7 @@ classes:
       - dm_ports
 
   dm_fullstack_device_model:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: deviceModel
     class_uri: dm:FullStackDeviceModel
     title: FullStackDeviceModel
@@ -199,7 +199,7 @@ classes:
 
 
   dm_processor:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:Processor
     title: Processor
@@ -234,7 +234,7 @@ classes:
         required: true
 
   dm_address_map:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:AddressMap
     title: AddressMap
@@ -253,7 +253,7 @@ classes:
         inlined_as_list: true
 
   dm_address_segment:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:AddressSegment
     title: AddressSegment
@@ -291,7 +291,7 @@ classes:
         inlined: false
 
   dm_address_block:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:AddressBlock
     title: AddressBlock
@@ -331,7 +331,7 @@ classes:
         inlined: false
 
   dm_memory:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:Memory
     title: Memory
@@ -353,7 +353,7 @@ classes:
         range: integer
 
   dm_register:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:Register
     title: Register
@@ -390,7 +390,7 @@ classes:
         inlined_as_list: true
 
   dm_register_field:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:RegisterField
     title: RegisterField
@@ -425,7 +425,7 @@ classes:
         inlined_as_list: true
 
   dm_field_enum:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:FieldEnum
     title: FieldEnum
@@ -445,7 +445,7 @@ classes:
         range: string
 
   dm_peripheral:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:Peripheral
     title: Peripheral
@@ -470,7 +470,7 @@ classes:
         inlined_as_list: true
 
   dm_peripheral_instance:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PeripheralInstance
     title: PeripheralInstance
@@ -514,7 +514,7 @@ classes:
         range: dm_PeripheralVirtualization
 
   dm_peripheral_mode:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PeripheralMode
     title: PeripheralMode
@@ -537,7 +537,7 @@ classes:
         inlined_as_list: true
 
   dm_peripheral_configuration:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PeripheralConfiguration
     title: PeripheralConfiguration
@@ -573,7 +573,7 @@ classes:
         inlined_as_list: true
 
   dm_peripheral_pin_config:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PeripheralPinConfig
     title: PeripheralPinConfig
@@ -621,7 +621,7 @@ classes:
         range: string
 
   dm_peripheral_pin_dependency_config:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PeripheralPinDependencyConfig
     title: PeripheralPinDependencyConfig
@@ -641,7 +641,7 @@ classes:
         range: string
 
   dm_peripheral_parameter:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PeripheralParameter
     title: PeripheralParameter
@@ -664,7 +664,7 @@ classes:
         required: true
 
   dm_port:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:Port
     title: Port
@@ -716,7 +716,7 @@ classes:
         inlined_as_list: true
 
   dm_pin:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:Pin
     title: Pin
@@ -732,7 +732,7 @@ classes:
         range: string
 
   dm_port_function:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PortFunction
     title: PortFunction
@@ -753,7 +753,7 @@ classes:
         inlined: false
 
   dm_port_configuration:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PortConfiguration
     title: PortConfiguration
@@ -776,7 +776,7 @@ classes:
         inlined_as_list: true
 
   dm_port_configuration_enum_value:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PortConfigurationEnumValue
     title: PortConfigurationEnumValue
@@ -799,7 +799,7 @@ classes:
         inlined_as_list: true
 
   dm_port_configuration_dependency:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PortConfigurationDependency
     title: PortConfigurationDependency
@@ -838,7 +838,7 @@ classes:
         range: string
 
   dm_port_connection:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PortConnection
     title: PortConnection
