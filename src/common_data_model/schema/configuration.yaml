@@ -21,7 +21,7 @@ subsets:
 classes:
 
   con_EnvironmentConfiguration:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: configuration
     class_uri: con:EnvironmentConfiguration
     title: Environment Configuration
@@ -44,7 +44,7 @@ classes:
           modeled_as: Vault Item - Revision
 
   con_SchematicTemplate:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: configuration
     class_uri: con:SchematicTemplate
     title: Schematic Template
@@ -61,7 +61,7 @@ classes:
         range: con_SchematicTemplateRevision
 
   con_SchematicTemplateRevision:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: configuration
     class_uri: con:SchematicTemplateRevision
     title: Schematic Template Revision

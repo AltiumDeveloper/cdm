@@ -21,7 +21,7 @@ subsets:
 classes:
 
   col_Task:
-    is_a: Activity
+    is_a: core_Activity
     in_subset: collaboration 
     class_uri: col:Task
     title: Task
@@ -37,7 +37,7 @@ classes:
       platformAPI: DesTask
 
   col_CommentThread:
-    is_a: Activity
+    is_a: core_Activity
     in_subset: collaboration
     class_uri: col:CommentThread
     title: Comment Thread
@@ -62,7 +62,7 @@ classes:
         multivalued: true
 
   col_Comment:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: collaboration
     class_uri: col:Comment
     title: Comment

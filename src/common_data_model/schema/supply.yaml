@@ -23,7 +23,7 @@ subsets:
 classes:
 
   sup_Part:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: supply 
     class_uri: sup:Part
     title: Part
@@ -64,7 +64,7 @@ classes:
         required: false
 
   sup_Offer:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: supply
     class_uri: sup:Offer
     title: Offer
@@ -80,7 +80,7 @@ classes:
       platformAPI: SupOffer
 
   sup_Company:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: supply
     class_uri: sup:Company
     title: Company
@@ -95,7 +95,7 @@ classes:
       grid: grid:supply::platform:company/{id}
 
   sup_PartFamily:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: supply
     class_uri: sup:PartFamily
     title: Part Family
@@ -123,7 +123,7 @@ classes:
       platformAPI: SupPartFamily
 
   sup_PartGroup:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: supply
     class_uri: sup:PartGroup
     title: Part Group
@@ -151,7 +151,7 @@ classes:
         required: false
 
   sup_ReferenceDesign:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: supply
     class_uri: sup:ReferenceDesign
     title: Reference Design
@@ -161,7 +161,7 @@ classes:
       platformAPI: SupReferenceDesign
 
   sup_SolutionTemplate:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: supply
     class_uri: sup:SolutionTemplate
     title: Solution Template
@@ -185,7 +185,7 @@ classes:
         multivalued: true
 
   sup_SoftwareProject:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: supply
     class_uri: sup:SoftwareProject
     title: Software Project
@@ -198,7 +198,7 @@ classes:
       platformAPI: SupSoftwareProject
 
   sup_EvalKit:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: supply
     class_uri: sup:EvalKit
     title: Evaluation Kit
@@ -216,7 +216,7 @@ slots:
     alias: evalKits
     title: evalKits
     description: Evaluation Kits included in this Artifact
-    domain: Artifact
+    domain: core_Artifact
     range: sup_EvalKit
     required: false
     multivalued: true

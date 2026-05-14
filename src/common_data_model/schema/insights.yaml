@@ -20,7 +20,7 @@ subsets:
 classes:
 
   ins_Insight:
-    is_a: Activity
+    is_a: core_Activity
     in_subset: insights
     abstract: true
     class_uri: ins:Insight

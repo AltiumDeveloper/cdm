@@ -21,7 +21,7 @@ subsets:
 classes:
 
   plt_Organization:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: platform
     class_uri: plt:Organization
     title: Organization
@@ -32,7 +32,7 @@ classes:
       platformAPI: GloOrganization
 
   plt_User:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: platform
     class_uri: plt:User
     title: User
@@ -43,7 +43,7 @@ classes:
       platformAPI: GloUser
 
   plt_UserGroup:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: platform
     class_uri: plt:UserGroup
     title: User Group
@@ -54,7 +54,7 @@ classes:
       platformAPI: GloUserGroup
 
   plt_Application:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: platform
     class_uri: plt:Application
     title: Application
@@ -65,7 +65,7 @@ classes:
       platformAPI: GloApp
 
   plt_EventSubscription:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: platform
     class_uri: plt:EventSubscription
     title: Subscription
@@ -76,7 +76,7 @@ classes:
       platformAPI: GloEvtSubscription
 
   plt_Workspace:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: platform
     class_uri: plt:Workspace
     title: Workspace
@@ -101,7 +101,7 @@ classes:
         required: false
 
   plt_WorkspaceUser:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: platform
     class_uri: plt:WorkspaceUser
     title: Workspace User
@@ -112,7 +112,7 @@ classes:
       platformAPI: DesWorkspaceUser
 
   plt_WorkspaceGroup:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: platform
     class_uri: plt:WorkspaceGroup
     title: Workspace Group
@@ -128,7 +128,7 @@ classes:
       platformAPI: DesWorkspaceGroup
 
   plt_Solution:
-    is_a: Activity
+    is_a: core_Activity
     in_subset: platform
     class_uri: plt:Solution
     title: Solution
@@ -153,7 +153,7 @@ classes:
         required: false
 
   plt_SolutionRelease:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: platform
     class_uri: plt:SolutionRelease
     title: Solution Release
@@ -163,7 +163,7 @@ classes:
       grid: grid:workspace:{workspace-id}:platform:solution-release/{id}
 
   plt_LifecycleDefinition:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: platform
     class_uri: plt:LifecycleDefinition
     title: Lifecycle Definition
@@ -191,7 +191,7 @@ classes:
         required: false
 
   plt_LifecycleStage:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: platform
     class_uri: plt:LifecycleStage
     title: Lifecycle Stage
@@ -222,7 +222,7 @@ classes:
         required: true
 
   plt_LifecycleState:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: platform
     class_uri: plt:LifecycleState
     title: Lifecycle State
@@ -246,7 +246,7 @@ classes:
       # id, description, isAllowedInDesign, isInitialState
 
   plt_NamingScheme:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: platform
     class_uri: plt:NamingScheme
     title: Revision Naming Scheme
@@ -264,7 +264,7 @@ classes:
   ### Mixins
 
   plt_SolutionItem:
-    is_a: Meta
+    is_a: core_Meta
     class_uri: plt:SolutionItem
     in_subset: platform
     abstract: true
@@ -284,7 +284,7 @@ classes:
         required: false
 
   plt_HasLifecycle:
-    is_a: Meta
+    is_a: core_Meta
     class_uri: plt:HasLifecycle
     in_subset: platform
     abstract: true

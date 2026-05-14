@@ -35,7 +35,7 @@ enums:
 classes:
 
   ota_Device:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: ota
     class_uri: ota:Device
     title: Device
@@ -97,7 +97,7 @@ classes:
         required: false
 
   ota_Fleet:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: ota
     class_uri: ota:Fleet
     title: Fleet
@@ -119,7 +119,7 @@ classes:
         required: false
 
   ota_Package:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: ota
     class_uri: ota:Package
     title: Package

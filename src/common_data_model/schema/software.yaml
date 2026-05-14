@@ -21,7 +21,7 @@ subsets:
 classes:
 
   sft_SoftwareProject:
-    is_a: Activity
+    is_a: core_Activity
     in_subset: software
     class_uri: sft:SoftwareProject
     title: Software Project
@@ -66,7 +66,7 @@ classes:
         required: false
 
   sft_SoftwareRelease:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: software
     class_uri: sft:SoftwareRelease
     title: Software Release
@@ -118,7 +118,7 @@ classes:
         required: false
 
   sft_DeviceConfiguration:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: software
     class_uri: sft:DeviceConfiguration
     title: Device Configuration
@@ -133,7 +133,7 @@ classes:
         range: sft_DeviceConfigurationRevision
 
   sft_DeviceConfigurationRevision:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: software
     class_uri: sft:DeviceConfigurationRevision
     title: Device Configuration Revision
@@ -153,7 +153,7 @@ classes:
         inlined: true
 
   sft_PinAssignmentModel:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: software
     class_uri: sft:PinAssignmentModel
     title: Device pin assgnment
@@ -171,7 +171,7 @@ classes:
         inlined_as_list: true
 
   sft_PinAssignment:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: software
     class_uri: sft:PinAssignment
     title: Device pin assgnment
@@ -211,7 +211,7 @@ classes:
         required: true
 
   sft_AIModel:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: software
     class_uri: sft:AIModel
     title: AI Model
@@ -230,7 +230,7 @@ classes:
       - plt_SolutionItem
 
   sft_BuildArtifact:
-    is_a: Artifact
+    is_a: core_Artifact
     in_subset: software
     class_uri: sft:BuildArtifact
     title: Build Artifact
