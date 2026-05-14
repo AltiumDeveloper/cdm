@@ -243,15 +243,15 @@
 
 
 
-      lib_ComponentRevision --&gt; "*" lib_part : parts
-      click lib_part href "../../classes/lib_part/"
+      lib_ComponentRevision --&gt; "*" lib_Part : parts
+      click lib_Part href "../../classes/lib_Part/"
 
 
-  class lib_part["Part"]
+  class lib_Part["Part"]
 
 
 
-      style lib_part fill:#ffe599    
+      style lib_Part fill:#ffe599    
 
 
 
@@ -263,15 +263,15 @@
 
 
 
-      lib_ComponentRevision --&gt; "0..1" lib_component_template_revision : template
-      click lib_component_template_revision href "../../classes/lib_component_template_revision/"
+      lib_ComponentRevision --&gt; "*" lib_ComponentParameter : parameters
+      click lib_ComponentParameter href "../../classes/lib_ComponentParameter/"
 
 
-  class lib_component_template_revision["Component Template Revision"]
+  class lib_ComponentParameter["Component Parameter"]
 
 
 
-      style lib_component_template_revision fill:#ffe599    
+      style lib_ComponentParameter fill:#ffe599    
 
 
 
@@ -283,15 +283,15 @@
 
 
 
-      lib_ComponentRevision --&gt; "*" lib_symbol_revision : symbols
-      click lib_symbol_revision href "../../classes/lib_symbol_revision/"
+      lib_ComponentRevision --&gt; "1" lib_PartChoiceList : partChoiceList
+      click lib_PartChoiceList href "../../classes/lib_PartChoiceList/"
 
 
-  class lib_symbol_revision["Symbol Revision"]
+  class lib_PartChoiceList["Part Choice List"]
 
 
 
-      style lib_symbol_revision fill:#ffe599    
+      style lib_PartChoiceList fill:#ffe599    
 
 
 
@@ -303,15 +303,15 @@
 
 
 
-      lib_ComponentRevision --&gt; "*" lib_footprint_revision : footprints
-      click lib_footprint_revision href "../../classes/lib_footprint_revision/"
+      lib_ComponentRevision --&gt; "0..1" lib_ComponentTemplateRevision : template
+      click lib_ComponentTemplateRevision href "../../classes/lib_ComponentTemplateRevision/"
 
 
-  class lib_footprint_revision["Footprint Revision"]
+  class lib_ComponentTemplateRevision["Component Template Revision"]
 
 
 
-      style lib_footprint_revision fill:#ffe599    
+      style lib_ComponentTemplateRevision fill:#ffe599    
 
 
 
@@ -323,15 +323,15 @@
 
 
 
-      lib_ComponentRevision --&gt; "*" des_project : used_by_project_variant
-      click des_project href "../../classes/des_project/"
+      lib_ComponentRevision --&gt; "*" lib_SymbolRevision : symbols
+      click lib_SymbolRevision href "../../classes/lib_SymbolRevision/"
 
 
-  class des_project["Hardware Project"]
+  class lib_SymbolRevision["Symbol Revision"]
 
 
 
-      style des_project fill:#93c47d    
+      style lib_SymbolRevision fill:#ffe599    
 
 
 
@@ -343,15 +343,15 @@
 
 
 
-      lib_ComponentRevision --&gt; "*" lib_component_parameter : parameters
-      click lib_component_parameter href "../../classes/lib_component_parameter/"
+      lib_ComponentRevision --&gt; "*" lib_FootprintRevision : footprints
+      click lib_FootprintRevision href "../../classes/lib_FootprintRevision/"
 
 
-  class lib_component_parameter["Component Parameter"]
+  class lib_FootprintRevision["Footprint Revision"]
 
 
 
-      style lib_component_parameter fill:#ffe599    
+      style lib_FootprintRevision fill:#ffe599    
 
 
 
@@ -363,15 +363,15 @@
 
 
 
-      lib_ComponentRevision --&gt; "1" lib_part_choice_list : partChoiceList
-      click lib_part_choice_list href "../../classes/lib_part_choice_list/"
+      lib_ComponentRevision --&gt; "*" des_Project : used by project variant
+      click des_Project href "../../classes/des_Project/"
 
 
-  class lib_part_choice_list["Part Choice List"]
+  class des_Project["Hardware Project"]
 
 
 
-      style lib_part_choice_list fill:#ffe599    
+      style des_Project fill:#93c47d    
 
 
 
@@ -383,7 +383,7 @@
 
 
 
-      lib_ComponentRevision --&gt; "1" plt_LifecycleState : lifecycleState
+      lib_ComponentRevision --&gt; "1" plt_LifecycleState : lifecycle state
       click plt_LifecycleState href "../../classes/plt_LifecycleState/"
 
 
@@ -409,60 +409,60 @@
 
 
 
-  class des_project["Hardware Project"]
+  class des_Project["Hardware Project"]
 
 
 
-      style des_project fill:#93c47d    
+      style des_Project fill:#93c47d    
 
 
-          des_project --&gt; "*" lib_ComponentRevision: components 
-          click des_project href "../../classes/des_project/"
-
-
-
-
-
-
-  class des_multiboard_project["Multiboard Project"]
-
-
-
-      style des_multiboard_project fill:#93c47d    
-
-
-          des_multiboard_project --&gt; "*" lib_ComponentRevision: components 
-          click des_multiboard_project href "../../classes/des_multiboard_project/"
+          des_Project --&gt; "*" lib_ComponentRevision: components 
+          click des_Project href "../../classes/des_Project/"
 
 
 
 
 
 
-  class des_harness_project["Harness Project"]
+  class des_MultiboardProject["Multiboard Project"]
 
 
 
-      style des_harness_project fill:#93c47d    
+      style des_MultiboardProject fill:#93c47d    
 
 
-          des_harness_project --&gt; "*" lib_ComponentRevision: components 
-          click des_harness_project href "../../classes/des_harness_project/"
-
-
-
+          des_MultiboardProject --&gt; "*" lib_ComponentRevision: components 
+          click des_MultiboardProject href "../../classes/des_MultiboardProject/"
 
 
 
-  class des_project_release["Hardware Project Release"]
 
 
 
-      style des_project_release fill:#93c47d    
+  class des_HarnessProject["Harness Project"]
 
 
-          des_project_release --&gt; "*" lib_ComponentRevision: components 
-          click des_project_release href "../../classes/des_project_release/"
+
+      style des_HarnessProject fill:#93c47d    
+
+
+          des_HarnessProject --&gt; "*" lib_ComponentRevision: components 
+          click des_HarnessProject href "../../classes/des_HarnessProject/"
+
+
+
+
+
+
+  class des_ProjectRelease["Hardware Project Release"]
+
+
+
+      style des_ProjectRelease fill:#93c47d    
+
+
+          des_ProjectRelease --&gt; "*" lib_ComponentRevision: components 
+          click des_ProjectRelease href "../../classes/des_ProjectRelease/"
 
 
 
@@ -484,45 +484,45 @@
 
 
 
-  class lib_component["Component"]
+  class lib_Component["Component"]
 
 
 
-      style lib_component fill:#ffe599    
+      style lib_Component fill:#ffe599    
 
 
-          lib_component --&gt; "*" lib_ComponentRevision: revisions 
-          click lib_component href "../../classes/lib_component/"
-
-
-
-
-
-
-  class lib_reuse_block_revision["Reuse Block Revision"]
-
-
-
-      style lib_reuse_block_revision fill:#ffe599    
-
-
-          lib_reuse_block_revision --&gt; "*" lib_ComponentRevision: components 
-          click lib_reuse_block_revision href "../../classes/lib_reuse_block_revision/"
+          lib_Component --&gt; "*" lib_ComponentRevision: revisions 
+          click lib_Component href "../../classes/lib_Component/"
 
 
 
 
 
 
-  class lib_managed_sheet_revision["Managed Sheet Revision"]
+  class lib_ReuseBlockRevision["Reuse Block Revision"]
 
 
 
-      style lib_managed_sheet_revision fill:#ffe599    
+      style lib_ReuseBlockRevision fill:#ffe599    
 
 
-          lib_managed_sheet_revision --&gt; "*" lib_ComponentRevision: components 
-          click lib_managed_sheet_revision href "../../classes/lib_managed_sheet_revision/"
+          lib_ReuseBlockRevision --&gt; "*" lib_ComponentRevision: components 
+          click lib_ReuseBlockRevision href "../../classes/lib_ReuseBlockRevision/"
+
+
+
+
+
+
+  class lib_ManagedSheetRevision["Managed Sheet Revision"]
+
+
+
+      style lib_ManagedSheetRevision fill:#ffe599    
+
+
+          lib_ManagedSheetRevision --&gt; "*" lib_ComponentRevision: components 
+          click lib_ManagedSheetRevision href "../../classes/lib_ManagedSheetRevision/"
 
 
 
@@ -612,7 +612,7 @@
 <ul>
 <li><a href="../Entity/">Entity</a><ul>
 <li><a href="../Artifact/">Artifact</a><ul>
-<li><strong>lib_ComponentRevision</strong> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
+<li><strong>lib_ComponentRevision</strong> [ <a href="../plt_HasLifecycle/">plt_HasLifecycle</a>]</li>
 </ul>
 </li>
 </ul>
@@ -631,11 +631,11 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../slots/plt_LifecycleState">lifecycleState</a></td>
+<td><a href="../../slots/plt_HasLifecycle_lifecycleState">lifecycle state</a></td>
 <td><code>1</code></td>
 <td><a href="../plt_LifecycleState/">Lifecycle State</a></td>
-<td>None</td>
-<td><a href="../HasLifecycle/">HasLifecycle</a></td>
+<td>The current lifecycle state assigned to this entity.</td>
+<td><a href="../plt_HasLifecycle/">plt_HasLifecycle</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/core_id">id</a></td>
@@ -647,50 +647,50 @@
 <tr>
 <td><a href="../../slots/lib_consists_of_parts">parts</a></td>
 <td><code>*</code></td>
-<td><a href="../lib_part/">Part</a></td>
+<td><a href="../lib_Part/">Part</a></td>
 <td>Parts used in this Artifact</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/lib_component_revision_template">template</a></td>
-<td><code>0..1</code></td>
-<td><a href="../lib_component_template_revision/">Component Template Revision</a></td>
-<td>None</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/lib_component_revision_symbols">symbols</a></td>
+<td><a href="../../slots/lib_ComponentRevision_parameters">parameters</a></td>
 <td><code>*</code></td>
-<td><a href="../lib_symbol_revision/">Symbol Revision</a></td>
-<td>None</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/lib_component_revision_footprints">footprints</a></td>
-<td><code>*</code></td>
-<td><a href="../lib_footprint_revision/">Footprint Revision</a></td>
-<td>None</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/lib_component_revision_used_by_project_variant">used_by_project_variant</a></td>
-<td><code>*</code></td>
-<td><a href="../des_project/">Hardware Project</a></td>
-<td>There is a relation per each project/variant where this Component Revision is used.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/ComponentRevision_parameters">parameters</a></td>
-<td><code>*</code></td>
-<td><a href="../lib_component_parameter/">Component Parameter</a></td>
+<td><a href="../lib_ComponentParameter/">Component Parameter</a></td>
 <td>Component parameters</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/ComponentRevision_partChoiceList">partChoiceList</a></td>
+<td><a href="../../slots/lib_ComponentRevision_partChoiceList">partChoiceList</a></td>
 <td><code>1</code></td>
-<td><a href="../lib_part_choice_list/">Part Choice List</a></td>
+<td><a href="../lib_PartChoiceList/">Part Choice List</a></td>
 <td>List of part choices</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/lib_ComponentRevision_template">template</a></td>
+<td><code>0..1</code></td>
+<td><a href="../lib_ComponentTemplateRevision/">Component Template Revision</a></td>
+<td>TBD</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/lib_ComponentRevision_symbols">symbols</a></td>
+<td><code>*</code></td>
+<td><a href="../lib_SymbolRevision/">Symbol Revision</a></td>
+<td>TBD</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/lib_ComponentRevision_footprints">footprints</a></td>
+<td><code>*</code></td>
+<td><a href="../lib_FootprintRevision/">Footprint Revision</a></td>
+<td>TBD</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/lib_ComponentRevision_usedByProjectVariant">used by project variant</a></td>
+<td><code>*</code></td>
+<td><a href="../des_Project/">Hardware Project</a></td>
+<td>There is a relation per each project/variant where this Component Revision is used.</td>
 <td>direct</td>
 </tr>
 </tbody>

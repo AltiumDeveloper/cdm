@@ -227,15 +227,15 @@
 
 
 
-  class plt_lifecycle_stage["Lifecycle Stage"]
+  class plt_LifecycleStage["Lifecycle Stage"]
 
 
 
-      style plt_lifecycle_stage fill:#cccccc    
+      style plt_LifecycleStage fill:#cccccc    
 
 
-        Resource &lt;|-- plt_lifecycle_stage
-        click plt_lifecycle_stage href "../../classes/plt_lifecycle_stage/"
+        Resource &lt;|-- plt_LifecycleStage
+        click plt_LifecycleStage href "../../classes/plt_LifecycleStage/"
 
 
   class plt_LifecycleState["Lifecycle State"]
@@ -260,26 +260,26 @@
         click col_Comment href "../../classes/col_Comment/"
 
 
-  class des_project_parameter["Project Parameter"]
+  class des_ProjectParameter["Project Parameter"]
 
 
 
-      style des_project_parameter fill:#93c47d    
+      style des_ProjectParameter fill:#93c47d    
 
 
-        Resource &lt;|-- des_project_parameter
-        click des_project_parameter href "../../classes/des_project_parameter/"
+        Resource &lt;|-- des_ProjectParameter
+        click des_ProjectParameter href "../../classes/des_ProjectParameter/"
 
 
-  class des_project_variant["Hardware Project Variant"]
+  class des_ProjectVariant["Hardware Project Variant"]
 
 
 
-      style des_project_variant fill:#93c47d    
+      style des_ProjectVariant fill:#93c47d    
 
 
-        Resource &lt;|-- des_project_variant
-        click des_project_variant href "../../classes/des_project_variant/"
+        Resource &lt;|-- des_ProjectVariant
+        click des_ProjectVariant href "../../classes/des_ProjectVariant/"
 
 
   class dm_configured_device_model["ConfiguredDeviceModel"]
@@ -535,37 +535,37 @@
         click dm_port_connection href "../../classes/dm_port_connection/"
 
 
-  class lib_component_parameter["Component Parameter"]
+  class lib_ComponentParameter["Component Parameter"]
 
 
 
-      style lib_component_parameter fill:#ffe599    
+      style lib_ComponentParameter fill:#ffe599    
 
 
-        Resource &lt;|-- lib_component_parameter
-        click lib_component_parameter href "../../classes/lib_component_parameter/"
+        Resource &lt;|-- lib_ComponentParameter
+        click lib_ComponentParameter href "../../classes/lib_ComponentParameter/"
 
 
-  class lib_part_choice_list["Part Choice List"]
-
-
-
-      style lib_part_choice_list fill:#ffe599    
-
-
-        Resource &lt;|-- lib_part_choice_list
-        click lib_part_choice_list href "../../classes/lib_part_choice_list/"
-
-
-  class lib_part_choice["Part Choice"]
+  class lib_PartChoiceList["Part Choice List"]
 
 
 
-      style lib_part_choice fill:#ffe599    
+      style lib_PartChoiceList fill:#ffe599    
 
 
-        Resource &lt;|-- lib_part_choice
-        click lib_part_choice href "../../classes/lib_part_choice/"
+        Resource &lt;|-- lib_PartChoiceList
+        click lib_PartChoiceList href "../../classes/lib_PartChoiceList/"
+
+
+  class lib_PartChoice["Part Choice"]
+
+
+
+      style lib_PartChoice fill:#ffe599    
+
+
+        Resource &lt;|-- lib_PartChoice
+        click lib_PartChoice href "../../classes/lib_PartChoice/"
 
 
   class pro_BomItem["BOM Item"]
@@ -898,15 +898,15 @@
         click system_SdmHardwareComponent href "../../classes/system_SdmHardwareComponent/"
 
 
-  class req_artifact["Requirement Artifact"]
+  class req_Artifact["Requirement Artifact"]
 
 
 
-      style req_artifact fill:#f6b26b    
+      style req_Artifact fill:#f6b26b    
 
 
-        Resource &lt;|-- req_artifact
-        click req_artifact href "../../classes/req_artifact/"
+        Resource &lt;|-- req_Artifact
+        click req_Artifact href "../../classes/req_Artifact/"
 
 
 
@@ -916,11 +916,11 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>Resource</strong><ul>
-<li><a href="../plt_lifecycle_stage/">plt_lifecycle_stage</a></li>
+<li><a href="../plt_LifecycleStage/">plt_LifecycleStage</a></li>
 <li><a href="../plt_LifecycleState/">plt_LifecycleState</a></li>
 <li><a href="../col_Comment/">col_Comment</a></li>
-<li><a href="../des_project_parameter/">des_project_parameter</a></li>
-<li><a href="../des_project_variant/">des_project_variant</a></li>
+<li><a href="../des_ProjectParameter/">des_ProjectParameter</a></li>
+<li><a href="../des_ProjectVariant/">des_ProjectVariant</a></li>
 <li><a href="../dm_configured_device_model/">dm_configured_device_model</a></li>
 <li><a href="../dm_processor/">dm_processor</a></li>
 <li><a href="../dm_address_map/">dm_address_map</a></li>
@@ -944,9 +944,9 @@
 <li><a href="../dm_port_configuration_enum_value/">dm_port_configuration_enum_value</a></li>
 <li><a href="../dm_port_configuration_dependency/">dm_port_configuration_dependency</a></li>
 <li><a href="../dm_port_connection/">dm_port_connection</a></li>
-<li><a href="../lib_component_parameter/">lib_component_parameter</a></li>
-<li><a href="../lib_part_choice_list/">lib_part_choice_list</a></li>
-<li><a href="../lib_part_choice/">lib_part_choice</a></li>
+<li><a href="../lib_ComponentParameter/">lib_ComponentParameter</a></li>
+<li><a href="../lib_PartChoiceList/">lib_PartChoiceList</a></li>
+<li><a href="../lib_PartChoice/">lib_PartChoice</a></li>
 <li><a href="../pro_BomItem/">pro_BomItem</a></li>
 <li><a href="../pro_BomItemElement/">pro_BomItemElement</a></li>
 <li><a href="../pro_BomIssue/">pro_BomIssue</a></li>
@@ -977,7 +977,7 @@
 <li><a href="../system_SdmSoftwareSpecification/">system_SdmSoftwareSpecification</a></li>
 <li><a href="../system_SdmHardwareModel/">system_SdmHardwareModel</a> [ <a href="../system_SdmMappableEntity/">system_SdmMappableEntity</a> <a href="../system_HasSdmReferenceDesignator/">system_HasSdmReferenceDesignator</a>]</li>
 <li><a href="../system_SdmHardwareComponent/">system_SdmHardwareComponent</a> [ <a href="../system_SdmMappableEntity/">system_SdmMappableEntity</a> <a href="../system_HasSdmReferenceDesignator/">system_HasSdmReferenceDesignator</a>]</li>
-<li><a href="../req_artifact/">req_artifact</a></li>
+<li><a href="../req_Artifact/">req_Artifact</a></li>
 </ul>
 </li>
 </ul>

@@ -221,19 +221,23 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/plt_application/">Application </a></td>
+<td><a href="../../classes/plt_Application/">Application </a></td>
 <td>TBD</td>
 </tr>
 <tr>
-<td><a href="../../classes/plt_group/">User Group </a></td>
-<td>A way to group multiple users together (e.g. for the purposes of SCIM syncrhonization). User may be a member of multiple groups.</td>
+<td><a href="../../classes/plt_EventSubscription/">Subscription </a></td>
+<td>TBD</td>
 </tr>
 <tr>
-<td><a href="../../classes/plt_lifecycle_definition/">Lifecycle Definition </a></td>
+<td><a href="../../classes/plt_HasLifecycle/">Has Lifecycle </a></td>
+<td>Mixin that adds a lifecycle state reference to an entity.</td>
+</tr>
+<tr>
+<td><a href="../../classes/plt_LifecycleDefinition/">Lifecycle Definition </a></td>
 <td>Defines the set of states that an entity can transition through in its lifecycle. This definition clarifies what stage a revision of an entity has reached in its 'life' and what it can be safely used for. Different entities can have different lifecycle definitions assigned to them.</td>
 </tr>
 <tr>
-<td><a href="../../classes/plt_lifecycle_stage/">Lifecycle Stage </a></td>
+<td><a href="../../classes/plt_LifecycleStage/">Lifecycle Stage </a></td>
 <td>TBD</td>
 </tr>
 <tr>
@@ -241,39 +245,43 @@
 <td>TBD</td>
 </tr>
 <tr>
-<td><a href="../../classes/plt_naming_scheme/">Revision Naming Scheme </a></td>
+<td><a href="../../classes/plt_NamingScheme/">Revision Naming Scheme </a></td>
 <td>TBD</td>
 </tr>
 <tr>
-<td><a href="../../classes/plt_organization/">Organization </a></td>
+<td><a href="../../classes/plt_Organization/">Organization </a></td>
 <td>TBD</td>
 </tr>
 <tr>
-<td><a href="../../classes/plt_solution/">Solution </a></td>
+<td><a href="../../classes/plt_Solution/">Solution </a></td>
 <td>TBD</td>
 </tr>
 <tr>
-<td><a href="../../classes/plt_solution_release/">Solution Release </a></td>
+<td><a href="../../classes/plt_SolutionItem/">Solution Item </a></td>
+<td>Mixin that marks an entity as an item belonging to a platform Solution.</td>
+</tr>
+<tr>
+<td><a href="../../classes/plt_SolutionRelease/">Solution Release </a></td>
 <td>Release of the Solution. This is a formal immutable artifact, representing a specific state of the Solution at the time of release.</td>
 </tr>
 <tr>
-<td><a href="../../classes/plt_subscription/">Subscription </a></td>
+<td><a href="../../classes/plt_User/">User </a></td>
 <td>TBD</td>
 </tr>
 <tr>
-<td><a href="../../classes/plt_user/">User </a></td>
-<td>TBD</td>
+<td><a href="../../classes/plt_UserGroup/">User Group </a></td>
+<td>A way to group multiple users together (e.g. for the purposes of SCIM syncrhonization). User may be a member of multiple groups.</td>
 </tr>
 <tr>
-<td><a href="../../classes/plt_workspace/">Workspace </a></td>
+<td><a href="../../classes/plt_Workspace/">Workspace </a></td>
 <td>The top-level entity that plays a role of a closed environment for other entities (members, projects, components, etc.).</td>
 </tr>
 <tr>
-<td><a href="../../classes/plt_workspace_group/">Workspace Group </a></td>
+<td><a href="../../classes/plt_WorkspaceGroup/">Workspace Group </a></td>
 <td>Workspace Group represents a logical collection of users within a workspace,  used to manage access control, permissions, and collaboration roles across projects and data assets.</td>
 </tr>
 <tr>
-<td><a href="../../classes/plt_workspace_user/">Workspace User </a></td>
+<td><a href="../../classes/plt_WorkspaceUser/">Workspace User </a></td>
 <td>TBD</td>
 </tr>
 </tbody>

@@ -273,15 +273,15 @@
 
 
 
-      pro_ConsolidatedBOM --&gt; "*" lib_part : parts
-      click lib_part href "../../classes/lib_part/"
+      pro_ConsolidatedBOM --&gt; "*" lib_Part : parts
+      click lib_Part href "../../classes/lib_Part/"
 
 
-  class lib_part["Part"]
+  class lib_Part["Part"]
 
 
 
-      style lib_part fill:#ffe599    
+      style lib_Part fill:#ffe599    
 
 
 
@@ -313,26 +313,6 @@
 
 
 
-      pro_ConsolidatedBOM --&gt; "*" pro_BomItem : items
-      click pro_BomItem href "../../classes/pro_BomItem/"
-
-
-  class pro_BomItem["BOM Item"]
-
-
-
-      style pro_BomItem fill:#dd7e6b    
-
-
-
-
-
-
-
-
-
-
-
       pro_ConsolidatedBOM --&gt; "*" pro_BomIssue : issues
       click pro_BomIssue href "../../classes/pro_BomIssue/"
 
@@ -342,6 +322,26 @@
 
 
       style pro_BomIssue fill:#dd7e6b    
+
+
+
+
+
+
+
+
+
+
+
+      pro_ConsolidatedBOM --&gt; "*" pro_BomItem : items
+      click pro_BomItem href "../../classes/pro_BomItem/"
+
+
+  class pro_BomItem["BOM Item"]
+
+
+
+      style pro_BomItem fill:#dd7e6b    
 
 
 
@@ -392,7 +392,7 @@
 <tr>
 <td><a href="../../slots/lib_uses_parts">parts</a></td>
 <td><code>*</code></td>
-<td><a href="../lib_part/">Part</a></td>
+<td><a href="../lib_Part/">Part</a></td>
 <td>Parts used in this Activity</td>
 <td><a href="../pro_BomWIP/">pro_BomWIP</a></td>
 </tr>
@@ -404,16 +404,16 @@
 <td><a href="../pro_BomWIP/">pro_BomWIP</a></td>
 </tr>
 <tr>
-<td><a href="../../slots/pro_bom_items">items</a></td>
-<td><code>*</code></td>
-<td><a href="../pro_BomItem/">BOM Item</a></td>
-<td>None</td>
-<td><a href="../pro_Bom/">pro_Bom</a></td>
-</tr>
-<tr>
 <td><a href="../../slots/pro_bom_issues">issues</a></td>
 <td><code>*</code></td>
 <td><a href="../pro_BomIssue/">BOM Issue</a></td>
+<td>TBD</td>
+<td><a href="../pro_Bom/">pro_Bom</a></td>
+</tr>
+<tr>
+<td><a href="../../slots/pro_Bom_items">items</a></td>
+<td><code>*</code></td>
+<td><a href="../pro_BomItem/">BOM Item</a></td>
 <td>TBD</td>
 <td><a href="../pro_Bom/">pro_Bom</a></td>
 </tr>

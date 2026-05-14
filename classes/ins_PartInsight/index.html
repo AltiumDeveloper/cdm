@@ -253,15 +253,15 @@
 
 
 
-      ins_PartInsight --&gt; "1" lib_part : part
-      click lib_part href "../../classes/lib_part/"
+      ins_PartInsight --&gt; "1" lib_Part : part
+      click lib_Part href "../../classes/lib_Part/"
 
 
-  class lib_part["Part"]
+  class lib_Part["Part"]
 
 
 
-      style lib_part fill:#ffe599    
+      style lib_Part fill:#ffe599    
 
 
 
@@ -369,21 +369,21 @@
 <tr>
 <td><a href="../../slots/ins_PartInsight_part">part</a></td>
 <td><code>1</code></td>
-<td><a href="../lib_part/">Part</a></td>
+<td><a href="../lib_Part/">Part</a></td>
 <td>Part associated with this insight</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/ins_PartInsight_informedBy">informed by</a></td>
 <td><code>*</code></td>
-<td><a href="../pro_BomWIP/">BOM WIP</a> or <br/><a href="../des_project/">Hardware Project</a></td>
+<td><a href="../pro_BomWIP/">BOM WIP</a> or <br/><a href="../des_Project/">Hardware Project</a></td>
 <td>Entities associated with this insight</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/ins_PartInsight_occursIn">occurs in</a></td>
 <td><code>*</code></td>
-<td><a href="../pro_BomRelease/">BOM Release</a> or <br/><a href="../des_project_release/">Hardware Project Release</a> or <br/><a href="../lib_ComponentRevision/">Component Revision</a></td>
+<td><a href="../pro_BomRelease/">BOM Release</a> or <br/><a href="../des_ProjectRelease/">Hardware Project Release</a> or <br/><a href="../lib_ComponentRevision/">Component Revision</a></td>
 <td>Entities associated with this insight</td>
 <td>direct</td>
 </tr>

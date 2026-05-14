@@ -270,26 +270,6 @@
 
 
 
-      pro_Bom --&gt; "*" pro_BomItem : items
-      click pro_BomItem href "../../classes/pro_BomItem/"
-
-
-  class pro_BomItem["BOM Item"]
-
-
-
-      style pro_BomItem fill:#dd7e6b    
-
-
-
-
-
-
-
-
-
-
-
       pro_Bom --&gt; "*" pro_BomIssue : issues
       click pro_BomIssue href "../../classes/pro_BomIssue/"
 
@@ -299,6 +279,26 @@
 
 
       style pro_BomIssue fill:#dd7e6b    
+
+
+
+
+
+
+
+
+
+
+
+      pro_Bom --&gt; "*" pro_BomItem : items
+      click pro_BomItem href "../../classes/pro_BomItem/"
+
+
+  class pro_BomItem["BOM Item"]
+
+
+
+      style pro_BomItem fill:#dd7e6b    
 
 
 
@@ -328,16 +328,16 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../slots/pro_bom_items">items</a></td>
-<td><code>*</code></td>
-<td><a href="../pro_BomItem/">BOM Item</a></td>
-<td>None</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../../slots/pro_bom_issues">issues</a></td>
 <td><code>*</code></td>
 <td><a href="../pro_BomIssue/">BOM Issue</a></td>
+<td>TBD</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/pro_Bom_items">items</a></td>
+<td><code>*</code></td>
+<td><a href="../pro_BomItem/">BOM Item</a></td>
 <td>TBD</td>
 <td>direct</td>
 </tr>

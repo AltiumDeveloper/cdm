@@ -195,7 +195,7 @@
 <h1 id="field-parts-lib_uses_parts">Field: parts (lib_uses_parts)</h1>
 <p><em>Parts used in this Activity</em></p>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/library/uses_parts">https://w3id.org/altium/cdm/library/uses_parts</a></p>
-<p>Alias: lib_uses_parts</p>
+<p>Alias: usesParts</p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../core_hasInput/">core_hasInput</a><ul>
@@ -214,18 +214,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/des_multiboard_project/">Multiboard Project </a></td>
-<td>Multiboard Project represents the coordinated design of multiple interconnect...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/des_harness_project/">Harness Project </a></td>
-<td>Harness Project defines the design of a cable and wiring harness as a standal...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/des_project/">Hardware Project </a></td>
-<td>TBD</td>
+<td><a href="../../classes/pro_ManagedBOM/">Managed BOM </a></td>
+<td>Managed BOM represents a version-controlled, workspace-stored bill of materia...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -234,8 +224,13 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/pro_ManagedBOM/">Managed BOM </a></td>
-<td>Managed BOM represents a version-controlled, workspace-stored bill of materia...</td>
+<td><a href="../../classes/des_HarnessProject/">Harness Project </a></td>
+<td>Harness Project defines the design of a cable and wiring harness as a standal...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_Project/">Hardware Project </a></td>
+<td>TBD</td>
 <td>no</td>
 </tr>
 <tr>
@@ -243,12 +238,17 @@
 <td>TBD</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../../classes/des_MultiboardProject/">Multiboard Project </a></td>
+<td>Multiboard Project represents the coordinated design of multiple interconnect...</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../../classes/lib_part/">lib_part</a></p>
+<p>Range: <a href="../../classes/lib_Part/">lib_Part</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -264,11 +264,11 @@
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_hasInput</span>
 <span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib:uses_parts</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib_uses_parts</span>
+<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">usesParts</span>
 <span class="nt">domain_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">des_project</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">des_Project</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pro_BomWIP</span>
-<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib_part</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib_Part</span>
 <span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>

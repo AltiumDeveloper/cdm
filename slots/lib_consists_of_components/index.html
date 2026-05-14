@@ -195,7 +195,7 @@
 <h1 id="field-components-lib_consists_of_components">Field: components (lib_consists_of_components)</h1>
 <p><em>Components used in this Artifact</em></p>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/library/consists_of_components">https://w3id.org/altium/cdm/library/consists_of_components</a></p>
-<p>Alias: lib_consists_of_components</p>
+<p>Alias: consistsOfComponents</p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../core_hasPart/">core_hasPart</a><ul>
@@ -214,13 +214,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/lib_managed_sheet_revision/">Managed Sheet Revision </a></td>
+<td><a href="../../classes/lib_ReuseBlockRevision/">Reuse Block Revision </a></td>
 <td>TBD</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/des_project_release/">Hardware Project Release </a></td>
-<td>Project Release captures an immutable snapshot of a PCB design project at a s...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -229,8 +224,13 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/lib_reuse_block_revision/">Reuse Block Revision </a></td>
+<td><a href="../../classes/lib_ManagedSheetRevision/">Managed Sheet Revision </a></td>
 <td>TBD</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_ProjectRelease/">Hardware Project Release </a></td>
+<td>Project Release captures an immutable snapshot of a PCB design project at a s...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -254,11 +254,11 @@
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_hasPart</span>
 <span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Artifact</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib:consists_of_components</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib_consists_of_components</span>
+<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">consistsOfComponents</span>
 <span class="nt">domain_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">des_project_release</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib_reuse_block_revision</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib_managed_sheet_revision</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">des_ProjectRelease</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib_ReuseBlockRevision</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib_ManagedSheetRevision</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pro_BomRelease</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib_ComponentRevision</span>
 <span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>

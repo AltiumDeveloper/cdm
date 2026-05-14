@@ -252,48 +252,48 @@
 
 
 
-  class plt_lifecycle_stage["Lifecycle Stage"]
+  class plt_LifecycleStage["Lifecycle Stage"]
 
 
 
-      style plt_lifecycle_stage fill:#cccccc    
+      style plt_LifecycleStage fill:#cccccc    
 
 
-          plt_lifecycle_stage --&gt; "1..*" plt_LifecycleState: states 
-          click plt_lifecycle_stage href "../../classes/plt_lifecycle_stage/"
-
-
-
-
-
-
-
-
-
-  class des_project_release["Hardware Project Release"]
-
-
-
-      style des_project_release fill:#93c47d    
-
-
-          des_project_release --&gt; "1" plt_LifecycleState: lifecycleState 
-          click des_project_release href "../../classes/des_project_release/"
+          plt_LifecycleStage --&gt; "1..*" plt_LifecycleState: states 
+          click plt_LifecycleStage href "../../classes/plt_LifecycleStage/"
 
 
 
 
 
 
-  class des_project_template_revision["Project Template Revision"]
 
 
 
-      style des_project_template_revision fill:#93c47d    
+  class des_ProjectRelease["Hardware Project Release"]
 
 
-          des_project_template_revision --&gt; "1" plt_LifecycleState: lifecycleState 
-          click des_project_template_revision href "../../classes/des_project_template_revision/"
+
+      style des_ProjectRelease fill:#93c47d    
+
+
+          des_ProjectRelease --&gt; "1" plt_LifecycleState: lifecycle state 
+          click des_ProjectRelease href "../../classes/des_ProjectRelease/"
+
+
+
+
+
+
+  class des_ProjectTemplateRevision["Project Template Revision"]
+
+
+
+      style des_ProjectTemplateRevision fill:#93c47d    
+
+
+          des_ProjectTemplateRevision --&gt; "1" plt_LifecycleState: lifecycle state 
+          click des_ProjectTemplateRevision href "../../classes/des_ProjectTemplateRevision/"
 
 
 
@@ -307,7 +307,7 @@
       style lib_ComponentRevision fill:#ffe599    
 
 
-          lib_ComponentRevision --&gt; "1" plt_LifecycleState: lifecycleState 
+          lib_ComponentRevision --&gt; "1" plt_LifecycleState: lifecycle state 
           click lib_ComponentRevision href "../../classes/lib_ComponentRevision/"
 
 
@@ -315,105 +315,105 @@
 
 
 
-  class lib_component_template_revision["Component Template Revision"]
+  class lib_ComponentTemplateRevision["Component Template Revision"]
 
 
 
-      style lib_component_template_revision fill:#ffe599    
+      style lib_ComponentTemplateRevision fill:#ffe599    
 
 
-          lib_component_template_revision --&gt; "1" plt_LifecycleState: lifecycleState 
-          click lib_component_template_revision href "../../classes/lib_component_template_revision/"
+          lib_ComponentTemplateRevision --&gt; "1" plt_LifecycleState: lifecycle state 
+          click lib_ComponentTemplateRevision href "../../classes/lib_ComponentTemplateRevision/"
 
 
 
 
 
 
-  class lib_symbol_revision["Symbol Revision"]
+  class lib_SymbolRevision["Symbol Revision"]
 
 
 
-      style lib_symbol_revision fill:#ffe599    
+      style lib_SymbolRevision fill:#ffe599    
 
 
-          lib_symbol_revision --&gt; "1" plt_LifecycleState: lifecycleState 
-          click lib_symbol_revision href "../../classes/lib_symbol_revision/"
+          lib_SymbolRevision --&gt; "1" plt_LifecycleState: lifecycle state 
+          click lib_SymbolRevision href "../../classes/lib_SymbolRevision/"
 
 
 
 
 
 
-  class lib_footprint_revision["Footprint Revision"]
+  class lib_FootprintRevision["Footprint Revision"]
 
 
 
-      style lib_footprint_revision fill:#ffe599    
+      style lib_FootprintRevision fill:#ffe599    
 
 
-          lib_footprint_revision --&gt; "1" plt_LifecycleState: lifecycleState 
-          click lib_footprint_revision href "../../classes/lib_footprint_revision/"
+          lib_FootprintRevision --&gt; "1" plt_LifecycleState: lifecycle state 
+          click lib_FootprintRevision href "../../classes/lib_FootprintRevision/"
 
 
 
 
 
 
-  class lib_reuse_block_revision["Reuse Block Revision"]
+  class lib_ReuseBlockRevision["Reuse Block Revision"]
 
 
 
-      style lib_reuse_block_revision fill:#ffe599    
+      style lib_ReuseBlockRevision fill:#ffe599    
 
 
-          lib_reuse_block_revision --&gt; "1" plt_LifecycleState: lifecycleState 
-          click lib_reuse_block_revision href "../../classes/lib_reuse_block_revision/"
+          lib_ReuseBlockRevision --&gt; "1" plt_LifecycleState: lifecycle state 
+          click lib_ReuseBlockRevision href "../../classes/lib_ReuseBlockRevision/"
 
 
 
 
 
 
-  class lib_managed_sheet_revision["Managed Sheet Revision"]
+  class lib_ManagedSheetRevision["Managed Sheet Revision"]
 
 
 
-      style lib_managed_sheet_revision fill:#ffe599    
+      style lib_ManagedSheetRevision fill:#ffe599    
 
 
-          lib_managed_sheet_revision --&gt; "1" plt_LifecycleState: lifecycleState 
-          click lib_managed_sheet_revision href "../../classes/lib_managed_sheet_revision/"
+          lib_ManagedSheetRevision --&gt; "1" plt_LifecycleState: lifecycle state 
+          click lib_ManagedSheetRevision href "../../classes/lib_ManagedSheetRevision/"
 
 
 
 
 
 
-  class lib_sch_snippet_revision["SCH Snippet Revision"]
+  class lib_SchSnippetRevision["SCH Snippet Revision"]
 
 
 
-      style lib_sch_snippet_revision fill:#ffe599    
+      style lib_SchSnippetRevision fill:#ffe599    
 
 
-          lib_sch_snippet_revision --&gt; "1" plt_LifecycleState: lifecycleState 
-          click lib_sch_snippet_revision href "../../classes/lib_sch_snippet_revision/"
+          lib_SchSnippetRevision --&gt; "1" plt_LifecycleState: lifecycle state 
+          click lib_SchSnippetRevision href "../../classes/lib_SchSnippetRevision/"
 
 
 
 
 
 
-  class lib_pcb_snippet_revision["PCB Snippet Revision"]
+  class lib_PcbSnippetRevision["PCB Snippet Revision"]
 
 
 
-      style lib_pcb_snippet_revision fill:#ffe599    
+      style lib_PcbSnippetRevision fill:#ffe599    
 
 
-          lib_pcb_snippet_revision --&gt; "1" plt_LifecycleState: lifecycleState 
-          click lib_pcb_snippet_revision href "../../classes/lib_pcb_snippet_revision/"
+          lib_PcbSnippetRevision --&gt; "1" plt_LifecycleState: lifecycle state 
+          click lib_PcbSnippetRevision href "../../classes/lib_PcbSnippetRevision/"
 
 
 
@@ -427,7 +427,7 @@
       style pro_BomRelease fill:#dd7e6b    
 
 
-          pro_BomRelease --&gt; "1" plt_LifecycleState: lifecycleState 
+          pro_BomRelease --&gt; "1" plt_LifecycleState: lifecycle state 
           click pro_BomRelease href "../../classes/pro_BomRelease/"
 
 
@@ -435,30 +435,30 @@
 
 
 
-  class req_requirement_revision["Requirement Revision"]
+  class req_RequirementRevision["Requirement Revision"]
 
 
 
-      style req_requirement_revision fill:#f6b26b    
+      style req_RequirementRevision fill:#f6b26b    
 
 
-          req_requirement_revision --&gt; "1" plt_LifecycleState: lifecycleState 
-          click req_requirement_revision href "../../classes/req_requirement_revision/"
-
-
-
+          req_RequirementRevision --&gt; "1" plt_LifecycleState: lifecycle state 
+          click req_RequirementRevision href "../../classes/req_RequirementRevision/"
 
 
 
-  class req_requirement_baseline["Requirement Baseline"]
 
 
 
-      style req_requirement_baseline fill:#f6b26b    
+  class req_RequirementBaseline["Requirement Baseline"]
 
 
-          req_requirement_baseline --&gt; "1" plt_LifecycleState: lifecycleState 
-          click req_requirement_baseline href "../../classes/req_requirement_baseline/"
+
+      style req_RequirementBaseline fill:#f6b26b    
+
+
+          req_RequirementBaseline --&gt; "1" plt_LifecycleState: lifecycle state 
+          click req_RequirementBaseline href "../../classes/req_RequirementBaseline/"
 
 
 
@@ -483,7 +483,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../slots/LifecycleState_name">name</a></td>
+<td><a href="../../slots/plt_LifecycleState_name">name</a></td>
 <td><code>1</code></td>
 <td><a href="../../types/string/">string</a></td>
 <td>TBD</td>

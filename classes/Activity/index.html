@@ -237,15 +237,15 @@
 
 
 
-  class plt_solution["Solution"]
+  class plt_Solution["Solution"]
 
 
 
-      style plt_solution fill:#cccccc    
+      style plt_Solution fill:#cccccc    
 
 
-        Activity &lt;|-- plt_solution
-        click plt_solution href "../../classes/plt_solution/"
+        Activity &lt;|-- plt_Solution
+        click plt_Solution href "../../classes/plt_Solution/"
 
 
   class col_Task["Task"]
@@ -281,26 +281,26 @@
         click cus_Workflow href "../../classes/cus_Workflow/"
 
 
-  class des_project["Hardware Project"]
+  class des_Project["Hardware Project"]
 
 
 
-      style des_project fill:#93c47d    
+      style des_Project fill:#93c47d    
 
 
-        Activity &lt;|-- des_project
-        click des_project href "../../classes/des_project/"
+        Activity &lt;|-- des_Project
+        click des_Project href "../../classes/des_Project/"
 
 
-  class des_project_release["Hardware Project Release"]
+  class des_ProjectRelease["Hardware Project Release"]
 
 
 
-      style des_project_release fill:#93c47d    
+      style des_ProjectRelease fill:#93c47d    
 
 
-        Activity &lt;|-- des_project_release
-        click des_project_release href "../../classes/des_project_release/"
+        Activity &lt;|-- des_ProjectRelease
+        click des_ProjectRelease href "../../classes/des_ProjectRelease/"
 
 
   class des_RuleCheckExecution["Rule Check Execution"]
@@ -325,15 +325,15 @@
         click ins_Insight href "../../classes/ins_Insight/"
 
 
-  class lib_part_request["Part Request"]
+  class lib_PartRequest["Part Request"]
 
 
 
-      style lib_part_request fill:#ffe599    
+      style lib_PartRequest fill:#ffe599    
 
 
-        Activity &lt;|-- lib_part_request
-        click lib_part_request href "../../classes/lib_part_request/"
+        Activity &lt;|-- lib_PartRequest
+        click lib_PartRequest href "../../classes/lib_PartRequest/"
 
 
   class pro_BomWIP["BOM WIP"]
@@ -347,15 +347,15 @@
         click pro_BomWIP href "../../classes/pro_BomWIP/"
 
 
-  class sft_software_project["Software Project"]
+  class sft_SoftwareProject["Software Project"]
 
 
 
-      style sft_software_project fill:#3c78d8    
+      style sft_SoftwareProject fill:#3c78d8    
 
 
-        Activity &lt;|-- sft_software_project
-        click sft_software_project href "../../classes/sft_software_project/"
+        Activity &lt;|-- sft_SoftwareProject
+        click sft_SoftwareProject href "../../classes/sft_SoftwareProject/"
 
 
   class system_ESDDocument["ESD Document"]
@@ -380,37 +380,37 @@
         click system_SdmSystemModel href "../../classes/system_SdmSystemModel/"
 
 
-  class req_requirement_change_request["Requirement Change Request"]
+  class req_RequirementChangeRequest["Requirement Change Request"]
 
 
 
-      style req_requirement_change_request fill:#f6b26b    
+      style req_RequirementChangeRequest fill:#f6b26b    
 
 
-        Activity &lt;|-- req_requirement_change_request
-        click req_requirement_change_request href "../../classes/req_requirement_change_request/"
+        Activity &lt;|-- req_RequirementChangeRequest
+        click req_RequirementChangeRequest href "../../classes/req_RequirementChangeRequest/"
 
 
-  class req_project["Requirements Project"]
-
-
-
-      style req_project fill:#f6b26b    
-
-
-        Activity &lt;|-- req_project
-        click req_project href "../../classes/req_project/"
-
-
-  class req_verification_case["Verification Case"]
+  class req_Project["Requirements Project"]
 
 
 
-      style req_verification_case fill:#f6b26b    
+      style req_Project fill:#f6b26b    
 
 
-        Activity &lt;|-- req_verification_case
-        click req_verification_case href "../../classes/req_verification_case/"
+        Activity &lt;|-- req_Project
+        click req_Project href "../../classes/req_Project/"
+
+
+  class req_VerificationCase["Verification Case"]
+
+
+
+      style req_VerificationCase fill:#f6b26b    
+
+
+        Activity &lt;|-- req_VerificationCase
+        click req_VerificationCase href "../../classes/req_VerificationCase/"
 
 
 
@@ -425,22 +425,22 @@
 <ul>
 <li><a href="../Entity/">Entity</a><ul>
 <li><strong>Activity</strong><ul>
-<li><a href="../plt_solution/">plt_solution</a></li>
+<li><a href="../plt_Solution/">plt_Solution</a></li>
 <li><a href="../col_Task/">col_Task</a></li>
 <li><a href="../col_CommentThread/">col_CommentThread</a></li>
 <li><a href="../cus_Workflow/">cus_Workflow</a></li>
-<li><a href="../des_project/">des_project</a> [ <a href="../SolutionItem/">SolutionItem</a>]</li>
-<li><a href="../des_project_release/">des_project_release</a> [ <a href="../HasLifecycle/">HasLifecycle</a>]</li>
+<li><a href="../des_Project/">des_Project</a> [ <a href="../plt_SolutionItem/">plt_SolutionItem</a>]</li>
+<li><a href="../des_ProjectRelease/">des_ProjectRelease</a> [ <a href="../plt_HasLifecycle/">plt_HasLifecycle</a>]</li>
 <li><a href="../des_RuleCheckExecution/">des_RuleCheckExecution</a></li>
 <li><a href="../ins_Insight/">ins_Insight</a></li>
-<li><a href="../lib_part_request/">lib_part_request</a></li>
+<li><a href="../lib_PartRequest/">lib_PartRequest</a></li>
 <li><a href="../pro_BomWIP/">pro_BomWIP</a> [ <a href="../pro_Bom/">pro_Bom</a>]</li>
-<li><a href="../sft_software_project/">sft_software_project</a> [ <a href="../SolutionItem/">SolutionItem</a>]</li>
-<li><a href="../system_ESDDocument/">system_ESDDocument</a> [ <a href="../SolutionItem/">SolutionItem</a>]</li>
+<li><a href="../sft_SoftwareProject/">sft_SoftwareProject</a> [ <a href="../plt_SolutionItem/">plt_SolutionItem</a>]</li>
+<li><a href="../system_ESDDocument/">system_ESDDocument</a> [ <a href="../plt_SolutionItem/">plt_SolutionItem</a>]</li>
 <li><a href="../system_SdmSystemModel/">system_SdmSystemModel</a></li>
-<li><a href="../req_requirement_change_request/">req_requirement_change_request</a></li>
-<li><a href="../req_project/">req_project</a></li>
-<li><a href="../req_verification_case/">req_verification_case</a></li>
+<li><a href="../req_RequirementChangeRequest/">req_RequirementChangeRequest</a></li>
+<li><a href="../req_Project/">req_Project</a></li>
+<li><a href="../req_VerificationCase/">req_VerificationCase</a></li>
 </ul>
 </li>
 </ul>

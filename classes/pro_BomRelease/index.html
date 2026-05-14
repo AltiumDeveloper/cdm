@@ -245,15 +245,15 @@
 
 
 
-      pro_BomRelease --&gt; "*" lib_part : parts
-      click lib_part href "../../classes/lib_part/"
+      pro_BomRelease --&gt; "*" lib_Part : parts
+      click lib_Part href "../../classes/lib_Part/"
 
 
-  class lib_part["Part"]
+  class lib_Part["Part"]
 
 
 
-      style lib_part fill:#ffe599    
+      style lib_Part fill:#ffe599    
 
 
 
@@ -285,26 +285,6 @@
 
 
 
-      pro_BomRelease --&gt; "*" pro_BomItem : items
-      click pro_BomItem href "../../classes/pro_BomItem/"
-
-
-  class pro_BomItem["BOM Item"]
-
-
-
-      style pro_BomItem fill:#dd7e6b    
-
-
-
-
-
-
-
-
-
-
-
       pro_BomRelease --&gt; "*" pro_BomIssue : issues
       click pro_BomIssue href "../../classes/pro_BomIssue/"
 
@@ -325,7 +305,27 @@
 
 
 
-      pro_BomRelease --&gt; "1" plt_LifecycleState : lifecycleState
+      pro_BomRelease --&gt; "*" pro_BomItem : items
+      click pro_BomItem href "../../classes/pro_BomItem/"
+
+
+  class pro_BomItem["BOM Item"]
+
+
+
+      style pro_BomItem fill:#dd7e6b    
+
+
+
+
+
+
+
+
+
+
+
+      pro_BomRelease --&gt; "1" plt_LifecycleState : lifecycle state
       click plt_LifecycleState href "../../classes/plt_LifecycleState/"
 
 
@@ -401,7 +401,7 @@
 <ul>
 <li><a href="../Entity/">Entity</a><ul>
 <li><a href="../Artifact/">Artifact</a><ul>
-<li><strong>pro_BomRelease</strong> [ <a href="../pro_Bom/">pro_Bom</a> <a href="../HasLifecycle/">HasLifecycle</a>]</li>
+<li><strong>pro_BomRelease</strong> [ <a href="../pro_Bom/">pro_Bom</a> <a href="../plt_HasLifecycle/">plt_HasLifecycle</a>]</li>
 </ul>
 </li>
 </ul>
@@ -420,13 +420,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../slots/pro_bom_items">items</a></td>
-<td><code>*</code></td>
-<td><a href="../pro_BomItem/">BOM Item</a></td>
-<td>None</td>
-<td><a href="../pro_Bom/">pro_Bom</a></td>
-</tr>
-<tr>
 <td><a href="../../slots/pro_bom_issues">issues</a></td>
 <td><code>*</code></td>
 <td><a href="../pro_BomIssue/">BOM Issue</a></td>
@@ -434,11 +427,18 @@
 <td><a href="../pro_Bom/">pro_Bom</a></td>
 </tr>
 <tr>
-<td><a href="../../slots/plt_LifecycleState">lifecycleState</a></td>
+<td><a href="../../slots/pro_Bom_items">items</a></td>
+<td><code>*</code></td>
+<td><a href="../pro_BomItem/">BOM Item</a></td>
+<td>TBD</td>
+<td><a href="../pro_Bom/">pro_Bom</a></td>
+</tr>
+<tr>
+<td><a href="../../slots/plt_HasLifecycle_lifecycleState">lifecycle state</a></td>
 <td><code>1</code></td>
 <td><a href="../plt_LifecycleState/">Lifecycle State</a></td>
-<td>None</td>
-<td><a href="../HasLifecycle/">HasLifecycle</a></td>
+<td>The current lifecycle state assigned to this entity.</td>
+<td><a href="../plt_HasLifecycle/">plt_HasLifecycle</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/core_id">id</a></td>
@@ -450,7 +450,7 @@
 <tr>
 <td><a href="../../slots/lib_consists_of_parts">parts</a></td>
 <td><code>*</code></td>
-<td><a href="../lib_part/">Part</a></td>
+<td><a href="../lib_Part/">Part</a></td>
 <td>Parts used in this Artifact</td>
 <td>direct</td>
 </tr>
