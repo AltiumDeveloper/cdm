@@ -79,14 +79,20 @@ console = Console() if _INTERACTIVE_DEPS else None  # type: ignore[assignment]
 
 
 def _camel_to_title(name: str) -> str:
-    """Convert a lowerCamelCase or PascalCase name to a human-readable spaced title.
+    """Convert a lowerCamelCase name to a human-readable spaced title.
+
+    Inserts a space before each uppercase letter that follows a lowercase letter
+    or digit, then lowercases the result. Designed for lowerCamelCase slot names
+    (the only naming convention CDM slot aliases use).
 
     Examples:
-        mySlot       → my slot
-        pcbSnippet   → pcb snippet
-        aiModels     → ai models
+        mySlot             → my slot
+        pcbSnippet         → pcb snippet
+        aiModels           → ai models
+        usedByProjectVariant → used by project variant
+        MyNewEntity        → my new entity
     """
-    # Insert a space before each uppercase letter, then lowercase everything
+    # Insert a space before each uppercase letter preceded by a lowercase/digit
     spaced = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", name)
     return spaced.lower()
 
