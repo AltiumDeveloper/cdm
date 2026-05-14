@@ -231,6 +231,16 @@
 
 
 
+  class core_Artifact["Artifact"]
+
+
+
+
+          core_Artifact &lt;|-- lib_SchSnippet
+          click core_Artifact href "../../classes/core_Artifact/"
+
+
+
 
 
 
@@ -263,8 +273,8 @@
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Entity/">Entity</a><ul>
-<li><a href="../Artifact/">Artifact</a><ul>
+<li><a href="../core_Entity/">core_Entity</a><ul>
+<li><a href="../core_Artifact/">core_Artifact</a><ul>
 <li><strong>lib_SchSnippet</strong></li>
 </ul>
 </li>
@@ -288,13 +298,13 @@
 <td><code>1</code></td>
 <td><a href="../../types/GRID/">GRID</a></td>
 <td>Globally unique identifier across the whole platform.</td>
-<td><a href="../Entity/">Entity</a></td>
+<td><a href="../core_Entity/">core_Entity</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/core_revisions">revisions</a></td>
 <td><code>*</code></td>
 <td><a href="../lib_SchSnippetRevision/">SCH Snippet Revision</a></td>
-<td>None</td>
+<td>The set of versioned snapshots derived from this artifact. Inverse of revisionOf.</td>
 <td>direct</td>
 </tr>
 </tbody>

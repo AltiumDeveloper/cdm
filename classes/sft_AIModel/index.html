@@ -237,6 +237,16 @@
 
 
 
+  class core_Artifact["Artifact"]
+
+
+
+
+          core_Artifact &lt;|-- sft_AIModel
+          click core_Artifact href "../../classes/core_Artifact/"
+
+
+
 
 
 
@@ -305,8 +315,8 @@
 <p>Data Content Platform would likely define another (but related) AI model entity - the one that is going to be part of Solution Template. The exact name / definition of the entity is TBD.</p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Entity/">Entity</a><ul>
-<li><a href="../Artifact/">Artifact</a><ul>
+<li><a href="../core_Entity/">core_Entity</a><ul>
+<li><a href="../core_Artifact/">core_Artifact</a><ul>
 <li><strong>sft_AIModel</strong> [ <a href="../plt_SolutionItem/">plt_SolutionItem</a>]</li>
 </ul>
 </li>
@@ -337,7 +347,7 @@
 <td><code>1</code></td>
 <td><a href="../../types/GRID/">GRID</a></td>
 <td>Globally unique identifier across the whole platform.</td>
-<td><a href="../Entity/">Entity</a></td>
+<td><a href="../core_Entity/">core_Entity</a></td>
 </tr>
 </tbody>
 </table>

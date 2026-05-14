@@ -193,6 +193,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="field-releases-core_releases">Field: releases (core_releases)</h1>
+<p><em>The release artifacts produced by this activity. Inverse of releaseOf.</em></p>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/core/releases">https://w3id.org/altium/cdm/core/releases</a></p>
 <p>Alias: releases</p>
 <h2 id="inheritance">Inheritance</h2>
@@ -213,17 +214,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/pro_ManagedBOM/">Managed BOM </a></td>
-<td>Managed BOM represents a version-controlled, workspace-stored bill of materia...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/plt_Solution/">Solution </a></td>
-<td>TBD</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../../classes/sft_SoftwareProject/">Software Project </a></td>
+<td><a href="../../classes/des_Project/">Hardware Project </a></td>
 <td>TBD</td>
 <td>yes</td>
 </tr>
@@ -238,12 +229,7 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/des_Project/">Hardware Project </a></td>
-<td>TBD</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../../classes/pro_BomWIP/">BOM WIP </a></td>
+<td><a href="../../classes/plt_Solution/">Solution </a></td>
 <td>TBD</td>
 <td>yes</td>
 </tr>
@@ -252,12 +238,27 @@
 <td>Multiboard Project represents the coordinated design of multiple interconnect...</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../../classes/pro_BomWIP/">BOM WIP </a></td>
+<td>TBD</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../../classes/pro_ManagedBOM/">Managed BOM </a></td>
+<td>Managed BOM represents a version-controlled, workspace-stored bill of materia...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/sft_SoftwareProject/">Software Project </a></td>
+<td>TBD</td>
+<td>yes</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../../classes/Artifact/">Artifact</a></p>
+<p>Range: <a href="../../classes/core_Artifact/">core_Artifact</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -267,10 +268,11 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_releases</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The release artifacts produced by this activity. Inverse of releaseOf.</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">releases</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/altium/cdm/</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_hasOutput</span>
-<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
+<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_Activity</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core:releases</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">releases</span>
 <span class="nt">domain_of</span><span class="p">:</span>
@@ -279,7 +281,7 @@
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pro_BomWIP</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sft_SoftwareProject</span>
 <span class="nt">inverse</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_releaseOf</span>
-<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Artifact</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_Artifact</span>
 <span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>

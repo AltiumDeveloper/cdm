@@ -193,6 +193,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="field-implemented-by-core_implementedby">Field: implemented by (core_implementedBy)</h1>
+<p><em>This activity is implemented by another activity (e.g. a requirement implemented by a design).</em></p>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/core/implementedBy">https://w3id.org/altium/cdm/core/implementedBy</a></p>
 <p>Alias: implementedBy</p>
 <h2 id="inheritance">Inheritance</h2>
@@ -213,28 +214,18 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/system_SdmSoftwareComponent/">Software Component </a></td>
-<td>Represents a software component instance and its dependencies</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_SdmSoftwareModel/">Software Model </a></td>
-<td>Captures the software components and their interactions within the system des...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_HardwareProject/">Hardware Project </a></td>
-<td>TBD</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../../classes/system_SdmFunctionalModel/">Functional Model </a></td>
 <td>Captures the functional aspects of the system design, focusing on the behavio...</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SdmHardwareModel/">Hardware Model </a></td>
-<td>Captures the hardware components and their interactions within the system des...</td>
+<td><a href="../../classes/system_SdmSoftwareComponent/">Software Component </a></td>
+<td>Represents a software component instance and its dependencies</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_FunctionalBlock/">Functional Block </a></td>
+<td>Represents a logical block within a PCB design (e</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -243,24 +234,36 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_FunctionalBlock/">Functional Block </a></td>
-<td>Represents a logical block within a PCB design (e</td>
+<td><a href="../../classes/system_SdmSoftwareModel/">Software Model </a></td>
+<td>Captures the software components and their interactions within the system des...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SdmHardwareModel/">Hardware Model </a></td>
+<td>Captures the hardware components and their interactions within the system des...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_HardwareProject/">Hardware Project </a></td>
+<td>TBD</td>
 <td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../../classes/Activity/">Activity</a></li>
+<li>Range: <a href="../../classes/core_Activity/">core_Activity</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_implementedBy</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This activity is implemented by another activity (e.g. a requirement</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">implemented by a design).</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">implemented by</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/altium/cdm/</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_informs</span>
-<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
+<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_Activity</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core:implementedBy</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">implementedBy</span>
 <span class="nt">domain_of</span><span class="p">:</span>
@@ -271,7 +274,7 @@
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmSoftwareModel</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmSoftwareComponent</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system_SdmHardwareModel</span>
-<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_Activity</span>
 </code></pre></div>
 </details>
 </article>

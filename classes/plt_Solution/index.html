@@ -233,6 +233,16 @@
 
 
 
+  class core_Activity["Activity"]
+
+
+
+
+          core_Activity &lt;|-- plt_Solution
+          click core_Activity href "../../classes/core_Activity/"
+
+
+
 
 
 
@@ -380,8 +390,8 @@
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Entity/">Entity</a><ul>
-<li><a href="../Activity/">Activity</a><ul>
+<li><a href="../core_Entity/">core_Entity</a><ul>
+<li><a href="../core_Activity/">core_Activity</a><ul>
 <li><strong>plt_Solution</strong></li>
 </ul>
 </li>
@@ -405,13 +415,13 @@
 <td><code>1</code></td>
 <td><a href="../../types/GRID/">GRID</a></td>
 <td>Globally unique identifier across the whole platform.</td>
-<td><a href="../Entity/">Entity</a></td>
+<td><a href="../core_Entity/">core_Entity</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/core_releases">releases</a></td>
 <td><code>*</code></td>
 <td><a href="../plt_SolutionRelease/">Solution Release</a></td>
-<td>None</td>
+<td>The release artifacts produced by this activity. Inverse of releaseOf.</td>
 <td>direct</td>
 </tr>
 <tr>

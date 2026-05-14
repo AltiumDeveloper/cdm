@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://w3id.org/altium/cdm/classes/Artifact/" rel="canonical"/>
+<link href="https://w3id.org/altium/cdm/classes/core_Artifact/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
 <title>Artifact - Common Data Model (CDM)</title>
@@ -193,8 +193,9 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="artifact">Artifact</h1>
-<p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/Artifact">https://w3id.org/altium/cdm/Artifact</a></p>
-<p class="page-subtitle">Bounded context: <a href="../subsets/.md"></a></p>
+<p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/core/Artifact">https://w3id.org/altium/cdm/core/Artifact</a></p>
+<p class="page-subtitle">Bounded context: <a href="../../subsets/core/">core</a></p>
+<p>Abstract base for persistent data objects that are created, stored, versioned, and consumed. Examples: components, documents, system models.</p>
 <div class="grid">
 <div class="admonition quote">
 <p class="admonition-title">Platform API</p>
@@ -219,19 +220,23 @@
     direction LR
 
 
-  class Artifact["Artifact"]
-
-
-    click Artifact href "../../classes/Artifact/"
+  class core_Artifact["Artifact"]
 
 
 
 
-  class Entity["Entity"]
+    click core_Artifact href "../../classes/core_Artifact/"
 
 
-          Entity &lt;|-- Artifact
-          click Entity href "../../classes/Entity/"
+
+
+  class core_Entity["Entity"]
+
+
+
+
+          core_Entity &lt;|-- core_Artifact
+          click core_Entity href "../../classes/core_Entity/"
 
 
 
@@ -244,7 +249,7 @@
       style plt_Organization fill:#cccccc    
 
 
-        Artifact &lt;|-- plt_Organization
+        core_Artifact &lt;|-- plt_Organization
         click plt_Organization href "../../classes/plt_Organization/"
 
 
@@ -255,7 +260,7 @@
       style plt_User fill:#cccccc    
 
 
-        Artifact &lt;|-- plt_User
+        core_Artifact &lt;|-- plt_User
         click plt_User href "../../classes/plt_User/"
 
 
@@ -266,7 +271,7 @@
       style plt_UserGroup fill:#cccccc    
 
 
-        Artifact &lt;|-- plt_UserGroup
+        core_Artifact &lt;|-- plt_UserGroup
         click plt_UserGroup href "../../classes/plt_UserGroup/"
 
 
@@ -277,7 +282,7 @@
       style plt_Application fill:#cccccc    
 
 
-        Artifact &lt;|-- plt_Application
+        core_Artifact &lt;|-- plt_Application
         click plt_Application href "../../classes/plt_Application/"
 
 
@@ -288,7 +293,7 @@
       style plt_EventSubscription fill:#cccccc    
 
 
-        Artifact &lt;|-- plt_EventSubscription
+        core_Artifact &lt;|-- plt_EventSubscription
         click plt_EventSubscription href "../../classes/plt_EventSubscription/"
 
 
@@ -299,7 +304,7 @@
       style plt_Workspace fill:#cccccc    
 
 
-        Artifact &lt;|-- plt_Workspace
+        core_Artifact &lt;|-- plt_Workspace
         click plt_Workspace href "../../classes/plt_Workspace/"
 
 
@@ -310,7 +315,7 @@
       style plt_WorkspaceUser fill:#cccccc    
 
 
-        Artifact &lt;|-- plt_WorkspaceUser
+        core_Artifact &lt;|-- plt_WorkspaceUser
         click plt_WorkspaceUser href "../../classes/plt_WorkspaceUser/"
 
 
@@ -321,7 +326,7 @@
       style plt_WorkspaceGroup fill:#cccccc    
 
 
-        Artifact &lt;|-- plt_WorkspaceGroup
+        core_Artifact &lt;|-- plt_WorkspaceGroup
         click plt_WorkspaceGroup href "../../classes/plt_WorkspaceGroup/"
 
 
@@ -332,7 +337,7 @@
       style plt_SolutionRelease fill:#cccccc    
 
 
-        Artifact &lt;|-- plt_SolutionRelease
+        core_Artifact &lt;|-- plt_SolutionRelease
         click plt_SolutionRelease href "../../classes/plt_SolutionRelease/"
 
 
@@ -343,7 +348,7 @@
       style plt_LifecycleDefinition fill:#cccccc    
 
 
-        Artifact &lt;|-- plt_LifecycleDefinition
+        core_Artifact &lt;|-- plt_LifecycleDefinition
         click plt_LifecycleDefinition href "../../classes/plt_LifecycleDefinition/"
 
 
@@ -354,7 +359,7 @@
       style plt_NamingScheme fill:#cccccc    
 
 
-        Artifact &lt;|-- plt_NamingScheme
+        core_Artifact &lt;|-- plt_NamingScheme
         click plt_NamingScheme href "../../classes/plt_NamingScheme/"
 
 
@@ -365,7 +370,7 @@
       style con_EnvironmentConfiguration fill:#ead1dc    
 
 
-        Artifact &lt;|-- con_EnvironmentConfiguration
+        core_Artifact &lt;|-- con_EnvironmentConfiguration
         click con_EnvironmentConfiguration href "../../classes/con_EnvironmentConfiguration/"
 
 
@@ -376,7 +381,7 @@
       style con_SchematicTemplate fill:#ead1dc    
 
 
-        Artifact &lt;|-- con_SchematicTemplate
+        core_Artifact &lt;|-- con_SchematicTemplate
         click con_SchematicTemplate href "../../classes/con_SchematicTemplate/"
 
 
@@ -387,7 +392,7 @@
       style con_SchematicTemplateRevision fill:#ead1dc    
 
 
-        Artifact &lt;|-- con_SchematicTemplateRevision
+        core_Artifact &lt;|-- con_SchematicTemplateRevision
         click con_SchematicTemplateRevision href "../../classes/con_SchematicTemplateRevision/"
 
 
@@ -398,7 +403,7 @@
       style cus_Script fill:#a2c4c9    
 
 
-        Artifact &lt;|-- cus_Script
+        core_Artifact &lt;|-- cus_Script
         click cus_Script href "../../classes/cus_Script/"
 
 
@@ -409,7 +414,7 @@
       style cus_ScriptVersion fill:#a2c4c9    
 
 
-        Artifact &lt;|-- cus_ScriptVersion
+        core_Artifact &lt;|-- cus_ScriptVersion
         click cus_ScriptVersion href "../../classes/cus_ScriptVersion/"
 
 
@@ -420,7 +425,7 @@
       style cus_ScriptExecution fill:#a2c4c9    
 
 
-        Artifact &lt;|-- cus_ScriptExecution
+        core_Artifact &lt;|-- cus_ScriptExecution
         click cus_ScriptExecution href "../../classes/cus_ScriptExecution/"
 
 
@@ -431,7 +436,7 @@
       style des_ProjectTemplate fill:#93c47d    
 
 
-        Artifact &lt;|-- des_ProjectTemplate
+        core_Artifact &lt;|-- des_ProjectTemplate
         click des_ProjectTemplate href "../../classes/des_ProjectTemplate/"
 
 
@@ -442,7 +447,7 @@
       style des_ProjectTemplateRevision fill:#93c47d    
 
 
-        Artifact &lt;|-- des_ProjectTemplateRevision
+        core_Artifact &lt;|-- des_ProjectTemplateRevision
         click des_ProjectTemplateRevision href "../../classes/des_ProjectTemplateRevision/"
 
 
@@ -453,7 +458,7 @@
       style des_ManufacturingPackage fill:#93c47d    
 
 
-        Artifact &lt;|-- des_ManufacturingPackage
+        core_Artifact &lt;|-- des_ManufacturingPackage
         click des_ManufacturingPackage href "../../classes/des_ManufacturingPackage/"
 
 
@@ -464,7 +469,7 @@
       style des_RuleCheck fill:#93c47d    
 
 
-        Artifact &lt;|-- des_RuleCheck
+        core_Artifact &lt;|-- des_RuleCheck
         click des_RuleCheck href "../../classes/des_RuleCheck/"
 
 
@@ -475,7 +480,7 @@
       style dm_fullstack_device_model fill:#6fa8dc    
 
 
-        Artifact &lt;|-- dm_fullstack_device_model
+        core_Artifact &lt;|-- dm_fullstack_device_model
         click dm_fullstack_device_model href "../../classes/dm_fullstack_device_model/"
 
 
@@ -486,7 +491,7 @@
       style lib_Component fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_Component
+        core_Artifact &lt;|-- lib_Component
         click lib_Component href "../../classes/lib_Component/"
 
 
@@ -497,7 +502,7 @@
       style lib_ComponentRevision fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_ComponentRevision
+        core_Artifact &lt;|-- lib_ComponentRevision
         click lib_ComponentRevision href "../../classes/lib_ComponentRevision/"
 
 
@@ -508,7 +513,7 @@
       style lib_ComponentTemplate fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_ComponentTemplate
+        core_Artifact &lt;|-- lib_ComponentTemplate
         click lib_ComponentTemplate href "../../classes/lib_ComponentTemplate/"
 
 
@@ -519,7 +524,7 @@
       style lib_ComponentTemplateRevision fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_ComponentTemplateRevision
+        core_Artifact &lt;|-- lib_ComponentTemplateRevision
         click lib_ComponentTemplateRevision href "../../classes/lib_ComponentTemplateRevision/"
 
 
@@ -530,7 +535,7 @@
       style lib_Symbol fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_Symbol
+        core_Artifact &lt;|-- lib_Symbol
         click lib_Symbol href "../../classes/lib_Symbol/"
 
 
@@ -541,7 +546,7 @@
       style lib_SymbolRevision fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_SymbolRevision
+        core_Artifact &lt;|-- lib_SymbolRevision
         click lib_SymbolRevision href "../../classes/lib_SymbolRevision/"
 
 
@@ -552,7 +557,7 @@
       style lib_Footprint fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_Footprint
+        core_Artifact &lt;|-- lib_Footprint
         click lib_Footprint href "../../classes/lib_Footprint/"
 
 
@@ -563,7 +568,7 @@
       style lib_FootprintRevision fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_FootprintRevision
+        core_Artifact &lt;|-- lib_FootprintRevision
         click lib_FootprintRevision href "../../classes/lib_FootprintRevision/"
 
 
@@ -574,7 +579,7 @@
       style lib_Part fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_Part
+        core_Artifact &lt;|-- lib_Part
         click lib_Part href "../../classes/lib_Part/"
 
 
@@ -585,7 +590,7 @@
       style lib_Datasheet fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_Datasheet
+        core_Artifact &lt;|-- lib_Datasheet
         click lib_Datasheet href "../../classes/lib_Datasheet/"
 
 
@@ -596,7 +601,7 @@
       style lib_ReuseBlock fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_ReuseBlock
+        core_Artifact &lt;|-- lib_ReuseBlock
         click lib_ReuseBlock href "../../classes/lib_ReuseBlock/"
 
 
@@ -607,7 +612,7 @@
       style lib_ReuseBlockRevision fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_ReuseBlockRevision
+        core_Artifact &lt;|-- lib_ReuseBlockRevision
         click lib_ReuseBlockRevision href "../../classes/lib_ReuseBlockRevision/"
 
 
@@ -618,7 +623,7 @@
       style lib_ManagedSheet fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_ManagedSheet
+        core_Artifact &lt;|-- lib_ManagedSheet
         click lib_ManagedSheet href "../../classes/lib_ManagedSheet/"
 
 
@@ -629,7 +634,7 @@
       style lib_ManagedSheetRevision fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_ManagedSheetRevision
+        core_Artifact &lt;|-- lib_ManagedSheetRevision
         click lib_ManagedSheetRevision href "../../classes/lib_ManagedSheetRevision/"
 
 
@@ -640,7 +645,7 @@
       style lib_SchSnippet fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_SchSnippet
+        core_Artifact &lt;|-- lib_SchSnippet
         click lib_SchSnippet href "../../classes/lib_SchSnippet/"
 
 
@@ -651,7 +656,7 @@
       style lib_SchSnippetRevision fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_SchSnippetRevision
+        core_Artifact &lt;|-- lib_SchSnippetRevision
         click lib_SchSnippetRevision href "../../classes/lib_SchSnippetRevision/"
 
 
@@ -662,7 +667,7 @@
       style lib_PcbSnippet fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_PcbSnippet
+        core_Artifact &lt;|-- lib_PcbSnippet
         click lib_PcbSnippet href "../../classes/lib_PcbSnippet/"
 
 
@@ -673,7 +678,7 @@
       style lib_PcbSnippetRevision fill:#ffe599    
 
 
-        Artifact &lt;|-- lib_PcbSnippetRevision
+        core_Artifact &lt;|-- lib_PcbSnippetRevision
         click lib_PcbSnippetRevision href "../../classes/lib_PcbSnippetRevision/"
 
 
@@ -684,7 +689,7 @@
       style ota_Device fill:#d29292    
 
 
-        Artifact &lt;|-- ota_Device
+        core_Artifact &lt;|-- ota_Device
         click ota_Device href "../../classes/ota_Device/"
 
 
@@ -695,7 +700,7 @@
       style ota_Fleet fill:#d29292    
 
 
-        Artifact &lt;|-- ota_Fleet
+        core_Artifact &lt;|-- ota_Fleet
         click ota_Fleet href "../../classes/ota_Fleet/"
 
 
@@ -706,7 +711,7 @@
       style ota_Package fill:#d29292    
 
 
-        Artifact &lt;|-- ota_Package
+        core_Artifact &lt;|-- ota_Package
         click ota_Package href "../../classes/ota_Package/"
 
 
@@ -717,7 +722,7 @@
       style pro_BomRelease fill:#dd7e6b    
 
 
-        Artifact &lt;|-- pro_BomRelease
+        core_Artifact &lt;|-- pro_BomRelease
         click pro_BomRelease href "../../classes/pro_BomRelease/"
 
 
@@ -728,7 +733,7 @@
       style sup_Part fill:#0c559c    
 
 
-        Artifact &lt;|-- sup_Part
+        core_Artifact &lt;|-- sup_Part
         click sup_Part href "../../classes/sup_Part/"
 
 
@@ -739,7 +744,7 @@
       style sup_Offer fill:#0c559c    
 
 
-        Artifact &lt;|-- sup_Offer
+        core_Artifact &lt;|-- sup_Offer
         click sup_Offer href "../../classes/sup_Offer/"
 
 
@@ -750,7 +755,7 @@
       style sup_Company fill:#0c559c    
 
 
-        Artifact &lt;|-- sup_Company
+        core_Artifact &lt;|-- sup_Company
         click sup_Company href "../../classes/sup_Company/"
 
 
@@ -761,7 +766,7 @@
       style sup_PartFamily fill:#0c559c    
 
 
-        Artifact &lt;|-- sup_PartFamily
+        core_Artifact &lt;|-- sup_PartFamily
         click sup_PartFamily href "../../classes/sup_PartFamily/"
 
 
@@ -772,7 +777,7 @@
       style sup_PartGroup fill:#0c559c    
 
 
-        Artifact &lt;|-- sup_PartGroup
+        core_Artifact &lt;|-- sup_PartGroup
         click sup_PartGroup href "../../classes/sup_PartGroup/"
 
 
@@ -783,7 +788,7 @@
       style sup_ReferenceDesign fill:#0c559c    
 
 
-        Artifact &lt;|-- sup_ReferenceDesign
+        core_Artifact &lt;|-- sup_ReferenceDesign
         click sup_ReferenceDesign href "../../classes/sup_ReferenceDesign/"
 
 
@@ -794,7 +799,7 @@
       style sup_SolutionTemplate fill:#0c559c    
 
 
-        Artifact &lt;|-- sup_SolutionTemplate
+        core_Artifact &lt;|-- sup_SolutionTemplate
         click sup_SolutionTemplate href "../../classes/sup_SolutionTemplate/"
 
 
@@ -805,7 +810,7 @@
       style sup_SoftwareProject fill:#0c559c    
 
 
-        Artifact &lt;|-- sup_SoftwareProject
+        core_Artifact &lt;|-- sup_SoftwareProject
         click sup_SoftwareProject href "../../classes/sup_SoftwareProject/"
 
 
@@ -816,7 +821,7 @@
       style sup_EvalKit fill:#0c559c    
 
 
-        Artifact &lt;|-- sup_EvalKit
+        core_Artifact &lt;|-- sup_EvalKit
         click sup_EvalKit href "../../classes/sup_EvalKit/"
 
 
@@ -827,7 +832,7 @@
       style sft_SoftwareRelease fill:#3c78d8    
 
 
-        Artifact &lt;|-- sft_SoftwareRelease
+        core_Artifact &lt;|-- sft_SoftwareRelease
         click sft_SoftwareRelease href "../../classes/sft_SoftwareRelease/"
 
 
@@ -838,7 +843,7 @@
       style sft_DeviceConfiguration fill:#3c78d8    
 
 
-        Artifact &lt;|-- sft_DeviceConfiguration
+        core_Artifact &lt;|-- sft_DeviceConfiguration
         click sft_DeviceConfiguration href "../../classes/sft_DeviceConfiguration/"
 
 
@@ -849,7 +854,7 @@
       style sft_DeviceConfigurationRevision fill:#3c78d8    
 
 
-        Artifact &lt;|-- sft_DeviceConfigurationRevision
+        core_Artifact &lt;|-- sft_DeviceConfigurationRevision
         click sft_DeviceConfigurationRevision href "../../classes/sft_DeviceConfigurationRevision/"
 
 
@@ -860,7 +865,7 @@
       style sft_AIModel fill:#3c78d8    
 
 
-        Artifact &lt;|-- sft_AIModel
+        core_Artifact &lt;|-- sft_AIModel
         click sft_AIModel href "../../classes/sft_AIModel/"
 
 
@@ -871,7 +876,7 @@
       style sft_BuildArtifact fill:#3c78d8    
 
 
-        Artifact &lt;|-- sft_BuildArtifact
+        core_Artifact &lt;|-- sft_BuildArtifact
         click sft_BuildArtifact href "../../classes/sft_BuildArtifact/"
 
 
@@ -882,7 +887,7 @@
       style system_SdmSystemModelVersion fill:#f1c232    
 
 
-        Artifact &lt;|-- system_SdmSystemModelVersion
+        core_Artifact &lt;|-- system_SdmSystemModelVersion
         click system_SdmSystemModelVersion href "../../classes/system_SdmSystemModelVersion/"
 
 
@@ -893,7 +898,7 @@
       style req_Requirement fill:#f6b26b    
 
 
-        Artifact &lt;|-- req_Requirement
+        core_Artifact &lt;|-- req_Requirement
         click req_Requirement href "../../classes/req_Requirement/"
 
 
@@ -904,7 +909,7 @@
       style req_RequirementRevision fill:#f6b26b    
 
 
-        Artifact &lt;|-- req_RequirementRevision
+        core_Artifact &lt;|-- req_RequirementRevision
         click req_RequirementRevision href "../../classes/req_RequirementRevision/"
 
 
@@ -915,7 +920,7 @@
       style req_RequirementSpecification fill:#f6b26b    
 
 
-        Artifact &lt;|-- req_RequirementSpecification
+        core_Artifact &lt;|-- req_RequirementSpecification
         click req_RequirementSpecification href "../../classes/req_RequirementSpecification/"
 
 
@@ -926,12 +931,12 @@
       style req_RequirementBaseline fill:#f6b26b    
 
 
-        Artifact &lt;|-- req_RequirementBaseline
+        core_Artifact &lt;|-- req_RequirementBaseline
         click req_RequirementBaseline href "../../classes/req_RequirementBaseline/"
 
 
 
-          Artifact : id
+          core_Artifact : id
 
 
 
@@ -940,8 +945,8 @@
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Entity/">Entity</a><ul>
-<li><strong>Artifact</strong><ul>
+<li><a href="../core_Entity/">core_Entity</a><ul>
+<li><strong>core_Artifact</strong><ul>
 <li><a href="../plt_Organization/">plt_Organization</a></li>
 <li><a href="../plt_User/">plt_User</a></li>
 <li><a href="../plt_UserGroup/">plt_UserGroup</a></li>
@@ -1027,7 +1032,7 @@
 <td><code>1</code></td>
 <td><a href="../../types/GRID/">GRID</a></td>
 <td>Globally unique identifier across the whole platform.</td>
-<td><a href="../Entity/">Entity</a></td>
+<td><a href="../core_Entity/">core_Entity</a></td>
 </tr>
 </tbody>
 </table>

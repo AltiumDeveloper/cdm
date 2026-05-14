@@ -233,6 +233,16 @@
 
 
 
+  class core_Artifact["Artifact"]
+
+
+
+
+          core_Artifact &lt;|-- sup_Part
+          click core_Artifact href "../../classes/core_Artifact/"
+
+
+
 
 
 
@@ -309,8 +319,8 @@
 It bridges the design and supply chain domains by enriching managed Parts with real-time market intelligence, enabling informed sourcing, alternates evaluation, and procurement optimization within Altium 365.</p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Entity/">Entity</a><ul>
-<li><a href="../Artifact/">Artifact</a><ul>
+<li><a href="../core_Entity/">core_Entity</a><ul>
+<li><a href="../core_Artifact/">core_Artifact</a><ul>
 <li><strong>sup_Part</strong></li>
 </ul>
 </li>
@@ -334,7 +344,7 @@ It bridges the design and supply chain domains by enriching managed Parts with r
 <td><code>1</code></td>
 <td><a href="../../types/GRID/">GRID</a></td>
 <td>Globally unique identifier across the whole platform.</td>
-<td><a href="../Entity/">Entity</a></td>
+<td><a href="../core_Entity/">core_Entity</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/sup_Part_mpn">mpn</a></td>

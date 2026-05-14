@@ -378,8 +378,8 @@
 <p>Harness Project provides a structured representation of connectivity at the physical wiring level, complementing schematic and PCB projects while maintaining its own lifecycle and identity. It enables engineers to design, document, and validate interconnects in a way that is traceable, manufacturable, and tightly integrated with Multiboard and MCAD workflows within the Altium ecosystem.</p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Entity/">Entity</a><ul>
-<li><a href="../Activity/">Activity</a><ul>
+<li><a href="../core_Entity/">core_Entity</a><ul>
+<li><a href="../core_Activity/">core_Activity</a><ul>
 <li><a href="../des_Project/">des_Project</a> [ <a href="../plt_SolutionItem/">plt_SolutionItem</a>]<ul>
 <li><strong>des_HarnessProject</strong></li>
 </ul>
@@ -405,7 +405,7 @@
 <td><a href="../../slots/core_releases">releases</a></td>
 <td><code>*</code></td>
 <td><a href="../des_ProjectRelease/">Hardware Project Release</a></td>
-<td>None</td>
+<td>The release artifacts produced by this activity. Inverse of releaseOf.</td>
 <td><a href="../des_Project/">des_Project</a></td>
 </tr>
 <tr>
@@ -448,7 +448,7 @@
 <td><code>1</code></td>
 <td><a href="../../types/GRID/">GRID</a></td>
 <td>Globally unique identifier across the whole platform.</td>
-<td><a href="../Entity/">Entity</a></td>
+<td><a href="../core_Entity/">core_Entity</a></td>
 </tr>
 </tbody>
 </table>

@@ -233,6 +233,16 @@
 
 
 
+  class core_Activity["Activity"]
+
+
+
+
+          core_Activity &lt;|-- col_CommentThread
+          click core_Activity href "../../classes/core_Activity/"
+
+
+
 
 
 
@@ -268,8 +278,8 @@
 It serves as a persistent communication artifact that promotes design review transparency, traceability, and cross-team collaboration within Altium 365 and connected design tools.</p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Entity/">Entity</a><ul>
-<li><a href="../Activity/">Activity</a><ul>
+<li><a href="../core_Entity/">core_Entity</a><ul>
+<li><a href="../core_Activity/">core_Activity</a><ul>
 <li><strong>col_CommentThread</strong></li>
 </ul>
 </li>
@@ -293,7 +303,7 @@ It serves as a persistent communication artifact that promotes design review tra
 <td><code>1</code></td>
 <td><a href="../../types/GRID/">GRID</a></td>
 <td>Globally unique identifier across the whole platform.</td>
-<td><a href="../Entity/">Entity</a></td>
+<td><a href="../core_Entity/">core_Entity</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/col_CommentThread_comments">comments</a></td>

@@ -232,6 +232,16 @@
 
 
 
+  class core_Activity["Activity"]
+
+
+
+
+          core_Activity &lt;|-- lib_PartRequest
+          click core_Activity href "../../classes/core_Activity/"
+
+
+
 
 
 
@@ -246,8 +256,8 @@
 <p>Part Request has its own identity and lifecycle, capturing intent, justification, and required attributes, and serving as the entry point for librarian or librarian-like roles to validate, enrich, and release the requested item. It connects design needs with library governance, ensuring that sourcing, compliance, and lifecycle rules are applied consistently before the Part becomes available for use in projects.</p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Entity/">Entity</a><ul>
-<li><a href="../Activity/">Activity</a><ul>
+<li><a href="../core_Entity/">core_Entity</a><ul>
+<li><a href="../core_Activity/">core_Activity</a><ul>
 <li><strong>lib_PartRequest</strong></li>
 </ul>
 </li>
@@ -271,7 +281,7 @@
 <td><code>1</code></td>
 <td><a href="../../types/GRID/">GRID</a></td>
 <td>Globally unique identifier across the whole platform.</td>
-<td><a href="../Entity/">Entity</a></td>
+<td><a href="../core_Entity/">core_Entity</a></td>
 </tr>
 </tbody>
 </table>

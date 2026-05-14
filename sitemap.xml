@@ -13,51 +13,7 @@
          <lastmod>2026-05-14</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/Activity/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
          <loc>https://w3id.org/altium/cdm/classes/Any/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/Artifact/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/Entity/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/Event/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/Meta/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/Resource/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/WithGRID/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/WithMaturity/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/WithPlatformAPI/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/WithVault/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/WithVaultLink/</loc>
          <lastmod>2026-05-14</lastmod>
     </url>
     <url>
@@ -82,6 +38,50 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/con_SchematicTemplateRevision/</loc>
+         <lastmod>2026-05-14</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/core_Activity/</loc>
+         <lastmod>2026-05-14</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/core_Artifact/</loc>
+         <lastmod>2026-05-14</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/core_Entity/</loc>
+         <lastmod>2026-05-14</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/core_Event/</loc>
+         <lastmod>2026-05-14</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/core_Meta/</loc>
+         <lastmod>2026-05-14</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/core_Resource/</loc>
+         <lastmod>2026-05-14</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/core_WithGRID/</loc>
+         <lastmod>2026-05-14</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/core_WithMaturity/</loc>
+         <lastmod>2026-05-14</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/core_WithPlatformAPI/</loc>
+         <lastmod>2026-05-14</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/core_WithVault/</loc>
+         <lastmod>2026-05-14</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/core_WithVaultLink/</loc>
          <lastmod>2026-05-14</lastmod>
     </url>
     <url>
@@ -1994,6 +1994,10 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/configuration/</loc>
+         <lastmod>2026-05-14</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/subsets/core/</loc>
          <lastmod>2026-05-14</lastmod>
     </url>
     <url>

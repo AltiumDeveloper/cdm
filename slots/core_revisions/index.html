@@ -193,6 +193,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="field-revisions-core_revisions">Field: revisions (core_revisions)</h1>
+<p><em>The set of versioned snapshots derived from this artifact. Inverse of revisionOf.</em></p>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/core/revisions">https://w3id.org/altium/cdm/core/revisions</a></p>
 <p>Alias: revisions</p>
 <h2 id="inheritance">Inheritance</h2>
@@ -213,17 +214,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/sft_DeviceConfiguration/">Device Configuration </a></td>
-<td>TBD</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../../classes/des_ProjectTemplate/">Project Template </a></td>
-<td>A project template includes document configurations and settings that you kno...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../../classes/lib_ManagedSheet/">Managed Sheet </a></td>
+<td><a href="../../classes/con_SchematicTemplate/">Schematic Template </a></td>
 <td>TBD</td>
 <td>yes</td>
 </tr>
@@ -233,8 +224,8 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../../classes/con_SchematicTemplate/">Schematic Template </a></td>
-<td>TBD</td>
+<td><a href="../../classes/lib_Footprint/">Footprint </a></td>
+<td>Footprint represents the physical layout definition of a Component on a PCB, ...</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -243,23 +234,8 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../../classes/lib_Footprint/">Footprint </a></td>
-<td>Footprint represents the physical layout definition of a Component on a PCB, ...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../../classes/lib_PcbSnippet/">PCB Snippet </a></td>
+<td><a href="../../classes/sft_DeviceConfiguration/">Device Configuration </a></td>
 <td>TBD</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../../classes/lib_ComponentTemplate/">Component Template </a></td>
-<td>Component Template defines a reusable blueprint for creating and managing ele...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../../classes/req_RequirementSpecification/">Requirement Specification </a></td>
-<td>A curated collection of requirements scoped to a program, domain, or release ...</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -273,8 +249,8 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../../classes/lib_ReuseBlock/">Reuse Block </a></td>
-<td>TBD</td>
+<td><a href="../../classes/des_ProjectTemplate/">Project Template </a></td>
+<td>A project template includes document configurations and settings that you kno...</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -282,12 +258,37 @@
 <td>Symbol represents the logical schematic view of a Component, defining its ele...</td>
 <td>yes</td>
 </tr>
+<tr>
+<td><a href="../../classes/lib_ReuseBlock/">Reuse Block </a></td>
+<td>TBD</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../../classes/lib_ManagedSheet/">Managed Sheet </a></td>
+<td>TBD</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../../classes/lib_ComponentTemplate/">Component Template </a></td>
+<td>Component Template defines a reusable blueprint for creating and managing ele...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../../classes/lib_PcbSnippet/">PCB Snippet </a></td>
+<td>TBD</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../../classes/req_RequirementSpecification/">Requirement Specification </a></td>
+<td>A curated collection of requirements scoped to a program, domain, or release ...</td>
+<td>yes</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../../classes/Artifact/">Artifact</a></p>
+<p>Range: <a href="../../classes/core_Artifact/">core_Artifact</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -297,10 +298,12 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_revisions</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The set of versioned snapshots derived from this artifact. Inverse of</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">revisionOf.</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">revisions</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/altium/cdm/</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_derivesInto</span>
-<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Artifact</span>
+<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_Artifact</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core:revisions</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">revisions</span>
 <span class="nt">domain_of</span><span class="p">:</span>
@@ -319,7 +322,7 @@
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">req_Requirement</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">req_RequirementSpecification</span>
 <span class="nt">inverse</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_revisionOf</span>
-<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Artifact</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core_Artifact</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>

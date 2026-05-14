@@ -359,8 +359,8 @@
 <p>Managed BOM has its own identity and lifecycle, decoupled from the evolving design, and serves as the authoritative reference for procurement, manufacturing, and compliance processes. It ensures traceability, repeatability, and governance by locking in sourcing decisions and alternates, while enabling collaboration between engineering, supply chain, and manufacturing teams within the Altium 365 environment.</p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Entity/">Entity</a><ul>
-<li><a href="../Activity/">Activity</a><ul>
+<li><a href="../core_Entity/">core_Entity</a><ul>
+<li><a href="../core_Activity/">core_Activity</a><ul>
 <li><a href="../pro_BomWIP/">pro_BomWIP</a> [ <a href="../pro_Bom/">pro_Bom</a>]<ul>
 <li><strong>pro_ManagedBOM</strong></li>
 </ul>
@@ -386,7 +386,7 @@
 <td><a href="../../slots/core_releases">releases</a></td>
 <td><code>*</code></td>
 <td><a href="../pro_BomRelease/">BOM Release</a></td>
-<td>None</td>
+<td>The release artifacts produced by this activity. Inverse of releaseOf.</td>
 <td><a href="../pro_BomWIP/">pro_BomWIP</a></td>
 </tr>
 <tr>
@@ -422,7 +422,7 @@
 <td><code>1</code></td>
 <td><a href="../../types/GRID/">GRID</a></td>
 <td>Globally unique identifier across the whole platform.</td>
-<td><a href="../Entity/">Entity</a></td>
+<td><a href="../core_Entity/">core_Entity</a></td>
 </tr>
 </tbody>
 </table>
