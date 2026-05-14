@@ -750,6 +750,7 @@ def _write_baseline(issues: list[LintIssue], path: str) -> None:
     _slot_name_re = _re.compile(r"slot name '([^']+)'")
     _field_re = _re.compile(r"missing required metadata field '([^']+)'")
     _element_re = _re.compile(r"element '([^']+)'")
+    _slot_re = _re.compile(r"slot '([^']+)'")
 
     buckets: dict[str, list[str]] = collections.defaultdict(list)
 
@@ -780,6 +781,25 @@ def _write_baseline(issues: list[LintIssue], path: str) -> None:
             key = "grid_format"
             elem = m.group(1) if m else "unknown"
 
+        elif issue.rule_id == "CONV-01":
+            m = _slot_re.search(issue.message)
+            key = "slot_uri_format"
+            elem = m.group(1) if m else "unknown"
+
+        elif issue.rule_id == "CONV-02":
+            m = _slot_re.search(issue.message)
+            elem = m.group(1) if m else "unknown"
+            key = "alias_format" if "has alias" in issue.message else "title_format"
+
+        elif issue.rule_id in ("IRI-CONV-01", "IRI-CONV-02"):
+            # IRI-CONV rules store the element name directly on the issue
+            elem = issue.element or "unknown"
+            key = (
+                "iri_convention_01"
+                if issue.rule_id == "IRI-CONV-01"
+                else "iri_convention_02"
+            )
+
         else:
             continue  # unknown rule — skip
 
@@ -798,8 +818,17 @@ def _write_baseline(issues: list[LintIssue], path: str) -> None:
         "",
     ]
 
-    # Preferred key order: naming_class, naming, grid_format, then missing_metadata.*
-    ordered_keys = ["naming_class", "naming", "grid_format"]
+    # Preferred key order: naming_class, naming, grid_format, CONV-01/02, IRI-CONV, then missing_metadata.*
+    ordered_keys = [
+        "naming_class",
+        "naming",
+        "grid_format",
+        "slot_uri_format",
+        "alias_format",
+        "title_format",
+        "iri_convention_01",
+        "iri_convention_02",
+    ]
     meta_keys = sorted(k for k in buckets if k.startswith("missing_metadata."))
     ordered_keys += meta_keys
 
