@@ -74,7 +74,7 @@ system_MyNewEntity:
     system_MyNewEntity_mySlot:
       slot_uri: sys:MyNewEntity_mySlot
       alias: mySlot
-      title: mySlot
+      title: my slot
       description: The mySlot of this MyNewEntity.
       range: string
       multivalued: false
