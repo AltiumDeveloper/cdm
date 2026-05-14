@@ -20,7 +20,7 @@ subsets:
       maturity: EXPERIMENTAL
 
 classes:
-  req_requirement:
+  req_Requirement:
     is_a: Artifact
     in_subset: requirements
     class_uri: req:Requirement
@@ -33,73 +33,129 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:requirement/{id}
       maturity: EXPERIMENTAL
+    slots:
+      - core_revisions
+    slot_usage:
+      core_revisions:
+        range: req_RequirementRevision
     attributes:
-      Requirement_identifier:
+      req_Requirement_identifier:
+        alias: identifier
+        slot_uri: req:Requirement_identifier
         title: key
         description: >-
           Human-friendly identifier that is unique within a specification context (e.g. SYS-001).
         range: string
         required: true
         multivalued: false
-      Requirement_title:
+      req_Requirement_title:
+        alias: title
+        slot_uri: req:Requirement_title
         title: title
         description: Concise human-readable title of the requirement.
         range: string
         required: true
         multivalued: false
-      Requirement_text:
+      req_Requirement_text:
+        alias: text
+        slot_uri: req:Requirement_text
         title: statement
         description: Canonical textual form of the requirement.
         range: string
         required: true
         multivalued: false
-      Requirement_rationale:
+      req_Requirement_rationale:
+        alias: rationale
+        slot_uri: req:Requirement_rationale
         title: rationale
         description: Justification or reasoning that motivates the requirement intent.
         range: string
         required: false
         multivalued: false
-      Requirement_category:
+      req_Requirement_category:
+        alias: category
+        slot_uri: req:Requirement_category
         title: category
         description: Classification such as functional, safety, regulatory, or usability.
         range: string
         required: false
         multivalued: false
-      Requirement_priority:
+      req_Requirement_priority:
+        alias: priority
+        slot_uri: req:Requirement_priority
         title: priority
         description: Relative importance or sequencing hint for planning.
         range: string
         required: false
         multivalued: false
-      Requirement_acceptance_criteria:
+      req_Requirement_acceptanceCriteria:
+        alias: acceptanceCriteria
+        slot_uri: req:Requirement_acceptanceCriteria
         title: acceptanceCriteria
         description: Objective criteria or measurements that prove the requirement is met.
         range: string
         required: false
         multivalued: true
-      Requirement_owner:
+      req_Requirement_owner:
+        alias: owner
+        slot_uri: req:Requirement_owner
         title: owner
         description: Responsible role or team accountable for the requirement.
         range: string
         required: false
         multivalued: false
-      Requirement_source_reference:
+      req_Requirement_sourceReference:
+        alias: sourceReference
+        slot_uri: req:Requirement_sourceReference
         title: sourceReference
         description: Link or citation to originating contract, regulation, or customer input.
         range: uriorcurie
         required: false
         multivalued: true
-    slots:
-      - core_revisions
-      - req_requirement_children
-      - req_requirement_satisfied_by_artifacts
-      - req_requirement_verified_by_activities
-      - req_requirement_traced_from_sources
-    slot_usage:
-      core_revisions:
-        range: req_requirement_revision
+      req_Requirement_children:
+        is_a: core_hasPart
+        slot_uri: req:Requirement_children
+        alias: children
+        title: children
+        description: Requirements that refine or decompose this requirement.
+        range: req_Requirement
+        multivalued: true
+        required: false
+      req_Requirement_parent:
+        is_a: core_partOf
+        slot_uri: req:Requirement_parent
+        alias: parent
+        title: parent
+        description: Higher-level requirement that allocates scope to this requirement.
+        range: req_Requirement
+        multivalued: false
+        required: false
+      req_Requirement_satisfiedByArtifacts:
+        slot_uri: req:Requirement_satisfiedBy
+        alias: satisfiedByArtifacts
+        title: satisfied by artifacts
+        description: Artifacts, designs, or solutions that implement this requirement.
+        range: req_Artifact
+        multivalued: true
+        required: false
+      req_Requirement_verifiedByActivities:
+        slot_uri: req:Requirement_verifiedBy
+        alias: verifiedByActivities
+        title: verified by activities
+        description: Verification activities that produce evidence for this requirement.
+        range: Activity
+        multivalued: true
+        required: false
+      req_Requirement_tracedFromSources:
+        slot_uri: req:Requirement_tracedFrom
+        alias: tracedFromSources
+        title: traced from sources
+        description: Upstream sources such as contracts, standards, or customer requests.
+        range: req_Artifact
+        multivalued: true
+        required: false
 
-  req_requirement_revision:
+  req_RequirementRevision:
     is_a: Artifact
     in_subset: requirements
     class_uri: req:RequirementRevision
@@ -110,27 +166,38 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:requirement-revision/{id}
       maturity: EXPERIMENTAL
+    slots:
+      - core_revisionOf
+    slot_usage:
+      core_revisionOf:
+        range: req_Requirement
     attributes:
-      RequirementRevision_number:
+      req_RequirementRevision_number:
+        alias: number
+        slot_uri: req:RequirementRevision_number
         title: number
         description: Ordinal or semver-like revision number.
         range: string
         required: true
         multivalued: false
-      RequirementRevision_change_summary:
+      req_RequirementRevision_changeSummary:
+        alias: changeSummary
+        slot_uri: req:RequirementRevision_changeSummary
         title: changeSummary
         description: Concise description of what changed in this revision.
         range: string
         required: false
         multivalued: false
-    slots:
-      - core_revisionOf
-      - req_revision_derives_from_change
-    slot_usage:
-      core_revisionOf:
-        range: req_requirement
+      req_RequirementRevision_derivesFromChange:
+        slot_uri: req:RequirementRevision_derivesFromChange
+        alias: derivesFromChange
+        title: derives from change
+        description: Change request that authorized this requirement revision.
+        range: req_RequirementChangeRequest
+        multivalued: false
+        required: false
 
-  req_requirement_specification:
+  req_RequirementSpecification:
     is_a: Artifact
     in_subset: requirements
     class_uri: req:RequirementSpecification
@@ -140,35 +207,63 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:specification/{id}
       maturity: EXPERIMENTAL
+    slots:
+      - core_revisions
+    slot_usage:
+      core_revisions:
+        range: req_RequirementBaseline
     attributes:
-      RequirementSpecification_name:
+      req_RequirementSpecification_name:
+        alias: name
+        slot_uri: req:RequirementSpecification_name
         title: name
         description: Human-readable name for the specification (e.g. "System Requirements").
         range: string
         required: true
         multivalued: false
-      RequirementSpecification_description:
+      req_RequirementSpecification_description:
+        alias: description
+        slot_uri: req:RequirementSpecification_description
         title: description
         description: Narrative describing the boundaries and context of the specification.
         range: string
         required: false
         multivalued: false
-      RequirementSpecification_owner:
+      req_RequirementSpecification_owner:
+        alias: owner
+        slot_uri: req:RequirementSpecification_owner
         title: owner
         description: Role or organization managing this specification.
         range: string
         required: false
         multivalued: false
-    slots:
-      - core_revisions
-      - req_specification_includes_requirements
-      - req_specification_targets_projects
-      - req_specification_inputs
-    slot_usage:
-      core_revisions:
-        range: req_requirement_baseline
+      req_RequirementSpecification_includesRequirements:
+        is_a: core_hasPart
+        slot_uri: req:RequirementSpecification_requirements
+        alias: includesRequirements
+        title: includes requirements
+        description: Requirements curated under this specification.
+        range: req_Requirement
+        multivalued: true
+        required: true
+      req_RequirementSpecification_targetsProjects:
+        slot_uri: req:RequirementSpecification_targetsProjects
+        alias: targetsProjects
+        title: targets projects
+        description: Requirements projects that receive scope from this specification.
+        range: req_Project
+        multivalued: true
+        required: false
+      req_RequirementSpecification_inputs:
+        slot_uri: req:RequirementSpecification_inputs
+        alias: inputs
+        title: inputs
+        description: Artifacts or agreements that feed this specification.
+        range: req_Artifact
+        multivalued: true
+        required: false
 
-  req_requirement_baseline:
+  req_RequirementBaseline:
     is_a: Artifact
     in_subset: requirements
     class_uri: req:RequirementBaseline
@@ -181,24 +276,49 @@ classes:
       grid: grid:workspace:{workspace-id}:requirements:baseline/{id}
       maturity: EXPERIMENTAL
     attributes:
-      RequirementBaseline_identifier:
+      req_RequirementBaseline_identifier:
+        alias: identifier
+        slot_uri: req:RequirementBaseline_identifier
         title: identifier
         description: Distinguishing label for the approved baseline (e.g. BL-2025.1).
         range: string
         required: true
         multivalued: false
-      RequirementBaseline_notes:
+      req_RequirementBaseline_notes:
+        alias: notes
+        slot_uri: req:RequirementBaseline_notes
         title: notes
         description: Additional context for the approval, deviations, or applicability limits.
         range: string
         required: false
         multivalued: false
-    slots:
-      - req_baseline_of_specification
-      - req_baseline_includes_requirements
-      - req_baseline_targets_project_releases
+      req_RequirementBaseline_ofSpecification:
+        slot_uri: req:RequirementBaseline_ofSpecification
+        alias: ofSpecification
+        title: of specification
+        description: Specification for which this baseline is approved.
+        range: req_RequirementSpecification
+        multivalued: false
+        required: true
+      req_RequirementBaseline_includesRequirements:
+        is_a: core_hasPart
+        slot_uri: req:RequirementBaseline_includesRequirements
+        alias: includesRequirements
+        title: includes requirements
+        description: Specific requirements frozen into this baseline.
+        range: req_Requirement
+        multivalued: true
+        required: true
+      req_RequirementBaseline_targetsProjectReleases:
+        slot_uri: req:RequirementBaseline_targetsProjectReleases
+        alias: targetsProjectReleases
+        title: targets project releases
+        description: Project releases that must comply with this baseline.
+        range: des_project_release
+        multivalued: true
+        required: false
 
-  req_requirement_change_request:
+  req_RequirementChangeRequest:
     is_a: Activity
     in_subset: requirements
     class_uri: req:RequirementChangeRequest
@@ -208,30 +328,56 @@ classes:
       grid: grid:workspace:{workspace-id}:requirements:change-request/{id}
       maturity: EXPERIMENTAL
     attributes:
-      RequirementChangeRequest_reason:
+      req_RequirementChangeRequest_reason:
+        alias: reason
+        slot_uri: req:RequirementChangeRequest_reason
         title: reason
         description: Business, technical, or compliance driver motivating the change.
         range: string
         required: true
         multivalued: false
-      RequirementChangeRequest_priority:
+      req_RequirementChangeRequest_priority:
+        alias: priority
+        slot_uri: req:RequirementChangeRequest_priority
         title: priority
         description: Handling urgency for backlog triage.
         range: string
         required: false
         multivalued: false
-      RequirementChangeRequest_decision:
+      req_RequirementChangeRequest_decision:
+        alias: decision
+        slot_uri: req:RequirementChangeRequest_decision
         title: decision
         description: Outcome such as approved, rejected, or deferred.
         range: string
         required: false
         multivalued: false
-    slots:
-      - req_change_impacts_requirements
-      - req_change_impacts_specifications
-      - req_change_generates_revisions
+      req_RequirementChangeRequest_impactsRequirements:
+        slot_uri: req:RequirementChange_impactsRequirements
+        alias: impactsRequirements
+        title: impacts requirements
+        description: Requirements directly impacted by the change request.
+        range: req_Requirement
+        multivalued: true
+        required: true
+      req_RequirementChangeRequest_impactsSpecifications:
+        slot_uri: req:RequirementChange_impactsSpecifications
+        alias: impactsSpecifications
+        title: impacts specifications
+        description: Specifications that must be updated when processing the change.
+        range: req_RequirementSpecification
+        multivalued: true
+        required: false
+      req_RequirementChangeRequest_generatesRevisions:
+        slot_uri: req:RequirementChange_generatesRevisions
+        alias: generatesRevisions
+        title: generates revisions
+        description: Requirement revisions produced as the outcome of the change request.
+        range: req_RequirementRevision
+        multivalued: true
+        required: false
 
-  req_project:
+  req_Project:
     is_a: Activity
     in_subset: requirements
     class_uri: req:Project
@@ -249,32 +395,74 @@ classes:
       grid: grid:workspace:{workspace-id}:requirements:project/{id}
       maturity: EXPERIMENTAL
     attributes:
-      RequirementProject_name:
+      req_RequirementProject_name:
+        alias: name
+        slot_uri: req:RequirementProject_name
         title: name
         description: Compact display name for the requirement effort.
         range: string
         required: true
         multivalued: false
-      RequirementProject_description:
+      req_RequirementProject_description:
+        alias: description
+        slot_uri: req:RequirementProject_description
         title: description
         description: Longer narrative describing objectives, scope, and constraints.
         range: string
         required: false
         multivalued: false
-      RequirementProject_owner:
+      req_RequirementProject_owner:
+        alias: owner
+        slot_uri: req:RequirementProject_owner
         title: owner
         description: Responsible program, platform team, or external stakeholder.
         range: string
         required: false
         multivalued: false
-    slots:
-      - req_project_specifications
-      - req_project_baselines
-      - req_project_change_requests
-      - req_project_verification_cases
-      - req_project_artifacts
+      req_Project_specifications:
+        is_a: core_hasPart
+        slot_uri: req:Project_specifications
+        alias: specifications
+        title: specifications
+        description: Specifications authored or curated within this requirements project.
+        range: req_RequirementSpecification
+        multivalued: true
+        required: true
+      req_Project_baselines:
+        is_a: core_hasPart
+        slot_uri: req:Project_baselines
+        alias: baselines
+        title: baselines
+        description: Baselines approved under this project to govern execution.
+        range: req_RequirementBaseline
+        multivalued: true
+        required: false
+      req_Project_changeRequests:
+        slot_uri: req:Project_changeRequests
+        alias: changeRequests
+        title: change requests
+        description: Change requests logged against this requirements project.
+        range: req_RequirementChangeRequest
+        multivalued: true
+        required: false
+      req_Project_verificationCases:
+        slot_uri: req:Project_verificationCases
+        alias: verificationCases
+        title: verification cases
+        description: Verification cases scoped to this project for coverage planning.
+        range: req_VerificationCase
+        multivalued: true
+        required: false
+      req_Project_artifacts:
+        slot_uri: req:Project_artifacts
+        alias: artifacts
+        title: artifacts
+        description: Supporting artifacts (models, audits, customer inputs) managed by the project.
+        range: req_Artifact
+        multivalued: true
+        required: false
 
-  req_verification_case:
+  req_VerificationCase:
     is_a: Activity
     in_subset: requirements
     class_uri: req:VerificationCase
@@ -285,238 +473,74 @@ classes:
       grid: grid:workspace:{workspace-id}:requirements:verification-case/{id}
       maturity: EXPERIMENTAL
     attributes:
-      VerificationCase_identifier:
+      req_VerificationCase_identifier:
+        alias: identifier
+        slot_uri: req:VerificationCase_identifier
         title: identifier
         description: External-facing identifier or document number for the verification case.
         range: string
         required: true
         multivalued: false
-      VerificationCase_method:
+      req_VerificationCase_method:
+        alias: method
+        slot_uri: req:VerificationCase_method
         title: method
         description: Verification technique such as analysis, inspection, demonstration, or test.
         range: string
         required: true
         multivalued: false
-      VerificationCase_environment:
+      req_VerificationCase_environment:
+        alias: environment
+        slot_uri: req:VerificationCase_environment
         title: environment
         description: Description of lab, simulation, or operational context for execution.
         range: string
         required: false
         multivalued: false
-      VerificationCase_result:
+      req_VerificationCase_result:
+        alias: result
+        slot_uri: req:VerificationCase_result
         title: result
         description: Pass/fail or summary of latest execution outcome.
         range: string
         required: false
         multivalued: false
-    slots:
-      - req_verification_validates_requirements
-      - req_verification_uses_artifacts
-      - req_verification_generates_evidence
-      - req_verification_triggers_changes
+      req_VerificationCase_validatesRequirements:
+        slot_uri: req:VerificationCase_validatesRequirements
+        alias: validatesRequirements
+        title: validates requirements
+        description: Requirements validated by executing this verification case.
+        range: req_Requirement
+        multivalued: true
+        required: true
+      req_VerificationCase_usesArtifacts:
+        slot_uri: req:VerificationCase_usesArtifacts
+        alias: usesArtifacts
+        title: uses artifacts
+        description: Test articles, prototypes, or simulations consumed during verification.
+        range: req_Artifact
+        multivalued: true
+        required: false
+      req_VerificationCase_generatesEvidence:
+        slot_uri: req:VerificationCase_generatesEvidence
+        alias: generatesEvidence
+        title: generates evidence
+        description: Reports, datasets, or other artifacts captured as verification evidence.
+        range: req_Artifact
+        multivalued: true
+        required: false
+      req_VerificationCase_triggersChanges:
+        slot_uri: req:VerificationCase_triggersChanges
+        alias: triggersChanges
+        title: triggers changes
+        description: Change requests created due to verification findings.
+        range: req_RequirementChangeRequest
+        multivalued: true
+        required: false
 
-  req_artifact:
+  req_Artifact:
     is_a: Resource
     in_subset: requirements
     class_uri: req:Artifact
     title: Requirement Artifact
-
-slots:
-  req_requirement_children:
-    is_a: core_hasPart
-    slot_uri: req:Requirement_children
-    title: children
-    description: Requirements that refine or decompose this requirement.
-    range: req_requirement
-    multivalued: true
-    required: false
-    inverse: req_requirement_parent
-
-  req_requirement_parent:
-    is_a: core_partOf
-    slot_uri: req:Requirement_parent
-    title: parent
-    description: Higher-level requirement that allocates scope to this requirement.
-    range: req_requirement
-    multivalued: false
-    required: false
-
-  req_requirement_satisfied_by_artifacts:
-    slot_uri: req:Requirement_satisfiedBy
-    title: satisfiedBy
-    description: Artifacts, designs, or solutions that implement this requirement.
-    range: req_artifact
-    multivalued: true
-    required: false
-
-  req_requirement_verified_by_activities:
-    slot_uri: req:Requirement_verifiedBy
-    title: verifiedBy
-    description: Verification activities that produce evidence for this requirement.
-    range: Activity
-    multivalued: true
-    required: false
-
-  req_requirement_traced_from_sources:
-    slot_uri: req:Requirement_tracedFrom
-    title: tracedFrom
-    description: Upstream sources such as contracts, standards, or customer requests.
-    range: req_artifact
-    multivalued: true
-    required: false
-
-  req_revision_derives_from_change:
-    slot_uri: req:RequirementRevision_derivesFromChange
-    title: derivesFromChange
-    description: Change request that authorized this requirement revision.
-    range: req_requirement_change_request
-    multivalued: false
-    required: false
-
-  req_specification_includes_requirements:
-    is_a: core_hasPart
-    slot_uri: req:RequirementSpecification_requirements
-    title: requirements
-    description: Requirements curated under this specification.
-    range: req_requirement
-    multivalued: true
-    required: true
-
-  req_specification_targets_projects:
-    slot_uri: req:RequirementSpecification_targetsProjects
-    title: targetsProjects
-    description: Requirements projects that receive scope from this specification.
-    range: req_project
-    multivalued: true
-    required: false
-
-  req_specification_inputs:
-    slot_uri: req:RequirementSpecification_inputs
-    title: inputs
-    description: Artifacts or agreements that feed this specification.
-    range: req_artifact
-    multivalued: true
-    required: false
-
-  req_baseline_of_specification:
-    slot_uri: req:RequirementBaseline_ofSpecification
-    title: ofSpecification
-    description: Specification for which this baseline is approved.
-    range: req_requirement_specification
-    multivalued: false
-    required: true
-
-  req_baseline_includes_requirements:
-    is_a: core_hasPart
-    slot_uri: req:RequirementBaseline_includesRequirements
-    title: includesRequirements
-    description: Specific requirements frozen into this baseline.
-    range: req_requirement
-    multivalued: true
-    required: true
-
-  req_baseline_targets_project_releases:
-    slot_uri: req:RequirementBaseline_targetsProjectReleases
-    title: targetsProjectReleases
-    description: Project releases that must comply with this baseline.
-    range: des_project_release
-    multivalued: true
-    required: false
-
-  req_change_impacts_requirements:
-    slot_uri: req:RequirementChange_impactsRequirements
-    title: impactsRequirements
-    description: Requirements directly impacted by the change request.
-    range: req_requirement
-    multivalued: true
-    required: true
-
-  req_change_impacts_specifications:
-    slot_uri: req:RequirementChange_impactsSpecifications
-    title: impactsSpecifications
-    description: Specifications that must be updated when processing the change.
-    range: req_requirement_specification
-    multivalued: true
-    required: false
-
-  req_change_generates_revisions:
-    slot_uri: req:RequirementChange_generatesRevisions
-    title: generatesRevisions
-    description: Requirement revisions produced as the outcome of the change request.
-    range: req_requirement_revision
-    multivalued: true
-    required: false
-
-  req_verification_validates_requirements:
-    slot_uri: req:VerificationCase_validatesRequirements
-    title: validatesRequirements
-    description: Requirements validated by executing this verification case.
-    range: req_requirement
-    multivalued: true
-    required: true
-
-  req_verification_uses_artifacts:
-    slot_uri: req:VerificationCase_usesArtifacts
-    title: usesArtifacts
-    description: Test articles, prototypes, or simulations consumed during verification.
-    range: req_artifact
-    multivalued: true
-    required: false
-
-  req_verification_generates_evidence:
-    slot_uri: req:VerificationCase_generatesEvidence
-    title: generatesEvidence
-    description: Reports, datasets, or other artifacts captured as verification evidence.
-    range: req_artifact
-    multivalued: true
-    required: false
-
-  req_verification_triggers_changes:
-    slot_uri: req:VerificationCase_triggersChanges
-    title: triggersChanges
-    description: Change requests created due to verification findings.
-    range: req_requirement_change_request
-    multivalued: true
-    required: false
-
-  req_project_specifications:
-    is_a: core_hasPart
-    slot_uri: req:Project_specifications
-    title: specifications
-    description: Specifications authored or curated within this requirements project.
-    range: req_requirement_specification
-    multivalued: true
-    required: true
-
-  req_project_baselines:
-    is_a: core_hasPart
-    slot_uri: req:Project_baselines
-    title: baselines
-    description: Baselines approved under this project to govern execution.
-    range: req_requirement_baseline
-    multivalued: true
-    required: false
-
-  req_project_change_requests:
-    slot_uri: req:Project_changeRequests
-    title: changeRequests
-    description: Change requests logged against this requirements project.
-    range: req_requirement_change_request
-    multivalued: true
-    required: false
-
-  req_project_verification_cases:
-    slot_uri: req:Project_verificationCases
-    title: verificationCases
-    description: Verification cases scoped to this project for coverage planning.
-    range: req_verification_case
-    multivalued: true
-    required: false
-
-  req_project_artifacts:
-    slot_uri: req:Project_artifacts
-    title: artifacts
-    description: Supporting artifacts (models, audits, customer inputs) managed by the project.
-    range: req_artifact
-    multivalued: true
-    required: false
+    description: TBD
