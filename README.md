@@ -53,8 +53,8 @@ poetry run cdm-wizard
 4. **Asks for title and description** (both required by the schema conventions).
 5. **Collects slot definitions** — name (camelCase), range, required flag, multivalued flag. You can add as many slots as needed.
 6. **Auto-generates the GRID annotation template** for the subset.
-7. **Runs `linkml-validate`** on the generated YAML before displaying anything. If validation fails, the output is suppressed and the error is shown instead.
-8. **Displays the validated YAML** in a Rich-highlighted panel with a green "✓ Validation Passed" title.
+7. **Runs built-in convention checks** on the generated YAML structure and naming to catch common schema issues before you paste it into the schema files.
+8. **Displays the generated YAML** in a Rich-highlighted panel, along with the wizard's validation/check status.
 
 ### What you get
 
