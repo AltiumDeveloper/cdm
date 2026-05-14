@@ -186,6 +186,28 @@ classes:
     slots:
       - des_manufacturing_package_project_release
 
+  des_RuleCheck:
+    is_a: Artifact
+    in_subset: design
+    class_uri: des:RuleCheck
+    title: Rule Check
+    description: Rule check definitions that can be executed against a project to validate design integrity and compliance with specified constraints.
+    annotations:
+      maturity: EXPERIMENTAL
+      grid: grid:workspace:{workspace-id}:design:rule-check/{id}
+      platformAPI: RuleCheck_Preview
+
+  des_RuleCheckExecution:
+    is_a: Activity
+    in_subset: design
+    class_uri: des:RuleCheckExecution
+    title: Rule Check Execution
+    description: Execution of a rule check against a project to validate design integrity and compliance with specified constraints.
+    annotations:
+      maturity: EXPERIMENTAL
+      grid: grid:workspace:{workspace-id}:design:rule-check-execution/{id}
+      platformAPI: RuleCheckExecution_Preview
+
 slots:
 
   des_multiboard_project_projects:

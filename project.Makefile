@@ -72,3 +72,10 @@ gen-esd-schema:
 
 ci-generate: clean install gen-project gen-schema gen-sdm-schema gen-esd-schema
 ci-test: lint test
+
+lint:
+	$(RUN) linkml-lint -c .linkml-lint.yaml $(SOURCE_SCHEMA_PATH)
+	$(RUN) cdm-lint $(SOURCE_SCHEMA_PATH)
+
+wizard:
+	$(RUN) cdm-wizard

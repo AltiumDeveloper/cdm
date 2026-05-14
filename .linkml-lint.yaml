@@ -1,0 +1,6 @@
+# linkml-lint configuration for CDM
+# CDM uses compound naming conventions ({subset}_{ClassName}) that
+# intentionally violate the standard_naming rule. Disable it here.
+rules:
+  standard_naming:
+    level: disabled
