@@ -22,7 +22,7 @@ subsets:
 
 classes:
 
-  lib_component:
+  lib_Component:
     is_a: Artifact
     in_subset: library
     class_uri: lib:Component
@@ -38,10 +38,12 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:library:component/{id}
     attributes:
-      Component_parameters:
+      lib_Component_parameters:
+        slot_uri: lib:Component_parameters
+        alias: parameters
         title: parameters
         description: Component parameters
-        range: lib_component_parameter
+        range: lib_ComponentParameter
         multivalued: true
         required: false
     slots:
@@ -59,31 +61,79 @@ classes:
     title: Component Revision
     description: Revision of a Component.
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:component-revision/{id}
       platformAPI: DesComponent
     attributes:
-      ComponentRevision_parameters:
+      lib_ComponentRevision_parameters:
+        slot_uri: lib:ComponentRevision_parameters
+        alias: parameters
         title: parameters
         description: Component parameters
-        range: lib_component_parameter
+        range: lib_ComponentParameter
         multivalued: true
         required: false
-      ComponentRevision_partChoiceList:
+      lib_ComponentRevision_partChoiceList:
+        slot_uri: lib:ComponentRevision_partChoiceList
+        alias: partChoiceList
         title: partChoiceList
         description: List of part choices
-        range: lib_part_choice_list
+        range: lib_PartChoiceList
         multivalued: false
         required: true
+      lib_ComponentRevision_template:
+        is_a: core_derivedFrom
+        slot_uri: lib:ComponentRevision_template
+        alias: template
+        title: template
+        description: TBD
+        range: lib_ComponentTemplateRevision
+        multivalued: false
+        required: false
+        instantiates:
+          - WithVaultLink
+        annotations:
+          modeled_as: Vault Link (rev -> rev)
+          vaultLinkParent: lib:ComponentRevision
+          vaultLinkChild: lib:ComponentTemplateRevision
+      lib_ComponentRevision_symbols:
+        is_a: core_hasPart
+        slot_uri: lib:ComponentRevision_symbols
+        alias: symbols
+        title: symbols
+        description: TBD
+        range: lib_SymbolRevision
+        multivalued: true
+        required: false
+        annotations:
+          modeled_as: Vault Link (rev -> rev)
+      lib_ComponentRevision_footprints:
+        is_a: core_hasPart
+        slot_uri: lib:ComponentRevision_footprints
+        alias: footprints
+        title: footprints
+        description: TBD
+        range: lib_FootprintRevision
+        multivalued: true
+        required: false
+        annotations:
+          modeled_as: Vault Link (rev -> rev)
+      lib_ComponentRevision_usedByProjectVariant:
+        is_a: core_inputOf
+        slot_uri: lib:ComponentRevision_usedByProjectVariant
+        alias: usedByProjectVariant
+        title: used by project variant
+        description: There is a relation per each project/variant where this Component Revision is used.
+        range: des_Project
+        multivalued: true
+        required: false
+        annotations:
+          modeled_as: Vault Link (rev -> rev)
     slots:
       - lib_consists_of_parts
-      - lib_component_revision_template
-      - lib_component_revision_symbols
-      - lib_component_revision_footprints
-      - lib_component_revision_used_by_project_variant
 
-  lib_component_template:
+  lib_ComponentTemplate:
     is_a: Artifact
     in_subset: library
     class_uri: lib:ComponentTemplate
@@ -97,24 +147,26 @@ classes:
         making it a key mechanism for enforcing standards, reducing errors, and enabling scalable library management across teams and projects.
     annotations:
       grid: grid:workspace:{workspace-id}:library:component-template/{id}
+      platformAPI: DesComponentTemplate
     slots:
       - core_revisions
     slot_usage:
       core_revisions:
-        range: lib_component_template_revision
+        range: lib_ComponentTemplateRevision
 
-  lib_component_template_revision:
+  lib_ComponentTemplateRevision:
     is_a: Artifact
     in_subset: library
     class_uri: lib:ComponentTemplateRevision
     title: Component Template Revision
     description: TBD
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:component-template-revision/{id}
+      platformAPI: DesComponentTemplateRevision
 
-  lib_component_parameter:
+  lib_ComponentParameter:
     is_a: Resource
     in_subset: library
     class_uri: lib:ComponentParameter
@@ -123,26 +175,32 @@ classes:
     annotations:
       platformAPI: DesComponentParameter
     attributes:
-      ComponentParameter_name:
+      lib_ComponentParameter_name:
+        slot_uri: lib:ComponentParameter_name
+        alias: name
         title: name
         description: TBD
         range: string
         multivalued: false
         required: true
-      ComponentParameter_value:
+      lib_ComponentParameter_value:
+        slot_uri: lib:ComponentParameter_value
+        alias: value
         title: value
         description: TBD
         range: string
         multivalued: false
         required: false
-      ComponentParameter_type: # TODO define values
+      lib_ComponentParameter_type: # TODO define values
+        slot_uri: lib:ComponentParameter_type
+        alias: type
         title: type
         description: TBD
         range: string
         multivalued: false
         required: false
 
-  lib_symbol:
+  lib_Symbol:
     is_a: Artifact
     in_subset: library
     class_uri: lib:Symbol
@@ -160,21 +218,21 @@ classes:
       - core_revisions
     slot_usage:
       core_revisions:
-        range: lib_symbol_revision
+        range: lib_SymbolRevision
 
-  lib_symbol_revision:
+  lib_SymbolRevision:
     is_a: Artifact
     in_subset: library
     class_uri: lib:SymbolRevision
     title: Symbol Revision
     description: TBD
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:symbol-revision/{id}
       platformAPI: DesSymbol
 
-  lib_footprint:
+  lib_Footprint:
     is_a: Artifact
     in_subset: library
     class_uri: lib:Footprint
@@ -192,21 +250,21 @@ classes:
       - core_revisions
     slot_usage:
       core_revisions:
-        range: lib_footprint_revision
+        range: lib_FootprintRevision
 
-  lib_footprint_revision:
+  lib_FootprintRevision:
     is_a: Artifact
     in_subset: library
     class_uri: lib:FootprintRevision
     title: Footprint Revision
     description: TBD
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:footprint-revision/{id}
       platformAPI: DesFootprint
 
-  lib_part:
+  lib_Part:
     is_a: Artifact
     in_subset: library
     class_uri: lib:Part
@@ -218,7 +276,7 @@ classes:
       grid: grid:workspace:{workspace-id}:library:part/{id}
       platformAPI: DesPart
 
-  lib_datasheet:
+  lib_Datasheet:
     is_a: Artifact
     in_subset: library
     class_uri: lib:Datasheet
@@ -234,7 +292,7 @@ classes:
       grid: grid:workspace:{workspace-id}:library:datasheet/{id}
       platformAPI: DesDatasheet
 
-  lib_part_request:
+  lib_PartRequest:
     is_a: Activity
     in_subset: library
     class_uri: lib:PartRequest
@@ -250,7 +308,7 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:library:part-request/{id}
 
-  lib_reuse_block:
+  lib_ReuseBlock:
     is_a: Artifact
     in_subset: library
     class_uri: lib:ReuseBlock
@@ -266,25 +324,42 @@ classes:
       - core_revisions
     slot_usage:
       core_revisions:
-        range: lib_reuse_block_revision
+        range: lib_ReuseBlockRevision
 
-  lib_reuse_block_revision:
+  lib_ReuseBlockRevision:
     is_a: Artifact
     in_subset: library
     class_uri: lib:ReuseBlockRevision
     title: Reuse Block Revision
     description: TBD
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:reuse-block-revision/{id}
       platformAPI: DesReuseBlockRevision
     slots:
       - lib_consists_of_components
-      - lib_reuse_block_revision_sch_snippet
-      - lib_reuse_block_revision_pcb_snippet
+    attributes:
+      lib_ReuseBlockRevision_schSnippet:
+        is_a: core_hasPart
+        slot_uri: lib:ReuseBlockRevision_schSnippet
+        alias: schSnippet
+        title: sch snippet
+        description: TBD
+        range: lib_SchSnippetRevision
+        multivalued: false
+        required: false
+      lib_ReuseBlockRevision_pcbSnippet:
+        is_a: core_hasPart
+        slot_uri: lib:ReuseBlockRevision_pcbSnippet
+        alias: pcbSnippet
+        title: pcb snippet
+        description: TBD
+        range: lib_PcbSnippetRevision
+        multivalued: false
+        required: false
 
-  lib_managed_sheet:
+  lib_ManagedSheet:
     is_a: Artifact
     in_subset: library
     class_uri: lib:ManagedSheet
@@ -299,23 +374,34 @@ classes:
       - core_revisions
     slot_usage:
       core_revisions:
-        range: lib_managed_sheet_revision
+        range: lib_ManagedSheetRevision
 
-  lib_managed_sheet_revision:
+  lib_ManagedSheetRevision:
     is_a: Artifact
     in_subset: library
     class_uri: lib:ManagedSheetRevision
     title: Managed Sheet Revision
     description: TBD
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:managed-sheet-revision/{id}
     slots:
       - lib_consists_of_components
-      - lib_managed_sheet_revision_template
+    attributes:
+      lib_ManagedSheetRevision_template:
+        is_a: core_derivedFrom
+        slot_uri: lib:ManagedSheetRevision_template
+        alias: template
+        title: template
+        description: TBD
+        range: con_SchematicTemplateRevision
+        multivalued: false
+        required: false
+        annotations:
+          modeled_as: Vault Revision - Revision
 
-  lib_sch_snippet:
+  lib_SchSnippet:
     is_a: Artifact
     in_subset: library
     class_uri: lib:SchSnippet
@@ -325,18 +411,18 @@ classes:
       - core_revisions
     slot_usage:
       core_revisions:
-        range: lib_sch_snippet_revision
+        range: lib_SchSnippetRevision
 
-  lib_sch_snippet_revision:
+  lib_SchSnippetRevision:
     is_a: Artifact
     in_subset: library
     class_uri: lib:SchSnippetRevision
     title: SCH Snippet Revision
     description: TBD
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
 
-  lib_pcb_snippet:
+  lib_PcbSnippet:
     is_a: Artifact
     in_subset: library
     class_uri: lib:PcbSnippet
@@ -346,48 +432,54 @@ classes:
       - core_revisions
     slot_usage:
       core_revisions:
-        range: lib_pcb_snippet_revision
+        range: lib_PcbSnippetRevision
 
-  lib_pcb_snippet_revision:
+  lib_PcbSnippetRevision:
     is_a: Artifact
     in_subset: library
     class_uri: lib:PcbSnippetRevision
     title: PCB Snippet Revision
     description: TBD
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
 
-  lib_part_choice_list:
+  lib_PartChoiceList:
     is_a: Resource
     in_subset: library
     class_uri: lib:PartChoiceList
     title: Part Choice List
     description: TBD
     attributes:
-      PartChoiceList_partChoices:
+      lib_PartChoiceList_partChoices:
+        slot_uri: lib:PartChoiceList_partChoices
+        alias: partChoices
         title: partChoices
         description: List of part choices
-        range: lib_part_choice
+        range: lib_PartChoice
         multivalued: true
         required: false
 
-  lib_part_choice:
+  lib_PartChoice:
     is_a: Resource
     in_subset: library
     class_uri: lib:PartChoice
     title: Part Choice
     description: TBD
     attributes:
-      PartChoice_rank:
+      lib_PartChoice_rank:
+        slot_uri: lib:PartChoice_rank
+        alias: rank
         title: rank
         description: Rank of the part choice in the list
         range: integer
         multivalued: false
         required: true
-      PartChoice_part:
+      lib_PartChoice_part:
+        slot_uri: lib:PartChoice_part
+        alias: part
         title: part
         description: The part associated with this choice
-        range: lib_part
+        range: lib_Part
         multivalued: false
         required: true
 
@@ -400,26 +492,29 @@ slots:
   lib_uses_parts: 
     is_a: core_hasInput
     slot_uri: lib:uses_parts
+    alias: usesParts
     title: parts
     description: Parts used in this Activity
     domain: Activity
-    range: lib_part
+    range: lib_Part
     required: false
     multivalued: true
 
   lib_consists_of_parts: 
     is_a: core_hasPart
     slot_uri: lib:consists_of_parts
+    alias: consistsOfParts
     title: parts
     description: Parts used in this Artifact
     domain: Artifact
-    range: lib_part
+    range: lib_Part
     required: false
     multivalued: true
 
   lib_uses_components: 
     is_a: core_hasInput
     slot_uri: lib:uses_components
+    alias: usesComponents
     title: components
     description: Components used in this Activity
     domain: Activity
@@ -430,6 +525,7 @@ slots:
   lib_consists_of_components: 
     is_a: core_hasPart
     slot_uri: lib:consists_of_components
+    alias: consistsOfComponents
     title: components
     description: Components used in this Artifact
     domain: Artifact
@@ -438,66 +534,3 @@ slots:
     multivalued: true
 
   ###
-
-  lib_component_revision_template:
-    is_a: core_derivedFrom
-    slot_uri: lib:ComponentRevision_template
-    title: template
-    range: lib_component_template_revision
-    multivalued: false
-    instantiates:
-      - WithVaultLink
-    annotations:
-      modeled_as: Vault Link (rev -> rev)
-      vaultLinkParent: lib:ComponentRevision
-      vaultLinkChild: lib:ComponentTemplateRevision
-
-  lib_component_revision_symbols:
-    is_a: core_hasPart
-    slot_uri: lib:ComponentRevision_symbols
-    title: symbols
-    range: lib_symbol_revision
-    multivalued: true
-    annotations:
-      modeled_as: Vault Link (rev -> rev)
-
-  lib_component_revision_footprints:
-    is_a: core_hasPart
-    slot_uri: lib:ComponentRevision_footprints
-    title: footprints
-    range: lib_footprint_revision
-    multivalued: true
-    annotations:
-      modeled_as: Vault Link (rev -> rev)
-
-  lib_component_revision_used_by_project_variant:
-    is_a: core_inputOf
-    title: used_by_project_variant
-    description: There is a relation per each project/variant where this Component Revision is used.
-    range: des_project
-    multivalued: true
-    annotations:
-      modeled_as: Vault Link (rev -> rev)
-
-  lib_managed_sheet_revision_template:
-    is_a: core_derivedFrom
-    slot_uri: lib:ManagedSheetRevision_template
-    title: template
-    range: con_schematic_template_revision
-    multivalued: false
-    annotations:
-      modeled_as: Vault Revision - Revision
-
-  lib_reuse_block_revision_sch_snippet:
-    is_a: core_hasPart
-    slot_uri: lib:ReuseBlockRevision_schSnippet
-    title: sch_snippet
-    range: lib_sch_snippet_revision
-    multivalued: false
-
-  lib_reuse_block_revision_pcb_snippet:
-    is_a: core_hasPart
-    slot_uri: lib:ReuseBlockRevision_pcbSnippet
-    title: pcb_snippet
-    range: lib_pcb_snippet_revision
-    multivalued: false

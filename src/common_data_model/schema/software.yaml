@@ -1,5 +1,5 @@
 id: https://w3id.org/altium/cdm/software/
-name: cdm-procurement
+name: cdm-software
 prefixes:
   linkml: https://w3id.org/linkml/
   core: https://w3id.org/altium/cdm/core/
@@ -20,7 +20,7 @@ subsets:
 
 classes:
 
-  sft_software_project:
+  sft_SoftwareProject:
     is_a: Activity
     in_subset: software
     class_uri: sft:SoftwareProject
@@ -30,17 +30,42 @@ classes:
       grid: grid:workspace:{workspace-id}:software:software-project/{id}
       platformAPI: SftSoftwareProject
     mixins:
-      - SolutionItem
+      - plt_SolutionItem
     slots:
-      - core_releases      
-      - sft_software_project_ai_models
-      - sft_software_project_device_configuration
-      - sft_software_project_latest_build_artifacts
+      - core_releases
     slot_usage:
       core_releases:
-        range: sft_software_release
+        range: sft_SoftwareRelease
+    attributes:
+      sft_SoftwareProject_aiModels:
+        is_a: core_hasInput
+        slot_uri: sft:SoftwareProject_aiModels
+        alias: aiModels
+        title: ai models
+        description: TBD
+        range: sft_AIModel
+        multivalued: false
+        required: false
+      sft_SoftwareProject_deviceConfiguration:
+        is_a: core_hasOutput
+        slot_uri: sft:SoftwareProject_deviceConfiguration
+        alias: deviceConfiguration
+        title: device configuration
+        description: Device Configuration derived from the project
+        range: sft_DeviceConfiguration
+        multivalued: false
+        required: false
+      sft_SoftwareProject_latestBuildArtifacts:
+        is_a: core_hasOutput
+        slot_uri: sft:SoftwareProject_latestBuildArtifacts
+        alias: latestBuildArtifacts
+        title: latest build artifacts
+        description: Latest build artifacts produced from the project
+        range: sft_BuildArtifact
+        multivalued: true
+        required: false
 
-  sft_software_release:
+  sft_SoftwareRelease:
     is_a: Artifact
     in_subset: software
     class_uri: sft:SoftwareRelease
@@ -48,19 +73,51 @@ classes:
     description: TBD
     annotations:
       grid: grid:workspace:{workspace-id}:software:software-release/{id}
-    slots:
-      - sft_software_release_ai_models
-      - sft_software_release_build_artifacts
     attributes:
-      title:
+      sft_SoftwareRelease_title:
+        alias: title
+        slot_uri: sft:SoftwareRelease_title
+        title: title
         description: Title of the release
-      description:
+        range: string
+        required: false
+        multivalued: false
+      sft_SoftwareRelease_description:
+        alias: description
+        slot_uri: sft:SoftwareRelease_description
+        title: description
         description: Free form text with additional details about the release. Changelog, etc.
-      attachments:
+        range: string
+        required: false
+        multivalued: false
+      sft_SoftwareRelease_attachments:
+        alias: attachments
+        slot_uri: sft:SoftwareRelease_attachments
+        title: attachments
         description: Additional files associated with the release (reports, documents, etc.)
         range: BLOB
+        required: false
+        multivalued: false
+      sft_SoftwareRelease_aiModels:
+        is_a: core_hasPart
+        slot_uri: sft:SoftwareRelease_aiModels
+        alias: aiModels
+        title: ai models
+        description: AI model artifacts included into the release.
+        range: sft_AIModel
+        multivalued: false
+        required: false
+      sft_SoftwareRelease_buildArtifacts:
+        is_a: core_hasPart
+        slot_uri: sft:SoftwareRelease_buildArtifacts
+        alias: buildArtifacts
+        title: build artifacts
+        description: Firmware build artifacts, deployable to the device. May be multiple artifacts if firmware targets multiple chips.
+        range: sft_BuildArtifact
+        multivalued: true
+        required: false
 
-  sft_device_configuration:
+  sft_DeviceConfiguration:
     is_a: Artifact
     in_subset: software
     class_uri: sft:DeviceConfiguration
@@ -73,9 +130,9 @@ classes:
       - core_revisions
     slot_usage:
       core_revisions:
-        range: sft_device_configuration_revision
+        range: sft_DeviceConfigurationRevision
 
-  sft_device_configuration_revision:
+  sft_DeviceConfigurationRevision:
     is_a: Artifact
     in_subset: software
     class_uri: sft:DeviceConfigurationRevision
@@ -86,21 +143,24 @@ classes:
       platformAPI: SftDevCfgDeviceConfigurationRevision
     attributes:
       sft_DeviceConfigurationRevision_pinModel:
+        slot_uri: sft:DeviceConfigurationRevision_pinModel
         alias: pinModel
         title: pin model
         description: TBD
         range: sft_PinAssignmentModel
+        multivalued: false
         required: true
         inlined: true
 
   sft_PinAssignmentModel:
     is_a: Resource
     in_subset: software
-    class_uri: sft:PinAssingmentModel
+    class_uri: sft:PinAssignmentModel
     title: Device pin assgnment
     description: TBD
     attributes:
       sft_PinAssignmentModel_pins:
+        slot_uri: sft:PinAssignmentModel_pins
         alias: pins
         title: pins
         description: TBD
@@ -113,36 +173,44 @@ classes:
   sft_PinAssignment:
     is_a: Resource
     in_subset: software
-    class_uri: sft:PinAssingment
+    class_uri: sft:PinAssignment
     title: Device pin assgnment
     description: TBD
     attributes:
       sft_PinAssignment_pinNumber:
+        slot_uri: sft:PinAssignment_pinNumber
         alias: pinNumber
         title: pin number
         description: TBD
         range: integer
+        multivalued: false
         required: true
       sft_PinAssignment_pinName:
+        slot_uri: sft:PinAssignment_pinName
         alias: pinName
         title: pin name
         description: TBD
         range: string
+        multivalued: false
         required: true
       sft_PinAssignment_pinFunction:
+        slot_uri: sft:PinAssignment_pinFunction
         alias: pinFunction
         title: pin function
         description: TBD
         range: string
+        multivalued: false
         required: true
       sft_PinAssignment_symbolicName:
+        slot_uri: sft:PinAssignment_symbolicName
         alias: symbolicName
         title: symbolic name
         description: TBD
         range: string
+        multivalued: false
         required: true
 
-  sft_ai_model:
+  sft_AIModel:
     is_a: Artifact
     in_subset: software
     class_uri: sft:AIModel
@@ -159,46 +227,11 @@ classes:
       grid: grid:workspace:{workspace-id}:software:ai-model/{id}
       maturity: EXPERIMENTAL
     mixins:
-      - SolutionItem
+      - plt_SolutionItem
 
-  sft_build_artifact:
+  sft_BuildArtifact:
     is_a: Artifact
     in_subset: software
     class_uri: sft:BuildArtifact
     title: Build Artifact
     description: TBD
-
-slots: 
-
-  sft_software_project_device_configuration:
-    is_a: core_hasOutput
-    slot_uri: sft:SoftwareProject_deviceConfiguration
-    title: device_configuration
-    description: Device Configuration derived from the project
-    range: sft_device_configuration
-
-  sft_software_project_latest_build_artifacts:
-    is_a: core_hasOutput
-    title: latest_build_artifact
-    description: Latest build artifacts produced from the project
-    range: sft_build_artifact
-    multivalued: true
-
-  sft_software_project_ai_models:
-    is_a: core_hasInput
-    title: ai_models
-    description: TBD
-    range: sft_ai_model
-
-  sft_software_release_ai_models:
-    is_a: core_hasPart
-    title: ai_models
-    description: AI model artifacts included into the release.
-    range: sft_ai_model
-
-  sft_software_release_build_artifacts:
-    is_a: core_hasPart
-    title: build_artifacts
-    description: Firmware build artifacts, deployable to the device. May be multiple artifacts if firmware targets multiple chips.
-    range:  sft_build_artifact
-    multivalued: true

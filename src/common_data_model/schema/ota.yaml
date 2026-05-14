@@ -32,28 +32,6 @@ enums:
       Outdated:
       UpdateScheduled:
 
-slots:
-
-  ota_Device_fleets:
-    slot_uri: ota:Device_fleets
-    alias: fleets
-    title: fleets
-    description: Fleets this device belongs to
-    range: ota_Fleet
-    multivalued: true
-    required: false
-    inverse: ota_Fleet_devices
-
-  ota_Fleet_devices:
-    slot_uri: ota:Fleet_devices
-    alias: devices
-    title: devices
-    description: Devices in this fleet
-    range: ota_Device
-    multivalued: true
-    required: false
-    inverse: ota_Device_fleets
-
 classes:
 
   ota_Device:
@@ -68,38 +46,55 @@ classes:
       maturity: EXPERIMENTAL
     slots:
       - core_name
-      - ota_Device_fleets
     attributes:
+      ota_Device_fleets:
+        slot_uri: ota:Device_fleets
+        alias: fleets
+        title: fleets
+        description: Fleets this device belongs to
+        range: ota_Fleet
+        multivalued: true
+        required: false
       ota_Device_deviceId:
+        slot_uri: ota:Device_deviceId
         alias: deviceId
         title: device ID
         description: External device identifier (e.g. Torizon deviceId)
         range: string
         multivalued: false
+        required: false
       ota_Device_hardwareId:
+        slot_uri: ota:Device_hardwareId
         alias: hardwareId
         title: hardware ID
         description: Hardware identifier indicating device type/model
         range: string
         multivalued: false
+        required: false
       ota_Device_hibernated:
+        slot_uri: ota:Device_hibernated
         alias: hibernated
         title: hibernated
         description: Whether the device is in hibernation (from Torizon DeviceInfoBasic.hibernated)
         range: boolean
         multivalued: false
+        required: false
       ota_Device_status:
+        slot_uri: ota:Device_status
         alias: status
         title: status
         description: Current device status
         range: ota_DeviceStatus
         multivalued: false
+        required: false
       ota_Device_packages:
+        slot_uri: ota:Device_packages
         alias: packages
         title: packages
         description: Installed packages, if known
         range: ota_Package
         multivalued: true
+        required: false
 
   ota_Fleet:
     is_a: Artifact
@@ -113,7 +108,15 @@ classes:
       maturity: EXPERIMENTAL
     slots:
       - core_name
-      - ota_Fleet_devices
+    attributes:
+      ota_Fleet_devices:
+        slot_uri: ota:Fleet_devices
+        alias: devices
+        title: devices
+        description: Devices in this fleet
+        range: ota_Device
+        multivalued: true
+        required: false
 
   ota_Package:
     is_a: Artifact
@@ -129,27 +132,35 @@ classes:
       - core_name
     attributes:
       ota_Package_version:
+        slot_uri: ota:Package_version
         alias: version
         title: version
         description: Package version
         range: string
         multivalued: false
+        required: false
       ota_Package_size:
+        slot_uri: ota:Package_size
         alias: size
         title: size
         description: Package size in bytes.
         range: integer
         multivalued: false
+        required: false
       ota_Package_hashes:
+        slot_uri: ota:Package_hashes
         alias: hashes
         title: hashes
         description: >-
           Package checksums as a JSON string map (e.g. {"sha256":"..."}), matching Torizon Package.hashes.
         range: string
         multivalued: false
+        required: false
       ota_Package_hardwareIds:
+        slot_uri: ota:Package_hardwareIds
         alias: hardwareIds
         title: hardware Ids
         description: Hardware identifiers this package targets.
         range: string
         multivalued: true
+        required: false

@@ -77,7 +77,7 @@ classes:
       grid: grid:workspace:{workspace-id}:system-design:esd/{id}
       platformAPI: SysEsdDocument
     mixins:
-      - SolutionItem
+      - plt_SolutionItem
     slots:
       - system_parameters
     attributes:
@@ -134,8 +134,8 @@ classes:
       core_implementedBy:
         range: Any
         any_of:
-          - range: des_project
-          - range: sft_software_project
+          - range: des_Project
+          - range: sft_SoftwareProject
     attributes:
       system_FunctionalBlock_ports:
         slot_uri: sys:FunctionalBlock_ports
@@ -351,7 +351,7 @@ classes:
       core_implementedBy:
         range: Any
         any_of:
-          - range: sft_software_project
+          - range: sft_SoftwareProject
 
   system_HardwareProject:
     is_a: Resource
@@ -373,7 +373,7 @@ classes:
       core_implementedBy:
         range: Any
         any_of:
-          - range: des_project
+          - range: des_Project
 
   # System Data Model (SDM)
   system_SdmMappableEntity:
@@ -533,7 +533,7 @@ classes:
         alias: createdBy
         title: created by
         description: The user that created this SDM version.
-        range: plt_workspace_user
+        range: plt_WorkspaceUser
         required: true
         inlined: false
       system_SdmSystemModelVersionMetadata_authoringApplication:
@@ -567,7 +567,7 @@ classes:
         alias: applicationId
         title: application
         description: The platform application associated with this authoring application.
-        range: plt_application
+        range: plt_Application
         required: true
         inlined: false
       system_SdmAuthoringApplication_name:
@@ -800,7 +800,7 @@ classes:
       core_implementedBy:
         range: Any
         any_of:
-          - range: sft_software_project
+          - range: sft_SoftwareProject
   system_SdmSoftwareComponent:
     is_a: Resource
     in_subset: system-sdm
@@ -943,7 +943,7 @@ classes:
       core_implementedBy:
         range: Any
         any_of:
-          - range: des_project
+          - range: des_Project
   system_SdmHardwareComponent:
     is_a: Resource
     in_subset: system-sdm
