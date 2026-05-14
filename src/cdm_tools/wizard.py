@@ -78,6 +78,19 @@ except ImportError:
 console = Console() if _INTERACTIVE_DEPS else None  # type: ignore[assignment]
 
 
+def _camel_to_title(name: str) -> str:
+    """Convert a lowerCamelCase or PascalCase name to a human-readable spaced title.
+
+    Examples:
+        mySlot       → my slot
+        pcbSnippet   → pcb snippet
+        aiModels     → ai models
+    """
+    # Insert a space before each uppercase letter, then lowercase everything
+    spaced = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", name)
+    return spaced.lower()
+
+
 def make_grid_template(subset: str, pascal_class: str) -> str:
     """Return the GRID annotation template for a class in the given subset (D-05, D-06)."""
     prefix = SUBSET_GRID_PREFIX.get(subset)
@@ -111,7 +124,7 @@ def generate_entity_yaml(
         attributes[slot_name] = {
             "slot_uri": f"{uri_prefix}:{pascal_class}_{slot['name']}",
             "alias": slot["name"],
-            "title": slot["name"],
+            "title": _camel_to_title(slot["name"]),
             "description": f"The {slot['name']} of this {pascal_class}.",
             "range": slot["range"],
             "multivalued": bool(slot["multivalued"]),
