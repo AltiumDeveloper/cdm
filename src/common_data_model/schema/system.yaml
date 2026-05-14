@@ -134,7 +134,7 @@ classes:
       core_implementedBy:
         range: Any
         any_of:
-          - range: des_project
+          - range: des_Project
           - range: sft_SoftwareProject
     attributes:
       system_FunctionalBlock_ports:
@@ -373,7 +373,7 @@ classes:
       core_implementedBy:
         range: Any
         any_of:
-          - range: des_project
+          - range: des_Project
 
   # System Data Model (SDM)
   system_SdmMappableEntity:
@@ -943,7 +943,7 @@ classes:
       core_implementedBy:
         range: Any
         any_of:
-          - range: des_project
+          - range: des_Project
   system_SdmHardwareComponent:
     is_a: Resource
     in_subset: system-sdm

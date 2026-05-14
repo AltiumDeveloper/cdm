@@ -20,7 +20,7 @@ subsets:
 
 classes:
 
-  des_project:
+  des_Project:
     is_a: Activity
     in_subset: design 
     class_uri: des:Project
@@ -34,26 +34,31 @@ classes:
       grid: grid:workspace:{workspace-id}:design:project/{id}
       platformAPI: DesProject
     attributes:
-      Project_parameters:
+      des_Project_parameters:
+        slot_uri: des:Project_parameters
+        alias: parameters
         title: parameters
         description: TBD
-        range: des_project_parameter
+        range: des_ProjectParameter
         multivalued: true
         required: false
-      Project_variants:
+      des_Project_variants:
+        slot_uri: des:Project_variants
+        alias: variants
         title: variants
         description: TBD
-        range: des_project_variant
+        range: des_ProjectVariant
         multivalued: true
+        required: false
     slots:
       - core_releases
       - lib_uses_parts
       - lib_uses_components
     slot_usage:
       core_releases:
-        range: des_project_release
+        range: des_ProjectRelease
 
-  des_project_parameter:
+  des_ProjectParameter:
     is_a: Resource
     in_subset: design
     class_uri: des:ProjectParameter
@@ -62,20 +67,24 @@ classes:
     annotations:
       platformAPI: DesProjectParameter
     attributes:
-      ProjectParameter_name:
+      des_ProjectParameter_name:
+        slot_uri: des:ProjectParameter_name
+        alias: name
         title: name
         description: TBD
         range: string
         multivalued: false
         required: true
-      ProjectParameter_value:
+      des_ProjectParameter_value:
+        slot_uri: des:ProjectParameter_value
+        alias: value
         title: value
         description: TBD
         range: string
         multivalued: false
         required: false
 
-  des_project_variant:
+  des_ProjectVariant:
     is_a: Resource
     in_subset: design 
     class_uri: des:ProjectVariant
@@ -84,8 +93,8 @@ classes:
     annotations:
       platformAPI: DesWipVariant
 
-  des_multiboard_project:
-    is_a: des_project
+  des_MultiboardProject:
+    is_a: des_Project
     in_subset: design 
     class_uri: des:MultiboardProject
     title: Multiboard Project
@@ -99,11 +108,19 @@ classes:
         and integration workflows across ECAD and MCAD domains.
     annotations:
       platformAPI: DesProject
-    slots:
-      - des_multiboard_project_projects
+    attributes:
+      des_MultiboardProject_projects:
+        is_a: core_hasPart
+        slot_uri: des:MultiboardProject_projects
+        alias: projects
+        title: projects
+        description: The individual PCB projects that make up this Multiboard Project.
+        range: des_Project
+        multivalued: true
+        required: false
 
-  des_harness_project:
-    is_a: des_project
+  des_HarnessProject:
+    is_a: des_Project
     in_subset: design 
     class_uri: des:HarnessProject
     title: Harness Project
@@ -117,7 +134,7 @@ classes:
     annotations:
       platformAPI: DesProject
 
-  des_project_release:
+  des_ProjectRelease:
     is_a: Activity
     in_subset: design 
     class_uri: des:ProjectRelease
@@ -137,7 +154,7 @@ classes:
     slots:
       - lib_consists_of_components
 
-  des_project_template:
+  des_ProjectTemplate:
     is_a: Artifact
     in_subset: design 
     class_uri: des:ProjectTemplate
@@ -158,9 +175,9 @@ classes:
       - core_revisions
     slot_usage:
       core_revisions:
-        range: des_project_template_revision
+        range: des_ProjectTemplateRevision
 
-  des_project_template_revision:
+  des_ProjectTemplateRevision:
     is_a: Artifact
     in_subset: design 
     class_uri: des:ProjectTemplateRevision
@@ -173,7 +190,7 @@ classes:
     mixins:
       - plt_HasLifecycle
 
-  des_manufacturing_package:
+  des_ManufacturingPackage:
     is_a: Artifact
     in_subset: design 
     class_uri: des:ManufacturingPackage
@@ -183,8 +200,16 @@ classes:
       of manufacturing the board (e.g. Manufacturing Package may contain fabrication/assembly files required by the factories, but not the sources of the project)
     annotations:
       grid: grid:workspace:{workspace-id}:design:manufacturing-package/{id}
-    slots:
-      - des_manufacturing_package_project_release
+    attributes:
+      des_ManufacturingPackage_projectRelease:
+        is_a: core_derivedFrom
+        slot_uri: des:ManufacturingPackage_projectRelease
+        alias: projectRelease
+        title: project release
+        description: Manufacturing Packages are created based on a specific Project Release.
+        range: des_ProjectRelease
+        required: true
+        multivalued: false
 
   des_RuleCheck:
     is_a: Artifact
@@ -193,7 +218,6 @@ classes:
     title: Rule Check
     description: Rule check definitions that can be executed against a project to validate design integrity and compliance with specified constraints.
     annotations:
-      maturity: EXPERIMENTAL
       grid: grid:workspace:{workspace-id}:design:rule-check/{id}
       platformAPI: RuleCheck_Preview
 
@@ -204,26 +228,7 @@ classes:
     title: Rule Check Execution
     description: Execution of a rule check against a project to validate design integrity and compliance with specified constraints.
     annotations:
-      maturity: EXPERIMENTAL
       grid: grid:workspace:{workspace-id}:design:rule-check-execution/{id}
       platformAPI: RuleCheckExecution_Preview
 
 slots:
-
-  des_multiboard_project_projects:
-    is_a: core_hasPart
-    slot_uri: des:MultiboardProject_projects
-    title: projects
-    description: The individual PCB projects that make up this Multiboard Project.
-    domain: des_multiboard_project
-    range: des_project
-    multivalued: true
-    required: false
-
-  des_manufacturing_package_project_release:
-    is_a: core_derivedFrom
-    slot_uri: des:ManufacturingPackage_projectRelease
-    title: projectRelease
-    description: Manufacturing Packages are created based on a specific Project Release.
-    range: des_project_release
-    required: true

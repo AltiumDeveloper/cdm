@@ -67,7 +67,7 @@ classes:
         range: Any
         any_of:
           - range: pro_BomWIP
-          - range: des_project
+          - range: des_Project
         required: false
         multivalued: true
       ins_PartInsight_occursIn:
@@ -79,7 +79,7 @@ classes:
         range: Any
         any_of:
           - range: pro_BomRelease
-          - range: des_project_release
+          - range: des_ProjectRelease
           - range: lib_ComponentRevision
         required: false
         multivalued: true

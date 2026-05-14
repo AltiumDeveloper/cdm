@@ -314,7 +314,7 @@ classes:
         alias: targetsProjectReleases
         title: targets project releases
         description: Project releases that must comply with this baseline.
-        range: des_project_release
+        range: des_ProjectRelease
         multivalued: true
         required: false
 

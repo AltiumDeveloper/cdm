@@ -125,7 +125,7 @@ classes:
         alias: usedByProjectVariant
         title: used by project variant
         description: There is a relation per each project/variant where this Component Revision is used.
-        range: des_project
+        range: des_Project
         multivalued: true
         required: false
         annotations:
@@ -147,6 +147,7 @@ classes:
         making it a key mechanism for enforcing standards, reducing errors, and enabling scalable library management across teams and projects.
     annotations:
       grid: grid:workspace:{workspace-id}:library:component-template/{id}
+      platformAPI: DesComponentTemplate
     slots:
       - core_revisions
     slot_usage:
@@ -163,6 +164,7 @@ classes:
       - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:component-template-revision/{id}
+      platformAPI: DesComponentTemplateRevision
 
   lib_ComponentParameter:
     is_a: Resource
