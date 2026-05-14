@@ -220,6 +220,7 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:design:rule-check/{id}
       platformAPI: RuleCheck_Preview
+      maturity: EXPERIMENTAL
 
   des_RuleCheckExecution:
     is_a: Activity
@@ -230,5 +231,6 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:design:rule-check-execution/{id}
       platformAPI: RuleCheckExecution_Preview
+      maturity: EXPERIMENTAL
 
 slots:
