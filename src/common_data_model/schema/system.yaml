@@ -77,7 +77,7 @@ classes:
       grid: grid:workspace:{workspace-id}:system-design:esd/{id}
       platformAPI: SysEsdDocument
     mixins:
-      - SolutionItem
+      - plt_SolutionItem
     slots:
       - system_parameters
     attributes:
@@ -533,7 +533,7 @@ classes:
         alias: createdBy
         title: created by
         description: The user that created this SDM version.
-        range: plt_workspace_user
+        range: plt_WorkspaceUser
         required: true
         inlined: false
       system_SdmSystemModelVersionMetadata_authoringApplication:
@@ -567,7 +567,7 @@ classes:
         alias: applicationId
         title: application
         description: The platform application associated with this authoring application.
-        range: plt_application
+        range: plt_Application
         required: true
         inlined: false
       system_SdmAuthoringApplication_name:

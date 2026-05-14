@@ -59,7 +59,7 @@ classes:
     title: Component Revision
     description: Revision of a Component.
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:component-revision/{id}
       platformAPI: DesComponent
@@ -110,7 +110,7 @@ classes:
     title: Component Template Revision
     description: TBD
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:component-template-revision/{id}
 
@@ -169,7 +169,7 @@ classes:
     title: Symbol Revision
     description: TBD
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:symbol-revision/{id}
       platformAPI: DesSymbol
@@ -201,7 +201,7 @@ classes:
     title: Footprint Revision
     description: TBD
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:footprint-revision/{id}
       platformAPI: DesFootprint
@@ -275,7 +275,7 @@ classes:
     title: Reuse Block Revision
     description: TBD
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:reuse-block-revision/{id}
       platformAPI: DesReuseBlockRevision
@@ -308,7 +308,7 @@ classes:
     title: Managed Sheet Revision
     description: TBD
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:managed-sheet-revision/{id}
     slots:
@@ -334,7 +334,7 @@ classes:
     title: SCH Snippet Revision
     description: TBD
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
 
   lib_pcb_snippet:
     is_a: Artifact
@@ -355,7 +355,7 @@ classes:
     title: PCB Snippet Revision
     description: TBD
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
 
   lib_part_choice_list:
     is_a: Resource
@@ -483,7 +483,7 @@ slots:
     is_a: core_derivedFrom
     slot_uri: lib:ManagedSheetRevision_template
     title: template
-    range: con_schematic_template_revision
+    range: con_SchematicTemplateRevision
     multivalued: false
     annotations:
       modeled_as: Vault Revision - Revision

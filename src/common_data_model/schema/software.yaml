@@ -30,7 +30,7 @@ classes:
       grid: grid:workspace:{workspace-id}:software:software-project/{id}
       platformAPI: SftSoftwareProject
     mixins:
-      - SolutionItem
+      - plt_SolutionItem
     slots:
       - core_releases      
       - sft_software_project_ai_models
@@ -159,7 +159,7 @@ classes:
       grid: grid:workspace:{workspace-id}:software:ai-model/{id}
       maturity: EXPERIMENTAL
     mixins:
-      - SolutionItem
+      - plt_SolutionItem
 
   sft_build_artifact:
     is_a: Artifact

@@ -1,5 +1,5 @@
 id: https://w3id.org/altium/cdm/platform/
-name: cdm-procurement
+name: cdm-platform
 prefixes:
   linkml: https://w3id.org/linkml/
   core: https://w3id.org/altium/cdm/core/
@@ -20,7 +20,7 @@ subsets:
 
 classes:
 
-  plt_organization:
+  plt_Organization:
     is_a: Artifact
     in_subset: platform
     class_uri: plt:Organization
@@ -31,7 +31,7 @@ classes:
       grid: grid:global::platform:organization/{id}
       platformAPI: GloOrganization
 
-  plt_user:
+  plt_User:
     is_a: Artifact
     in_subset: platform
     class_uri: plt:User
@@ -42,7 +42,7 @@ classes:
       grid: grid:global::platform:user/{id}
       platformAPI: GloUser
 
-  plt_group:
+  plt_UserGroup:
     is_a: Artifact
     in_subset: platform
     class_uri: plt:UserGroup
@@ -53,7 +53,7 @@ classes:
       grid: grid:global::platform:group/{id}
       platformAPI: GloUserGroup
 
-  plt_application:
+  plt_Application:
     is_a: Artifact
     in_subset: platform
     class_uri: plt:Application
@@ -64,7 +64,7 @@ classes:
       grid: grid:global::platform:application/{id}
       platformAPI: GloApp
 
-  plt_subscription:
+  plt_EventSubscription:
     is_a: Artifact
     in_subset: platform
     class_uri: plt:EventSubscription
@@ -75,7 +75,7 @@ classes:
       grid: grid:global::events:subscription/{id}
       platformAPI: GloEvtSubscription
 
-  plt_workspace:
+  plt_Workspace:
     is_a: Artifact
     in_subset: platform
     class_uri: plt:Workspace
@@ -89,10 +89,18 @@ classes:
     annotations:
       grid: grid:global::platform:workspace/{id}
       platformAPI: DesWorkspace
-    slots:
-      - plt_workspace_env_configurations
+    attributes:
+      plt_Workspace_environmentConfigurations:
+        is_a: core_hasPart
+        slot_uri: plt:Workspace_environmentConfigurations
+        alias: environmentConfigurations
+        title: environment configurations
+        description: TBD
+        range: con_EnvironmentConfiguration
+        multivalued: true
+        required: false
 
-  plt_workspace_user:
+  plt_WorkspaceUser:
     is_a: Artifact
     in_subset: platform
     class_uri: plt:WorkspaceUser
@@ -103,7 +111,7 @@ classes:
       grid: grid:workspace:{workspace-id}:team:user/{id}
       platformAPI: DesWorkspaceUser
 
-  plt_workspace_group:
+  plt_WorkspaceGroup:
     is_a: Artifact
     in_subset: platform
     class_uri: plt:WorkspaceGroup
@@ -119,7 +127,7 @@ classes:
       grid: grid:workspace:{workspace-id}:team:group/{id}
       platformAPI: DesWorkspaceGroup
 
-  plt_solution:
+  plt_Solution:
     is_a: Activity
     in_subset: platform
     class_uri: plt:Solution
@@ -130,12 +138,21 @@ classes:
       platformAPI: SolSolution
     slots:
       - core_releases
-      - plt_solution_items
     slot_usage:
       core_releases:
-        range: plt_solution_release
+        range: plt_SolutionRelease
+    attributes:
+      plt_Solution_solutionItems:
+        is_a: core_hasPart
+        slot_uri: plt:Solution_solutionItems
+        alias: solutionItems
+        title: solution items
+        description: TBD
+        range: plt_SolutionItem
+        multivalued: true
+        required: false
 
-  plt_solution_release:
+  plt_SolutionRelease:
     is_a: Artifact
     in_subset: platform
     class_uri: plt:SolutionRelease
@@ -145,7 +162,7 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:platform:solution-release/{id}
 
-  plt_lifecycle_definition:
+  plt_LifecycleDefinition:
     is_a: Artifact
     in_subset: platform
     class_uri: plt:LifecycleDefinition
@@ -164,14 +181,17 @@ classes:
           - description: Lifecycle Management
             uri: https://www.altium.com/documentation/altium-365/lifecycle-management
     attributes:
-      LifecycleDefinition_stages:
+      plt_LifecycleDefinition_stages:
+        alias: stages
+        slot_uri: plt:LifecycleDefinition_stages
         title: stages
         description: TBD
-        range: plt_lifecycle_stage
+        range: plt_LifecycleStage
         multivalued: true
+        required: false
 
-  plt_lifecycle_stage:
-    is_a: Resource  
+  plt_LifecycleStage:
+    is_a: Resource
     in_subset: platform
     class_uri: plt:LifecycleStage
     title: Lifecycle Stage
@@ -184,13 +204,17 @@ classes:
           - description: Lifecycle Management
             uri: https://www.altium.com/documentation/altium-365/lifecycle-management
     attributes:
-      LifecycleStage_name:
+      plt_LifecycleStage_name:
+        alias: name
+        slot_uri: plt:LifecycleStage_name
         title: name
         description: TBD
         range: string
         multivalued: false
         required: true
-      LifecycleStage_states:
+      plt_LifecycleStage_states:
+        alias: states
+        slot_uri: plt:LifecycleStage_states
         title: states
         description: TBD
         range: plt_LifecycleState
@@ -211,7 +235,9 @@ classes:
           - description: Lifecycle Management
             uri: https://www.altium.com/documentation/altium-365/lifecycle-management
     attributes:
-      LifecycleState_name:
+      plt_LifecycleState_name:
+        alias: name
+        slot_uri: plt:LifecycleState_name
         title: name
         description: TBD
         range: string
@@ -219,7 +245,7 @@ classes:
         required: true
       # id, description, isAllowedInDesign, isInitialState
 
-  plt_naming_scheme:
+  plt_NamingScheme:
     is_a: Artifact
     in_subset: platform
     class_uri: plt:NamingScheme
@@ -237,46 +263,41 @@ classes:
 
   ### Mixins
 
-  SolutionItem:
+  plt_SolutionItem:
     is_a: Meta
+    class_uri: plt:SolutionItem
+    in_subset: platform
     abstract: true
     mixin: true
     title: Solution Item
-    slots:
-      - plt_part_of_solution
+    description: >-
+      Mixin that marks an entity as an item belonging to a platform Solution.
+    attributes:
+      plt_SolutionItem_partOfSolution:
+        is_a: core_partOf
+        slot_uri: plt:SolutionItem_partOfSolution
+        alias: partOfSolution
+        title: part of solution
+        description: TBD
+        range: plt_Solution
+        multivalued: true
+        required: false
 
-  HasLifecycle:
+  plt_HasLifecycle:
     is_a: Meta
+    class_uri: plt:HasLifecycle
+    in_subset: platform
     abstract: true
     mixin: true
+    title: Has Lifecycle
+    description: >-
+      Mixin that adds a lifecycle state reference to an entity.
     attributes:
-      plt_LifecycleState:
-        title: lifecycleState
+      plt_HasLifecycle_lifecycleState:
+        alias: lifecycleState
+        slot_uri: plt:HasLifecycle_lifecycleState
+        title: lifecycle state
+        description: The current lifecycle state assigned to this entity.
         range: plt_LifecycleState
         multivalued: false
         required: true
-
-slots: 
-
-  plt_solution_items:
-    is_a: core_hasPart
-    alias: solutionItems
-    title: solution items
-    range: SolutionItem
-    multivalued: true
-    required: false
-
-  plt_part_of_solution:
-    is_a: core_partOf
-    alias: partOfSolution
-    title: part of solution
-    range: plt_solution
-    multivalued: true
-    required: false
-
-  plt_workspace_env_configurations:
-    is_a: core_hasPart
-    alias: environmentConfigurations
-    title: environment configurations
-    range: con_env_configuration
-    multivalued: true

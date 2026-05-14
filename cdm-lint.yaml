@@ -8,18 +8,13 @@ naming_class:
   - Artifact
   - Entity
   - Event
-  - HasLifecycle
   - Meta
   - Resource
-  - SolutionItem
   - WithGRID
   - WithMaturity
   - WithPlatformAPI
   - WithVault
   - WithVaultLink
-  - con_env_configuration
-  - con_schematic_template
-  - con_schematic_template_revision
   - des_harness_project
   - des_manufacturing_package
   - des_multiboard_project
@@ -74,19 +69,6 @@ naming_class:
   - lib_sch_snippet_revision
   - lib_symbol
   - lib_symbol_revision
-  - plt_application
-  - plt_group
-  - plt_lifecycle_definition
-  - plt_lifecycle_stage
-  - plt_naming_scheme
-  - plt_organization
-  - plt_solution
-  - plt_solution_release
-  - plt_subscription
-  - plt_user
-  - plt_workspace
-  - plt_workspace_group
-  - plt_workspace_user
   - req_artifact
   - req_project
   - req_requirement
@@ -129,10 +111,6 @@ naming:
   - ComponentRevision_parameters
   - ComponentRevision_partChoiceList
   - Component_parameters
-  - LifecycleDefinition_stages
-  - LifecycleStage_name
-  - LifecycleStage_states
-  - LifecycleState_name
   - PartChoiceList_partChoices
   - PartChoice_part
   - PartChoice_rank
@@ -193,14 +171,12 @@ naming:
   - dm_Register_reset_mask
   - dm_Register_reset_value
   - executions
-  - plt_LifecycleState
   - title
 grid_format:
-  - con_env_configuration
-  - con_schematic_template
-  - con_schematic_template_revision
+  - con_EnvironmentConfiguration
+  - con_SchematicTemplate
+  - con_SchematicTemplateRevision
 title_format:
-  - con_env_configuration_schematic_templates
   - dm_AddressBlock_peripheral_instance
   - lib_component_revision_used_by_project_variant
   - lib_reuse_block_revision_pcb_snippet
@@ -211,10 +187,7 @@ title_format:
   - sft_software_release_ai_models
   - sft_software_release_build_artifacts
 iri_convention_02:
-  - con_env_configuration
   - dm_fullstack_device_model
-  - plt_group
-  - plt_subscription
   - sft_PinAssignment
   - sft_PinAssignmentModel
   - sft_ai_model
@@ -234,10 +207,6 @@ missing_metadata:
     - ComponentRevision_parameters
     - ComponentRevision_partChoiceList
     - Component_parameters
-    - LifecycleDefinition_stages
-    - LifecycleStage_name
-    - LifecycleStage_states
-    - LifecycleState_name
     - PartChoiceList_partChoices
     - PartChoice_part
     - PartChoice_rank
@@ -279,7 +248,6 @@ missing_metadata:
     - VerificationCase_method
     - VerificationCase_result
     - attachments
-    - con_env_configuration_schematic_templates
     - db_PortConfiguration_enum_values
     - des_manufacturing_package_project_release
     - des_multiboard_project_projects
@@ -341,7 +309,6 @@ missing_metadata:
     - lib_reuse_block_revision_sch_snippet
     - lib_uses_components
     - lib_uses_parts
-    - plt_LifecycleState
     - req_baseline_includes_requirements
     - req_baseline_of_specification
     - req_baseline_targets_project_releases
@@ -379,10 +346,8 @@ missing_metadata:
     - Artifact
     - Entity
     - Event
-    - HasLifecycle
     - Meta
     - Resource
-    - SolutionItem
     - WithGRID
     - WithMaturity
     - WithPlatformAPI
@@ -394,7 +359,6 @@ missing_metadata:
     - Artifact
     - Entity
     - Event
-    - HasLifecycle
     - Meta
     - PartFamily_alternatives
     - PartFamily_partGroups
@@ -403,13 +367,11 @@ missing_metadata:
     - Part_manufacturer
     - Part_referenceDesigns
     - Resource
-    - SolutionItem
     - WithGRID
     - WithMaturity
     - WithPlatformAPI
     - WithVault
     - WithVaultLink
-    - con_env_configuration_schematic_templates
     - core_derivedFrom
     - core_derivesInto
     - core_hasInput
@@ -435,10 +397,6 @@ missing_metadata:
     - lib_managed_sheet_revision_template
     - lib_reuse_block_revision_pcb_snippet
     - lib_reuse_block_revision_sch_snippet
-    - plt_LifecycleState
-    - plt_part_of_solution
-    - plt_solution_items
-    - plt_workspace_env_configurations
     - pro_bom_items
     - req_artifact
     - system_Connection_endpoints
@@ -464,10 +422,8 @@ missing_metadata:
     - Artifact
     - Entity
     - Event
-    - HasLifecycle
     - Meta
     - Resource
-    - SolutionItem
     - WithGRID
     - WithMaturity
     - WithPlatformAPI
@@ -599,7 +555,6 @@ missing_metadata:
     - description
     - title
   required:
-    - LifecycleDefinition_stages
     - PartFamily_alternatives
     - PartFamily_partGroups
     - PartGroup_alternatives
@@ -607,7 +562,7 @@ missing_metadata:
     - Part_referenceDesigns
     - Project_variants
     - attachments
-    - con_env_configuration_schematic_templates
+    - con_EnvironmentConfiguration_schematicTemplates
     - core_derivedFrom
     - core_derivesInto
     - core_description
@@ -715,7 +670,6 @@ missing_metadata:
     - ota_Package_hashes
     - ota_Package_size
     - ota_Package_version
-    - plt_workspace_env_configurations
     - sft_software_project_ai_models
     - sft_software_project_device_configuration
     - sft_software_project_latest_build_artifacts
@@ -755,10 +709,6 @@ missing_metadata:
     - ComponentRevision_parameters
     - ComponentRevision_partChoiceList
     - Component_parameters
-    - LifecycleDefinition_stages
-    - LifecycleStage_name
-    - LifecycleStage_states
-    - LifecycleState_name
     - PartChoiceList_partChoices
     - PartChoice_part
     - PartChoice_rank
@@ -800,7 +750,6 @@ missing_metadata:
     - VerificationCase_method
     - VerificationCase_result
     - attachments
-    - con_env_configuration_schematic_templates
     - cus_ScriptExecution_emits
     - db_PortConfiguration_enum_values
     - description
@@ -895,10 +844,6 @@ missing_metadata:
     - ota_Package_hashes
     - ota_Package_size
     - ota_Package_version
-    - plt_LifecycleState
-    - plt_part_of_solution
-    - plt_solution_items
-    - plt_workspace_env_configurations
     - sft_DeviceConfigurationRevision_pinModel
     - sft_PinAssignmentModel_pins
     - sft_PinAssignment_pinFunction
@@ -951,7 +896,6 @@ missing_metadata:
     - Artifact
     - Entity
     - Event
-    - HasLifecycle
     - Meta
     - Resource
     - WithGRID

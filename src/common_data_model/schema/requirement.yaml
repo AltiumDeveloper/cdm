@@ -106,7 +106,7 @@ classes:
     title: Requirement Revision
     description: An immutable snapshot of a requirement statement at a specific revision.
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:requirement-revision/{id}
       maturity: EXPERIMENTAL
@@ -176,7 +176,7 @@ classes:
     description: >-
       A version-managed release of a specification or subset of requirements approved for execution.
     mixins:
-      - HasLifecycle
+      - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:baseline/{id}
       maturity: EXPERIMENTAL

@@ -51,8 +51,15 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:collaboration:comment-thread/{id}
       platformAPI: DesCommentThread
-    slots:
-      - col_CommentThread_comments
+    attributes:
+      col_CommentThread_comments:
+        slot_uri: col:CommentThread_comments
+        alias: comments
+        title: comments
+        description: TBD
+        range: col_Comment
+        required: true
+        multivalued: true
 
   col_Comment:
     is_a: Resource
@@ -62,14 +69,3 @@ classes:
     description: TBD
     annotations:
       platformAPI: DesComment
-
-slots:
-
-  col_CommentThread_comments: 
-    slot_uri: col:CommentThread_comments
-    alias: comments
-    title: comments
-    description: TBD
-    range: col_Comment
-    required: true
-    multivalued: true`

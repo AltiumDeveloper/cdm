@@ -20,7 +20,7 @@ subsets:
 
 classes:
 
-  con_env_configuration:
+  con_EnvironmentConfiguration:
     is_a: Artifact
     in_subset: configuration
     class_uri: con:EnvironmentConfiguration
@@ -31,10 +31,19 @@ classes:
       - TBD
     annotations:
       grid: 
-    slots:
-      - con_env_configuration_schematic_templates
+    attributes:
+      con_EnvironmentConfiguration_schematicTemplates:
+        is_a: core_hasPart
+        slot_uri: con:EnvironmentConfiguration_schematicTemplates
+        alias: schematicTemplates
+        title: schematic templates
+        description: TBD
+        range: con_SchematicTemplateRevision
+        multivalued: true
+        annotations:
+          modeled_as: Vault Item - Revision
 
-  con_schematic_template:
+  con_SchematicTemplate:
     is_a: Artifact
     in_subset: configuration
     class_uri: con:SchematicTemplate
@@ -49,9 +58,9 @@ classes:
       - core_revisions
     slot_usage:
       core_revisions:
-        range: con_schematic_template_revision
+        range: con_SchematicTemplateRevision
 
-  con_schematic_template_revision:
+  con_SchematicTemplateRevision:
     is_a: Artifact
     in_subset: configuration
     class_uri: con:SchematicTemplateRevision
@@ -62,14 +71,3 @@ classes:
       - TBD
     annotations:
       grid:  
-
-slots:
-
-  con_env_configuration_schematic_templates:
-    is_a: core_hasPart
-    title: schematic_templates
-    range: con_schematic_template_revision
-    multivalued: true
-    annotations:
-      modeled_as: Vault Item - Revision
-

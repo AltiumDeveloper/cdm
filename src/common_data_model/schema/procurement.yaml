@@ -102,7 +102,7 @@ classes:
       platformAPI: BomRelease
     mixins:
       - pro_Bom
-      - HasLifecycle
+      - plt_HasLifecycle
     slots:
       - lib_consists_of_parts
       - lib_consists_of_components
