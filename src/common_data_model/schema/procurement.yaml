@@ -32,8 +32,16 @@ classes:
     class_uri: pro:Bom
     title: BOM
     description: Bill of Materials
+    attributes:
+      pro_Bom_items:
+        slot_uri: pro:Bom_items
+        alias: items
+        title: items
+        description: TBD
+        range: pro_BomItem
+        required: false
+        multivalued: true
     slots:
-      - pro_bom_items
       - pro_bom_issues
 
   ### Entities
@@ -118,36 +126,41 @@ classes:
     annotations:
       platformAPI: BomItem
     attributes:
-      BomItem_designators:
+      pro_BomItem_designators:
         alias: designators
+        slot_uri: pro:BomItem_designators
         title: designators
         description: A list of designators that specify the placements of the item within the schematic.
         range: string
         multivalued: true
         required: false
-      BomItem_quantity:
+      pro_BomItem_quantity:
         alias: quantity
+        slot_uri: pro:BomItem_quantity
         title: quantity
         description: The quantity of the item required to produce one unit.
         range: integer
         multivalued: false
         required: true
-      BomItem_primaryElement:
+      pro_BomItem_primaryElement:
         alias: primaryElement
+        slot_uri: pro:BomItem_primaryElement
         title: primary element
         description: The primary element chosen for this item.
         range: pro_BomItemElement
         multivalued: false
         required: false   
-      BomItem_alternates:
+      pro_BomItem_alternates:
         alias: alternates
+        slot_uri: pro:BomItem_alternates
         title: alternates
         description: Alternate elements that could be used for this item.
         range: pro_BomItemAlternate
         required: false
         multivalued: true
-      BomItem_substitutes:
+      pro_BomItem_substitutes:
         alias: substitutes
+        slot_uri: pro:BomItem_substitutes
         title: substitutes
         description: Substitute elements that could be used for this item.
         range: pro_BomItemSubstitute
@@ -169,28 +182,32 @@ classes:
     annotations:
       platformAPI: BomItemElement
     attributes:
-      BomItemElement_mpn:
+      pro_BomItemElement_mpn:
+        alias: mpn
         slot_uri: pro:BomItemElement_mpn
         title: mpn
         description: TBD
         range: string
         required: false
         multivalued: false
-      BomItemElement_manufacturer:
+      pro_BomItemElement_manufacturer:
+        alias: manufacturer
         slot_uri: pro:BomItemElement_manufacturer
         title: manufacturer
         description: TBD
         range: string
         required: false
         multivalued: false
-      BomItemElement_part:
+      pro_BomItemElement_part:
+        alias: part
         slot_uri: pro:BomItemElement_part
         title: part
         description: TBD
-        range: lib_part
+        range: lib_Part
         required: false
         multivalued: false
-      BomItemElement_component:
+      pro_BomItemElement_component:
+        alias: component
         slot_uri: pro:BomItemElement_component
         title: component
         description: TBD
@@ -229,21 +246,24 @@ classes:
     annotations:
       platformAPI: BomIssue
     attributes:
-      BomIssue_description:
+      pro_BomIssue_description:
+        alias: description
         slot_uri: pro:BomIssue_description
         title: description
         description: TBD
         range: string
         required: false
         multivalued: false
-      BomIssue_howToFix:
+      pro_BomIssue_howToFix:
+        alias: howToFix
         slot_uri: pro:BomIssue_howToFix
         title: how to fix
         description: TBD
         range: string
         required: false
         multivalued: false
-      BomIssue_severity:
+      pro_BomIssue_severity:
+        alias: severity
         slot_uri: pro:BomIssue_severity
         title: severity
         description: TBD
@@ -254,14 +274,6 @@ classes:
 slots:
 
   ### BOM relations
-
-  pro_bom_items:
-    slot_uri: pro:Bom_items
-    alias: items
-    title: items
-    range: pro_BomItem
-    required: false
-    multivalued: true
 
   pro_bom_issues:
     slot_uri: pro:issues
