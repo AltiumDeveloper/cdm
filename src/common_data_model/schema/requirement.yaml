@@ -395,25 +395,25 @@ classes:
       grid: grid:workspace:{workspace-id}:requirements:project/{id}
       maturity: EXPERIMENTAL
     attributes:
-      req_RequirementProject_name:
+      req_Project_name:
         alias: name
-        slot_uri: req:RequirementProject_name
+        slot_uri: req:Project_name
         title: name
         description: Compact display name for the requirement effort.
         range: string
         required: true
         multivalued: false
-      req_RequirementProject_description:
+      req_Project_description:
         alias: description
-        slot_uri: req:RequirementProject_description
+        slot_uri: req:Project_description
         title: description
         description: Longer narrative describing objectives, scope, and constraints.
         range: string
         required: false
         multivalued: false
-      req_RequirementProject_owner:
+      req_Project_owner:
         alias: owner
-        slot_uri: req:RequirementProject_owner
+        slot_uri: req:Project_owner
         title: owner
         description: Responsible program, platform team, or external stakeholder.
         range: string
