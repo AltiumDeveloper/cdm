@@ -22,7 +22,7 @@ subsets:
 
 classes:
 
-  sup_part:
+  sup_Part:
     is_a: Artifact
     in_subset: supply 
     class_uri: sup:Part
@@ -38,23 +38,32 @@ classes:
       grid: grid:supply::platform:part/{id}
       platformAPI: SupPart
     attributes:
-      Part_mpn:
+      sup_Part_mpn:
+        alias: mpn
+        slot_uri: sup:Part_mpn
         title: mpn
         description: TBD
         range: string
         required: true
         multivalued: false
-      Part_manufacturer: 
+      sup_Part_manufacturer:
+        alias: manufacturer
+        slot_uri: sup:Part_manufacturer
         title: manufacturer
-        range: sup_company
+        description: The company that manufactures this part.
+        range: sup_Company
         required: true
         multivalued: false        
-      Part_referenceDesigns:
+      sup_Part_referenceDesigns:
+        alias: referenceDesigns
+        slot_uri: sup:Part_referenceDesigns
         title: reference designs
-        range: sup_reference_design
+        description: Reference designs that use this part.
+        range: sup_ReferenceDesign
         multivalued: true
+        required: false
 
-  sup_offer:
+  sup_Offer:
     is_a: Artifact
     in_subset: supply
     class_uri: sup:Offer
@@ -70,7 +79,7 @@ classes:
       grid: grid:supply::platform:part/{id}/offer/{offerID}
       platformAPI: SupOffer
 
-  sup_company:
+  sup_Company:
     is_a: Artifact
     in_subset: supply
     class_uri: sup:Company
@@ -85,7 +94,7 @@ classes:
     annotations:
       grid: grid:supply::platform:company/{id}
 
-  sup_part_family:
+  sup_PartFamily:
     is_a: Artifact
     in_subset: supply
     class_uri: sup:PartFamily
@@ -93,19 +102,27 @@ classes:
     description: >-
       TBD
     attributes:
-      PartFamily_partGroups:
+      sup_PartFamily_partGroups:
+        alias: partGroups
+        slot_uri: sup:PartFamily_partGroups
         title: part groups
-        range: sup_part_group
-        multivalued: true  
-      PartFamily_alternatives:
+        description: Part groups belonging to this part family.
+        range: sup_PartGroup
+        multivalued: true
+        required: false
+      sup_PartFamily_alternatives:
+        alias: alternatives
+        slot_uri: sup:PartFamily_alternatives
         title: alternatives
-        range: sup_part_family
-        multivalued: true  
+        description: Alternative part families that can substitute this one.
+        range: sup_PartFamily
+        multivalued: true
+        required: false
     annotations:
       grid: grid:supply::platform:part-family/{id}
       platformAPI: SupPartFamily
 
-  sup_part_group:
+  sup_PartGroup:
     is_a: Artifact
     in_subset: supply
     class_uri: sup:PartGroup
@@ -116,16 +133,24 @@ classes:
       grid: grid:supply::platform:part-group/{id}
       platformAPI: SupPartGroup
     attributes:
-      PartGroup_parts:
+      sup_PartGroup_parts:
+        alias: parts
+        slot_uri: sup:PartGroup_parts
         title: parts
-        range: sup_part
-        multivalued: true  
-      PartGroup_alternatives:
+        description: Parts belonging to this part group.
+        range: sup_Part
+        multivalued: true
+        required: false
+      sup_PartGroup_alternatives:
+        alias: alternatives
+        slot_uri: sup:PartGroup_alternatives
         title: alternatives
-        range: sup_part_group
-        multivalued: true  
+        description: Alternative part groups that can substitute this one.
+        range: sup_PartGroup
+        multivalued: true
+        required: false
 
-  sup_reference_design:
+  sup_ReferenceDesign:
     is_a: Artifact
     in_subset: supply
     class_uri: sup:ReferenceDesign
@@ -135,7 +160,7 @@ classes:
       grid: grid:supply::platform:ref-design/{id}
       platformAPI: SupReferenceDesign
 
-  sup_solution_template:
+  sup_SolutionTemplate:
     is_a: Artifact
     in_subset: supply
     class_uri: sup:SolutionTemplate
@@ -145,12 +170,21 @@ classes:
       - Reference Solution (obsolete)
     slots:
       - sup_eval_kits
-      - sup_software_projects
     annotations:
       grid: grid:supply::platform:solution-template/{id}
       platformAPI: SupSolutionTemplate
+    attributes:
+      sup_SolutionTemplate_softwareProjects:
+        is_a: core_hasPart
+        slot_uri: sup:SolutionTemplate_softwareProjects
+        alias: softwareProjects
+        title: software projects
+        description: Software Projects included in this Artifact
+        range: sup_SoftwareProject
+        required: false
+        multivalued: true
 
-  sup_software_project:
+  sup_SoftwareProject:
     is_a: Artifact
     in_subset: supply
     class_uri: sup:SoftwareProject
@@ -163,7 +197,7 @@ classes:
       grid: grid:supply::platform:software-project/{id}
       platformAPI: SupSoftwareProject
 
-  sup_eval_kit:
+  sup_EvalKit:
     is_a: Artifact
     in_subset: supply
     class_uri: sup:EvalKit
@@ -179,19 +213,10 @@ slots:
   sup_eval_kits:
     is_a: core_hasPart
     slot_uri: sup:consists_of_eval_kits
+    alias: evalKits
     title: evalKits
     description: Evaluation Kits included in this Artifact
     domain: Artifact
-    range: sup_eval_kit
+    range: sup_EvalKit
     required: false
-    multivalued: true  
-
-  sup_software_projects:
-    is_a: core_hasPart
-    slot_uri: sup:consists_of_software_projects
-    title: softwareProjects
-    description: Software Projects included in this Artifact
-    domain: Artifact
-    range: sup_software_project
-    required: false
-    multivalued: true  
+    multivalued: true

@@ -39,23 +39,7 @@ naming_class:
   - dm_processor
   - dm_register
   - dm_register_field
-  - sup_company
-  - sup_eval_kit
-  - sup_offer
-  - sup_part
-  - sup_part_family
-  - sup_part_group
-  - sup_reference_design
-  - sup_software_project
-  - sup_solution_template
 naming:
-  - PartFamily_alternatives
-  - PartFamily_partGroups
-  - PartGroup_alternatives
-  - PartGroup_parts
-  - Part_manufacturer
-  - Part_mpn
-  - Part_referenceDesigns
   - db_PortConfiguration_enum_values
   - dm_AddressBlock_peripheral_instance
   - dm_ConfigurationDependency_alt_ref
@@ -84,13 +68,6 @@ iri_convention_02:
   - system_SdmMappableEntity
 missing_metadata:
   alias:
-    - PartFamily_alternatives
-    - PartFamily_partGroups
-    - PartGroup_alternatives
-    - PartGroup_parts
-    - Part_manufacturer
-    - Part_mpn
-    - Part_referenceDesigns
     - db_PortConfiguration_enum_values
     - dm_AddressBlock_memories
     - dm_AddressBlock_name
@@ -137,8 +114,6 @@ missing_metadata:
     - dm_Register_name
     - dm_Register_reset_mask
     - dm_Register_reset_value
-    - sup_eval_kits
-    - sup_software_projects
   class_uri:
     - Activity
     - Artifact
@@ -158,12 +133,6 @@ missing_metadata:
     - Entity
     - Event
     - Meta
-    - PartFamily_alternatives
-    - PartFamily_partGroups
-    - PartGroup_alternatives
-    - PartGroup_parts
-    - Part_manufacturer
-    - Part_referenceDesigns
     - Resource
     - WithGRID
     - WithMaturity
@@ -328,11 +297,6 @@ missing_metadata:
     - core_revisionOf
     - core_revisions
   required:
-    - PartFamily_alternatives
-    - PartFamily_partGroups
-    - PartGroup_alternatives
-    - PartGroup_parts
-    - Part_referenceDesigns
     - con_EnvironmentConfiguration_schematicTemplates
     - core_derivedFrom
     - core_derivesInto
@@ -444,13 +408,6 @@ missing_metadata:
     - system_SdmSystemModel_softwareModels
     - system_SoftwareProject_softwareComponents
   slot_uri:
-    - PartFamily_alternatives
-    - PartFamily_partGroups
-    - PartGroup_alternatives
-    - PartGroup_parts
-    - Part_manufacturer
-    - Part_mpn
-    - Part_referenceDesigns
     - db_PortConfiguration_enum_values
     - dm_AddressBlock_memories
     - dm_AddressBlock_name
