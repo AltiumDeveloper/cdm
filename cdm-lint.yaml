@@ -128,7 +128,6 @@ naming:
   - dm_Port_symbolic_name
   - dm_Register_reset_mask
   - dm_Register_reset_value
-  - executions
   - title
 grid_format:
   - con_EnvironmentConfiguration
@@ -236,7 +235,6 @@ missing_metadata:
     - dm_Register_name
     - dm_Register_reset_mask
     - dm_Register_reset_value
-    - executions
     - req_baseline_includes_requirements
     - req_baseline_of_specification
     - req_baseline_targets_project_releases
@@ -317,8 +315,6 @@ missing_metadata:
     - core_releases
     - core_revisionOf
     - core_revisions
-    - cus_ScriptExecution_emits
-    - executions
     - req_artifact
     - system_Connection_endpoints
     - system_ESDDocument_connections
@@ -372,7 +368,6 @@ missing_metadata:
     - core_occursIn
     - core_outputOf
     - core_partOf
-    - cus_ScriptExecution_emits
     - des_manufacturing_package_project_release
     - description
     - dm_AddressBlock_name
@@ -502,7 +497,6 @@ missing_metadata:
     - core_outputOf
     - core_partOf
     - core_revisions
-    - cus_ScriptExecution_emits
     - db_PortConfiguration_enum_values
     - description
     - dm_AddressBlock_memories
@@ -574,16 +568,6 @@ missing_metadata:
     - dm_Register_reset_value
     - dm_peripherals
     - dm_ports
-    - executions
-    - ota_Device_deviceId
-    - ota_Device_hardwareId
-    - ota_Device_hibernated
-    - ota_Device_packages
-    - ota_Device_status
-    - ota_Package_hardwareIds
-    - ota_Package_hashes
-    - ota_Package_size
-    - ota_Package_version
     - sft_software_project_ai_models
     - sft_software_project_device_configuration
     - sft_software_project_latest_build_artifacts
@@ -650,7 +634,6 @@ missing_metadata:
     - VerificationCase_method
     - VerificationCase_result
     - attachments
-    - cus_ScriptExecution_emits
     - db_PortConfiguration_enum_values
     - description
     - dm_AddressBlock_memories
@@ -733,16 +716,6 @@ missing_metadata:
     - dm_mpn
     - dm_peripherals
     - dm_ports
-    - executions
-    - ota_Device_deviceId
-    - ota_Device_hardwareId
-    - ota_Device_hibernated
-    - ota_Device_packages
-    - ota_Device_status
-    - ota_Package_hardwareIds
-    - ota_Package_hashes
-    - ota_Package_size
-    - ota_Package_version
     - sft_DeviceConfigurationRevision_pinModel
     - sft_PinAssignmentModel_pins
     - sft_PinAssignment_pinFunction
@@ -805,7 +778,6 @@ missing_metadata:
     - attachments
     - description
     - dm_HasAddressRange
-    - executions
     - system_HasSdmReferenceDesignator
     - system_SdmMappableEntity
     - title

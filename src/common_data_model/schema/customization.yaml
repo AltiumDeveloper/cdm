@@ -45,9 +45,14 @@ classes:
       grid: grid:workspace:{workspace-id}:scripts:script-version/{id}
       platformAPI: GloScrScriptVersion
     attributes:
-      executions:
+      cus_ScriptVersion_executions:
+        alias: executions
+        slot_uri: cus:ScriptVersion_executions
+        title: executions
+        description: Script executions produced by this script version.
         range: cus_ScriptExecution
         multivalued: true
+        required: false
 
   cus_ScriptExecution:
     is_a: Artifact
@@ -58,8 +63,17 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:scripts:script-execution/{id}
       platformAPI: GloScrScriptExecution
-    slots:
-      - cus_ScriptExecution_emits
+    attributes:
+      cus_ScriptExecution_emits:
+        slot_uri: cus:ScriptExecution_emits
+        alias: emits
+        title: emits
+        description: TBD
+        range: Any
+        multivalued: false
+        required: false
+        any_of:
+          - range: cus_ScriptExecutionCompleted
 
   cus_Workflow:
     is_a: Activity
@@ -78,11 +92,3 @@ classes:
     title: Script Execution Completed
     description: TBD
 
-slots:
-
-  cus_ScriptExecution_emits:
-    alias: emits
-    title: emits
-    range: Any
-    any_of:
-      - range: cus_ScriptExecutionCompleted
