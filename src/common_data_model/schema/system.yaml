@@ -135,7 +135,7 @@ classes:
         range: Any
         any_of:
           - range: des_project
-          - range: sft_software_project
+          - range: sft_SoftwareProject
     attributes:
       system_FunctionalBlock_ports:
         slot_uri: sys:FunctionalBlock_ports
@@ -351,7 +351,7 @@ classes:
       core_implementedBy:
         range: Any
         any_of:
-          - range: sft_software_project
+          - range: sft_SoftwareProject
 
   system_HardwareProject:
     is_a: Resource
@@ -800,7 +800,7 @@ classes:
       core_implementedBy:
         range: Any
         any_of:
-          - range: sft_software_project
+          - range: sft_SoftwareProject
   system_SdmSoftwareComponent:
     is_a: Resource
     in_subset: system-sdm

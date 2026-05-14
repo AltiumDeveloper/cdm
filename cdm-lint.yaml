@@ -56,12 +56,6 @@ naming_class:
   - req_requirement_revision
   - req_requirement_specification
   - req_verification_case
-  - sft_ai_model
-  - sft_build_artifact
-  - sft_device_configuration
-  - sft_device_configuration_revision
-  - sft_software_project
-  - sft_software_release
   - sup_company
   - sup_eval_kit
   - sup_offer
@@ -109,9 +103,7 @@ naming:
   - VerificationCase_identifier
   - VerificationCase_method
   - VerificationCase_result
-  - attachments
   - db_PortConfiguration_enum_values
-  - description
   - dm_AddressBlock_peripheral_instance
   - dm_ConfigurationDependency_alt_ref
   - dm_ConfigurationDependency_config_ref
@@ -128,23 +120,14 @@ naming:
   - dm_Port_symbolic_name
   - dm_Register_reset_mask
   - dm_Register_reset_value
-  - title
 grid_format:
   - con_EnvironmentConfiguration
   - con_SchematicTemplate
   - con_SchematicTemplateRevision
 title_format:
   - dm_AddressBlock_peripheral_instance
-  - sft_software_project_ai_models
-  - sft_software_project_device_configuration
-  - sft_software_project_latest_build_artifacts
-  - sft_software_release_ai_models
-  - sft_software_release_build_artifacts
 iri_convention_02:
   - dm_fullstack_device_model
-  - sft_PinAssignment
-  - sft_PinAssignmentModel
-  - sft_ai_model
   - system_SdmMappableEntity
 missing_metadata:
   alias:
@@ -185,11 +168,9 @@ missing_metadata:
     - VerificationCase_identifier
     - VerificationCase_method
     - VerificationCase_result
-    - attachments
     - db_PortConfiguration_enum_values
     - des_manufacturing_package_project_release
     - des_multiboard_project_projects
-    - description
     - dm_AddressBlock_memories
     - dm_AddressBlock_name
     - dm_AddressBlock_peripheral_instance
@@ -259,14 +240,8 @@ missing_metadata:
     - req_verification_triggers_changes
     - req_verification_uses_artifacts
     - req_verification_validates_requirements
-    - sft_software_project_ai_models
-    - sft_software_project_device_configuration
-    - sft_software_project_latest_build_artifacts
-    - sft_software_release_ai_models
-    - sft_software_release_build_artifacts
     - sup_eval_kits
     - sup_software_projects
-    - title
   class_uri:
     - Activity
     - Artifact
@@ -350,7 +325,6 @@ missing_metadata:
     - system_HasSdmReferenceDesignator
     - system_SdmMappableEntity
   multivalued:
-    - attachments
     - core_derivedFrom
     - core_derivesInto
     - core_description
@@ -369,7 +343,6 @@ missing_metadata:
     - core_outputOf
     - core_partOf
     - des_manufacturing_package_project_release
-    - description
     - dm_AddressBlock_name
     - dm_AddressBlock_peripheral_instance
     - dm_AddressBlock_type
@@ -429,14 +402,6 @@ missing_metadata:
     - dm_Register_reset_value
     - dm_boardName
     - dm_mpn
-    - sft_DeviceConfigurationRevision_pinModel
-    - sft_PinAssignment_pinFunction
-    - sft_PinAssignment_pinName
-    - sft_PinAssignment_pinNumber
-    - sft_PinAssignment_symbolicName
-    - sft_software_project_ai_models
-    - sft_software_project_device_configuration
-    - sft_software_release_ai_models
     - system_Parameter_value
     - system_SdmAuthoringApplication_application
     - system_SdmAuthoringApplication_name
@@ -462,14 +427,11 @@ missing_metadata:
     - system_SdmSystemModel_latestVersion
     - system_SdmSystemModel_schemaVersion
     - system_SdmSystemModel_version
-    - title
   range:
     - core_releaseOf
     - core_releases
     - core_revisionOf
     - core_revisions
-    - description
-    - title
   required:
     - PartFamily_alternatives
     - PartFamily_partGroups
@@ -477,7 +439,6 @@ missing_metadata:
     - PartGroup_parts
     - Part_referenceDesigns
     - Project_variants
-    - attachments
     - con_EnvironmentConfiguration_schematicTemplates
     - core_derivedFrom
     - core_derivesInto
@@ -498,7 +459,6 @@ missing_metadata:
     - core_partOf
     - core_revisions
     - db_PortConfiguration_enum_values
-    - description
     - dm_AddressBlock_memories
     - dm_AddressBlock_name
     - dm_AddressBlock_registers
@@ -568,11 +528,6 @@ missing_metadata:
     - dm_Register_reset_value
     - dm_peripherals
     - dm_ports
-    - sft_software_project_ai_models
-    - sft_software_project_device_configuration
-    - sft_software_project_latest_build_artifacts
-    - sft_software_release_ai_models
-    - sft_software_release_build_artifacts
     - system_ESDDocument_hardwareProjects
     - system_ESDDocument_softwareProjects
     - system_HardwareProject_hardwareComponents
@@ -594,7 +549,6 @@ missing_metadata:
     - system_SdmSystemModel_hardwareModels
     - system_SdmSystemModel_softwareModels
     - system_SoftwareProject_softwareComponents
-    - title
   slot_uri:
     - PartFamily_alternatives
     - PartFamily_partGroups
@@ -633,9 +587,7 @@ missing_metadata:
     - VerificationCase_identifier
     - VerificationCase_method
     - VerificationCase_result
-    - attachments
     - db_PortConfiguration_enum_values
-    - description
     - dm_AddressBlock_memories
     - dm_AddressBlock_name
     - dm_AddressBlock_peripheral_instance
@@ -716,16 +668,6 @@ missing_metadata:
     - dm_mpn
     - dm_peripherals
     - dm_ports
-    - sft_DeviceConfigurationRevision_pinModel
-    - sft_PinAssignmentModel_pins
-    - sft_PinAssignment_pinFunction
-    - sft_PinAssignment_pinName
-    - sft_PinAssignment_pinNumber
-    - sft_PinAssignment_symbolicName
-    - sft_software_project_ai_models
-    - sft_software_project_latest_build_artifacts
-    - sft_software_release_ai_models
-    - sft_software_release_build_artifacts
     - system_ESDDocument_hardwareProjects
     - system_ESDDocument_softwareProjects
     - system_HardwareProject_hardwareComponents
@@ -761,7 +703,6 @@ missing_metadata:
     - system_SdmSystemModel_version
     - system_SdmSystemModel_versions
     - system_SoftwareProject_softwareComponents
-    - title
   title:
     - Activity
     - Any
@@ -775,12 +716,9 @@ missing_metadata:
     - WithPlatformAPI
     - WithVault
     - WithVaultLink
-    - attachments
-    - description
     - dm_HasAddressRange
     - system_HasSdmReferenceDesignator
     - system_SdmMappableEntity
-    - title
 naming_exempt_annotations:
   - contentType
   - grid
