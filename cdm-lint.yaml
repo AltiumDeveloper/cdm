@@ -199,6 +199,26 @@ grid_format:
   - con_env_configuration
   - con_schematic_template
   - con_schematic_template_revision
+title_format:
+  - con_env_configuration_schematic_templates
+  - dm_AddressBlock_peripheral_instance
+  - lib_component_revision_used_by_project_variant
+  - lib_reuse_block_revision_pcb_snippet
+  - lib_reuse_block_revision_sch_snippet
+  - sft_software_project_ai_models
+  - sft_software_project_device_configuration
+  - sft_software_project_latest_build_artifacts
+  - sft_software_release_ai_models
+  - sft_software_release_build_artifacts
+iri_convention_02:
+  - con_env_configuration
+  - dm_fullstack_device_model
+  - plt_group
+  - plt_subscription
+  - sft_PinAssignment
+  - sft_PinAssignmentModel
+  - sft_ai_model
+  - system_SdmMappableEntity
 missing_metadata:
   alias:
     - BomIssue_description
