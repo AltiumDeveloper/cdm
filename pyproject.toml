@@ -34,9 +34,16 @@ style = "pep440"
 
 [tool.poetry.group.dev.dependencies]
 linkml = "^1.9.4"
+llms-txt = ">=0.0.6"
 mkdocs-material = ">=8.2.8"
 mkdocs-mermaid2-plugin = ">=1.1.1"
 schemasheets = ">=0.1.14"
 jupyter = ">=1.0.0"
 mknotebooks = ">= 0.8.0"
 pytest = "^9.0.2"
+questionary = ">=2.0.1"
+rich = ">=13.0.0"
+
+[project.scripts]
+cdm-lint = "cdm_tools.lint:main"
+cdm-wizard = "cdm_tools.wizard:main"
