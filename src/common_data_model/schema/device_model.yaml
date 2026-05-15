@@ -781,7 +781,7 @@ classes:
         alias: pin
         title: pin
         description: The physical pin associated with this port.
-        range: string
+        range: dm_Pin
       dm_Port_functions:
         slot_uri: dm:Port_functions
         alias: functions
