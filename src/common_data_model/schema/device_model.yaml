@@ -259,7 +259,7 @@ classes:
     annotations:
       platformAPI: DmAddressMap
     attributes:
-      dm_AddressMapModel_segments:
+      dm_AddressMap_segments:
         slot_uri: dm:AddressMap_segments
         alias: segments
         title: segments
