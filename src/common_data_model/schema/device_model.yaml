@@ -825,6 +825,7 @@ classes:
         title: name
         description: The name of the pin.
         range: string
+        identifier: true
 
   dm_PortFunction:
     is_a: core_Resource
