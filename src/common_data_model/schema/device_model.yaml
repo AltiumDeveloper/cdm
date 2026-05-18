@@ -936,7 +936,7 @@ classes:
         slot_uri: dm:PortConfigurationDependency_portMode
         alias: portMode
         title: port mode
-        description: Port modo..
+        description: Port mode.
         range: dm_PortMode
       dm_ConfigurationDependency_gpioMode:
         slot_uri: dm:PortConfigurationDependency_gpioMode
