@@ -773,7 +773,7 @@ classes:
       dm_Port_symbolicName:
         slot_uri: dm:Port_symbolicName
         alias: symbolicName
-        title: symbolicName
+        title: symbolic name
         description: A symbolic name for the port used in code or configuration.
         range: string
       dm_Port_pin:
