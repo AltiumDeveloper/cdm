@@ -2,2138 +2,2138 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://w3id.org/altium/cdm/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/about/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/tags/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/Any/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/col_Comment/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/col_CommentThread/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/col_Task/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/con_EnvironmentConfiguration/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/con_SchematicTemplate/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/con_SchematicTemplateRevision/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/core_Activity/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/core_Artifact/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/core_Entity/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/core_Event/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/core_Meta/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/core_Resource/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/core_WithGRID/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/core_WithMaturity/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/core_WithPlatformAPI/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/core_WithVault/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/core_WithVaultLink/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/cus_Script/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/cus_ScriptExecution/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/cus_ScriptExecutionCompleted/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/cus_ScriptVersion/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/cus_Workflow/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/des_HarnessProject/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/des_ManufacturingPackage/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/des_MultiboardProject/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/des_Project/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/des_ProjectParameter/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/des_ProjectRelease/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/des_ProjectTemplate/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/des_ProjectTemplateRevision/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/des_ProjectVariant/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/des_RuleCheck/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/des_RuleCheckExecution/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/dm_AddressBlock/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/dm_AddressMap/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/dm_AddressSegment/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/dm_ConfiguredDeviceModel/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/dm_FieldEnum/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/dm_FullStackDeviceModel/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/dm_HasAddressRange/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_address_block/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_Memory/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_address_map/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_Peripheral/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_address_segment/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_PeripheralConfiguration/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_configured_device_model/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_PeripheralInstance/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_field_enum/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_PeripheralMode/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_fullstack_device_model/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_PeripheralParameter/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_memory/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_PeripheralPinConfig/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_peripheral/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_PeripheralPinDependencyConfig/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_peripheral_configuration/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_Pin/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_peripheral_instance/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_Port/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_peripheral_mode/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_PortConfiguration/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_peripheral_parameter/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_PortConfigurationDependency/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_peripheral_pin_config/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_PortConfigurationEnumValue/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_peripheral_pin_dependency_config/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_PortConnection/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_pin/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_PortFunction/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_port/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_Processor/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_port_configuration/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_Register/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_port_configuration_dependency/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_port_configuration_enum_value/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_port_connection/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_port_function/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_processor/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_register/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/classes/dm_register_field/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/classes/dm_RegisterField/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/ins_Insight/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/ins_PartInsight/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_Component/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_ComponentParameter/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_ComponentRevision/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_ComponentTemplate/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_ComponentTemplateRevision/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_Datasheet/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_Footprint/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_FootprintRevision/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_ManagedSheet/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_ManagedSheetRevision/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_Part/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_PartChoice/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_PartChoiceList/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_PartRequest/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_PcbSnippet/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_PcbSnippetRevision/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_ReuseBlock/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_ReuseBlockRevision/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_SchSnippet/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_SchSnippetRevision/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_Symbol/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/lib_SymbolRevision/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/ota_Device/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/ota_Fleet/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/ota_Package/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_Application/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_EventSubscription/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_HasLifecycle/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_LifecycleDefinition/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_LifecycleStage/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_LifecycleState/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_NamingScheme/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_Organization/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_Solution/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_SolutionItem/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_SolutionRelease/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_User/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_UserGroup/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_Workspace/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_WorkspaceGroup/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/plt_WorkspaceUser/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/pro_Bom/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/pro_BomIssue/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/pro_BomItem/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/pro_BomItemAlternate/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/pro_BomItemElement/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/pro_BomItemSubstitute/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/pro_BomRelease/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/pro_BomWIP/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/pro_ConsolidatedBOM/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/pro_ManagedBOM/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/req_Artifact/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/req_Project/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/req_Requirement/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/req_RequirementBaseline/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/req_RequirementChangeRequest/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/req_RequirementRevision/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/req_RequirementSpecification/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/req_VerificationCase/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sft_AIModel/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sft_BuildArtifact/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sft_DeviceConfiguration/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sft_DeviceConfigurationRevision/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sft_PinAssignment/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sft_PinAssignmentModel/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sft_SoftwareProject/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sft_SoftwareRelease/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sup_Company/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sup_EvalKit/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sup_Offer/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sup_Part/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sup_PartFamily/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sup_PartGroup/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sup_ReferenceDesign/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sup_SoftwareProject/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/sup_SolutionTemplate/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_Connection/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_ESDDocument/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_Endpoint/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_FunctionalBlock/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_HardwareProject/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_HasSdmReferenceDesignator/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_KeyComponent/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_Parameter/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_Port/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_PortAssociation/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmAuthoringApplication/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmClientMetadata/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmConnection/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmDeviceModel/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmEndpoint/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmFunctionalBlock/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmFunctionalModel/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmHardwareComponent/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmHardwareModel/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmMappableEntity/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmPort/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmSoftwareComponent/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmSoftwareModel/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmSoftwareSpecification/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmSoftwareStackInstance/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmSystemModel/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmSystemModelVersion/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SdmSystemModelVersionMetadata/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SoftwareComponent/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_SoftwareProject/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/enums/Enumeration/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/enums/Maturity/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/enums/VaultContentType/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/enums/dm_AccessType/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/enums/dm_AddressBlockType/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/enums/dm_Endianness/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/enums/dm_GpioMode/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/enums/dm_PeripheralVirtualization/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/enums/dm_PortMode/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/enums/ota_DeviceStatus/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/enums/system_PortType/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/enums/system_SdmSoftwareComponentCategory/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/schemas/cdm/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/col_CommentThread_comments/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/con_EnvironmentConfiguration_schematicTemplates/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/contentType/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_derivedFrom/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_derivesInto/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_description/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_hasInput/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_hasOutput/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_hasPart/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_id/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_implementedBy/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_implements/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_informedBy/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_informs/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_inputOf/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_localId/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_occursIn/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_outputOf/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_partOf/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_releaseOf/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_releases/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_revisionOf/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/core_revisions/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/cus_ScriptExecution_emits/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/cus_ScriptVersion_executions/</loc>
-         <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://w3id.org/altium/cdm/slots/db_PortConfiguration_enum_values/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/des_ManufacturingPackage_projectRelease/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/des_MultiboardProject_projects/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/des_ProjectParameter_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/des_ProjectParameter_value/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/des_Project_parameters/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/des_Project_variants/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_AddressBlock_memories/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_AddressBlock_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_AddressBlock_peripheral_instance/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_AddressBlock_peripheralInstance/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_AddressBlock_registers/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_AddressBlock_type/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_AddressMapModel_segments/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_AddressMap_segments/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_AddressSegment_aliases/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_AddressSegment_blocks/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_AddressSegment_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_AddressSegment_peripherals/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_ConfigurationDependency_alt_ref/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_ConfigurationDependency_altRef/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_ConfigurationDependency_config_ref/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_ConfigurationDependency_configRef/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_ConfigurationDependency_function_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_ConfigurationDependency_functionName/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_ConfigurationDependency_gpio_mode/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_ConfigurationDependency_gpioMode/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_ConfigurationDependency_peripheral_instance_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_ConfigurationDependency_peripheralInstanceName/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_ConfigurationDependency_port/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_ConfigurationDependency_port_mode/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_ConfigurationDependency_portMode/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_FieldEnum_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_FieldEnum_value/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_FullStackDeviceModel_address_map/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_FullStackDeviceModel_addressMap/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_FullStackDeviceModel_family/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_FullStackDeviceModel_processors/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_HasAddressRange_size/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_HasAddressRange_start_address/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_HasAddressRange_startAddress/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Memory_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Memory_size/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Memory_type/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PeripheralConfiguration_parameters/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PeripheralConfiguration_pinConfigs/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PeripheralConfiguration_pinDependencyConfigs/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PeripheralInstance_interfaceType/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PeripheralInstance_modes/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PeripheralInstance_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PeripheralInstance_unit/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PeripheralInstance_virtualization/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PeripheralMode_configurations/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PeripheralMode_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PeripheralParameters_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PeripheralParameters_value/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Peripheral_instances/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Peripheral_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PinConfig_channel/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PinConfig_function/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_PinConfig_pin_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_PinConfig_pinName/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_PinConfig_pin_value/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_PinConfig_pinValue/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PinConfig_port/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_PinConfig_port_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_PinConfig_portName/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PinDependencyConfig_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PinDependencyConfig_value/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Pin_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PortConfigurationEnumValue_dependencies/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PortConfigurationEnumValue_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/dm_PortConfiguration_enumValues/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PortConfiguration_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PortConnection_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_PortFunction_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_PortFunction_peripheral_instance/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_PortFunction_peripheralInstance/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Port_configurations/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Port_connections/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Port_functions/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Port_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Port_pin/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_Port_symbolic_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_Port_symbolicName/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Processor_clock/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Processor_core/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Processor_endian/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Processor_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_RegisterField_access/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_RegisterField_enums/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_RegisterField_lsb/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_RegisterField_msb/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_RegisterField_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Register_access/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Register_fields/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_Register_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_Register_reset_mask/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_Register_resetMask/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/dm_Register_reset_value/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <loc>https://w3id.org/altium/cdm/slots/dm_Register_resetValue/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_boardName/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_mpn/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_peripherals/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/dm_ports/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/grid/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/ins_Insight_tasks/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/ins_PartInsight_informedBy/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/ins_PartInsight_occursIn/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/ins_PartInsight_part/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_ComponentParameter_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_ComponentParameter_type/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_ComponentParameter_value/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_ComponentRevision_footprints/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_ComponentRevision_parameters/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_ComponentRevision_partChoiceList/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_ComponentRevision_symbols/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_ComponentRevision_template/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_ComponentRevision_usedByProjectVariant/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_Component_parameters/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_ManagedSheetRevision_template/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_PartChoiceList_partChoices/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_PartChoice_part/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_PartChoice_rank/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_ReuseBlockRevision_pcbSnippet/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_ReuseBlockRevision_schSnippet/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_consists_of_components/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_consists_of_parts/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_uses_components/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/lib_uses_parts/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/maturity/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/ota_Device_deviceId/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/ota_Device_fleets/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/ota_Device_hardwareId/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/ota_Device_hibernated/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/ota_Device_packages/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/ota_Device_status/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/ota_Fleet_devices/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/ota_Package_hardwareIds/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/ota_Package_hashes/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/ota_Package_size/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/ota_Package_version/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/platformAPI/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/plt_HasLifecycle_lifecycleState/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/plt_LifecycleDefinition_stages/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/plt_LifecycleStage_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/plt_LifecycleStage_states/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/plt_LifecycleState_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/plt_SolutionItem_partOfSolution/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/plt_Solution_solutionItems/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/plt_Workspace_environmentConfigurations/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/pro_BomIssue_description/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/pro_BomIssue_howToFix/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/pro_BomIssue_severity/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/pro_BomItemElement_component/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/pro_BomItemElement_manufacturer/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/pro_BomItemElement_mpn/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/pro_BomItemElement_part/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/pro_BomItem_alternates/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/pro_BomItem_designators/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/pro_BomItem_primaryElement/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/pro_BomItem_quantity/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/pro_BomItem_substitutes/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/pro_Bom_items/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/pro_bom_issues/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Project_artifacts/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Project_baselines/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Project_changeRequests/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Project_description/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Project_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Project_owner/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Project_specifications/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Project_verificationCases/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementBaseline_identifier/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementBaseline_includesRequirements/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementBaseline_notes/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementBaseline_ofSpecification/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementBaseline_targetsProjectReleases/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementChangeRequest_decision/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementChangeRequest_generatesRevisions/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementChangeRequest_impactsRequirements/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementChangeRequest_impactsSpecifications/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementChangeRequest_priority/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementChangeRequest_reason/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementRevision_changeSummary/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementRevision_derivesFromChange/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementRevision_number/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementSpecification_description/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementSpecification_includesRequirements/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementSpecification_inputs/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementSpecification_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementSpecification_owner/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_RequirementSpecification_targetsProjects/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Requirement_acceptanceCriteria/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Requirement_category/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Requirement_children/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Requirement_identifier/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Requirement_owner/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Requirement_parent/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Requirement_priority/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Requirement_rationale/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Requirement_satisfiedByArtifacts/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Requirement_sourceReference/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Requirement_text/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Requirement_title/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Requirement_tracedFromSources/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_Requirement_verifiedByActivities/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_VerificationCase_environment/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_VerificationCase_generatesEvidence/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_VerificationCase_identifier/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_VerificationCase_method/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_VerificationCase_result/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_VerificationCase_triggersChanges/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_VerificationCase_usesArtifacts/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/req_VerificationCase_validatesRequirements/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sft_DeviceConfigurationRevision_pinModel/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sft_PinAssignmentModel_pins/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sft_PinAssignment_pinFunction/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sft_PinAssignment_pinName/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sft_PinAssignment_pinNumber/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sft_PinAssignment_symbolicName/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sft_SoftwareProject_aiModels/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sft_SoftwareProject_deviceConfiguration/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sft_SoftwareProject_latestBuildArtifacts/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sft_SoftwareRelease_aiModels/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sft_SoftwareRelease_attachments/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sft_SoftwareRelease_buildArtifacts/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sft_SoftwareRelease_description/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sft_SoftwareRelease_title/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sup_PartFamily_alternatives/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sup_PartFamily_partGroups/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sup_PartGroup_alternatives/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sup_PartGroup_parts/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sup_Part_manufacturer/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sup_Part_mpn/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sup_Part_referenceDesigns/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sup_SolutionTemplate_softwareProjects/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/sup_eval_kits/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_Connection_endpoints/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_ESDDocument_connections/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_ESDDocument_functionalBlocks/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_ESDDocument_hardwareProjects/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_ESDDocument_softwareProjects/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_Endpoint_functionalBlock/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_Endpoint_port/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_FunctionalBlock_keyComponents/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_FunctionalBlock_portAssociations/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_FunctionalBlock_ports/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_FunctionalBlock_softwareComponents/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_HardwareProject_hardwareComponents/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_HasSdmReferenceDesignator_sdmReferenceDesignator/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_KeyComponent_softwareComponents/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_Parameter_value/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_PortAssociation_port/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_PortAssociation_portType/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_PortAssociation_softwareComponent/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_Port_association/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmAuthoringApplication_application/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmAuthoringApplication_name/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmAuthoringApplication_version/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmClientMetadata_clientId/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmConnection_endpoints/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmEndpoint_functionalBlock/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmEndpoint_port/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmFunctionalBlock_hardwareComponents/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmFunctionalBlock_ports/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmFunctionalModel_connections/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmFunctionalModel_functionalBlocks/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmHardwareComponent_deviceModel/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmHardwareModel_functionalBlocks/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmHardwareModel_hardwareComponents/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmPort_hardwareComponent/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmPort_peripheralInstance/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmPort_portType/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmPort_softwareComponent/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSoftwareComponent_libraryComponentId/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSoftwareModel_deviceModel/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSoftwareModel_softwareComponents/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSoftwareModel_softwareStackInstances/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSoftwareSpecification_category/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSoftwareSpecification_ecosystem/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSoftwareSpecification_vendor/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSoftwareSpecification_version/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSoftwareStackInstance_dependencies/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSoftwareStackInstance_peripheralInstance/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSoftwareStackInstance_specification/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSystemModelVersionMetadata_authoringApplication/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSystemModelVersionMetadata_createdAt/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSystemModelVersionMetadata_createdBy/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSystemModelVersionMetadata_tags/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSystemModelVersion_metadata/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSystemModel_deviceModels/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSystemModel_functionalModel/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSystemModel_hardwareModels/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSystemModel_latestVersion/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSystemModel_schemaVersion/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSystemModel_softwareModels/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSystemModel_version/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SdmSystemModel_versions/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SoftwareComponent_keyComponent/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SoftwareComponent_portAssociations/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_SoftwareProject_softwareComponents/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/system_parameters/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/vaultLinkChild/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/vaultLinkParent/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/vaultLinkType/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/collaboration/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/configuration/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/core/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/customization/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/design/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/deviceModel/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/insights/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/library/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/ota/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/platform/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/procurement/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/requirements/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/software/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/supply/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/system-sdm/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/subsets/system/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/BLOB/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/GRID/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/boolean/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/curie/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/date/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/date_or_datetime/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/datetime/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/decimal/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/double/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/float/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/integer/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/jsonpath/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/jsonpointer/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/ncname/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/nodeidentifier/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/objectidentifier/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/sparqlpath/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/string/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/time/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/uri/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/types/uriorcurie/</loc>
-         <lastmod>2026-05-14</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
 </urlset>

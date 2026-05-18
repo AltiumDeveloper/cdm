@@ -240,41 +240,41 @@
 
 
 
-  class dm_address_segment["AddressSegment"]
+  class dm_AddressSegment["AddressSegment"]
 
 
 
-      style dm_address_segment fill:#6fa8dc    
+      style dm_AddressSegment fill:#6fa8dc    
 
 
-        dm_HasAddressRange &lt;|-- dm_address_segment
-        click dm_address_segment href "../../classes/dm_address_segment/"
+        dm_HasAddressRange &lt;|-- dm_AddressSegment
+        click dm_AddressSegment href "../../classes/dm_AddressSegment/"
 
 
-  class dm_address_block["AddressBlock"]
-
-
-
-      style dm_address_block fill:#6fa8dc    
-
-
-        dm_HasAddressRange &lt;|-- dm_address_block
-        click dm_address_block href "../../classes/dm_address_block/"
-
-
-  class dm_register["Register"]
+  class dm_AddressBlock["AddressBlock"]
 
 
 
-      style dm_register fill:#6fa8dc    
+      style dm_AddressBlock fill:#6fa8dc    
 
 
-        dm_HasAddressRange &lt;|-- dm_register
-        click dm_register href "../../classes/dm_register/"
+        dm_HasAddressRange &lt;|-- dm_AddressBlock
+        click dm_AddressBlock href "../../classes/dm_AddressBlock/"
+
+
+  class dm_Register["Register"]
 
 
 
-          dm_HasAddressRange : startAddress
+      style dm_Register fill:#6fa8dc    
+
+
+        dm_HasAddressRange &lt;|-- dm_Register
+        click dm_Register href "../../classes/dm_Register/"
+
+
+
+          dm_HasAddressRange : start address
 
 
 
@@ -305,7 +305,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../slots/dm_HasAddressRange_start_address">startAddress</a></td>
+<td><a href="../../slots/dm_HasAddressRange_startAddress">start address</a></td>
 <td><code>1</code></td>
 <td><a href="../../types/integer/">integer</a></td>
 <td>The base physical address of the memory region.</td>
@@ -330,15 +330,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../dm_address_segment/">dm_address_segment</a></td>
+<td><a href="../dm_AddressSegment/">dm_AddressSegment</a></td>
 <td>A contiguous region of the device's memory map</td>
 </tr>
 <tr>
-<td><a href="../dm_address_block/">dm_address_block</a></td>
+<td><a href="../dm_AddressBlock/">dm_AddressBlock</a></td>
 <td>Address block with start, size, and optional registers and peripherals</td>
 </tr>
 <tr>
-<td><a href="../dm_register/">dm_register</a></td>
+<td><a href="../dm_Register/">dm_Register</a></td>
 <td>A hardware register within an address block</td>
 </tr>
 </tbody>

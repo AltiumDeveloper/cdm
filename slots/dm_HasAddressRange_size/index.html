@@ -194,8 +194,8 @@
 <article class="md-content__inner md-typeset">
 <h1 id="field-size-dm_hasaddressrange_size">Field: size (dm_HasAddressRange_size)</h1>
 <p><em>The total span of the memory region in bytes.</em></p>
-<p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/dm_HasAddressRange_size">https://w3id.org/altium/cdm/dm_HasAddressRange_size</a></p>
-<p>Alias: dm_HasAddressRange_size</p>
+<p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/deviceModel/HasAddressRange_size">https://w3id.org/altium/cdm/deviceModel/HasAddressRange_size</a></p>
+<p>Alias: size</p>
 <!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
@@ -208,23 +208,23 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../../classes/dm_AddressBlock/">AddressBlock </a></td>
+<td>Address block with start, size, and optional registers and peripherals</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../../classes/dm_HasAddressRange/">dm_HasAddressRange </a></td>
 <td>A mixin for entities that occupy a specific span of the memory map</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/dm_register/">Register </a></td>
+<td><a href="../../classes/dm_Register/">Register </a></td>
 <td>A hardware register within an address block</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/dm_address_segment/">AddressSegment </a></td>
+<td><a href="../../classes/dm_AddressSegment/">AddressSegment </a></td>
 <td>A contiguous region of the device's memory map</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/dm_address_block/">AddressBlock </a></td>
-<td>Address block with start, size, and optional registers and peripherals</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -240,7 +240,8 @@
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The total span of the memory region in bytes.</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">size</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/altium/cdm/</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_HasAddressRange_size</span>
+<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm:HasAddressRange_size</span>
+<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">size</span>
 <span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_HasAddressRange</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dm_HasAddressRange</span>

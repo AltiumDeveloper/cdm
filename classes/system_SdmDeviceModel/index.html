@@ -264,18 +264,15 @@
 
 
 
-      system_SdmDeviceModel --&gt; "*" dm_peripheral : peripherals
-      click dm_peripheral href "../../classes/dm_peripheral/"
+      system_SdmDeviceModel --&gt; "*" dm_Peripheral : peripherals
+      click dm_Peripheral href "../../classes/dm_Peripheral/"
 
 
-  class dm_peripheral["Peripheral"]
-
-
-
-      style dm_peripheral fill:#6fa8dc    
+  class dm_Peripheral["Peripheral"]
 
 
 
+      style dm_Peripheral fill:#6fa8dc    
 
 
 
@@ -284,15 +281,18 @@
 
 
 
-      system_SdmDeviceModel --&gt; "*" dm_port : ports
-      click dm_port href "../../classes/dm_port/"
-
-
-  class dm_port["Port"]
 
 
 
-      style dm_port fill:#6fa8dc    
+      system_SdmDeviceModel --&gt; "*" dm_Port : ports
+      click dm_Port href "../../classes/dm_Port/"
+
+
+  class dm_Port["Port"]
+
+
+
+      style dm_Port fill:#6fa8dc    
 
 
 
@@ -362,14 +362,14 @@
 <tr>
 <td><a href="../../slots/dm_peripherals">peripherals</a></td>
 <td><code>*</code></td>
-<td><a href="../dm_peripheral/">Peripheral</a></td>
+<td><a href="../dm_Peripheral/">Peripheral</a></td>
 <td>List of all peripherals available on the device.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/dm_ports">ports</a></td>
 <td><code>*</code></td>
-<td><a href="../dm_port/">Port</a></td>
+<td><a href="../dm_Port/">Port</a></td>
 <td>List of physical ports on the device.</td>
 <td>direct</td>
 </tr>
