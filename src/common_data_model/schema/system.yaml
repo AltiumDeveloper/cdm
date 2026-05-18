@@ -690,7 +690,7 @@ classes:
         alias: peripheralInstanceId
         title: peripheral instance
         description: The peripheral instance associated with this port.
-        range: dm_peripheral_instance
+        range: dm_PeripheralInstance
         required: false
   system_SdmConnection:
     is_a: core_Resource
@@ -794,7 +794,7 @@ classes:
         alias: deviceModelId
         title: device model
         description: A device model associated with this software model.
-        range: dm_configured_device_model
+        range: dm_ConfiguredDeviceModel
         required: false
     slot_usage:
       core_implementedBy:
@@ -868,7 +868,7 @@ classes:
         description: >-
           The peripheral associated with this software stack. 
           Used by drivers to bind to specific hardware peripherals.
-        range: dm_peripheral_instance
+        range: dm_PeripheralInstance
         multivalued: false
         required: false
 
@@ -964,7 +964,7 @@ classes:
         alias: deviceModelId
         title: device model
         description: A device model associated with this hardware component.
-        range: dm_configured_device_model
+        range: dm_ConfiguredDeviceModel
 
 slots:
 

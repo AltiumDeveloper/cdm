@@ -137,17 +137,21 @@ classes:
       It provides the foundational properties required for addressing and 
       size-based feasibility checks.
     attributes:
-      dm_HasAddressRange_start_address:
-        title: startAddress
+      dm_HasAddressRange_startAddress:
+        slot_uri: dm:HasAddressRange_startAddress
+        alias: startAddress
+        title: start address
         identifier: true
         description: The base physical address of the memory region.
         range: integer
       dm_HasAddressRange_size:
+        slot_uri: dm:HasAddressRange_size
+        alias: size
         title: size
         description: The total span of the memory region in bytes.
         range: integer
 
-  dm_configured_device_model:
+  dm_ConfiguredDeviceModel:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:ConfiguredDeviceModel
@@ -164,7 +168,7 @@ classes:
       - dm_peripherals
       - dm_ports
 
-  dm_fullstack_device_model:
+  dm_FullStackDeviceModel:
     is_a: core_Artifact
     in_subset: deviceModel
     class_uri: dm:FullStackDeviceModel
@@ -181,24 +185,29 @@ classes:
       - dm_ports
     attributes:
       dm_FullStackDeviceModel_family:
-        title: deviceFamily
+        slot_uri: dm:FullStackDeviceModel_family
+        alias: family
+        title: device family
         description: The family to which the device belongs.
         range: string
         required: true
       dm_FullStackDeviceModel_processors:
+        slot_uri: dm:FullStackDeviceModel_processors
+        alias: processors
         title: processors
         description: List of processors included in the device.
-        range: dm_processor
+        range: dm_Processor
         multivalued: true
         inlined: true
         inlined_as_list: true
-      dm_FullStackDeviceModel_address_map:
-        title: addressMap
+      dm_FullStackDeviceModel_addressMap:
+        slot_uri: dm:FullStackDeviceModel_addressMap
+        alias: addressMap
+        title: address map
         description: The hardware address map configuration.
-        range: dm_address_map
+        range: dm_AddressMap
 
-
-  dm_processor:
+  dm_Processor:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:Processor
@@ -211,16 +220,22 @@ classes:
       platformAPI: DmProcessor
     attributes:
       dm_Processor_name:
+        slot_uri: dm:Processor_name
+        alias: name
         title: name
         description: The unique identifier for this processor instance.
         range: string
         required: true
       dm_Processor_core:
+        slot_uri: dm:Processor_core
+        alias: core
         title: core
         description: Architectural core type (e.g., Cortex-M4).
         range: string
         required: true
       dm_Processor_endian:
+        slot_uri: dm:Processor_endian
+        alias: endian
         title: endian
         description: >-
           The byte-ordering capability of the core. If Bi-endian, 
@@ -228,12 +243,14 @@ classes:
         range: dm_Endianness
         required: true
       dm_Processor_clock:
+        slot_uri: dm:Processor_clock
+        alias: clock
         title: clock
         description: The operating frequency in Hz.
         range: integer
         required: true
 
-  dm_address_map:
+  dm_AddressMap:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:AddressMap
@@ -242,17 +259,19 @@ classes:
     annotations:
       platformAPI: DmAddressMap
     attributes:
-      dm_AddressMapModel_segments:
+      dm_AddressMap_segments:
+        slot_uri: dm:AddressMap_segments
+        alias: segments
         title: segments
         description: >-
           A collection of memory segments defined within the device's address space. 
           Each entry describes a specific block of memory.
-        range: dm_address_segment
+        range: dm_AddressSegment
         multivalued: true
         inlined: true
         inlined_as_list: true
 
-  dm_address_segment:
+  dm_AddressSegment:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:AddressSegment
@@ -268,29 +287,37 @@ classes:
       - core_description
     attributes:
       dm_AddressSegment_name:
+        slot_uri: dm:AddressSegment_name
+        alias: name
         title: name
         description: The name of the address segment.
         range: string
       dm_AddressSegment_aliases:
+        slot_uri: dm:AddressSegment_aliases
+        alias: aliases
         title: aliases
         description: Alternative names for the segment.
         range: string
         multivalued: true
       dm_AddressSegment_blocks:
+        slot_uri: dm:AddressSegment_blocks
+        alias: blocks
         title: blocks
         description: The nested address blocks within the segment
-        range: dm_address_block
+        range: dm_AddressBlock
         multivalued: true
         inlined: true
         inlined_as_list: true
       dm_AddressSegment_peripherals:
+        slot_uri: dm:AddressSegment_peripherals
+        alias: peripherals
         title: peripherals
         description: The peripherals associated with this segment.
-        range: dm_peripheral
+        range: dm_Peripheral
         multivalued: true
         inlined: false
 
-  dm_address_block:
+  dm_AddressBlock:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:AddressBlock
@@ -304,33 +331,43 @@ classes:
       - core_description
     attributes:
       dm_AddressBlock_name:
+        slot_uri: dm:AddressBlock_name
+        alias: name
         title: name
         description: The name of the address block.
         range: string
       dm_AddressBlock_type:
+        slot_uri: dm:AddressBlock_type
+        alias: type
         title: type
         description: The type of the address block.
         range: dm_AddressBlockType
       dm_AddressBlock_memories:
+        slot_uri: dm:AddressBlock_memories
+        alias: memories
         title: memories
         description: List of memory entries associated with this block.
-        range: dm_memory
+        range: dm_Memory
         multivalued: true
       dm_AddressBlock_registers:
+        slot_uri: dm:AddressBlock_registers
+        alias: registers
         title: registers
         description: List of registers contained within this address block.
-        range: dm_register
+        range: dm_Register
         multivalued: true
         inlined: true
         inlined_as_list: true
-      dm_AddressBlock_peripheral_instance:
-        title: peripheral_instance
+      dm_AddressBlock_peripheralInstance:
+        slot_uri: dm:AddressBlock_peripheralInstance
+        alias: peripheralInstance
+        title: peripheral instance
         description: A peripheral instance associated with this address block.
-        range: dm_peripheral_instance
+        range: dm_PeripheralInstance
         required: false
         inlined: false
 
-  dm_memory:
+  dm_Memory:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:Memory
@@ -340,19 +377,25 @@ classes:
       platformAPI: DmMemory
     attributes:
       dm_Memory_name:
+        slot_uri: dm:Memory_name
+        alias: name
         title: name
         description: The name of the memory entry.
         range: string
       dm_Memory_type:
+        slot_uri: dm:Memory_type
+        alias: type
         title: type
         description: The type of memory entry.
         range: string
       dm_Memory_size:
+        slot_uri: dm:Memory_size
+        alias: size
         title: size
         description: The total span of the memory region in bytes.
         range: integer
 
-  dm_register:
+  dm_Register:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:Register
@@ -366,30 +409,40 @@ classes:
       - core_description
     attributes:
       dm_Register_name:
+        slot_uri: dm:Register_name
+        alias: name
         title: name
         description: The name of the register.
         range: string
       dm_Register_access:
+        slot_uri: dm:Register_access
+        alias: access
         title: access
         description: The access type of the register.
         range: dm_AccessType
-      dm_Register_reset_value:
+      dm_Register_resetValue:
+        slot_uri: dm:Register_resetValue
+        alias: resetValue
         title: resetValue
         description: The value to reset the register.
         range: string
-      dm_Register_reset_mask:
+      dm_Register_resetMask:
+        slot_uri: dm:Register_resetMask
+        alias: resetMask
         title: resetMask
         description: The mask applied during register reset.
         range: string
       dm_Register_fields:
+        slot_uri: dm:Register_fields
+        alias: fields
         title: fields
         description: Bit fields within this register.
-        range: dm_register_field
+        range: dm_RegisterField
         multivalued: true
         inlined: true
         inlined_as_list: true
 
-  dm_register_field:
+  dm_RegisterField:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:RegisterField
@@ -401,30 +454,40 @@ classes:
       - core_description
     attributes:
       dm_RegisterField_name:
+        slot_uri: dm:RegisterField_name
+        alias: name
         title: name
         description: The name of the register field.
         range: string
       dm_RegisterField_lsb:
+        slot_uri: dm:RegisterField_lsb
+        alias: lsb
         title: lsb
         description: The least significant bit position of the field.
         range: integer
       dm_RegisterField_msb:
+        slot_uri: dm:RegisterField_msb
+        alias: msb
         title: msb
         description: The most significant bit position of the field.
         range: integer
       dm_RegisterField_access:
+        slot_uri: dm:RegisterField_access
+        alias: access
         title: access
         description: The access type of the register field.
         range: dm_AccessType
       dm_RegisterField_enums:
+        slot_uri: dm:RegisterField_enums
+        alias: enums
         title: enums
         description: Enumerated values for the register field.
-        range: dm_field_enum
+        range: dm_FieldEnum
         multivalued: true
         inlined: true
         inlined_as_list: true
 
-  dm_field_enum:
+  dm_FieldEnum:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:FieldEnum
@@ -436,15 +499,19 @@ classes:
       - core_description
     attributes:
       dm_FieldEnum_name:
+        slot_uri: dm:FieldEnum_name
+        alias: name
         title: name
         description: The name of the enumerated value.
         range: string
       dm_FieldEnum_value:
+        slot_uri: dm:FieldEnum_value
+        alias: value
         title: value
         description: The actual value of the enumeration.
         range: string
 
-  dm_peripheral:
+  dm_Peripheral:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:Peripheral
@@ -456,20 +523,22 @@ classes:
       - core_localId
     attributes:
       dm_Peripheral_name:
+        slot_uri: dm:Peripheral_name
         alias: name
         title: name
         description: The name of the peripheral.
         range: string
       dm_Peripheral_instances:
+        slot_uri: dm:Peripheral_instances
         alias: instances
         title: instances
         description: The list of instances of this peripheral present on the device.
-        range: dm_peripheral_instance
+        range: dm_PeripheralInstance
         multivalued: true
         inlined: true
         inlined_as_list: true
 
-  dm_peripheral_instance:
+  dm_PeripheralInstance:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PeripheralInstance
@@ -481,29 +550,34 @@ classes:
       - core_localId
     attributes:
       dm_PeripheralInstance_name:
+        slot_uri: dm:PeripheralInstance_name
         alias: name
         title: name
         description: The name of the peripheral instance.
         range: string
       dm_PeripheralInstance_unit:
+        slot_uri: dm:PeripheralInstance_unit
         alias: unit
         title: unit
         description: The specific hardware unit index for the peripheral instance.
         range: string
       dm_PeripheralInstance_modes:
+        slot_uri: dm:PeripheralInstance_modes
         alias: modes
         title: modes
         description: The list of modes this peripheral instance can fulfill (e.g., Asynchronous UART).
-        range: dm_peripheral_mode
+        range: dm_PeripheralMode
         multivalued: true
         inlined: true
         inlined_as_list: true
       dm_PeripheralInstance_interfaceType:
+        slot_uri: dm:PeripheralInstance_interfaceType
         alias: interfaceType
         title: interfaceType
         description: The generic interface this peripheral instance is configured as.
         range: string
       dm_PeripheralInstance_virtualization:
+        slot_uri: dm:PeripheralInstance_virtualization
         alias: virtualization
         title: virtualization
         description: >-
@@ -513,7 +587,7 @@ classes:
           interface instances.
         range: dm_PeripheralVirtualization
 
-  dm_peripheral_mode:
+  dm_PeripheralMode:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PeripheralMode
@@ -523,20 +597,22 @@ classes:
       platformAPI: DmPeripheralMode
     attributes:
       dm_PeripheralMode_name:
+        slot_uri: dm:PeripheralMode_name
         alias: name
         title: name
         description: Name of the peripheral mode (e.g., Asynchronous UART).
         range: string
       dm_PeripheralMode_configurations:
+        slot_uri: dm:PeripheralMode_configurations
         alias: configurations
         title: configurations
         description: The configurations available within this peripheral modes.
-        range: dm_peripheral_configuration
+        range: dm_PeripheralConfiguration
         multivalued: true
         inlined: true
         inlined_as_list: true
 
-  dm_peripheral_configuration:
+  dm_PeripheralConfiguration:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PeripheralConfiguration
@@ -548,31 +624,34 @@ classes:
       - core_localId
     attributes:
       dm_PeripheralConfiguration_parameters:
+        slot_uri: dm:PeripheralConfiguration_parameters
         alias: parameters
         title: parameters
         description: The list of parameters associated with this peripheral configuration.
-        range: dm_peripheral_parameter
+        range: dm_PeripheralParameter
         multivalued: true
         inlined: true
         inlined_as_list: true
       dm_PeripheralConfiguration_pinConfigs:
+        slot_uri: dm:PeripheralConfiguration_pinConfigs
         alias: pinConfigs
         title: pinConfigs
         description: The list of pin function to port mappings for this configuration.
-        range: dm_peripheral_pin_config
+        range: dm_PeripheralPinConfig
         multivalued: true
         inlined: true
         inlined_as_list: true
       dm_PeripheralConfiguration_pinDependencyConfigs:
+        slot_uri: dm:PeripheralConfiguration_pinDependencyConfigs
         alias: pinDependencyConfigs
         title: pinDependencyConfigs
         description: The list of alternative pin configurations that must be applied together with this configuration.
-        range: dm_peripheral_pin_dependency_config
+        range: dm_PeripheralPinDependencyConfig
         multivalued: true
         inlined: true
         inlined_as_list: true
 
-  dm_peripheral_pin_config:
+  dm_PeripheralPinConfig:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PeripheralPinConfig
@@ -581,32 +660,38 @@ classes:
     annotations:
       platformAPI: DmPeripheralPinConfig
     attributes:
-      dm_PinConfig_pin_name:
+      dm_PinConfig_pinName:
+        slot_uri: dm:PeripheralPinConfig_pinName
         alias: pinName
-        title: pinName
+        title: pin name
         description: The fully qualified identifier representing the channel, and pin function (e.g., sci0.txt, iic1.scl).
         range: string
-      dm_PinConfig_pin_value:
+      dm_PinConfig_pinValue:
+        slot_uri: dm:PeripheralPinConfig_pinValue
         alias: pinValue
-        title: pinValue
+        title: pin value
         description: The fully qualified identifier representing the channel, pin function, and physical pin (e.g., sci0.txd.p101, iic1.scl.p402).
         range: string
       dm_PinConfig_function:
+        slot_uri: dm:PeripheralPinConfig_function
         alias: function
         title: function
         description: The logical pin function name (e.g., TXD, RXD).
         range: string
       dm_PinConfig_port:
+        slot_uri: dm:PeripheralPinConfig_port
         alias: port
         title: port
         description: The physical port target for the pin function.
         range: string
-      dm_PinConfig_port_name:
+      dm_PinConfig_portName:
+        slot_uri: dm:PeripheralPinConfig_portName
         alias: portName
-        title: portName
+        title: port name
         description: The physical port mapping target for the pin function.
         range: string
       dm_PinConfig_channel:
+        slot_uri: dm:PeripheralPinConfig_channel
         alias: channel
         title: channel
         description: >-
@@ -620,7 +705,7 @@ classes:
           do not require a channel designation.
         range: string
 
-  dm_peripheral_pin_dependency_config:
+  dm_PeripheralPinDependencyConfig:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PeripheralPinDependencyConfig
@@ -630,17 +715,19 @@ classes:
       platformAPI: DmPeripheralPinDependencyConfig
     attributes:
       dm_PinDependencyConfig_name:
+        slot_uri: dm:PeripheralPinDependencyConfig_name
         alias: name
         title: name
         description: The name of the pin dependency configuration.
         range: string
       dm_PinDependencyConfig_value:
+        slot_uri: dm:PeripheralPinDependencyConfig_value
         alias: value
         title: value
         description: The value of the pin dependency configuration.
         range: string
 
-  dm_peripheral_parameter:
+  dm_PeripheralParameter:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PeripheralParameter
@@ -650,6 +737,7 @@ classes:
       platformAPI: DmPeripheralParameters
     attributes:
       dm_PeripheralParameters_name:
+        slot_uri: dm:PeripheralParameter_name
         alias: name
         title: name
         description: The name of the peripheral parameter.
@@ -657,13 +745,14 @@ classes:
         required: true
         identifier: true
       dm_PeripheralParameters_value:
+        slot_uri: dm:PeripheralParameter_value
         alias: value
         title: value
         description: The value of the peripheral parameter.
         range: string
         required: true
 
-  dm_port:
+  dm_Port:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:Port
@@ -676,46 +765,52 @@ classes:
       - core_description
     attributes:
       dm_Port_name:
+        slot_uri: dm:Port_name
         alias: name
         title: name
         description: The name of the port.
         range: string
-      dm_Port_symbolic_name:
+      dm_Port_symbolicName:
+        slot_uri: dm:Port_symbolicName
         alias: symbolicName
-        title: symbolicName
+        title: symbolic name
         description: A symbolic name for the port used in code or configuration.
         range: string
       dm_Port_pin:
+        slot_uri: dm:Port_pin
         alias: pin
         title: pin
         description: The physical pin associated with this port.
-        range: dm_pin
+        range: dm_Pin
       dm_Port_functions:
+        slot_uri: dm:Port_functions
         alias: functions
         title: functions
         description: The list of functions that this port can perform.
-        range: dm_port_function
+        range: dm_PortFunction
         multivalued: true
         inlined: true
         inlined_as_list: true
       dm_Port_configurations:
+        slot_uri: dm:Port_configurations
         alias: configurations
         title: configurations
         description: The list of configurations available for this port.
-        range: dm_port_configuration
+        range: dm_PortConfiguration
         multivalued: true
         inlined: true
         inlined_as_list: true
       dm_Port_connections:
+        slot_uri: dm:Port_connections
         alias: connections
         title: connections
         description: The list of connections associated with this port to other components or signals.
-        range: dm_port_connection
+        range: dm_PortConnection
         multivalued: true
         inlined: true
         inlined_as_list: true
 
-  dm_pin:
+  dm_Pin:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:Pin
@@ -725,13 +820,14 @@ classes:
       platformAPI: DmPin
     attributes:
       dm_Pin_name:
+        slot_uri: dm:Pin_name
         alias: name
         title: name
-        identifier: true
         description: The name of the pin.
         range: string
+        identifier: true
 
-  dm_port_function:
+  dm_PortFunction:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PortFunction
@@ -741,18 +837,20 @@ classes:
       platformAPI: DmPortFunction
     attributes:
       dm_PortFunction_name:
+        slot_uri: dm:PortFunction_name
         alias: name
         title: name
         description: The name of the port function.
         range: string
-      dm_PortFunction_peripheral_instance:
+      dm_PortFunction_peripheralInstance:
+        slot_uri: dm:PortFunction_peripheralInstance
         alias: peripheralInstance
-        title: peripheralInstance
+        title: peripheral instance
         description: The peripheral instance associated with this port function.
-        range: dm_peripheral_instance
+        range: dm_PeripheralInstance
         inlined: false
 
-  dm_port_configuration:
+  dm_PortConfiguration:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PortConfiguration
@@ -764,18 +862,22 @@ classes:
       - core_localId
     attributes:
       dm_PortConfiguration_name:
+        slot_uri: dm:PortConfiguration_name
+        alias: name
         title: name
         description: The name of the port configuration.
         range: string
-      db_PortConfiguration_enum_values:
-        title: enumValues
+      dm_PortConfiguration_enumValues:
+        slot_uri: dm:PortConfiguration_enumValues
+        alias: enumValues
+        title: enum values
         description: The possible values that can be associated with this port configuration.
-        range: dm_port_configuration_enum_value
+        range: dm_PortConfigurationEnumValue
         multivalued: true
         inlined: true
         inlined_as_list: true
 
-  dm_port_configuration_enum_value:
+  dm_PortConfigurationEnumValue:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PortConfigurationEnumValue
@@ -787,18 +889,22 @@ classes:
       - core_localId
     attributes:
       dm_PortConfigurationEnumValue_name:
+        slot_uri: dm:PortConfigurationEnumValue_name
+        alias: name
         title: name
         description: The name of the enumerated value.
         range: string
       dm_PortConfigurationEnumValue_dependencies:
+        slot_uri: dm:PortConfigurationEnumValue_dependencies
+        alias: dependencies
         title: dependencies
         description: The list of dependencies associated with this enumerated value.
-        range: dm_port_configuration_dependency
+        range: dm_PortConfigurationDependency
         multivalued: true
         inlined: true
         inlined_as_list: true
 
-  dm_port_configuration_dependency:
+  dm_PortConfigurationDependency:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PortConfigurationDependency
@@ -807,37 +913,51 @@ classes:
     annotations:
       platformAPI: DmPortConfigurationDependency
     attributes:
-      dm_ConfigurationDependency_config_ref:
-        title: configRef
+      dm_ConfigurationDependency_configRef:
+        slot_uri: dm:PortConfigurationDependency_configRef
+        alias: configRef
+        title: config ref
         description: Root configuration reference token (e.g., P408).
         range: string
         required: true
-      dm_ConfigurationDependency_alt_ref:
-        title: altRef
+      dm_ConfigurationDependency_altRef:
+        slot_uri: dm:PortConfigurationDependency_altRef
+        alias: altRef
+        title: alt ref
         description: Full alternative reference string used to derive mode/function tokens.
         range: string
       dm_ConfigurationDependency_port:
+        slot_uri: dm:PortConfigurationDependency_port
+        alias: port
         title: port
         description: Port identifier extracted from the configuration reference (e.g., P000).
         range: string
-      dm_ConfigurationDependency_port_mode:
-        title: portMode
-        description: Port modo..
+      dm_ConfigurationDependency_portMode:
+        slot_uri: dm:PortConfigurationDependency_portMode
+        alias: portMode
+        title: port mode
+        description: Port mode.
         range: dm_PortMode
-      dm_ConfigurationDependency_gpio_mode:
-        title: gpioMode
+      dm_ConfigurationDependency_gpioMode:
+        slot_uri: dm:PortConfigurationDependency_gpioMode
+        alias: gpioMode
+        title: gpio mode
         description: GPIO mode. Meaningful only when portMode == GPIO.
         range: dm_GpioMode
-      dm_ConfigurationDependency_peripheral_instance_name:
-        title: peripheralInstanceName
+      dm_ConfigurationDependency_peripheralInstanceName:
+        slot_uri: dm:PortConfigurationDependency_peripheralInstanceName
+        alias: peripheralInstanceName
+        title: peripheral instance name
         description: Peripheral instance name for alternate function mode (e.g., SCI0).
         range: string
-      dm_ConfigurationDependency_function_name:
-        title: functionName
+      dm_ConfigurationDependency_functionName:
+        slot_uri: dm:PortConfigurationDependency_functionName
+        alias: functionName
+        title: function name
         description: Peripheral function name for alternate mode (e.g., TXD, RXD).
         range: string
 
-  dm_port_connection:
+  dm_PortConnection:
     is_a: core_Resource
     in_subset: deviceModel
     class_uri: dm:PortConnection
@@ -849,36 +969,42 @@ classes:
       - core_localId
     attributes:
       dm_PortConnection_name:
+        slot_uri: dm:PortConnection_name
+        alias: name
         title: name
         description: The name of the port connection.
         range: string
 
 slots:
   dm_boardName:
+    slot_uri: dm:ConfiguredDeviceModel_boardName
     alias: boardName
     title: board name
     description: Board name for the device
     range: string
     required: false
   dm_mpn:
+    slot_uri: dm:mpn
     alias: mpn
     title: deviceMpn
     description: Manufacturer Part Number (MPN) for the device.
     range: string
     required: true
   dm_peripherals:
+    slot_uri: dm:peripherals
     alias: peripherals
     title: peripherals
     description: List of all peripherals available on the device.
-    range: dm_peripheral
+    range: dm_Peripheral
     multivalued: true
     inlined: true
     inlined_as_list: true
   dm_ports:
+    slot_uri: dm:ports
     alias: ports
     title: ports
     description: List of physical ports on the device.
-    range: dm_port
+    range: dm_Port
     multivalued: true
     inlined: true
     inlined_as_list: true

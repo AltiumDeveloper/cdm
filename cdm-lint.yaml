@@ -4,105 +4,13 @@
 
 naming_class:
   - Any
-  - dm_address_block
-  - dm_address_map
-  - dm_address_segment
-  - dm_configured_device_model
-  - dm_field_enum
-  - dm_fullstack_device_model
-  - dm_memory
-  - dm_peripheral
-  - dm_peripheral_configuration
-  - dm_peripheral_instance
-  - dm_peripheral_mode
-  - dm_peripheral_parameter
-  - dm_peripheral_pin_config
-  - dm_peripheral_pin_dependency_config
-  - dm_pin
-  - dm_port
-  - dm_port_configuration
-  - dm_port_configuration_dependency
-  - dm_port_configuration_enum_value
-  - dm_port_connection
-  - dm_port_function
-  - dm_processor
-  - dm_register
-  - dm_register_field
-naming:
-  - db_PortConfiguration_enum_values
-  - dm_AddressBlock_peripheral_instance
-  - dm_ConfigurationDependency_alt_ref
-  - dm_ConfigurationDependency_config_ref
-  - dm_ConfigurationDependency_function_name
-  - dm_ConfigurationDependency_gpio_mode
-  - dm_ConfigurationDependency_peripheral_instance_name
-  - dm_ConfigurationDependency_port_mode
-  - dm_FullStackDeviceModel_address_map
-  - dm_HasAddressRange_start_address
-  - dm_PinConfig_pin_name
-  - dm_PinConfig_pin_value
-  - dm_PinConfig_port_name
-  - dm_PortFunction_peripheral_instance
-  - dm_Port_symbolic_name
-  - dm_Register_reset_mask
-  - dm_Register_reset_value
 grid_format:
   - con_EnvironmentConfiguration
   - con_SchematicTemplate
   - con_SchematicTemplateRevision
-title_format:
-  - dm_AddressBlock_peripheral_instance
 iri_convention_02:
-  - dm_fullstack_device_model
   - system_SdmMappableEntity
 missing_metadata:
-  alias:
-    - db_PortConfiguration_enum_values
-    - dm_AddressBlock_memories
-    - dm_AddressBlock_name
-    - dm_AddressBlock_peripheral_instance
-    - dm_AddressBlock_registers
-    - dm_AddressBlock_type
-    - dm_AddressMapModel_segments
-    - dm_AddressSegment_aliases
-    - dm_AddressSegment_blocks
-    - dm_AddressSegment_name
-    - dm_AddressSegment_peripherals
-    - dm_ConfigurationDependency_alt_ref
-    - dm_ConfigurationDependency_config_ref
-    - dm_ConfigurationDependency_function_name
-    - dm_ConfigurationDependency_gpio_mode
-    - dm_ConfigurationDependency_peripheral_instance_name
-    - dm_ConfigurationDependency_port
-    - dm_ConfigurationDependency_port_mode
-    - dm_FieldEnum_name
-    - dm_FieldEnum_value
-    - dm_FullStackDeviceModel_address_map
-    - dm_FullStackDeviceModel_family
-    - dm_FullStackDeviceModel_processors
-    - dm_HasAddressRange_size
-    - dm_HasAddressRange_start_address
-    - dm_Memory_name
-    - dm_Memory_size
-    - dm_Memory_type
-    - dm_PortConfigurationEnumValue_dependencies
-    - dm_PortConfigurationEnumValue_name
-    - dm_PortConfiguration_name
-    - dm_PortConnection_name
-    - dm_Processor_clock
-    - dm_Processor_core
-    - dm_Processor_endian
-    - dm_Processor_name
-    - dm_RegisterField_access
-    - dm_RegisterField_enums
-    - dm_RegisterField_lsb
-    - dm_RegisterField_msb
-    - dm_RegisterField_name
-    - dm_Register_access
-    - dm_Register_fields
-    - dm_Register_name
-    - dm_Register_reset_mask
-    - dm_Register_reset_value
   description:
     - Any
     - system_Connection_endpoints
@@ -146,22 +54,22 @@ missing_metadata:
     - core_outputOf
     - core_partOf
     - dm_AddressBlock_name
-    - dm_AddressBlock_peripheral_instance
+    - dm_AddressBlock_peripheralInstance
     - dm_AddressBlock_type
     - dm_AddressSegment_name
-    - dm_ConfigurationDependency_alt_ref
-    - dm_ConfigurationDependency_config_ref
-    - dm_ConfigurationDependency_function_name
-    - dm_ConfigurationDependency_gpio_mode
-    - dm_ConfigurationDependency_peripheral_instance_name
+    - dm_ConfigurationDependency_altRef
+    - dm_ConfigurationDependency_configRef
+    - dm_ConfigurationDependency_functionName
+    - dm_ConfigurationDependency_gpioMode
+    - dm_ConfigurationDependency_peripheralInstanceName
     - dm_ConfigurationDependency_port
-    - dm_ConfigurationDependency_port_mode
+    - dm_ConfigurationDependency_portMode
     - dm_FieldEnum_name
     - dm_FieldEnum_value
-    - dm_FullStackDeviceModel_address_map
+    - dm_FullStackDeviceModel_addressMap
     - dm_FullStackDeviceModel_family
     - dm_HasAddressRange_size
-    - dm_HasAddressRange_start_address
+    - dm_HasAddressRange_startAddress
     - dm_Memory_name
     - dm_Memory_size
     - dm_Memory_type
@@ -175,10 +83,10 @@ missing_metadata:
     - dm_Peripheral_name
     - dm_PinConfig_channel
     - dm_PinConfig_function
-    - dm_PinConfig_pin_name
-    - dm_PinConfig_pin_value
+    - dm_PinConfig_pinName
+    - dm_PinConfig_pinValue
     - dm_PinConfig_port
-    - dm_PinConfig_port_name
+    - dm_PinConfig_portName
     - dm_PinDependencyConfig_name
     - dm_PinDependencyConfig_value
     - dm_Pin_name
@@ -186,10 +94,10 @@ missing_metadata:
     - dm_PortConfiguration_name
     - dm_PortConnection_name
     - dm_PortFunction_name
-    - dm_PortFunction_peripheral_instance
+    - dm_PortFunction_peripheralInstance
     - dm_Port_name
     - dm_Port_pin
-    - dm_Port_symbolic_name
+    - dm_Port_symbolicName
     - dm_Processor_clock
     - dm_Processor_core
     - dm_Processor_endian
@@ -200,8 +108,8 @@ missing_metadata:
     - dm_RegisterField_name
     - dm_Register_access
     - dm_Register_name
-    - dm_Register_reset_mask
-    - dm_Register_reset_value
+    - dm_Register_resetMask
+    - dm_Register_resetValue
     - dm_boardName
     - dm_mpn
     - system_Parameter_value
@@ -254,7 +162,6 @@ missing_metadata:
     - core_outputOf
     - core_partOf
     - core_revisions
-    - db_PortConfiguration_enum_values
     - dm_AddressBlock_memories
     - dm_AddressBlock_name
     - dm_AddressBlock_registers
@@ -264,18 +171,18 @@ missing_metadata:
     - dm_AddressSegment_blocks
     - dm_AddressSegment_name
     - dm_AddressSegment_peripherals
-    - dm_ConfigurationDependency_alt_ref
-    - dm_ConfigurationDependency_function_name
-    - dm_ConfigurationDependency_gpio_mode
-    - dm_ConfigurationDependency_peripheral_instance_name
+    - dm_ConfigurationDependency_altRef
+    - dm_ConfigurationDependency_functionName
+    - dm_ConfigurationDependency_gpioMode
+    - dm_ConfigurationDependency_peripheralInstanceName
     - dm_ConfigurationDependency_port
-    - dm_ConfigurationDependency_port_mode
+    - dm_ConfigurationDependency_portMode
     - dm_FieldEnum_name
     - dm_FieldEnum_value
-    - dm_FullStackDeviceModel_address_map
+    - dm_FullStackDeviceModel_addressMap
     - dm_FullStackDeviceModel_processors
     - dm_HasAddressRange_size
-    - dm_HasAddressRange_start_address
+    - dm_HasAddressRange_startAddress
     - dm_Memory_name
     - dm_Memory_size
     - dm_Memory_type
@@ -293,25 +200,26 @@ missing_metadata:
     - dm_Peripheral_name
     - dm_PinConfig_channel
     - dm_PinConfig_function
-    - dm_PinConfig_pin_name
-    - dm_PinConfig_pin_value
+    - dm_PinConfig_pinName
+    - dm_PinConfig_pinValue
     - dm_PinConfig_port
-    - dm_PinConfig_port_name
+    - dm_PinConfig_portName
     - dm_PinDependencyConfig_name
     - dm_PinDependencyConfig_value
     - dm_Pin_name
     - dm_PortConfigurationEnumValue_dependencies
     - dm_PortConfigurationEnumValue_name
+    - dm_PortConfiguration_enumValues
     - dm_PortConfiguration_name
     - dm_PortConnection_name
     - dm_PortFunction_name
-    - dm_PortFunction_peripheral_instance
+    - dm_PortFunction_peripheralInstance
     - dm_Port_configurations
     - dm_Port_connections
     - dm_Port_functions
     - dm_Port_name
     - dm_Port_pin
-    - dm_Port_symbolic_name
+    - dm_Port_symbolicName
     - dm_RegisterField_access
     - dm_RegisterField_enums
     - dm_RegisterField_lsb
@@ -320,8 +228,8 @@ missing_metadata:
     - dm_Register_access
     - dm_Register_fields
     - dm_Register_name
-    - dm_Register_reset_mask
-    - dm_Register_reset_value
+    - dm_Register_resetMask
+    - dm_Register_resetValue
     - dm_peripherals
     - dm_ports
     - system_ESDDocument_hardwareProjects
@@ -346,87 +254,6 @@ missing_metadata:
     - system_SdmSystemModel_softwareModels
     - system_SoftwareProject_softwareComponents
   slot_uri:
-    - db_PortConfiguration_enum_values
-    - dm_AddressBlock_memories
-    - dm_AddressBlock_name
-    - dm_AddressBlock_peripheral_instance
-    - dm_AddressBlock_registers
-    - dm_AddressBlock_type
-    - dm_AddressMapModel_segments
-    - dm_AddressSegment_aliases
-    - dm_AddressSegment_blocks
-    - dm_AddressSegment_name
-    - dm_AddressSegment_peripherals
-    - dm_ConfigurationDependency_alt_ref
-    - dm_ConfigurationDependency_config_ref
-    - dm_ConfigurationDependency_function_name
-    - dm_ConfigurationDependency_gpio_mode
-    - dm_ConfigurationDependency_peripheral_instance_name
-    - dm_ConfigurationDependency_port
-    - dm_ConfigurationDependency_port_mode
-    - dm_FieldEnum_name
-    - dm_FieldEnum_value
-    - dm_FullStackDeviceModel_address_map
-    - dm_FullStackDeviceModel_family
-    - dm_FullStackDeviceModel_processors
-    - dm_HasAddressRange_size
-    - dm_HasAddressRange_start_address
-    - dm_Memory_name
-    - dm_Memory_size
-    - dm_Memory_type
-    - dm_PeripheralConfiguration_parameters
-    - dm_PeripheralConfiguration_pinConfigs
-    - dm_PeripheralConfiguration_pinDependencyConfigs
-    - dm_PeripheralInstance_interfaceType
-    - dm_PeripheralInstance_modes
-    - dm_PeripheralInstance_name
-    - dm_PeripheralInstance_unit
-    - dm_PeripheralInstance_virtualization
-    - dm_PeripheralMode_configurations
-    - dm_PeripheralMode_name
-    - dm_PeripheralParameters_name
-    - dm_PeripheralParameters_value
-    - dm_Peripheral_instances
-    - dm_Peripheral_name
-    - dm_PinConfig_channel
-    - dm_PinConfig_function
-    - dm_PinConfig_pin_name
-    - dm_PinConfig_pin_value
-    - dm_PinConfig_port
-    - dm_PinConfig_port_name
-    - dm_PinDependencyConfig_name
-    - dm_PinDependencyConfig_value
-    - dm_Pin_name
-    - dm_PortConfigurationEnumValue_dependencies
-    - dm_PortConfigurationEnumValue_name
-    - dm_PortConfiguration_name
-    - dm_PortConnection_name
-    - dm_PortFunction_name
-    - dm_PortFunction_peripheral_instance
-    - dm_Port_configurations
-    - dm_Port_connections
-    - dm_Port_functions
-    - dm_Port_name
-    - dm_Port_pin
-    - dm_Port_symbolic_name
-    - dm_Processor_clock
-    - dm_Processor_core
-    - dm_Processor_endian
-    - dm_Processor_name
-    - dm_RegisterField_access
-    - dm_RegisterField_enums
-    - dm_RegisterField_lsb
-    - dm_RegisterField_msb
-    - dm_RegisterField_name
-    - dm_Register_access
-    - dm_Register_fields
-    - dm_Register_name
-    - dm_Register_reset_mask
-    - dm_Register_reset_value
-    - dm_boardName
-    - dm_mpn
-    - dm_peripherals
-    - dm_ports
     - system_ESDDocument_hardwareProjects
     - system_ESDDocument_softwareProjects
     - system_HardwareProject_hardwareComponents
