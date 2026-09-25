@@ -24,7 +24,7 @@ def test_esd_basic_flow():
         vendor="Renesas",
         ecosystem="FSP",
         package_name="module.driver.wifi_da16xxx",
-        category=cdm.SystemSmSoftwareComponentCategory.DRIVER,
+        category=cdm.SystemSdmSoftwareComponentCategory.DRIVER,
     )
 
     mcu = esd.add_functional_block(title="MCU", hw_project=hw_project)
@@ -42,7 +42,7 @@ def test_esd_basic_flow():
 
     esd.configure_device(
         hw_component=mcu_hw_comp,
-        device=cdm.SystemSmDeviceModel(
+        device=cdm.SystemSdmDeviceModel(
             id="device-1",
             mpn="R7FA6M3AH3CFB",
             peripherals=[

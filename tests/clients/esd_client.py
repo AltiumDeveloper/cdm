@@ -23,7 +23,7 @@ class IdMapper:
         original_id = entity.id
         entity.id = self.map_id(entity.id)
         entity.metadata = [
-            cdm.SystemSmClientMetadata(
+            cdm.SystemSdmClientMetadata(
                 clientId=self.name,
                 parameters=[cdm.SystemParameter(id="local-id", value=original_id)],
             )
@@ -35,13 +35,13 @@ class ESDClient:
     def __init__(
         self,
         model: cdm.SystemESDDocument = None,
-        latest_sdm: cdm.SystemSystemModel = None,
+        latest_sdm: cdm.SystemSdmSystemModel = None,
     ) -> None:
         self.model = model if model else cdm.SystemESDDocument(id="esd-1")
         self.latest_sdm = (
             latest_sdm
             if latest_sdm
-            else cdm.SystemSystemModel(
+            else cdm.SystemSdmSystemModel(
                 id="sdm-1",
                 version=0,
                 functionalModel=None,
@@ -50,8 +50,8 @@ class ESDClient:
                 hardwareModels=[],
             )
         )
-        self.deviceModels: Dict[str, cdm.SystemSmDeviceModel] = {}
-        self.sw_library: Dict[str, cdm.SystemSmSoftwareSpecification] = {}
+        self.deviceModels: Dict[str, cdm.SystemSdmDeviceModel] = {}
+        self.sw_library: Dict[str, cdm.SystemSdmSoftwareSpecification] = {}
         self.id_mapper = IdMapper(name="esd")
 
     def add_sw_library_item(
@@ -60,9 +60,9 @@ class ESDClient:
         vendor: str,
         ecosystem: str,
         package_name: str,
-        category: cdm.SystemSmSoftwareComponentCategory,
+        category: cdm.SystemSdmSoftwareComponentCategory,
     ) -> str:
-        self.sw_library[name] = cdm.SystemSmSoftwareSpecification(
+        self.sw_library[name] = cdm.SystemSdmSoftwareSpecification(
             name=package_name,
             vendor=vendor,
             ecosystem=ecosystem,
@@ -163,7 +163,7 @@ class ESDClient:
         return connection
 
     def configure_device(
-        self, hw_component: cdm.SystemKeyComponent, device: cdm.SystemSmDeviceModel
+        self, hw_component: cdm.SystemKeyComponent, device: cdm.SystemSdmDeviceModel
     ) -> None:
         """Simulate device configuration via (RA) Device Modeler"""
         self.deviceModels[hw_component.id] = device
@@ -175,7 +175,7 @@ class ESDClient:
         sdm.id = self.id_mapper.map_id(self.latest_sdm.id)
         sdm.version = self.latest_sdm.version + 1
         if sdm.functionalModel is None:
-            sdm.functionalModel = self.id_mapper.map_entity(cdm.SystemSmFunctionalModel(id=self.model.id))
+            sdm.functionalModel = self.id_mapper.map_entity(cdm.SystemSdmFunctionalModel(id=self.model.id))
 
         fb_blocks = dict()
         sw_components = dict()
@@ -186,7 +186,7 @@ class ESDClient:
             fb_blocks[fb.id] = fb
             sdm.functionalModel.functionalBlocks.append(
                 self.id_mapper.map_entity(
-                    cdm.SystemSmFunctionalBlock(
+                    cdm.SystemSdmFunctionalBlock(
                         id=fb.id,
                         name=fb.name,
                         hardwareComponentIds=[
@@ -194,7 +194,7 @@ class ESDClient:
                         ],
                         ports=[
                             self.id_mapper.map_entity(
-                                cdm.SystemSmPort(
+                                cdm.SystemSdmPort(
                                     id=p.id, name=p.name, parameters=p.parameters
                                 )
                             )
@@ -212,10 +212,10 @@ class ESDClient:
         for con in self.model.connections:
             sdm.functionalModel.connections.append(
                 self.id_mapper.map_entity(
-                    cdm.SystemSmConnection(
+                    cdm.SystemSdmConnection(
                         id=con.id,
                         endpoints=[
-                            cdm.SystemSmEndpoint(
+                            cdm.SystemSdmEndpoint(
                                 functionalBlockId=self.id_mapper.map_id(
                                     e.functionalBlockId
                                 ),
@@ -230,7 +230,7 @@ class ESDClient:
         # Fully replace hardware model
         sdm.hardwareModels = []
         for hp in self.model.hardwareProjects:
-            hw_model = cdm.SystemSmHardwareModel(
+            hw_model = cdm.SystemSdmHardwareModel(
                 id=hp.id,
                 implementedBy=hp.implementedBy,
                 hardwareComponents=[],
@@ -240,7 +240,7 @@ class ESDClient:
             for fbId in hp.functionalBlocks:
                 hw_model.functionalBlockIds.append(self.id_mapper.map_id(fbId))
                 for kc in fb_blocks[fbId].keyComponents:
-                    hw_comp = cdm.SystemSmHardwareComponent(id=kc.id, name=kc.name)
+                    hw_comp = cdm.SystemSdmHardwareComponent(id=kc.id, name=kc.name)
                     if kc.id in self.deviceModels:
                         hw_comp.deviceModelId = self.id_mapper.map_id(
                             self.deviceModels[kc.id].id
@@ -256,12 +256,12 @@ class ESDClient:
             sw_components = [sw_components[sc_id] for sc_id in sp.softwareComponents]
 
             sw_model = self.id_mapper.map_entity(
-                cdm.SystemSmSoftwareModel(
+                cdm.SystemSdmSoftwareModel(
                     id=sp.id,
                     implementedBy=sp.implementedBy,
                     softwareComponents=[
                         self.id_mapper.map_entity(
-                            cdm.SystemSmSoftwareComponent(
+                            cdm.SystemSdmSoftwareComponent(
                                 id=sc.id,
                                 name=sc.name,
                                 specification=self.sw_library.get(sc.name, None),
@@ -276,7 +276,7 @@ class ESDClient:
                 hw_component = sw_components[0].parentKeyComponentId
                 # Add blank device model for hardware component if not already present
                 if hw_component not in self.deviceModels:
-                    self.deviceModels[hw_component] = cdm.SystemSmDeviceModel(
+                    self.deviceModels[hw_component] = cdm.SystemSdmDeviceModel(
                         id=f"dm-{len(self.deviceModels) + 1}",
                         mpn=hw_components[hw_component].name,
                         peripherals=[],

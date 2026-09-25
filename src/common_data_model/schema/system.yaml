@@ -423,7 +423,7 @@ classes:
   system_SdmSystemModel:
     is_a: core_Activity
     in_subset: system-sdm
-    class_uri: sys:SystemModel
+    class_uri: sys:SdmSystemModel
     title: System  Model
     annotations:
       platformAPI: SysSdmSystemModel
@@ -451,7 +451,7 @@ classes:
   system_SdmSystemModelVersion:
     is_a: core_Artifact
     in_subset: system-sdm
-    class_uri: sys:SystemModelVersion
+    class_uri: sys:SdmSystemModelVersion
     title: System  Model Version
     annotations:
       platformAPI: SysSdmSystemModelVersion
@@ -753,6 +753,8 @@ classes:
     slots:
       - core_localId
       - dm_boardName
+      - dm_deviceFamily
+      - dm_deviceFramework
       - dm_mpn
       - dm_peripherals
       - dm_ports

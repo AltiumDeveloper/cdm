@@ -160,10 +160,12 @@ classes:
       A digital twin of an embedded hardware device as configured for a specific use-case.
       It exposes the device model filtered to specific device configuration.
     annotations:
-      platformAPI: DmConfiguredDeviceModel
+      platformAPI: DmDeviceModelAsConfigured
     slots:
       - core_localId
       - dm_boardName
+      - dm_deviceFamily
+      - dm_deviceFramework
       - dm_mpn
       - dm_peripherals
       - dm_ports
@@ -180,6 +182,8 @@ classes:
       grid: grid:global::device-model:fullstack-dm/{id}
       platformAPI: DmFullStackDeviceModel
     slots:
+      - dm_deviceFamily
+      - dm_deviceFramework
       - dm_mpn
       - dm_peripherals
       - dm_ports
@@ -191,6 +195,10 @@ classes:
         description: The family to which the device belongs.
         range: string
         required: true
+        deprecated: >-
+          Superseded by the shared dm_deviceFamily slot (alias deviceFamily), which matches
+          the deviceFamily key used across the platform API. Still required for backward
+          compatibility; populate both until consumers have migrated.
       dm_FullStackDeviceModel_processors:
         slot_uri: dm:FullStackDeviceModel_processors
         alias: processors
@@ -982,6 +990,26 @@ slots:
     title: board name
     description: Board name for the device
     range: string
+    required: false
+  dm_deviceFamily:
+    slot_uri: dm:deviceFamily
+    alias: deviceFamily
+    title: device family
+    description: >-
+      Stable key of the device family the device belongs to (for example, RA, RAFW, RX).
+    range: string
+    multivalued: false
+    required: false
+  dm_deviceFramework:
+    slot_uri: dm:deviceFramework
+    alias: deviceFramework
+    title: device framework
+    description: >-
+      Driver framework the device is targeted with (for example, FSP, FIT). This concept
+      is also referred to as the ecosystem; on the software side the same value is carried
+      by the ecosystem slot of system_SdmSoftwareSpecification.
+    range: string
+    multivalued: false
     required: false
   dm_mpn:
     slot_uri: dm:mpn
