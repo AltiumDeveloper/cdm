@@ -35,13 +35,13 @@ class ESDClient:
     def __init__(
         self,
         model: cdm.SystemESDDocument = None,
-        latest_sdm: cdm.SystemSdmSystemModel = None,
+        latest_sdm: cdm.SystemSdmSystemModelVersion = None,
     ) -> None:
         self.model = model if model else cdm.SystemESDDocument(id="esd-1")
         self.latest_sdm = (
             latest_sdm
             if latest_sdm
-            else cdm.SystemSdmSystemModel(
+            else cdm.SystemSdmSystemModelVersion(
                 id="sdm-1",
                 version=0,
                 functionalModel=None,
@@ -253,27 +253,38 @@ class ESDClient:
         # Fully replace software model
         sdm.softwareModels = []
         for sp in self.model.softwareProjects:
-            sw_components = [sw_components[sc_id] for sc_id in sp.softwareComponents]
+            sp_components = [sw_components[sc_id] for sc_id in sp.softwareComponents]
+
+            # A library item becomes a stack instance carrying the specification; the
+            # component points at that instance rather than holding the spec itself.
+            stack_instances = []
+            component_entities = []
+            for sc in sp_components:
+                component = cdm.SystemSdmSoftwareComponent(id=sc.id, name=sc.name)
+                specification = self.sw_library.get(sc.name, None)
+                if specification:
+                    instance = self.id_mapper.map_entity(
+                        cdm.SystemSdmSoftwareStackInstance(
+                            id=f"{sc.id}.si-1",
+                            specification=specification,
+                            dependencyIds=[],
+                        )
+                    )
+                    stack_instances.append(instance)
+                    component.implementedBy = [instance.id]
+                component_entities.append(self.id_mapper.map_entity(component))
 
             sw_model = self.id_mapper.map_entity(
                 cdm.SystemSdmSoftwareModel(
                     id=sp.id,
                     implementedBy=sp.implementedBy,
-                    softwareComponents=[
-                        self.id_mapper.map_entity(
-                            cdm.SystemSdmSoftwareComponent(
-                                id=sc.id,
-                                name=sc.name,
-                                specification=self.sw_library.get(sc.name, None),
-                            )
-                        )
-                        for sc in sw_components
-                    ],
+                    softwareComponents=component_entities,
+                    softwareStackInstances=stack_instances,
                 )
             )
 
-            if sw_components:
-                hw_component = sw_components[0].parentKeyComponentId
+            if sp_components:
+                hw_component = sp_components[0].parentKeyComponentId
                 # Add blank device model for hardware component if not already present
                 if hw_component not in self.deviceModels:
                     self.deviceModels[hw_component] = cdm.SystemSdmDeviceModel(

@@ -221,11 +221,30 @@
   ],
   "softwareModels": [
     {
-      "id": "guid-12",
+      "id": "guid-13",
       "softwareComponents": [
         {
-          "id": "guid-11",
+          "id": "guid-12",
+          "implementedBy": [
+            "guid-11"
+          ],
           "name": "WiFi",
+          "metadata": [
+            {
+              "clientId": "esd",
+              "parameters": [
+                {
+                  "id": "local-id",
+                  "value": "fb-1.sc-2"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "softwareStackInstances": [
+        {
+          "id": "guid-11",
           "specification": {
             "name": "module.driver.wifi_da16xxx",
             "category": "DRIVER",
@@ -238,7 +257,7 @@
               "parameters": [
                 {
                   "id": "local-id",
-                  "value": "fb-1.sc-2"
+                  "value": "fb-1.sc-2.si-1"
                 }
               ]
             }
