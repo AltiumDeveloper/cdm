@@ -24,7 +24,17 @@ SCHEMA = textwrap.dedent(
     default_prefix: ex
     imports: [linkml:types]
     classes:
+      core_Entity:
+        abstract: true
+        description: e
+      core_Resource:
+        abstract: true
+        description: r
+      ex_ValueObject:
+        is_a: core_Resource
+        description: v
       ex_Linked:
+        is_a: core_Entity
         description: has a registered link and an API type
         see_also: ["{DOC}"]
         annotations: {{platformAPI: DesProject}}
@@ -41,6 +51,7 @@ SCHEMA = textwrap.dedent(
           - literal_form: Thing
             source: https://unknown.example/source
       ex_Interface:
+        is_a: core_Entity
         description: interface type is linkable
         annotations: {{platformAPI: BomItemElement}}
       ex_Input:
@@ -50,6 +61,7 @@ SCHEMA = textwrap.dedent(
         description: no such type
         annotations: {{platformAPI: DmProcessor}}
       ex_Nexar:
+        is_a: core_Entity
         description: nexar type
         annotations: {{nexarAPI: SupPart}}
       ex_Mapped:
@@ -57,14 +69,18 @@ SCHEMA = textwrap.dedent(
         exact_mappings: [prov:Entity, "https://std.example/x#y"]
         close_mappings: [svd:register]
       ex_Uncovered:
+        is_a: core_Entity
         description: production class without links
       ex_Declared:
+        is_a: core_Entity
         description: explicitly no product docs
         annotations: {{productDocs: none}}
       ex_Experimental:
+        is_a: core_Entity
         description: experimental
         annotations: {{maturity: EXPERIMENTAL}}
       ex_Abstract:
+        is_a: core_Entity
         abstract: true
         description: abstract
     """
@@ -99,8 +115,15 @@ def test_doc_links(sv):
     registry = {DOC: LinkEntry(url=DOC, title="Lifecycle Management", source="altium-docs"),
                 "https://orphan.example/": LinkEntry(url="https://orphan.example/", title="O", source="standard")}
     got = _by_element(check_doc_links(sv, registry, locate, is_cdm, "registry.yaml"))
-    assert ("DOC-01", "ex_BadAnchor") in got
-    assert ("DOC-01", "ex_EmptyAnchor") in got
+    issues = check_doc_links(sv, registry, locate, is_cdm, "registry.yaml")
+    def n(el):
+        return [i for i in issues if i.rule_id == "DOC-01" and i.element == el]
+    assert len(n("ex_BadAnchor")) == 1
+    assert len(n("ex_EmptyAnchor")) == 1
+    unreg = " ".join(i.message for i in n("ex_Unregistered"))
+    assert len(n("ex_Unregistered")) == 2
+    assert "https://unknown.example/page" in unreg and "https://unknown.example/source" in unreg
+    assert n("ex_Linked") == []
     assert got[("DOC-01", "ex_EmptyAnchor")].severity == "error"
     assert ("DOC-01", "ex_Unregistered") in got
     assert got[("DOC-01", "ex_Unregistered")].severity == "error"
@@ -121,16 +144,16 @@ def test_api_types_skips_missing_snapshot(sv):
 
 
 def test_mappings(sv):
-    got = _by_element(check_mappings(sv, locate, is_cdm))
-    assert list(got) == [("DOC-04", "ex_Mapped")]
-    assert "svd:register" in got[("DOC-04", "ex_Mapped")].message
+    issues = check_mappings(sv, locate, is_cdm)
+    assert [(i.rule_id, i.element) for i in issues] == [("DOC-04", "ex_Mapped")]
+    assert "svd:register" in issues[0].message
 
 
 def test_coverage(sv):
     got = _by_element(check_coverage(sv, locate, is_cdm))
     flagged = {k[1] for k in got}
     assert "ex_Uncovered" in flagged
-    assert flagged.isdisjoint({"ex_Linked", "ex_Declared", "ex_Experimental", "ex_Abstract", "ex_Nexar", "ex_Interface"})
+    assert flagged.isdisjoint({"ex_Linked", "ex_Declared", "ex_Experimental", "ex_Abstract", "ex_Nexar", "ex_Interface", "ex_ValueObject"})
     assert all(i.severity == "warning" for i in got.values())
 
 

@@ -5,7 +5,14 @@ DOC-01 error    see_also / structured_aliases.source URL (and #fragment) must be
 DOC-02 warning  registry entry not used by any class
 DOC-03 error    platformAPI / nexarAPI must exist in the API snapshot as OBJECT, INTERFACE or UNION
 DOC-04 error    *_mappings values must be full http(s) URLs or allow-listed CURIEs
-DOC-05 warning  PRODUCTION class with no see_also and no API type must declare `productDocs: none`
+DOC-05 warning  PRODUCTION core_Entity class with no see_also and no API type must declare `productDocs: none`
+
+Semantics:
+- Annotations (platformAPI, nexarAPI, productDocs, maturity) and see_also are read from the class itself;
+  they are not inherited. A missing maturity means PRODUCTION.
+- DOC rules currently cover classes only (not slots, enums or schema-level see_also).
+- DOC-05 applies only to descendants of core_Entity; value objects (core_Resource) and events
+  (core_Event) have no product pages of their own.
 """
 
 from __future__ import annotations
@@ -111,7 +118,9 @@ def check_mappings(sv: SchemaView, locate: Locator, is_cdm: IsCdm,
 def check_coverage(sv: SchemaView, locate: Locator, is_cdm: IsCdm) -> list[LintIssue]:
     issues: list[LintIssue] = []
     for name, cls in _classes(sv, is_cdm):
-        if cls.abstract or cls.mixin or name == "Any" or name.startswith("core_"):
+        if cls.abstract or cls.mixin or name.startswith("core_"):
+            continue
+        if "core_Entity" not in sv.class_ancestors(name):
             continue
         ann = cls.annotations
         maturity = str(ann["maturity"].value) if "maturity" in ann and ann["maturity"].value else "PRODUCTION"
