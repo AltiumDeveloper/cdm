@@ -1,0 +1,22 @@
+# Example for a valid Global BOM (Octopart-hosted, not workspace-scoped)
+---
+id: grid:global::procurement:bom/3fa85f64-5717-4562-b3fc-2c963f66afa6
+usesParts:
+  - grid:supply::platform:part/7c9e6679-7425-40de-944b-e07fc1f90ae7
+  - grid:supply::platform:part/b3d99e4a-ec11-4c21-8a2a-d914e4f49e2b
+items:
+  - quantity: 2
+    designators:
+      - C1
+      - C2
+    primaryElement:
+      mpn: GRM188R71H104KA93D
+      manufacturer: Murata
+      part: grid:supply::platform:part/7c9e6679-7425-40de-944b-e07fc1f90ae7
+  - quantity: 1
+    designators:
+      - U1
+    primaryElement:
+      mpn: STM32F407VGT6
+      manufacturer: STMicroelectronics
+      part: grid:supply::platform:part/b3d99e4a-ec11-4c21-8a2a-d914e4f49e2b
