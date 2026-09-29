@@ -63,3 +63,20 @@ def test_class_template_links_public_grid_page_only():
     text = (TEMPLATES / "class.md.jinja2").read_text(encoding="utf-8")
     assert "atlassian.net" not in text
     assert PUBLIC_GRID_DOC in text
+
+
+def test_see_also_rendered_once_on_class_page(tmp_path):
+    from cdm_tools.docgen import CdmDocGenerator
+
+    schema = REPO_ROOT / "src" / "common_data_model" / "schema" / "common_data_model.yaml"
+    gen = CdmDocGenerator(
+        str(schema),
+        template_directory=str(TEMPLATES),
+        registry_path=str(REPO_ROOT / "src" / "docs" / "links" / "registry.yaml"),
+        subfolder_type_separation=True,
+        preserve_names=True,
+    )
+    gen.serialize(directory=str(tmp_path))
+    page = (tmp_path / "classes" / "plt_LifecycleDefinition.md").read_text()
+    url = "https://www.altium.com/documentation/altium-365/lifecycle-management"
+    assert page.count(url) == 1
