@@ -119,7 +119,12 @@ SNAP2 = {
         "Mutation": {"kind": "OBJECT", "fields": {
             "desUpdateProjParams": "IdPayload!", "desCreateProjTask": "TaskPayload!",
             "desCreateProjNote": "NotePayload!", "desDeleteProjFlag": "FlagPayload!",
+            "desCreateProjComment": "CommentPayload!", "desCreateProjLabel": "LabelPayload!",
         }},
+        "CommentPayload": {"kind": "OBJECT", "fields": {"comment": "DesComment", "errors": "[PayloadErr!]!"}},
+        "DesComment": {"kind": "OBJECT", "fields": {"commentId": "ID!", "text": "String!"}},
+        "LabelPayload": {"kind": "OBJECT", "fields": {"id": "ID!", "errors": "[DesPayloadError!]!"}},
+        "DesPayloadError": {"kind": "OBJECT", "fields": {"message": "String!"}},
         "IdPayload": {"kind": "OBJECT", "fields": {"id": "ID!"}},
         "TaskPayload": {"kind": "OBJECT", "fields": {"task": "DesTask", "id": "ID!"}},
         "NotePayload": {"kind": "OBJECT", "fields": {"note": "Cmt", "errors": "[PayloadErr!]!"}},
@@ -147,9 +152,9 @@ def test_reached_via_lists_refetchable_parents_first():
     assert ApiIndex(SNAP2).links_for("Tgt").reached_via == ["Alpha.tgt", "Zed.tgt"]
 
 
-def test_write_candidates_skip_payloads_returning_other_entities():
+def test_write_candidates_skip_payloads_returning_other_objects():
     links = ApiIndex(SNAP2).links_for("DesProj")
-    assert [o.path for o in links.write_candidates] == ["desDeleteProjFlag", "desUpdateProjParams"]
+    assert [o.path for o in links.write_candidates] == ["desCreateProjLabel", "desDeleteProjFlag", "desUpdateProjParams"]
 
 
 def test_preview_reads_sorted_last():

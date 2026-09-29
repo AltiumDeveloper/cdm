@@ -104,9 +104,12 @@ class ApiIndex:
         fields = self.types.get(name, {}).get("fields", {})
         return name.endswith(_WRAPPER_SUFFIXES) or any(f in fields for f in _WRAPPER_FIELDS)
 
-    def _has_id(self, name: str) -> bool:
-        info = self.types.get(name, {})
-        return info.get("kind") == "OBJECT" and "id" in info.get("fields", {})
+    def _returns_other_object(self, fname: str, ref: str, target: str) -> bool:
+        """True if a payload field yields an object/interface other than *target* that is not an error type."""
+        name = base_type(ref)
+        if name == target or fname in ("errors", "error") or name.endswith(("Error", "PayloadError")):
+            return False
+        return self.types.get(name, {}).get("kind") in ("OBJECT", "INTERFACE")
 
     def _is_entity(self, name: str) -> bool:
         info = self.types.get(name, {})
@@ -136,7 +139,7 @@ class ApiIndex:
             if mname in exclude or not mname.startswith(prefix.lower()):
                 continue
             payload_fields = self.types.get(base_type(mutations[mname]), {}).get("fields", {})
-            if any(self._has_id(base_type(r)) and base_type(r) != target for r in payload_fields.values()):
+            if any(self._returns_other_object(f, r, target) for f, r in payload_fields.items()):
                 continue
             rest = mname[len(prefix):]
             verb = _WORD_RE.match(rest)
