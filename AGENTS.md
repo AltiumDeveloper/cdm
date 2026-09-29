@@ -587,6 +587,8 @@ descending from `core_Entity`; an absent `maturity` annotation means PRODUCTION.
 `src/docs/api/`), or with `--registry` / `--api-dir` pointing at them. It exits with code 2 if the
 registry or API snapshot directory is missing.
 
+Example (illustrative; the real `plt_LifecycleDefinition` does not define `structured_aliases`):
+
 ```yaml
 plt_LifecycleDefinition:
   annotations:
@@ -605,3 +607,22 @@ plt_LifecycleDefinition:
 (3) add the URL to `see_also`; (4) run `make verify-links` and `make lint`.
 Never guess an API type name — look it up in the snapshot (`make refresh-api-snapshot` to update).
 Semantic disagreements between the CDM and the docs go to `MODEL-FINDINGS.md`, not silently into the schema.
+
+**Rendering.** Class pages show a *Hub panel* with three boxes.
+
+- **In the product** — known-as terms (`structured_aliases`) and `see_also` links titled from the registry, the first
+  marked primary. Empty states: "No product documentation linked yet." or, with `productDocs: none`,
+  "No public product documentation exists for this concept."
+- **In the API** — the Platform API type (linked to its API reference page), or the Nexar type for supply entities,
+  linked to the Octopart API docs. Empty states: "No Platform API type.", "`X` is not in the Platform API snapshot.",
+  "`X` is not in the Nexar API snapshot."
+- **In standards** — `*_mappings`.
+
+API links are emitted only for pages listed in `src/docs/api/platform-docs-pages.json`; if that file is absent, API
+links are emitted unfiltered, and if the Platform snapshot is absent, the type name is shown without links.
+`make refresh-api-snapshot` refreshes the snapshots and that list. The class index tables link API types from the same
+data.
+
+`make gendoc` also writes `hub.json` (via `cdm-hub-export`) into the site and copies `hub.schema.json` next to it, for
+tools and AI agents. `hub.json` is checked against the schema in the test suite, not at export time. Each class entry has its title,
+`class_uri`, subset, GRID template and the hub (product links and terms, Platform or Nexar API type, mappings). Abstract and mixin classes, `core_*` classes and `linkml:Any` are omitted.

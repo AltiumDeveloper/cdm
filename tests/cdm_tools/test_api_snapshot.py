@@ -1,12 +1,16 @@
 import json
 
 from cdm_tools.api_snapshot import (
+    DOCS_PAGES_FILE,
     diff_snapshots,
+    docs_pages_from_sitemap,
     fetch_introspection,
     format_diff,
+    load_docs_pages,
     load_snapshots,
     to_snapshot,
     type_ref_str,
+    write_docs_pages,
     write_snapshot,
 )
 
@@ -116,3 +120,24 @@ def test_main_writes_nothing_when_any_target_fails(tmp_path, monkeypatch, capsys
     assert api_snapshot.main(["--out-dir", str(tmp_path)]) == 1
     assert list(tmp_path.iterdir()) == []
     assert "cdm-api-snapshot: nexar down" in capsys.readouterr().err
+
+
+SITEMAP = """<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://your-docusaurus-test-site.com/platform-api-docs/types/objects/DesProject</loc></url>
+<url><loc>https://your-docusaurus-test-site.com/platform-api-docs/operations/queries/desProjects/</loc></url>
+<url><loc>https://your-docusaurus-test-site.com/platform-api-docs/category/enums</loc></url>
+</urlset>"""
+
+
+def test_docs_pages_from_sitemap_normalises_paths():
+    assert docs_pages_from_sitemap(SITEMAP) == [
+        "category/enums",
+        "operations/queries/desProjects",
+        "types/objects/DesProject",
+    ]
+
+
+def test_write_and_load_docs_pages(tmp_path):
+    write_docs_pages(["types/objects/A", "operations/queries/b"], tmp_path / DOCS_PAGES_FILE)
+    assert load_docs_pages(tmp_path) == {"types/objects/A", "operations/queries/b"}
+    assert load_docs_pages(tmp_path / "missing") is None

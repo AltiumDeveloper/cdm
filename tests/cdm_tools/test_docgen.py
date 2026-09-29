@@ -73,3 +73,34 @@ def test_main_fails_on_malformed_registry(tmp_path, capsys):
     assert main(_main_args(tmp_path, reg)) == 2
     assert "cdm-gendoc: invalid link registry:" in capsys.readouterr().err
     assert not (tmp_path / "out").exists()
+
+
+def test_rendered_class_page_has_hub_panel(tmp_path):
+    gen = CdmDocGenerator(
+        str(REPO / "src/common_data_model/schema/common_data_model.yaml"),
+        template_directory=str(REPO / "src/docs/templates"),
+        registry_path=str(REPO / "src/docs/links/registry.yaml"),
+        api_dir=str(REPO / "src/docs/api"),
+        subfolder_type_separation=True,
+        preserve_names=True,
+    )
+    gen.serialize(directory=str(tmp_path))
+    page = (tmp_path / "classes" / "plt_LifecycleDefinition.md").read_text(encoding="utf-8")
+    assert "- [Defining Lifecycle Definitions for a Workspace](https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions) *(primary)*" in page
+    assert "Type: [`DesLifeCycleDefinition`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleDefinition/)" in page
+    for absent in ("Read:", "Write", "Reached via", "node(id)"):
+        assert absent not in page
+    sup = (tmp_path / "classes" / "sup_Part.md").read_text(encoding="utf-8")
+    assert "Nexar type: `SupPart`" in sup
+    assert 'quote "Platform API"' not in page
+    index = (tmp_path / "index.md").read_text(encoding="utf-8")
+    assert "[`DesLifeCycleDefinition`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleDefinition/)" in index
+
+
+def test_main_exits_2_when_api_dir_missing(tmp_path, capsys):
+    from cdm_tools.docgen import main
+    rc = main([str(REPO / "src/common_data_model/schema/common_data_model.yaml"), "-d", str(tmp_path),
+               "--template-directory", str(REPO / "src/docs/templates"),
+               "--api-dir", str(tmp_path / "nope")])
+    assert rc == 2
+    assert "API snapshot directory not found" in capsys.readouterr().err
