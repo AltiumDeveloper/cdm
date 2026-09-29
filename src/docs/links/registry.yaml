@@ -59,6 +59,14 @@ https://www.altium.com/documentation/altium-365/environment-configuration-manage
   product: altium-365
   anchors: []
   last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/esd:
+  title: Electronic System Design
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - using_the_device_configuration
+  - generating_a_board_support_package
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/inviting-users:
   title: Inviting other Users to Your Workspace
   source: altium-docs
@@ -111,6 +119,7 @@ https://www.altium.com/documentation/altium-365/renesas-365:
   anchors:
   - import_project
   - linking_an_evaluation_kit
+  - exploring_a_solution
   last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/requirements-integration:
   title: Working with Requirements
@@ -423,7 +432,8 @@ https://www.altium.com/documentation/altium-designer/working-renesas-365-solutio
   title: Working with Renesas 365 Solutions
   source: altium-docs
   product: altium-designer
-  anchors: []
+  anchors:
+  - pulling_sdm_into_a_hardware_project
   last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/realms:
   title: Realms
