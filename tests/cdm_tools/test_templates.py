@@ -31,34 +31,6 @@ def _render_macro(macro_name: str, element) -> str:
     return template.render(element=element).strip()
 
 
-def test_platform_api_url_object_type():
-    out = _render_macro("platform_api_url", _element(platformAPI="DesProject"))
-    assert out == f"[DesProject]({PLATFORM_API_BASE}/objects/DesProject)"
-
-
-def test_platform_api_url_absent_renders_nothing():
-    assert _render_macro("platform_api_url", _element()) == ""
-
-
-def test_platform_api_url_interface_type():
-    out = _render_macro("platform_api_url", _element(platformAPI="BomItemElement"))
-    assert out == f"[BomItemElement]({PLATFORM_API_BASE}/interfaces/BomItemElement)"
-
-
-def test_platform_api_url_event_subscription_is_interface():
-    out = _render_macro("platform_api_url", _element(platformAPI="GloEvtSubscription"))
-    assert out == f"[GloEvtSubscription]({PLATFORM_API_BASE}/interfaces/GloEvtSubscription)"
-
-
-def test_nexar_api_url_renders_type_and_doc_link():
-    out = _render_macro("nexar_api_url", _element(nexarAPI="SupPart"))
-    assert out == f"[SupPart (Nexar)]({OCTOPART_API_DOC})"
-
-
-def test_nexar_api_url_absent_renders_nothing():
-    assert _render_macro("nexar_api_url", _element(platformAPI="DesProject")) == ""
-
-
 def test_class_template_links_public_grid_page_only():
     text = (TEMPLATES / "class.md.jinja2").read_text(encoding="utf-8")
     assert "atlassian.net" not in text
@@ -80,3 +52,52 @@ def test_see_also_rendered_once_on_class_page(tmp_path):
     page = (tmp_path / "classes" / "plt_LifecycleDefinition.md").read_text()
     url = "https://www.altium.com/documentation/altium-365/lifecycle-management"
     assert page.count(url) == 1
+
+
+from cdm_tools.hub import ApiView, DocLink, HubView, Mapping, NexarView, OpLink, Term
+
+
+def _render_panel(h):
+    env = jinja2.Environment(loader=jinja2.FileSystemLoader(str(TEMPLATES)))
+    t = env.from_string("{% from 'macros.jinja2' import hub_panel %}{{ hub_panel(h) }}")
+    return t.render(h=h)
+
+
+def test_hub_panel_full():
+    h = HubView(
+        links=[DocLink("Primary Page", "https://a/p", True), DocLink("Other", "https://a/o", False)],
+        terms=[Term("Company Account", "exact", ["altium-dashboard"], "https://a/p")],
+        api=ApiView("DesX", "OBJECT", "https://api/types/objects/DesX/",
+                    reads=[OpLink("desXById", "https://api/q/desXById/", None),
+                           OpLink("desXs", "https://api/q/desXs/", "DesXConnection")],
+                    write_candidates=[OpLink("desCreateX", None, None)], refetchable=True),
+        mappings=[Mapping("exact", "prov:Entity", "http://www.w3.org/ns/prov#Entity")],
+    )
+    out = _render_panel(h)
+    assert '!!! abstract "In the product"' in out
+    assert "Known as: **Company Account** (altium-dashboard)" in out
+    assert "- [Primary Page](https://a/p) *(primary)*" in out
+    assert "- [Other](https://a/o)" in out
+    assert '!!! abstract "In the API"' in out
+    assert "Type: [`DesX`](https://api/types/objects/DesX/)" in out
+    assert "[`desXs`](https://api/q/desXs/) (via `DesXConnection`)" in out
+    assert "Write (matched by name): `desCreateX`" in out
+    assert "`node(id)`" in out
+    assert '!!! abstract "In standards"' in out
+    assert "exact: [prov:Entity](http://www.w3.org/ns/prov#Entity)" in out
+
+
+def test_hub_panel_empty_states():
+    out = _render_panel(HubView(product_docs_none=True))
+    assert "No public product documentation exists for this concept." in out
+    assert "No Platform API type." in out
+    assert "In standards" not in out
+    out2 = _render_panel(HubView(api_missing="DmProcessor"))
+    assert "No product documentation linked yet." in out2
+    assert "`DmProcessor` is not in the Platform API snapshot." in out2
+
+
+def test_hub_panel_nexar():
+    out = _render_panel(HubView(nexar=NexarView("SupPart", "https://oct/api")))
+    assert "Nexar type: `SupPart` ([Octopart API](https://oct/api))" in out
+    assert "No Platform API type." not in out
