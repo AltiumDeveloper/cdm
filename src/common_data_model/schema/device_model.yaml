@@ -266,6 +266,7 @@ classes:
           Each entry describes a specific block of memory.
         range: dm_AddressSegment
         multivalued: true
+        required: false
         inlined: true
         inlined_as_list: true
 
