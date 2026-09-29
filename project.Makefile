@@ -79,3 +79,8 @@ lint:
 
 wizard:
 	$(RUN) cdm-wizard
+
+# Doc generation with CDM hub helpers (overrides the template-provided gendoc)
+gendoc: $(DOCDIR)
+	cp -rf $(SRC)/docs/files/* $(DOCDIR) ; \
+	$(RUN) cdm-gendoc --template-directory $(DOCTEMPLATES) -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)

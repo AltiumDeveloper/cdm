@@ -55,11 +55,10 @@ Bounded context: [{{ element.in_subset[0] }}]( ../subsets/{{ element.in_subset[0
 {% endfor %}
 {% endif %}
 
-{% if 'documentation' in element.extensions %}
-{% set element_documentation = element.extensions["documentation"] %}
+{% if element.see_also %}
 !!! info "Documentation"
-    {% for link in element_documentation.value %}
-    - [{{ link.description }}]({{ link.uri }})
+    {% for url in element.see_also %}
+    - {{ doc_link(url) if doc_link is defined else '<' ~ url ~ '>' }}
     {% endfor %}
 {% endif %}
 
