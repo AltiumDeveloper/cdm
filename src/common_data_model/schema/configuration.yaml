@@ -32,7 +32,7 @@ classes:
       Preferences revision), and the same item can be used by several configurations. Administrators define
       configurations in the Workspace's Team Configuration Center (TC2) and assign them to Workspace groups,
       called roles there; when a group member signs in to the Workspace from Altium Designer, each controlled
-      area of the design environment is restricted to the configuration's items.
+      area of the design environment is restricted to the chosen configuration's items.
     comments:
       - TBD
     annotations:
@@ -67,7 +67,7 @@ classes:
     annotations:
       grid: 
     see_also:
-      - https://www.altium.com/documentation/altium-designer/schematic/creating-templates#creating_workspace_schematic_template
+      - https://www.altium.com/documentation/altium-designer/schematic/creating-templates
     slots:
       - core_revisions
     slot_usage:
