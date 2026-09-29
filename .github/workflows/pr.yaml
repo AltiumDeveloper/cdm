@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -24,5 +26,6 @@ jobs:
       - name: Lint schema (linkml-lint + cdm-lint incl. DOC rules)
         run: make lint
 
+      # tests/test_flows.py is excluded: it fails on main (stale class names), tracked separately
       - name: Tooling and template tests
         run: poetry run python -m pytest tests/cdm_tools -v
