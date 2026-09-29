@@ -109,15 +109,21 @@ SNAP2 = {
         "Zed": {"kind": "OBJECT", "fields": {"tgt": "Tgt"}},
         "Alpha": {"kind": "OBJECT", "fields": {"tgt": "Tgt"}, "interfaces": ["Node"]},
         "Item": {"kind": "OBJECT", "fields": {"id": "ID!"}},
+        "ItemEdge": {"kind": "OBJECT", "fields": {"cursor": "String!", "node": "Tgt!"}},
+        "Cmt": {"kind": "OBJECT", "fields": {"id": "ID!"}},
+        "PayloadErr": {"kind": "OBJECT", "fields": {"message": "String!"}},
         "Node": {"kind": "INTERFACE", "fields": {"id": "ID!"}, "possible_types": ["Alpha", "Bom"]},
         "Tgt": {"kind": "OBJECT", "fields": {"id": "ID!"}},
         "DesProj": {"kind": "OBJECT", "fields": {"id": "ID!"}, "interfaces": ["Node"]},
         "DesTask": {"kind": "OBJECT", "fields": {"id": "ID!"}, "interfaces": ["Node"]},
         "Mutation": {"kind": "OBJECT", "fields": {
             "desUpdateProjParams": "IdPayload!", "desCreateProjTask": "TaskPayload!",
+            "desCreateProjNote": "NotePayload!", "desDeleteProjFlag": "FlagPayload!",
         }},
         "IdPayload": {"kind": "OBJECT", "fields": {"id": "ID!"}},
         "TaskPayload": {"kind": "OBJECT", "fields": {"task": "DesTask", "id": "ID!"}},
+        "NotePayload": {"kind": "OBJECT", "fields": {"note": "Cmt", "errors": "[PayloadErr!]!"}},
+        "FlagPayload": {"kind": "OBJECT", "fields": {"errors": "[PayloadErr!]!"}},
         "ID": {"kind": "SCALAR"},
     },
 }
@@ -143,9 +149,13 @@ def test_reached_via_lists_refetchable_parents_first():
 
 def test_write_candidates_skip_payloads_returning_other_entities():
     links = ApiIndex(SNAP2).links_for("DesProj")
-    assert [o.path for o in links.write_candidates] == ["desUpdateProjParams"]
+    assert [o.path for o in links.write_candidates] == ["desDeleteProjFlag", "desUpdateProjParams"]
 
 
 def test_preview_reads_sorted_last():
     paths = [o.path for o in ApiIndex(SNAP2).links_for("Item").reads]
     assert paths == ["design.thing.itemById", "itemById", "previewThing", "design.preview.itemById"]
+
+
+def test_edge_types_are_wrappers():
+    assert ApiIndex(SNAP2).links_for("Tgt").reached_via == ["Alpha.tgt", "Zed.tgt"]
