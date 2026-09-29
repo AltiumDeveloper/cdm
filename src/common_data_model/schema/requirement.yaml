@@ -422,6 +422,7 @@ classes:
     see_also:
       - https://www.altium.com/documentation/altium-365/requirements-portal/project-module#creating_a_new_requirements_project
       - https://www.altium.com/documentation/altium-365/requirements-integration#basic_requirements_portal_setup
+      - https://www.altium.com/documentation/altium-365/requirements-integration#linking_requirements_to_a_design_project
     attributes:
       req_Project_name:
         alias: name
