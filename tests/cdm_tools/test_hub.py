@@ -77,10 +77,7 @@ def test_api_layer(sv):
     api = _hub(sv, "ex_Full").api
     assert api.type_name == "DesX" and api.kind == "OBJECT"
     assert api.url.endswith("/types/objects/DesX/")
-    assert [r.name for r in api.reads] == ["desXById", "desXs", "desXsByIds"]
-    assert api.reads[1].via == "DesXConnection"
-    assert api.reads[0].url.endswith("/operations/queries/desXById/")
-    assert [w.name for w in api.write_candidates] == ["desCreateX", "desUpdateXParams"]
+    assert sorted(vars(api)) == ["kind", "type_name", "url"]
 
 
 def test_standards_layer(sv):
@@ -104,7 +101,8 @@ def test_to_dict_is_json_ready(sv):
     import json
     d = _hub(sv, "ex_Full").to_dict()
     json.dumps(d)
-    assert d["api"]["reads"][0]["name"] == "desXById"
+    assert d["api"] == {"type_name": "DesX", "kind": "OBJECT",
+                        "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesX/"}
 
 
 def test_nexar_missing_from_snapshot(sv):
@@ -117,7 +115,6 @@ def test_no_platform_snapshot_keeps_type_name(sv):
     h = build_hub(sv.get_class("ex_Full"), registry=REGISTRY, platform=None, nexar_types=None, namespaces={})
     assert h.api_missing is None
     assert h.api.type_name == "DesX" and h.api.kind == "" and h.api.url is None
-    assert h.api.reads == [] and h.api.writes == [] and h.api.write_candidates == []
 
 
 def test_schema_namespaces_merges_imports_and_defaults():

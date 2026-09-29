@@ -26,7 +26,7 @@
               "links": {"type": "array", "items": {"type": "object", "required": ["text", "url", "primary"]}},
               "terms": {"type": "array", "items": {"type": "object", "required": ["text", "predicate", "contexts", "source"]}},
               "product_docs_none": {"type": "boolean"},
-              "api": {"type": ["object", "null"], "required": ["type_name", "kind", "url", "reads", "writes", "write_candidates", "reached_via", "refetchable"]},
+              "api": {"type": ["object", "null"], "required": ["type_name", "kind", "url"]},
               "api_missing": {"type": ["string", "null"]},
               "nexar": {"type": ["object", "null"], "required": ["type_name", "url"]},
               "nexar_missing": {"type": ["string", "null"]},

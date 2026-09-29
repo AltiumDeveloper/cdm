@@ -164,3 +164,10 @@ def test_preview_reads_sorted_last():
 
 def test_edge_types_are_wrappers():
     assert ApiIndex(SNAP2).links_for("Tgt").reached_via == ["Alpha.tgt", "Zed.tgt"]
+
+
+def test_kind_of():
+    index = ApiIndex(SNAP2)
+    assert index.kind_of("Node") == "INTERFACE"
+    assert index.kind_of("Tgt") == "OBJECT"
+    assert index.kind_of("NoSuchType") is None

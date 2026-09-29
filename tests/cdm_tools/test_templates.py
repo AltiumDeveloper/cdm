@@ -54,7 +54,7 @@ def test_see_also_rendered_once_on_class_page(tmp_path):
     assert page.count(url) == 1
 
 
-from cdm_tools.hub import ApiView, DocLink, HubView, Mapping, NexarView, OpLink, Term
+from cdm_tools.hub import ApiView, DocLink, HubView, Mapping, NexarView, Term
 
 
 def _render_panel(h):
@@ -67,10 +67,7 @@ def test_hub_panel_full():
     h = HubView(
         links=[DocLink("Primary Page", "https://a/p", True), DocLink("Other", "https://a/o", False)],
         terms=[Term("Company Account", "exact", ["altium-dashboard"], "https://a/p")],
-        api=ApiView("DesX", "OBJECT", "https://api/types/objects/DesX/",
-                    reads=[OpLink("desXById", "https://api/q/desXById/", None),
-                           OpLink("desXs", "https://api/q/desXs/", "DesXConnection")],
-                    write_candidates=[OpLink("desCreateX", None, None)], refetchable=True),
+        api=ApiView("DesX", "OBJECT", "https://api/types/objects/DesX/"),
         mappings=[Mapping("exact", "prov:Entity", "http://www.w3.org/ns/prov#Entity")],
     )
     out = _render_panel(h)
@@ -80,9 +77,9 @@ def test_hub_panel_full():
     assert "- [Other](https://a/o)" in out
     assert '!!! abstract "In the API"' in out
     assert "Type: [`DesX`](https://api/types/objects/DesX/)" in out
-    assert "[`desXs`](https://api/q/desXs/) (via `DesXConnection`)" in out
-    assert "Write (matched by name): `desCreateX`" in out
-    assert "`node(id)`" in out
+    assert "Type: [`DesX`](https://api/types/objects/DesX/) (object)" in out
+    for absent in ("Read:", "Write", "Reached via", "node(id)"):
+        assert absent not in out
     assert '!!! abstract "In standards"' in out
     assert "exact: [prov:Entity](http://www.w3.org/ns/prov#Entity)" in out
 
