@@ -95,3 +95,12 @@ def test_rendered_class_page_has_hub_panel(tmp_path):
     assert 'quote "Platform API"' not in page
     index = (tmp_path / "index.md").read_text(encoding="utf-8")
     assert "[`DesLifeCycleDefinition`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleDefinition/)" in index
+
+
+def test_main_exits_2_when_api_dir_missing(tmp_path, capsys):
+    from cdm_tools.docgen import main
+    rc = main([str(REPO / "src/common_data_model/schema/common_data_model.yaml"), "-d", str(tmp_path),
+               "--template-directory", str(REPO / "src/docs/templates"),
+               "--api-dir", str(tmp_path / "nope")])
+    assert rc == 2
+    assert "API snapshot directory not found" in capsys.readouterr().err
