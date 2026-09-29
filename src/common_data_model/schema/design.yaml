@@ -26,9 +26,10 @@ classes:
     class_uri: des:Project
     title: Hardware Project
     description: >-
-      A design project stored and version-controlled in a Workspace, such as a PCB project. It groups the design documents
-      that together define one implementation of a product, along with its project parameters and variants, and is the
-      source from which releases and Managed BOMs are created.
+      A design project stored in a Workspace, normally under its built-in version control, such as a PCB project. It
+      groups the design documents that together define one implementation of a product, along with its project
+      parameters and variants; it is the source from which releases are made and from which Managed BOMs can be
+      created.
     aliases:
       - PCB Project
     mixins:
@@ -81,7 +82,7 @@ classes:
     description: >-
       A name/value parameter defined at the level of a design project. It is either a Workspace-side (server-side)
       parameter, kept with the project in the Workspace and editable only there, or a design-side parameter, kept in
-      the project file (*.PrjPcb) and editable in Altium Designer. Both kinds appear in the project options and can be
+      the project file (e.g. *.PrjPcb) and editable in Altium Designer. Both kinds appear in the project options and can be
       used as special strings in design documents.
     annotations:
       platformAPI: DesProjectParameter
@@ -192,7 +193,7 @@ classes:
       - https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release/workspace
     structured_aliases:
       - literal_form: design project release
-        predicate: EXACT_SYNONYM
+        predicate: RELATED_SYNONYM
         contexts: [altium-designer]
         source: https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release
     mixins:
