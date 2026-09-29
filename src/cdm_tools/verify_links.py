@@ -16,7 +16,7 @@ from typing import Callable, Optional
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-from cdm_tools.registry import DEFAULT_REGISTRY_PATH, LinkEntry, dump_registry, load_registry
+from cdm_tools.registry import DEFAULT_REGISTRY_PATH, LinkEntry, RegistryError, dump_registry, load_registry
 
 USER_AGENT = "cdm-verify-links (+https://github.com/AltiumDeveloper/cdm)"
 ALTIUM_DOCS_PREFIX = "https://www.altium.com/documentation/"
@@ -135,7 +135,11 @@ def main(argv: Optional[list[str]] = None) -> int:
     parser.add_argument("--update", action="store_true", help="set last_verified=today on passing entries")
     args = parser.parse_args(argv)
 
-    registry = load_registry(args.registry)
+    try:
+        registry = load_registry(args.registry)
+    except RegistryError as exc:
+        print(f"cdm-verify-links: invalid link registry: {exc}", file=sys.stderr)
+        return 2
     sitemap = None
     if not args.no_sitemap:
         try:

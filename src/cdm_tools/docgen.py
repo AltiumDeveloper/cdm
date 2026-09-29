@@ -50,12 +50,12 @@ def main(argv: Optional[list[str]] = None) -> int:
     args = parser.parse_args(argv)
     if not Path(args.registry).exists():
         print(f"cdm-gendoc: link registry not found: {args.registry}", file=sys.stderr)
-        return 1
+        return 2
     try:
         load_registry(args.registry)
     except RegistryError as exc:
         print(f"cdm-gendoc: invalid link registry: {exc}", file=sys.stderr)
-        return 1
+        return 2
     gen = CdmDocGenerator(
         args.schema,
         template_directory=args.template_directory,

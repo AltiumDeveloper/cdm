@@ -67,3 +67,12 @@ def test_main_fails_when_api_dir_missing(monkeypatch, tmp_path, capsys):
         f"cdm-lint: API snapshot directory not found: {missing} "
         "(run from the repo root or pass --api-dir)"
     ) in capsys.readouterr().err
+
+
+def test_main_fails_when_registry_malformed(monkeypatch, tmp_path, capsys):
+    bad = tmp_path / "registry.yaml"
+    bad.write_text(
+        "https://example.com/x:\n  title: X\n  source: bogus\n", encoding="utf-8"
+    )
+    assert _main_with(monkeypatch, tmp_path, "--registry", str(bad)) == 2
+    assert "cdm-lint: invalid link registry:" in capsys.readouterr().err

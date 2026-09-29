@@ -60,7 +60,7 @@ def test_main_fails_on_missing_registry(tmp_path, capsys):
     from cdm_tools.docgen import main
 
     missing = tmp_path / "nope.yaml"
-    assert main(_main_args(tmp_path, missing)) == 1
+    assert main(_main_args(tmp_path, missing)) == 2
     assert f"cdm-gendoc: link registry not found: {missing}" in capsys.readouterr().err
     assert not (tmp_path / "out").exists()
 
@@ -70,6 +70,6 @@ def test_main_fails_on_malformed_registry(tmp_path, capsys):
 
     reg = tmp_path / "registry.yaml"
     reg.write_text(f"{URL}:\n  source: altium-docs\n", encoding="utf-8")
-    assert main(_main_args(tmp_path, reg)) == 1
+    assert main(_main_args(tmp_path, reg)) == 2
     assert "cdm-gendoc: invalid link registry:" in capsys.readouterr().err
     assert not (tmp_path / "out").exists()

@@ -35,7 +35,7 @@ from cdm_tools.conventions import (
     TITLE_UNDERSCORE_RE,
 )
 from cdm_tools.doc_rules import BASELINE_BUCKETS, run_doc_rules
-from cdm_tools.registry import DEFAULT_REGISTRY_PATH
+from cdm_tools.registry import DEFAULT_REGISTRY_PATH, RegistryError, load_registry
 
 # ---------------------------------------------------------------------------
 # YAML line-number extraction
@@ -952,6 +952,11 @@ def main() -> None:
             "(run from the repo root or pass --registry)",
             file=sys.stderr,
         )
+        sys.exit(2)
+    try:
+        load_registry(args.registry)
+    except RegistryError as exc:
+        print(f"cdm-lint: invalid link registry: {exc}", file=sys.stderr)
         sys.exit(2)
     if not os.path.isdir(args.api_dir):
         print(

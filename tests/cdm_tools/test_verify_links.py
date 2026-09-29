@@ -106,3 +106,10 @@ def test_main_exit_codes_without_sitemap(monkeypatch, tmp_path):
     assert verify_links.main(["--registry", reg, "--no-sitemap"]) == 0
     monkeypatch.setattr(verify_links, "fetch_page", lambda url: Page(404, URL, None))
     assert verify_links.main(["--registry", reg, "--no-sitemap"]) == 1
+
+
+def test_main_returns_2_on_malformed_registry(tmp_path, capsys):
+    bad = tmp_path / "registry.yaml"
+    bad.write_text(f"{URL}:\n  title: X\n  source: bogus\n", encoding="utf-8")
+    assert verify_links.main(["--registry", str(bad), "--no-sitemap"]) == 2
+    assert "cdm-verify-links: invalid link registry:" in capsys.readouterr().err
