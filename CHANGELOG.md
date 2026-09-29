@@ -8,6 +8,8 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 ## [Unreleased]
 
 ### Added
+- Hub panel on class pages (product links and terms, Platform/Nexar API type with read/write operations, standards).
+- `cdm-hub-export`: `hub.json` export of the documentation hub, validated against `hub.schema.json`.
 - `nexarAPI` annotation for supply-chain types served by the Nexar (Octopart) API.
 - Documentation hub foundations: link registry, API snapshots, lint rules DOC-01…DOC-05, link verifier.
 - `cdm-gendoc`: registry-aware documentation generation (`make gendoc`).
@@ -16,6 +18,10 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - `see_also` replaces `extensions: documentation` for product documentation links.
 - PR CI workflow (`.github/workflows/pr.yaml`) running `make lint` and `tests/cdm_tools`.
 - Governance files `VIOLATIONS.md` and `MODEL-FINDINGS.md`.
+
+### Changed
+- Class pages no longer show separate Documentation and Platform API boxes; API links use the canonical trailing-slash URLs.
+- Class index tables link API types via the hub data (Nexar types link to the Octopart API docs).
 
 ### Fixed
 - Platform API type names corrected against production for `des_RuleCheck`, `des_RuleCheckExecution`,
