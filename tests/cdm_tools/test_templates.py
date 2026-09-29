@@ -57,3 +57,9 @@ def test_nexar_api_url_renders_type_and_doc_link():
 
 def test_nexar_api_url_absent_renders_nothing():
     assert _render_macro("nexar_api_url", _element(platformAPI="DesProject")) == ""
+
+
+def test_class_template_links_public_grid_page_only():
+    text = (TEMPLATES / "class.md.jinja2").read_text(encoding="utf-8")
+    assert "atlassian.net" not in text
+    assert PUBLIC_GRID_DOC in text
