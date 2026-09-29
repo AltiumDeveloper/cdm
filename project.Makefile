@@ -81,6 +81,7 @@ wizard:
 	$(RUN) cdm-wizard
 
 # Doc generation with CDM hub helpers (overrides the template-provided gendoc)
+# Note: cdm-gendoc does not forward GEN_DOC_ARGS; it hard-codes --subfolder-type-separation --preserve-names (the current LINKML_GENERATORS_DOC_ARGS).
 gendoc: $(DOCDIR)
 	cp -rf $(SRC)/docs/files/* $(DOCDIR) ; \
 	$(RUN) cdm-gendoc --template-directory $(DOCTEMPLATES) -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)

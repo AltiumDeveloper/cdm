@@ -7,6 +7,7 @@ Adds the Jinja global `doc_link(url)`, which renders a markdown link titled from
 from __future__ import annotations
 
 import argparse
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Optional
@@ -14,7 +15,7 @@ from typing import Callable, Optional
 from jinja2 import Environment
 from linkml.generators.docgen import DocGenerator
 
-from cdm_tools.registry import DEFAULT_REGISTRY_PATH, LinkEntry, load_registry, split_url
+from cdm_tools.registry import DEFAULT_REGISTRY_PATH, LinkEntry, RegistryError, load_registry, split_url
 
 
 def make_doc_link(registry: dict[str, LinkEntry]) -> Callable[[str], str]:
@@ -47,6 +48,14 @@ def main(argv: Optional[list[str]] = None) -> int:
     parser.add_argument("--template-directory", required=True)
     parser.add_argument("--registry", default=DEFAULT_REGISTRY_PATH)
     args = parser.parse_args(argv)
+    if not Path(args.registry).exists():
+        print(f"cdm-gendoc: link registry not found: {args.registry}", file=sys.stderr)
+        return 1
+    try:
+        load_registry(args.registry)
+    except RegistryError as exc:
+        print(f"cdm-gendoc: invalid link registry: {exc}", file=sys.stderr)
+        return 1
     gen = CdmDocGenerator(
         args.schema,
         template_directory=args.template_directory,
