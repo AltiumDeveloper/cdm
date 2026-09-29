@@ -10,6 +10,7 @@ tags:
 ---
 
 {% from "macros.jinja2" import platform_api_url with context %}
+{% from "macros.jinja2" import nexar_api_url with context %}
 {% from "macros.jinja2" import slot_url with context %}
 {% from "macros.jinja2" import slot_range_url with context %}
 
@@ -65,7 +66,7 @@ Bounded context: [{{ element.in_subset[0] }}]( ../subsets/{{ element.in_subset[0
 <div class="grid" markdown>
 
 !!! quote "Platform API"
-    {{ platform_api_url(element) }}
+    {{ platform_api_url(element) }}{{ nexar_api_url(element) }}
 
 !!! quote annotate "GRID (1)"
     {% if 'grid' in element.annotations %}

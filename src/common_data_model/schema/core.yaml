@@ -133,10 +133,15 @@ classes:
     in_subset: core
     title: With Platform API
     description: >-
-      Mixin that adds a platformAPI annotation slot identifying the platform API type name.
+      Mixin that adds API type annotations: platformAPI names the Altium 365 Platform API
+      GraphQL type; nexarAPI names the Nexar (Octopart) GraphQL type for supply-chain entities
+      served by Nexar rather than the Platform API.
     attributes:
       platformAPI:
-        description: Platform API type name.
+        description: Altium 365 Platform API type name.
+        range: string
+      nexarAPI:
+        description: Nexar (Octopart) API type name.
         range: string
 
   core_WithMaturity:

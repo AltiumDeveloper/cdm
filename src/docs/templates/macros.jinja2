@@ -8,6 +8,13 @@
   {%- endif -%}
 {% endmacro -%}
 
+{%- macro nexar_api_url(element) -%}
+  {%- if 'nexarAPI' in element.annotations -%}
+    {%- set name = element.annotations["nexarAPI"].value -%}
+    [{{ name }} (Nexar)](https://www.altium.com/documentation/altium-developer-center/octopart/api)
+  {%- endif -%}
+{% endmacro -%}
+
 {%- macro slot_range_url(slot_range) -%}
   {%- set element = schemaview.get_element(slot_range) -%}
   {%- if element.__class__.__name__ == "ClassDefinition" -%}

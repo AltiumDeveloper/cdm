@@ -48,3 +48,12 @@ def test_platform_api_url_interface_type():
 def test_platform_api_url_event_subscription_is_interface():
     out = _render_macro("platform_api_url", _element(platformAPI="GloEvtSubscription"))
     assert out == f"[GloEvtSubscription]({PLATFORM_API_BASE}/interfaces/GloEvtSubscription)"
+
+
+def test_nexar_api_url_renders_type_and_doc_link():
+    out = _render_macro("nexar_api_url", _element(nexarAPI="SupPart"))
+    assert out == f"[SupPart (Nexar)]({OCTOPART_API_DOC})"
+
+
+def test_nexar_api_url_absent_renders_nothing():
+    assert _render_macro("nexar_api_url", _element(platformAPI="DesProject")) == ""
