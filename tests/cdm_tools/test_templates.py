@@ -101,3 +101,17 @@ def test_hub_panel_nexar():
     out = _render_panel(HubView(nexar=NexarView("SupPart", "https://oct/api")))
     assert "Nexar type: `SupPart` ([Octopart API](https://oct/api))" in out
     assert "No Platform API type." not in out
+
+
+def _render_link(h):
+    env = jinja2.Environment(loader=jinja2.FileSystemLoader(str(TEMPLATES)))
+    t = env.from_string("{% from 'macros.jinja2' import api_type_link %}[{{ api_type_link(h) }}]")
+    return t.render(h=h)
+
+
+def test_api_type_link_cases():
+    assert _render_link(HubView(api=ApiView("DesX", "OBJECT", "https://api/DesX/"))) == "[[`DesX`](https://api/DesX/)]"
+    assert _render_link(HubView(api=ApiView("DesX", "OBJECT", None))) == "[`DesX`]"
+    assert _render_link(HubView(nexar=NexarView("SupPart", "https://o"))) == "[`SupPart` (Nexar)]"
+    assert _render_link(HubView(api_missing="DmX")) == "[`DmX` (not in API snapshot)]"
+    assert _render_link(HubView()) == "[]"

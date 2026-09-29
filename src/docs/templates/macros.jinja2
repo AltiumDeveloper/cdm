@@ -75,3 +75,11 @@
 {%- endfor %}
 {% endif %}
 {%- endmacro -%}
+
+{%- macro api_type_link(h) -%}
+  {%- if h.api -%}
+    {%- if h.api.url -%}[`{{ h.api.type_name }}`]({{ h.api.url }}){%- else -%}`{{ h.api.type_name }}`{%- endif -%}
+  {%- elif h.nexar -%}`{{ h.nexar.type_name }}` (Nexar)
+  {%- elif h.api_missing -%}`{{ h.api_missing }}` (not in API snapshot)
+  {%- endif -%}
+{%- endmacro -%}
