@@ -22,10 +22,10 @@
 
 | Question | If YES → | Example |
 |----------|----------|---------|
-| Is it stored and retrieved as a versioned document? | `Artifact` | `system_SdmFunctionalModel` |
+| Is it stored and retrieved as a versioned document? | `Artifact` | `lib_Component` |
 | Does it orchestrate inputs and produce outputs? | `Activity` | `system_ESDDocument` |
 | Is it a snapshot / version of something? | `Artifact` | `system_SdmSystemModelVersion` |
-| Is it a project or workspace-level container? | `Activity` | `design_DesignProject` |
+| Is it a project or workspace-level container? | `Activity` | `des_Project` |
 | Is it a lightweight value-object with no lifecycle? | `Resource` | `dm_PortConfiguration` |
 
 ### Mixin Annotations
@@ -64,17 +64,16 @@ linkml:Any
 **Artifact subclass:**
 
 ```yaml
-system_SdmFunctionalModel:
+plt_LifecycleDefinition:
   is_a: core_Artifact
-  in_subset: system-sdm
-  class_uri: sys:SdmFunctionalModel
-  title: SDM Functional Model
+  in_subset: platform
+  class_uri: plt:LifecycleDefinition
+  title: Lifecycle Definition
   description: >-
-    The functional model of a system design, grouping functional blocks
-    and their interconnections.
+    Defines the set of states that an entity can transition through in its lifecycle.
   annotations:
-    platformAPI: SysSdmFunctionalModel
-    grid: grid:workspace:{workspace-id}:system-design:sdm/{id}
+    grid: grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}
+    platformAPI: DesLifeCycleDefinition
 ```
 
 **Activity subclass:**
@@ -89,7 +88,7 @@ system_ESDDocument:
     An Electronic System Design document that orchestrates functional blocks,
     requirements, and system model versions.
   annotations:
-    platformAPI: SysESDDocument
+    platformAPI: SysEsdDocument
     grid: grid:workspace:{workspace-id}:system-design:esd/{id}
 ```
 
@@ -99,14 +98,14 @@ system_ESDDocument:
 
 ### Definition
 
-`GRID` (Globally Unique Resource ID) is a CDM scalar type defined in `core.yaml`:
+`GRID` (Global Resource ID) is a CDM scalar type defined in `core.yaml`:
 
 ```yaml
 types:
   GRID:
     uri: core:grid
     base: str
-    description: Globally unique resource ID
+    description: Global Resource ID. Format grid:area:[tenant-id]:context:resource-type/resource-id
 ```
 
 Every `Entity` carries a `core_id` slot of type `GRID`. The type is a plain string — no URN prefix at the LinkML level; the platform enforces the format.
@@ -116,8 +115,13 @@ Every `Entity` carries a `core_id` slot of type `GRID`. The type is a plain stri
 Class-level `grid:` annotations document the **GRID template** for instances of that class:
 
 ```
-grid: grid:{workspace-id}:system-design:esd/{id}
+grid: grid:workspace:{workspace-id}:system-design:esd/{id}
 ```
+
+Format (official): `grid:area:[tenant-id]:context:resource-type/resource-id` — `area` is one of
+`global`, `workspace`, `supply`, `community`, `manufacture`; resources without a tenant use `::`
+(e.g. `grid:global::platform:user/{id}`). See the
+[GRID key concept](https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/grid).
 
 The annotation is informational only (consumed by platform tooling). It does **not** affect LinkML validation.
 
@@ -177,16 +181,16 @@ relations (from RO/PROV-O) and **expanded** relations (CDM extensions).
 | `core_hasOutput` | `hasOutput` | Activity → Artifact | `core_outputOf` | No | Activity references its produced Artifacts |
 | `core_informedBy` | `informedBy` | Activity → Activity | `core_informs` | No | Activity uses knowledge from another Activity |
 | `core_informs` | `informs` | Activity → Activity | `core_informedBy` | No | Reverse of informedBy |
-| `core_occursIn` | `occursIn` | Activity → Artifact | `core_containsActivity` | No | Activity is scoped within an Artifact context |
-| `core_containsActivity` | `containsActivity` | Artifact → Activity | `core_occursIn` | No | Artifact provides the context for an Activity |
+| `core_occursIn` | `occursIn` | Activity → Artifact | — | No | Activity is scoped within an Artifact context |
 
 ### Expanded Relation Table
 
-| Slot name | Alias | Domain → Range | Inverse | Transitive | Symmetric | Semantic |
-|-----------|-------|----------------|---------|-----------|----------|---------|
-| `core_implements` | `implements` | Activity → Activity | `core_implementedBy` | No | No | Activity implements a requirement/spec Activity |
-| `core_implementedBy` | `implementedBy` | Activity → Activity | `core_implements` | No | No | Reverse of implements |
-| `core_associatedWith` | `associatedWith` | Artifact → Artifact | self | No | **Yes** | Symmetric peer association between Artifacts |
+| Slot name | Alias | Domain → Range | Inverse | Transitive | Semantic |
+|-----------|-------|----------------|---------|-----------|---------|
+| `core_implements` | `implements` | Activity → Activity | `core_implementedBy` | No | Activity implements a requirement/spec Activity |
+| `core_implementedBy` | `implementedBy` | Activity → Activity | `core_implements` | No | Reverse of implements |
+
+> Note: core_implements is_a core_informedBy; core_implementedBy is_a core_informs.
 
 ### Pre-built Specialisations in core.yaml
 
@@ -355,10 +359,12 @@ system_FunctionalBlock:
 
 #### platformAPI annotation
 
-`platformAPI` must name an **existing** Platform API type (e.g. `BomWip`, `SupPart`, `GloOrganization`).
-Never invent a type name from naming patterns. If the entity has no API type yet, **omit the
-annotation** (e.g. `sup_Company`) and add it once the API type exists. Several classes may share one
-API type (e.g. `pro_ManagedBOM` and `pro_ConsolidatedBOM` → `BomWip`).
+`platformAPI` must name an **existing** Altium 365 Platform API type (e.g. `BomWip`, `DesProject`,
+`GloOrganization`). Supply-chain types served by the Nexar (Octopart) API use `nexarAPI` instead
+(e.g. `sup_Part` → `nexarAPI: SupPart`). Never invent a type name from naming patterns — check it against
+production introspection. If the entity has no API type yet, **omit the annotation** (e.g. `dm_Processor`)
+and add it once the API type exists. Several classes may share one API type (e.g. `pro_ManagedBOM` and
+`pro_ConsolidatedBOM` → `BomWip`).
 
 ### 4.4 Required Slot Metadata
 
@@ -461,12 +467,10 @@ Both layers must be kept in sync. When a violation is fixed, both files must be 
 The following active naming/convention violations exist in the schema as of the last audit.
 Full tracking details, fix status, and blockers are in **[VIOLATIONS.md](VIOLATIONS.md)**.
 
-- **`device_model.yaml`** — slot `db_PortConfiguration_enum_values` uses a `db_` prefix instead
-  of the correct `dm_` prefix for the `deviceModel` subset.
 - **`system.yaml`** — class `system_SdmSystemModelVersion` has `class_uri: sys:SystemModelVersion`
   which is missing the `Sdm` segment; the correct URI would be `sys:SdmSystemModelVersion`.
-- **`device_model.yaml`** — class `dm_port_configuration_enum_value` uses snake_case for the class
-  name component; it should be PascalCase: `dm_PortConfigurationEnumValue`.
+- **`system.yaml`** — class `system_SdmSystemModel` has `class_uri: sys:SystemModel`, likewise missing
+  the `Sdm` segment (`sys:SdmSystemModel`).
 
 Do **not** silently fix violations. Open a PR, reference the VIOLATIONS.md row, and update fix status.
 
