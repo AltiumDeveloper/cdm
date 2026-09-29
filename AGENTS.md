@@ -54,7 +54,7 @@ linkml:Any
 ├── core_Event (abstract)
 └── core_Entity (abstract)     — instantiates: core_WithGRID, core_WithMaturity, core_WithPlatformAPI
     ├── core_Artifact (abstract)
-    │   └── <domain Artifact subclasses, e.g. system_SdmFunctionalModel>
+    │   └── <domain Artifact subclasses, e.g. plt_LifecycleDefinition>
     └── core_Activity (abstract)
         └── <domain Activity subclasses, e.g. system_ESDDocument>
 ```
