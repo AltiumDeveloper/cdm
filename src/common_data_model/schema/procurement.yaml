@@ -99,6 +99,25 @@ classes:
       grid: grid:workspace:{workspace-id}:procurement:bom/{id}
       platformAPI: BomWip
 
+  pro_GlobalBOM:
+    is_a: core_Activity
+    in_subset: procurement
+    class_uri: pro:GlobalBOM
+    title: Global BOM
+    description: >-
+      Global BOM represents a bill of materials that resides outside of any workspace, on Octopart, where users
+      can create, edit, collaborate on and share it with others.
+    comments:
+      - Global BOM follows the same conceptual BOM model as workspace-scoped BOMs (items, alternates, substitutes
+        and issues), but its identity and access are not bound to a workspace. This mirrors other entities that
+        can exist both workspace-scoped and globally (e.g. workspace Hardware Projects vs. personal, shareable projects).
+      - Global BOM does not produce releases yet, hence it does not specialise BOM WIP and has no releases relation.
+    annotations:
+      grid: grid:global::procurement:bom/{id}
+      platformAPI: GloBom
+    mixins:
+      - pro_Bom
+
   pro_BomRelease:
     is_a: core_Artifact
     in_subset: procurement
