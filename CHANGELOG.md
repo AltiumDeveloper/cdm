@@ -10,6 +10,11 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 ### Added
 - `nexarAPI` annotation for supply-chain types served by the Nexar (Octopart) API.
 - Documentation hub foundations: link registry, API snapshots, lint rules DOC-01…DOC-05, link verifier.
+- `cdm-gendoc`: registry-aware documentation generation (`make gendoc`).
+- `cdm-api-snapshot` with checked-in Platform API and Nexar GraphQL schema snapshots (`make refresh-api-snapshot`).
+- `cdm-verify-links`: online verifier for registry links (`make verify-links`).
+- `see_also` replaces `extensions: documentation` for product documentation links.
+- PR CI workflow (`.github/workflows/pr.yaml`) running `make lint` and `tests/cdm_tools`.
 
 ### Fixed
 - Platform API type names corrected against production for `des_RuleCheck`, `des_RuleCheckExecution`,
