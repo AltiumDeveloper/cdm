@@ -1,6 +1,39 @@
 # CDM documentation link registry (see AGENTS.md §8)
 # Keyed by URL without fragment. `title` = page <title> text before ' | '.
 # `anchors` lists every #fragment used by the schema. Verify with: make verify-links
+https://www.altium.com/documentation/altium-365/bom-portal:
+  title: BOM Portal
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - release_naming
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/bom-portal/configuration-options:
+  title: Configuration and Options
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - add_alternate
+  - bom-structure-features
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/bom-portal/consolidated-bom:
+  title: Consolidated BOM
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/bom-portal/error-detection-correction:
+  title: BOM Error Detection and Correction
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/bom-portal/workspace-components-integration:
+  title: Workspace Components Integration
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-29'
 https://www.altium.com/documentation/altium-365/lifecycle-management:
   title: Lifecycle Management
   source: altium-docs
@@ -45,6 +78,7 @@ https://www.altium.com/documentation/altium-365/workspace-projects:
   product: altium-365
   anchors:
   - project_parameters
+  - uploading_or_creating_a_managed_bom
   last_verified: '2026-09-29'
 https://www.altium.com/documentation/altium-designer/accessing-defining-managing-project-options:
   title: Accessing, Defining & Managing Project Options
