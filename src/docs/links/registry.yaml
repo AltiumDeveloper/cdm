@@ -34,6 +34,18 @@ https://www.altium.com/documentation/altium-365/bom-portal/workspace-components-
   product: altium-365
   anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/creating-managing-processes:
+  title: Create & Manage Electronics Design Processes
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/defining-process-workflow:
+  title: Defining a Process Workflow
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/environment-configuration-management:
   title: Environment Configuration Management
   source: altium-docs
@@ -79,6 +91,12 @@ https://www.altium.com/documentation/altium-365/part-source-configuration:
   product: altium-365
   anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/processes-workflows:
+  title: Processes & Workflows
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/renesas-365:
   title: Renesas 365
   source: altium-docs
