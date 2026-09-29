@@ -353,6 +353,13 @@ system_FunctionalBlock:
   # in_subset missing → linkml-lint FAIL
 ```
 
+#### platformAPI annotation
+
+`platformAPI` must name an **existing** Platform API type (e.g. `BomWip`, `SupPart`, `GloOrganization`).
+Never invent a type name from naming patterns. If the entity has no API type yet, **omit the
+annotation** (e.g. `sup_Company`) and add it once the API type exists. Several classes may share one
+API type (e.g. `pro_ManagedBOM` and `pro_ConsolidatedBOM` → `BomWip`).
+
 ### 4.4 Required Slot Metadata
 
 Every named slot **must** have all seven:

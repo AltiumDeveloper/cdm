@@ -112,11 +112,23 @@ classes:
         and issues), but its identity and access are not bound to a workspace. This mirrors other entities that
         can exist both workspace-scoped and globally (e.g. workspace Hardware Projects vs. personal, shareable projects).
       - Global BOM does not produce releases yet, hence it does not specialise BOM WIP and has no releases relation.
+      - Global BOM has no access to workspace libraries, so it references supply Parts only. Its item elements resolve
+        to supply Parts; the workspace component reference is not used.
     annotations:
       grid: grid:global::procurement:bom/{id}
-      platformAPI: GloBom
     mixins:
       - pro_Bom
+    attributes:
+      pro_GlobalBOM_usesParts:
+        is_a: core_hasInput
+        slot_uri: pro:GlobalBOM_usesParts
+        alias: usesParts
+        title: parts
+        description: Supply Parts used in this Global BOM.
+        domain: pro_GlobalBOM
+        range: sup_Part
+        required: false
+        multivalued: true
 
   pro_BomRelease:
     is_a: core_Artifact
@@ -221,8 +233,13 @@ classes:
         alias: part
         slot_uri: pro:BomItemElement_part
         title: part
-        description: TBD
-        range: lib_Part
+        description: >-
+          The Part this element resolves to - a workspace library Part for workspace BOMs, or a supply Part
+          for BOMs that live outside a workspace (e.g. Global BOM).
+        range: Any
+        any_of:
+          - range: lib_Part
+          - range: sup_Part
         required: false
         multivalued: false
       pro_BomItemElement_component:
