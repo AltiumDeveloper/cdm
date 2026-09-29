@@ -7,6 +7,33 @@ https://www.altium.com/documentation/altium-365/lifecycle-management:
   product: altium-365
   anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/management-specific-project:
+  title: Management of a Specific Project
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - SAMPYM
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/viewers/manufacturing-package-viewer:
+  title: Viewing Manufacturing Packages
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/workspace-projects:
+  title: Workspace Projects
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - project_parameters
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/accessing-defining-managing-project-options:
+  title: Accessing, Defining & Managing Project Options
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - parameters
+  last_verified: '2026-09-29'
 https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions:
   title: Defining Lifecycle Definitions for a Workspace
   source: altium-docs
@@ -15,6 +42,55 @@ https://www.altium.com/documentation/altium-designer/connected-workspace/definin
   last_verified: '2026-09-29'
 https://www.altium.com/documentation/altium-designer/connected-workspace/defining-naming-schemes:
   title: Defining Revision Naming Schemes for a Workspace
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/creating-project-template:
+  title: Creating a Project Template
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/creating-projects-documents:
+  title: Creating Projects and Documents
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/design-variants:
+  title: Design Variants
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/harness-design:
+  title: Harness Design
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/multi-board-design:
+  title: Designing with Multiple PCBs
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - structure_multi_board_design_project
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release:
+  title: Design Project Release
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release/workspace:
+  title: Releasing to a Workspace
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/variant-manager:
+  title: Working with the Variant Manager
   source: altium-docs
   product: altium-designer
   anchors: []
