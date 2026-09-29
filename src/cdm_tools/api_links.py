@@ -1,4 +1,5 @@
 """
+Not currently used for rendering.
 Derive documentation links for GraphQL API types from a checked-in API snapshot
 (see cdm_tools.api_snapshot): the type page, query operations that return the type (Read),
 mutations whose payload contains it or whose name targets it (Write), and — for types no query
@@ -63,6 +64,10 @@ class ApiIndex:
     def type_url(self, name: str) -> Optional[str]:
         kind = self.types.get(name, {}).get("kind")
         return self._page(f"types/{KIND_PATHS[kind]}/{name}") if kind in KIND_PATHS else None
+
+    def kind_of(self, name: str) -> Optional[str]:
+        """The snapshot kind of type *name* (OBJECT, INTERFACE, ...), or None if it is not in the snapshot."""
+        return self.types.get(name, {}).get("kind")
 
     def operation_url(self, op: Operation) -> Optional[str]:
         return self._page(f"operations/{'queries' if op.kind == 'query' else 'mutations'}/{op.root}")

@@ -88,8 +88,8 @@ def test_rendered_class_page_has_hub_panel(tmp_path):
     page = (tmp_path / "classes" / "plt_LifecycleDefinition.md").read_text(encoding="utf-8")
     assert "- [Defining Lifecycle Definitions for a Workspace](https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions) *(primary)*" in page
     assert "Type: [`DesLifeCycleDefinition`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleDefinition/)" in page
-    assert "desLifeCycleDefinitionById" in page
-    assert "desCreateLifeCycleDefinition" in page
+    for absent in ("Read:", "Write", "Reached via", "node(id)"):
+        assert absent not in page
     sup = (tmp_path / "classes" / "sup_Part.md").read_text(encoding="utf-8")
     assert "Nexar type: `SupPart`" in sup
     assert 'quote "Platform API"' not in page

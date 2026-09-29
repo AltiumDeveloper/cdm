@@ -1,6 +1,6 @@
 """
 Hub view of a CDM class: the product layer (documentation links, product terms), the API layer
-(Platform API type with Read / Write operations, or Nexar type) and the standards layer (mappings).
+(Platform API type, or Nexar type) and the standards layer (mappings).
 Used by the class page template and by the hub.json export.
 """
 
@@ -11,7 +11,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional, Union
 
-from cdm_tools.api_links import ApiIndex, Operation
+from cdm_tools.api_links import ApiIndex
 from cdm_tools.api_snapshot import load_docs_pages, load_snapshots
 from cdm_tools.registry import LinkEntry, split_url
 
@@ -39,22 +39,10 @@ class Term:
 
 
 @dataclass
-class OpLink:
-    name: str
-    url: Optional[str]
-    via: Optional[str]
-
-
-@dataclass
 class ApiView:
     type_name: str
     kind: str
     url: Optional[str]
-    reads: list[OpLink] = field(default_factory=list)
-    writes: list[OpLink] = field(default_factory=list)
-    write_candidates: list[OpLink] = field(default_factory=list)
-    reached_via: list[str] = field(default_factory=list)
-    refetchable: bool = False
 
 
 @dataclass
@@ -107,10 +95,6 @@ def _terms(cls) -> list[Term]:
                  source=str(a.source) if a.source else None) for a in values]
 
 
-def _op(index: ApiIndex, op: Operation) -> OpLink:
-    return OpLink(name=op.path, url=index.operation_url(op), via=op.via)
-
-
 def _mapping(relation: str, value: str, registry: dict[str, LinkEntry], namespaces: dict[str, str]) -> Mapping:
     if value.startswith(("http://", "https://")):
         entry = registry.get(split_url(value)[0])
@@ -143,19 +127,13 @@ def build_hub(cls, *, registry: dict[str, LinkEntry], platform: Optional[ApiInde
     )
     if "platformAPI" in ann:
         name = str(ann["platformAPI"].value)
-        links = platform.links_for(name) if platform else None
+        kind = platform.kind_of(name) if platform else None
         if platform is None:
             hub.api = ApiView(type_name=name, kind="", url=None)
-        elif links is None:
+        elif kind is None:
             hub.api_missing = name
         else:
-            hub.api = ApiView(
-                type_name=name, kind=links.kind, url=platform.type_url(name),
-                reads=[_op(platform, o) for o in links.reads],
-                writes=[_op(platform, o) for o in links.writes],
-                write_candidates=[_op(platform, o) for o in links.write_candidates],
-                reached_via=links.reached_via, refetchable=links.refetchable,
-            )
+            hub.api = ApiView(type_name=name, kind=kind, url=platform.type_url(name))
     if "nexarAPI" in ann:
         name = str(ann["nexarAPI"].value)
         if nexar_types is None or name in nexar_types:

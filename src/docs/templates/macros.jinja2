@@ -15,11 +15,6 @@
   [{{ slot_title(slot) }}]( ../../slots/{{slot.name}})
 {%- endmacro -%}
 
-{%- macro _op(o) -%}
-  {%- if o.url -%}[`{{ o.name }}`]({{ o.url }}){%- else -%}`{{ o.name }}`{%- endif -%}
-  {%- if o.via %} (via `{{ o.via }}`){% endif -%}
-{%- endmacro -%}
-
 {%- macro hub_panel(h) -%}
 !!! abstract "In the product"
 {%- if h.terms %}
@@ -38,26 +33,6 @@
 !!! abstract "In the API"
 {%- if h.api %}
     Type: {% if h.api.url %}[`{{ h.api.type_name }}`]({{ h.api.url }}){% else %}`{{ h.api.type_name }}`{% endif %} {% if h.api.kind %}({{ h.api.kind | lower }}){% endif %}
-{%- if h.api.reads %}
-
-    Read: {% for o in h.api.reads %}{{ _op(o) }}{% if not loop.last %}, {% endif %}{% endfor %}
-{%- endif %}
-{%- if h.api.writes %}
-
-    Write: {% for o in h.api.writes %}{{ _op(o) }}{% if not loop.last %}, {% endif %}{% endfor %}
-{%- endif %}
-{%- if h.api.write_candidates %}
-
-    Write (matched by name): {% for o in h.api.write_candidates %}{{ _op(o) }}{% if not loop.last %}, {% endif %}{% endfor %}
-{%- endif %}
-{%- if h.api.reached_via %}
-
-    Reached via: {% for p in h.api.reached_via %}`{{ p }}`{% if not loop.last %}, {% endif %}{% endfor %}
-{%- endif %}
-{%- if h.api.refetchable %}
-
-    Refetch by GRID with `node(id)`.
-{%- endif %}
 {%- elif h.api_missing %}
     `{{ h.api_missing }}` is not in the Platform API snapshot.
 {%- elif not h.nexar and not h.nexar_missing %}

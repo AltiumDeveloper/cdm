@@ -28,6 +28,7 @@ def test_export_content():
     assert c["grid"] == "grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}"
     assert c["hub"]["links"][0]["primary"] is True
     assert c["hub"]["api"]["type_name"] == "DesLifeCycleDefinition"
+    assert sorted(c["hub"]["api"]) == ["kind", "type_name", "url"]
     assert "core_Entity" not in data["classes"]          # abstract/core classes excluded
     assert "Any" not in data["classes"]                  # linkml:Any excluded
     assert data["schema"]["id"] == "https://w3id.org/altium/cdm/"
