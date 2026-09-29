@@ -73,12 +73,26 @@ https://www.altium.com/documentation/altium-365/renesas-365:
   product: altium-365
   anchors: []
   last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/tasks:
+  title: Working with Tasks
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/viewers/manufacturing-package-viewer:
   title: Viewing Manufacturing Packages
   source: altium-docs
   product: altium-365
   anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/viewers/web-viewer:
+  title: Web Viewer
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - commenting
+  - comment_placement
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/workflow-part-requests:
   title: Part Requests
   source: altium-docs
@@ -233,6 +247,12 @@ https://www.altium.com/documentation/altium-designer/design-variants:
   product: altium-designer
   anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/document-commenting:
+  title: Document Commenting
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-designer/harness-design:
   title: Harness Design
   source: altium-docs
