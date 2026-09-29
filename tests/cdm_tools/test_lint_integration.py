@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import pytest
+
 from cdm_tools.lint import run_lint
 
 REPO = Path(__file__).resolve().parents[2]
@@ -34,3 +36,34 @@ def test_open_api_questions_are_baselined_warnings():
         "dm_PeripheralPinDependencyConfig": "warning",
         "dm_PeripheralParameter": "warning",
     }
+
+
+def _main_with(monkeypatch, tmp_path, *extra):
+    from cdm_tools import lint
+
+    monkeypatch.setattr(
+        "sys.argv",
+        ["cdm-lint", ROOT, "--config", str(REPO / "cdm-lint.yaml"), *extra],
+    )
+    with pytest.raises(SystemExit) as exc:
+        lint.main()
+    return exc.value.code
+
+
+def test_main_fails_when_registry_missing(monkeypatch, tmp_path, capsys):
+    missing = tmp_path / "missing.yaml"
+    assert _main_with(monkeypatch, tmp_path, "--registry", str(missing)) == 2
+    assert (
+        f"cdm-lint: link registry not found: {missing} "
+        "(run from the repo root or pass --registry)"
+    ) in capsys.readouterr().err
+
+
+def test_main_fails_when_api_dir_missing(monkeypatch, tmp_path, capsys):
+    missing = tmp_path / "no-api"
+    args = ["--registry", str(REPO / "src/docs/links/registry.yaml"), "--api-dir", str(missing)]
+    assert _main_with(monkeypatch, tmp_path, *args) == 2
+    assert (
+        f"cdm-lint: API snapshot directory not found: {missing} "
+        "(run from the repo root or pass --api-dir)"
+    ) in capsys.readouterr().err

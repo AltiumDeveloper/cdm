@@ -21,8 +21,6 @@ from typing import Optional
 from linkml_runtime.utils.schemaview import SchemaView
 
 from cdm_tools.api_snapshot import DEFAULT_API_DIR
-from cdm_tools.doc_rules import BASELINE_BUCKETS, run_doc_rules
-from cdm_tools.registry import DEFAULT_REGISTRY_PATH
 from cdm_tools.conventions import (
     CLASS_NAME_RE,
     SLOT_NAME_RE,
@@ -36,6 +34,8 @@ from cdm_tools.conventions import (
     ALIAS_RE,
     TITLE_UNDERSCORE_RE,
 )
+from cdm_tools.doc_rules import BASELINE_BUCKETS, run_doc_rules
+from cdm_tools.registry import DEFAULT_REGISTRY_PATH
 
 # ---------------------------------------------------------------------------
 # YAML line-number extraction
@@ -945,6 +945,21 @@ def main() -> None:
         help=f"Directory with API schema snapshots (default: {DEFAULT_API_DIR})",
     )
     args = parser.parse_args()
+
+    if not os.path.isfile(args.registry):
+        print(
+            f"cdm-lint: link registry not found: {args.registry} "
+            "(run from the repo root or pass --registry)",
+            file=sys.stderr,
+        )
+        sys.exit(2)
+    if not os.path.isdir(args.api_dir):
+        print(
+            f"cdm-lint: API snapshot directory not found: {args.api_dir} "
+            "(run from the repo root or pass --api-dir)",
+            file=sys.stderr,
+        )
+        sys.exit(2)
 
     issues = run_lint(args.schema, args.config, registry_path=args.registry, api_dir=args.api_dir)
 
