@@ -3,6 +3,9 @@ Derive documentation links for GraphQL API types from a checked-in API snapshot
 (see cdm_tools.api_snapshot): the type page, query operations that return the type (Read),
 mutations whose payload contains it or whose name targets it (Write), and — for types no query
 returns — the parent fields that reach it.
+
+Known limitation: reads nested inside non-connection result wrappers (e.g. a ``results`` field of a
+``*ResultSet``) are not followed.
 """
 
 from __future__ import annotations
@@ -16,7 +19,8 @@ KIND_PATHS = {"OBJECT": "objects", "INTERFACE": "interfaces", "UNION": "unions"}
 NAMESPACE_SUFFIX = "Queries"
 MAX_NAMESPACE_DEPTH = 2
 MAX_REACHED_VIA = 5
-_WRAPPER_SUFFIXES = ("Connection", "Edge", "Payload", NAMESPACE_SUFFIX)
+_WRAPPER_FIELDS = ("nodes", "edges", "pageInfo")
+_WRAPPER_SUFFIXES = ("Payload", NAMESPACE_SUFFIX)
 _WORD_RE = re.compile(r"[A-Z][a-z0-9]*")
 
 
@@ -94,7 +98,15 @@ class ApiIndex:
                     walk(bt, f"{prefix}{fname}.", root or fname, depth + 1)
 
         walk(self.query_type, "", None, 0)
-        return ops
+        return sorted(ops, key=lambda o: (".preview." in o.path, o.path))
+
+    def _is_wrapper(self, name: str) -> bool:
+        fields = self.types.get(name, {}).get("fields", {})
+        return name.endswith(_WRAPPER_SUFFIXES) or any(f in fields for f in _WRAPPER_FIELDS)
+
+    def _is_entity(self, name: str) -> bool:
+        info = self.types.get(name, {})
+        return info.get("kind") == "OBJECT" and "Node" in info.get("interfaces", [])
 
     def _writes(self, target: str) -> list[Operation]:
         ops: list[Operation] = []
@@ -115,8 +127,12 @@ class ApiIndex:
         longer = [n[len(prefix):] for n in self.types
                   if n.startswith(prefix + stem) and len(n) > len(prefix + stem)]
         ops: list[Operation] = []
-        for mname in sorted(self.types.get(self.mutation_type, {}).get("fields", {})):
+        mutations = self.types.get(self.mutation_type, {}).get("fields", {})
+        for mname in sorted(mutations):
             if mname in exclude or not mname.startswith(prefix.lower()):
+                continue
+            payload_fields = self.types.get(base_type(mutations[mname]), {}).get("fields", {})
+            if any(self._is_entity(base_type(r)) and base_type(r) != target for r in payload_fields.values()):
                 continue
             rest = mname[len(prefix):]
             verb = _WORD_RE.match(rest)
@@ -133,16 +149,16 @@ class ApiIndex:
         return ops
 
     def _reached_via(self, target: str) -> list[str]:
-        found: list[str] = []
-        for tname, info in sorted(self.types.items()):
-            if tname in (self.query_type, self.mutation_type) or tname.endswith(_WRAPPER_SUFFIXES):
+        found: list[tuple[bool, str]] = []
+        for tname, info in self.types.items():
+            if tname in (self.query_type, self.mutation_type, target) or self._is_wrapper(tname):
                 continue
             if info.get("kind") not in ("OBJECT", "INTERFACE"):
                 continue
-            for fname, ref in sorted(info.get("fields", {}).items()):
-                if base_type(ref) == target:
-                    found.append(f"{tname}.{fname}")
-        return found[:MAX_REACHED_VIA]
+            for fname, ref in info.get("fields", {}).items():
+                if self._resolves(base_type(ref), target) is not None:
+                    found.append((not self._is_entity(tname), f"{tname}.{fname}"))
+        return [path for _, path in sorted(found)][:MAX_REACHED_VIA]
 
     def links_for(self, type_name: str) -> Optional[ApiLinks]:
         info = self.types.get(type_name)
