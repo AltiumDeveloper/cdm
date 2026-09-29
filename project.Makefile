@@ -89,3 +89,7 @@ gendoc: $(DOCDIR)
 # Refresh checked-in Platform API and Nexar schema snapshots (network)
 refresh-api-snapshot:
 	$(RUN) cdm-api-snapshot --out-dir src/docs/api
+
+# Verify every registry URL against the live page (network); --update records last_verified
+verify-links:
+	$(RUN) cdm-verify-links --registry src/docs/links/registry.yaml
