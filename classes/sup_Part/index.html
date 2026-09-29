@@ -301,6 +301,54 @@
 
 
 
+  class pro_GlobalBOM["Global BOM"]
+
+
+
+      style pro_GlobalBOM fill:#dd7e6b    
+
+
+          pro_GlobalBOM --&gt; "*" sup_Part: parts 
+          click pro_GlobalBOM href "../../classes/pro_GlobalBOM/"
+
+
+
+
+
+
+
+
+
+  class pro_BomItemAlternate["BOM Item Alternate"]
+
+
+
+      style pro_BomItemAlternate fill:#dd7e6b    
+
+
+          pro_BomItemAlternate --&gt; "0..1" sup_Part: part 
+          click pro_BomItemAlternate href "../../classes/pro_BomItemAlternate/"
+
+
+
+
+
+
+  class pro_BomItemSubstitute["BOM Item Substitute"]
+
+
+
+      style pro_BomItemSubstitute fill:#dd7e6b    
+
+
+          pro_BomItemSubstitute --&gt; "0..1" sup_Part: part 
+          click pro_BomItemSubstitute href "../../classes/pro_BomItemSubstitute/"
+
+
+
+
+
+
   class sup_PartGroup["Part Group"]
 
 

@@ -280,15 +280,11 @@
 
 
 
-      pro_BomItemAlternate --&gt; "0..1" lib_Part : part
-      click lib_Part href "../../classes/lib_Part/"
+      pro_BomItemAlternate --&gt; "0..1" Any : part
+      click Any href "../../classes/Any/"
 
 
-  class lib_Part["Part"]
-
-
-
-      style lib_Part fill:#ffe599    
+  class Any["Any"]
 
 
 
@@ -381,8 +377,8 @@
 <tr>
 <td><a href="../../slots/pro_BomItemElement_part">part</a></td>
 <td><code>0..1</code></td>
-<td><a href="../lib_Part/">Part</a></td>
-<td>TBD</td>
+<td><a href="../lib_Part/">Part</a> or <br/><a href="../sup_Part/">Part</a></td>
+<td>The Part this element resolves to - a workspace library Part for workspace BOMs, or a supply Part for BOMs that live outside a workspace (e.g. Global BOM).</td>
 <td><a href="../pro_BomItemElement/">pro_BomItemElement</a></td>
 </tr>
 <tr>

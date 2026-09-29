@@ -193,7 +193,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="field-part-pro_bomitemelement_part">Field: part (pro_BomItemElement_part)</h1>
-<p><em>TBD</em></p>
+<p><em>The Part this element resolves to - a workspace library Part for workspace BOMs, or a supply Part for BOMs that live outside a workspace (e.g. Global BOM).</em></p>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/procurement/BomItemElement_part">https://w3id.org/altium/cdm/procurement/BomItemElement_part</a></p>
 <p>Alias: part</p>
 <!-- no inheritance hierarchy -->
@@ -208,8 +208,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/pro_BomItemSubstitute/">BOM Item Substitute </a></td>
-<td>Substitute is a replacement of a part by another within an individual BOM</td>
+<td><a href="../../classes/pro_BomItemElement/">BOM Item Element </a></td>
+<td>An element (part) that might be used for a particular BOM item</td>
 <td>no</td>
 </tr>
 <tr>
@@ -218,21 +218,22 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/pro_BomItemElement/">BOM Item Element </a></td>
-<td>An element (part) that might be used for a particular BOM item</td>
+<td><a href="../../classes/pro_BomItemSubstitute/">BOM Item Substitute </a></td>
+<td>Substitute is a replacement of a part by another within an individual BOM</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../../classes/lib_Part/">lib_Part</a></li>
+<li>Range: <a href="../../classes/Any/">Any</a> or <br/><a href="../../classes/lib_Part/">lib_Part</a> or <br/><a href="../../classes/sup_Part/">sup_Part</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pro_BomItemElement_part</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TBD</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The Part this element resolves to - a workspace library Part for workspace</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">BOMs, or a supply Part for BOMs that live outside a workspace (e.g. Global BOM).</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">part</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/altium/cdm/</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pro:BomItemElement_part</span>
@@ -240,9 +241,12 @@
 <span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pro_BomItemElement</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pro_BomItemElement</span>
-<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib_Part</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Any</span>
 <span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">any_of</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib_Part</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sup_Part</span>
 </code></pre></div>
 </details>
 </article>
