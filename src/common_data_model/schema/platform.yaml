@@ -176,7 +176,7 @@ classes:
     extensions:
       - tag: documentation
         value:
-          - description: Defining Lifecycle Definitions
+          - description: Defining Lifecycle Definitions for a Workspace
             uri: https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions
           - description: Lifecycle Management
             uri: https://www.altium.com/documentation/altium-365/lifecycle-management
