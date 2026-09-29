@@ -14,11 +14,30 @@ https://www.altium.com/documentation/altium-365/management-specific-project:
   anchors:
   - SAMPYM
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/part-source-configuration:
+  title: Part Source Configuration
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-29'
 https://www.altium.com/documentation/altium-365/viewers/manufacturing-package-viewer:
   title: Viewing Manufacturing Packages
   source: altium-docs
   product: altium-365
   anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/workflow-part-requests:
+  title: Part Requests
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/workspace-components:
+  title: Workspace Components
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - view_edit_part_choices
   last_verified: '2026-09-29'
 https://www.altium.com/documentation/altium-365/workspace-projects:
   title: Workspace Projects
@@ -34,6 +53,53 @@ https://www.altium.com/documentation/altium-designer/accessing-defining-managing
   anchors:
   - parameters
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/components-libraries:
+  title: Building & Maintaining Your Components and Libraries
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - WSL
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/components-libraries/adding-datasheets-component:
+  title: Adding Datasheets to a Component
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component:
+  title: Adding Supply Chain Information to a Component
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - the_part_catalog
+  - part_choices
+  - anatomy_of_a_part_choice
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/components-libraries/creating-pcb-footprint:
+  title: Creating a PCB Footprint
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/components-libraries/creating-schematic-symbol:
+  title: Creating a Schematic Symbol
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/components-libraries/single-component-editing:
+  title: Single Component Editing
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/components-libraries/workspace-component-templates:
+  title: Component Templates
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - UACPDT
+  last_verified: '2026-09-29'
 https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions:
   title: Defining Lifecycle Definitions for a Workspace
   source: altium-docs
@@ -42,6 +108,12 @@ https://www.altium.com/documentation/altium-designer/connected-workspace/definin
   last_verified: '2026-09-29'
 https://www.altium.com/documentation/altium-designer/connected-workspace/defining-naming-schemes:
   title: Defining Revision Naming Schemes for a Workspace
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/connected-workspace/items:
+  title: Working with Items
   source: altium-docs
   product: altium-designer
   anchors: []
@@ -70,6 +142,12 @@ https://www.altium.com/documentation/altium-designer/harness-design:
   product: altium-designer
   anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/interactive-process-workflows/part-requests:
+  title: Process-based Part Requests
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
 https://www.altium.com/documentation/altium-designer/multi-board-design:
   title: Designing with Multiple PCBs
   source: altium-docs
@@ -88,6 +166,25 @@ https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/d
   source: altium-docs
   product: altium-designer
   anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/schematic/design-reuse/reuse-blocks:
+  title: Working with Reuse Blocks
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets:
+  title: Working with Snippets
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/schematic/design-reuse/workspace-managed-schematic-sheets:
+  title: Working with Managed Schematic Sheets
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - just_what_is_a_managed_schematic_sheet
   last_verified: '2026-09-29'
 https://www.altium.com/documentation/altium-designer/variant-manager:
   title: Working with the Variant Manager

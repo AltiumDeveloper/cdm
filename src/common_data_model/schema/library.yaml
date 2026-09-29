@@ -37,6 +37,19 @@ classes:
         traceability across Altium Designer, Altium 365, and the broader ECAD–MCAD co-design workflow.
     annotations:
       grid: grid:workspace:{workspace-id}:library:component/{id}
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/components-libraries#WSL
+      - https://www.altium.com/documentation/altium-365/workspace-components
+      - https://www.altium.com/documentation/altium-designer/components-libraries/single-component-editing
+    structured_aliases:
+      - literal_form: Workspace component
+        predicate: EXACT_SYNONYM
+        contexts: [altium-designer, altium-365]
+        source: https://www.altium.com/documentation/altium-designer/components-libraries
+      - literal_form: managed component
+        predicate: EXACT_SYNONYM
+        contexts: [altium-365]
+        source: https://www.altium.com/documentation/altium-365/workspace-components
     attributes:
       lib_Component_parameters:
         slot_uri: lib:Component_parameters
@@ -65,6 +78,9 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:library:component-revision/{id}
       platformAPI: DesComponent
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/components-libraries#WSL
+      - https://www.altium.com/documentation/altium-designer/connected-workspace/items
     attributes:
       lib_ComponentRevision_parameters:
         slot_uri: lib:ComponentRevision_parameters
@@ -148,6 +164,8 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:library:component-template/{id}
       platformAPI: DesComponentTemplate
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/components-libraries/workspace-component-templates
     slots:
       - core_revisions
     slot_usage:
@@ -159,21 +177,32 @@ classes:
     in_subset: library
     class_uri: lib:ComponentTemplateRevision
     title: Component Template Revision
-    description: TBD
+    description: >-
+      A revision of a Component Template: the template definition, stored as a *.CMPT document, saved into the
+      Workspace at one point in time. A component revision can be linked to a specific template revision, from which
+      it takes its predefined parameters and settings.
     mixins:
       - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:component-template-revision/{id}
       platformAPI: DesComponentTemplateRevision
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/components-libraries/workspace-component-templates
+      - https://www.altium.com/documentation/altium-designer/connected-workspace/items
 
   lib_ComponentParameter:
     is_a: core_Resource
     in_subset: library
     class_uri: lib:ComponentParameter
     title: Component Parameter
-    description: TBD
+    description: >-
+      A named parameter of a Workspace component, holding a value and, optionally, a data type. Parameters can come
+      from a referenced component template, where their types can be unit-aware (e.g. Farad, Ohm) or
+      dictionary-defined, or can be added to the component as user-defined parameters.
     annotations:
       platformAPI: DesComponentParameter
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/components-libraries/workspace-component-templates#UACPDT
     attributes:
       lib_ComponentParameter_name:
         slot_uri: lib:ComponentParameter_name
@@ -214,6 +243,17 @@ classes:
         and accurate electrical connectivity throughout the design process.
     annotations:
       grid: grid:workspace:{workspace-id}:library:symbol/{id}
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/components-libraries/creating-schematic-symbol
+    structured_aliases:
+      - literal_form: Workspace Symbol
+        predicate: EXACT_SYNONYM
+        contexts: [altium-designer]
+        source: https://www.altium.com/documentation/altium-designer/components-libraries/creating-schematic-symbol
+      - literal_form: schematic symbol
+        predicate: RELATED_SYNONYM
+        contexts: [altium-designer]
+        source: https://www.altium.com/documentation/altium-designer/components-libraries/creating-schematic-symbol
     slots:
       - core_revisions
     slot_usage:
@@ -225,12 +265,18 @@ classes:
     in_subset: library
     class_uri: lib:SymbolRevision
     title: Symbol Revision
-    description: TBD
+    description: >-
+      A revision of a Symbol: the schematic symbol as saved into the Workspace at one point in time, with its own
+      lifecycle state. Editing a Workspace Symbol saves it into the next revision; components that still link to an
+      earlier revision become out of date until they are updated.
     mixins:
       - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:symbol-revision/{id}
       platformAPI: DesSymbol
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/components-libraries/creating-schematic-symbol
+      - https://www.altium.com/documentation/altium-designer/connected-workspace/items
 
   lib_Footprint:
     is_a: core_Artifact
@@ -246,6 +292,17 @@ classes:
         and compatibility with fabrication and MCAD workflows within Altium Designer and Altium 365.
     annotations:
       grid: grid:workspace:{workspace-id}:library:footprint/{id}
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/components-libraries/creating-pcb-footprint
+    structured_aliases:
+      - literal_form: Workspace Footprint
+        predicate: EXACT_SYNONYM
+        contexts: [altium-designer]
+        source: https://www.altium.com/documentation/altium-designer/components-libraries/creating-pcb-footprint
+      - literal_form: PCB footprint
+        predicate: RELATED_SYNONYM
+        contexts: [altium-designer]
+        source: https://www.altium.com/documentation/altium-designer/components-libraries/creating-pcb-footprint
     slots:
       - core_revisions
     slot_usage:
@@ -257,24 +314,39 @@ classes:
     in_subset: library
     class_uri: lib:FootprintRevision
     title: Footprint Revision
-    description: TBD
+    description: >-
+      A revision of a Footprint: the PCB footprint as saved into the Workspace at one point in time, with its own
+      lifecycle state. Editing a Workspace Footprint saves it into the next revision; components that still link to an
+      earlier revision become out of date until they are updated.
     mixins:
       - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:footprint-revision/{id}
       platformAPI: DesFootprint
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/components-libraries/creating-pcb-footprint
+      - https://www.altium.com/documentation/altium-designer/connected-workspace/items
 
   lib_Part:
     is_a: core_Artifact
     in_subset: library
     class_uri: lib:Part
     title: Part
-    description: TBD
-    aliases:
-      - Managed Part
+    description: >-
+      A manufacturer part, identified by manufacturer and part number, as held in the Workspace's Part Catalog
+      together with the supplier parts through which it is sold. Workspace components reference manufacturer parts
+      through their Part Choices.
     annotations:
       grid: grid:workspace:{workspace-id}:library:part/{id}
       platformAPI: DesPart
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component#the_part_catalog
+      - https://www.altium.com/documentation/altium-365/part-source-configuration
+    structured_aliases:
+      - literal_form: Manufacturer Part
+        predicate: EXACT_SYNONYM
+        contexts: [altium-designer, altium-365]
+        source: https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component
 
   lib_Datasheet:
     is_a: core_Artifact
@@ -291,6 +363,8 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:library:datasheet/{id}
       platformAPI: DesDatasheet
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/components-libraries/adding-datasheets-component
 
   lib_PartRequest:
     is_a: core_Activity
@@ -307,19 +381,26 @@ classes:
         before the Part becomes available for use in projects.
     annotations:
       grid: grid:workspace:{workspace-id}:library:part-request/{id}
+    see_also:
+      - https://www.altium.com/documentation/altium-365/workflow-part-requests
+      - https://www.altium.com/documentation/altium-designer/interactive-process-workflows/part-requests
 
   lib_ReuseBlock:
     is_a: core_Artifact
     in_subset: library
     class_uri: lib:ReuseBlock
     title: Reuse Block
-    description: >- 
-      TBD
+    description: >-
+      A reusable section of a design stored in a Workspace, typically combining schematic circuitry with its PCB
+      representation; a block can also be schematic-only or PCB-only. When a reuse block is placed on a schematic
+      sheet, its PCB representation is placed in the PCB document during the ECO process.
     comments:
       - TBD
     annotations:
       grid: grid:workspace:{workspace-id}:library:reuse-block/{id}
       platformAPI: DesReuseBlock
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/schematic/design-reuse/reuse-blocks
     slots:
       - core_revisions
     slot_usage:
@@ -331,12 +412,17 @@ classes:
     in_subset: library
     class_uri: lib:ReuseBlockRevision
     title: Reuse Block Revision
-    description: TBD
+    description: >-
+      A revision of a Reuse Block: its schematic and/or PCB content as saved into the Workspace at one point in time,
+      with its own lifecycle state. Editing a reuse block saves it into the next revision.
     mixins:
       - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:reuse-block-revision/{id}
       platformAPI: DesReuseBlockRevision
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/schematic/design-reuse/reuse-blocks
+      - https://www.altium.com/documentation/altium-designer/connected-workspace/items
     slots:
       - lib_consists_of_components
     attributes:
@@ -364,12 +450,21 @@ classes:
     in_subset: library
     class_uri: lib:ManagedSheet
     title: Managed Sheet
-    description: >- 
-      TBD
+    description: >-
+      A schematic sheet, with its components and wiring, stored in a Workspace so that it can be reused in other
+      designs. A managed sheet can be the top of a tree of other managed sheets, and the Workspace lets you trace
+      which components it contains and which designs use it.
     comments:
       - TBD
     annotations:
       grid: grid:workspace:{workspace-id}:library:managed-sheet/{id}
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/schematic/design-reuse/workspace-managed-schematic-sheets#just_what_is_a_managed_schematic_sheet
+    structured_aliases:
+      - literal_form: managed schematic sheet
+        predicate: EXACT_SYNONYM
+        contexts: [altium-designer]
+        source: https://www.altium.com/documentation/altium-designer/schematic/design-reuse/workspace-managed-schematic-sheets
     slots:
       - core_revisions
     slot_usage:
@@ -381,11 +476,17 @@ classes:
     in_subset: library
     class_uri: lib:ManagedSheetRevision
     title: Managed Sheet Revision
-    description: TBD
+    description: >-
+      A revision of a Managed Sheet: the schematic sheet as saved into the Workspace at one point in time. A design
+      uses a specific revision, so when the sheet is revised, existing designs can be updated to the new revision or
+      kept on the previous one.
     mixins:
       - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:library:managed-sheet-revision/{id}
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/schematic/design-reuse/workspace-managed-schematic-sheets#just_what_is_a_managed_schematic_sheet
+      - https://www.altium.com/documentation/altium-designer/connected-workspace/items
     slots:
       - lib_consists_of_components
     attributes:
@@ -406,7 +507,17 @@ classes:
     in_subset: library
     class_uri: lib:SchSnippet
     title: SCH Snippet
-    description: TBD
+    description: >-
+      A selection of circuitry from a single schematic sheet, including its components, saved so that it can be placed
+      in other designs. A snippet saved to a Workspace is revised like other Workspace items; snippets can also be
+      kept in local folders.
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets
+    structured_aliases:
+      - literal_form: schematic snippet
+        predicate: EXACT_SYNONYM
+        contexts: [altium-designer]
+        source: https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets
     slots:
       - core_revisions
     slot_usage:
@@ -418,7 +529,12 @@ classes:
     in_subset: library
     class_uri: lib:SchSnippetRevision
     title: SCH Snippet Revision
-    description: TBD
+    description: >-
+      A revision of a schematic snippet as saved into the Workspace at one point in time. Editing a Workspace snippet
+      saves it into the next revision.
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets
+      - https://www.altium.com/documentation/altium-designer/connected-workspace/items
     mixins:
       - plt_HasLifecycle
 
@@ -427,7 +543,12 @@ classes:
     in_subset: library
     class_uri: lib:PcbSnippet
     title: PCB Snippet
-    description: TBD
+    description: >-
+      A selection of circuitry from a PCB design, including its components and routing, saved so that it can be placed
+      in other PCB documents. A snippet saved to a Workspace is revised like other Workspace items; snippets can also
+      be kept in local folders.
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets
     slots:
       - core_revisions
     slot_usage:
@@ -439,7 +560,12 @@ classes:
     in_subset: library
     class_uri: lib:PcbSnippetRevision
     title: PCB Snippet Revision
-    description: TBD
+    description: >-
+      A revision of a PCB snippet as saved into the Workspace at one point in time. Editing a Workspace snippet saves
+      it into the next revision.
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets
+      - https://www.altium.com/documentation/altium-designer/connected-workspace/items
     mixins:
       - plt_HasLifecycle
 
@@ -448,7 +574,13 @@ classes:
     in_subset: library
     class_uri: lib:PartChoiceList
     title: Part Choice List
-    description: TBD
+    description: >-
+      The list of Part Choices for a component: the manufacturer parts that may be used to implement it on the
+      assembled board. In the product the list is associated with the component and seen by all of its revisions; when
+      part choice revision control is enabled, changing the list saves a new component revision.
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component#part_choices
+      - https://www.altium.com/documentation/altium-365/workspace-components#view_edit_part_choices
     attributes:
       lib_PartChoiceList_partChoices:
         slot_uri: lib:PartChoiceList_partChoices
@@ -464,7 +596,13 @@ classes:
     in_subset: library
     class_uri: lib:PartChoice
     title: Part Choice
-    description: TBD
+    description: >-
+      One entry in a component's Part Choice list: a manufacturer part, rather than a specific supplier, that may be
+      used to implement the component, bringing with it the offers of the suppliers that sell it. Entries can be
+      ranked; the top-ranked choice is the one the component uses by default, for example in a BOM.
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component#anatomy_of_a_part_choice
+      - https://www.altium.com/documentation/altium-365/workspace-components#view_edit_part_choices
     attributes:
       lib_PartChoice_rank:
         slot_uri: lib:PartChoice_rank
