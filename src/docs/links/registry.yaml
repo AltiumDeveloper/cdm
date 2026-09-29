@@ -28,6 +28,13 @@ https://www.altium.com/documentation/altium-365/bom-portal/error-detection-corre
   product: altium-365
   anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/bom-portal/sourced-manufacturer-supplier-data:
+  title: Sourced Manufacturer and Supplier Data
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - order_list
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/bom-portal/workspace-components-integration:
   title: Workspace Components Integration
   source: altium-docs
@@ -101,7 +108,9 @@ https://www.altium.com/documentation/altium-365/renesas-365:
   title: Renesas 365
   source: altium-docs
   product: altium-365
-  anchors: []
+  anchors:
+  - import_project
+  - linking_an_evaluation_kit
   last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/requirements-integration:
   title: Working with Requirements
@@ -278,6 +287,13 @@ https://www.altium.com/documentation/altium-designer/components-libraries/creati
   product: altium-designer
   anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/components-libraries/searching-manufacturer-parts:
+  title: Searching for Manufacturer Parts
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - manufacturer_and_supplier_data
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-designer/components-libraries/single-component-editing:
   title: Single Component Editing
   source: altium-docs
@@ -411,6 +427,12 @@ https://www.altium.com/documentation/altium-designer/working-renesas-365-solutio
   last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/realms:
   title: Realms
+  source: altium-dev-center
+  product: altium-developer-center
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-developer-center/octopart/api:
+  title: Octopart API
   source: altium-dev-center
   product: altium-developer-center
   anchors: []
