@@ -50,6 +50,10 @@ classes:
         predicate: EXACT_SYNONYM
         contexts: [altium-365]
         source: https://www.altium.com/documentation/altium-365/workspace-components
+      - literal_form: library component
+        predicate: EXACT_SYNONYM
+        contexts: [altium-365]
+        source: https://www.altium.com/documentation/altium-365/workspace-components
     attributes:
       lib_Component_parameters:
         slot_uri: lib:Component_parameters
@@ -80,6 +84,7 @@ classes:
       platformAPI: DesComponent
     see_also:
       - https://www.altium.com/documentation/altium-designer/components-libraries#WSL
+      - https://www.altium.com/documentation/altium-designer/components-libraries/single-component-editing
       - https://www.altium.com/documentation/altium-designer/connected-workspace/items
     attributes:
       lib_ComponentRevision_parameters:
@@ -180,7 +185,7 @@ classes:
     description: >-
       A revision of a Component Template: the template definition, stored as a *.CMPT document, saved into the
       Workspace at one point in time. A component revision can be linked to a specific template revision, from which
-      it takes its predefined parameters and settings.
+      it takes its predefined parameters, models and settings.
     mixins:
       - plt_HasLifecycle
     annotations:
@@ -196,9 +201,9 @@ classes:
     class_uri: lib:ComponentParameter
     title: Component Parameter
     description: >-
-      A named parameter of a Workspace component, holding a value and, optionally, a data type. Parameters can come
-      from a referenced component template, where their types can be unit-aware (e.g. Farad, Ohm) or
-      dictionary-defined, or can be added to the component as user-defined parameters.
+      A named parameter of a Workspace component, holding a value and, optionally, a data type. Parameters can be
+      inherited from a component template or added directly to the component; a template can give them unit-aware
+      (e.g. Farad, Ohm) or dictionary-defined types.
     annotations:
       platformAPI: DesComponentParameter
     see_also:
@@ -392,8 +397,8 @@ classes:
     title: Reuse Block
     description: >-
       A reusable section of a design stored in a Workspace, typically combining schematic circuitry with its PCB
-      representation; a block can also be schematic-only or PCB-only. When a reuse block is placed on a schematic
-      sheet, its PCB representation is placed in the PCB document during the ECO process.
+      representation; a block can also be schematic-only or PCB-only. Placing a reuse block on a schematic sheet
+      brings its PCB content into the board design when changes are transferred through an ECO.
     comments:
       - TBD
     annotations:
@@ -452,8 +457,8 @@ classes:
     title: Managed Sheet
     description: >-
       A schematic sheet, with its components and wiring, stored in a Workspace so that it can be reused in other
-      designs. A managed sheet can be the top of a tree of other managed sheets, and the Workspace lets you trace
-      which components it contains and which designs use it.
+      designs. A managed sheet may itself contain further managed sheets beneath it in a hierarchy, and the Workspace
+      lets you trace which components it contains and which designs use it.
     comments:
       - TBD
     annotations:
@@ -598,8 +603,9 @@ classes:
     title: Part Choice
     description: >-
       One entry in a component's Part Choice list: a manufacturer part, rather than a specific supplier, that may be
-      used to implement the component, bringing with it the offers of the suppliers that sell it. Entries can be
-      ranked; the top-ranked choice is the one the component uses by default, for example in a BOM.
+      used to implement the component, bringing with it the offers of the suppliers that sell it. Entries are ranked
+      automatically by availability, price and lifecycle, and users can override the order with their own rank; the
+      top preferred entry is used as the component's part choice in a BOM.
     see_also:
       - https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component#anatomy_of_a_part_choice
       - https://www.altium.com/documentation/altium-365/workspace-components#view_edit_part_choices
