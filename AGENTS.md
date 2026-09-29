@@ -36,7 +36,7 @@ All mixins extend `core_Meta` (abstract). They are applied via `instantiates:` o
 |-------|-----------|---------|
 | `core_WithGRID` | `core_Entity` | `grid:` annotation slot (type `GRID`, base: `str`) |
 | `core_WithMaturity` | `core_Entity` | `maturity:` slot (enum: `EXPERIMENTAL`, `PRODUCTION`, `OBSOLETE`) |
-| `core_WithPlatformAPI` | `core_Entity`, `core_Resource` | `platformAPI:` slot (string — API type name) |
+| `core_WithPlatformAPI` | `core_Entity`, `core_Resource` | `platformAPI:` and `nexarAPI:` slots (string — API type names) |
 | `core_WithVault` | domain classes | `contentType:` slot (enum `VaultContentType`) |
 
 ### Full Class Hierarchy
@@ -47,7 +47,7 @@ linkml:Any
 ├── core_Meta (abstract)
 │   ├── core_WithGRID          — mixin: grid annotation
 │   ├── core_WithMaturity      — mixin: maturity annotation
-│   ├── core_WithPlatformAPI   — mixin: platform API type name
+│   ├── core_WithPlatformAPI   — mixin: platformAPI / nexarAPI type names
 │   ├── core_WithVault         — mixin: vault content type
 │   └── core_WithVaultLink     — mixin: vault link parent/child
 ├── core_Resource (abstract)   — instantiates: core_WithPlatformAPI
@@ -105,7 +105,9 @@ types:
   GRID:
     uri: core:grid
     base: str
-    description: Global Resource ID. Format grid:area:[tenant-id]:context:resource-type/resource-id
+    description: >-
+      Global Resource ID. Format grid:area:[tenant-id]:context:resource-type/resource-id, see
+      https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/grid
 ```
 
 Every `Entity` carries a `core_id` slot of type `GRID`. The type is a plain string — no URN prefix at the LinkML level; the platform enforces the format.
@@ -445,7 +447,7 @@ CDM uses two complementary layers to track schema violations:
 
 | Layer | File | Role | Updated by |
 |-------|------|------|------------|
-| Machine record | `cdm-lint.yaml` | Authoritative baseline — lists every element that currently emits a lint warning or error. The linter promotes violations from errors to warnings for anything in this file, preventing CI breakage on pre-existing issues. | `poetry run cdm-lint --baseline-out cdm-lint.yaml` (automated) |
+| Machine record | `cdm-lint.yaml` | Authoritative baseline — lists elements whose errors are downgraded to warnings (advisory warnings such as LINT-08, DOC-02 and DOC-05 are not baselined). The linter promotes violations from errors to warnings for anything in this file, preventing CI breakage on pre-existing issues. | `poetry run cdm-lint --baseline-out cdm-lint.yaml` (automated) |
 | Editorial record | `VIOLATIONS.md` | Human-curated tracking for violations worth naming, describing, and prioritising. Not exhaustive — focuses on violations that require coordination (breaking renames, version bumps, consumer impact). | Maintainers manually, via PR |
 
 Both layers must be kept in sync. When a violation is fixed, both files must be updated.
@@ -526,13 +528,13 @@ Follow these steps for any schema addition or modification:
    ```bash
    make lint
    ```
-   Runs `linkml-lint` against all schema files. Fix all errors and warnings before continuing.
+   Runs `linkml-lint` and `cdm-lint` against all schema files. Fix all errors and warnings before continuing.
 
-3. **Run `make validate`**
+3. **Run `make test-schema`**
    ```bash
-   make validate
+   make test-schema
    ```
-   Runs `linkml-validate` to check schema structural correctness and cross-reference integrity.
+   Generates the project from the schema into `tmp/`, which fails if the schema is structurally invalid.
 
 4. **Run `make gen-project`**
    ```bash
@@ -570,9 +572,13 @@ Every class can link three layers: product docs, API, and standards. Rules are e
 | `see_also:` | Official product/documentation pages, most relevant first (first = primary). Read from the class itself, not inherited | Each URL (and `#fragment`) must be in `src/docs/links/registry.yaml` (DOC-01). An empty `#` fragment counts as an anchor and must be listed too |
 | `structured_aliases:` | Product terms for the concept, with `predicate`, `contexts`, `source` URL | `source` must be in the registry (DOC-01) |
 | `annotations.platformAPI` | Altium 365 Platform API GraphQL type. Read from the class itself, not inherited | Must exist in `src/docs/api/platform-schema.json` as OBJECT/INTERFACE/UNION (DOC-03) |
-| `annotations.nexarAPI` | Nexar (Octopart) GraphQL type for supply entities. Read from the class itself, not inherited | Must exist in `src/docs/api/nexar-schema.json` (DOC-03) |
+| `annotations.nexarAPI` | Nexar (Octopart) GraphQL type for supply entities. Read from the class itself, not inherited | Must exist in `src/docs/api/nexar-schema.json` as OBJECT/INTERFACE/UNION (DOC-03) |
 | `exact_mappings` / `close_mappings` / `related_mappings` | External standards (SVD, PDSC, SysML v2, PROV-O, RO/BFO) | Full http(s) URL, or CURIE with prefix `prov:` / `obo:` (DOC-04) |
 | `annotations.productDocs: none` | Declares that no public product documentation exists (after checking) | Silences DOC-05 |
+
+Severities: DOC-01 error, DOC-02 warning (registry entry not used by any class), DOC-03 error,
+DOC-04 error, DOC-05 warning. Errors listed in `cdm-lint.yaml` (buckets `doc_link`, `api_type`,
+`mapping_format`) are downgraded to warnings.
 
 DOC-05 (missing product documentation and API type) applies only to concrete PRODUCTION classes
 descending from `core_Entity`; an absent `maturity` annotation means PRODUCTION.
