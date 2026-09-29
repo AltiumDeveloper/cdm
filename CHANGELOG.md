@@ -1,8 +1,8 @@
 # Changelog
 
 All notable changes to the Common Data Model are documented here.
-Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow the `vX.Y.Z` release tags
-and `version:` in `src/common_data_model/schema/common_data_model.yaml`.
+Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions are the `vX.Y.Z` git release tags
+(the package version is derived from them by poetry-dynamic-versioning; the schema YAML carries no version).
 Breaking changes (renames, removals, cardinality or parent-class changes) are prefixed **BREAKING:**.
 
 ## [Unreleased]
@@ -16,7 +16,6 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - `see_also` replaces `extensions: documentation` for product documentation links.
 - PR CI workflow (`.github/workflows/pr.yaml`) running `make lint` and `tests/cdm_tools`.
 - Governance files `VIOLATIONS.md` and `MODEL-FINDINGS.md`.
-- Schema `version: 0.10.0`.
 
 ### Fixed
 - Platform API type names corrected against production for `des_RuleCheck`, `des_RuleCheckExecution`,
@@ -30,6 +29,6 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - Docs link GraphQL interface types correctly and use the public GRID page.
 - Four `dm_Peripheral*` platformAPI names remain unresolved (not in production); tracked in MODEL-FINDINGS.md MF-050, MF-054–MF-056 and baselined as DOC-03 warnings.
 
-## [0.10.0]
+## [0.0.12]
 
-- Baseline for this changelog (see the v0.10.0 release tag).
+- Baseline for this changelog (see the v0.0.12 release).

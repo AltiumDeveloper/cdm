@@ -483,7 +483,7 @@ Do **not** silently fix violations. Open a PR, reference the VIOLATIONS.md row, 
 1. **NEVER rename a class or slot without a version bump.**
    Class and slot names are part of the public API. Renaming breaks JSON Schema `$ref`s,
    Python datamodel attribute names, SHACL property paths, and downstream consumers.
-   If a rename is required, increment the schema version, add a changelog entry, and
+   If a rename is required, cut a new release (versions are the `vX.Y.Z` git tags), add a changelog entry, and
    coordinate with schema consumers before merging.
 
 2. **NEVER add a new prefix without formal subset approval.**
