@@ -445,7 +445,7 @@ CDM uses two complementary layers to track schema violations:
 
 | Layer | File | Role | Updated by |
 |-------|------|------|------------|
-| Machine record | `cdm-lint.yaml` | Authoritative baseline — lists every element that currently emits a lint warning or error. The linter promotes violations from errors to warnings for anything in this file, preventing CI breakage on pre-existing issues. | `make gen-lint-baseline` (automated) |
+| Machine record | `cdm-lint.yaml` | Authoritative baseline — lists every element that currently emits a lint warning or error. The linter promotes violations from errors to warnings for anything in this file, preventing CI breakage on pre-existing issues. | `poetry run cdm-lint --baseline-out cdm-lint.yaml` (automated) |
 | Editorial record | `VIOLATIONS.md` | Human-curated tracking for violations worth naming, describing, and prioritising. Not exhaustive — focuses on violations that require coordination (breaking renames, version bumps, consumer impact). | Maintainers manually, via PR |
 
 Both layers must be kept in sync. When a violation is fixed, both files must be updated.
@@ -457,7 +457,7 @@ Both layers must be kept in sync. When a violation is fixed, both files must be 
 > 1. **Source YAML no longer contains it** — the element in `src/common_data_model/schema/`
 >    conforms to the naming/metadata convention.
 > 2. **`cdm-lint.yaml` no longer lists it after baseline regeneration** — run
->    `make gen-lint-baseline` and verify the entry is absent. If it still appears, the
+>    `poetry run cdm-lint --baseline-out cdm-lint.yaml` and verify the entry is absent. If it still appears, the
 >    YAML fix is incomplete or incorrect.
 > 3. **`VIOLATIONS.md` row is updated to `Fixed`** — update the Fix Status column and
 >    note the PR/commit that resolved it.
@@ -558,3 +558,44 @@ Follow these steps for any schema addition or modification:
    - Add an entry to `CHANGELOG.md` under the `[Unreleased]` section
    - Tag breaking changes (renames, removals) with `BREAKING:` in the commit message
    - Request review from at least one CDM schema maintainer
+
+---
+
+## 8. Documentation Hub Links
+
+Every class can link three layers: product docs, API, and standards. Rules are enforced by `cdm-lint` (DOC-01…05).
+
+| Field | Purpose | Rule |
+|---|---|---|
+| `see_also:` | Official product/documentation pages, most relevant first (first = primary). Read from the class itself, not inherited | Each URL (and `#fragment`) must be in `src/docs/links/registry.yaml` (DOC-01). An empty `#` fragment counts as an anchor and must be listed too |
+| `structured_aliases:` | Product terms for the concept, with `predicate`, `contexts`, `source` URL | `source` must be in the registry (DOC-01) |
+| `annotations.platformAPI` | Altium 365 Platform API GraphQL type. Read from the class itself, not inherited | Must exist in `src/docs/api/platform-schema.json` as OBJECT/INTERFACE/UNION (DOC-03) |
+| `annotations.nexarAPI` | Nexar (Octopart) GraphQL type for supply entities. Read from the class itself, not inherited | Must exist in `src/docs/api/nexar-schema.json` (DOC-03) |
+| `exact_mappings` / `close_mappings` / `related_mappings` | External standards (SVD, PDSC, SysML v2, PROV-O, RO/BFO) | Full http(s) URL, or CURIE with prefix `prov:` / `obo:` (DOC-04) |
+| `annotations.productDocs: none` | Declares that no public product documentation exists (after checking) | Silences DOC-05 |
+
+DOC-05 (missing product documentation and API type) applies only to concrete PRODUCTION classes
+descending from `core_Entity`; an absent `maturity` annotation means PRODUCTION.
+
+`cdm-lint` must be run from the repository root (so it finds `src/docs/links/registry.yaml` and
+`src/docs/api/`), or with `--registry` / `--api-dir` pointing at them. It exits with code 2 if the
+registry or API snapshot directory is missing.
+
+```yaml
+plt_LifecycleDefinition:
+  annotations:
+    platformAPI: DesLifeCycleDefinition
+  see_also:
+    - https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions
+  structured_aliases:
+    - literal_form: Lifecycle Definition
+      predicate: EXACT_SYNONYM
+      contexts: [altium-designer, altium-365]
+      source: https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions
+```
+
+**Adding a link:** (1) open the page and read it — only link pages that genuinely describe the concept;
+(2) add a registry entry with the exact `<title>` text before `" | "` and any anchors you use;
+(3) add the URL to `see_also`; (4) run `make verify-links` and `make lint`.
+Never guess an API type name — look it up in the snapshot (`make refresh-api-snapshot` to update).
+Semantic disagreements between the CDM and the docs go to `MODEL-FINDINGS.md`, not silently into the schema.
