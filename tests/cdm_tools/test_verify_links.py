@@ -60,3 +60,49 @@ def test_load_sitemap_urls_follows_indexes():
         f"<url><loc>{URL}/</loc></url></urlset>",
     }
     assert load_sitemap_urls("https://s/index.xml", fetch_text=docs.__getitem__) == {URL}
+
+
+# --- network-error robustness (no network) ---
+from urllib.error import URLError  # noqa: E402
+
+from cdm_tools import verify_links  # noqa: E402
+from cdm_tools.registry import dump_registry  # noqa: E402
+
+
+def _tmp_registry(tmp_path):
+    path = tmp_path / "registry.yaml"
+    dump_registry({URL: _entry(anchors=[])}, path)
+    return str(path)
+
+
+def test_fetch_page_maps_os_errors_to_status_zero(monkeypatch):
+    def fake(*args, **kwargs):
+        raise ConnectionResetError("reset by peer")
+
+    monkeypatch.setattr(verify_links, "urlopen", fake)
+    page = verify_links.fetch_page(URL)
+    assert page.status == 0
+    assert page.error and "ConnectionResetError" in page.error
+
+
+def test_check_entry_network_error():
+    page = Page(status=0, final_url=URL, title=None, error="TimeoutError: timed out")
+    assert check_entry(_entry(), page, sitemap=None) == ["network error: TimeoutError: timed out"]
+
+
+def test_main_returns_2_when_sitemap_unavailable(monkeypatch, tmp_path, capsys):
+    def boom(*args, **kwargs):
+        raise URLError("no route")
+
+    monkeypatch.setattr(verify_links, "load_sitemap_urls", boom)
+    assert verify_links.main(["--registry", _tmp_registry(tmp_path)]) == 2
+    assert "--no-sitemap" in capsys.readouterr().err
+
+
+def test_main_exit_codes_without_sitemap(monkeypatch, tmp_path):
+    reg = _tmp_registry(tmp_path)
+    title, ids = parse_page(HTML)
+    monkeypatch.setattr(verify_links, "fetch_page", lambda url: Page(200, URL, title, ids))
+    assert verify_links.main(["--registry", reg, "--no-sitemap"]) == 0
+    monkeypatch.setattr(verify_links, "fetch_page", lambda url: Page(404, URL, None))
+    assert verify_links.main(["--registry", reg, "--no-sitemap"]) == 1

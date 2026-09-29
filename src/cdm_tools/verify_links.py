@@ -7,6 +7,8 @@ from __future__ import annotations
 
 import argparse
 import datetime
+import http.client
+import sys
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
 from html.parser import HTMLParser
@@ -28,6 +30,7 @@ class Page:
     final_url: str
     title: Optional[str]
     ids: set[str] = field(default_factory=set)
+    error: Optional[str] = None
 
 
 class _PageParser(HTMLParser):
@@ -78,8 +81,8 @@ def fetch_page(url: str, timeout: int = 30) -> Page:
             return Page(status=resp.status, final_url=resp.geturl(), title=title, ids=ids)
     except HTTPError as exc:
         return Page(status=exc.code, final_url=url, title=None)
-    except URLError:
-        return Page(status=0, final_url=url, title=None)
+    except (URLError, OSError, http.client.HTTPException) as exc:
+        return Page(status=0, final_url=url, title=None, error=f"{type(exc).__name__}: {exc}")
 
 
 def _norm(url: str) -> str:
@@ -87,6 +90,8 @@ def _norm(url: str) -> str:
 
 
 def check_entry(entry: LinkEntry, page: Page, sitemap: Optional[set[str]]) -> list[str]:
+    if page.status == 0:
+        return [f"network error: {page.error}"]
     if page.status != 200:
         return [f"HTTP {page.status}"]
     problems: list[str] = []
@@ -131,7 +136,16 @@ def main(argv: Optional[list[str]] = None) -> int:
     args = parser.parse_args(argv)
 
     registry = load_registry(args.registry)
-    sitemap = None if args.no_sitemap else load_sitemap_urls()
+    sitemap = None
+    if not args.no_sitemap:
+        try:
+            sitemap = load_sitemap_urls()
+        except (URLError, OSError, http.client.HTTPException, ET.ParseError) as exc:
+            print(
+                f"cdm-verify-links: could not load sitemap ({exc}); rerun with --no-sitemap to skip that check",
+                file=sys.stderr,
+            )
+            return 2
     today = datetime.date.today().isoformat()
     failed = 0
     for url, entry in sorted(registry.items()):
