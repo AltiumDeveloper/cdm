@@ -219,7 +219,7 @@ classes:
     description: Rule check definitions that can be executed against a project to validate design integrity and compliance with specified constraints.
     annotations:
       grid: grid:workspace:{workspace-id}:design:rule-check/{id}
-      platformAPI: RuleCheck_Preview
+      platformAPI: RuleCheck
       maturity: EXPERIMENTAL
 
   des_RuleCheckExecution:
@@ -230,7 +230,7 @@ classes:
     description: Execution of a rule check against a project to validate design integrity and compliance with specified constraints.
     annotations:
       grid: grid:workspace:{workspace-id}:design:rule-check-execution/{id}
-      platformAPI: RuleCheckExecution_Preview
+      platformAPI: RuleCheckExecution
       maturity: EXPERIMENTAL
 
 slots:

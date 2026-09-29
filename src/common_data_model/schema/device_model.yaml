@@ -160,7 +160,7 @@ classes:
       A digital twin of an embedded hardware device as configured for a specific use-case.
       It exposes the device model filtered to specific device configuration.
     annotations:
-      platformAPI: DmConfiguredDeviceModel
+      platformAPI: DmDeviceModelAsConfigured
     slots:
       - core_localId
       - dm_boardName
@@ -216,8 +216,6 @@ classes:
       Represents a physical processing core. Defining endianness and clock 
       frequency allows the system to determine if the hardware can meet 
       the computational and data-ordering requirements of a use-case.
-    annotations:
-      platformAPI: DmProcessor
     attributes:
       dm_Processor_name:
         slot_uri: dm:Processor_name
@@ -257,7 +255,7 @@ classes:
     title: AddressMap
     description: Address map for the device including memory and peripheral regions.
     annotations:
-      platformAPI: DmAddressMap
+      platformAPI: DmAddressMapModel
     attributes:
       dm_AddressMap_segments:
         slot_uri: dm:AddressMap_segments
@@ -374,7 +372,7 @@ classes:
     title: Memory
     description: A memory entry within an address block.
     annotations:
-      platformAPI: DmMemory
+      platformAPI: DmAmMemory
     attributes:
       dm_Memory_name:
         slot_uri: dm:Memory_name
@@ -402,7 +400,7 @@ classes:
     title: Register
     description: A hardware register within an address block.
     annotations:
-      platformAPI: DmRegister
+      platformAPI: DmAmRegister
     mixins:
       - dm_HasAddressRange
     slots:
@@ -449,7 +447,7 @@ classes:
     title: RegisterField
     description: A bit field within a register.
     annotations:
-      platformAPI: DmRegisterField
+      platformAPI: DmAmRegisterField
     slots:
       - core_description
     attributes:
@@ -494,7 +492,7 @@ classes:
     title: FieldEnum
     description: An enumerated value for a register field.
     annotations:
-      platformAPI: DmFieldEnum
+      platformAPI: DmAmFieldEnum
     slots:
       - core_description
     attributes:
@@ -884,7 +882,7 @@ classes:
     title: PortConfigurationEnumValue
     description: An enumerated value for a port configuration.
     annotations:
-      platformAPI: DmPortConfigurationEnumValue
+      platformAPI: DmConfigEnumValue
     slots:
       - core_localId
     attributes:
@@ -911,7 +909,7 @@ classes:
     title: PortConfigurationDependency
     description: A dependency describing how a configuration value maps to GPIO or alternate function usage.
     annotations:
-      platformAPI: DmPortConfigurationDependency
+      platformAPI: DmConfigDependency
     attributes:
       dm_ConfigurationDependency_configRef:
         slot_uri: dm:PortConfigurationDependency_configRef
