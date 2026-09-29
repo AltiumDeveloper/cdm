@@ -37,6 +37,14 @@ classes:
     annotations:
       grid: grid:supply::platform:part/{id}
       nexarAPI: SupPart
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/components-libraries/searching-manufacturer-parts#manufacturer_and_supplier_data
+      - https://www.altium.com/documentation/altium-developer-center/octopart/api
+    structured_aliases:
+      - literal_form: Manufacturer Part
+        predicate: RELATED_SYNONYM
+        contexts: [altium-designer]
+        source: https://www.altium.com/documentation/altium-designer/components-libraries/searching-manufacturer-parts
     attributes:
       sup_Part_mpn:
         alias: mpn
@@ -78,6 +86,14 @@ classes:
     annotations:
       grid: grid:supply::platform:part/{id}/offer/{offerID}
       nexarAPI: SupOffer
+    see_also:
+      - https://www.altium.com/documentation/altium-365/bom-portal/sourced-manufacturer-supplier-data#order_list
+      - https://www.altium.com/documentation/altium-developer-center/octopart/api
+    structured_aliases:
+      - literal_form: Supplier Part
+        predicate: RELATED_SYNONYM
+        contexts: [altium-designer]
+        source: https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component
 
   sup_Company:
     is_a: core_Artifact
@@ -85,8 +101,8 @@ classes:
     class_uri: sup:Company
     title: Company
     description: >-
-      Supply Company represents an organization that provides Parts to the market, 
-      acting as a supplier, distributor, or reseller within the electronics supply chain.
+      Supply Company represents an organization in the electronics supply chain. Depending on context it is
+      the manufacturer of a Part or a distributor (or broker) that sells it.
     comments:
       - Each Supply Company has its own identity and metadata, including contact, regional, and certification details.  
       - It serves as the authoritative entity behind Supply Offers, enabling traceability, supplier qualification, 
@@ -101,7 +117,9 @@ classes:
     class_uri: sup:PartFamily
     title: Part Family
     description: >-
-      TBD
+      A manufacturer's grouping of parts in the supply data, where the kind of family is vendor-specific
+      (e.g. Series or Family). Part families form a hierarchy: a family has either child families or, at the
+      lowest level, Part Groups. Families sharing the same parent are usually close alternatives to one another.
     attributes:
       sup_PartFamily_partGroups:
         alias: partGroups
@@ -129,7 +147,9 @@ classes:
     class_uri: sup:PartGroup
     title: Part Group
     description: >-
-      TBD
+      A leaf of the part family hierarchy in the supply data, holding the parts that belong to it together
+      with group-level information such as its manufacturer, overview, key features, documents and lifecycle
+      status. Groups sharing the same parent family are usually close alternatives to one another.
     annotations:
       grid: grid:supply::platform:part-group/{id}
       platformAPI: SupPartGroup
@@ -156,17 +176,24 @@ classes:
     in_subset: supply
     class_uri: sup:ReferenceDesign
     title: Reference Design
-    description: TBD
+    description: >-
+      An example design published in the supply catalog, bringing together its design files (e.g. schematics
+      and layouts), documentation and the parts it uses. In Renesas 365 a reference design can be imported into
+      a solution, which adds it to the Workspace as a PCB project linked to that solution.
     annotations:
       grid: grid:supply::platform:ref-design/{id}
       platformAPI: SupRefDesign
+    see_also:
+      - https://www.altium.com/documentation/altium-365/renesas-365#import_project
 
   sup_SolutionTemplate:
     is_a: core_Artifact
     in_subset: supply
     class_uri: sup:SolutionTemplate
     title: Solution Template
-    description: TBD
+    description: >-
+      A publisher's template for a solution, held in the supply catalog. It brings together catalog software
+      projects, evaluation kits and a system design (ESD) source, and users can clone it.
     aliases:
       - Reference Solution (obsolete)
     slots:
@@ -191,12 +218,16 @@ classes:
     class_uri: sup:SoftwareProject
     title: Software Project
     description: >-
-      TBD
+      A software project published in the supply catalog, together with the evaluation kits it is compatible
+      with. In Renesas 365 it can be imported into a solution with a compatible eval kit; the import places the
+      project in the Workspace and links it to the solution (see sft_SoftwareProject).
     slots:
       - sup_eval_kits
     annotations:
       grid: grid:supply::platform:software-project/{id}
       platformAPI: SupSoftwareProject
+    see_also:
+      - https://www.altium.com/documentation/altium-365/renesas-365#import_project
 
   sup_EvalKit:
     is_a: core_Artifact
@@ -204,10 +235,19 @@ classes:
     class_uri: sup:EvalKit
     title: Evaluation Kit
     description: >-
-      TBD
+      A vendor evaluation kit in the supply catalog, described by its associated devices, its reference designs
+      (including a main one) and the software projects compatible with it. In Renesas 365 an eval kit can be
+      linked to a solution, and the browser can connect to the kit over J-Link.
     annotations:
       grid: grid:supply::platform:eval-kit/{id}
       platformAPI: SupEvalKit
+    see_also:
+      - https://www.altium.com/documentation/altium-365/renesas-365#linking_an_evaluation_kit
+    structured_aliases:
+      - literal_form: Eval Kit
+        predicate: EXACT_SYNONYM
+        contexts: [altium-365]
+        source: https://www.altium.com/documentation/altium-365/renesas-365
 
 slots:
 
