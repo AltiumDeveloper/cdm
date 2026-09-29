@@ -34,6 +34,12 @@ https://www.altium.com/documentation/altium-365/bom-portal/workspace-components-
   product: altium-365
   anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/environment-configuration-management:
+  title: Environment Configuration Management
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/inviting-users:
   title: Inviting other Users to Your Workspace
   source: altium-docs
@@ -53,6 +59,12 @@ https://www.altium.com/documentation/altium-365/management-specific-project:
   anchors:
   - SAMPYM
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/managing-environment-configurations:
+  title: Managing Environment Configurations
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/managing-workspace-membership:
   title: Managing Workspace Membership
   source: altium-docs
@@ -284,6 +296,13 @@ https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/d
   product: altium-designer
   anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/schematic/creating-templates:
+  title: Creating a Schematic Template
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - creating_workspace_schematic_template
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-designer/schematic/design-reuse/reuse-blocks:
   title: Working with Reuse Blocks
   source: altium-docs
