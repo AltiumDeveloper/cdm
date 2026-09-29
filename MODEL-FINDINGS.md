@@ -18,10 +18,10 @@ Nothing here is changed without owner confirmation.
 | MF-005 | `lib_ManagedSheet` | Docs allow a hierarchy of managed sheets; no sheet→sheet relation | `altium-designer/schematic/design-reuse/workspace-managed-schematic-sheets` | additive | library | Needs SME |
 | MF-006 | `lib_PartRequest` | Missing outcome, assignee and resulting component | `altium-365/workflow-part-requests` | additive | library | Needs SME |
 | MF-007 | `des_ProjectRelease` | `core_Activity` but described as immutable snapshot; no link to data sets or variants | `altium-designer/preparing-for-manufacture/design-release` | breaking | design | Needs SME |
-| MF-008 | `des_ProjectParameter` | Does not state server-side (Workspace) vs design-side (`*.PrjPcb`) parameters | `altium-365/workspace-projects#project_parameters` | description | design | Needs SME |
+| MF-008 | `des_ProjectParameter` | Does not state server-side (Workspace) vs design-side (`*.PrjPcb`) parameters | `altium-365/workspace-projects#project_parameters` | description | design | Fixed — pending review |
 | MF-009 | `des_MultiboardProject_projects` | Says "PCB projects"; harness projects can also be members | `altium-designer/harness-design#adding_harness_design_project_to_multi_board_project` | description | design | Needs SME |
 | MF-010 | `des_ProjectVariant` | No variant parameters or per-component variations | `altium-designer/design-variants#Types_of_Variations` | gap | design | Needs SME |
-| MF-011 | `des_ProjectTemplate` | Description/comments are near-verbatim from the product page; paraphrase | `altium-designer/creating-project-template` | description | design | Needs SME |
+| MF-011 | `des_ProjectTemplate` | Description/comments are near-verbatim from the product page; paraphrase | `altium-designer/creating-project-template` | description | design | Fixed — pending review |
 | MF-012 | `pro_ManagedBOM` | "Fixed point in time … decoupled" is wrong: stays linked to project and updatable; no ManagedBOM→Project relation | `altium-365/bom-portal#update_project_bom`, `altium-365/workspace-projects#project_to_bom_link` | description | procurement | Needs SME |
 | MF-013 | `pro_BomItemAlternate` | "Global replacement in all BOMs" contradicts per-BOM-line alternates | `altium-365/bom-portal/configuration-options#add_alternate` | description | procurement | Needs SME |
 | MF-014 | `pro_BomItemSubstitute` | "Substitute" is not a BOM Portal term; meaning unclear | `knowledge-base/altium-designer/add-a-substitute-component-in-activebom` | description | procurement | Needs SME |
