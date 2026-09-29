@@ -103,6 +103,62 @@ https://www.altium.com/documentation/altium-365/renesas-365:
   product: altium-365
   anchors: []
   last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-integration:
+  title: Working with Requirements
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - basic_requirements_portal_setup
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-portal/project-module:
+  title: Project Module
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - creating_a_new_requirements_project
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/create-specifications:
+  title: Create Specifications
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/creating-requirements:
+  title: Creating Requirements
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/requirement-fields:
+  title: Requirement Fields
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/requirements-breakdown-process:
+  title: Requirements Breakdown Process
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-portal/verification-validation-module:
+  title: Verification & Validation Module
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+? https://www.altium.com/documentation/altium-365/requirements-portal/verification-validation-module/flow-1-plan-verification-activities
+: title: 'Flow 1: Plan Verification Activities'
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+? https://www.altium.com/documentation/altium-365/requirements-systems-portal/requirements-module/requirement-versioning-and-releasing
+: title: Requirement Versioning and Releasing
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/tasks:
   title: Working with Tasks
   source: altium-docs

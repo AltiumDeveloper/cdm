@@ -33,6 +33,10 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:requirement/{id}
       maturity: EXPERIMENTAL
+    see_also:
+      - https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/requirement-fields
+      - https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/creating-requirements
+      - https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/requirements-breakdown-process
     slots:
       - core_revisions
     slot_usage:
@@ -166,6 +170,8 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:requirement-revision/{id}
       maturity: EXPERIMENTAL
+    see_also:
+      - https://www.altium.com/documentation/altium-365/requirements-systems-portal/requirements-module/requirement-versioning-and-releasing
     slots:
       - core_revisionOf
     slot_usage:
@@ -207,6 +213,13 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:specification/{id}
       maturity: EXPERIMENTAL
+    see_also:
+      - https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/create-specifications
+    structured_aliases:
+      - literal_form: Specification
+        predicate: EXACT_SYNONYM
+        contexts: [altium-365]
+        source: https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/create-specifications
     slots:
       - core_revisions
     slot_usage:
@@ -269,12 +282,22 @@ classes:
     class_uri: req:RequirementBaseline
     title: Requirement Baseline
     description: >-
-      A version-managed release of a specification or subset of requirements approved for execution.
+      A version-managed release of a specification or subset of requirements approved for execution. In the
+      product this corresponds to a released specification (Release Specification). It is not what the product
+      calls a baseline: in the Requirements & Systems Portal (Legacy), a baseline is a named bookmark for a point
+      in time (e.g. a design review) that is used to compare how requirements and values have changed.
     mixins:
       - plt_HasLifecycle
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:baseline/{id}
       maturity: EXPERIMENTAL
+    see_also:
+      - https://www.altium.com/documentation/altium-365/requirements-systems-portal/requirements-module/requirement-versioning-and-releasing
+    structured_aliases:
+      - literal_form: Release Specification
+        predicate: RELATED_SYNONYM
+        contexts: [altium-365]
+        source: https://www.altium.com/documentation/altium-365/requirements-systems-portal/requirements-module/requirement-versioning-and-releasing
     attributes:
       req_RequirementBaseline_identifier:
         alias: identifier
@@ -389,11 +412,16 @@ classes:
       - Provides planning scaffolding comparable to Hardware Projects, enabling traceable alignment
         between requirement deliverables and downstream design artifacts.
       - >-
-        Future linking ideas: establish cross-domain slots that map requirement projects to design
-        projects, and synchronize milestone states via baselines vs. releases.
+        The product already links requirements projects to design projects, through blocks of the
+        Electronics type that are linked to PCB projects (e.g. choosing PCB projects when creating a
+        requirements project creates a linked block and a specification for each); cross-domain slots for
+        this link are not modelled yet. Future idea: synchronize milestone states via baselines vs. releases.
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:project/{id}
       maturity: EXPERIMENTAL
+    see_also:
+      - https://www.altium.com/documentation/altium-365/requirements-portal/project-module#creating_a_new_requirements_project
+      - https://www.altium.com/documentation/altium-365/requirements-integration#basic_requirements_portal_setup
     attributes:
       req_Project_name:
         alias: name
@@ -472,6 +500,14 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:requirements:verification-case/{id}
       maturity: EXPERIMENTAL
+    see_also:
+      - https://www.altium.com/documentation/altium-365/requirements-portal/verification-validation-module
+      - https://www.altium.com/documentation/altium-365/requirements-portal/verification-validation-module/flow-1-plan-verification-activities
+    structured_aliases:
+      - literal_form: V&V Activity
+        predicate: RELATED_SYNONYM
+        contexts: [altium-365]
+        source: https://www.altium.com/documentation/altium-365/requirements-portal/verification-validation-module
     attributes:
       req_VerificationCase_identifier:
         alias: identifier
