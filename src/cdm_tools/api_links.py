@@ -19,7 +19,7 @@ KIND_PATHS = {"OBJECT": "objects", "INTERFACE": "interfaces", "UNION": "unions"}
 NAMESPACE_SUFFIX = "Queries"
 MAX_NAMESPACE_DEPTH = 2
 MAX_REACHED_VIA = 5
-_WRAPPER_FIELDS = ("nodes", "edges", "pageInfo")
+_WRAPPER_FIELDS = ("nodes", "edges", "pageInfo", "cursor")
 _WRAPPER_SUFFIXES = ("Payload", NAMESPACE_SUFFIX)
 _WORD_RE = re.compile(r"[A-Z][a-z0-9]*")
 
@@ -104,6 +104,10 @@ class ApiIndex:
         fields = self.types.get(name, {}).get("fields", {})
         return name.endswith(_WRAPPER_SUFFIXES) or any(f in fields for f in _WRAPPER_FIELDS)
 
+    def _has_id(self, name: str) -> bool:
+        info = self.types.get(name, {})
+        return info.get("kind") == "OBJECT" and "id" in info.get("fields", {})
+
     def _is_entity(self, name: str) -> bool:
         info = self.types.get(name, {})
         return info.get("kind") == "OBJECT" and "Node" in info.get("interfaces", [])
@@ -132,7 +136,7 @@ class ApiIndex:
             if mname in exclude or not mname.startswith(prefix.lower()):
                 continue
             payload_fields = self.types.get(base_type(mutations[mname]), {}).get("fields", {})
-            if any(self._is_entity(base_type(r)) and base_type(r) != target for r in payload_fields.values()):
+            if any(self._has_id(base_type(r)) and base_type(r) != target for r in payload_fields.values()):
                 continue
             rest = mname[len(prefix):]
             verb = _WORD_RE.match(rest)
