@@ -84,6 +84,7 @@
   {%- if h.api -%}
     {%- if h.api.url -%}[`{{ h.api.type_name }}`]({{ h.api.url }}){%- else -%}`{{ h.api.type_name }}`{%- endif -%}
   {%- elif h.nexar -%}[`{{ h.nexar.type_name }}`]({{ h.nexar.url }}) (Nexar)
-  {%- elif h.api_missing or h.nexar_missing -%}`{{ h.api_missing or h.nexar_missing }}` (not in API snapshot)
+  {%- elif h.api_missing -%}`{{ h.api_missing }}` (not in Platform API snapshot)
+  {%- elif h.nexar_missing -%}`{{ h.nexar_missing }}` (not in Nexar API snapshot)
   {%- endif -%}
 {%- endmacro -%}

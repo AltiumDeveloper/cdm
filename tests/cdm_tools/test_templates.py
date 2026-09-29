@@ -112,7 +112,7 @@ def _render_link(h):
 def test_api_type_link_cases():
     assert _render_link(HubView(api=ApiView("DesX", "OBJECT", "https://api/DesX/"))) == "[[`DesX`](https://api/DesX/)]"
     assert _render_link(HubView(api=ApiView("DesX", "OBJECT", None))) == "[`DesX`]"
-    assert _render_link(HubView(api_missing="DmX")) == "[`DmX` (not in API snapshot)]"
+    assert _render_link(HubView(api_missing="DmX")) == "[`DmX` (not in Platform API snapshot)]"
     assert _render_link(HubView()) == "[]"
 
 
@@ -126,4 +126,4 @@ def test_hub_panel_nexar_missing_and_no_kind():
 
 def test_api_type_link_nexar_variants():
     assert _render_link(HubView(nexar=NexarView("SupPart", "https://o"))) == "[[`SupPart`](https://o) (Nexar)]"
-    assert _render_link(HubView(nexar_missing="SupX")) == "[`SupX` (not in API snapshot)]"
+    assert _render_link(HubView(nexar_missing="SupX")) == "[`SupX` (not in Nexar API snapshot)]"
