@@ -79,3 +79,40 @@ def test_write_and_load_snapshots(tmp_path):
     loaded = load_snapshots(tmp_path)
     assert set(loaded) == {"platform"}
     assert loaded["platform"] == json.loads((tmp_path / "platform-schema.json").read_text())
+
+
+def test_fetch_introspection_rejects_partial_data_with_errors():
+    import pytest
+
+    def fake_post(endpoint, payload):
+        return {"data": {"__schema": INTROSPECTION}, "errors": [{"message": "boom"}]}
+
+    with pytest.raises(RuntimeError, match="returned errors"):
+        fetch_introspection("https://api.example/graphql", post=fake_post)
+
+
+def test_fetch_introspection_wraps_request_failures():
+    import urllib.error
+
+    import pytest
+
+    def fake_post(endpoint, payload):
+        raise urllib.error.URLError("no route")
+
+    with pytest.raises(RuntimeError, match="request to https://api.example/graphql failed") as ei:
+        fetch_introspection("https://api.example/graphql", post=fake_post)
+    assert isinstance(ei.value.__cause__, urllib.error.URLError)
+
+
+def test_main_writes_nothing_when_any_target_fails(tmp_path, monkeypatch, capsys):
+    from cdm_tools import api_snapshot
+
+    def fake_fetch(endpoint, post=None):
+        if "nexar" in endpoint:
+            raise RuntimeError("nexar down")
+        return INTROSPECTION
+
+    monkeypatch.setattr(api_snapshot, "fetch_introspection", fake_fetch)
+    assert api_snapshot.main(["--out-dir", str(tmp_path)]) == 1
+    assert list(tmp_path.iterdir()) == []
+    assert "cdm-api-snapshot: nexar down" in capsys.readouterr().err

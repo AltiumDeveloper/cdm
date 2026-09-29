@@ -12,6 +12,8 @@ from __future__ import annotations
 import argparse
 import datetime
 import json
+import sys
+import urllib.error
 import urllib.request
 from pathlib import Path
 from typing import Callable, Optional, Union
@@ -57,7 +59,12 @@ def _post_json(endpoint: str, payload: dict) -> dict:
 
 
 def fetch_introspection(endpoint: str, post: PostFn = _post_json) -> dict:
-    data = post(endpoint, {"query": INTROSPECTION_QUERY})
+    try:
+        data = post(endpoint, {"query": INTROSPECTION_QUERY})
+    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"introspection request to {endpoint} failed: {exc}") from exc
+    if data.get("errors"):
+        raise RuntimeError(f"introspection for {endpoint} returned errors: {data['errors']}")
     schema = (data.get("data") or {}).get("__schema")
     if not schema:
         raise RuntimeError(f"introspection failed for {endpoint}: {data.get('errors')}")
@@ -139,10 +146,17 @@ def main(argv: Optional[list[str]] = None) -> int:
     targets = list(ENDPOINTS) if args.target == "all" else [args.target]
     Path(args.out_dir).mkdir(parents=True, exist_ok=True)
     today = datetime.date.today().isoformat()
-    for target in targets:
+    results = []
+    try:
+        for target in targets:
+            new = to_snapshot(fetch_introspection(ENDPOINTS[target]), ENDPOINTS[target], today)
+            results.append((target, new))
+    except RuntimeError as exc:
+        print(f"cdm-api-snapshot: {exc}", file=sys.stderr)
+        return 1
+    for target, new in results:
         path = Path(args.out_dir) / SNAPSHOT_FILES[target]
         old = load_snapshot(path) if path.is_file() else {"types": {}}
-        new = to_snapshot(fetch_introspection(ENDPOINTS[target]), ENDPOINTS[target], today)
         write_snapshot(new, path)
         print(format_diff(target, diff_snapshots(old, new)))
     return 0
