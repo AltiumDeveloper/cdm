@@ -31,6 +31,8 @@ def build_export(schema_path: str, *, registry_path: str, api_dir: str) -> dict:
     for name, cls in sorted(sv.all_classes().items()):
         if cls.abstract or cls.mixin or name.startswith("core_"):
             continue
+        if name == "Any" or str(cls.class_uri or "").startswith("linkml:"):
+            continue
         ann = cls.annotations or {}
         classes[name] = {
             "title": cls.title,

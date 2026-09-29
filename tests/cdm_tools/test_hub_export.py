@@ -29,6 +29,7 @@ def test_export_content():
     assert c["hub"]["links"][0]["primary"] is True
     assert c["hub"]["api"]["type_name"] == "DesLifeCycleDefinition"
     assert "core_Entity" not in data["classes"]          # abstract/core classes excluded
+    assert "Any" not in data["classes"]                  # linkml:Any excluded
     assert data["schema"]["id"] == "https://w3id.org/altium/cdm/"
 
 
