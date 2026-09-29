@@ -16,9 +16,8 @@ from typing import Callable, Optional
 from jinja2 import Environment
 from linkml.generators.docgen import DocGenerator
 
-from cdm_tools.api_links import ApiIndex
-from cdm_tools.api_snapshot import DEFAULT_API_DIR, load_docs_pages, load_snapshots
-from cdm_tools.hub import build_hub, schema_namespaces
+from cdm_tools.api_snapshot import DEFAULT_API_DIR
+from cdm_tools.hub import build_hub, load_api_layers, schema_namespaces
 from cdm_tools.registry import DEFAULT_REGISTRY_PATH, LinkEntry, RegistryError, load_registry, split_url
 
 
@@ -44,9 +43,9 @@ class CdmDocGenerator(DocGenerator):
         if self.registry_path and Path(self.registry_path).exists():
             registry = load_registry(self.registry_path)
         env.globals["doc_link"] = make_doc_link(registry)
-        snapshots = load_snapshots(self.api_dir) if self.api_dir and Path(self.api_dir).is_dir() else {}
-        platform = ApiIndex(snapshots["platform"], load_docs_pages(self.api_dir)) if "platform" in snapshots else None
-        nexar_types = snapshots["nexar"]["types"] if "nexar" in snapshots else None
+        platform, nexar_types = (
+            load_api_layers(self.api_dir) if self.api_dir and Path(self.api_dir).is_dir() else (None, None)
+        )
         namespaces = schema_namespaces(self.schemaview)
         env.globals["hub"] = lambda element: build_hub(
             element, registry=registry, platform=platform, nexar_types=nexar_types, namespaces=namespaces

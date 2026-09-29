@@ -4,7 +4,7 @@ import pytest
 from linkml_runtime.utils.schemaview import SchemaView
 
 from cdm_tools.api_links import ApiIndex
-from cdm_tools.hub import OCTOPART_API_DOC, build_hub
+from cdm_tools.hub import OCTOPART_API_DOC, build_hub, load_api_layers
 from cdm_tools.registry import LinkEntry
 from tests.cdm_tools.test_api_links import SNAP
 
@@ -128,3 +128,13 @@ def test_schema_namespaces_merges_imports_and_defaults():
     assert ns["sys"] == "https://w3id.org/altium/cdm/system/"
     assert ns["prov"] == "http://www.w3.org/ns/prov#"
     assert ns["obo"] == "http://purl.obolibrary.org/obo/"
+
+
+def test_load_api_layers(tmp_path):
+    from pathlib import Path
+    api_dir = Path(__file__).resolve().parents[2] / "src/docs/api"
+    platform, nexar_types = load_api_layers(api_dir)
+    assert isinstance(platform, ApiIndex) and "DesLifeCycleDefinition" in platform.types
+    assert platform.doc_pages is not None
+    assert isinstance(nexar_types, dict) and nexar_types
+    assert load_api_layers(tmp_path) == (None, None)

@@ -8,9 +8,11 @@ from __future__ import annotations
 
 import dataclasses
 from dataclasses import dataclass, field
-from typing import Optional
+from pathlib import Path
+from typing import Optional, Union
 
 from cdm_tools.api_links import ApiIndex, Operation
+from cdm_tools.api_snapshot import load_docs_pages, load_snapshots
 from cdm_tools.registry import LinkEntry, split_url
 
 OCTOPART_API_DOC = "https://www.altium.com/documentation/altium-developer-center/octopart/api"
@@ -81,6 +83,14 @@ class HubView:
 
     def to_dict(self) -> dict:
         return dataclasses.asdict(self)
+
+
+def load_api_layers(api_dir: Union[str, Path]) -> tuple[Optional[ApiIndex], Optional[dict]]:
+    """Return (Platform ApiIndex with docs pages, Nexar types) from the snapshots in *api_dir*; None for absent ones."""
+    snapshots = load_snapshots(api_dir)
+    platform = ApiIndex(snapshots["platform"], load_docs_pages(api_dir)) if "platform" in snapshots else None
+    nexar_types = snapshots["nexar"]["types"] if "nexar" in snapshots else None
+    return platform, nexar_types
 
 
 def _doc_link(url: str, registry: dict[str, LinkEntry], primary: bool) -> DocLink:

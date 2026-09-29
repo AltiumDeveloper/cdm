@@ -14,9 +14,8 @@ from typing import Optional
 
 from linkml_runtime.utils.schemaview import SchemaView
 
-from cdm_tools.api_links import ApiIndex
-from cdm_tools.api_snapshot import DEFAULT_API_DIR, load_docs_pages, load_snapshots
-from cdm_tools.hub import build_hub, schema_namespaces
+from cdm_tools.api_snapshot import DEFAULT_API_DIR, load_snapshots
+from cdm_tools.hub import build_hub, load_api_layers, schema_namespaces
 from cdm_tools.registry import DEFAULT_REGISTRY_PATH, RegistryError, load_registry
 
 
@@ -24,8 +23,7 @@ def build_export(schema_path: str, *, registry_path: str, api_dir: str) -> dict:
     sv = SchemaView(schema_path)
     registry = load_registry(registry_path)
     snapshots = load_snapshots(api_dir)
-    platform = ApiIndex(snapshots["platform"], load_docs_pages(api_dir)) if "platform" in snapshots else None
-    nexar_types = snapshots["nexar"]["types"] if "nexar" in snapshots else None
+    platform, nexar_types = load_api_layers(api_dir)
     namespaces = schema_namespaces(sv)
     classes: dict[str, dict] = {}
     for name, cls in sorted(sv.all_classes().items()):
