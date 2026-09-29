@@ -105,3 +105,26 @@ def test_to_dict_is_json_ready(sv):
     d = _hub(sv, "ex_Full").to_dict()
     json.dumps(d)
     assert d["api"]["reads"][0]["name"] == "desXById"
+
+
+def test_nexar_missing_from_snapshot(sv):
+    h = build_hub(sv.get_class("ex_Nexar"), registry=REGISTRY, platform=ApiIndex(SNAP),
+                  nexar_types={"Other": {"kind": "OBJECT"}}, namespaces={})
+    assert h.nexar is None and h.nexar_missing == "SupPart"
+
+
+def test_no_platform_snapshot_keeps_type_name(sv):
+    h = build_hub(sv.get_class("ex_Full"), registry=REGISTRY, platform=None, nexar_types=None, namespaces={})
+    assert h.api_missing is None
+    assert h.api.type_name == "DesX" and h.api.kind == "" and h.api.url is None
+    assert h.api.reads == [] and h.api.writes == [] and h.api.write_candidates == []
+
+
+def test_schema_namespaces_merges_imports_and_defaults():
+    from pathlib import Path
+    from cdm_tools.hub import schema_namespaces
+    root = Path(__file__).resolve().parents[2] / "src/common_data_model/schema/common_data_model.yaml"
+    ns = schema_namespaces(SchemaView(str(root)))
+    assert ns["sys"] == "https://w3id.org/altium/cdm/system/"
+    assert ns["prov"] == "http://www.w3.org/ns/prov#"
+    assert ns["obo"] == "http://purl.obolibrary.org/obo/"

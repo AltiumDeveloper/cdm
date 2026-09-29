@@ -37,7 +37,7 @@
 
 !!! abstract "In the API"
 {%- if h.api %}
-    Type: {% if h.api.url %}[`{{ h.api.type_name }}`]({{ h.api.url }}){% else %}`{{ h.api.type_name }}`{% endif %} ({{ h.api.kind | lower }})
+    Type: {% if h.api.url %}[`{{ h.api.type_name }}`]({{ h.api.url }}){% else %}`{{ h.api.type_name }}`{% endif %} {% if h.api.kind %}({{ h.api.kind | lower }}){% endif %}
 {%- if h.api.reads %}
 
     Read: {% for o in h.api.reads %}{{ _op(o) }}{% if not loop.last %}, {% endif %}{% endfor %}
@@ -60,8 +60,12 @@
 {%- endif %}
 {%- elif h.api_missing %}
     `{{ h.api_missing }}` is not in the Platform API snapshot.
-{%- elif not h.nexar %}
+{%- elif not h.nexar and not h.nexar_missing %}
     No Platform API type.
+{%- endif %}
+{%- if h.nexar_missing %}
+
+    `{{ h.nexar_missing }}` is not in the Nexar API snapshot.
 {%- endif %}
 {%- if h.nexar %}
 
@@ -79,7 +83,7 @@
 {%- macro api_type_link(h) -%}
   {%- if h.api -%}
     {%- if h.api.url -%}[`{{ h.api.type_name }}`]({{ h.api.url }}){%- else -%}`{{ h.api.type_name }}`{%- endif -%}
-  {%- elif h.nexar -%}`{{ h.nexar.type_name }}` (Nexar)
-  {%- elif h.api_missing -%}`{{ h.api_missing }}` (not in API snapshot)
+  {%- elif h.nexar -%}[`{{ h.nexar.type_name }}`]({{ h.nexar.url }}) (Nexar)
+  {%- elif h.api_missing or h.nexar_missing -%}`{{ h.api_missing or h.nexar_missing }}` (not in API snapshot)
   {%- endif -%}
 {%- endmacro -%}
