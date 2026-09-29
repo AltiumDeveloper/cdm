@@ -1,7 +1,8 @@
 """
 cdm-hub-export — write the documentation hub for every concrete CDM class as JSON
 (product links and terms, API type and operations, standards mappings, GRID template).
-Validated against src/docs/hub.schema.json; published with the docs site as hub.json.
+Published with the docs site as hub.json (`make gendoc`), together with src/docs/hub.schema.json; the export
+is checked against the schema in the test suite, not at export time.
 """
 
 from __future__ import annotations

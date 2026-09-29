@@ -587,6 +587,8 @@ descending from `core_Entity`; an absent `maturity` annotation means PRODUCTION.
 `src/docs/api/`), or with `--registry` / `--api-dir` pointing at them. It exits with code 2 if the
 registry or API snapshot directory is missing.
 
+Example (illustrative; the real `plt_LifecycleDefinition` does not define `structured_aliases`):
+
 ```yaml
 plt_LifecycleDefinition:
   annotations:
@@ -614,17 +616,21 @@ Semantic disagreements between the CDM and the docs go to `MODEL-FINDINGS.md`, n
 - **In the API** — the Platform API type, then *Read* (queries returning the type directly or through a `*Connection`,
   union or interface, including namespace roots such as `design.ruleCheck.byId`; `preview` namespace reads are listed
   after stable ones), *Write* (mutations whose payload contains the type) and *Write (matched by name)* (mutations
-  named after the type that return only ids; mutations whose payload returns a different entity, i.e. an object type
-  with an `id`, are excluded — verify these before relying on them). When no query returns the type, *Reached via*
-  lists parent fields, following connections, unions and interfaces, entity parents first, skipping wrapper types
-  (connections, edges, payloads, `*Queries` namespaces). Supply entities show the Nexar type, linked to the Octopart
-  API docs. Empty states: "No Platform API type.", "`X` is not in the Platform API snapshot.", "`X` is not in the
-  Nexar API snapshot."
+  named after the type whose payload does not return another object, typically only ids and errors — verify before
+  relying on them). When no query returns the type, *Reached via* lists at most 5 parent fields, following
+  connections, unions and interfaces, entity parents first, skipping wrapper types (connections, edges, payloads,
+  `*Queries` namespaces). Types implementing `Node` can be refetched by GRID with `node(id)` (see the
+  [GRID key concept](https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/grid) page).
+  Supply entities show the Nexar type, linked to the Octopart API docs. Empty states: "No Platform API type.",
+  "`X` is not in the Platform API snapshot.", "`X` is not in the Nexar API snapshot."
 - **In standards** — `*_mappings`.
 
-API links are emitted only for pages listed in `src/docs/api/platform-docs-pages.json`; `make refresh-api-snapshot`
-refreshes the snapshots and that list. The class index tables link API types from the same data.
+API links are emitted only for pages listed in `src/docs/api/platform-docs-pages.json`; if that file is absent, API
+links are emitted unfiltered, and if the Platform snapshot is absent, the type name is shown without links.
+`make refresh-api-snapshot` refreshes the snapshots and that list. The class index tables link API types from the same
+data.
 
-`make gendoc` also writes `hub.json` and `hub.schema.json` (via `cdm-hub-export`) into the site, for tools and AI
-agents. Each class entry has its title, `class_uri`, subset, GRID template and the hub (product links and terms,
-API type with read/write operations, Nexar type, mappings).
+`make gendoc` also writes `hub.json` (via `cdm-hub-export`) into the site and copies `hub.schema.json` next to it, for
+tools and AI agents. `hub.json` is checked against the schema in the test suite, not at export time. Each class entry has its title,
+`class_uri`, subset, GRID template and the hub (product links and terms, API type with read/write operations, Nexar
+type, mappings). Abstract and mixin classes, `core_*` classes and `linkml:Any` are omitted.
