@@ -22,6 +22,7 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
   `dm_FieldEnum`, `dm_PortConfigurationEnumValue`, `dm_PortConfigurationDependency`, `sup_ReferenceDesign`;
   removed from `dm_Processor`; `sup_Part`, `sup_Offer`, `sup_Company` moved to `nexarAPI`.
 - Docs link GraphQL interface types correctly and use the public GRID page.
+- Four `dm_Peripheral*` platformAPI names remain unresolved (not in production); tracked in MODEL-FINDINGS.md MF-050, MF-054–MF-056 and baselined as DOC-03 warnings.
 
 ## [0.10.0]
 
