@@ -1,5 +1,5 @@
 """
-cdm-verify-links — check every URL in the link registry against the live page (design §3.2):
+cdm-verify-links — check every URL in the link registry against the live page:
 HTTP 200 without redirect, <title> matches, listed anchors exist, altium.com URLs are in the sitemap.
 """
 

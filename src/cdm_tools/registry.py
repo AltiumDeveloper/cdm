@@ -1,6 +1,6 @@
 """
 Link registry — the single source of titles and verification state for every external
-documentation URL referenced by the CDM (see design/cdm-doc-hub, §3.1).
+documentation URL referenced by the CDM (see AGENTS.md §8).
 
 Keys are URLs without a fragment. Fragments used by classes must be listed in `anchors`.
 `title` must equal the page <title> text before " | " (checked by cdm-verify-links).
@@ -19,7 +19,7 @@ DEFAULT_REGISTRY_PATH = "src/docs/links/registry.yaml"
 SOURCES = frozenset({"altium-docs", "altium-dev-center", "renesas", "nexar", "standard"})
 
 _HEADER = (
-    "# CDM documentation link registry (design/cdm-doc-hub/2026-09-29-cdm-doc-hub-design.md §3.1)\n"
+    "# CDM documentation link registry (see AGENTS.md §8)\n"
     "# Keyed by URL without fragment. `title` = page <title> text before ' | '.\n"
     "# `anchors` lists every #fragment used by the schema. Verify with: make verify-links\n"
 )

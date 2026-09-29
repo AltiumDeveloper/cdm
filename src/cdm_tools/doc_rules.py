@@ -1,5 +1,5 @@
 """
-Documentation-hub lint rules (design/cdm-doc-hub §3.2).
+Documentation-hub lint rules (see AGENTS.md §8).
 
 DOC-01 error    see_also / structured_aliases.source URL (and #fragment) must be in the link registry
 DOC-02 warning  registry entry not used by any class

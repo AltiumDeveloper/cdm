@@ -1,6 +1,6 @@
 """Pins API type annotations verified against production introspection (2026-09-29).
 
-Phase 1 replaces this with lint rule DOC-03 against a checked-in API snapshot.
+Complements lint rule DOC-03, which checks every annotation against the checked-in API snapshot.
 """
 
 from pathlib import Path

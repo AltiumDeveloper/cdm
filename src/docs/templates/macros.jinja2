@@ -1,5 +1,5 @@
 {#- GraphQL interfaces documented under /types/interfaces/ (verified against production
-    introspection 2026-09-29). Temporary: Phase 2 derives the kind from the API snapshot. -#}
+    introspection 2026-09-29). Temporary until the kind is derived from the API snapshot. -#}
 {%- macro platform_api_url(element) -%}
   {%- if 'platformAPI' in element.annotations -%}
     {%- set name = element.annotations["platformAPI"].value -%}

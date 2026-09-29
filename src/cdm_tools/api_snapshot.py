@@ -1,6 +1,6 @@
 """
 cdm-api-snapshot — capture compact GraphQL schema snapshots of the Altium 365 Platform API
-and the Nexar API, used by lint rule DOC-03 and (Phase 2) to derive API links per CDM class.
+and the Nexar API, used by lint rule DOC-03 to check platformAPI / nexarAPI annotations.
 
 Snapshot format (JSON):
   {"endpoint", "retrieved", "query_type", "mutation_type",

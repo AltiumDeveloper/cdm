@@ -1,7 +1,7 @@
 # Model Findings
 
 Semantic discrepancies between the CDM and official Altium documentation / external standards,
-found during the documentation-hub research (see `design/cdm-doc-hub/research/`).
+found while cross-checking the schema against the product documentation, public APIs and standards (2026-09-29).
 Nothing here is changed without owner confirmation.
 
 **Kinds:** `description` (wording only; may ship with doc work) · `additive` (new slot/relation/value; normal PR) ·
@@ -64,6 +64,6 @@ Nothing here is changed without owner confirmation.
 | MF-051 | `des_Project` GRID | CDM `design:project`; official page's node-query example uses `design:adproject` | `altium-developer-center/altium-365/key-concepts/grid` | description | design | Needs SME |
 | MF-052 | `system_SdmSystemModel`, `system_SdmSystemModelVersion` | Titles contain a double space ("System  Model") | schema-internal | description | system | Needs SME |
 | MF-053 | `plt_UserGroup` | Typo "syncrhonization"; omits license-allocation purpose | `altium-dashboard/managing-groups` | description | platform | Needs SME |
-| MF-054 | `dm_PeripheralConfiguration` | platformAPI `DmPeripheralConfiguration` not in production; candidates `SysSdmDmPeripheralConfiguration` or `DmOpMode` | production introspection 2026-09-29; candidates in design/cdm-doc-hub/research/report-api-technical.md §1 | description | deviceModel | Needs SME |
-| MF-055 | `dm_PeripheralPinConfig` | platformAPI `DmPeripheralPinConfig` not in production; candidates `SysSdmDmPeripheralPinConfig` or `DmModePinConfig` | production introspection 2026-09-29; candidates in design/cdm-doc-hub/research/report-api-technical.md §1 | description | deviceModel | Needs SME |
-| MF-056 | `dm_PeripheralPinDependencyConfig` | platformAPI `DmPeripheralPinDependencyConfig` not in production; candidates `SysSdmDmPeripheralPinDependencyConfig` or `DmDependencyPinConfig` | production introspection 2026-09-29; candidates in design/cdm-doc-hub/research/report-api-technical.md §1 | description | deviceModel | Needs SME |
+| MF-054 | `dm_PeripheralConfiguration` | platformAPI `DmPeripheralConfiguration` not in production; candidates `SysSdmDmPeripheralConfiguration` or `DmOpMode` | production introspection 2026-09-29; candidates matched by type name and field shape | description | deviceModel | Needs SME |
+| MF-055 | `dm_PeripheralPinConfig` | platformAPI `DmPeripheralPinConfig` not in production; candidates `SysSdmDmPeripheralPinConfig` or `DmModePinConfig` | production introspection 2026-09-29; candidates matched by type name and field shape | description | deviceModel | Needs SME |
+| MF-056 | `dm_PeripheralPinDependencyConfig` | platformAPI `DmPeripheralPinDependencyConfig` not in production; candidates `SysSdmDmPeripheralPinDependencyConfig` or `DmDependencyPinConfig` | production introspection 2026-09-29; candidates matched by type name and field shape | description | deviceModel | Needs SME |
