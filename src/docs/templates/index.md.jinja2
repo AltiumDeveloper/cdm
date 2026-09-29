@@ -1,3 +1,4 @@
+{% from "macros.jinja2" import api_type_link with context %}
 
 # {% if schema.title %}{{ schema.title }}{% else %}{{ schema.name }}{% endif %}
 
@@ -38,7 +39,7 @@ IRI: [{{ iri }}]({{ iri }})
 | --- | --- | --- |
 {% for c in classes_in_subset -%}
 {%- if not c.abstract -%}
-| [{{ c.title if c.title else gen.name(c) }} ]( classes/{{ gen.name(c)}}.md ) | {{ c.description }} | {{ c.annotations['platformAPI'].value if 'platformAPI' in c.annotations else '' }} |
+| [{{ c.title if c.title else gen.name(c) }} ]( classes/{{ gen.name(c)}}.md ) | {{ c.description }} | {{ api_type_link(hub(c)) if hub is defined else '' }} |
 {% endif -%}
 {% endfor %}
 

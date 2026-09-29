@@ -93,3 +93,5 @@ def test_rendered_class_page_has_hub_panel(tmp_path):
     sup = (tmp_path / "classes" / "sup_Part.md").read_text(encoding="utf-8")
     assert "Nexar type: `SupPart`" in sup
     assert 'quote "Platform API"' not in page
+    index = (tmp_path / "index.md").read_text(encoding="utf-8")
+    assert "[`DesLifeCycleDefinition`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleDefinition/)" in index
