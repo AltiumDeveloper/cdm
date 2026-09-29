@@ -1,0 +1,138 @@
+"""
+Hub view of a CDM class: the product layer (documentation links, product terms), the API layer
+(Platform API type with Read / Write operations, or Nexar type) and the standards layer (mappings).
+Used by the class page template and by the hub.json export.
+"""
+
+from __future__ import annotations
+
+import dataclasses
+from dataclasses import dataclass, field
+from typing import Optional
+
+from cdm_tools.api_links import ApiIndex, Operation
+from cdm_tools.registry import LinkEntry, split_url
+
+OCTOPART_API_DOC = "https://www.altium.com/documentation/altium-developer-center/octopart/api"
+PREDICATES = {"EXACT_SYNONYM": "exact", "NARROW_SYNONYM": "narrower",
+              "BROAD_SYNONYM": "broader", "RELATED_SYNONYM": "related"}
+MAPPING_FIELDS = [("exact", "exact_mappings"), ("close", "close_mappings"), ("related", "related_mappings"),
+                  ("narrower", "narrow_mappings"), ("broader", "broad_mappings")]
+
+
+@dataclass
+class DocLink:
+    text: str
+    url: str
+    primary: bool
+
+
+@dataclass
+class Term:
+    text: str
+    predicate: Optional[str]
+    contexts: list[str]
+    source: Optional[str]
+
+
+@dataclass
+class OpLink:
+    name: str
+    url: Optional[str]
+    via: Optional[str]
+
+
+@dataclass
+class ApiView:
+    type_name: str
+    kind: str
+    url: Optional[str]
+    reads: list[OpLink] = field(default_factory=list)
+    writes: list[OpLink] = field(default_factory=list)
+    write_candidates: list[OpLink] = field(default_factory=list)
+    reached_via: list[str] = field(default_factory=list)
+    refetchable: bool = False
+
+
+@dataclass
+class NexarView:
+    type_name: str
+    url: str
+
+
+@dataclass
+class Mapping:
+    relation: str
+    text: str
+    url: Optional[str]
+
+
+@dataclass
+class HubView:
+    links: list[DocLink] = field(default_factory=list)
+    terms: list[Term] = field(default_factory=list)
+    product_docs_none: bool = False
+    api: Optional[ApiView] = None
+    api_missing: Optional[str] = None
+    nexar: Optional[NexarView] = None
+    mappings: list[Mapping] = field(default_factory=list)
+
+    def to_dict(self) -> dict:
+        return dataclasses.asdict(self)
+
+
+def _doc_link(url: str, registry: dict[str, LinkEntry], primary: bool) -> DocLink:
+    entry = registry.get(split_url(url)[0])
+    return DocLink(text=entry.display_text if entry else url, url=url, primary=primary)
+
+
+def _terms(cls) -> list[Term]:
+    aliases = cls.structured_aliases or {}
+    values = aliases.values() if isinstance(aliases, dict) else aliases
+    return [Term(text=str(a.literal_form),
+                 predicate=PREDICATES.get(str(a.predicate)) if a.predicate else None,
+                 contexts=[str(c) for c in (a.contexts or [])],
+                 source=str(a.source) if a.source else None) for a in values]
+
+
+def _op(index: ApiIndex, op: Operation) -> OpLink:
+    return OpLink(name=op.path, url=index.operation_url(op), via=op.via)
+
+
+def _mapping(relation: str, value: str, registry: dict[str, LinkEntry], namespaces: dict[str, str]) -> Mapping:
+    if value.startswith(("http://", "https://")):
+        entry = registry.get(split_url(value)[0])
+        return Mapping(relation=relation, text=entry.display_text if entry else value, url=value)
+    prefix, _, local = value.partition(":")
+    base = namespaces.get(prefix)
+    return Mapping(relation=relation, text=value, url=f"{base}{local}" if base else None)
+
+
+def build_hub(cls, *, registry: dict[str, LinkEntry], platform: Optional[ApiIndex],
+              nexar_types: Optional[dict], namespaces: dict[str, str]) -> HubView:
+    ann = cls.annotations or {}
+    hub = HubView(
+        links=[_doc_link(str(u), registry, i == 0) for i, u in enumerate(cls.see_also or [])],
+        terms=_terms(cls),
+        product_docs_none="productDocs" in ann and str(ann["productDocs"].value) == "none",
+        mappings=[_mapping(rel, str(v), registry, namespaces)
+                  for rel, attr in MAPPING_FIELDS for v in (getattr(cls, attr, None) or [])],
+    )
+    if "platformAPI" in ann:
+        name = str(ann["platformAPI"].value)
+        links = platform.links_for(name) if platform else None
+        if links is None:
+            hub.api_missing = name
+        else:
+            hub.api = ApiView(
+                type_name=name, kind=links.kind, url=platform.type_url(name),
+                reads=[_op(platform, o) for o in links.reads],
+                writes=[_op(platform, o) for o in links.writes],
+                write_candidates=[_op(platform, o) for o in links.write_candidates],
+                reached_via=links.reached_via, refetchable=links.refetchable,
+            )
+    if "nexarAPI" in ann:
+        name = str(ann["nexarAPI"].value)
+        if nexar_types is None or name in nexar_types:
+            hub.nexar = NexarView(type_name=name, url=OCTOPART_API_DOC)
+    return hub
