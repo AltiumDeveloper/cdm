@@ -26,10 +26,21 @@ classes:
     class_uri: plt:Organization
     title: Organization
     description: >-
-      TBD
+      An Altium customer organization, represented by its Company Account. The Company Account brings
+      together the organization's users and groups of users, its purchased licenses and the Altium 365
+      Workspaces created for it, along with a company profile (e.g. name, logo and website).
+      Administrators manage it through the Company Dashboard.
     annotations:
       grid: grid:global::platform:organization/{id}
       platformAPI: GloOrganization
+    see_also:
+      - https://www.altium.com/documentation/altium-dashboard
+      - https://www.altium.com/documentation/altium-dashboard/profile
+    structured_aliases:
+      - literal_form: Company Account
+        predicate: EXACT_SYNONYM
+        contexts: [altium-dashboard]
+        source: https://www.altium.com/documentation/altium-dashboard
 
   plt_User:
     is_a: core_Artifact
@@ -37,10 +48,20 @@ classes:
     class_uri: plt:User
     title: User
     description: >-
-      TBD
+      A person identified by a global Altium Account, the identity used for signing in to Altium services. A user
+      can be registered in an organization's Company Account, either added by an administrator or
+      admitted through an approved join request, and can then be given access to licenses through the Company Account's user
+      groups. Access to a Workspace is granted separately, by making the user a member of that Workspace.
     annotations:
       grid: grid:global::platform:user/{id}
       platformAPI: GloUser
+    see_also:
+      - https://www.altium.com/documentation/altium-dashboard/managing-users
+    structured_aliases:
+      - literal_form: Altium Account
+        predicate: RELATED_SYNONYM
+        contexts: [altium-dashboard, altium-365]
+        source: https://www.altium.com/documentation/altium-dashboard/managing-users
 
   plt_UserGroup:
     is_a: core_Artifact
@@ -48,10 +69,16 @@ classes:
     class_uri: plt:UserGroup
     title: User Group
     description: >-
-      A way to group multiple users together (e.g. for the purposes of SCIM syncrhonization). User may be a member of multiple groups.
+      A named group of users within an organization's Company Account, managed in the Company Dashboard.
+      Licenses can be allocated to a group so that its members can use them, and the Group Administrators
+      system group gives its members Dashboard administration rights. A user can belong to any number of
+      groups, groups can be provisioned from an identity provider via SCIM, and they are distinct from the
+      groups defined inside a Workspace.
     annotations:
       grid: grid:global::platform:group/{id}
       platformAPI: GloUserGroup
+    see_also:
+      - https://www.altium.com/documentation/altium-dashboard/managing-groups
 
   plt_Application:
     is_a: core_Artifact
@@ -68,7 +95,7 @@ classes:
     is_a: core_Artifact
     in_subset: platform
     class_uri: plt:EventSubscription
-    title: Subscription
+    title: Event Subscription
     description: >-
       TBD
     annotations:
@@ -83,12 +110,22 @@ classes:
     description: >-
       The top-level entity that plays a role of a closed environment for other entities (members, projects, components, etc.). 
     comments:
-      - Workspace is scoped to a geographical region and ensures that all workspace-related data is stored in a specific location. 
-        This is a major data governance function of the workspaces. 
+      - A Workspace belongs to exactly one realm (e.g. a commercial region such as Europe or US West, GovCloud, or a
+        Single-Tenant Environment), and all of its data is stored and processed in that realm.
+        This is a major data governance function of the workspaces.
       - Typically an organization has a single workspace but large entirprises may have multiple.
     annotations:
       grid: grid:global::platform:workspace/{id}
       platformAPI: DesWorkspace
+    see_also:
+      - https://www.altium.com/documentation/altium-365/workspace
+      - https://www.altium.com/documentation/altium-365/workspace-activation-management
+      - https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/realms
+    structured_aliases:
+      - literal_form: Altium 365 Workspace
+        predicate: EXACT_SYNONYM
+        contexts: [altium-365]
+        source: https://www.altium.com/documentation/altium-365/workspace
     attributes:
       plt_Workspace_environmentConfigurations:
         is_a: core_hasPart
@@ -106,10 +143,21 @@ classes:
     class_uri: plt:WorkspaceUser
     title: Workspace User
     description: >-
-      TBD
+      A person's membership in a particular Workspace, connecting their Altium Account to that Workspace and
+      to the Workspace groups they are assigned to. Members can come from the organization that owns the
+      Workspace or from other organizations, and inviting an outside user does not add them to the owning
+      organization. People who only have a project shared with them (External Share guests) are not members.
     annotations:
       grid: grid:workspace:{workspace-id}:team:user/{id}
       platformAPI: DesWorkspaceUser
+    see_also:
+      - https://www.altium.com/documentation/altium-365/managing-workspace-membership#workspace_members
+      - https://www.altium.com/documentation/altium-365/inviting-users
+    structured_aliases:
+      - literal_form: Workspace member
+        predicate: EXACT_SYNONYM
+        contexts: [altium-365]
+        source: https://www.altium.com/documentation/altium-365/managing-workspace-membership
 
   plt_WorkspaceGroup:
     is_a: core_Artifact
@@ -126,16 +174,30 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:team:group/{id}
       platformAPI: DesWorkspaceGroup
+    see_also:
+      - https://www.altium.com/documentation/altium-365/managing-workspace-membership#admin_groups
 
   plt_Solution:
     is_a: core_Activity
     in_subset: platform
     class_uri: plt:Solution
     title: Solution
-    description: TBD
+    description: >-
+      A Renesas 365 solution: the main, top-level object of a Renesas 365 Workspace, which brings together
+      the system design (an ESD document), PCB projects and software projects of one system. The projects
+      exchange changes with the solution's System Data Model (SDM) by pushing and pulling, and Altium
+      Designer can open a solution to reach its linked PCB projects and pull SDM changes into them.
     annotations:
       grid: grid:workspace:{workspace-id}:platform:solution/{id}
       platformAPI: SolSolution
+    see_also:
+      - https://www.altium.com/documentation/altium-365/renesas-365
+      - https://www.altium.com/documentation/altium-designer/working-renesas-365-solutions
+    structured_aliases:
+      - literal_form: Renesas 365 solution
+        predicate: EXACT_SYNONYM
+        contexts: [altium-365, altium-designer]
+        source: https://www.altium.com/documentation/altium-365/renesas-365
     slots:
       - core_releases
     slot_usage:
@@ -161,6 +223,7 @@ classes:
       Release of the Solution. This is a formal immutable artifact, representing a specific state of the Solution at the time of release.  
     annotations:
       grid: grid:workspace:{workspace-id}:platform:solution-release/{id}
+      productDocs: none
 
   plt_LifecycleDefinition:
     is_a: core_Artifact
@@ -191,10 +254,15 @@ classes:
     in_subset: platform
     class_uri: plt:LifecycleStage
     title: Lifecycle Stage
-    description: TBD
+    description: >-
+      A named stage that groups lifecycle states in a lifecycle definition using the Advanced management
+      style (e.g. Design, Prototype, Production), indicating how far a revision has progressed in its
+      development. Stages can be linked to the levels of the revision naming scheme. Definitions using the
+      Simple style have states and transitions but no stages.
     annotations:
       platformAPI: DesLifeCycleStage
     see_also:
+      - https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions
       - https://www.altium.com/documentation/altium-365/lifecycle-management
     attributes:
       plt_LifecycleStage_name:
@@ -219,10 +287,16 @@ classes:
     in_subset: platform
     class_uri: plt:LifecycleState
     title: Lifecycle State
-    description: TBD
+    description: >-
+      A named point in an Item Revision's lifecycle (e.g. Planned, New From Design, In Production, Obsolete)
+      that shows its status from a business perspective. Each state's properties include whether revisions in
+      that state are shown in the Explorer panel and whether they may be used in designs; a revision moves to
+      another state only through a transition defined in its lifecycle definition.
     annotations:
       platformAPI: DesLifeCycleState
     see_also:
+      - https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions#options_and_controls_of_the_state_properties_dialog
+      - https://www.altium.com/documentation/altium-designer/connected-workspace/items/managing-revision-lifecycle
       - https://www.altium.com/documentation/altium-365/lifecycle-management
     attributes:
       plt_LifecycleState_name:
@@ -240,7 +314,11 @@ classes:
     in_subset: platform
     class_uri: plt:NamingScheme
     title: Revision Naming Scheme
-    description: TBD
+    description: >-
+      Defines the format of Revision IDs for the Items that use it: one to three levels (e.g. Model, Prototype
+      and Revision), each with its own format, separator and minimum width. The scheme is chosen per Item when
+      the Item is created and cannot be changed after its first release. It is distinct from the Item Naming
+      Scheme, which determines the Item ID rather than the revision's ID.
     annotations:
       grid: grid:workspace:{workspace-id}:platform:revision-naming-scheme/{id}
       platformAPI: DesRevisionNamingScheme
@@ -279,6 +357,8 @@ classes:
     title: Has Lifecycle
     description: >-
       Mixin that adds a lifecycle state reference to an entity.
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/connected-workspace/items/managing-revision-lifecycle
     attributes:
       plt_HasLifecycle_lifecycleState:
         alias: lifecycleState

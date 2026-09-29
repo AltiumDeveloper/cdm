@@ -34,12 +34,18 @@ https://www.altium.com/documentation/altium-365/bom-portal/workspace-components-
   product: altium-365
   anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/inviting-users:
+  title: Inviting other Users to Your Workspace
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/lifecycle-management:
   title: Lifecycle Management
   source: altium-docs
   product: altium-365
   anchors: []
-  last_verified: '2026-09-29'
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/management-specific-project:
   title: Management of a Specific Project
   source: altium-docs
@@ -47,12 +53,26 @@ https://www.altium.com/documentation/altium-365/management-specific-project:
   anchors:
   - SAMPYM
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/managing-workspace-membership:
+  title: Managing Workspace Membership
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - admin_groups
+  - workspace_members
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/part-source-configuration:
   title: Part Source Configuration
   source: altium-docs
   product: altium-365
   anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/renesas-365:
+  title: Renesas 365
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/viewers/manufacturing-package-viewer:
   title: Viewing Manufacturing Packages
   source: altium-docs
@@ -65,6 +85,18 @@ https://www.altium.com/documentation/altium-365/workflow-part-requests:
   product: altium-365
   anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/workspace:
+  title: Altium 365 Workspace
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/workspace-activation-management:
+  title: Activation & Management
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/workspace-components:
   title: Workspace Components
   source: altium-docs
@@ -80,6 +112,30 @@ https://www.altium.com/documentation/altium-365/workspace-projects:
   - project_parameters
   - uploading_or_creating_a_managed_bom
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-dashboard:
+  title: Company Dashboard
+  source: altium-docs
+  product: altium-dashboard
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-dashboard/managing-groups:
+  title: Managing Groups
+  source: altium-docs
+  product: altium-dashboard
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-dashboard/managing-users:
+  title: Managing Users
+  source: altium-docs
+  product: altium-dashboard
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-dashboard/profile:
+  title: Configuring Your Company Profile
+  source: altium-docs
+  product: altium-dashboard
+  anchors: []
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-designer/accessing-defining-managing-project-options:
   title: Accessing, Defining & Managing Project Options
   source: altium-docs
@@ -138,20 +194,27 @@ https://www.altium.com/documentation/altium-designer/connected-workspace/definin
   title: Defining Lifecycle Definitions for a Workspace
   source: altium-docs
   product: altium-designer
-  anchors: []
-  last_verified: '2026-09-29'
+  anchors:
+  - options_and_controls_of_the_state_properties_dialog
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-designer/connected-workspace/defining-naming-schemes:
   title: Defining Revision Naming Schemes for a Workspace
   source: altium-docs
   product: altium-designer
   anchors: []
-  last_verified: '2026-09-29'
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-designer/connected-workspace/items:
   title: Working with Items
   source: altium-docs
   product: altium-designer
   anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/connected-workspace/items/managing-revision-lifecycle:
+  title: Managing Item Revision Lifecycle
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-designer/creating-project-template:
   title: Creating a Project Template
   source: altium-docs
@@ -226,3 +289,15 @@ https://www.altium.com/documentation/altium-designer/variant-manager:
   product: altium-designer
   anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/working-renesas-365-solutions:
+  title: Working with Renesas 365 Solutions
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/realms:
+  title: Realms
+  source: altium-dev-center
+  product: altium-developer-center
+  anchors: []
+  last_verified: '2026-09-30'
