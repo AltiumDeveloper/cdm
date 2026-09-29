@@ -173,13 +173,9 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}
       platformAPI: DesLifeCycleDefinition
-    extensions:
-      - tag: documentation
-        value:
-          - description: Defining Lifecycle Definitions for a Workspace
-            uri: https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions
-          - description: Lifecycle Management
-            uri: https://www.altium.com/documentation/altium-365/lifecycle-management
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions
+      - https://www.altium.com/documentation/altium-365/lifecycle-management
     attributes:
       plt_LifecycleDefinition_stages:
         alias: stages
@@ -198,11 +194,8 @@ classes:
     description: TBD
     annotations:
       platformAPI: DesLifeCycleStage
-    extensions:
-      - tag: documentation
-        value:
-          - description: Lifecycle Management
-            uri: https://www.altium.com/documentation/altium-365/lifecycle-management
+    see_also:
+      - https://www.altium.com/documentation/altium-365/lifecycle-management
     attributes:
       plt_LifecycleStage_name:
         alias: name
@@ -229,11 +222,8 @@ classes:
     description: TBD
     annotations:
       platformAPI: DesLifeCycleState
-    extensions:
-      - tag: documentation
-        value:
-          - description: Lifecycle Management
-            uri: https://www.altium.com/documentation/altium-365/lifecycle-management
+    see_also:
+      - https://www.altium.com/documentation/altium-365/lifecycle-management
     attributes:
       plt_LifecycleState_name:
         alias: name
@@ -254,11 +244,8 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:platform:revision-naming-scheme/{id}
       platformAPI: DesRevisionNamingScheme
-    extensions:
-      - tag: documentation
-        value:
-          - description: Defining Revision Naming Schemes for a Workspace
-            uri: https://www.altium.com/documentation/altium-designer/connected-workspace/defining-naming-schemes
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/connected-workspace/defining-naming-schemes
 
 
   ### Mixins
