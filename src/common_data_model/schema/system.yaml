@@ -398,10 +398,13 @@ classes:
         slot_uri: sys:HasSdmReferenceDesignator_sdmReferenceDesignator
         alias: sdmReferenceDesignator
         title: sdmReferenceDesignator
-        description: Reference designator
+        description: >-
+          Reference designator. Optional because it is assigned by the hardware design tool
+          once parts are placed; producers that compile an SDM earlier in the flow, such as
+          ESD compilation, have no value to supply yet.
         range: string
         multivalued: false
-        required: true
+        required: false
 
   system_SdmClientMetadata:
     is_a: core_Resource
@@ -423,7 +426,7 @@ classes:
   system_SdmSystemModel:
     is_a: core_Activity
     in_subset: system-sdm
-    class_uri: sys:SystemModel
+    class_uri: sys:SdmSystemModel
     title: System  Model
     annotations:
       platformAPI: SysSdmSystemModel
@@ -451,7 +454,7 @@ classes:
   system_SdmSystemModelVersion:
     is_a: core_Artifact
     in_subset: system-sdm
-    class_uri: sys:SystemModelVersion
+    class_uri: sys:SdmSystemModelVersion
     title: System  Model Version
     annotations:
       platformAPI: SysSdmSystemModelVersion
@@ -753,6 +756,8 @@ classes:
     slots:
       - core_localId
       - dm_boardName
+      - dm_deviceFamily
+      - dm_deviceFramework
       - dm_mpn
       - dm_peripherals
       - dm_ports
@@ -857,10 +862,12 @@ classes:
         slot_uri: sys:SdmSoftwareStackInstance_dependencies
         alias: dependencyIds
         title: dependencies
-        description: The software stacks that this instance depends on.
+        description: >-
+          The software stacks that this instance depends on. Optional because the
+          dependency graph must terminate: a leaf instance depends on nothing.
         range: system_SdmSoftwareStackInstance
         multivalued: true
-        required: true
+        required: false
       system_SdmSoftwareStackInstance_peripheralInstance:
         slot_uri: sys:SdmSoftwareStackInstance_peripheralInstance
         alias: peripheralInstanceId

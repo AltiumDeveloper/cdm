@@ -463,8 +463,6 @@ Full tracking details, fix status, and blockers are in **[VIOLATIONS.md](VIOLATI
 
 - **`device_model.yaml`** — slot `db_PortConfiguration_enum_values` uses a `db_` prefix instead
   of the correct `dm_` prefix for the `deviceModel` subset.
-- **`system.yaml`** — class `system_SdmSystemModelVersion` has `class_uri: sys:SystemModelVersion`
-  which is missing the `Sdm` segment; the correct URI would be `sys:SdmSystemModelVersion`.
 - **`device_model.yaml`** — class `dm_port_configuration_enum_value` uses snake_case for the class
   name component; it should be PascalCase: `dm_PortConfigurationEnumValue`.
 
