@@ -109,6 +109,7 @@ https://www.altium.com/documentation/altium-365/requirements-integration:
   product: altium-365
   anchors:
   - basic_requirements_portal_setup
+  - linking_requirements_to_a_design_project
   last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/requirements-portal/project-module:
   title: Project Module
