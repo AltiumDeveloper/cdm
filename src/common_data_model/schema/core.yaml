@@ -192,7 +192,9 @@ types:
   GRID:
     uri: core:grid
     base: str
-    description: Globally unique resource ID
+    description: >-
+      Global Resource ID. Format grid:area:[tenant-id]:context:resource-type/resource-id, see
+      https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/grid
 
   BLOB:
     uri: core:blob
