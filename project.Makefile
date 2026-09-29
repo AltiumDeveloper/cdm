@@ -85,3 +85,7 @@ wizard:
 gendoc: $(DOCDIR)
 	cp -rf $(SRC)/docs/files/* $(DOCDIR) ; \
 	$(RUN) cdm-gendoc --template-directory $(DOCTEMPLATES) -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)
+
+# Refresh checked-in Platform API and Nexar schema snapshots (network)
+refresh-api-snapshot:
+	$(RUN) cdm-api-snapshot --out-dir src/docs/api
