@@ -77,3 +77,24 @@ def test_dump_round_trips(tmp_path):
     dump_registry(reg, out)
     assert load_registry(out) == reg
     assert out.read_text(encoding="utf-8").startswith("# CDM documentation link registry")
+
+
+def test_lookup_empty_fragment_does_not_match(tmp_path):
+    reg = load_registry(_write(tmp_path, SAMPLE))
+    base = "https://www.altium.com/documentation/altium-365/lifecycle-management"
+    assert lookup(reg, base + "#") is None
+
+
+def test_scalar_anchors_are_rejected(tmp_path):
+    with pytest.raises(RegistryError, match="anchors"):
+        load_registry(_write(tmp_path, "https://x.example/:\n  title: X\n  source: standard\n  anchors: states\n"))
+
+
+def test_non_string_source_is_rejected(tmp_path):
+    with pytest.raises(RegistryError, match="source"):
+        load_registry(_write(tmp_path, "https://x.example/:\n  title: X\n  source: [a]\n"))
+
+
+def test_non_mapping_entry_message(tmp_path):
+    with pytest.raises(RegistryError, match="entry must be a mapping with a 'title'"):
+        load_registry(_write(tmp_path, "https://x.example/:\n"))
