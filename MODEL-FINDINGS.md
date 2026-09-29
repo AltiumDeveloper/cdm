@@ -1,0 +1,66 @@
+# Model Findings
+
+Semantic discrepancies between the CDM and official Altium documentation / external standards,
+found during the documentation-hub research (see `design/cdm-doc-hub/research/`).
+Nothing here is changed without owner confirmation.
+
+**Kinds:** `description` (wording only; may ship with doc work) · `additive` (new slot/relation/value; normal PR) ·
+`breaking` (cardinality, range, parent class, relation semantics, rename → version bump + separate PR) ·
+`gap` (product concept without CDM entity → backlog).
+**Status:** Needs SME → Confirmed → Fixed (PR) | Rejected (reason).
+
+| ID | Element | Finding | Evidence | Kind | Context | Status |
+|---|---|---|---|---|---|---|
+| MF-001 | `lib_ComponentRevision_symbols` | Multivalued, but a component references a single symbol | `altium-designer/components-libraries/single-component-editing#support_for_multiple_footprint_models` | breaking | library | Needs SME |
+| MF-002 | `lib_ComponentRevision_partChoiceList` | Required per revision; docs: each component has its own part-choice list, per-revision only with Part Choice Revision Control | `altium-designer/components-libraries/adding-supply-chain-information-component#part_choices`, `#part_choice_revision_control` | breaking | library | Needs SME |
+| MF-003 | `lib_Datasheet` | Says "Component or Part" and has no relation; docs attach datasheets to a component, not a revision | `altium-designer/components-libraries/adding-datasheets-component` | additive | library | Needs SME |
+| MF-004 | `lib_Part` | Alias "Managed Part" collides with the search-panel "Managed Part"; docs entity is a Manufacturer Part in the Part Catalog | `altium-designer/components-libraries/adding-supply-chain-information-component#the_part_catalog` | description | library | Needs SME |
+| MF-005 | `lib_ManagedSheet` | Docs allow a hierarchy of managed sheets; no sheet→sheet relation | `altium-designer/schematic/design-reuse/workspace-managed-schematic-sheets` | additive | library | Needs SME |
+| MF-006 | `lib_PartRequest` | Missing outcome, assignee and resulting component | `altium-365/workflow-part-requests` | additive | library | Needs SME |
+| MF-007 | `des_ProjectRelease` | `core_Activity` but described as immutable snapshot; no link to data sets or variants | `altium-designer/preparing-for-manufacture/design-release` | breaking | design | Needs SME |
+| MF-008 | `des_ProjectParameter` | Does not state server-side (Workspace) vs design-side (`*.PrjPcb`) parameters | `altium-365/workspace-projects#project_parameters` | description | design | Needs SME |
+| MF-009 | `des_MultiboardProject_projects` | Says "PCB projects"; harness projects can also be members | `altium-designer/harness-design#adding_harness_design_project_to_multi_board_project` | description | design | Needs SME |
+| MF-010 | `des_ProjectVariant` | No variant parameters or per-component variations | `altium-designer/design-variants#Types_of_Variations` | gap | design | Needs SME |
+| MF-011 | `des_ProjectTemplate` | Description/comments are near-verbatim from the product page; paraphrase | `altium-designer/creating-project-template` | description | design | Needs SME |
+| MF-012 | `pro_ManagedBOM` | "Fixed point in time … decoupled" is wrong: stays linked to project and updatable; no ManagedBOM→Project relation | `altium-365/bom-portal#update_project_bom`, `altium-365/workspace-projects#project_to_bom_link` | description | procurement | Needs SME |
+| MF-013 | `pro_BomItemAlternate` | "Global replacement in all BOMs" contradicts per-BOM-line alternates | `altium-365/bom-portal/configuration-options#add_alternate` | description | procurement | Needs SME |
+| MF-014 | `pro_BomItemSubstitute` | "Substitute" is not a BOM Portal term; meaning unclear | `knowledge-base/altium-designer/add-a-substitute-component-in-activebom` | description | procurement | Needs SME |
+| MF-015 | `pro_ConsolidatedBOM` | Sources (Managed BOMs/projects, WIP or release, batch size) under-specified | `altium-365/bom-portal/consolidated-bom` | additive | procurement | Needs SME |
+| MF-016 | `pro_BomIssue_severity` | Free string; docs define Fatal Error, Error, Warning, No Report | `altium-365/bom-portal/error-detection-correction` | breaking | procurement | Needs SME |
+| MF-017 | `plt_LifecycleStage_states` | Required stages make Simple-style lifecycles unrepresentable; no transitions, style, initial state | `altium-designer/connected-workspace/defining-lifecycle-definitions` | breaking | platform | Needs SME |
+| MF-018 | `plt_LifecycleState` | Missing "Visible in Vault panels" (isVisible); initial state belongs to definition | `altium-designer/connected-workspace/defining-lifecycle-definitions#options_and_controls_of_the_state_properties_dialog` | additive | platform | Needs SME |
+| MF-019 | `plt_Workspace` | Comment says "region"; docs: every Workspace belongs to exactly one realm | `altium-developer-center/altium-365/key-concepts/realms` | description | platform | Needs SME |
+| MF-020 | `plt_NamingScheme` | Not distinguished from Item Naming Scheme; level/format attributes missing | `altium-designer/connected-workspace/defining-naming-schemes` | description | platform | Needs SME |
+| MF-021 | `plt_User`, `plt_WorkspaceUser`, `plt_Organization` | No User↔WorkspaceUser, User↔Organization, Organization→Workspace relations; no Owner | `altium-365/managing-workspace-membership#workspace_members` | additive | platform | Needs SME |
+| MF-022 | `plt_EventSubscription` | Title "Subscription" collides with license subscriptions in the docs | `altium-developer-center/altium-365/key-concepts/grid` | description | platform | Needs SME |
+| MF-023 | `plt_Solution` | Renesas 365-only concept, not stated | `altium-365/renesas-365#creating_a_new_solution` | description | platform | Needs SME |
+| MF-024 | `con_EnvironmentConfiguration_schematicTemplates` | `is_a: core_hasPart`, but items are shared across configurations; other content types and Roles missing | `altium-365/managing-environment-configurations` | breaking | configuration | Needs SME |
+| MF-025 | `con_SchematicTemplateRevision` | Lacks `plt_HasLifecycle` although every Item Revision has a lifecycle state | `altium-designer/connected-workspace/items/managing-revision-lifecycle` | additive | configuration | Needs SME |
+| MF-026 | `cus_Workflow` | platformAPI is a definition (`DesWorkflowDefinition`) but class is `core_Activity` (instance) | `altium-365/creating-managing-processes` | breaking | customization | Needs SME |
+| MF-027 | `col_CommentThread` | Missing resolved state, target, task link | `altium-365/viewers/web-viewer#commenting` | additive | collaboration | Needs SME |
+| MF-028 | `col_Task` | Missing assignee, comment thread and workflow relations | `altium-365/tasks` | additive | collaboration | Needs SME |
+| MF-029 | `sup_Company` | Described as supplier-only but is the range of `sup_Part_manufacturer`; Nexar: manufacturer or distributor | `altium-developer-center/octopart/api/search` | description | supply | Needs SME |
+| MF-030 | `sup_eval_kits` | `is_a: core_hasPart` (containment); docs/API describe compatible eval kits | `altium-365/renesas-365#import_project` | breaking | supply | Needs SME |
+| MF-031 | `sup_PartFamily`, `sup_PartGroup` | Missing parent/children hierarchy; `alternatives` corresponds to Nexar `siblings` | Nexar GraphQL schema (introspection, 2026-09-29) | additive | supply | Needs SME |
+| MF-032 | `sft_SoftwareProject_deviceConfiguration` | Device configuration is edited on the ESD hardware component (MCU), not a software output | `altium-365/esd#using_the_device_configuration` | breaking | software | Needs SME |
+| MF-033 | `sft_SoftwareProject_aiModels`, `sft_SoftwareRelease_aiModels` | Plural name but `multivalued: false` | schema-internal | breaking | software | Needs SME |
+| MF-034 | `sft_PinAssignmentModel`, `sft_PinAssignment` | Both titled "Device pin assgnment" (typo, duplicate) | schema-internal | description | software | Needs SME |
+| MF-035 | `req_Requirement_parent` | Single-valued containment; product shows a list of Parents, possibly in other specifications | `altium-365/requirements-portal/requirements-module/requirement-fields` | breaking | requirement | Needs SME |
+| MF-036 | requirement subset | No Blocks; product links requirements to design projects through Blocks | `altium-365/requirements-integration#creating_requirements_and_linking_them_to_blocks` | gap | requirement | Needs SME |
+| MF-037 | `req_RequirementBaseline` | Matches product "Release Specification"; product "baseline" is a named point in time | `altium-365/requirements-systems-portal/requirements-module/requirement-versioning-and-releasing` | description | requirement | Needs SME |
+| MF-038 | `req_VerificationCase` | Product "V&V Activity": several methods, results per Run, requirements via V&V Items | `altium-365/requirements-portal/verification-validation-module` | breaking | requirement | Needs SME |
+| MF-039 | `req_RequirementChangeRequest` | No product counterpart | searched Requirements Portal and legacy pages | gap | requirement | Needs SME |
+| MF-040 | `req_Artifact` | `core_Resource` without GRID yet range of trace relations to real entities | schema-internal | breaking | requirement | Needs SME |
+| MF-041 | `req_Project` | Comment calls design-project linking a "future idea"; the product already does it | `altium-365/requirements-portal/project-module#creating_a_new_requirements_project` | description | requirement | Needs SME |
+| MF-042 | `system_FunctionalBlock` | Says "within a PCB design"; functional blocks live in an ESD document and can nest | `altium-365/esd#placing_and_configuring_functional_blocks` | description | system | Needs SME |
+| MF-043 | `system_KeyComponent` | Product calls it "hardware component" | `altium-365/esd#hardware_component` | description | system | Needs SME |
+| MF-044 | `dm_AccessType` | Missing SVD `writeOnce`, `read-writeOnce` | https://open-cmsis-pack.github.io/svd-spec/main/elem_special.html#elem_access | additive | deviceModel | Needs SME |
+| MF-045 | `dm_Processor_clock` | "Operating frequency"; PDSC `Dclock` is the maximum clock frequency | https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_processor | description | deviceModel | Needs SME |
+| MF-046 | `dm_HasAddressRange` | Bytes and absolute address; SVD registers use bit-width and offset from peripheral base | https://open-cmsis-pack.github.io/svd-spec/main/elem_registers.html#elem_register | description | deviceModel | Needs SME |
+| MF-047 | `dm_Memory` | No start address (PDSC `<memory>` requires one) | https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_memory | additive | deviceModel | Needs SME |
+| MF-048 | `dm_AddressBlockType` | {Memory, Peripheral} matches neither SVD nor IP-XACT `usage`; no "reserved" | https://open-cmsis-pack.github.io/svd-spec/main/elem_peripherals.html#elem_addressBlock | description | deviceModel | Needs SME |
+| MF-049 | `dm_PeripheralMode` | Description truncated (ends with a comma) | schema-internal | description | deviceModel | Needs SME |
+| MF-050 | `dm_PeripheralParameter` | Typo "paramter"; platformAPI `DmPeripheralParameters` not in production | schema-internal; production introspection | description | deviceModel | Needs SME |
+| MF-051 | `des_Project` GRID | CDM `design:project`; official page's node-query example uses `design:adproject` | `altium-developer-center/altium-365/key-concepts/grid` | description | design | Needs SME |
+| MF-052 | `system_SdmSystemModel`, `system_SdmSystemModelVersion` | Titles contain a double space ("System  Model") | schema-internal | description | system | Needs SME |
+| MF-053 | `plt_UserGroup` | Typo "syncrhonization"; omits license-allocation purpose | `altium-dashboard/managing-groups` | description | platform | Needs SME |
