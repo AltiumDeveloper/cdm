@@ -79,3 +79,17 @@ lint:
 
 wizard:
 	$(RUN) cdm-wizard
+
+# Doc generation with CDM hub helpers (overrides the template-provided gendoc)
+# Note: cdm-gendoc does not forward GEN_DOC_ARGS; it hard-codes --subfolder-type-separation --preserve-names (the current LINKML_GENERATORS_DOC_ARGS).
+gendoc: $(DOCDIR)
+	cp -rf $(SRC)/docs/files/* $(DOCDIR) ; \
+	$(RUN) cdm-gendoc --template-directory $(DOCTEMPLATES) -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)
+
+# Refresh checked-in Platform API and Nexar schema snapshots (network)
+refresh-api-snapshot:
+	$(RUN) cdm-api-snapshot --out-dir src/docs/api
+
+# Verify every registry URL against the live page (network); --update records last_verified
+verify-links:
+	$(RUN) cdm-verify-links --registry src/docs/links/registry.yaml

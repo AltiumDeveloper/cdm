@@ -10,6 +10,11 @@ grid_format:
   - con_SchematicTemplateRevision
 iri_convention_02:
   - system_SdmMappableEntity
+api_type:
+  - dm_PeripheralConfiguration
+  - dm_PeripheralParameter
+  - dm_PeripheralPinConfig
+  - dm_PeripheralPinDependencyConfig
 missing_metadata:
   description:
     - Any
@@ -166,7 +171,6 @@ missing_metadata:
     - dm_AddressBlock_name
     - dm_AddressBlock_registers
     - dm_AddressBlock_type
-    - dm_AddressMapModel_segments
     - dm_AddressSegment_aliases
     - dm_AddressSegment_blocks
     - dm_AddressSegment_name
@@ -298,6 +302,7 @@ naming_exempt_annotations:
   - contentType
   - grid
   - maturity
+  - nexarAPI
   - platformAPI
   - vaultLinkChild
   - vaultLinkParent

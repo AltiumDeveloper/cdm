@@ -10,6 +10,7 @@ tags:
 ---
 
 {% from "macros.jinja2" import platform_api_url with context %}
+{% from "macros.jinja2" import nexar_api_url with context %}
 {% from "macros.jinja2" import slot_url with context %}
 {% from "macros.jinja2" import slot_range_url with context %}
 
@@ -54,24 +55,23 @@ Bounded context: [{{ element.in_subset[0] }}]( ../subsets/{{ element.in_subset[0
 {% endfor %}
 {% endif %}
 
-{% if 'documentation' in element.extensions %}
-{% set element_documentation = element.extensions["documentation"] %}
+{% if element.see_also %}
 !!! info "Documentation"
-    {% for link in element_documentation.value %}
-    - [{{ link.description }}]({{ link.uri }})
+    {% for url in element.see_also %}
+    - {{ doc_link(url) if doc_link is defined else '<' ~ url ~ '>' }}
     {% endfor %}
 {% endif %}
 
 <div class="grid" markdown>
 
 !!! quote "Platform API"
-    {{ platform_api_url(element) }}
+    {{ platform_api_url(element) }}{{ nexar_api_url(element) }}
 
 !!! quote annotate "GRID (1)"
     {% if 'grid' in element.annotations %}
     ```{{ element.annotations["grid"].value }}```
     {% endif %}
-1.  :man_raising_hand: [Altium Global Resource ID (aka GRID)](https://altiumrd.atlassian.net/wiki/x/AQDQmQ)
+1.  :man_raising_hand: [GRID — Global Resource ID](https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/grid)
 
 </div>
 

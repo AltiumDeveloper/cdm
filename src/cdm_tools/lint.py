@@ -20,6 +20,7 @@ from typing import Optional
 
 from linkml_runtime.utils.schemaview import SchemaView
 
+from cdm_tools.api_snapshot import DEFAULT_API_DIR
 from cdm_tools.conventions import (
     CLASS_NAME_RE,
     SLOT_NAME_RE,
@@ -33,6 +34,8 @@ from cdm_tools.conventions import (
     ALIAS_RE,
     TITLE_UNDERSCORE_RE,
 )
+from cdm_tools.doc_rules import BASELINE_BUCKETS, run_doc_rules
+from cdm_tools.registry import DEFAULT_REGISTRY_PATH, RegistryError, load_registry
 
 # ---------------------------------------------------------------------------
 # YAML line-number extraction
@@ -266,6 +269,7 @@ _NAMING_EXEMPT_ANNOTATIONS: frozenset[str] = frozenset(
     {
         "grid",
         "platformAPI",
+        "nexarAPI",
         "maturity",
         "contentType",
         "vaultLinkParent",
@@ -568,7 +572,13 @@ def validate_url_convention(sv: SchemaView, baseline: set[str]) -> list[LintIssu
 # ---------------------------------------------------------------------------
 
 
-def run_lint(schema_path: str, config_path: Optional[str]) -> list[LintIssue]:
+def run_lint(
+    schema_path: str,
+    config_path: Optional[str],
+    *,
+    registry_path: Optional[str] = None,
+    api_dir: Optional[str] = None,
+) -> list[LintIssue]:
     """
     Load schema via SchemaView and run all CDM convention validators.
 
@@ -728,6 +738,23 @@ def run_lint(schema_path: str, config_path: Optional[str]) -> list[LintIssue]:
         all_baseline_elements.update(s)
     issues.extend(validate_url_convention(sv, all_baseline_elements))
 
+    # --- Documentation hub rules (DOC-01 … DOC-05) ---
+    def locate(element_name: str) -> tuple[str, int]:
+        element = sv.get_element(element_name)
+        file_path = resolve_file(getattr(element, "from_schema", "") or "")
+        return file_path, get_line(file_path, element_name)
+
+    issues.extend(
+        run_doc_rules(
+            sv,
+            locate=locate,
+            is_cdm=_is_cdm_schema,
+            registry_path=registry_path,
+            api_dir=api_dir,
+            baseline=baseline,
+        )
+    )
+
     return issues
 
 
@@ -800,6 +827,10 @@ def _write_baseline(issues: list[LintIssue], path: str) -> None:
                 else "iri_convention_02"
             )
 
+        elif issue.rule_id in BASELINE_BUCKETS:
+            elem = issue.element or "unknown"
+            key = BASELINE_BUCKETS[issue.rule_id]
+
         else:
             continue  # unknown rule — skip
 
@@ -828,6 +859,9 @@ def _write_baseline(issues: list[LintIssue], path: str) -> None:
         "title_format",
         "iri_convention_01",
         "iri_convention_02",
+        "doc_link",
+        "api_type",
+        "mapping_format",
     ]
     meta_keys = sorted(k for k in buckets if k.startswith("missing_metadata."))
     ordered_keys += meta_keys
@@ -900,9 +934,39 @@ def main() -> None:
         metavar="PATH",
         help="Write current violations as a new baseline YAML to PATH and exit 0",
     )
+    parser.add_argument(
+        "--registry",
+        default=DEFAULT_REGISTRY_PATH,
+        help=f"Documentation link registry (default: {DEFAULT_REGISTRY_PATH})",
+    )
+    parser.add_argument(
+        "--api-dir",
+        default=DEFAULT_API_DIR,
+        help=f"Directory with API schema snapshots (default: {DEFAULT_API_DIR})",
+    )
     args = parser.parse_args()
 
-    issues = run_lint(args.schema, args.config)
+    if not os.path.isfile(args.registry):
+        print(
+            f"cdm-lint: link registry not found: {args.registry} "
+            "(run from the repo root or pass --registry)",
+            file=sys.stderr,
+        )
+        sys.exit(2)
+    try:
+        load_registry(args.registry)
+    except RegistryError as exc:
+        print(f"cdm-lint: invalid link registry: {exc}", file=sys.stderr)
+        sys.exit(2)
+    if not os.path.isdir(args.api_dir):
+        print(
+            f"cdm-lint: API snapshot directory not found: {args.api_dir} "
+            "(run from the repo root or pass --api-dir)",
+            file=sys.stderr,
+        )
+        sys.exit(2)
+
+    issues = run_lint(args.schema, args.config, registry_path=args.registry, api_dir=args.api_dir)
 
     if args.baseline_out:
         _write_baseline(issues, args.baseline_out)

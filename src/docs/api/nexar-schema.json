@@ -1,0 +1,7084 @@
+{
+ "endpoint": "https://api.nexar.com/graphql",
+ "mutation_type": "Mutation",
+ "query_type": "Query",
+ "retrieved": "2026-09-29",
+ "types": {
+  "AdmApplication": {
+   "fields": {
+    "createdDate": "DateTime!",
+    "deleted": "Boolean!",
+    "description": "String",
+    "id": "String!",
+    "name": "String!",
+    "organizationId": "String",
+    "scopes": "[AdmApplicationScope!]!",
+    "security": "AdmApplicationSecurity!",
+    "supplyCounts": "AdmSupplyCounts"
+   },
+   "kind": "OBJECT"
+  },
+  "AdmApplicationScope": {
+   "fields": {
+    "applicationId": "String!",
+    "scope": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "AdmApplicationSecurity": {
+   "fields": {
+    "applicationId": "String!",
+    "clientId": "String!",
+    "clientSecret": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "AdmEventType": {
+   "kind": "ENUM"
+  },
+  "AdmEvtCustomEvent": {
+   "fields": {
+    "createdAt": "DateTime!",
+    "customData": "String",
+    "destinationApplicationId": "String!",
+    "id": "String!",
+    "senderApplicationId": "String",
+    "subject": "String",
+    "type": "AdmEventType!",
+    "userId": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "AdmEvtSendAppNotificationInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "AdmEvtSendAppNotificationPayload": {
+   "fields": {
+    "errors": "[AdmRequestError!]",
+    "event": "AdmEvtCustomEvent"
+   },
+   "kind": "OBJECT"
+  },
+  "AdmOrganization": {
+   "fields": {
+    "applications": "[AdmApplication!]!",
+    "createdDate": "DateTime!",
+    "id": "String!",
+    "invitations": "[AdmUserInvitation!]!",
+    "isDefault": "Boolean!",
+    "name": "String!",
+    "users": "[AdmUser!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "AdmRequestError": {
+   "fields": {
+    "code": "String!",
+    "message": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "AdmSupplyCounts": {
+   "fields": {
+    "partCounter": "Int!",
+    "partLimit": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "AdmUser": {
+   "fields": {
+    "createdDate": "DateTime!",
+    "firstName": "String!",
+    "id": "String!",
+    "lastName": "String!",
+    "userName": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "AdmUserInvitation": {
+   "fields": {
+    "accepted": "Boolean!",
+    "email": "String",
+    "organizationId": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "Any": {
+   "kind": "SCALAR"
+  },
+  "ApplyPolicy": {
+   "kind": "ENUM"
+  },
+  "Boolean": {
+   "kind": "SCALAR"
+  },
+  "BooleanOperationFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DatBomAnalysis": {
+   "fields": {
+    "items": "[DatBomPartItem!]!",
+    "level": "DatBomAnalysisLevel!",
+    "message": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatBomAnalysisLevel": {
+   "kind": "ENUM"
+  },
+  "DatBomCategory": {
+   "fields": {
+    "categoryID": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatBomItemInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DatBomPart": {
+   "fields": {
+    "confidence": "Float!",
+    "part": "[SupPart]!",
+    "partId": "String!",
+    "strategy": "DatBomPartSearchStrategy!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatBomPartHistory": {
+   "fields": {
+    "threeMonthGrowthPercentage": "Float!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatBomPartItem": {
+   "fields": {
+    "alternateCandidatePartIds": "[String!]",
+    "itemRefId": "String",
+    "partId": "String!",
+    "quantity": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatBomPartItemInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DatBomPartSearchStrategy": {
+   "kind": "ENUM"
+  },
+  "DatBomPartsResult": {
+   "fields": {
+    "itemRefId": "String",
+    "parts": "[DatBomPart!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatEddiCategory": {
+   "fields": {
+    "id": "Int!",
+    "name": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatEddiCategoryFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DatEddiEdition": {
+   "fields": {
+    "eddiTimeSeries": "[DatEddiTimeSeries!]!",
+    "id": "Int!",
+    "releaseDate": "DateTime!",
+    "title": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatEddiEditionFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DatEddiIndex": {
+   "fields": {
+    "demandIndex": "Float",
+    "indexDate": "DateTime!",
+    "supplyIndex": "Float"
+   },
+   "kind": "OBJECT"
+  },
+  "DatEddiIndexFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DatEddiTimeSeries": {
+   "fields": {
+    "category": "DatEddiCategory",
+    "children": "[DatEddiTimeSeries!]",
+    "indices": "[DatEddiIndex!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatEddiTimeSeriesFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DatError": {
+   "fields": {
+    "message": "String!"
+   },
+   "kind": "INTERFACE",
+   "possible_types": [
+    "DatScrCouldNotDeleteJobError",
+    "DatScrQuotaExceededError",
+    "DatScrSubscriptionNotFoundError"
+   ]
+  },
+  "DatRepDownloadableFile": {
+   "fields": {
+    "downloadUrl": "String!",
+    "report": "DatRepReport!",
+    "urlExpiryDate": "DateTime!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatRepOctopartReport": {
+   "fields": {
+    "companyId": "String!",
+    "createdDate": "DateTime!",
+    "fileSize": "Int!",
+    "fileType": "String!",
+    "id": "String!",
+    "title": "String!"
+   },
+   "interfaces": [
+    "DatRepReport"
+   ],
+   "kind": "OBJECT"
+  },
+  "DatRepOctopartReportRequest": {
+   "fields": {
+    "companyId": "String!",
+    "createdDate": "DateTime!",
+    "id": "String!",
+    "numActiveReports": "Int!",
+    "numDeletedReports": "Int!",
+    "reportTypeId": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatRepOctopartReportRequestError": {
+   "fields": {
+    "message": "String!"
+   },
+   "interfaces": [
+    "Error"
+   ],
+   "kind": "OBJECT"
+  },
+  "DatRepOctopartReportType": {
+   "fields": {
+    "description": "String",
+    "exampleUrl": "String",
+    "frequency": "String",
+    "id": "String!",
+    "name": "String!",
+    "reportFamily": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatRepReport": {
+   "fields": {
+    "createdDate": "DateTime!",
+    "fileSize": "Int!",
+    "fileType": "String!",
+    "id": "String!",
+    "title": "String!"
+   },
+   "kind": "INTERFACE",
+   "possible_types": [
+    "DatRepOctopartReport"
+   ]
+  },
+  "DatRepReportsConnection": {
+   "fields": {
+    "edges": "[DatRepReportsEdge!]",
+    "nodes": "[DatRepReport!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatRepReportsEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DatRepReport!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatRepRequestOctopartReportsError": {
+   "kind": "UNION",
+   "possible_types": [
+    "DatRepOctopartReportRequestError"
+   ]
+  },
+  "DatRepRequestOctopartReportsInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DatRepRequestOctopartReportsPayload": {
+   "fields": {
+    "datRepOctopartReportRequest": "[DatRepOctopartReportRequest!]",
+    "errors": "[DatRepRequestOctopartReportsError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "DatScrColumnMapInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DatScrCouldNotDeleteJobError": {
+   "fields": {
+    "job": "DatScrJob!",
+    "message": "String!"
+   },
+   "interfaces": [
+    "DatError"
+   ],
+   "kind": "OBJECT"
+  },
+  "DatScrCreateJobError": {
+   "kind": "UNION",
+   "possible_types": [
+    "DatScrQuotaExceededError",
+    "DatScrSubscriptionNotFoundError"
+   ]
+  },
+  "DatScrCreateJobInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DatScrCreateJobPayload": {
+   "fields": {
+    "datScrJob": "DatScrJob",
+    "errors": "[DatScrCreateJobError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "DatScrDeleteJobError": {
+   "kind": "UNION",
+   "possible_types": [
+    "DatScrCouldNotDeleteJobError"
+   ]
+  },
+  "DatScrDeleteJobInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DatScrDeleteJobPayload": {
+   "fields": {
+    "datScrJob": "DatScrJob",
+    "errors": "[DatScrDeleteJobError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "DatScrIpnPartInfo": {
+   "fields": {
+    "eau": "Long!",
+    "ipnHistoricalProcurability": "Float!",
+    "partIds": "[String!]!",
+    "weeklyMarketAvailability": "DatScrPartAvailabilitySnapshotConnection"
+   },
+   "kind": "OBJECT"
+  },
+  "DatScrJob": {
+   "fields": {
+    "jobId": "String!",
+    "jobMessage": "String",
+    "jobState": "DatScrJobState!",
+    "label": "String",
+    "runStats": "DatScrRunStats",
+    "uploadDatetime": "DateTime!",
+    "userId": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatScrJobState": {
+   "kind": "ENUM"
+  },
+  "DatScrModelInfo": {
+   "fields": {
+    "predictionHorizonDays": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatScrPartAvailabilitySnapshot": {
+   "fields": {
+    "availability": "Int!",
+    "snapshotStartDate": "DateTime!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatScrPartAvailabilitySnapshotConnection": {
+   "fields": {
+    "edges": "[DatScrPartAvailabilitySnapshotEdge!]",
+    "nodes": "[DatScrPartAvailabilitySnapshot!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatScrPartAvailabilitySnapshotEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DatScrPartAvailabilitySnapshot!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatScrPartInfo": {
+   "fields": {
+    "dailyMarketAvailability": "DatScrPartAvailabilitySnapshotConnection",
+    "eau": "Int!",
+    "estimatedDaysOfSupply": "Int",
+    "historicalProcurability": "Float",
+    "marketAvailability14dAgo": "Int",
+    "marketAvailability21dAgo": "Int",
+    "marketAvailability28dAgo": "Int",
+    "marketAvailability7dAgo": "Int",
+    "marketAvailabilityToday": "Int",
+    "monthlyMarketAvailability": "[DatScrPartAvailabilitySnapshot!]",
+    "partId": "String!",
+    "probableAvailabilityWindow": "Float",
+    "rating": "DatScrPartInfoRating",
+    "weeklyMarketAvailability": "DatScrPartAvailabilitySnapshotConnection"
+   },
+   "kind": "OBJECT"
+  },
+  "DatScrPartInfoInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DatScrPartInfoRating": {
+   "kind": "ENUM"
+  },
+  "DatScrQuotaExceededError": {
+   "fields": {
+    "message": "String!",
+    "quota": "Int!",
+    "usage": "Int!"
+   },
+   "interfaces": [
+    "DatError"
+   ],
+   "kind": "OBJECT"
+  },
+  "DatScrReport": {
+   "fields": {
+    "downloadUrl": "String!",
+    "jobId": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DatScrRunStats": {
+   "fields": {
+    "numDestocked": "Int",
+    "numHpIntervalParts": "Int",
+    "numHpOneParts": "Int",
+    "numHpZeroParts": "Int",
+    "numProc14dAgo": "Int",
+    "numProc21dAgo": "Int",
+    "numProc28dAgo": "Int",
+    "numProc7dAgo": "Int",
+    "numProcCurrent": "Int",
+    "numResolvedParts": "Int",
+    "numRestocked": "Int",
+    "numTotalParts": "Int"
+   },
+   "kind": "OBJECT"
+  },
+  "DatScrSubscriptionNotFoundError": {
+   "fields": {
+    "message": "String!"
+   },
+   "interfaces": [
+    "DatError"
+   ],
+   "kind": "OBJECT"
+  },
+  "DatScrUsage": {
+   "fields": {
+    "countDistinctParts": "Int!",
+    "fromDate": "String!",
+    "quota": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DateTime": {
+   "kind": "SCALAR"
+  },
+  "DateTimeOperationFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "Decimal": {
+   "kind": "SCALAR"
+  },
+  "DesAddComponentPartChoicesInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesAddComponentPartChoicesPayload": {
+   "fields": {
+    "componentId": "ID!",
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesAddDatasheetToComponentInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesAddDatasheetToComponentPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesAddFootprintToComponentInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesAddFootprintToComponentPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesAddUsersToGroupInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesAddUsersToGroupPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesArea": {
+   "fields": {
+    "x": "Float!",
+    "xMils2": "Decimal!",
+    "xMm2": "Decimal!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesAssemblyDrawings": {
+   "fields": {
+    "assemblyDrawingFiles": "[DesDownloadableFile!]!",
+    "downloadUrl": "String",
+    "packageName": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesBom": {
+   "fields": {
+    "bomItems": "[DesBomItem!]!",
+    "items": "DesBomItemConnection"
+   },
+   "kind": "OBJECT"
+  },
+  "DesBomItem": {
+   "fields": {
+    "bomItemInstances": "[DesBomItemInstance!]!",
+    "component": "DesComponent!",
+    "quantity": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesBomItemConnection": {
+   "fields": {
+    "edges": "[DesBomItemEdge!]",
+    "nodes": "[DesBomItem!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesBomItemEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesBomItem!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesBomItemInstance": {
+   "fields": {
+    "alternateComponent": "DesComponent",
+    "designator": "String!",
+    "isFitted": "Boolean!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBendingLine": {
+   "fields": {
+    "affectedRegions": "[String!]",
+    "angle": "Float!",
+    "endPoint": "DesCadPoint!",
+    "foldIndex": "Int!",
+    "radius": "Int!",
+    "startPoint": "DesCadPoint!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBendingLineInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBoard3DBodyModelData": {
+   "fields": {
+    "color": "Long",
+    "downloadToken": "String",
+    "isEcadProvidesRaw3DModel": "Boolean!",
+    "localTestFileName": "String",
+    "modelDisplayName": "String",
+    "modelFileExtension": "String",
+    "modelFileHash": "String",
+    "modelFilePath": "String",
+    "modelIdOnServer": "String",
+    "modelNetName": "String",
+    "modelPartName": "String",
+    "opacity": "Float"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBoard3DBodyModelDataInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBoardArea": {
+   "fields": {
+    "comment": "String",
+    "designator": "String",
+    "location": "DesCadPoint!",
+    "objectType": "DesCadBoardObjectType!",
+    "placement": "DesCadBoardComponentPlacement!",
+    "restrictsCopper": "Boolean!",
+    "restrictsSMDPad": "Boolean!",
+    "restrictsTHPad": "Boolean!",
+    "restrictsTrack": "Boolean!",
+    "restrictsVia": "Boolean!",
+    "rotation": "Float!",
+    "shapeJson": "String",
+    "uniqueId": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBoardAreaInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBoardCollaborationFlag": {
+   "kind": "ENUM"
+  },
+  "DesCadBoardComponent": {
+   "fields": {
+    "boardRegionName": "String",
+    "deepening": "Int!",
+    "designator": "String",
+    "free3DBodyRotationX": "Float!",
+    "free3DBodyRotationY": "Float!",
+    "free3DBodyRotationZ": "Float!",
+    "free3DBodyStandoffHeight": "Int!",
+    "id": "String",
+    "innerBodyRelativeToBoardTransform": "DesCadBodyTransformation",
+    "isFree3DBody": "Boolean!",
+    "isLocked": "Boolean!",
+    "isMcadUsesOwn3DBody": "Boolean!",
+    "location": "DesCadPoint!",
+    "modelInComponentTransform": "DesCadBodyTransformation",
+    "objectType": "DesCadBoardObjectType!",
+    "placement": "DesCadBoardComponentPlacement!",
+    "rotation": "Float!",
+    "variantName": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBoardComponentInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBoardComponentPlacement": {
+   "kind": "ENUM"
+  },
+  "DesCadBoardComponentType": {
+   "fields": {
+    "bodyShape": "DesCadComponentBodyShape",
+    "companyComponentId": "String",
+    "component": "DesComponent",
+    "components": "[DesCadBoardComponent!]",
+    "dmsComponentName": "String",
+    "footprint": "DesFootprint",
+    "footprintReference": "String",
+    "id": "String",
+    "internalId": "String",
+    "isFromLocalPcbLibrary": "Boolean!",
+    "itemGuid": "String",
+    "libraryReference": "String",
+    "properties": "[DesCadProperty!]",
+    "revisionGuid": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBoardComponentTypeInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBoardCopperExportFeature": {
+   "kind": "ENUM"
+  },
+  "DesCadBoardCopperLayer": {
+   "fields": {
+    "isPadAndViaBarrelsSpecialLayer": "Boolean!",
+    "models": "[DesCadBoard3DBodyModelData!]",
+    "name": "String",
+    "platformLayerId": "Int!",
+    "thickness": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBoardCopperLayerInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBoardCopperRegion": {
+   "fields": {
+    "holeShapesJson": "String",
+    "layerName": "String",
+    "outlineShapesJson": "String",
+    "regionType": "DesCadBoardCopperRegionType!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBoardCopperRegionInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBoardCopperRegionType": {
+   "kind": "ENUM"
+  },
+  "DesCadBoardCutout": {
+   "fields": {
+    "associatedComponentDesignator": "String",
+    "designator": "String",
+    "location": "DesCadPoint!",
+    "objectType": "DesCadBoardObjectType!",
+    "originalDesignator": "String",
+    "rotation": "Float!",
+    "shapeJson": "String",
+    "uniqueId": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBoardCutoutInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBoardHole": {
+   "fields": {
+    "associatedComponentDesignator": "String",
+    "counterAngle": "Float!",
+    "counterDepth": "Int!",
+    "counterSize": "Int!",
+    "counterType": "DesCadCounterType!",
+    "designator": "String",
+    "diameter": "Int!",
+    "holeType": "DesCadHoleType!",
+    "isPlated": "Boolean!",
+    "location": "DesCadPoint!",
+    "objectType": "DesCadBoardObjectType!",
+    "originalDesignator": "String",
+    "rotation": "Float!",
+    "size": "DesCadPoint!",
+    "uniqueId": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBoardHoleInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBoardLayer": {
+   "fields": {
+    "layerCategory": "DesCadBoardLayerCategory!",
+    "layerComponentPlacement": "DesCadBoardLayerComponentPlacement!",
+    "layerDielectricType": "DesCadBoardLayerDielectricType!",
+    "layerPhysicalCategory": "DesCadBoardLayerPhysicalCategory!",
+    "layerPosition": "DesCadBoardLayerPosition!",
+    "layerType": "DesCadBoardLayerType!",
+    "name": "String",
+    "platformLayerId": "Int!",
+    "thickness": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBoardLayerCategory": {
+   "kind": "ENUM"
+  },
+  "DesCadBoardLayerComponentPlacement": {
+   "kind": "ENUM"
+  },
+  "DesCadBoardLayerDielectricType": {
+   "kind": "ENUM"
+  },
+  "DesCadBoardLayerInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBoardLayerPhysicalCategory": {
+   "kind": "ENUM"
+  },
+  "DesCadBoardLayerPosition": {
+   "kind": "ENUM"
+  },
+  "DesCadBoardLayerType": {
+   "kind": "ENUM"
+  },
+  "DesCadBoardObjectType": {
+   "kind": "ENUM"
+  },
+  "DesCadBoardPointInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBoardRegion": {
+   "fields": {
+    "color": "Long!",
+    "internalPoint": "DesCadPoint!",
+    "isFlex": "Boolean!",
+    "isLocked3D": "Boolean!",
+    "layers": "[DesCadBoardLayer!]",
+    "name": "String",
+    "regionLayerZBottom": "Int!",
+    "regionLayerZTop": "Int!",
+    "shapeJson": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBoardRegionInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBoardTrack": {
+   "fields": {
+    "layerName": "String",
+    "netName": "String",
+    "points": "[DesCadPoint!]!",
+    "width": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBoardTrackInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBoardVariant": {
+   "fields": {
+    "description": "String",
+    "name": "String",
+    "properties": "[DesCadProperty!]",
+    "uniqueId": "String",
+    "variations": "[DesCadComponentVariation!]"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBoardVariantInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBoardVariants": {
+   "fields": {
+    "componentTypeVariantLibrary": "[DesCadBoardComponentType!]",
+    "variants": "[DesCadBoardVariant!]"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBoardVariantsInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBoardVia": {
+   "fields": {
+    "copperDiameter": "Int!",
+    "endLayerName": "String",
+    "holeDiameter": "Int!",
+    "location": "DesCadPoint!",
+    "startLayerName": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBoardViaInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadBodyTransformation": {
+   "fields": {
+    "rotationX": "Float!",
+    "rotationY": "Float!",
+    "rotationZ": "Float!",
+    "scaleX": "Float!",
+    "scaleY": "Float!",
+    "scaleZ": "Float!",
+    "translationX": "Float!",
+    "translationY": "Float!",
+    "translationZ": "Float!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadBodyTransformationInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadComponentBodyShape": {
+   "fields": {
+    "height": "Int!",
+    "isBodylessOnEcad": "Boolean!",
+    "isHidden": "Boolean!",
+    "modelData": "DesCadBoard3DBodyModelData",
+    "shapeJson": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadComponentBodyShapeInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadComponentVariation": {
+   "fields": {
+    "componentTypeId": "String",
+    "designator": "String",
+    "location": "DesCadPoint!",
+    "modelInComponentTransform": "DesCadBodyTransformation",
+    "placement": "DesCadBoardComponentPlacement!",
+    "rotation": "Float!",
+    "variantKind": "DesCadComponentVariationKind!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadComponentVariationInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadComponentVariationKind": {
+   "kind": "ENUM"
+  },
+  "DesCadCounterType": {
+   "kind": "ENUM"
+  },
+  "DesCadDesign": {
+   "fields": {
+    "boardAreas": "[DesCadBoardArea!]",
+    "boardBendingLines": "[DesCadBendingLine!]",
+    "boardColor": "Long!",
+    "boardCoreColor": "Long",
+    "boardCoreOpacity": "Float",
+    "boardLayers": "[DesCadBoardLayer!]",
+    "boardOffsetMcadToEcadOrigin": "DesCadPoint!",
+    "boardOrigin": "DesCadPoint!",
+    "boardOutlineJson": "String",
+    "boardRegions": "[DesCadBoardRegion!]",
+    "boardSplitLines": "[DesCadSplitLine!]",
+    "boardThickness": "Int!",
+    "collaborationFlags": "[DesCadBoardCollaborationFlag!]!",
+    "componentTypes": "[DesCadBoardComponentType!]",
+    "coordinateSystemTranslation": "DesCadPoint!",
+    "copperExportFeatures": "[DesCadBoardCopperExportFeature!]!",
+    "copperLayers": "[DesCadBoardCopperLayer!]",
+    "copperRegions": "[DesCadBoardCopperRegion!]",
+    "cutouts": "[DesCadBoardCutout!]",
+    "designFileName": "String",
+    "designVariantId": "String",
+    "designVariantName": "String",
+    "hasHatchedCopperPolygons": "Boolean!",
+    "holes": "[DesCadBoardHole!]",
+    "isRF20Design": "Boolean!",
+    "layersExportMode": "DesCadLayersExportMode!",
+    "messages": "[String!]",
+    "minimalHeightComponentsShown": "Int!",
+    "properties": "[DesCadProperty!]",
+    "tracks": "[DesCadBoardTrack!]",
+    "variants": "DesCadBoardVariants",
+    "vias": "[DesCadBoardVia!]",
+    "workflowState": "DesCadWorkflowState!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadDesignInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadHoleType": {
+   "kind": "ENUM"
+  },
+  "DesCadLayersExportMode": {
+   "kind": "ENUM"
+  },
+  "DesCadPoint": {
+   "fields": {
+    "x": "Int!",
+    "y": "Int!",
+    "z": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadProperty": {
+   "fields": {
+    "name": "String!",
+    "value": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadPropertyInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadSplitLine": {
+   "fields": {
+    "endPoint": "DesCadPoint!",
+    "leftRegionName": "String",
+    "rightRegionName": "String",
+    "shapeJson": "String",
+    "startPoint": "DesCadPoint!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCadSplitLineInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCadWorkflowState": {
+   "kind": "ENUM"
+  },
+  "DesCollaborationDomain": {
+   "kind": "ENUM"
+  },
+  "DesCollaborationRevision": {
+   "fields": {
+    "comment": "String!",
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "design": "DesCadDesign",
+    "downloadableFile": "DesDownloadableFile!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCollaborationRevisionConnection": {
+   "fields": {
+    "edges": "[DesCollaborationRevisionEdge!]",
+    "nodes": "[DesCollaborationRevision!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCollaborationRevisionEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesCollaborationRevision!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCollaborationSimulationFile": {
+   "fields": {
+    "downloadUrl": "String!",
+    "fileTypeName": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCollaborationSimulationFileInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCollaborationSimulationRevision": {
+   "fields": {
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "files": "[DesCollaborationSimulationFile!]!",
+    "metadata": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCollaborationSimulationRevisionConnection": {
+   "fields": {
+    "edges": "[DesCollaborationSimulationRevisionEdge!]",
+    "nodes": "[DesCollaborationSimulationRevision!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCollaborationSimulationRevisionEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesCollaborationSimulationRevision!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesColor": {
+   "fields": {
+    "hexString": "String!",
+    "rgbString": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesColorInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesComment": {
+   "fields": {
+    "commentId": "String!",
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "mentions": "[DesMention!]!",
+    "modifiedAt": "DateTime!",
+    "modifiedBy": "DesUser!",
+    "text": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCommentContext": {
+   "fields": {
+    "area": "DesRectangle!",
+    "documentId": "String",
+    "objectId": "String",
+    "releaseId": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCommentContextType": {
+   "kind": "ENUM"
+  },
+  "DesCommentNotification": {
+   "fields": {
+    "action": "String!",
+    "data": "DesCommentNotificationData!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCommentNotificationData": {
+   "fields": {
+    "commentAuthor": "String",
+    "commentDate": "String!",
+    "commentId": "String!",
+    "commentText": "String",
+    "commentThreadId": "String!",
+    "documentId": "String",
+    "documentName": "String",
+    "projectId": "String!",
+    "threadData": "String",
+    "threadDate": "String!",
+    "threadStatus": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCommentThread": {
+   "fields": {
+    "assignedTo": "DesUser",
+    "commentThreadId": "String!",
+    "comments": "[DesComment!]!",
+    "context": "DesCommentContext!",
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "modifiedAt": "DateTime!",
+    "modifiedBy": "DesUser!",
+    "originalStateScreenshotUrl": "String",
+    "status": "Int!",
+    "threadNumber": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCommentThreadStatus": {
+   "kind": "ENUM"
+  },
+  "DesComponent": {
+   "fields": {
+    "comment": "String!",
+    "componentTemplate": "DesComponentTemplateRevision",
+    "componentType": "DesComponentType",
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "description": "String!",
+    "details": "DesComponentDetails!",
+    "folder": "DesFolder",
+    "id": "ID!",
+    "isManaged": "Boolean!",
+    "manufacturerParts": "[DesManufacturerPart!]!",
+    "model3D": "DesModel3D",
+    "modifiedAt": "DateTime!",
+    "name": "String!",
+    "revision": "DesRevision!",
+    "revisionId": "String!"
+   },
+   "interfaces": [
+    "Node"
+   ],
+   "kind": "OBJECT"
+  },
+  "DesComponentConnection": {
+   "fields": {
+    "edges": "[DesComponentEdge!]",
+    "nodes": "[DesComponent!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesComponentDetails": {
+   "fields": {
+    "datasheets": "[DesDatasheet!]!",
+    "footprints": "[DesFootprint!]!",
+    "itemInternalId": "String!",
+    "itemParameters": "[DesComponentParameter!]!",
+    "parameters": "[DesComponentParameter!]!",
+    "simulations": "[DesSimulation!]!",
+    "symbols": "[DesSymbol!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesComponentEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesComponent!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesComponentFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesComponentItemParameterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesComponentParameter": {
+   "fields": {
+    "name": "String!",
+    "realValue": "String",
+    "type": "DesParameterType!",
+    "value": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesComponentStringOperationFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesComponentTemplate": {
+   "fields": {
+    "description": "String!",
+    "folder": "DesFolder",
+    "id": "ID!",
+    "latestRevision": "DesComponentTemplateRevision!",
+    "name": "String!"
+   },
+   "interfaces": [
+    "Node"
+   ],
+   "kind": "OBJECT"
+  },
+  "DesComponentTemplateConnection": {
+   "fields": {
+    "edges": "[DesComponentTemplateEdge!]",
+    "nodes": "[DesComponentTemplate!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesComponentTemplateEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesComponentTemplate!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesComponentTemplateRevision": {
+   "fields": {
+    "comment": "String!",
+    "createdAt": "DateTime!",
+    "description": "String!",
+    "downloadableFile": "DesDownloadableFile!",
+    "id": "ID!",
+    "name": "String!"
+   },
+   "interfaces": [
+    "Node"
+   ],
+   "kind": "OBJECT"
+  },
+  "DesComponentType": {
+   "fields": {
+    "componentTypeId": "String!",
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "name": "String!",
+    "parent": "DesComponentType",
+    "path": "String!",
+    "updatedAt": "DateTime!",
+    "updatedBy": "DesUser!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesComponentTypeConnection": {
+   "fields": {
+    "edges": "[DesComponentTypeEdge!]",
+    "nodes": "[DesComponentType!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesComponentTypeEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesComponentType!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesComponentTypeFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesComponentUpgradeFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesContentTypeKind": {
+   "kind": "ENUM"
+  },
+  "DesCreateCommentInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateCommentPayload": {
+   "fields": {
+    "commentId": "String!",
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCreateCommentThreadInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateCommentThreadPayload": {
+   "fields": {
+    "commentId": "String!",
+    "commentThreadId": "String!",
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCreateDatasheetFileInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateDatasheetInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateDatasheetPayload": {
+   "fields": {
+    "datasheetId": "ID",
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCreateFolderInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateFolderPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "folderId": "String",
+    "id": "ID"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCreateFootprintFileInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateFootprintInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateFootprintPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "footprintId": "ID"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCreateLifeCycleDefinitionInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateLifeCycleDefinitionPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "id": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCreateManufacturePackageInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateManufacturePackagePayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "jobId": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCreateProjectExportJobInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateProjectExportJobPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "projectExportJobId": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCreateProjectTaskInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateRevisionNamingSchemeInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateRevisionNamingSchemeLevelInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateRevisionNamingSchemePayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "id": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCreateSymbolFileInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateSymbolInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateSymbolPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "id": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCreateTaskCommentInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateTaskCommentPayload": {
+   "fields": {
+    "comment": "DesComment",
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCreateTaskInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateTaskPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "task": "DesTask!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCreateUserGroupInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateUserGroupPayload": {
+   "fields": {
+    "userGroupId": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCreateUserInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesCreateUserPayload": {
+   "fields": {
+    "userId": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesCreateWorkspaceTaskInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesDatasheet": {
+   "fields": {
+    "comment": "String!",
+    "createdBy": "DesUser!",
+    "dataDownloadUrl": "String!",
+    "description": "String!",
+    "folder": "DesFolder",
+    "id": "ID!",
+    "itemInternalId": "String!",
+    "name": "String!",
+    "revisionInternalId": "String!",
+    "updatedBy": "DesUser!"
+   },
+   "interfaces": [
+    "Node"
+   ],
+   "kind": "OBJECT"
+  },
+  "DesDatasheetConnection": {
+   "fields": {
+    "edges": "[DesDatasheetEdge!]",
+    "nodes": "[DesDatasheet!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDatasheetEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesDatasheet!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDatasheetFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesDeleteCommentInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesDeleteCommentPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDeleteCommentThreadInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesDeleteCommentThreadPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDeleteFolderInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesDeleteFolderPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDeleteLifeCycleDefinitionInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesDeleteLifeCycleDefinitionPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "id": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDeleteRevisionNamingSchemeInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesDeleteRevisionNamingSchemePayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDeleteTaskCommentInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesDeleteTaskCommentPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDeleteTaskInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesDeleteTaskPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDeleteUserGroupInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesDeleteUserGroupPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDeleteUserInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesDeleteUserPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDesign": {
+   "fields": {
+    "releases": "DesReleaseConnection",
+    "variants": "[DesWipVariant!]!",
+    "workInProgress": "DesWorkInProgress!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDesignExchange": {
+   "fields": {
+    "downloadableFile": "DesDownloadableFile!",
+    "models3D": "[DesModel3D!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDesignItem": {
+   "fields": {
+    "area": "DesRectangle",
+    "boundingBox": "DesRectangle",
+    "comment": "String!",
+    "commentThreads": "[DesCommentThread!]",
+    "component": "DesComponent",
+    "description": "String!",
+    "designator": "String!",
+    "footprintName": "String!",
+    "layer": "DesLayer",
+    "mesh3D": "DesMesh3D",
+    "pads": "[DesPad!]!",
+    "parameters": "[DesDesignItemParameter!]!",
+    "pcbId": "String",
+    "position": "DesPosition2D!",
+    "rotation": "Decimal",
+    "schId": "String",
+    "tracks": "[DesTrack!]!",
+    "vias": "[DesVia!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDesignItemConnection": {
+   "fields": {
+    "edges": "[DesDesignItemEdge!]",
+    "nodes": "[DesDesignItem!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDesignItemEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesDesignItem!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDesignItemFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesDesignItemParameter": {
+   "fields": {
+    "name": "String!",
+    "value": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDesignItemParameterFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesDocumentType": {
+   "kind": "ENUM"
+  },
+  "DesDownloadableFile": {
+   "fields": {
+    "downloadUrl": "String!",
+    "fileName": "String!",
+    "relativePath": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesDownloadableFolder": {
+   "fields": {
+    "downloadUrl": "String!",
+    "files": "[DesDownloadableFile!]!",
+    "relativePath": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesErrorPayload": {
+   "fields": {
+    "message": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesFolder": {
+   "fields": {
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "description": "String!",
+    "folderId": "String!",
+    "folderPermissions": "[DesFolderPermission!]!",
+    "folderType": "DesFolderType!",
+    "id": "ID!",
+    "itemNamingSchemeTemplate": "String",
+    "name": "String!",
+    "parent": "DesFolder",
+    "path": "String!",
+    "updatedAt": "DateTime!",
+    "updatedBy": "DesUser!"
+   },
+   "interfaces": [
+    "Node"
+   ],
+   "kind": "OBJECT"
+  },
+  "DesFolderFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesFolderFilterMatchMode": {
+   "kind": "ENUM"
+  },
+  "DesFolderPermission": {
+   "fields": {
+    "canCreate": "Boolean!",
+    "canDelete": "Boolean!",
+    "canEdit": "Boolean!",
+    "canRead": "Boolean!",
+    "group": "DesUserGroup",
+    "name": "String!",
+    "scope": "DesPermissionScope!",
+    "user": "DesUser"
+   },
+   "kind": "OBJECT"
+  },
+  "DesFolderType": {
+   "kind": "ENUM"
+  },
+  "DesFootprint": {
+   "fields": {
+    "comment": "String!",
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "dataDownloadUrl": "String!",
+    "description": "String!",
+    "folder": "DesFolder",
+    "guid": "String!",
+    "id": "ID!",
+    "imageFullSizeUrl": "String!",
+    "imageThumbnailUrl": "String!",
+    "itemInternalId": "String!",
+    "lifeCycleState": "DesLifeCycleState!",
+    "name": "String!",
+    "pins": "[DesPin!]!",
+    "releasedAt": "DateTime!",
+    "revisionInternalId": "String!",
+    "updatedBy": "DesUser!"
+   },
+   "interfaces": [
+    "Node"
+   ],
+   "kind": "OBJECT"
+  },
+  "DesFootprintConnection": {
+   "fields": {
+    "edges": "[DesFootprintEdge!]",
+    "nodes": "[DesFootprint!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesFootprintEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesFootprint!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesFootprintFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesGerber": {
+   "fields": {
+    "downloadUrl": "String",
+    "gerberFiles": "[DesDownloadableFile!]!",
+    "packageName": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesGerberX2": {
+   "fields": {
+    "downloadUrl": "String",
+    "gerberX2Files": "[DesDownloadableFile!]!",
+    "packageName": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesIpc2581": {
+   "fields": {
+    "downloadUrl": "String",
+    "ipc2581Files": "[DesDownloadableFile!]!",
+    "packageName": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesJobStatus": {
+   "kind": "ENUM"
+  },
+  "DesLaunchWorkflowInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesLaunchWorkflowPayload": {
+   "fields": {
+    "id": "String!",
+    "status": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesLayer": {
+   "fields": {
+    "copperArea": "DesArea",
+    "copperRatio": "Decimal",
+    "copperWeight": "DesWeight",
+    "dielectricConstant": "Decimal",
+    "layerProperties": "[DesLayerProperty!]!",
+    "layerType": "DesLayerType!",
+    "material": "String",
+    "name": "String!",
+    "nets": "[DesNet!]!",
+    "thickness": "DesSize"
+   },
+   "kind": "OBJECT"
+  },
+  "DesLayerFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesLayerProperty": {
+   "fields": {
+    "name": "String!",
+    "size": "DesSize",
+    "text": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesLayerType": {
+   "kind": "ENUM"
+  },
+  "DesLibrary": {
+   "fields": {
+    "componentTemplates": "DesComponentTemplateConnection",
+    "componentTypes": "DesComponentTypeConnection",
+    "components": "DesComponentConnection",
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "datasheets": "DesDatasheetConnection",
+    "description": "String!",
+    "downloadUrlsByTokens": "[String]!",
+    "eventChannel": "String!",
+    "folders": "[DesFolder!]!",
+    "footprints": "DesFootprintConnection",
+    "name": "String!",
+    "reuseBlocks": "DesReuseBlockConnection",
+    "symbols": "DesSymbolConnection",
+    "updatedAt": "DateTime!",
+    "updatedBy": "DesUser!",
+    "version": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesLibraryArgsInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesLifeCycleDefinition": {
+   "fields": {
+    "contentTypes": "[DesContentTypeKind!]!",
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "id": "ID!",
+    "isControlledPerContentType": "Boolean!",
+    "isRevisionSchemeAssigned": "Boolean!",
+    "lifeCycleDefinitionId": "String!",
+    "lifeCycleManagementType": "DesLifeCycleManagementType!",
+    "name": "String!",
+    "stages": "[DesLifeCycleStage!]!",
+    "stateTransitions": "[DesLifeCycleStateTransition!]!",
+    "updatedAt": "DateTime!",
+    "updatedBy": "DesUser!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesLifeCycleDefinitionInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesLifeCycleManagementType": {
+   "kind": "ENUM"
+  },
+  "DesLifeCycleStage": {
+   "fields": {
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "lifeCycleStageId": "String!",
+    "name": "String!",
+    "stageIndex": "Int!",
+    "states": "[DesLifeCycleState!]!",
+    "updatedAt": "DateTime!",
+    "updatedBy": "DesUser!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesLifeCycleStageInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesLifeCycleState": {
+   "fields": {
+    "backgroundColor": "DesColor!",
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "description": "String!",
+    "foregroundColor": "DesColor!",
+    "isAllowedInDesign": "Boolean!",
+    "isInitialState": "Boolean!",
+    "isVisible": "Boolean!",
+    "lifeCycleStateId": "String!",
+    "name": "String!",
+    "stateIndex": "Int!",
+    "updatedAt": "DateTime!",
+    "updatedBy": "DesUser!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesLifeCycleStateInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesLifeCycleStateTransition": {
+   "fields": {
+    "approvals": "[DesLifeCycleStateTransitionApprovalGroup!]",
+    "controllers": "[DesLifeCycleStateTransitionController!]",
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "isPublic": "Boolean!",
+    "lifeCycleStateAfter": "DesLifeCycleState",
+    "lifeCycleStateBefore": "DesLifeCycleState",
+    "lifeCycleStateTransitionId": "String!",
+    "menuTextFormat": "String!",
+    "name": "String!",
+    "transitionKind": "DesLifeCycleStateTransitionKind!",
+    "updatedAt": "DateTime!",
+    "updatedBy": "DesUser!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesLifeCycleStateTransitionApprovalGroup": {
+   "fields": {
+    "controllers": "[DesLifeCycleStateTransitionController!]!",
+    "name": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesLifeCycleStateTransitionApprovalGroupInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesLifeCycleStateTransitionController": {
+   "fields": {
+    "group": "DesUserGroup",
+    "name": "String!",
+    "scope": "DesPermissionScope!",
+    "user": "DesUser"
+   },
+   "kind": "OBJECT"
+  },
+  "DesLifeCycleStateTransitionControllerInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesLifeCycleStateTransitionInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesLifeCycleStateTransitionKind": {
+   "kind": "ENUM"
+  },
+  "DesLifecycleStateUpgradeOperationFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesManufacturePackage": {
+   "fields": {
+    "downloadUrl": "String!",
+    "manufacturePackageId": "String!",
+    "name": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesManufacturePackageCreationJob": {
+   "fields": {
+    "createdAt": "DateTime!",
+    "id": "String!",
+    "payload": "DesManufacturePackageCreationJobPayload!",
+    "status": "DesJobStatus!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesManufacturePackageCreationJobPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "packageId": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesManufacturerPart": {
+   "fields": {
+    "companyName": "String!",
+    "octopartId": "String",
+    "parameters": "[DesManufacturerPartParameter!]!",
+    "partNumber": "String!",
+    "priority": "Int!",
+    "supplierParts": "[DesSupplierPart!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesManufacturerPartParameter": {
+   "fields": {
+    "name": "String!",
+    "unit": "String",
+    "value": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesMention": {
+   "fields": {
+    "user": "DesUser!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesMesh3D": {
+   "fields": {
+    "glbFile": "DesDownloadableFile"
+   },
+   "kind": "OBJECT"
+  },
+  "DesModel3D": {
+   "fields": {
+    "parasolidFile": "DesDownloadableFile"
+   },
+   "kind": "OBJECT"
+  },
+  "DesMoveFolderInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesMoveFolderPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesNcDrill": {
+   "fields": {
+    "downloadUrl": "String",
+    "ncDrillFiles": "[DesDownloadableFile!]!",
+    "packageName": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesNet": {
+   "fields": {
+    "cumulativeLength": "DesSize!",
+    "layers": "[DesLayer!]!",
+    "name": "String!",
+    "pads": "[DesPad!]!",
+    "tracks": "[DesTrack!]!",
+    "vias": "[DesVia!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesOdb": {
+   "fields": {
+    "downloadUrl": "String",
+    "odbFiles": "[DesDownloadableFile!]!",
+    "packageName": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesOnCommentUpdatedInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesPad": {
+   "fields": {
+    "designator": "String",
+    "globalDesignator": "String",
+    "holeSize": "DesSize!",
+    "isPlated": "Boolean",
+    "layer": "DesLayer",
+    "net": "DesNet",
+    "padType": "DesPadType!",
+    "position": "DesPosition2D!",
+    "radius": "Int",
+    "rotation": "Decimal",
+    "shape": "DesPrimitiveShape",
+    "size": "DesSize2D!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesPadType": {
+   "kind": "ENUM"
+  },
+  "DesParameterType": {
+   "kind": "ENUM"
+  },
+  "DesPartChoiceInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesPayloadError": {
+   "fields": {
+    "message": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesPcb": {
+   "fields": {
+    "area": "DesArea!",
+    "commentThreads": "[DesCommentThread!]!",
+    "designItems": "DesDesignItemConnection",
+    "documentId": "String!",
+    "documentName": "String!",
+    "layerStack": "DesStackup",
+    "mesh3D": "DesMesh3D",
+    "nets": "[DesNet!]!",
+    "origin": "DesPosition2D!",
+    "outline": "DesPolygon!",
+    "pads": "[DesPad!]!",
+    "size": "DesSize2D!",
+    "tracks": "[DesTrack!]!",
+    "vias": "[DesVia!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesPcbAssembly": {
+   "fields": {
+    "assemblyDrawings": "DesAssemblyDrawings!",
+    "downloadUrl": "String!",
+    "folders": "[DesDownloadableFolder!]!",
+    "lifeCycleStateName": "String!",
+    "packageName": "String!",
+    "pickAndPlace": "DesPickAndPlace!",
+    "version": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesPcbFabrication": {
+   "fields": {
+    "downloadUrl": "String!",
+    "folders": "[DesDownloadableFolder!]!",
+    "gerber": "DesGerber!",
+    "gerberX2": "DesGerberX2!",
+    "ipc2581": "DesIpc2581!",
+    "lifeCycleStateName": "String!",
+    "ncDrill": "DesNcDrill!",
+    "odb": "DesOdb!",
+    "packageName": "String!",
+    "testPoints": "DesTestPoints!",
+    "version": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesPermissionScope": {
+   "kind": "ENUM"
+  },
+  "DesPickAndPlace": {
+   "fields": {
+    "downloadUrl": "String",
+    "packageName": "String",
+    "pickAndPlaceFiles": "[DesDownloadableFile!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesPin": {
+   "fields": {
+    "description": "String!",
+    "designator": "String!",
+    "electricalType": "DesPinElectricalType!",
+    "isHidden": "Boolean!",
+    "name": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesPinElectricalType": {
+   "kind": "ENUM"
+  },
+  "DesPolygon": {
+   "fields": {
+    "vertices": "[DesPosition2D!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesPosition2D": {
+   "fields": {
+    "x": "Int!",
+    "xMils": "Decimal!",
+    "xMm": "Decimal!",
+    "y": "Int!",
+    "yMils": "Decimal!",
+    "yMm": "Decimal!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesPosition2DInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesPrimitiveShape": {
+   "kind": "ENUM"
+  },
+  "DesProject": {
+   "fields": {
+    "collaborationLatestRevision": "DesCollaborationRevision",
+    "collaborationRevisions": "DesCollaborationRevisionConnection",
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "description": "String",
+    "design": "DesDesign!",
+    "id": "ID!",
+    "latestRevision": "DesVcsRevision",
+    "name": "String",
+    "parameters": "[DesProjectParameter!]!",
+    "previewUrl": "String!",
+    "projectId": "String!",
+    "projectPermissions": "[DesProjectPermission!]!",
+    "projectType": "DesProjectType!",
+    "repositoryType": "DesProjectRepositoryType",
+    "repositoryUrl": "String",
+    "requirementsBlockId": "String",
+    "revisions": "DesVcsRevisionConnection",
+    "tasks": "[DesTask!]!",
+    "updatedAt": "DateTime!",
+    "updatedBy": "DesUser!",
+    "url": "String!",
+    "variantCount": "Int!",
+    "workflows": "[DesWorkflow!]",
+    "workspaceUrl": "String!"
+   },
+   "interfaces": [
+    "Node"
+   ],
+   "kind": "OBJECT"
+  },
+  "DesProjectConnection": {
+   "fields": {
+    "edges": "[DesProjectEdge!]",
+    "nodes": "[DesProject!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesProjectEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesProject!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesProjectExportAnyInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesProjectExportGerberInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesProjectExportGerberX2Input": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesProjectExportIdfInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesProjectExportJob": {
+   "fields": {
+    "downloadUrl": "String",
+    "reason": "String",
+    "status": "DesJobStatus!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesProjectExportNCDrillInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesProjectFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesProjectIdPayload": {
+   "fields": {
+    "id": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesProjectParameter": {
+   "fields": {
+    "name": "String!",
+    "value": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesProjectParameterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesProjectPermission": {
+   "fields": {
+    "canCreate": "Boolean!",
+    "canDelete": "Boolean!",
+    "canEdit": "Boolean!",
+    "canRead": "Boolean!",
+    "group": "DesUserGroup",
+    "name": "String!",
+    "scope": "DesPermissionScope!",
+    "user": "DesUser"
+   },
+   "kind": "OBJECT"
+  },
+  "DesProjectRepositoryType": {
+   "kind": "ENUM"
+  },
+  "DesProjectSortInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesProjectTemplate": {
+   "fields": {
+    "description": "String!",
+    "folder": "DesFolder",
+    "id": "ID!",
+    "latestRevision": "DesProjectTemplateRevision!",
+    "name": "String!"
+   },
+   "interfaces": [
+    "Node"
+   ],
+   "kind": "OBJECT"
+  },
+  "DesProjectTemplateConnection": {
+   "fields": {
+    "edges": "[DesProjectTemplateEdge!]",
+    "nodes": "[DesProjectTemplate!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesProjectTemplateEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesProjectTemplate!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesProjectTemplateRevision": {
+   "fields": {
+    "comment": "String!",
+    "createdAt": "DateTime!",
+    "description": "String!",
+    "downloadableFile": "DesDownloadableFile!",
+    "id": "ID!",
+    "name": "String!"
+   },
+   "interfaces": [
+    "Node"
+   ],
+   "kind": "OBJECT"
+  },
+  "DesProjectType": {
+   "kind": "ENUM"
+  },
+  "DesProjectTypeOperationFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesProjectsInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesProjectsRequirementsBlockFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesRectangle": {
+   "fields": {
+    "pos1": "DesPosition2D!",
+    "pos2": "DesPosition2D!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesRectangleInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesRelease": {
+   "fields": {
+    "createdAt": "DateTime!",
+    "description": "String!",
+    "id": "ID!",
+    "manufacturePackages": "[DesManufacturePackage!]!",
+    "releaseId": "String!",
+    "variants": "[DesReleaseVariant!]!"
+   },
+   "interfaces": [
+    "Node"
+   ],
+   "kind": "OBJECT"
+  },
+  "DesReleaseComponentDatasheetInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesReleaseComponentFileInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesReleaseComponentFootprintInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesReleaseComponentInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesReleaseComponentPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesReleaseComponentSymbolInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesReleaseComponentTemplateInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesReleaseComponentTemplatePayload": {
+   "fields": {
+    "componentTemplateId": "ID!",
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesReleaseConnection": {
+   "fields": {
+    "edges": "[DesReleaseEdge!]",
+    "nodes": "[DesRelease!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesReleaseEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesRelease!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesReleaseFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesReleaseVariant": {
+   "fields": {
+    "bom": "DesBom",
+    "downloadUrl": "String!",
+    "name": "String!",
+    "pcb": "DesPcb",
+    "pcbAssembly": "DesPcbAssembly",
+    "pcbFabrication": "DesPcbFabrication",
+    "releaseId": "ID!",
+    "schematics": "[DesSchematic!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesReleaseVariantFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesRemoveComponentPartChoicesInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesRemoveComponentPartChoicesPayload": {
+   "fields": {
+    "componentId": "ID!",
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesRemoveDatasheetFromComponentInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesRemoveDatasheetFromComponentPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesRemoveFootprintFromComponentInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesRemoveFootprintFromComponentPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesRemoveUsersFromGroupInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesRemoveUsersFromGroupPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesReuseBlock": {
+   "fields": {
+    "description": "String!",
+    "id": "ID!",
+    "latestRevision": "DesReuseBlockRevision!",
+    "name": "String!",
+    "revisions": "[DesReuseBlockRevision!]!"
+   },
+   "interfaces": [
+    "Node"
+   ],
+   "kind": "OBJECT"
+  },
+  "DesReuseBlockConnection": {
+   "fields": {
+    "edges": "[DesReuseBlockEdge!]",
+    "nodes": "[DesReuseBlock!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesReuseBlockEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesReuseBlock!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesReuseBlockRevision": {
+   "fields": {
+    "comment": "String!",
+    "description": "String!",
+    "id": "ID!",
+    "lifeCycleState": "DesLifeCycleState!",
+    "name": "String!",
+    "pcbSnippet": "DesDownloadableFile!",
+    "schematicSnippet": "DesDownloadableFile!"
+   },
+   "interfaces": [
+    "Node"
+   ],
+   "kind": "OBJECT"
+  },
+  "DesRevision": {
+   "fields": {
+    "details": "DesRevisionDetails",
+    "revisionId": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesRevisionDetails": {
+   "fields": {
+    "childCount": "Int!",
+    "comment": "String",
+    "createdAt": "DateTime!",
+    "description": "String",
+    "isDeleted": "Boolean!",
+    "lifeCycleState": "DesLifeCycleState!",
+    "modifiedAt": "DateTime!",
+    "parentCount": "Int!",
+    "references": "[DesDownloadableFile!]!",
+    "releaseDate": "DateTime!",
+    "revisionId": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesRevisionNamingPolicy": {
+   "kind": "ENUM"
+  },
+  "DesRevisionNamingScheme": {
+   "fields": {
+    "contentTypes": "[DesContentTypeKind!]!",
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "id": "ID!",
+    "isControlledPerContentType": "Boolean!",
+    "itemRevisionSeparator": "String!",
+    "levels": "[DesRevisionNamingSchemeLevel!]!",
+    "name": "String!",
+    "revisionNamingSchemeId": "String!",
+    "updatedAt": "DateTime!",
+    "updatedBy": "DesUser!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesRevisionNamingSchemeLevel": {
+   "fields": {
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "levelIndex": "Int!",
+    "levelSeparator": "String!",
+    "levelSequence": "String!",
+    "minimumWidth": "Int!",
+    "name": "String!",
+    "revisionNameLevelId": "String!",
+    "revisionNamingPolicy": "DesRevisionNamingPolicy!",
+    "updatedAt": "DateTime!",
+    "updatedBy": "DesUser!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesRevisionParameterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesSchematic": {
+   "fields": {
+    "commentThreads": "[DesCommentThread!]!",
+    "designItems": "DesDesignItemConnection",
+    "documentId": "String!",
+    "documentName": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesSchematicFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesSetProjectRequirementsBlockInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesSetProjectRequirementsBlockPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesSetting": {
+   "fields": {
+    "name": "String!",
+    "value": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesSharedWithMe": {
+   "fields": {
+    "manufacturePackages": "[DesManufacturePackage!]!",
+    "projects": "DesSharedWithMeProjectInfoConnection"
+   },
+   "kind": "OBJECT"
+  },
+  "DesSharedWithMeProjectInfo": {
+   "fields": {
+    "description": "String!",
+    "name": "String!",
+    "project": "DesProject",
+    "projectId": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesSharedWithMeProjectInfoConnection": {
+   "fields": {
+    "edges": "[DesSharedWithMeProjectInfoEdge!]",
+    "nodes": "[DesSharedWithMeProjectInfo!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesSharedWithMeProjectInfoEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesSharedWithMeProjectInfo!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesSharedWithMeProjectInfoFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesSimulation": {
+   "fields": {
+    "comment": "String!",
+    "createdBy": "DesUser!",
+    "dataDownloadUrl": "String!",
+    "description": "String!",
+    "folder": "DesFolder",
+    "guid": "String!",
+    "itemInternalId": "String!",
+    "name": "String!",
+    "revisionInternalId": "String!",
+    "updatedBy": "DesUser!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesSize": {
+   "fields": {
+    "x": "Decimal!",
+    "xMils": "Decimal!",
+    "xMm": "Decimal!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesSize2D": {
+   "fields": {
+    "x": "Int!",
+    "xMils": "Decimal!",
+    "xMm": "Decimal!",
+    "y": "Int!",
+    "yMils": "Decimal!",
+    "yMm": "Decimal!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesStack": {
+   "fields": {
+    "layers": "[DesLayer!]!",
+    "name": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesStackup": {
+   "fields": {
+    "layerTypes": "[DesLayerType!]!",
+    "roughnessFactorRF": "String!",
+    "roughnessFactorSR": "String!",
+    "roughnessType": "String!",
+    "stacks": "[DesStack!]!",
+    "stackupType": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesStringUpgradeOperationFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesSupplierPart": {
+   "fields": {
+    "companyName": "String!",
+    "partNumber": "String!",
+    "prices": "[DesSupplierPrice!]",
+    "stocks": "[DesSupplierStock!]"
+   },
+   "kind": "OBJECT"
+  },
+  "DesSupplierPrice": {
+   "fields": {
+    "breakQuantity": "Int!",
+    "currency": "String!",
+    "price": "Decimal!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesSupplierStock": {
+   "fields": {
+    "locationName": "String!",
+    "quantity": "Decimal!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesSymbol": {
+   "fields": {
+    "comment": "String!",
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "dataDownloadUrl": "String!",
+    "description": "String!",
+    "folder": "DesFolder",
+    "guid": "String!",
+    "id": "ID!",
+    "imageFullSizeUrl": "String!",
+    "imageThumbnailUrl": "String!",
+    "itemInternalId": "String!",
+    "lifeCycleState": "DesLifeCycleState!",
+    "name": "String!",
+    "pins": "[DesPin!]!",
+    "releasedAt": "DateTime!",
+    "revisionInternalId": "String!",
+    "updatedBy": "DesUser!",
+    "usedBy": "DesSymbolUsedBy!"
+   },
+   "interfaces": [
+    "Node"
+   ],
+   "kind": "OBJECT"
+  },
+  "DesSymbolConnection": {
+   "fields": {
+    "edges": "[DesSymbolEdge!]",
+    "nodes": "[DesSymbol!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesSymbolEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesSymbol!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesSymbolFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesSymbolUsedBy": {
+   "fields": {
+    "components": "DesComponentConnection"
+   },
+   "kind": "OBJECT"
+  },
+  "DesSystemDiagram": {
+   "fields": {
+    "systemDiagramFile": "DesDownloadableFile"
+   },
+   "kind": "OBJECT"
+  },
+  "DesTask": {
+   "fields": {
+    "assignee": "DesUser!",
+    "comments": "[DesComment!]!",
+    "createdAt": "DateTime!",
+    "createdBy": "DesUser!",
+    "description": "String!",
+    "id": "ID!",
+    "modifiedAt": "DateTime!",
+    "modifiedBy": "DesUser!",
+    "name": "String!",
+    "priority": "DesTaskPriority!",
+    "refId": "String!",
+    "status": "DesTaskStatus!"
+   },
+   "interfaces": [
+    "Node"
+   ],
+   "kind": "OBJECT"
+  },
+  "DesTaskConnection": {
+   "fields": {
+    "edges": "[DesTaskEdge!]",
+    "nodes": "[DesTask!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesTaskEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesTask!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesTaskPriority": {
+   "kind": "ENUM"
+  },
+  "DesTaskStatus": {
+   "kind": "ENUM"
+  },
+  "DesTeam": {
+   "fields": {
+    "groups": "[DesUserGroup!]!",
+    "users": "[DesUser!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesTerminateWorkflowsError": {
+   "fields": {
+    "id": "String!",
+    "message": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesTerminateWorkflowsInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesTerminateWorkflowsPayload": {
+   "fields": {
+    "errors": "[DesTerminateWorkflowsError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesTestPoints": {
+   "fields": {
+    "downloadUrl": "String",
+    "packageName": "String",
+    "testPointFiles": "[DesDownloadableFile!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesTrack": {
+   "fields": {
+    "begin": "DesPosition2D!",
+    "end": "DesPosition2D!",
+    "layer": "DesLayer",
+    "net": "DesNet",
+    "width": "DesSize!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesTrackFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUnionPayload": {
+   "kind": "UNION",
+   "possible_types": [
+    "DesComponent",
+    "DesErrorPayload"
+   ]
+  },
+  "DesUpdateCommentInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateCommentPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateCommentThreadInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateCommentThreadPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateComponentItemParametersInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateComponentItemParametersPayload": {
+   "fields": {
+    "componentId": "ID!",
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateComponentLifeCycleStateInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateComponentLifeCycleStatePayload": {
+   "fields": {
+    "componentId": "ID!",
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateComponentRevisionParametersInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateComponentRevisionParametersPayload": {
+   "fields": {
+    "componentId": "ID!",
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateComponentSymbolInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateComponentSymbolPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateComponentTemplateInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateComponentTemplatePayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateFolderInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateFolderPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateFolderPermissionInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateFolderPermissionsInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateFolderPermissionsPayload": {
+   "fields": {
+    "folderId": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateFootprintFileInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateFootprintInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateFootprintLifeCycleStateInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateFootprintLifeCycleStatePayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "footprintId": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateFootprintPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "id": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateLifeCycleDefinitionInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateLifeCycleDefinitionPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "id": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateProjectOwnerInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateProjectOwnerPayload": {
+   "fields": {
+    "projectId": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateProjectParametersInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateProjectParametersPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "projectId": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateProjectPermissionInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateProjectPermissionsInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateProjectPermissionsPayload": {
+   "fields": {
+    "projectId": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateReuseBlockInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateReuseBlockPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateRevisionNamingSchemeInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateRevisionNamingSchemeLevelInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateRevisionNamingSchemePayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateSettingInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateSettingPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "setting": "DesSetting!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateSymbolFileInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateSymbolInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateSymbolLifeCycleStateInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateSymbolLifeCycleStatePayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "symbolId": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateSymbolPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "id": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateTaskCommentInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateTaskCommentPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateTaskInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateTaskPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateUserGroupInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateUserGroupPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpdateUserInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpdateUserPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpgradeComponentsToLatestFootprintInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpgradeComponentsToLatestFootprintPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "failedComponentIds": "[ID!]!",
+    "failedCount": "Int!",
+    "totalProcessed": "Int!",
+    "upgradedComponentIds": "[ID!]!",
+    "upgradedCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUpgradeComponentsToLatestSymbolInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUpgradeComponentsToLatestSymbolPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "failedComponentIds": "[ID!]!",
+    "failedCount": "Int!",
+    "totalProcessed": "Int!",
+    "upgradedComponentIds": "[ID!]!",
+    "upgradedCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUploadCollaborationInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUploadCollaborationPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUploadCollaborationSimulationInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUploadCollaborationSimulationPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUploadProjectInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesUploadProjectPayload": {
+   "fields": {
+    "errors": "[DesPayloadError!]!",
+    "projectId": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUser": {
+   "fields": {
+    "email": "String",
+    "firstName": "String",
+    "globalUserId": "String",
+    "groups": "[DesUserGroup!]",
+    "lastName": "String",
+    "pictureUrl": "String",
+    "userId": "String",
+    "userName": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUserGroup": {
+   "fields": {
+    "name": "String!",
+    "userGroupId": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesUserPictureSize": {
+   "kind": "ENUM"
+  },
+  "DesVcsChangeKind": {
+   "kind": "ENUM"
+  },
+  "DesVcsRevision": {
+   "fields": {
+    "author": "String!",
+    "createdAt": "DateTime!",
+    "files": "[DesVcsRevisionFileChange!]!",
+    "message": "String!",
+    "revisionId": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesVcsRevisionConnection": {
+   "fields": {
+    "edges": "[DesVcsRevisionEdge!]",
+    "nodes": "[DesVcsRevision!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesVcsRevisionEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "DesVcsRevision!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesVcsRevisionFileChange": {
+   "fields": {
+    "kind": "DesVcsChangeKind!",
+    "path": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesVia": {
+   "fields": {
+    "beginLayer": "DesLayer",
+    "endLayer": "DesLayer",
+    "holeDiameter": "DesSize!",
+    "layer": "DesLayer",
+    "name": "String",
+    "net": "DesNet",
+    "padDiameter": "DesSize!",
+    "position": "DesPosition2D!",
+    "shape": "DesPrimitiveShape"
+   },
+   "kind": "OBJECT"
+  },
+  "DesWeight": {
+   "fields": {
+    "gram": "Decimal!",
+    "ounce": "Decimal!",
+    "x": "Decimal!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesWipVariant": {
+   "fields": {
+    "bom": "DesBom",
+    "designExchange": "DesDesignExchange",
+    "name": "String!",
+    "pcb": "DesPcb",
+    "projectId": "ID!",
+    "schematics": "[DesSchematic!]!",
+    "systemDiagram": "DesSystemDiagram"
+   },
+   "kind": "OBJECT"
+  },
+  "DesWipVariantFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesWorkInProgress": {
+   "fields": {
+    "variants": "[DesWipVariant!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesWorkflow": {
+   "fields": {
+    "assignee": "String!",
+    "createdAt": "DateTime!",
+    "createdBy": "String!",
+    "endedAt": "DateTime",
+    "modifiedAt": "DateTime!",
+    "name": "String!",
+    "processDefinitionId": "String!",
+    "processDefinitionName": "String!",
+    "state": "String",
+    "status": "String!",
+    "variables": "[DesWorkflowVariable!]!",
+    "workflowId": "String!",
+    "workflowType": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesWorkflowAttachmentVariableInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesWorkflowDefinition": {
+   "fields": {
+    "createdAt": "DateTime!",
+    "createdBy": "String!",
+    "name": "String!",
+    "variables": "[DesWorkflowVariable!]!",
+    "workflowDefinitionId": "String!",
+    "workflowType": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesWorkflowDefinitionFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesWorkflowFilterByVariableInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesWorkflowFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesWorkflowVariable": {
+   "fields": {
+    "constraint": "String",
+    "name": "String!",
+    "value": "String!",
+    "valueType": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "DesWorkflowVariableInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesWorkspace": {
+   "fields": {
+    "authId": "String!",
+    "configuration": "DesWorkspaceConfiguration!",
+    "description": "String",
+    "id": "ID!",
+    "isDefault": "Boolean!",
+    "library": "DesLibrary!",
+    "location": "DesWorkspaceLocation!",
+    "marketingBadge": "String!",
+    "name": "String!",
+    "projects": "[DesProject!]!",
+    "tasks": "[DesTask!]!",
+    "team": "DesTeam!",
+    "url": "String!",
+    "vendor": "DesWorkspaceVendor!",
+    "workflowDefinitions": "[DesWorkflowDefinition!]",
+    "workflows": "[DesWorkflow!]"
+   },
+   "interfaces": [
+    "Node"
+   ],
+   "kind": "OBJECT"
+  },
+  "DesWorkspaceConfiguration": {
+   "fields": {
+    "projectTemplates": "DesProjectTemplateConnection"
+   },
+   "kind": "OBJECT"
+  },
+  "DesWorkspaceFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "DesWorkspaceInfo": {
+   "fields": {
+    "authId": "String!",
+    "description": "String",
+    "isDefault": "Boolean!",
+    "location": "DesWorkspaceLocation!",
+    "name": "String!",
+    "url": "String!",
+    "vendor": "DesWorkspaceVendor!",
+    "workspaceId": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesWorkspaceLocation": {
+   "fields": {
+    "apiServiceUrl": "String!",
+    "apiVoyagerUrl": "String!",
+    "filesServiceUrl": "String!",
+    "name": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "DesWorkspaceVendor": {
+   "kind": "ENUM"
+  },
+  "DesWorkspaceVendorOperationFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "Error": {
+   "fields": {
+    "message": "String!"
+   },
+   "kind": "INTERFACE",
+   "possible_types": [
+    "DatRepOctopartReportRequestError",
+    "SupEvalKitNotFoundError",
+    "SupEvalKitOperationFailedError",
+    "SupSoftwareProjectNotFoundError",
+    "SupSoftwareProjectOperationFailedError",
+    "SupSolutionTemplateApplicationIsExistedError",
+    "SupSolutionTemplateApplicationNotFoundError",
+    "SupSolutionTemplateInvalidDataError",
+    "SupSolutionTemplateNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "Float": {
+   "kind": "SCALAR"
+  },
+  "FloatOperationFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ID": {
+   "kind": "SCALAR"
+  },
+  "IDatRepReportFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "IDatRepReportSortInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "Int": {
+   "kind": "SCALAR"
+  },
+  "IntOperationFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ListFilterInputTypeOfDesDesignItemParameterFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "Long": {
+   "kind": "SCALAR"
+  },
+  "ManAABB": {
+   "fields": {
+    "area": "ManArea",
+    "bottomRight": "ManPoint2D",
+    "topLeft": "ManPoint2D"
+   },
+   "kind": "OBJECT"
+  },
+  "ManAABBInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManAccess": {
+   "kind": "ENUM"
+  },
+  "ManAngle": {
+   "fields": {
+    "degrees": "Float",
+    "native": "Int",
+    "radians": "Float"
+   },
+   "kind": "OBJECT"
+  },
+  "ManArea": {
+   "fields": {
+    "inSq": "Float",
+    "mil2": "Float",
+    "mm2": "Float",
+    "native": "Int"
+   },
+   "kind": "OBJECT"
+  },
+  "ManAssembly": {
+   "fields": {
+    "boardMeta": "ManBoardMeta",
+    "bomSelection": "ID",
+    "commitId": "ID",
+    "id": "ID",
+    "package": "ManPackageJob",
+    "projectId": "ID",
+    "variant": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "ManBoardDetails": {
+   "fields": {
+    "aabb": "ManAABB",
+    "path": "[ManPathSegment]",
+    "polygon": "[ManPoint2D]"
+   },
+   "kind": "OBJECT"
+  },
+  "ManBoardMeta": {
+   "fields": {
+    "boardDetails": "ManBoardDetails",
+    "bomIssues": "ManBomIssues!",
+    "consignmentCount": "Int!",
+    "id": "ID",
+    "minAnnularRing": "ManLength",
+    "minClearance": "ManLength",
+    "parts": "[ManPart]",
+    "placementStats": "ManPlacementInfo",
+    "projectId": "String",
+    "stackUp": "[ManLayer]"
+   },
+   "kind": "OBJECT"
+  },
+  "ManBoardMetaInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManBomIssues": {
+   "fields": {
+    "issueCount": "Int!",
+    "warningCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "ManBomResolution": {
+   "fields": {
+    "parts": "[ManPart!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "ManConsignmentDocs": {
+   "fields": {
+    "html": "String!",
+    "pdf": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "ManCreateAssemblyResponse": {
+   "fields": {
+    "assembly": "ManAssembly"
+   },
+   "kind": "OBJECT"
+  },
+  "ManCreateOrderResponse": {
+   "fields": {
+    "order": "ManOrder"
+   },
+   "kind": "OBJECT"
+  },
+  "ManCurrency": {
+   "kind": "ENUM"
+  },
+  "ManFeatures": {
+   "fields": {
+    "availablePaymentOptions": "[ManPaymentMethod!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "ManLayer": {
+   "fields": {
+    "copperWeight": "Float",
+    "maskColour": "ManSolderMaskColour",
+    "material": "String",
+    "overlayColour": "ManSilkScreenColour",
+    "process": "String",
+    "thickness": "ManLength",
+    "type": "ManLayerType"
+   },
+   "kind": "OBJECT"
+  },
+  "ManLayerInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManLayerType": {
+   "kind": "ENUM"
+  },
+  "ManLength": {
+   "fields": {
+    "inch": "Float",
+    "mil": "Float",
+    "mm": "Float",
+    "native": "Int"
+   },
+   "kind": "OBJECT"
+  },
+  "ManMountingType": {
+   "kind": "ENUM"
+  },
+  "ManOffer": {
+   "fields": {
+    "minQty": "Int",
+    "price": "ManPrice"
+   },
+   "kind": "OBJECT"
+  },
+  "ManOfferInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManOrder": {
+   "fields": {
+    "assembly": "ManAssembly",
+    "boardName": "String",
+    "boardPreview": "String",
+    "checkoutURL": "String",
+    "createdAt": "DateTime",
+    "createdBy": "ManUser",
+    "events": "[ManOrderEvent]",
+    "id": "ID",
+    "rapidQuote": "ManQuoteInfo",
+    "reference": "String",
+    "shipDate": "DateTime",
+    "shipping": "ManShippingDetails",
+    "status": "ManOrderStatus",
+    "stripeSecret": "ID"
+   },
+   "kind": "OBJECT"
+  },
+  "ManOrderAcceptedEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "paymentSelection": "ManPaymentSelection!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderBatchedEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderBatchedInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManOrderCancelEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderConsignmentDetailsEvent": {
+   "fields": {
+    "consignmentId": "ID!",
+    "documents": "ManConsignmentDocs!",
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "parts": "[ManPartQuantity!]!",
+    "receiveBy": "DateTime!",
+    "shipping": "ManShippingDetails!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderConsignmentDetailsInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManOrderCreatedEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderEmsAcceptInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManOrderEmsAcceptedEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "timestamp": "Int!"
+   },
+   "kind": "INTERFACE",
+   "possible_types": [
+    "ManOrderAcceptedEvent",
+    "ManOrderBatchedEvent",
+    "ManOrderCancelEvent",
+    "ManOrderConsignmentDetailsEvent",
+    "ManOrderCreatedEvent",
+    "ManOrderEmsAcceptedEvent",
+    "ManOrderInvoicedEvent",
+    "ManOrderPaidEvent",
+    "ManOrderPartsOrderedEvent",
+    "ManOrderPartsReceivedEvent",
+    "ManOrderPcbsOrderedEvent",
+    "ManOrderPcbsReceivedEvent",
+    "ManOrderProcessStartEvent",
+    "ManOrderReceivedEvent",
+    "ManOrderReviewedEvent",
+    "ManOrderShipEstimateEvent",
+    "ManOrderShippedEvent"
+   ]
+  },
+  "ManOrderEventType": {
+   "kind": "ENUM"
+  },
+  "ManOrderInvoicedEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "invoiceId": "String!",
+    "order": "ManOrder!",
+    "poReference": "String!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderPaidEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderPartsOrderedEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderPartsOrderedInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManOrderPartsReceivedEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderPartsReceivedInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManOrderPcbsOrderedEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderPcbsOrderedInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManOrderPcbsReceivedEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderPcbsReceivedInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManOrderProcessStartEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderProcessStartInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManOrderReceivedEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderReviewInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManOrderReviewedEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderShipEstimateEvent": {
+   "fields": {
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "timestamp": "Int!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderShipEstimateInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManOrderShippedEvent": {
+   "fields": {
+    "carrier": "ManShippingCarrier!",
+    "eventType": "ManOrderEventType!",
+    "id": "ID!",
+    "order": "ManOrder!",
+    "timestamp": "Int!",
+    "trackingLink": "String!",
+    "trackingNumber": "String!"
+   },
+   "interfaces": [
+    "ManOrderEvent"
+   ],
+   "kind": "OBJECT"
+  },
+  "ManOrderShippedInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManOrderStatus": {
+   "kind": "ENUM"
+  },
+  "ManPackageJob": {
+   "fields": {
+    "errors": "[String]",
+    "id": "ID",
+    "status": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "ManPart": {
+   "fields": {
+    "comment": "String",
+    "description": "String",
+    "id": "ID",
+    "issues": "[ManPartIssue!]!",
+    "name": "String",
+    "partChoices": "[ManPartChoice]",
+    "pinCount": "Int",
+    "placementCount": "Int",
+    "placements": "[ManPlacement]",
+    "selectedChoice": "ManPartChoice",
+    "sourcing": "ManSourcing!",
+    "status": "ManPartStatus",
+    "type": "ManMountingType"
+   },
+   "kind": "OBJECT"
+  },
+  "ManPartChoice": {
+   "fields": {
+    "description": "String",
+    "image": "String",
+    "lifecycle": "String",
+    "manufacturer": "String",
+    "mpn": "String",
+    "octopartId": "String",
+    "octopartUrl": "String",
+    "suppliers": "[ManPurchaseOption]"
+   },
+   "kind": "OBJECT"
+  },
+  "ManPartChoiceInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManPartInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManPartIssue": {
+   "kind": "ENUM"
+  },
+  "ManPartQuantity": {
+   "fields": {
+    "linkedPart": "ManPartChoice",
+    "placements": "[ManPlacement!]!",
+    "quantity": "Int!",
+    "reference": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "ManPartQuantityInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManPartSelectionInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManPartStatus": {
+   "kind": "ENUM"
+  },
+  "ManPathSegment": {
+   "fields": {
+    "endAngle": "ManAngle",
+    "radius": "ManLength",
+    "startAngle": "ManAngle",
+    "type": "ManPathType",
+    "vertex": "ManPoint2D"
+   },
+   "kind": "OBJECT"
+  },
+  "ManPathSegmentInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManPathType": {
+   "kind": "ENUM"
+  },
+  "ManPaymentMethod": {
+   "kind": "ENUM"
+  },
+  "ManPaymentSelection": {
+   "fields": {
+    "method": "ManPaymentMethod!",
+    "purchaseOrderReference": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "ManPaymentSelectionInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManPlacement": {
+   "fields": {
+    "aabb": "ManAABB",
+    "location": "ManPoint2D",
+    "refdes": "String",
+    "side": "ManSide",
+    "size": "ManPoint2D"
+   },
+   "kind": "OBJECT"
+  },
+  "ManPlacementInfo": {
+   "fields": {
+    "bomLines": "Int",
+    "botPlacements": "Int",
+    "dualSided": "Boolean",
+    "smtPlacements": "Int",
+    "thPlacements": "Int",
+    "topPlacements": "Int",
+    "totalPlacements": "Int"
+   },
+   "kind": "OBJECT"
+  },
+  "ManPlacementInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManPoint2D": {
+   "fields": {
+    "x": "ManLength",
+    "y": "ManLength"
+   },
+   "kind": "OBJECT"
+  },
+  "ManPoint2DInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManPrice": {
+   "fields": {
+    "amount": "Decimal",
+    "currency": "ManCurrency"
+   },
+   "kind": "OBJECT"
+  },
+  "ManPriceInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManProjectFeatureInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManPurchaseOption": {
+   "fields": {
+    "inventory": "Int",
+    "offers": "[ManOffer]",
+    "sku": "String",
+    "supplier": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "ManPurchaseOptionInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManQuote": {
+   "fields": {
+    "id": "ID!",
+    "items": "[ManQuoteItem]",
+    "leadtime": "Int",
+    "total": "Decimal",
+    "type": "String",
+    "valid": "Boolean",
+    "violations": "[ManViolation]"
+   },
+   "kind": "OBJECT"
+  },
+  "ManQuoteCategory": {
+   "kind": "ENUM"
+  },
+  "ManQuoteInfo": {
+   "fields": {
+    "quoteRequest": "ManRapidQuoteRequest",
+    "response": "ManRapidQuoteResponse",
+    "selectedQuote": "ManQuote"
+   },
+   "kind": "OBJECT"
+  },
+  "ManQuoteInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManQuoteInputItem": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManQuoteItem": {
+   "fields": {
+    "amount": "Decimal",
+    "category": "ManQuoteCategory",
+    "ident": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "ManRapidQuoteRequest": {
+   "fields": {
+    "bomResolutionUrl": "String",
+    "id": "ID",
+    "meta": "ManBoardMeta",
+    "qty": "Int",
+    "requestorId": "ID",
+    "shipping": "ManShippingDetails"
+   },
+   "kind": "OBJECT"
+  },
+  "ManRapidQuoteResponse": {
+   "fields": {
+    "id": "ID",
+    "quotes": "[ManQuote]",
+    "request": "ManRapidQuoteRequest"
+   },
+   "kind": "OBJECT"
+  },
+  "ManShippingCarrier": {
+   "kind": "ENUM"
+  },
+  "ManShippingDetails": {
+   "fields": {
+    "city": "String",
+    "country": "String",
+    "email": "String",
+    "line1": "String",
+    "line2": "String",
+    "method": "ManShippingMethod",
+    "name": "String",
+    "phone": "String",
+    "postal": "String",
+    "state": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "ManShippingDetailsInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManShippingMethod": {
+   "fields": {
+    "carrier": "String",
+    "service": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "ManShippingMethodInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManSide": {
+   "kind": "ENUM"
+  },
+  "ManSilkScreenColour": {
+   "kind": "ENUM"
+  },
+  "ManSolderMaskColour": {
+   "kind": "ENUM"
+  },
+  "ManSourcing": {
+   "kind": "ENUM"
+  },
+  "ManUser": {
+   "fields": {
+    "email": "String",
+    "firstName": "String",
+    "lastName": "String",
+    "userId": "String!",
+    "userName": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "ManViolation": {
+   "fields": {
+    "description": "String",
+    "field": "String",
+    "type": "ManViolationType"
+   },
+   "kind": "OBJECT"
+  },
+  "ManViolationInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "ManViolationType": {
+   "kind": "ENUM"
+  },
+  "Map": {
+   "kind": "SCALAR"
+  },
+  "MultiplierPath": {
+   "kind": "SCALAR"
+  },
+  "Mutation": {
+   "fields": {
+    "admEvtSendAppNotification": "AdmEvtSendAppNotificationPayload!",
+    "datScrCreateJob": "DatScrCreateJobPayload!",
+    "datScrDeleteJob": "DatScrDeleteJobPayload!",
+    "desAddComponentPartChoices": "DesAddComponentPartChoicesPayload!",
+    "desAddDatasheetToComponent": "DesAddDatasheetToComponentPayload!",
+    "desAddFootprintToComponent": "DesAddFootprintToComponentPayload!",
+    "desAddUsersToGroup": "DesAddUsersToGroupPayload!",
+    "desCreateComment": "DesCreateCommentPayload!",
+    "desCreateCommentThread": "DesCreateCommentThreadPayload!",
+    "desCreateDatasheet": "DesCreateDatasheetPayload!",
+    "desCreateFolder": "DesCreateFolderPayload!",
+    "desCreateFootprint": "DesCreateFootprintPayload!",
+    "desCreateLifeCycleDefinition": "DesCreateLifeCycleDefinitionPayload!",
+    "desCreateManufacturePackage": "DesCreateManufacturePackagePayload!",
+    "desCreateProjectExportJob": "DesCreateProjectExportJobPayload!",
+    "desCreateProjectTask": "DesCreateTaskPayload!",
+    "desCreateRevisionNamingScheme": "DesCreateRevisionNamingSchemePayload!",
+    "desCreateSymbol": "DesCreateSymbolPayload!",
+    "desCreateTaskComment": "DesCreateTaskCommentPayload!",
+    "desCreateUser": "DesCreateUserPayload!",
+    "desCreateUserGroup": "DesCreateUserGroupPayload!",
+    "desCreateWorkspaceTask": "DesCreateTaskPayload!",
+    "desDeleteComment": "DesDeleteCommentPayload!",
+    "desDeleteCommentThread": "DesDeleteCommentThreadPayload!",
+    "desDeleteFolder": "DesDeleteFolderPayload!",
+    "desDeleteLifeCycleDefinition": "DesDeleteLifeCycleDefinitionPayload!",
+    "desDeleteRevisionNamingScheme": "DesDeleteRevisionNamingSchemePayload!",
+    "desDeleteTask": "DesDeleteTaskPayload!",
+    "desDeleteTaskComment": "DesDeleteTaskCommentPayload!",
+    "desDeleteUser": "DesDeleteUserPayload!",
+    "desDeleteUserGroup": "DesDeleteUserGroupPayload!",
+    "desLaunchWorkflow": "DesLaunchWorkflowPayload!",
+    "desMoveFolder": "DesMoveFolderPayload!",
+    "desReleaseComponent": "DesReleaseComponentPayload!",
+    "desReleaseComponentTemplate": "DesReleaseComponentTemplatePayload!",
+    "desRemoveComponentPartChoices": "DesRemoveComponentPartChoicesPayload!",
+    "desRemoveDatasheetFromComponent": "DesRemoveDatasheetFromComponentPayload!",
+    "desRemoveFootprintFromComponent": "DesRemoveFootprintFromComponentPayload!",
+    "desRemoveUsersFromGroup": "DesRemoveUsersFromGroupPayload!",
+    "desSetProjectRequirementsBlock": "DesSetProjectRequirementsBlockPayload!",
+    "desTerminateWorkflows": "DesTerminateWorkflowsPayload!",
+    "desUpdateComment": "DesUpdateCommentPayload!",
+    "desUpdateCommentThread": "DesUpdateCommentThreadPayload!",
+    "desUpdateComponentItemParameters": "DesUpdateComponentItemParametersPayload!",
+    "desUpdateComponentLifeCycleState": "DesUpdateComponentLifeCycleStatePayload!",
+    "desUpdateComponentRevisionParameters": "DesUpdateComponentRevisionParametersPayload!",
+    "desUpdateComponentSymbol": "DesUpdateComponentSymbolPayload!",
+    "desUpdateComponentTemplate": "DesUpdateComponentTemplatePayload!",
+    "desUpdateFolder": "DesUpdateFolderPayload!",
+    "desUpdateFolderPermissions": "DesUpdateFolderPermissionsPayload!",
+    "desUpdateFootprint": "DesUpdateFootprintPayload!",
+    "desUpdateFootprintLifeCycleState": "DesUpdateFootprintLifeCycleStatePayload!",
+    "desUpdateLifeCycleDefinition": "DesUpdateLifeCycleDefinitionPayload!",
+    "desUpdateProjectOwner": "DesUpdateProjectOwnerPayload!",
+    "desUpdateProjectParameters": "DesUpdateProjectParametersPayload!",
+    "desUpdateProjectPermissions": "DesUpdateProjectPermissionsPayload!",
+    "desUpdateReuseBlock": "DesUpdateReuseBlockPayload!",
+    "desUpdateRevisionNamingScheme": "DesUpdateRevisionNamingSchemePayload!",
+    "desUpdateSetting": "DesUpdateSettingPayload!",
+    "desUpdateSymbol": "DesUpdateSymbolPayload!",
+    "desUpdateSymbolLifeCycleState": "DesUpdateSymbolLifeCycleStatePayload!",
+    "desUpdateTask": "DesUpdateTaskPayload!",
+    "desUpdateTaskComment": "DesUpdateTaskCommentPayload!",
+    "desUpdateUser": "DesUpdateUserPayload!",
+    "desUpdateUserGroup": "DesUpdateUserGroupPayload!",
+    "desUpgradeComponentsToLatestFootprint": "DesUpgradeComponentsToLatestFootprintPayload!",
+    "desUpgradeComponentsToLatestSymbol": "DesUpgradeComponentsToLatestSymbolPayload!",
+    "desUploadCollaboration": "DesUploadCollaborationPayload!",
+    "desUploadCollaborationSimulation": "DesUploadCollaborationSimulationPayload!",
+    "desUploadProject": "DesUploadProjectPayload!",
+    "manAcceptOrderQuote": "ManOrder",
+    "manCreateAssembly": "ManCreateAssemblyResponse",
+    "manCreateOrder": "ManCreateOrderResponse",
+    "manCreateRapidQuoteRequest": "ManRapidQuoteResponse",
+    "manInsertOrderBatchedEvent": "ManOrder",
+    "manInsertOrderConsignmentDetailsEvent": "ManOrder",
+    "manInsertOrderEmsAcceptEvent": "ManOrder",
+    "manInsertOrderEvent": "ManOrder",
+    "manInsertOrderPartsOrderedEvent": "ManOrder",
+    "manInsertOrderPartsReceivedEvent": "ManOrder",
+    "manInsertOrderPcbsOrderedEvent": "ManOrder",
+    "manInsertOrderPcbsReceivedEvent": "ManOrder",
+    "manInsertOrderProcessStartEvent": "ManOrder",
+    "manInsertOrderReviewEvent": "ManOrder",
+    "manInsertOrderShipUpdateEvent": "ManOrder",
+    "manInsertOrderShippedEvent": "ManOrder",
+    "manRespondBulkRapidQuoteRequest": "ID!",
+    "manRespondRapidQuoteRequest": "ID!",
+    "manUpdateBomResolution": "ManBomResolution",
+    "manUpdateOrderQty": "ManOrder",
+    "manUpdateOrderShipping": "ManOrder",
+    "supCreateContentVaultMetadata": "SupCreateContentVaultMetadataPayload!",
+    "supEvalKitAddDevices": "SupEvalKitAddDevicesPayload!",
+    "supEvalKitAddPreviewImages": "SupEvalKitAddPreviewImagesPayload!",
+    "supEvalKitAddRefDesignCompatibleEvalKit": "SupEvalKitAddRefDesignCompatibleEvalKitPayload!",
+    "supEvalKitCreateEvalKit": "SupEvalKitCreateEvalKitPayload!",
+    "supEvalKitDeleteDevices": "SupEvalKitDeleteDevicesPayload!",
+    "supEvalKitDeleteEvalKit": "SupEvalKitDeleteEvalKitPayload!",
+    "supEvalKitDeletePreviewImages": "SupEvalKitDeletePreviewImagesPayload!",
+    "supEvalKitDeleteRefDesignCompatibleEvalKit": "SupEvalKitDeleteRefDesignCompatibleEvalKitPayload!",
+    "supEvalKitPatchParameters": "SupEvalKitPatchParametersPayload!",
+    "supEvalKitSetMainRefDesign": "SupEvalKitSetMainRefDesignPayload!",
+    "supEvalKitSetParameters": "SupEvalKitSetParametersPayload!",
+    "supEvalKitSoftwareProjectCompatibleEvalKit": "SupEvalKitSoftwareProjectCompatibleEvalKitPayload!",
+    "supEvalKitSortPreviewImages": "SupEvalKitSortPreviewImagesPayload!",
+    "supEvalKitUnsetMainRefDesign": "SupEvalKitUnsetMainRefDesignPayload!",
+    "supEvalKitUpdateEvalKit": "SupEvalKitUpdateEvalKitPayload!",
+    "supSoftwareProjectCreateSoftwareProject": "SupSoftwareProjectCreateSoftwareProjectPayload!",
+    "supSoftwareProjectDeleteSoftwareProject": "SupSoftwareProjectDeleteSoftwareProjectPayload!",
+    "supSoftwareProjectPatchParameters": "SupSoftwareProjectPatchParametersPayload!",
+    "supSoftwareProjectPatchPreviewImages": "SupSoftwareProjectPatchPreviewImagesPayload!",
+    "supSoftwareProjectPatchSoftwareProjectSolutionTemplates": "SupSoftwareProjectPatchSoftwareProjectSolutionTemplatesPayload!",
+    "supSoftwareProjectSetParameters": "SupSoftwareProjectSetParametersPayload!",
+    "supSoftwareProjectSetPreviewImages": "SupSoftwareProjectSetPreviewImagesPayload!",
+    "supSoftwareProjectSetSoftwareProjectSolutionTemplates": "SupSoftwareProjectSetSoftwareProjectSolutionTemplatesPayload!",
+    "supSoftwareProjectUpdateEvalKitCompatibleSoftwareProject": "SupSoftwareProjectUpdateEvalKitCompatibleSoftwareProjectPayload!",
+    "supSoftwareProjectUpdateSoftwareProject": "SupSoftwareProjectUpdateSoftwareProjectPayload!",
+    "supSolutionTemplateCreateSolutionTemplate": "SupSolutionTemplateCreateSolutionTemplatePayload!",
+    "supSolutionTemplateCreateSolutionTemplateApplication": "SupSolutionTemplateCreateSolutionTemplateApplicationPayload!",
+    "supSolutionTemplateDeleteSolutionTemplate": "SupSolutionTemplateDeleteSolutionTemplatePayload!",
+    "supSolutionTemplateDeleteSolutionTemplateApplication": "SupSolutionTemplateDeleteSolutionTemplateApplicationPayload!",
+    "supSolutionTemplateIndexSolutionTemplate": "SupSolutionTemplateIndexSolutionTemplatePayload!",
+    "supSolutionTemplatePatchCompatibleEvalKits": "SupSolutionTemplatePatchCompatibleEvalKitsPayload!",
+    "supSolutionTemplatePatchEsdSource": "SupSolutionTemplatePatchEsdSourcePayload!",
+    "supSolutionTemplatePatchKeyFeatureGroups": "SupSolutionTemplatePatchKeyFeatureGroupsPayload!",
+    "supSolutionTemplatePatchParameters": "SupSolutionTemplatePatchParametersPayload!",
+    "supSolutionTemplatePatchPreviewImages": "SupSolutionTemplatePatchPreviewImagesPayload!",
+    "supSolutionTemplatePatchTags": "SupSolutionTemplatePatchTagsPayload!",
+    "supSolutionTemplateSetCompatibleEvalKits": "SupSolutionTemplateSetCompatibleEvalKitsPayload!",
+    "supSolutionTemplateSetKeyFeatureGroups": "SupSolutionTemplateSetKeyFeatureGroupsPayload!",
+    "supSolutionTemplateSetParameters": "SupSolutionTemplateSetParametersPayload!",
+    "supSolutionTemplateSetPreviewImages": "SupSolutionTemplateSetPreviewImagesPayload!",
+    "supSolutionTemplateSetTags": "SupSolutionTemplateSetTagsPayload!",
+    "supSolutionTemplateUpdateSolutionTemplate": "SupSolutionTemplateUpdateSolutionTemplatePayload!",
+    "supSolutionTemplateUpdateSolutionTemplateApplication": "SupSolutionTemplateUpdateSolutionTemplateApplicationPayload!",
+    "supSolutionTemplateUpdateSolutionTemplateStatus": "SupSolutionTemplateUpdateSolutionTemplateStatusPayload!"
+   },
+   "kind": "OBJECT"
+  },
+  "Node": {
+   "fields": {
+    "id": "ID!"
+   },
+   "kind": "INTERFACE",
+   "possible_types": [
+    "DesComponent",
+    "DesComponentTemplate",
+    "DesComponentTemplateRevision",
+    "DesDatasheet",
+    "DesFolder",
+    "DesFootprint",
+    "DesProject",
+    "DesProjectTemplate",
+    "DesProjectTemplateRevision",
+    "DesRelease",
+    "DesReuseBlock",
+    "DesReuseBlockRevision",
+    "DesSymbol",
+    "DesTask",
+    "DesWorkspace"
+   ]
+  },
+  "PageInfo": {
+   "fields": {
+    "endCursor": "String",
+    "hasNextPage": "Boolean!",
+    "hasPreviousPage": "Boolean!",
+    "startCursor": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "Query": {
+   "fields": {
+    "admApplicationById": "AdmApplication",
+    "admOrganizations": "[AdmOrganization!]!",
+    "datBomAnalyses": "[DatBomAnalysis!]!",
+    "datBomCategoryIdsByDesignator": "[DatBomCategory]!",
+    "datBomDuplicateAnalyses": "[DatBomAnalysis!]!",
+    "datBomPart": "DatBomPartsResult!",
+    "datBomPartHistories": "[DatBomPartHistory]!",
+    "datBomParts": "[DatBomPartsResult!]!",
+    "datEddiEditions": "[DatEddiEdition!]!",
+    "datEddiLatestEdition": "DatEddiEdition!",
+    "datRepDownloadableFile": "DatRepDownloadableFile",
+    "datRepOctopartReportRequests": "[DatRepOctopartReportRequest!]!",
+    "datRepOctopartReportTypes": "[DatRepOctopartReportType!]!",
+    "datRepReports": "DatRepReportsConnection",
+    "datScrIpnPartInfo": "DatScrIpnPartInfo!",
+    "datScrJob": "DatScrJob!",
+    "datScrJobs": "[DatScrJob!]!",
+    "datScrModelInfo": "DatScrModelInfo!",
+    "datScrPartInfos": "[DatScrPartInfo]!",
+    "datScrReport": "DatScrReport!",
+    "datScrUsage": "DatScrUsage",
+    "desCommentThread": "DesCommentThread",
+    "desCommentThreads": "[DesCommentThread!]!",
+    "desComponentById": "DesComponent",
+    "desComponentTemplateById": "DesComponentTemplate",
+    "desComponentTemplateRevisionById": "DesComponentTemplateRevision",
+    "desComponentsByIds": "[DesUnionPayload!]!",
+    "desDatasheetById": "DesDatasheet",
+    "desFolderByFolderId": "DesFolder",
+    "desFolderById": "DesFolder",
+    "desFootprintById": "DesFootprint",
+    "desLibrary": "DesLibrary!",
+    "desLifeCycleDefinitionByContentTypeKind": "DesLifeCycleDefinition!",
+    "desLifeCycleDefinitionById": "DesLifeCycleDefinition",
+    "desLifeCycleDefinitions": "[DesLifeCycleDefinition!]!",
+    "desManufacturePackageCreationJob": "DesManufacturePackageCreationJob",
+    "desManufacturePackages": "[DesManufacturePackage!]!",
+    "desProjectById": "DesProject",
+    "desProjectCollaborationLatestRevision": "DesCollaborationRevision",
+    "desProjectCollaborationRevisions": "DesCollaborationRevisionConnection",
+    "desProjectCollaborationSimulationLatestRevision": "DesCollaborationSimulationRevision",
+    "desProjectCollaborationSimulationRevisions": "DesCollaborationSimulationRevisionConnection",
+    "desProjectExportJob": "DesProjectExportJob!",
+    "desProjectIdFromAfsId": "DesProjectIdPayload!",
+    "desProjectTasks": "DesTaskConnection",
+    "desProjectTemplateById": "DesProjectTemplate",
+    "desProjectTemplateRevisionById": "DesProjectTemplateRevision",
+    "desProjects": "DesProjectConnection",
+    "desProjectsByIds": "[DesProject]!",
+    "desReleaseById": "DesRelease",
+    "desReleaseVariantByVariantName": "DesReleaseVariant",
+    "desReuseBlockById": "DesReuseBlock",
+    "desReuseBlockRevisionById": "DesReuseBlockRevision",
+    "desReuseBlockRevisionsByIds": "[DesReuseBlockRevision]!",
+    "desReuseBlocksByIds": "[DesReuseBlock]!",
+    "desRevisionDetailsByRevisionId": "DesRevisionDetails",
+    "desRevisionNamingSchemeByContentTypeKind": "DesRevisionNamingScheme!",
+    "desRevisionNamingSchemeById": "DesRevisionNamingScheme",
+    "desRevisionNamingSchemes": "[DesRevisionNamingScheme!]!",
+    "desSettings": "[String]!",
+    "desSharedWithMe": "DesSharedWithMe!",
+    "desSymbolById": "DesSymbol",
+    "desTeam": "DesTeam!",
+    "desUserByAuth": "DesUser!",
+    "desUserByGlobalId": "DesUser",
+    "desUsers": "[DesUser]!",
+    "desWipVariantByVariantName": "DesWipVariant",
+    "desWorkspaceById": "DesWorkspace",
+    "desWorkspaceByUrl": "DesWorkspace",
+    "desWorkspaceConfiguration": "DesWorkspaceConfiguration!",
+    "desWorkspaceInfos": "[DesWorkspaceInfo!]!",
+    "desWorkspaceLocations": "[DesWorkspaceLocation!]!",
+    "desWorkspaceTasks": "DesTaskConnection",
+    "desWorkspaces": "[DesWorkspace!]!",
+    "manAltimadeLogin": "String",
+    "manAssembly": "ManAssembly",
+    "manBomResolution": "ManBomResolution",
+    "manListProjectOrders": "[ManOrder]",
+    "manOrder": "ManOrder",
+    "manOrderEventById": "ManOrderEvent",
+    "manProjectFeatures": "ManFeatures",
+    "manRapidQuoteRequest": "ManRapidQuoteRequest",
+    "manRapidQuotes": "ManRapidQuoteResponse",
+    "node": "Node",
+    "nodes": "[Node]!",
+    "supAttributes": "[SupAttribute!]!",
+    "supCategories": "[SupCategory!]!",
+    "supCategoriesByIds": "[SupCategory]!",
+    "supCategoryById": "SupCategory",
+    "supCiivaIdFromPartId": "String",
+    "supCiivaIdsFromPartIds": "[String]!",
+    "supEvalKitById": "SupEvalKit",
+    "supEvalKitDetailsByRefDesignId": "SupEvalKitConnection",
+    "supEvalKitParameterInfos": "[SupEvalKitParameterInfo!]!",
+    "supEvalKitSearch": "SupEvalKitConnection",
+    "supEvalKitSoftwareProjectCompatibleEvalKitBySoftwareProjectIdAndEvalKitId": "SupSoftwareProjectEvalKitSource",
+    "supEvalKitSoftwareProjectCompatibleEvalKitSearch": "SupSoftwareProjectEvalKitSourceConnection",
+    "supEvalKitSoftwareProjectCompatibleEvalKitsBySoftwareProjectId": "[SupSoftwareProjectEvalKitSource!]",
+    "supEvalKits": "[SupEvalKit]!",
+    "supEvalKitsByIds": "[SupEvalKit]!",
+    "supManufacturers": "[SupCompany!]!",
+    "supMultiMatch": "[SupPartMatch!]!",
+    "supOctocart": "[SupOctocartLink!]!",
+    "supOctopartIdFromCiivaId": "String",
+    "supPartExtrasByPartId": "SupPartExtras",
+    "supPartExtrasByPartIds": "[SupUnionPayload!]!",
+    "supPartFamilyParameters": "[SupPartFamilyParameter!]!",
+    "supPartFamilyPartSearch": "SupPartFamilyPartResultSet!",
+    "supPartFamilySearch": "SupPartFamilyResultSet!",
+    "supPartGroupById": "SupPartGroup!",
+    "supPartGroupByName": "SupPartGroup!",
+    "supPartGroupByPartId": "SupPartGroup!",
+    "supPartGroupsByIds": "[SupPartGroup]!",
+    "supPartIdFromCiivaId": "String",
+    "supPartIdsFromCiivaIds": "[String]!",
+    "supPartOffers": "[SupPartOffer]!",
+    "supParts": "[SupPart]!",
+    "supRefDesignById": "SupRefDesign",
+    "supRefDesignByIds": "[SupRefDesign!]",
+    "supRefDesignByName": "SupRefDesign",
+    "supRefDesigns": "SupRefDesignResultSet!",
+    "supRefDesignsByIds": "[SupRefDesign]!",
+    "supRefParts": "[SupRefPart!]",
+    "supSearch": "SupPartResultSet!",
+    "supSearchCorrection": "[SupSearchCorrection!]!",
+    "supSearchInference": "SupInferenceResults!",
+    "supSearchMpn": "SupPartResultSet!",
+    "supSellers": "[SupCompany!]!",
+    "supSoftwareProjectById": "SupSoftwareProject",
+    "supSoftwareProjectEvalKitCompatibleSoftwareProjectIdsByEvalKitId": "[ID!]!",
+    "supSoftwareProjectEvalKitCompatibleSoftwareProjectSearch": "SupEvalKitCompatibleSoftwareProjectConnection",
+    "supSoftwareProjectEvalKitCompatibleSoftwareProjectsByEvalKitId": "[SupSoftwareProject!]!",
+    "supSoftwareProjectParameterInfos": "[SupSoftwareProjectParameterInfo!]!",
+    "supSoftwareProjectSearch": "SupSoftwareProjectConnection",
+    "supSoftwareProjectSolutionTemplateSoftwareProjectIdsBySolutionTemplateId": "[ID!]!",
+    "supSoftwareProjectSolutionTemplateSoftwareProjectsBySolutionTemplateId": "[SupSoftwareProject!]!",
+    "supSoftwareProjectSolutionTemplateSoftwareProjectsBySolutionTemplateIds": "[SupSoftwareProjectSolutionTemplateSoftwareProjectsResult!]!",
+    "supSoftwareProjects": "[SupSoftwareProject]!",
+    "supSoftwareProjectsByIds": "[SupSoftwareProject]!",
+    "supSolutionTemplateApplicationByApplicationId": "SupSolutionTemplateApplication",
+    "supSolutionTemplateApplicationById": "SupSolutionTemplateApplication",
+    "supSolutionTemplateApplications": "[SupSolutionTemplateApplication]!",
+    "supSolutionTemplateApplicationsSearch": "SupSolutionTemplateApplicationConnection",
+    "supSolutionTemplateById": "SupSolutionTemplate",
+    "supSolutionTemplateByName": "SupSolutionTemplate",
+    "supSolutionTemplateRefDesignSearch": "SupSolutionTemplateRefDesignResultSet!",
+    "supSolutionTemplateSearch": "SupSolutionTemplateConnection",
+    "supSolutionTemplates": "[SupSolutionTemplate]!",
+    "supSolutionTemplatesByApplicationId": "[SupSolutionTemplate]!",
+    "supSolutionTemplatesByIds": "[SupSolutionTemplate]!",
+    "supSpellingCorrection": "[SupSpellingCorrection!]!",
+    "supSuggest": "[SupSuggestion!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "SortEnumType": {
+   "kind": "ENUM"
+  },
+  "String": {
+   "kind": "SCALAR"
+  },
+  "StringOperationFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "Subscription": {
+   "fields": {
+    "desOnCommentUpdated": "DesCommentNotification!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupAllFiltersSort": {
+   "kind": "ENUM"
+  },
+  "SupApiCredentials": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupAppliedFilter": {
+   "fields": {
+    "displayValues": "[String!]!",
+    "name": "String!",
+    "shortname": "String!",
+    "unitsSymbol": "String",
+    "values": "[String!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupAttribute": {
+   "fields": {
+    "group": "String!",
+    "id": "ID!",
+    "name": "String!",
+    "shortDisplayname": "String!",
+    "shortname": "String!",
+    "unitsName": "String!",
+    "unitsSymbol": "String!",
+    "valueType": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupAttributeGroup": {
+   "fields": {
+    "attributes": "[SupAttribute!]!",
+    "name": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupBlurb": {
+   "fields": {
+    "content": "String!",
+    "description": "String!",
+    "metaDescription": "String!",
+    "metaTitle": "String!",
+    "name": "String!",
+    "pathName": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupCadBucket": {
+   "fields": {
+    "cadState": "String!",
+    "count": "Int"
+   },
+   "kind": "OBJECT"
+  },
+  "SupCategory": {
+   "fields": {
+    "ancestors": "[SupCategory!]!",
+    "blurb": "SupBlurb",
+    "children": "[SupCategory!]!",
+    "id": "ID!",
+    "name": "String!",
+    "numParts": "Int!",
+    "parentId": "ID!",
+    "path": "String!",
+    "relevantAttributes": "[SupAttribute!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupCategoryBucket": {
+   "fields": {
+    "category": "SupCategory!",
+    "count": "Int"
+   },
+   "kind": "OBJECT"
+  },
+  "SupCategoryRoot": {
+   "kind": "ENUM"
+  },
+  "SupCircuitMakerPartInfo": {
+   "fields": {
+    "comments": "Int!",
+    "fabrications": "Int!",
+    "projects": "Int!",
+    "rates": "Int!",
+    "releases": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupCompany": {
+   "fields": {
+    "aliases": "[String!]!",
+    "customPricingDetails": "SupCustomPricingDetails",
+    "displayFlag": "String",
+    "homepageUrl": "String",
+    "id": "ID!",
+    "isBroker": "Boolean!",
+    "isDistributorApi": "Boolean!",
+    "isOctocartSupported": "Boolean!",
+    "isVerified": "Boolean!",
+    "name": "String!",
+    "slug": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupCompanyBucket": {
+   "fields": {
+    "company": "SupCompany!",
+    "count": "Int"
+   },
+   "kind": "OBJECT"
+  },
+  "SupContentMetadataBucket": {
+   "fields": {
+    "count": "Int",
+    "metadata": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupContentVaultMetadata": {
+   "fields": {
+    "certificationLevel": "Int",
+    "has3dModel": "Boolean!",
+    "hasFootprint": "Boolean!",
+    "hasSimulation": "Boolean!",
+    "hasSymbol": "Boolean!",
+    "hasThermal": "Boolean!",
+    "partId": "ID!",
+    "vaultId": "ID!",
+    "vaultItemId": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupCorrectionType": {
+   "kind": "ENUM"
+  },
+  "SupCountry": {
+   "fields": {
+    "continentCode": "String!",
+    "countryCode": "String!",
+    "name": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupCreateContentVaultMetadataError": {
+   "fields": {
+    "message": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupCreateContentVaultMetadataInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupCreateContentVaultMetadataPayload": {
+   "fields": {
+    "errors": "[SupCreateContentVaultMetadataError!]",
+    "metadata": "SupContentVaultMetadata"
+   },
+   "kind": "OBJECT"
+  },
+  "SupCustomPricingAuthType": {
+   "kind": "ENUM"
+  },
+  "SupCustomPricingDetails": {
+   "fields": {
+    "authType": "SupCustomPricingAuthType!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupDescription": {
+   "fields": {
+    "creditString": "String!",
+    "creditUrl": "String!",
+    "text": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupDocument": {
+   "fields": {
+    "createdAt": "DateTime",
+    "creditString": "String!",
+    "creditUrl": "String!",
+    "mimeType": "String!",
+    "name": "String!",
+    "pageCount": "Int",
+    "url": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupDocumentCollection": {
+   "fields": {
+    "documents": "[SupDocument!]!",
+    "name": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupDroppedFilter": {
+   "fields": {
+    "key": "String!",
+    "value": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupErrorPayload": {
+   "fields": {
+    "message": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKit": {
+   "fields": {
+    "bestPreviewImage": "SupImage",
+    "compatibleSoftwareProjectData": "SupEvalKitCompatibleSoftwareProjectConnection",
+    "compatibleSoftwareProjectDetails": "SupEvalKitCompatibleSoftwareProjectConnection",
+    "compatibleSoftwareProjectIds": "[ID!]!",
+    "compatibleSoftwareProjects": "[SupSoftwareProject!]!",
+    "createdAt": "DateTime!",
+    "description": "String",
+    "devices": "[SupEvalKitDevice!]!",
+    "esdSource": "SupEvalKitESDSource",
+    "id": "ID!",
+    "mainRefDesign": "SupRefDesign",
+    "mainRefDesignId": "String",
+    "parameters": "[SupEvalKitParameter!]",
+    "partIds": "[String!]!",
+    "parts": "[SupPart]!",
+    "previewImages": "[SupImage!]",
+    "publisher": "[SupCompany!]",
+    "publisherId": "String!",
+    "refDesignIds": "[String!]!",
+    "refDesigns": "[SupRefDesign!]!",
+    "sourceUrl": "String",
+    "title": "String!",
+    "updatedAt": "DateTime!",
+    "updatedById": "String",
+    "updatedByName": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitAddDevicesError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupEvalKitNotFoundError",
+    "SupEvalKitOperationFailedError"
+   ]
+  },
+  "SupEvalKitAddDevicesInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitAddDevicesPayload": {
+   "fields": {
+    "errors": "[SupEvalKitAddDevicesError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitAddPreviewImagesError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupEvalKitNotFoundError",
+    "SupEvalKitOperationFailedError"
+   ]
+  },
+  "SupEvalKitAddPreviewImagesInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitAddPreviewImagesPayload": {
+   "fields": {
+    "errors": "[SupEvalKitAddPreviewImagesError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitAddRefDesignCompatibleEvalKitError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupEvalKitOperationFailedError"
+   ]
+  },
+  "SupEvalKitAddRefDesignCompatibleEvalKitInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitAddRefDesignCompatibleEvalKitPayload": {
+   "fields": {
+    "errors": "[SupEvalKitAddRefDesignCompatibleEvalKitError!]",
+    "supEvalKitAddRefDesignCompatibleEvalKitsPayload": "SupEvalKitAddRefDesignCompatibleEvalKitsPayload"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitAddRefDesignCompatibleEvalKitsPayload": {
+   "fields": {
+    "success": "Boolean!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitByRefDesignFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitCompatibleSoftwareProjectConnection": {
+   "fields": {
+    "edges": "[SupEvalKitCompatibleSoftwareProjectEdge!]",
+    "nodes": "[SupSoftwareProject!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitCompatibleSoftwareProjectEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "SupSoftwareProject!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitCompatibleSoftwareProjectFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitConnection": {
+   "fields": {
+    "edges": "[SupEvalKitEdge!]",
+    "nodes": "[SupEvalKit!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitCreateEvalKitError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupEvalKitOperationFailedError"
+   ]
+  },
+  "SupEvalKitCreateEvalKitInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitCreateEvalKitPayload": {
+   "fields": {
+    "errors": "[SupEvalKitCreateEvalKitError!]",
+    "id": "ID"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitCreateSoftwareProjectCompatibleEvalKitInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitDeleteDevicesError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupEvalKitNotFoundError",
+    "SupEvalKitOperationFailedError"
+   ]
+  },
+  "SupEvalKitDeleteDevicesInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitDeleteDevicesPayload": {
+   "fields": {
+    "errors": "[SupEvalKitDeleteDevicesError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitDeleteEvalKitError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupEvalKitNotFoundError",
+    "SupEvalKitOperationFailedError"
+   ]
+  },
+  "SupEvalKitDeleteEvalKitInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitDeleteEvalKitPayload": {
+   "fields": {
+    "errors": "[SupEvalKitDeleteEvalKitError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitDeletePreviewImagesError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupEvalKitNotFoundError",
+    "SupEvalKitOperationFailedError"
+   ]
+  },
+  "SupEvalKitDeletePreviewImagesInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitDeletePreviewImagesPayload": {
+   "fields": {
+    "errors": "[SupEvalKitDeletePreviewImagesError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitDeleteRefDesignCompatibleEvalKitError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupEvalKitOperationFailedError"
+   ]
+  },
+  "SupEvalKitDeleteRefDesignCompatibleEvalKitInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitDeleteRefDesignCompatibleEvalKitPayload": {
+   "fields": {
+    "errors": "[SupEvalKitDeleteRefDesignCompatibleEvalKitError!]",
+    "supEvalKitDeleteRefDesignCompatibleEvalKitsPayload": "SupEvalKitDeleteRefDesignCompatibleEvalKitsPayload"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitDeleteRefDesignCompatibleEvalKitsPayload": {
+   "fields": {
+    "success": "Boolean!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitDevice": {
+   "fields": {
+    "designProject": "SupRefDesign!",
+    "deviceMpn": "String!",
+    "refDesignId": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitDeviceInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitESDSource": {
+   "fields": {
+    "compileModelUrl": "String",
+    "documentFileUrl": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "SupEvalKit!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitErrorCode": {
+   "kind": "ENUM"
+  },
+  "SupEvalKitFileInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitNotFoundError": {
+   "fields": {
+    "errorCode": "SupEvalKitErrorCode!",
+    "message": "String!"
+   },
+   "interfaces": [
+    "Error"
+   ],
+   "kind": "OBJECT"
+  },
+  "SupEvalKitOperationFailedError": {
+   "fields": {
+    "errorCode": "SupEvalKitErrorCode!",
+    "message": "String!"
+   },
+   "interfaces": [
+    "Error"
+   ],
+   "kind": "OBJECT"
+  },
+  "SupEvalKitOrderDirection": {
+   "kind": "ENUM"
+  },
+  "SupEvalKitOrderField": {
+   "kind": "ENUM"
+  },
+  "SupEvalKitOrderInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitParameter": {
+   "fields": {
+    "parameter": "SupEvalKitParameterInfo!",
+    "values": "[String!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitParameterInfo": {
+   "fields": {
+    "title": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitParameterInfoInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitParameterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitPatchParametersError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupEvalKitNotFoundError",
+    "SupEvalKitOperationFailedError"
+   ]
+  },
+  "SupEvalKitPatchParametersInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitPatchParametersPayload": {
+   "fields": {
+    "errors": "[SupEvalKitPatchParametersError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitRemoveSoftwareProjectCompatibleEvalKitInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitSearchFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitSetMainRefDesignError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupEvalKitNotFoundError",
+    "SupEvalKitOperationFailedError"
+   ]
+  },
+  "SupEvalKitSetMainRefDesignInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitSetMainRefDesignPayload": {
+   "fields": {
+    "errors": "[SupEvalKitSetMainRefDesignError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitSetParametersError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupEvalKitNotFoundError",
+    "SupEvalKitOperationFailedError"
+   ]
+  },
+  "SupEvalKitSetParametersInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitSetParametersPayload": {
+   "fields": {
+    "errors": "[SupEvalKitSetParametersError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitSoftwareProjectCompatibleEvalKitError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupEvalKitOperationFailedError"
+   ]
+  },
+  "SupEvalKitSoftwareProjectCompatibleEvalKitInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitSoftwareProjectCompatibleEvalKitPayload": {
+   "fields": {
+    "errors": "[SupEvalKitSoftwareProjectCompatibleEvalKitError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitSoftwareProjectCompatibleEvalKitProjectSourceInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitSortInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitSortPreviewImagesError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupEvalKitNotFoundError",
+    "SupEvalKitOperationFailedError"
+   ]
+  },
+  "SupEvalKitSortPreviewImagesInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitSortPreviewImagesPayload": {
+   "fields": {
+    "errors": "[SupEvalKitSortPreviewImagesError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitUnsetMainRefDesignError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupEvalKitNotFoundError",
+    "SupEvalKitOperationFailedError"
+   ]
+  },
+  "SupEvalKitUnsetMainRefDesignInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitUnsetMainRefDesignPayload": {
+   "fields": {
+    "errors": "[SupEvalKitUnsetMainRefDesignError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitUpdateEvalKitError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupEvalKitNotFoundError",
+    "SupEvalKitOperationFailedError"
+   ]
+  },
+  "SupEvalKitUpdateEvalKitInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupEvalKitUpdateEvalKitPayload": {
+   "fields": {
+    "errors": "[SupEvalKitUpdateEvalKitError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupEvalKitUpdateSoftwareProjectCompatibleEvalKitInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupImage": {
+   "fields": {
+    "creditString": "String!",
+    "creditUrl": "String!",
+    "url": "String!",
+    "url55px": "String!",
+    "url75px": "String!",
+    "url90px": "String!",
+    "urlLargest": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupInStockBucket": {
+   "fields": {
+    "count": "Int",
+    "isInStock": "Boolean!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupInferenceResults": {
+   "fields": {
+    "attributes": "[SupSuggestedAttributes!]!",
+    "category": "SupCategory",
+    "manufacturer": "SupCompany",
+    "normalizedQuery": "String!",
+    "strippedQuery": "String!",
+    "strippedSpans": "[SupStrippedSpan!]!",
+    "suggestedCategories": "[SupCategoryBucket!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupInferenceRules": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupLevelBucket": {
+   "fields": {
+    "count": "Int",
+    "displayName": "String!",
+    "level": "Int"
+   },
+   "kind": "OBJECT"
+  },
+  "SupNexarFeatureID": {
+   "kind": "ENUM"
+  },
+  "SupOctocartItemInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupOctocartLink": {
+   "fields": {
+    "cartUrl": "String",
+    "sellerId": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupOctocartPartsBySellerInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupOffer": {
+   "fields": {
+    "_cacheId": "String!",
+    "clickUrl": "String!",
+    "eligibleRegion": "String",
+    "factoryLeadDays": "Int",
+    "factoryPackQuantity": "Int",
+    "id": "ID!",
+    "internalUrl": "String!",
+    "inventoryLevel": "Int!",
+    "isCustomPricing": "Boolean!",
+    "moq": "Int",
+    "multipackQuantity": "Int",
+    "onOrderQuantity": "Int",
+    "orderMultiple": "Int",
+    "packaging": "String",
+    "prices": "[SupPricePoint!]!",
+    "sku": "String!",
+    "updated": "DateTime!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupOfferReference": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupPart": {
+   "fields": {
+    "_cacheId": "String!",
+    "akaMpns": "[String!]!",
+    "altiumInternalId": "String!",
+    "avgAvail": "Float!",
+    "bestDatasheet": "SupDocument",
+    "bestImage": "SupImage",
+    "cad": "SupPartCad",
+    "cadModels": "SupPartCadModels!",
+    "cadRequestUrl": "String",
+    "category": "SupCategory",
+    "circuitMakerInternal": "SupCircuitMakerPartInfo",
+    "companionProducts": "[SupSponsoredPart!]!",
+    "contentVaultMetadata": "SupContentVaultMetadata",
+    "counts": "Map!",
+    "descriptions": "[SupDescription!]!",
+    "documentCollections": "[SupDocumentCollection!]!",
+    "estimatedFactoryLeadDays": "Int",
+    "extras": "SupPartExtras",
+    "freeSampleUrl": "String",
+    "genericMpn": "String!",
+    "id": "ID!",
+    "images": "[SupImage!]!",
+    "manufacturer": "SupCompany!",
+    "manufacturerUrl": "String",
+    "medianPrice1000": "SupPricePoint",
+    "mpn": "String!",
+    "name": "String!",
+    "octopartUrl": "String!",
+    "referenceDesigns": "[SupReferenceDesign!]!",
+    "sellers": "[SupPartSeller!]!",
+    "series": "SupPartSeries",
+    "shortDescription": "String!",
+    "simModels": "[SupPartSimModel!]!",
+    "similarParts": "[SupPart!]!",
+    "slug": "String!",
+    "specs": "[SupSpec!]!",
+    "totalAvail": "Int!",
+    "v3uid": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartCad": {
+   "fields": {
+    "addToLibraryUrl": "String",
+    "downloadUrlAltium": "String!",
+    "downloadUrlEagle": "String!",
+    "downloadUrlKicad": "String!",
+    "downloadUrlOrcad": "String!",
+    "footprintImageUrl": "String",
+    "has3dModel": "Boolean!",
+    "hasAltium": "Boolean!",
+    "hasEagle": "Boolean!",
+    "hasKicad": "Boolean!",
+    "hasOrcad": "Boolean!",
+    "symbolImageUrl": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartCadDownloadURLs": {
+   "fields": {
+    "altium": "String",
+    "eagle": "String",
+    "kicad": "String",
+    "orcadSymbol": "String",
+    "vault": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartCadModel": {
+   "fields": {
+    "cadDownloadUrls": "SupPartCadDownloadURLs!",
+    "cadSourceUrl": "String",
+    "datasheetDate": "DateTime",
+    "datasheetUrl": "String",
+    "datasheetVersion": "String",
+    "has3dModel": "Boolean!",
+    "hasFootprint": "Boolean!",
+    "hasSymbol": "Boolean!",
+    "ipcCompliant": "String",
+    "level": "Int!",
+    "previewUrls": "SupPartCadPreviewURLs!",
+    "source": "SupCompany!",
+    "sourcedBy": "SupCompany",
+    "styleGuideDate": "DateTime",
+    "styleGuideUrl": "String",
+    "styleGuideVersion": "String",
+    "updated": "DateTime!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartCadModels": {
+   "fields": {
+    "has3dModel": "Boolean!",
+    "hasFootprint": "Boolean!",
+    "hasSymbol": "Boolean!",
+    "highestLevel": "Int!",
+    "models": "[SupPartCadModel!]!",
+    "viewerDownloadUrl": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartCadPreviewURLs": {
+   "fields": {
+    "footprint": "Map",
+    "symbol": "Map",
+    "threeD": "Map"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartExtras": {
+   "fields": {
+    "alternatives": "[SupPartExtras!]!",
+    "confidence": "Float",
+    "datasheetUrls": "[String!]",
+    "description": "String",
+    "isRohsCompliant": "Boolean",
+    "lifeCycle": "SupPartLifeCycle!",
+    "parameters": "[SupPartExtrasParameter!]",
+    "partId": "String!",
+    "technicalDetails": "[SupPartExtrasTechnicalDetail!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartExtrasParameter": {
+   "fields": {
+    "name": "String!",
+    "unit": "String",
+    "value": "[String!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartExtrasTechnicalDetail": {
+   "fields": {
+    "name": "String!",
+    "value": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamily": {
+   "fields": {
+    "applicationIDs": "[String!]!",
+    "applications": "[SupCategory!]",
+    "category": "SupCategory!",
+    "categoryID": "String!",
+    "children": "[SupPartFamily!]!",
+    "familyType": "String!",
+    "id": "ID!",
+    "keyFeatures": "[SupPartFamilyKeyFeature!]!",
+    "manufacturer": "[SupCompany!]",
+    "manufacturerID": "String!",
+    "overview": "String!",
+    "parent": "SupPartFamily",
+    "partGroups": "[SupPartGroup!]!",
+    "siblings": "[SupPartFamily!]!",
+    "stableName": "String!",
+    "subtitle": "String!",
+    "tags": "[SupPartFamilyTag!]!",
+    "title": "String!"
+   },
+   "interfaces": [
+    "SupPartFamilyEntity"
+   ],
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyAppliedFilter": {
+   "fields": {
+    "displayName": "String!",
+    "displayValues": "[String!]!",
+    "name": "String!",
+    "units": "String",
+    "values": "SupPartFamilyFilterValues!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyBucket": {
+   "fields": {
+    "PartFamily": "SupPartFamily!",
+    "count": "Int"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyComplementaryPart": {
+   "fields": {
+    "categoryID": "String!",
+    "lifecycle": "String!",
+    "name": "String!",
+    "partGroupID": "ID!",
+    "slug": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyDocument": {
+   "fields": {
+    "description": "String!",
+    "type": "SupPartFamilyDocumentType!",
+    "updatedAt": "DateTime!",
+    "url": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyDocumentType": {
+   "kind": "ENUM"
+  },
+  "SupPartFamilyEntity": {
+   "fields": {
+    "applicationIDs": "[String!]!",
+    "categoryID": "String!",
+    "id": "ID!",
+    "keyFeatures": "[SupPartFamilyKeyFeature!]!",
+    "manufacturerID": "String!",
+    "overview": "String!",
+    "stableName": "String!",
+    "subtitle": "String!",
+    "tags": "[SupPartFamilyTag!]!",
+    "title": "String!"
+   },
+   "kind": "INTERFACE",
+   "possible_types": [
+    "SupPartFamily",
+    "SupPartGroup"
+   ]
+  },
+  "SupPartFamilyFeatureMetadata": {
+   "fields": {
+    "displayValue": "String!",
+    "name": "String!",
+    "units": "String!",
+    "value": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyFeatureValueType": {
+   "kind": "ENUM"
+  },
+  "SupPartFamilyFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupPartFamilyFilterType": {
+   "kind": "ENUM"
+  },
+  "SupPartFamilyFilterValues": {
+   "fields": {
+    "max": "String",
+    "min": "String",
+    "values": "[String]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyKeyFeature": {
+   "fields": {
+    "displayValue": "String!",
+    "group": "String!",
+    "metadata": "[SupPartFamilyFeatureMetadata!]!",
+    "name": "String!",
+    "units": "String!",
+    "value": "String!",
+    "valueType": "SupPartFamilyFeatureValueType!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyLifecycleStatus": {
+   "kind": "ENUM"
+  },
+  "SupPartFamilyParameter": {
+   "fields": {
+    "displayName": "String!",
+    "filterTypes": "[SupPartFamilyFilterType!]!",
+    "name": "String!",
+    "parameterAgg": "SupPartFamilyParameterAgg!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyParameterAgg": {
+   "fields": {
+    "buckets": "[SupPartFamilyParameterBucket!]!",
+    "max": "Float",
+    "min": "Float",
+    "units": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyParameterBucket": {
+   "fields": {
+    "count": "Int!",
+    "displayValue": "String!",
+    "max": "Float",
+    "min": "Float"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyPart": {
+   "fields": {
+    "part": "[SupPart]!",
+    "partID": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyPartResultSet": {
+   "fields": {
+    "appliedFilters": "[SupPartFamilyAppliedFilter!]!",
+    "hits": "Int!",
+    "partFamilyAgg": "[SupPartFamilyBucket!]!",
+    "partHits": "Int!",
+    "results": "[SupPartFamilyPartSearchResult!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyPartSearchResult": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupPartFamilyPart",
+    "SupPartGroup"
+   ]
+  },
+  "SupPartFamilyPrice": {
+   "fields": {
+    "currency": "String!",
+    "max": "Float!",
+    "median": "Float!",
+    "min": "Float!",
+    "priceBreak": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyResultSet": {
+   "fields": {
+    "hits": "Int!",
+    "results": "[SupPartFamilySearchResult!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilySearchResult": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupPartFamily",
+    "SupPartGroup"
+   ]
+  },
+  "SupPartFamilySoftwareSupport": {
+   "fields": {
+    "title": "String!",
+    "updatedAt": "DateTime!",
+    "url": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyTag": {
+   "fields": {
+    "type": "String!",
+    "value": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartFamilyVideo": {
+   "fields": {
+    "thumbnailUrl": "String!",
+    "title": "String!",
+    "updatedAt": "DateTime!",
+    "url": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartGroup": {
+   "fields": {
+    "applicationIDs": "[String!]!",
+    "applications": "[SupCategory]!",
+    "category": "SupCategory!",
+    "categoryID": "String!",
+    "complementaryParts": "[SupPartFamilyComplementaryPart!]!",
+    "documents": "[SupPartFamilyDocument!]!",
+    "id": "ID!",
+    "keyFeatures": "[SupPartFamilyKeyFeature!]!",
+    "lifecycleStatus": "SupPartFamilyLifecycleStatus!",
+    "manufacturer": "[SupCompany!]",
+    "manufacturerID": "String!",
+    "overview": "String!",
+    "parent": "SupPartFamily",
+    "partIDs": "[String!]!",
+    "parts": "[SupPart]!",
+    "price": "SupPartFamilyPrice",
+    "referenceDesignIDs": "[String!]!",
+    "siblings": "[SupPartGroup!]!",
+    "softwareSupport": "[SupPartFamilySoftwareSupport!]!",
+    "stableName": "String!",
+    "subtitle": "String!",
+    "tags": "[SupPartFamilyTag!]!",
+    "title": "String!",
+    "videos": "[SupPartFamilyVideo!]!"
+   },
+   "interfaces": [
+    "SupPartFamilyEntity"
+   ],
+   "kind": "OBJECT"
+  },
+  "SupPartLifeCycle": {
+   "kind": "ENUM"
+  },
+  "SupPartMatch": {
+   "fields": {
+    "error": "String",
+    "hits": "Int!",
+    "parts": "[SupPart!]!",
+    "reference": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartMatchOptions": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupPartMatchQuery": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupPartOffer": {
+   "fields": {
+    "offer": "SupOffer!",
+    "partId": "String!",
+    "sellerId": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartResult": {
+   "fields": {
+    "_cacheId": "String!",
+    "akaMpn": "String",
+    "description": "String!",
+    "explain": "String!",
+    "part": "SupPart!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartResultSet": {
+   "fields": {
+    "allFilters": "[SupAttribute!]!",
+    "appliedCategory": "SupCategory",
+    "appliedFilters": "[SupAppliedFilter!]!",
+    "cadAgg": "[SupCadBucket!]!",
+    "cadLevelAgg": "[SupLevelBucket!]!",
+    "categoryAgg": "[SupCategoryBucket!]!",
+    "childCategoryAgg": "[SupCategoryBucket!]!",
+    "contentVaultLevelAgg": "[SupLevelBucket!]!",
+    "contentVaultMetadataAgg": "[SupContentMetadataBucket!]!",
+    "distributorAgg": "[SupCompanyBucket!]!",
+    "hits": "Int!",
+    "inStockAgg": "[SupInStockBucket!]!",
+    "manufacturerAgg": "[SupCompanyBucket!]!",
+    "results": "[SupPartResult!]",
+    "specAggs": "[SupSpecAgg!]!",
+    "specsViewAttributeGroups": "[SupAttributeGroup!]!",
+    "suggestedCategories": "[SupCategoryBucket!]!",
+    "suggestedFilters": "[SupAttribute!]!",
+    "total": "Int!",
+    "warnings": "[String!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartSeller": {
+   "fields": {
+    "_cacheId": "String!",
+    "company": "SupCompany!",
+    "country": "String",
+    "isAuthorized": "Boolean!",
+    "isBroker": "Boolean!",
+    "isRfq": "Boolean!",
+    "offers": "[SupOffer!]!",
+    "shipsToCountries": "[SupCountry!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartSeries": {
+   "fields": {
+    "id": "ID!",
+    "name": "String!",
+    "url": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartSimModel": {
+   "fields": {
+    "downloadUrl": "String!",
+    "items": "[SupPartSimModelItem!]!",
+    "source": "SupCompany!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPartSimModelItem": {
+   "fields": {
+    "fileName": "String!",
+    "itemName": "String!",
+    "itemType": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupPlanTier": {
+   "kind": "ENUM"
+  },
+  "SupPricePoint": {
+   "fields": {
+    "_cacheId": "String!",
+    "conversionRate": "Float!",
+    "convertedCurrency": "String!",
+    "convertedPrice": "Float!",
+    "currency": "String!",
+    "price": "Float!",
+    "quantity": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefApplicationBucket": {
+   "fields": {
+    "application": "[SupCategory!]",
+    "applicationId": "String!",
+    "count": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefCategoryBucket": {
+   "fields": {
+    "category": "[SupCategory!]",
+    "categoryId": "String!",
+    "count": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefDesign": {
+   "fields": {
+    "applicationIds": "[String!]!",
+    "applications": "[SupCategory!]",
+    "bomId": "String",
+    "createdAt": "DateTime!",
+    "defaultSchematicFile": "String",
+    "description": "String!",
+    "designFiles": "[SupRefDesignFile]!",
+    "documentations": "[SupDocument]!",
+    "evalKitDetails": "SupEvalKitConnection",
+    "evaluationKitIds": "[String!]!",
+    "evaluationKits": "[SupRefEvaluationKit!]",
+    "faqs": "[SupRefFaq!]!",
+    "hasEvalBoard": "Boolean!",
+    "id": "ID!",
+    "isVerified": "Boolean!",
+    "keyFeatures": "[SupRefKeyFeature]!",
+    "parts": "[SupRefPart]!",
+    "previewImages": "[SupImage]",
+    "publisher": "[SupCompany!]",
+    "publisherId": "String!",
+    "releaseDate": "DateTime",
+    "self": "SupRefDesign",
+    "softwares": "[SupRefResource]!",
+    "sourceUrl": "String",
+    "stableName": "String!",
+    "status": "SupRefDesignStatus",
+    "subtitle": "String",
+    "tags": "[SupRefTag]",
+    "title": "String!",
+    "type": "SupRefDesignType!",
+    "updatedAt": "DateTime!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefDesignFile": {
+   "fields": {
+    "extension": "String!",
+    "name": "String!",
+    "notes": "[SupRefDesignNote]!",
+    "refDesignFileId": "String!",
+    "type": "String!",
+    "url": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefDesignFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupRefDesignNote": {
+   "fields": {
+    "attachment": "SupDocument",
+    "description": "String",
+    "objectId": "String",
+    "points": "[SupRefPoint2D]!",
+    "title": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefDesignOrderInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupRefDesignResultSet": {
+   "fields": {
+    "applicationAgg": "[SupRefApplicationBucket!]",
+    "categoryAgg": "[SupRefCategoryBucket!]",
+    "hits": "Int!",
+    "publisherAgg": "[SupRefPublisherBucket!]",
+    "results": "[SupRefDesign!]!",
+    "tagAgg": "[SupRefTagBucket!]",
+    "typeAgg": "[SupRefDesignTypeBucket!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefDesignStatus": {
+   "kind": "ENUM"
+  },
+  "SupRefDesignType": {
+   "kind": "ENUM"
+  },
+  "SupRefDesignTypeBucket": {
+   "fields": {
+    "count": "Int!",
+    "type": "SupRefDesignType!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefEvaluationKit": {
+   "fields": {
+    "evalKit": "[SupPart]!",
+    "partId": "String!",
+    "previewImages": "[SupImage!]!",
+    "title": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefFaq": {
+   "fields": {
+    "answer": "String!",
+    "question": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefKeyFeature": {
+   "fields": {
+    "description": "String!",
+    "html": "String",
+    "name": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefPart": {
+   "fields": {
+    "designators": "[String!]!",
+    "part": "[SupPart]!",
+    "partId": "String!",
+    "type": "SupRefPartType!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefPartType": {
+   "kind": "ENUM"
+  },
+  "SupRefPoint2D": {
+   "fields": {
+    "type": "String!",
+    "x": "Float!",
+    "y": "Float!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefPublisherBucket": {
+   "fields": {
+    "count": "Int!",
+    "publisher": "[SupCompany!]",
+    "publisherId": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefResource": {
+   "fields": {
+    "description": "String!",
+    "downloadText": "String!",
+    "downloadUrl": "String!",
+    "note": "String",
+    "otherResources": "[SupRefResource]!",
+    "revisionDate": "DateTime!",
+    "title": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefSortDirection": {
+   "kind": "ENUM"
+  },
+  "SupRefTag": {
+   "fields": {
+    "category": "String!",
+    "value": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRefTagBucket": {
+   "fields": {
+    "count": "Int!",
+    "name": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupReferenceDesign": {
+   "fields": {
+    "name": "String!",
+    "url": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupRole": {
+   "kind": "ENUM"
+  },
+  "SupSearchCorrection": {
+   "fields": {
+    "correctionString": "String!",
+    "correctionType": "SupCorrectionType!",
+    "droppedFilters": "SupDroppedFilter!",
+    "droppedTerms": "[String!]!",
+    "hits": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSearchRankingMethod": {
+   "kind": "ENUM"
+  },
+  "SupSoftwareProject": {
+   "fields": {
+    "bestPreviewImage": "SupImage",
+    "compatibleEvalKit": "SupSoftwareProjectEvalKitSource",
+    "compatibleEvalKitData": "SupSoftwareProjectEvalKitSourceConnection",
+    "compatibleEvalKitDetails": "SupSoftwareProjectEvalKitSourceConnection",
+    "compatibleEvalKits": "[SupSoftwareProjectEvalKitSource!]",
+    "createdAt": "DateTime!",
+    "description": "String",
+    "id": "ID!",
+    "isRecommended": "Boolean!",
+    "parameters": "[SupSoftwareProjectParameter!]",
+    "previewImages": "[SupImage!]",
+    "publisher": "[SupCompany!]",
+    "publisherId": "String!",
+    "recommendScore": "Int!",
+    "title": "String!",
+    "type": "SupSoftwareProjectType!",
+    "updatedAt": "DateTime!",
+    "updatedById": "String",
+    "updatedByName": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectCompatibleEvalKitFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectCompatibleEvalKitSortInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectConnection": {
+   "fields": {
+    "edges": "[SupSoftwareProjectEdge!]",
+    "nodes": "[SupSoftwareProject!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectCreateEvalKitSourceInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectCreateSoftwareProjectError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSoftwareProjectOperationFailedError"
+   ]
+  },
+  "SupSoftwareProjectCreateSoftwareProjectInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectCreateSoftwareProjectPayload": {
+   "fields": {
+    "errors": "[SupSoftwareProjectCreateSoftwareProjectError!]",
+    "id": "ID"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectDeleteSoftwareProjectError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSoftwareProjectNotFoundError",
+    "SupSoftwareProjectOperationFailedError"
+   ]
+  },
+  "SupSoftwareProjectDeleteSoftwareProjectInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectDeleteSoftwareProjectPayload": {
+   "fields": {
+    "errors": "[SupSoftwareProjectDeleteSoftwareProjectError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "SupSoftwareProject!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectErrorCode": {
+   "kind": "ENUM"
+  },
+  "SupSoftwareProjectEvalKitProjectSource": {
+   "fields": {
+    "artifactVersion": "String",
+    "configXmlUrl": "String!",
+    "family": "SupSoftwareProjectEvalKitProjectSourceDeviceFamily",
+    "framework": "SupSoftwareProjectEvalKitProjectSourceFramework",
+    "sourceUrl": "String!",
+    "type": "SupSoftwareProjectEvalKitProjectSourceType!",
+    "updatedAt": "DateTime!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectEvalKitProjectSourceDeviceFamily": {
+   "kind": "ENUM"
+  },
+  "SupSoftwareProjectEvalKitProjectSourceFramework": {
+   "kind": "ENUM"
+  },
+  "SupSoftwareProjectEvalKitProjectSourceInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectEvalKitProjectSourceType": {
+   "kind": "ENUM"
+  },
+  "SupSoftwareProjectEvalKitSource": {
+   "fields": {
+    "compatibleEvalKitId": "String!",
+    "configUrl": "String!",
+    "configXmlUrl": "String!",
+    "evalKit": "SupEvalKit!",
+    "evalKitId": "ID!",
+    "projectSources": "[SupSoftwareProjectEvalKitProjectSource!]",
+    "readmeUrl": "String!",
+    "sourceUrl": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectEvalKitSourceConnection": {
+   "fields": {
+    "edges": "[SupSoftwareProjectEvalKitSourceEdge!]",
+    "nodes": "[SupSoftwareProjectEvalKitSource!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectEvalKitSourceEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "SupSoftwareProjectEvalKitSource!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectEvalKitSourceInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectFileInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectNotFoundError": {
+   "fields": {
+    "errorCode": "SupSoftwareProjectErrorCode!",
+    "message": "String!"
+   },
+   "interfaces": [
+    "Error"
+   ],
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectOperationFailedError": {
+   "fields": {
+    "errorCode": "SupSoftwareProjectErrorCode!",
+    "message": "String!"
+   },
+   "interfaces": [
+    "Error"
+   ],
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectOrderDirection": {
+   "kind": "ENUM"
+  },
+  "SupSoftwareProjectOrderField": {
+   "kind": "ENUM"
+  },
+  "SupSoftwareProjectOrderInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectParameter": {
+   "fields": {
+    "parameter": "SupSoftwareProjectParameterInfo!",
+    "values": "[String!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectParameterInfo": {
+   "fields": {
+    "title": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectParameterInfoInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectParameterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectPatchParametersError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSoftwareProjectNotFoundError",
+    "SupSoftwareProjectOperationFailedError"
+   ]
+  },
+  "SupSoftwareProjectPatchParametersInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectPatchParametersPayload": {
+   "fields": {
+    "errors": "[SupSoftwareProjectPatchParametersError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectPatchPreviewImagesError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSoftwareProjectNotFoundError",
+    "SupSoftwareProjectOperationFailedError"
+   ]
+  },
+  "SupSoftwareProjectPatchPreviewImagesInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectPatchPreviewImagesPayload": {
+   "fields": {
+    "errors": "[SupSoftwareProjectPatchPreviewImagesError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectPatchSoftwareProjectSolutionTemplatesError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSoftwareProjectNotFoundError",
+    "SupSoftwareProjectOperationFailedError"
+   ]
+  },
+  "SupSoftwareProjectPatchSoftwareProjectSolutionTemplatesInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectPatchSoftwareProjectSolutionTemplatesPayload": {
+   "fields": {
+    "errors": "[SupSoftwareProjectPatchSoftwareProjectSolutionTemplatesError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectRemoveEvalKitSourceInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectSearchFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectSetParametersError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSoftwareProjectNotFoundError",
+    "SupSoftwareProjectOperationFailedError"
+   ]
+  },
+  "SupSoftwareProjectSetParametersInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectSetParametersPayload": {
+   "fields": {
+    "errors": "[SupSoftwareProjectSetParametersError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectSetPreviewImagesError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSoftwareProjectNotFoundError",
+    "SupSoftwareProjectOperationFailedError"
+   ]
+  },
+  "SupSoftwareProjectSetPreviewImagesInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectSetPreviewImagesPayload": {
+   "fields": {
+    "errors": "[SupSoftwareProjectSetPreviewImagesError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectSetSoftwareProjectSolutionTemplatesError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSoftwareProjectNotFoundError",
+    "SupSoftwareProjectOperationFailedError"
+   ]
+  },
+  "SupSoftwareProjectSetSoftwareProjectSolutionTemplatesInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectSetSoftwareProjectSolutionTemplatesPayload": {
+   "fields": {
+    "errors": "[SupSoftwareProjectSetSoftwareProjectSolutionTemplatesError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectSolutionTemplateSoftwareProjectsResult": {
+   "fields": {
+    "softwareProjects": "[SupSoftwareProject!]!",
+    "solutionTemplateId": "ID!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectSortInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectType": {
+   "kind": "ENUM"
+  },
+  "SupSoftwareProjectUpdateEvalKitCompatibleSoftwareProjectError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSoftwareProjectNotFoundError",
+    "SupSoftwareProjectOperationFailedError"
+   ]
+  },
+  "SupSoftwareProjectUpdateEvalKitCompatibleSoftwareProjectInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectUpdateEvalKitCompatibleSoftwareProjectPayload": {
+   "fields": {
+    "errors": "[SupSoftwareProjectUpdateEvalKitCompatibleSoftwareProjectError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSoftwareProjectUpdateEvalKitSourceInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectUpdateSoftwareProjectError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSoftwareProjectNotFoundError",
+    "SupSoftwareProjectOperationFailedError"
+   ]
+  },
+  "SupSoftwareProjectUpdateSoftwareProjectInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSoftwareProjectUpdateSoftwareProjectPayload": {
+   "fields": {
+    "errors": "[SupSoftwareProjectUpdateSoftwareProjectError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplate": {
+   "fields": {
+    "aiModelIds": "[String!]",
+    "applicationIds": "[String!]!",
+    "applications": "[SupCategory!]",
+    "bestPreviewImage": "SupImage",
+    "compatibleEvalKits": "[SupSolutionTemplateCompatibleEvalKit!]!",
+    "createdAt": "DateTime!",
+    "description": "String",
+    "esdSource": "SupSolutionTemplateESDSource!",
+    "evalKitIds": "[ID!]!",
+    "evalKits": "[SupEvalKit!]!",
+    "id": "ID!",
+    "keyFeatureGroups": "[SupSolutionTemplateKeyFeatureGroup!]!",
+    "parameters": "[SupSolutionTemplateParameterBundle!]!",
+    "previewImages": "[SupImage!]",
+    "publisher": "[SupCompany!]",
+    "publisherId": "String!",
+    "releaseDate": "DateTime",
+    "requirementTemplate": "String",
+    "self": "SupSolutionTemplate",
+    "softwareProjectIds": "[ID!]!",
+    "softwareProjects": "[SupSoftwareProject!]!",
+    "solutionSourceUrl": "String",
+    "sourceUrl": "String",
+    "stableName": "String!",
+    "status": "SupSolutionTemplateStatus!",
+    "tags": "[SupSolutionTemplateTag]",
+    "title": "String!",
+    "updatedAt": "DateTime!",
+    "updatedById": "String",
+    "updatedByName": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateApplication": {
+   "fields": {
+    "application": "[SupCategory!]",
+    "applicationId": "String!",
+    "createdAt": "DateTime!",
+    "description": "String",
+    "id": "ID!",
+    "parameters": "[SupSolutionTemplateApplicationParameterBundle!]!",
+    "updatedAt": "DateTime!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateApplicationConnection": {
+   "fields": {
+    "edges": "[SupSolutionTemplateApplicationEdge!]",
+    "nodes": "[SupSolutionTemplateApplication!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateApplicationCreateParameterBundleInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateApplicationEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "SupSolutionTemplateApplication!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateApplicationIsExistedError": {
+   "fields": {
+    "errorCode": "SupSolutionTemplateErrorCode!",
+    "message": "String!"
+   },
+   "interfaces": [
+    "Error"
+   ],
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateApplicationNotFoundError": {
+   "fields": {
+    "errorCode": "SupSolutionTemplateErrorCode!",
+    "message": "String!"
+   },
+   "interfaces": [
+    "Error"
+   ],
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateApplicationParameterBundle": {
+   "fields": {
+    "order": "Int!",
+    "parameter": "SupSolutionTemplateParameter!",
+    "question": "String!",
+    "required": "Boolean!",
+    "values": "[SupSolutionTemplateParameterValue!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateApplicationRemoveParameterBundleInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateApplicationSearchFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateApplicationSortInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateApplicationUpdateParameterBundleInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateCompatibleEvalKit": {
+   "fields": {
+    "compatibleEvalKitId": "String!",
+    "evalKit": "SupEvalKit!",
+    "evalKitId": "ID!",
+    "parameters": "[SupSolutionTemplateParameterBundle!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateCompatibleEvalKitInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateCompatibleEvalKitUpdateInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateConnection": {
+   "fields": {
+    "edges": "[SupSolutionTemplateEdge!]",
+    "nodes": "[SupSolutionTemplate!]",
+    "pageInfo": "PageInfo!",
+    "totalCount": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateCreateParameterInfoInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateCreateParameterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateCreateParameterValueInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateCreateSolutionTemplateApplicationError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateApplicationIsExistedError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplateCreateSolutionTemplateApplicationInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateCreateSolutionTemplateApplicationPayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplateCreateSolutionTemplateApplicationError!]",
+    "id": "ID"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateCreateSolutionTemplateError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplateCreateSolutionTemplateInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateCreateSolutionTemplatePayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplateCreateSolutionTemplateError!]",
+    "id": "ID"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateDeleteSolutionTemplateApplicationError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateApplicationNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplateDeleteSolutionTemplateApplicationInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateDeleteSolutionTemplateApplicationPayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplateDeleteSolutionTemplateApplicationError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateDeleteSolutionTemplateError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplateDeleteSolutionTemplateInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateDeleteSolutionTemplatePayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplateDeleteSolutionTemplateError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateESDSource": {
+   "fields": {
+    "compileModelUrl": "String",
+    "documentFileUrl": "String",
+    "previewUrl": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateEdge": {
+   "fields": {
+    "cursor": "String!",
+    "node": "SupSolutionTemplate!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateErrorCode": {
+   "kind": "ENUM"
+  },
+  "SupSolutionTemplateEsdSourceInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateEsdSourcePatchInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateFileInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateIndexSolutionTemplateError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplateIndexSolutionTemplateInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateIndexSolutionTemplatePayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplateIndexSolutionTemplateError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateInvalidDataError": {
+   "fields": {
+    "errorCode": "SupSolutionTemplateErrorCode!",
+    "message": "String!"
+   },
+   "interfaces": [
+    "Error"
+   ],
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateKeyFeatureGroup": {
+   "fields": {
+    "attributes": "[SupSolutionTemplateKeyFeatureGroupAttribute!]!",
+    "order": "Int!",
+    "title": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateKeyFeatureGroupAttribute": {
+   "fields": {
+    "name": "String!",
+    "value": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateKeyFeatureGroupAttributeInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateKeyFeatureGroupInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateNotFoundError": {
+   "fields": {
+    "errorCode": "SupSolutionTemplateErrorCode!",
+    "message": "String!"
+   },
+   "interfaces": [
+    "Error"
+   ],
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateOperationFailedError": {
+   "fields": {
+    "errorCode": "SupSolutionTemplateErrorCode!",
+    "message": "String!"
+   },
+   "interfaces": [
+    "Error"
+   ],
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateParameter": {
+   "fields": {
+    "info": "SupSolutionTemplateParameterInfo",
+    "title": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateParameterBundle": {
+   "fields": {
+    "parameter": "SupSolutionTemplateParameter!",
+    "values": "[SupSolutionTemplateParameterValue!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateParameterBundleInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateParameterInfo": {
+   "fields": {
+    "description": "String",
+    "imageUrl": "String",
+    "summary": "String"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateParameterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateParameterValue": {
+   "fields": {
+    "info": "SupSolutionTemplateParameterInfo",
+    "name": "String!",
+    "value": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateParameterValueInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplatePatchCompatibleEvalKitsError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplatePatchCompatibleEvalKitsInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplatePatchCompatibleEvalKitsPayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplatePatchCompatibleEvalKitsError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplatePatchEsdSourceError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplatePatchEsdSourceInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplatePatchEsdSourcePayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplatePatchEsdSourceError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplatePatchKeyFeatureGroupInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplatePatchKeyFeatureGroupsError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateInvalidDataError",
+    "SupSolutionTemplateNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplatePatchKeyFeatureGroupsInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplatePatchKeyFeatureGroupsPayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplatePatchKeyFeatureGroupsError!]",
+    "result": "SupSolutionTemplateResultPayload"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplatePatchParametersError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplatePatchParametersInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplatePatchParametersPayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplatePatchParametersError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplatePatchPreviewImagesError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplatePatchPreviewImagesInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplatePatchPreviewImagesPayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplatePatchPreviewImagesError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplatePatchTagsError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplatePatchTagsInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplatePatchTagsPayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplatePatchTagsError!]",
+    "result": "SupSolutionTemplateResultPayload"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateRefDesign": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupRefDesign",
+    "SupSolutionTemplate"
+   ]
+  },
+  "SupSolutionTemplateRefDesignApplicationBucket": {
+   "fields": {
+    "applicationId": "String!",
+    "count": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateRefDesignCategoryBucket": {
+   "fields": {
+    "categoryId": "String!",
+    "count": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateRefDesignFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateRefDesignOrderInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateRefDesignPublisherBucket": {
+   "fields": {
+    "count": "Int!",
+    "publisher": "[SupCompany!]",
+    "publisherId": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateRefDesignResultSet": {
+   "fields": {
+    "applicationAgg": "[SupSolutionTemplateRefDesignApplicationBucket!]",
+    "categoryAgg": "[SupSolutionTemplateRefDesignCategoryBucket!]",
+    "hits": "Int!",
+    "publisherAgg": "[SupSolutionTemplateRefDesignPublisherBucket!]",
+    "results": "[SupSolutionTemplateRefDesign!]!",
+    "tagAgg": "[SupSolutionTemplateRefDesignTagBucket!]",
+    "typeAgg": "[SupSolutionTemplateRefDesignTypeBucket!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateRefDesignSortDirection": {
+   "kind": "ENUM"
+  },
+  "SupSolutionTemplateRefDesignTagBucket": {
+   "fields": {
+    "count": "Int!",
+    "name": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateRefDesignType": {
+   "kind": "ENUM"
+  },
+  "SupSolutionTemplateRefDesignTypeBucket": {
+   "fields": {
+    "count": "Int!",
+    "type": "SupSolutionTemplateRefDesignType!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateRemoveKeyFeatureGroupAttributeInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateResultPayload": {
+   "fields": {
+    "success": "Boolean!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateSearchFilterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateSetCompatibleEvalKitsError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplateSetCompatibleEvalKitsInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateSetCompatibleEvalKitsPayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplateSetCompatibleEvalKitsError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateSetKeyFeatureGroupInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateSetKeyFeatureGroupsError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateInvalidDataError",
+    "SupSolutionTemplateNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplateSetKeyFeatureGroupsInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateSetKeyFeatureGroupsPayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplateSetKeyFeatureGroupsError!]",
+    "result": "SupSolutionTemplateResultPayload"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateSetParametersError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplateSetParametersInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateSetParametersPayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplateSetParametersError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateSetPreviewImagesError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplateSetPreviewImagesInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateSetPreviewImagesPayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplateSetPreviewImagesError!]",
+    "success": "Boolean"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateSetTagsError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplateSetTagsInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateSetTagsPayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplateSetTagsError!]",
+    "result": "SupSolutionTemplateResultPayload"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateSortInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateStatus": {
+   "kind": "ENUM"
+  },
+  "SupSolutionTemplateTag": {
+   "fields": {
+    "category": "String!",
+    "value": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateTagInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateUpdateParameterInfoInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateUpdateParameterInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateUpdateSolutionTemplateApplicationError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateApplicationNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplateUpdateSolutionTemplateApplicationInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateUpdateSolutionTemplateApplicationPayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplateUpdateSolutionTemplateApplicationError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateUpdateSolutionTemplateError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplateUpdateSolutionTemplateInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateUpdateSolutionTemplatePayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplateUpdateSolutionTemplateError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSolutionTemplateUpdateSolutionTemplateStatusError": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupSolutionTemplateNotFoundError",
+    "SupSolutionTemplateOperationFailedError"
+   ]
+  },
+  "SupSolutionTemplateUpdateSolutionTemplateStatusInput": {
+   "kind": "INPUT_OBJECT"
+  },
+  "SupSolutionTemplateUpdateSolutionTemplateStatusPayload": {
+   "fields": {
+    "errors": "[SupSolutionTemplateUpdateSolutionTemplateStatusError!]"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSortDirection": {
+   "kind": "ENUM"
+  },
+  "SupSpec": {
+   "fields": {
+    "attribute": "SupAttribute!",
+    "displayValue": "String!",
+    "siValue": "String!",
+    "units": "String!",
+    "unitsName": "String!",
+    "unitsSymbol": "String!",
+    "value": "String!",
+    "valueType": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSpecAgg": {
+   "fields": {
+    "attribute": "SupAttribute!",
+    "buckets": "[SupSpecBucket!]!",
+    "displayMax": "String",
+    "displayMin": "String",
+    "max": "Float",
+    "min": "Float",
+    "siMax": "String",
+    "siMin": "String",
+    "units": "String",
+    "unitsName": "String",
+    "unitsSymbol": "String",
+    "valueType": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSpecAggsSelection": {
+   "kind": "ENUM"
+  },
+  "SupSpecBucket": {
+   "fields": {
+    "count": "Int",
+    "displayValue": "String!",
+    "floatValue": "Float"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSpellingCorrection": {
+   "fields": {
+    "correctionString": "String!",
+    "hits": "Int!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSponsoredPart": {
+   "fields": {
+    "_cacheId": "String!",
+    "part": "SupPart!",
+    "ppid": "ID!",
+    "sourceId": "ID!",
+    "url": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupStrippedSpan": {
+   "fields": {
+    "attrShortnames": "[String!]!",
+    "end": "Int!",
+    "start": "Int!",
+    "text": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSuggestedAttributes": {
+   "fields": {
+    "attribute": "SupAttribute!",
+    "displayValues": "[String!]!",
+    "name": "String!",
+    "shortname": "String!",
+    "unitsSymbol": "String",
+    "values": "[String!]!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupSuggestion": {
+   "fields": {
+    "inCategoryId": "String!",
+    "inCategoryName": "String!",
+    "inManufacturerName": "String!",
+    "inPartId": "String!",
+    "text": "String!"
+   },
+   "kind": "OBJECT"
+  },
+  "SupUnionPayload": {
+   "kind": "UNION",
+   "possible_types": [
+    "SupErrorPayload",
+    "SupPartExtras"
+   ]
+  }
+ }
+}

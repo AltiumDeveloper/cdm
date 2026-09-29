@@ -22,10 +22,10 @@
 
 | Question | If YES → | Example |
 |----------|----------|---------|
-| Is it stored and retrieved as a versioned document? | `Artifact` | `system_SdmFunctionalModel` |
+| Is it stored and retrieved as a versioned document? | `Artifact` | `lib_Component` |
 | Does it orchestrate inputs and produce outputs? | `Activity` | `system_ESDDocument` |
 | Is it a snapshot / version of something? | `Artifact` | `system_SdmSystemModelVersion` |
-| Is it a project or workspace-level container? | `Activity` | `design_DesignProject` |
+| Is it a project or workspace-level container? | `Activity` | `des_Project` |
 | Is it a lightweight value-object with no lifecycle? | `Resource` | `dm_PortConfiguration` |
 
 ### Mixin Annotations
@@ -36,7 +36,7 @@ All mixins extend `core_Meta` (abstract). They are applied via `instantiates:` o
 |-------|-----------|---------|
 | `core_WithGRID` | `core_Entity` | `grid:` annotation slot (type `GRID`, base: `str`) |
 | `core_WithMaturity` | `core_Entity` | `maturity:` slot (enum: `EXPERIMENTAL`, `PRODUCTION`, `OBSOLETE`) |
-| `core_WithPlatformAPI` | `core_Entity`, `core_Resource` | `platformAPI:` slot (string — API type name) |
+| `core_WithPlatformAPI` | `core_Entity`, `core_Resource` | `platformAPI:` and `nexarAPI:` slots (string — API type names) |
 | `core_WithVault` | domain classes | `contentType:` slot (enum `VaultContentType`) |
 
 ### Full Class Hierarchy
@@ -47,14 +47,14 @@ linkml:Any
 ├── core_Meta (abstract)
 │   ├── core_WithGRID          — mixin: grid annotation
 │   ├── core_WithMaturity      — mixin: maturity annotation
-│   ├── core_WithPlatformAPI   — mixin: platform API type name
+│   ├── core_WithPlatformAPI   — mixin: platformAPI / nexarAPI type names
 │   ├── core_WithVault         — mixin: vault content type
 │   └── core_WithVaultLink     — mixin: vault link parent/child
 ├── core_Resource (abstract)   — instantiates: core_WithPlatformAPI
 ├── core_Event (abstract)
 └── core_Entity (abstract)     — instantiates: core_WithGRID, core_WithMaturity, core_WithPlatformAPI
     ├── core_Artifact (abstract)
-    │   └── <domain Artifact subclasses, e.g. system_SdmFunctionalModel>
+    │   └── <domain Artifact subclasses, e.g. plt_LifecycleDefinition>
     └── core_Activity (abstract)
         └── <domain Activity subclasses, e.g. system_ESDDocument>
 ```
@@ -64,17 +64,16 @@ linkml:Any
 **Artifact subclass:**
 
 ```yaml
-system_SdmFunctionalModel:
+plt_LifecycleDefinition:
   is_a: core_Artifact
-  in_subset: system-sdm
-  class_uri: sys:SdmFunctionalModel
-  title: SDM Functional Model
+  in_subset: platform
+  class_uri: plt:LifecycleDefinition
+  title: Lifecycle Definition
   description: >-
-    The functional model of a system design, grouping functional blocks
-    and their interconnections.
+    Defines the set of states that an entity can transition through in its lifecycle.
   annotations:
-    platformAPI: SysSdmFunctionalModel
-    grid: grid:workspace:{workspace-id}:system-design:sdm/{id}
+    grid: grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}
+    platformAPI: DesLifeCycleDefinition
 ```
 
 **Activity subclass:**
@@ -89,7 +88,7 @@ system_ESDDocument:
     An Electronic System Design document that orchestrates functional blocks,
     requirements, and system model versions.
   annotations:
-    platformAPI: SysESDDocument
+    platformAPI: SysEsdDocument
     grid: grid:workspace:{workspace-id}:system-design:esd/{id}
 ```
 
@@ -99,14 +98,16 @@ system_ESDDocument:
 
 ### Definition
 
-`GRID` (Globally Unique Resource ID) is a CDM scalar type defined in `core.yaml`:
+`GRID` (Global Resource ID) is a CDM scalar type defined in `core.yaml`:
 
 ```yaml
 types:
   GRID:
     uri: core:grid
     base: str
-    description: Globally unique resource ID
+    description: >-
+      Global Resource ID. Format grid:area:[tenant-id]:context:resource-type/resource-id, see
+      https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/grid
 ```
 
 Every `Entity` carries a `core_id` slot of type `GRID`. The type is a plain string — no URN prefix at the LinkML level; the platform enforces the format.
@@ -116,8 +117,13 @@ Every `Entity` carries a `core_id` slot of type `GRID`. The type is a plain stri
 Class-level `grid:` annotations document the **GRID template** for instances of that class:
 
 ```
-grid: grid:{workspace-id}:system-design:esd/{id}
+grid: grid:workspace:{workspace-id}:system-design:esd/{id}
 ```
+
+Format (official): `grid:area:[tenant-id]:context:resource-type/resource-id` — `area` is one of
+`global`, `workspace`, `supply`, `community`, `manufacture`; resources without a tenant use `::`
+(e.g. `grid:global::platform:user/{id}`). See the
+[GRID key concept](https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/grid).
 
 The annotation is informational only (consumed by platform tooling). It does **not** affect LinkML validation.
 
@@ -177,16 +183,16 @@ relations (from RO/PROV-O) and **expanded** relations (CDM extensions).
 | `core_hasOutput` | `hasOutput` | Activity → Artifact | `core_outputOf` | No | Activity references its produced Artifacts |
 | `core_informedBy` | `informedBy` | Activity → Activity | `core_informs` | No | Activity uses knowledge from another Activity |
 | `core_informs` | `informs` | Activity → Activity | `core_informedBy` | No | Reverse of informedBy |
-| `core_occursIn` | `occursIn` | Activity → Artifact | `core_containsActivity` | No | Activity is scoped within an Artifact context |
-| `core_containsActivity` | `containsActivity` | Artifact → Activity | `core_occursIn` | No | Artifact provides the context for an Activity |
+| `core_occursIn` | `occursIn` | Activity → Artifact | — | No | Activity is scoped within an Artifact context |
 
 ### Expanded Relation Table
 
-| Slot name | Alias | Domain → Range | Inverse | Transitive | Symmetric | Semantic |
-|-----------|-------|----------------|---------|-----------|----------|---------|
-| `core_implements` | `implements` | Activity → Activity | `core_implementedBy` | No | No | Activity implements a requirement/spec Activity |
-| `core_implementedBy` | `implementedBy` | Activity → Activity | `core_implements` | No | No | Reverse of implements |
-| `core_associatedWith` | `associatedWith` | Artifact → Artifact | self | No | **Yes** | Symmetric peer association between Artifacts |
+| Slot name | Alias | Domain → Range | Inverse | Transitive | Semantic |
+|-----------|-------|----------------|---------|-----------|---------|
+| `core_implements` | `implements` | Activity → Activity | `core_implementedBy` | No | Activity implements a requirement/spec Activity |
+| `core_implementedBy` | `implementedBy` | Activity → Activity | `core_implements` | No | Reverse of implements |
+
+> Note: core_implements is_a core_informedBy; core_implementedBy is_a core_informs.
 
 ### Pre-built Specialisations in core.yaml
 
@@ -355,10 +361,12 @@ system_FunctionalBlock:
 
 #### platformAPI annotation
 
-`platformAPI` must name an **existing** Platform API type (e.g. `BomWip`, `SupPart`, `GloOrganization`).
-Never invent a type name from naming patterns. If the entity has no API type yet, **omit the
-annotation** (e.g. `sup_Company`) and add it once the API type exists. Several classes may share one
-API type (e.g. `pro_ManagedBOM` and `pro_ConsolidatedBOM` → `BomWip`).
+`platformAPI` must name an **existing** Altium 365 Platform API type (e.g. `BomWip`, `DesProject`,
+`GloOrganization`). Supply-chain types served by the Nexar (Octopart) API use `nexarAPI` instead
+(e.g. `sup_Part` → `nexarAPI: SupPart`). Never invent a type name from naming patterns — check it against
+production introspection. If the entity has no API type yet, **omit the annotation** (e.g. `dm_Processor`)
+and add it once the API type exists. Several classes may share one API type (e.g. `pro_ManagedBOM` and
+`pro_ConsolidatedBOM` → `BomWip`).
 
 ### 4.4 Required Slot Metadata
 
@@ -439,7 +447,7 @@ CDM uses two complementary layers to track schema violations:
 
 | Layer | File | Role | Updated by |
 |-------|------|------|------------|
-| Machine record | `cdm-lint.yaml` | Authoritative baseline — lists every element that currently emits a lint warning or error. The linter promotes violations from errors to warnings for anything in this file, preventing CI breakage on pre-existing issues. | `make gen-lint-baseline` (automated) |
+| Machine record | `cdm-lint.yaml` | Authoritative baseline — lists elements whose errors are downgraded to warnings (advisory warnings such as LINT-08, DOC-02 and DOC-05 are not baselined). The linter promotes violations from errors to warnings for anything in this file, preventing CI breakage on pre-existing issues. | `poetry run cdm-lint --baseline-out cdm-lint.yaml` (automated) |
 | Editorial record | `VIOLATIONS.md` | Human-curated tracking for violations worth naming, describing, and prioritising. Not exhaustive — focuses on violations that require coordination (breaking renames, version bumps, consumer impact). | Maintainers manually, via PR |
 
 Both layers must be kept in sync. When a violation is fixed, both files must be updated.
@@ -451,7 +459,7 @@ Both layers must be kept in sync. When a violation is fixed, both files must be 
 > 1. **Source YAML no longer contains it** — the element in `src/common_data_model/schema/`
 >    conforms to the naming/metadata convention.
 > 2. **`cdm-lint.yaml` no longer lists it after baseline regeneration** — run
->    `make gen-lint-baseline` and verify the entry is absent. If it still appears, the
+>    `poetry run cdm-lint --baseline-out cdm-lint.yaml` and verify the entry is absent. If it still appears, the
 >    YAML fix is incomplete or incorrect.
 > 3. **`VIOLATIONS.md` row is updated to `Fixed`** — update the Fix Status column and
 >    note the PR/commit that resolved it.
@@ -461,12 +469,10 @@ Both layers must be kept in sync. When a violation is fixed, both files must be 
 The following active naming/convention violations exist in the schema as of the last audit.
 Full tracking details, fix status, and blockers are in **[VIOLATIONS.md](VIOLATIONS.md)**.
 
-- **`device_model.yaml`** — slot `db_PortConfiguration_enum_values` uses a `db_` prefix instead
-  of the correct `dm_` prefix for the `deviceModel` subset.
 - **`system.yaml`** — class `system_SdmSystemModelVersion` has `class_uri: sys:SystemModelVersion`
   which is missing the `Sdm` segment; the correct URI would be `sys:SdmSystemModelVersion`.
-- **`device_model.yaml`** — class `dm_port_configuration_enum_value` uses snake_case for the class
-  name component; it should be PascalCase: `dm_PortConfigurationEnumValue`.
+- **`system.yaml`** — class `system_SdmSystemModel` has `class_uri: sys:SystemModel`, likewise missing
+  the `Sdm` segment (`sys:SdmSystemModel`).
 
 Do **not** silently fix violations. Open a PR, reference the VIOLATIONS.md row, and update fix status.
 
@@ -477,7 +483,7 @@ Do **not** silently fix violations. Open a PR, reference the VIOLATIONS.md row, 
 1. **NEVER rename a class or slot without a version bump.**
    Class and slot names are part of the public API. Renaming breaks JSON Schema `$ref`s,
    Python datamodel attribute names, SHACL property paths, and downstream consumers.
-   If a rename is required, increment the schema version, add a changelog entry, and
+   If a rename is required, cut a new release (versions are the `vX.Y.Z` git tags), add a changelog entry, and
    coordinate with schema consumers before merging.
 
 2. **NEVER add a new prefix without formal subset approval.**
@@ -522,13 +528,13 @@ Follow these steps for any schema addition or modification:
    ```bash
    make lint
    ```
-   Runs `linkml-lint` against all schema files. Fix all errors and warnings before continuing.
+   Runs `linkml-lint` and `cdm-lint` against all schema files. Fix all errors and warnings before continuing.
 
-3. **Run `make validate`**
+3. **Run `make test-schema`**
    ```bash
-   make validate
+   make test-schema
    ```
-   Runs `linkml-validate` to check schema structural correctness and cross-reference integrity.
+   Generates the project from the schema into `tmp/`, which fails if the schema is structurally invalid.
 
 4. **Run `make gen-project`**
    ```bash
@@ -554,3 +560,48 @@ Follow these steps for any schema addition or modification:
    - Add an entry to `CHANGELOG.md` under the `[Unreleased]` section
    - Tag breaking changes (renames, removals) with `BREAKING:` in the commit message
    - Request review from at least one CDM schema maintainer
+
+---
+
+## 8. Documentation Hub Links
+
+Every class can link three layers: product docs, API, and standards. Rules are enforced by `cdm-lint` (DOC-01…05).
+
+| Field | Purpose | Rule |
+|---|---|---|
+| `see_also:` | Official product/documentation pages, most relevant first (first = primary). Read from the class itself, not inherited | Each URL (and `#fragment`) must be in `src/docs/links/registry.yaml` (DOC-01). An empty `#` fragment counts as an anchor and must be listed too |
+| `structured_aliases:` | Product terms for the concept, with `predicate`, `contexts`, `source` URL | `source` must be in the registry (DOC-01) |
+| `annotations.platformAPI` | Altium 365 Platform API GraphQL type. Read from the class itself, not inherited | Must exist in `src/docs/api/platform-schema.json` as OBJECT/INTERFACE/UNION (DOC-03) |
+| `annotations.nexarAPI` | Nexar (Octopart) GraphQL type for supply entities. Read from the class itself, not inherited | Must exist in `src/docs/api/nexar-schema.json` as OBJECT/INTERFACE/UNION (DOC-03) |
+| `exact_mappings` / `close_mappings` / `related_mappings` | External standards (SVD, PDSC, SysML v2, PROV-O, RO/BFO) | Full http(s) URL, or CURIE with prefix `prov:` / `obo:` (DOC-04) |
+| `annotations.productDocs: none` | Declares that no public product documentation exists (after checking) | Silences DOC-05 |
+
+Severities: DOC-01 error, DOC-02 warning (registry entry not used by any class), DOC-03 error,
+DOC-04 error, DOC-05 warning. Errors listed in `cdm-lint.yaml` (buckets `doc_link`, `api_type`,
+`mapping_format`) are downgraded to warnings.
+
+DOC-05 (missing product documentation and API type) applies only to concrete PRODUCTION classes
+descending from `core_Entity`; an absent `maturity` annotation means PRODUCTION.
+
+`cdm-lint` must be run from the repository root (so it finds `src/docs/links/registry.yaml` and
+`src/docs/api/`), or with `--registry` / `--api-dir` pointing at them. It exits with code 2 if the
+registry or API snapshot directory is missing.
+
+```yaml
+plt_LifecycleDefinition:
+  annotations:
+    platformAPI: DesLifeCycleDefinition
+  see_also:
+    - https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions
+  structured_aliases:
+    - literal_form: Lifecycle Definition
+      predicate: EXACT_SYNONYM
+      contexts: [altium-designer, altium-365]
+      source: https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions
+```
+
+**Adding a link:** (1) open the page and read it — only link pages that genuinely describe the concept;
+(2) add a registry entry with the exact `<title>` text before `" | "` and any anchors you use;
+(3) add the URL to `see_also`; (4) run `make verify-links` and `make lint`.
+Never guess an API type name — look it up in the snapshot (`make refresh-api-snapshot` to update).
+Semantic disagreements between the CDM and the docs go to `MODEL-FINDINGS.md`, not silently into the schema.
