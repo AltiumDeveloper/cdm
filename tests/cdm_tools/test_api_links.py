@@ -86,3 +86,66 @@ def test_urls_with_and_without_docs_page_index():
     only_type = ApiIndex(SNAP, doc_pages={"types/objects/RuleCheck"})
     assert only_type.type_url("RuleCheck") == f"{DOCS_BASE}/types/objects/RuleCheck/"
     assert only_type.operation_url(links.reads[0]) is None
+
+
+SNAP2 = {
+    "query_type": "Query",
+    "mutation_type": "Mutation",
+    "types": {
+        "Query": {"kind": "OBJECT", "fields": {
+            "bomById": "Bom", "previewThing": "Item", "itemById": "Item", "design": "DesignQueries!",
+        }},
+        "DesignQueries": {"kind": "OBJECT", "fields": {"preview": "PreviewQueries!", "thing": "ThingQueries!"}},
+        "PreviewQueries": {"kind": "OBJECT", "fields": {"itemById": "Item"}},
+        "ThingQueries": {"kind": "OBJECT", "fields": {"itemById": "Item"}},
+        "Bom": {"kind": "OBJECT", "fields": {"items": "BomItemsConnection", "id": "ID!"}, "interfaces": ["Node"]},
+        "BomItemsConnection": {"kind": "OBJECT", "fields": {"nodes": "[BomItem!]"}},
+        "BomItem": {"kind": "OBJECT", "fields": {"elements": "[BomElement]"}},
+        "BomElement": {"kind": "INTERFACE", "fields": {"id": "ID!"}, "possible_types": ["BomAlt"]},
+        "BomAlt": {"kind": "OBJECT", "fields": {"id": "ID!"}, "interfaces": ["BomElement"]},
+        "SysConnection": {"kind": "OBJECT", "fields": {"id": "ID!"}},
+        "SysHolder": {"kind": "OBJECT", "fields": {"conn": "SysConnection"}},
+        "Fam": {"kind": "OBJECT", "fields": {"parent": "Fam", "child": "Fam"}},
+        "Zed": {"kind": "OBJECT", "fields": {"tgt": "Tgt"}},
+        "Alpha": {"kind": "OBJECT", "fields": {"tgt": "Tgt"}, "interfaces": ["Node"]},
+        "Item": {"kind": "OBJECT", "fields": {"id": "ID!"}},
+        "Node": {"kind": "INTERFACE", "fields": {"id": "ID!"}, "possible_types": ["Alpha", "Bom"]},
+        "Tgt": {"kind": "OBJECT", "fields": {"id": "ID!"}},
+        "DesProj": {"kind": "OBJECT", "fields": {"id": "ID!"}, "interfaces": ["Node"]},
+        "DesTask": {"kind": "OBJECT", "fields": {"id": "ID!"}, "interfaces": ["Node"]},
+        "Mutation": {"kind": "OBJECT", "fields": {
+            "desUpdateProjParams": "IdPayload!", "desCreateProjTask": "TaskPayload!",
+        }},
+        "IdPayload": {"kind": "OBJECT", "fields": {"id": "ID!"}},
+        "TaskPayload": {"kind": "OBJECT", "fields": {"task": "DesTask", "id": "ID!"}},
+        "ID": {"kind": "SCALAR"},
+    },
+}
+
+
+def test_entity_named_connection_is_a_parent_not_a_wrapper():
+    assert ApiIndex(SNAP2).links_for("SysConnection").reached_via == ["SysHolder.conn"]
+
+
+def test_reached_via_follows_connections_and_interfaces():
+    idx = ApiIndex(SNAP2)
+    assert idx.links_for("BomItem").reached_via == ["Bom.items"]
+    assert idx.links_for("BomAlt").reached_via == ["BomItem.elements"]
+
+
+def test_reached_via_excludes_self_references():
+    assert ApiIndex(SNAP2).links_for("Fam").reached_via == []
+
+
+def test_reached_via_lists_refetchable_parents_first():
+    assert ApiIndex(SNAP2).links_for("Tgt").reached_via == ["Alpha.tgt", "Zed.tgt"]
+
+
+def test_write_candidates_skip_payloads_returning_other_entities():
+    links = ApiIndex(SNAP2).links_for("DesProj")
+    assert [o.path for o in links.write_candidates] == ["desUpdateProjParams"]
+
+
+def test_preview_reads_sorted_last():
+    paths = [o.path for o in ApiIndex(SNAP2).links_for("Item").reads]
+    assert paths == ["design.thing.itemById", "itemById", "previewThing", "design.preview.itemById"]
