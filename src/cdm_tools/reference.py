@@ -148,15 +148,24 @@ def _grid_parts(template: str) -> tuple[str, str]:
     return (parts[1], parts[3]) if len(parts) >= 5 and parts[0] == "grid" else ("(unparsed)", "(unparsed)")
 
 
-def write_grid_templates(sv, path: Path) -> None:
-    by_context: dict[str, list[tuple[str, str]]] = {}
-    areas: dict[str, int] = {}
+def grid_templates(sv) -> list[tuple[str, str, str, str]]:
+    """(class name, first subset, GRID context, template) for every class with a `grid` annotation."""
+    rows = []
     for name, cls in sv.all_classes().items():
         ann = cls.annotations or {}
         if "grid" not in ann:
             continue
         template = str(ann["grid"].value)
-        area, context = _grid_parts(template)
+        subset = str(cls.in_subset[0]) if cls.in_subset else ""
+        rows.append((str(name), subset, _grid_parts(template)[1], template))
+    return rows
+
+
+def write_grid_templates(sv, path: Path) -> None:
+    by_context: dict[str, list[tuple[str, str]]] = {}
+    areas: dict[str, int] = {}
+    for name, _, context, template in grid_templates(sv):
+        area = _grid_parts(template)[0]
         by_context.setdefault(context, []).append((name, template))
         areas[area] = areas.get(area, 0) + 1
     lines = ["# GRID templates", "",

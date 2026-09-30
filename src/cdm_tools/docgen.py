@@ -19,7 +19,7 @@ from linkml.generators.docgen import DocGenerator
 from cdm_tools.api_snapshot import DEFAULT_API_DIR
 from cdm_tools.coverage import SubsetCoverage, load_findings, subset_coverage
 from cdm_tools.hub import build_hub, load_api_layers, schema_namespaces
-from cdm_tools.reference import DEFAULT_FINDINGS_PATH
+from cdm_tools.reference import DEFAULT_FINDINGS_PATH, grid_templates
 from cdm_tools.registry import DEFAULT_REGISTRY_PATH, LinkEntry, RegistryError, load_registry, split_url
 
 
@@ -83,11 +83,7 @@ class CdmDocGenerator(DocGenerator):
                     coverage.update(subset_coverage(
                         sv, platform_index=platform, nexar_types=nexar_types,
                         findings=load_findings(self.findings_path)))
-                grid = []
-                for cname, cls in sv.all_classes().items():
-                    ann = cls.annotations or {}
-                    if name in (cls.in_subset or []) and "grid" in ann:
-                        grid.append((str(cname), str(ann["grid"].value)))
+                grid = [(c, t) for c, subset, _, t in grid_templates(sv) if subset == name]
                 cache[name] = SubsetHub(
                     links=[str(u) for u in (element.see_also or [])],
                     coverage=coverage.get(name, SubsetCoverage()),
