@@ -13,9 +13,8 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - Bounded Contexts page: every bounded context with its classes and their API types (the generated schema index, written as `bounded-contexts.md`).
 - GRIDs page (top-level): format and the catalogue of class GRID templates (class title and template) per bounded context.
 - Glossary of product terms (class titles and `structured_aliases`; terms shared by several classes are noted as homonyms).
-- Coverage dashboard: documentation coverage per bounded context.
-- Bounded-context overview pages with landing links, coverage line and GRID templates.
-- `cdm-gen-reference`: generates the relation, prefix and class-hierarchy reference tables, the GRID catalogue for the GRIDs page, the glossary and the coverage page (`make gendoc`).
+- Bounded-context overview pages with landing links and GRID templates.
+- `cdm-gen-reference`: generates the relation, prefix and class-hierarchy tables for the concept pages, the GRID catalogue for the GRIDs page and the glossary (`make gendoc`); it also generates the reference pages and a documentation coverage page for internal use, which are not published on the site.
 - PROV-O, RO and BFO mappings on core classes and relations (`prov:` and `obo:` prefixes).
 - DOC-01/DOC-04 checks for `see_also` and mappings on slots and subsets.
 - Bounded-context descriptions (rewritten) and links to their product areas.
@@ -30,9 +29,7 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - `see_also` replaces `extensions: documentation` for product documentation links.
 - PR CI workflow (`.github/workflows/pr.yaml`) running `make lint` and `tests/cdm_tools`.
 - Governance files `VIOLATIONS.md` and `MODEL-FINDINGS.md`.
-- `cdm-gendoc --findings` (exits 2 when `MODEL-FINDINGS.md` is missing).
 - Subsets can declare `annotations: {productDocs: none}`; their page then states that no public product documentation exists (set on `core`).
-- Reference pages (relations, prefixes, class hierarchy) in the site navigation.
 - Snippet includes are checked (`pymdownx.snippets` `check_paths`).
 - PR CI builds the documentation (`make gendoc` and `mkdocs build --strict`); `make gendoc` stops at the first failing step.
 
