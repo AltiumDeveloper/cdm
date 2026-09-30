@@ -11,8 +11,9 @@ from the root schema, and `cdm-lint` checks it against the naming and documentat
 - **Base classes.** Every domain class other than a mixin specialises an abstract base class from the `core` subset:
   `core_Artifact` or `core_Activity` (both entities with a GRID), `core_Resource` (a lightweight part of an
   entity) or `core_Event`. Mixins add annotations and slots. See [Entity Classification](entity-classification.md).
-- **Relations.** Relations between domain classes specialise abstract relations defined in `core`, such as
-  *has part*, *has input* or *derived from*. See [Relation Types](relation-types.md).
+- **Relations.** Relations between domain classes should specialise abstract relations defined in `core`, such
+  as *has part*, *has input* or *derived from*; 28 entity-valued slots do not yet. See
+  [Relation Types](relation-types.md).
 - **Identity.** Entities are identified on the platform by a GRID (Global Resource ID); each class can declare
   the GRID template of its instances. See [GRID](grid-format.md).
 - **Names.** Class names carry a short context prefix and a PascalCase name (`lib_Component`, `des_Project`,
@@ -22,7 +23,7 @@ from the root schema, and `cdm-lint` checks it against the naming and documentat
 
 ## Bounded contexts
 
-Each page below describes the context, links its product documentation and lists its classes.
+Each page below describes the context, links its product documentation where it has any, and lists its classes.
 
 - [core](subsets/core.md) — `core.yaml`
 - [platform](subsets/platform.md) — `platform.yaml`

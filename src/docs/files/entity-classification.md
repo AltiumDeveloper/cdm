@@ -54,22 +54,24 @@ produces outputs. Typical Activities in the schema:
 - work items and requests — [col_Task](classes/col_Task.md), [col_CommentThread](classes/col_CommentThread.md),
   [lib_PartRequest](classes/lib_PartRequest.md),
   [req_RequirementChangeRequest](classes/req_RequirementChangeRequest.md);
-- process runs — [cus_Workflow](classes/cus_Workflow.md), [des_RuleCheckExecution](classes/des_RuleCheckExecution.md);
-- insights — [ins_PartInsight](classes/ins_PartInsight.md).
+- process runs — [des_RuleCheckExecution](classes/des_RuleCheckExecution.md).
 
 ### Resource
 
 [`core_Resource`](classes/core_Resource.md) is **not** an Entity. A Resource is a lightweight object that
 typically exists as part of an Entity: it has no GRID and no versioning lifecycle of its own, but it can have a
-Platform API type (`core_Resource` instantiates `core_WithPlatformAPI`). Where a Resource needs an identifier it
-usually has `core_localId`, which is unique only within its context (a few use a natural key, such as the name
-of a pin). Examples: BOM lines
+Platform API type (`core_Resource` instantiates `core_WithPlatformAPI`). Examples: BOM lines
 ([pro_BomItem](classes/pro_BomItem.md)), parameters and variants
 ([des_ProjectParameter](classes/des_ProjectParameter.md), [des_ProjectVariant](classes/des_ProjectVariant.md)),
 lifecycle stages and states ([plt_LifecycleState](classes/plt_LifecycleState.md)), comments
 ([col_Comment](classes/col_Comment.md)), the contents of a device model
 ([dm_Peripheral](classes/dm_Peripheral.md), [dm_PortConfiguration](classes/dm_PortConfiguration.md)), and the
 models inside a system model version ([system_SdmFunctionalModel](classes/system_SdmFunctionalModel.md)).
+
+About half of the Resources have no identifier slot. 27 of the 63 concrete Resources have `core_localId`, an identifier that
+is unique only within its context — for example `dm_Peripheral`, `dm_PortConfiguration` and
+`system_SdmFunctionalModel`; five device-model Resources use a natural key instead, such as the name of a pin
+(`dm_Pin`) or a start address (`dm_Register`).
 
 ### Event
 
@@ -91,7 +93,7 @@ Mixins extend `core_Meta` and are never used as a parent with `is_a`.
 
 ## How to classify a class
 
-The schema applies these criteria, in this order:
+The current classification follows these criteria, in this order:
 
 | Question | If yes | Examples |
 | --- | --- | --- |
@@ -103,14 +105,29 @@ The schema applies these criteria, in this order:
 | Is it a platform or catalogue record (user, Workspace, supply part)? | `core_Artifact` | `plt_User`, `plt_Workspace`, `sup_Part` |
 
 A recurring pattern is a working Activity paired with Artifact snapshots of it:
-`system_SdmSystemModel` → `system_SdmSystemModelVersion`, `pro_ManagedBOM` → `pro_BomRelease`,
-`sft_SoftwareProject` → `sft_SoftwareRelease`, `plt_Solution` → `plt_SolutionRelease`. It is a pattern, not a
-rule that splits design work from released data: [des_ProjectRelease](classes/des_ProjectRelease.md) is
-described as an immutable snapshot yet is an Activity, and the run of a script
-([cus_ScriptExecution](classes/cus_ScriptExecution.md)) is an Artifact while the run of a rule check is an
-Activity. These cases are open questions in
-[MODEL-FINDINGS.md](https://github.com/AltiumDeveloper/cdm/blob/main/MODEL-FINDINGS.md) (MF-007, MF-070,
-MF-073).
+
+- `system_SdmSystemModel` → `system_SdmSystemModelVersion`, linked by the slots `system_SdmSystemModel_versions`
+  and `system_SdmSystemModel_latestVersion` (which specialise no core relation); the version is described as the
+  state of the system model at a point in time.
+- `pro_BomWIP` (and so `pro_ManagedBOM`, `pro_ConsolidatedBOM`) → `pro_BomRelease`, `plt_Solution` →
+  `plt_SolutionRelease` and `sft_SoftwareProject` → `sft_SoftwareRelease`, linked by `core_releases`. The BOM
+  release and the solution release are described as snapshots of the BOM and the solution; the software release
+  has no description yet, so for it the pairing rests only on the name and the `core_releases` slot.
+
+It is a pattern, not a rule that splits design work from released data. Exceptions and open questions, tracked
+in [MODEL-FINDINGS.md](https://github.com/AltiumDeveloper/cdm/blob/main/MODEL-FINDINGS.md):
+
+- [des_ProjectRelease](classes/des_ProjectRelease.md) is described as an immutable snapshot yet is an Activity
+  (MF-007, MF-070); the other release classes are Artifacts.
+- The run of a script ([cus_ScriptExecution](classes/cus_ScriptExecution.md)) is an Artifact, while the run of a
+  rule check is an Activity (MF-073).
+- [cus_Workflow](classes/cus_Workflow.md) is an Activity, but its Platform API type is a workflow definition
+  (MF-026).
+- [ins_PartInsight](classes/ins_PartInsight.md) is an Activity without a description, so none of the criteria
+  explains the choice, and its relations do not fit the domains and ranges of the core relations (MF-075).
+- The description of `core_Activity` in `core.yaml` names releases as examples, although every release class
+  except `des_ProjectRelease` is an Artifact; the description of `core_Artifact` names system models, although
+  `system_SdmSystemModel` is an Activity (MF-077).
 
 ## Ontological basis
 
