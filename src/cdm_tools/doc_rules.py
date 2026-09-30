@@ -2,7 +2,7 @@
 Documentation-hub lint rules (see AGENTS.md §8).
 
 DOC-01 error    see_also / structured_aliases.source / http(s) *_mappings URL (and #fragment) must be in the link registry
-DOC-02 warning  registry entry not used by any class
+DOC-02 warning  registry entry not used by any class, slot or subset
 DOC-03 error    platformAPI / nexarAPI must exist in the API snapshot as OBJECT, INTERFACE or UNION
 DOC-04 error    *_mappings values must be full http(s) URLs or allow-listed CURIEs
 DOC-05 warning  PRODUCTION core_Entity class with no see_also and no API type must declare `productDocs: none`
