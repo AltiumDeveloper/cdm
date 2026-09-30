@@ -1,7 +1,7 @@
 """
 Documentation-hub lint rules (see AGENTS.md §8).
 
-DOC-01 error    see_also / structured_aliases.source URL (and #fragment) must be in the link registry
+DOC-01 error    see_also / structured_aliases.source / http(s) *_mappings URL (and #fragment) must be in the link registry
 DOC-02 warning  registry entry not used by any class
 DOC-03 error    platformAPI / nexarAPI must exist in the API snapshot as OBJECT, INTERFACE or UNION
 DOC-04 error    *_mappings values must be full http(s) URLs or allow-listed CURIEs
@@ -61,14 +61,22 @@ def check_doc_links(sv: SchemaView, registry: dict[str, LinkEntry], locate: Loca
     issues: list[LintIssue] = []
     used: set[str] = set()
     for name, cls in _classes(sv, is_cdm):
-        for url in [str(u) for u in (cls.see_also or [])] + _alias_sources(cls):
+        refs = [("links", str(u)) for u in (cls.see_also or [])] + [("links", u) for u in _alias_sources(cls)]
+        for field in MAPPING_FIELDS:
+            refs += [(field, str(v)) for v in getattr(cls, field, None) or []
+                     if str(v).startswith(("http://", "https://"))]
+        for field, url in refs:
             base, frag = split_url(url)
             used.add(base)
             entry = registry.get(base)
             if entry is None:
-                msg = f"class '{name}' links '{url}', which is not in the link registry ({registry_path})"
+                msg = (f"class '{name}' links '{url}', which is not in the link registry ({registry_path})"
+                       if field == "links" else
+                       f"class '{name}' {field} '{url}' is not in the link registry ({registry_path})")
             elif frag is not None and frag not in entry.anchors:
-                msg = f"class '{name}' links anchor '#{frag}', which is not listed in the registry entry for '{base}'"
+                msg = (f"class '{name}' links anchor '#{frag}', which is not listed in the registry entry for '{base}'"
+                       if field == "links" else
+                       f"class '{name}' {field} anchor '#{frag}' is not listed in the registry entry for '{base}'")
             else:
                 continue
             issues.append(_issue(locate, name, "error", "DOC-01", msg))

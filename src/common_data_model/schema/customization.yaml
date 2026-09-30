@@ -80,10 +80,29 @@ classes:
     in_subset: customization
     class_uri: cus:Workflow
     title: Workflow
-    description: TBD
+    description: >-
+      A process workflow of an Altium 365 Workspace: the workflow that belongs to a process definition and steps
+      designers through an everyday design process (e.g. requesting a new part, a design review or creating a new
+      project). Workspace administrators build process definitions in the Process Workflow Editor, grouped by
+      process theme (Part Requests, Project Activities, Project Creations), and activate them; each started
+      instance of a process follows the workflow and creates tasks for the users whose action is needed to move
+      it on.
     annotations:
       grid: grid:workspace:{workspace-id}:customization:workflow/{id}
       platformAPI: DesWorkflowDefinition
+    see_also:
+      - https://www.altium.com/documentation/altium-365/processes-workflows
+      - https://www.altium.com/documentation/altium-365/creating-managing-processes
+      - https://www.altium.com/documentation/altium-365/defining-process-workflow
+    structured_aliases:
+      - literal_form: Process Workflow
+        predicate: EXACT_SYNONYM
+        contexts: [altium-365]
+        source: https://www.altium.com/documentation/altium-365/processes-workflows
+      - literal_form: Process Definition
+        predicate: RELATED_SYNONYM
+        contexts: [altium-365]
+        source: https://www.altium.com/documentation/altium-365/creating-managing-processes
 
   cus_ScriptExecutionCompleted:
     is_a: core_Event
