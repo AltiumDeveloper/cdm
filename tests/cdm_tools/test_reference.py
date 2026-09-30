@@ -78,6 +78,10 @@ SCHEMA = textwrap.dedent(f"""
         slot_uri: ex:revisions
         alias: revisions
         domain: core_Artifact
+      core_bare:
+        is_a: core_revisions
+        slot_uri: ex:bare
+        alias: bare
 """)
 
 FINDINGS = textwrap.dedent("""
@@ -122,7 +126,7 @@ def test_relations(env, tmp_path):
     assert "core_id" not in t
     rows = {l.split("|")[1].strip(): l for l in t.splitlines() if l.startswith("| [")}
     assert set(rows) == {"[core_hasPart](../slots/core_hasPart.md)", "[core_partOf](../slots/core_partOf.md)",
-                         "[core_revisions](../slots/core_revisions.md)"}
+                         "[core_revisions](../slots/core_revisions.md)", "[core_bare](../slots/core_bare.md)"}
     has = rows["[core_hasPart](../slots/core_hasPart.md)"]
     assert "hasPart" in has and "yes" in has
     assert "[core_partOf](../slots/core_partOf.md)" in has          # declared inverse
@@ -132,6 +136,12 @@ def test_relations(env, tmp_path):
     rev = rows["[core_revisions](../slots/core_revisions.md)"]
     assert "[core_Artifact](../classes/core_Artifact.md)" in rev
     assert "[core_hasPart](../slots/core_hasPart.md)" in rev        # is_a
+    assert "[core_Artifact](../classes/core_Artifact.md) →" in rev and "(inherited)" in rev   # range inherited
+    assert "[core_Entity](../classes/core_Entity.md) *(inherited)*" in rev
+    bare = [l for l in t.splitlines() if l.startswith("| [core_bare]")][0]
+    assert "[core_Artifact](../classes/core_Artifact.md) *(inherited)* → [core_Entity](../classes/core_Entity.md) *(inherited)*" in bare
+    assert "yes *(inherited)*" in bare
+    assert "*(inherited)*" not in has
 
 
 def test_prefixes(env, tmp_path):
