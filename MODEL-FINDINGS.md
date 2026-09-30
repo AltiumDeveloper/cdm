@@ -60,7 +60,7 @@ Nothing here is changed without owner confirmation.
 | MF-047 | `dm_Memory` | No start address (PDSC `<memory>` requires one) | https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_memory | additive | deviceModel | Needs SME |
 | MF-048 | `dm_AddressBlockType` | {Memory, Peripheral} matches neither SVD nor IP-XACT `usage`; no "reserved" | https://open-cmsis-pack.github.io/svd-spec/main/elem_peripherals.html#elem_addressBlock | description | deviceModel | Needs SME |
 | MF-049 | `dm_PeripheralMode` | Description truncated (ends with a comma) | schema-internal | description | deviceModel | Needs SME |
-| MF-050 | `dm_PeripheralParameter` | Typo "paramter"; platformAPI `DmPeripheralParameters` not in production; candidate `SysSdmDmPeripheralParameter` | schema-internal; production introspection | description | deviceModel | Typo: Fixed — pending review; platformAPI: Needs SME |
+| MF-050 | `dm_PeripheralParameter` | Typo "paramter"; platformAPI `DmPeripheralParameters` not in production; candidate `SysSdmDmPeripheralParameter` (typo fixed — pending review) | schema-internal; production introspection | description | deviceModel | Needs SME |
 | MF-051 | `des_Project` GRID | CDM `design:project`; official page's node-query example uses `design:adproject` | `altium-developer-center/altium-365/key-concepts/grid` | description | design | Needs SME |
 | MF-052 | `system_SdmSystemModel`, `system_SdmSystemModelVersion` | Titles contain a double space ("System  Model") | schema-internal | description | system | Fixed — pending review |
 | MF-053 | `plt_UserGroup` | Typo "syncrhonization"; omits license-allocation purpose | `altium-dashboard/managing-groups` | description | platform | Fixed — pending review |
