@@ -9,6 +9,10 @@ https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.
   - element_device
   - element_processor
   - element_memory
+  anchor_labels:
+    element_device: CMSIS-Pack PDSC device element
+    element_memory: CMSIS-Pack PDSC memory element
+    element_processor: CMSIS-Pack PDSC processor element
   last_verified: '2026-09-30'
 https://open-cmsis-pack.github.io/svd-spec/main/elem_cpu.html:
   title: 'Open-CMSIS-SVD: /device/cpu element'
@@ -29,6 +33,9 @@ https://open-cmsis-pack.github.io/svd-spec/main/elem_peripherals.html:
   anchors:
   - elem_peripheral
   - elem_addressBlock
+  anchor_labels:
+    elem_addressBlock: CMSIS-SVD addressBlock element
+    elem_peripheral: CMSIS-SVD peripheral element
   last_verified: '2026-09-30'
 https://open-cmsis-pack.github.io/svd-spec/main/elem_registers.html:
   title: 'Open-CMSIS-SVD: /device/peripherals/peripheral/registers element'
@@ -38,6 +45,10 @@ https://open-cmsis-pack.github.io/svd-spec/main/elem_registers.html:
   - elem_register
   - elem_field
   - elem_enumeratedValue
+  anchor_labels:
+    elem_enumeratedValue: CMSIS-SVD enumeratedValue element
+    elem_field: CMSIS-SVD field element
+    elem_register: CMSIS-SVD register element
   last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/bom-portal:
   title: BOM Portal

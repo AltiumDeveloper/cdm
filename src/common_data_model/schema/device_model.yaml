@@ -163,7 +163,6 @@ classes:
       platformAPI: DmDeviceModelAsConfigured
     see_also:
       - https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration
-      - https://www.altium.com/documentation/altium-designer/working-renesas-365-solutions#pulling_sdm_into_a_hardware_project
     slots:
       - core_localId
       - dm_boardName
@@ -333,7 +332,7 @@ classes:
     description: Address block with start, size, and optional registers and peripherals.
     annotations:
       platformAPI: DmAddressBlock
-    close_mappings:
+    related_mappings:
       - https://open-cmsis-pack.github.io/svd-spec/main/elem_peripherals.html#elem_addressBlock
     mixins:
       - dm_HasAddressRange
@@ -415,7 +414,7 @@ classes:
     description: A hardware register within an address block.
     annotations:
       platformAPI: DmAmRegister
-    exact_mappings:
+    close_mappings:
       - https://open-cmsis-pack.github.io/svd-spec/main/elem_registers.html#elem_register
     mixins:
       - dm_HasAddressRange
@@ -537,7 +536,7 @@ classes:
     description: A single peripheral definition, including its instances and properties.
     annotations:
       platformAPI: DmPeripheral
-    close_mappings:
+    related_mappings:
       - https://open-cmsis-pack.github.io/svd-spec/main/elem_peripherals.html#elem_peripheral
     slots:
       - core_localId
