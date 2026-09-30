@@ -28,6 +28,9 @@ plugins:
       execute: false
   - mermaid2:
       version: 10.9.0
+# Publishes llms.txt, llms-full.txt and llms/ (cdm-gen-llms) with the site
+hooks:
+  - src/docs/hooks/llms.py
 nav:
   - Bounded Contexts: index.md
   - GRIDs: grid-format.md
