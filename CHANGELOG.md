@@ -11,11 +11,11 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - Concept pages: Domain Model, Entity Classification and Relation Types.
 - Introduction as the site index: the model, its bounded contexts and entities, the APIs behind it, the class-page hub panel and `hub.json`.
 - Bounded Contexts page: every bounded context with its classes and their API types (the generated schema index, written as `bounded-contexts.md`).
-- GRIDs page (top-level): GRIDs by bounded context (summary), format, and the catalogue of class GRID templates per bounded context.
+- GRIDs page (top-level): format and the catalogue of class GRID templates (class title and template) per bounded context.
 - Glossary of product terms (class titles and `structured_aliases`; terms shared by several classes are noted as homonyms).
 - Coverage dashboard: documentation coverage per bounded context.
 - Bounded-context overview pages with landing links, coverage line and GRID templates.
-- `cdm-gen-reference`: generates the relation, prefix and class-hierarchy reference tables, the GRID summary and catalogue for the GRIDs page, the glossary and the coverage page (`make gendoc`).
+- `cdm-gen-reference`: generates the relation, prefix and class-hierarchy reference tables, the GRID catalogue for the GRIDs page, the glossary and the coverage page (`make gendoc`).
 - PROV-O, RO and BFO mappings on core classes and relations (`prov:` and `obo:` prefixes).
 - DOC-01/DOC-04 checks for `see_also` and mappings on slots and subsets.
 - Bounded-context descriptions (rewritten) and links to their product areas.
