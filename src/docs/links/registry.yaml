@@ -1,6 +1,44 @@
 # CDM documentation link registry (see AGENTS.md §8)
 # Keyed by URL without fragment. `title` = page <title> text before ' | '.
 # `anchors` lists every #fragment used by the schema. Verify with: make verify-links
+https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html:
+  title: /package/devices/family element
+  label: CMSIS-Pack PDSC device family elements
+  source: standard
+  anchors:
+  - element_device
+  - element_processor
+  - element_memory
+  last_verified: '2026-09-30'
+https://open-cmsis-pack.github.io/svd-spec/main/elem_cpu.html:
+  title: 'Open-CMSIS-SVD: /device/cpu element'
+  label: CMSIS-SVD cpu element
+  source: standard
+  anchors: []
+  last_verified: '2026-09-30'
+https://open-cmsis-pack.github.io/svd-spec/main/elem_device.html:
+  title: 'Open-CMSIS-SVD: /device element'
+  label: CMSIS-SVD device element
+  source: standard
+  anchors: []
+  last_verified: '2026-09-30'
+https://open-cmsis-pack.github.io/svd-spec/main/elem_peripherals.html:
+  title: 'Open-CMSIS-SVD: /device/peripherals element'
+  label: CMSIS-SVD peripheral and address block elements
+  source: standard
+  anchors:
+  - elem_peripheral
+  - elem_addressBlock
+  last_verified: '2026-09-30'
+https://open-cmsis-pack.github.io/svd-spec/main/elem_registers.html:
+  title: 'Open-CMSIS-SVD: /device/peripherals/peripheral/registers element'
+  label: CMSIS-SVD register, field and enumerated value elements
+  source: standard
+  anchors:
+  - elem_register
+  - elem_field
+  - elem_enumeratedValue
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/bom-portal:
   title: BOM Portal
   source: altium-docs
