@@ -28,10 +28,30 @@ plugins:
       execute: false
   - mermaid2:
       version: 10.9.0
+# Publishes llms.txt, llms-ctx.txt, llms-full.txt and llms/ (cdm-gen-llms) with the site
+hooks:
+  - src/docs/hooks/llms.py
+# Inputs of the llms files besides docs/, rebuilt by mkdocs serve when they change
+watch:
+  - src/common_data_model/schema
+  - src/docs/links
+  - src/docs/api
 nav:
-  - Index: index.md
-  - About: about.md
+  - Bounded Contexts: index.md
+  - GRIDs: grid-format.md
+  - Concepts:
+      - Domain Model: domain-model.md
+      - Entity Classification: entity-classification.md
+      - Relation Types: relation-types.md
+  - Glossary: glossary.md
   - Tags: tags.md
+  - About: about.md
+# Not pages of the site: snippet sources included into top-level pages with --8<--, and the reference
+# and coverage pages, which cdm-gen-reference generates for internal use
+exclude_docs: |
+  _snippets/
+  /reference/
+  /coverage.md
 site_url: https://w3id.org/altium/cdm/
 repo_url: https://github.com/AltiumDeveloper/cdm
 markdown_extensions:
@@ -41,7 +61,8 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - pymdownx.details
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      check_paths: true
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.emoji:
@@ -56,6 +77,9 @@ extra:
   tags:
     experimental: experimental
     obsolete: obsolete
+  # Base of the absolute links in llms.txt, llms-ctx.txt and llms-full.txt. The site is served here; w3id.org/altium/cdm/
+  # (site_url) redirects only the root to it today, not paths such as about/ or llms.txt (MF-076).
+  llms_base_url: https://altiumdeveloper.github.io/cdm/
 extra_css:
   - css/custom.css
 extra_javascript:

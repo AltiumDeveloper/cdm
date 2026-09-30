@@ -8,6 +8,18 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 ## [Unreleased]
 
 ### Added
+- Concept pages: Domain Model, Entity Classification and Relation Types.
+- About page (introduction): the model, its bounded contexts and entities, the APIs behind it, the class-page hub panel and `hub.json`.
+- Bounded Contexts page: every bounded context with its classes and their API types (the generated schema index, the site home page).
+- GRIDs page (top-level): format and the catalogue of class GRID templates (class title and template) per bounded context.
+- Glossary of product terms (class titles and `structured_aliases`; terms shared by several classes are noted as homonyms).
+- Bounded-context overview pages with landing links and GRID templates.
+- `cdm-gen-reference`: generates the relation, prefix and class-hierarchy tables for the concept pages, the GRID catalogue for the GRIDs page and the glossary (`make gendoc`); it also generates the reference pages and a documentation coverage page for internal use, which are not published on the site.
+- `llms.txt` for AI tools (`cdm-gen-llms`, published by an MkDocs hook): a catalogue per bounded context, a card per class and per enumeration, the concept pages and the glossary as plain markdown, `llms-ctx.txt` and `llms-full.txt`; the About page links them.
+- Glossary: the class name is shown next to the class title.
+- PROV-O, RO and BFO mappings on core classes and relations (`prov:` and `obo:` prefixes).
+- DOC-01/DOC-04 checks for `see_also` and mappings on slots and subsets.
+- Bounded-context descriptions (rewritten) and links to their product areas.
 - Hub panel on class pages (product links and terms, Platform/Nexar API type, standards). API links are emitted unfiltered without `platform-docs-pages.json`, and the type name is shown without links without the Platform snapshot.
 - `cdm-hub-export`: `hub.json` export of the documentation hub; `make gendoc` publishes it with `hub.schema.json`, and the test suite checks the export against the schema (not checked at export time).
 - `nexarAPI` annotation for supply-chain types served by the Nexar (Octopart) API.
@@ -19,12 +31,18 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - `see_also` replaces `extensions: documentation` for product documentation links.
 - PR CI workflow (`.github/workflows/pr.yaml`) running `make lint` and `tests/cdm_tools`.
 - Governance files `VIOLATIONS.md` and `MODEL-FINDINGS.md`.
+- Subsets can declare `annotations: {productDocs: none}`; their page then states that no public product documentation exists (set on `core`).
+- Snippet includes are checked (`pymdownx.snippets` `check_paths`).
+- PR CI builds the documentation (`make gendoc` and `mkdocs build --strict`); `make gendoc` stops at the first failing step.
 
 ### Changed
+- DOC-02 counts registry entries used by slots and subsets as used.
+- `AGENTS.md`: the instance-URI rule is withdrawn (see MF-072); concept-page pointers name their sources.
 - Class pages no longer show separate Documentation and Platform API boxes; API links use the canonical trailing-slash URLs.
 - Class index tables link API types via the hub data (Nexar types link to the Octopart API docs).
 
 ### Fixed
+- `hub.json`: an empty `grid` annotation is exported as `null`, not `"None"`.
 - Platform API type names corrected against production for `des_RuleCheck`, `des_RuleCheckExecution`,
   `dm_ConfiguredDeviceModel`, `dm_AddressMap`, `dm_Memory`, `dm_Register`, `dm_RegisterField`,
   `dm_FieldEnum`, `dm_PortConfigurationEnumValue`, `dm_PortConfigurationDependency`, `sup_ReferenceDesign`;

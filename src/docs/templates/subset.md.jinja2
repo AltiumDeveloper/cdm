@@ -11,6 +11,32 @@ _{{ element_description_line }}_
 {% endfor %}
 {% endif %}
 
+{% if subset_hub is defined %}
+{% set sh = subset_hub(element) %}
+## In the product
+
+{% if sh.links -%}
+{% for u in sh.links -%}
+- {{ doc_link(u) }}{% if loop.first %} *(primary)*{% endif %}
+
+{% endfor %}
+{%- elif sh.product_docs_none -%}
+No public product documentation exists for this bounded context.
+{%- else -%}
+No product documentation linked yet.
+{% endif %}
+
+{% if sh.grid %}
+## GRID
+
+| Class | GRID template |
+| --- | --- |
+{% for cname, template in sh.grid -%}
+| [{{ cname }}](../classes/{{ cname }}.md) | `{{ template }}` |
+{% endfor %}
+{% endif %}
+{% endif %}
+
 URI: {{ gen.link(element) }}
 
 {% include "common_metadata.md.jinja2" %}

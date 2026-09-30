@@ -82,10 +82,12 @@ wizard:
 
 # Doc generation with CDM hub helpers (overrides the template-provided gendoc)
 # Note: cdm-gendoc does not forward GEN_DOC_ARGS; it hard-codes --subfolder-type-separation --preserve-names (the current LINKML_GENERATORS_DOC_ARGS).
+# cdm-gendoc writes the schema index as bounded-contexts.md, so the hand-written index.md copied from files/ is kept.
 gendoc: $(DOCDIR)
-	cp -rf $(SRC)/docs/files/* $(DOCDIR) ; \
-	$(RUN) cdm-gendoc --template-directory $(DOCTEMPLATES) --api-dir $(SRC)/docs/api -d $(DOCDIR) $(SOURCE_SCHEMA_PATH) ; \
-	$(RUN) cdm-hub-export --api-dir $(SRC)/docs/api --registry $(SRC)/docs/links/registry.yaml -o $(DOCDIR)/hub.json $(SOURCE_SCHEMA_PATH) ; \
+	cp -rf $(SRC)/docs/files/* $(DOCDIR) && \
+	$(RUN) cdm-gendoc --template-directory $(DOCTEMPLATES) --api-dir $(SRC)/docs/api -d $(DOCDIR) $(SOURCE_SCHEMA_PATH) && \
+	$(RUN) cdm-hub-export --api-dir $(SRC)/docs/api --registry $(SRC)/docs/links/registry.yaml -o $(DOCDIR)/hub.json $(SOURCE_SCHEMA_PATH) && \
+	$(RUN) cdm-gen-reference --api-dir $(SRC)/docs/api --registry $(SRC)/docs/links/registry.yaml --findings MODEL-FINDINGS.md -o $(DOCDIR) $(SOURCE_SCHEMA_PATH) && \
 	cp $(SRC)/docs/hub.schema.json $(DOCDIR)/hub.schema.json
 
 # Refresh checked-in Platform API and Nexar schema snapshots (network)

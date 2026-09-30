@@ -4,6 +4,8 @@ name: cdm-core
 prefixes:
   linkml: https://w3id.org/linkml/
   core: https://w3id.org/altium/cdm/core/
+  prov: http://www.w3.org/ns/prov#
+  obo: http://purl.obolibrary.org/obo/
 
 imports:
   - linkml:types
@@ -14,7 +16,13 @@ default_prefix: core
 subsets:
   core:
     description: >-
-      The core subset contains abstract base classes and mixins shared by all CDM bounded contexts.
+      Holds the abstract foundations shared by every bounded context: the base classes Entity (specialised as
+      Artifact and Activity), Resource and Event; the mixins that add annotations such as GRID, maturity and
+      API type; shared slots such as id and name; and the abstract relations (e.g. part of, input of, derived
+      from) that domain relations specialise. It is not a product area and has no product documentation of its
+      own.
+    annotations:
+      productDocs: none
 
 enums:
 
@@ -102,6 +110,10 @@ classes:
       Abstract base for persistent data objects that are created, stored, versioned,
       and consumed. Examples: components, documents, system models.
     is_a: core_Entity
+    close_mappings:
+      - prov:Entity
+    related_mappings:
+      - obo:BFO_0000031
 
   core_Activity:
     abstract: true
@@ -112,6 +124,10 @@ classes:
       Abstract base for process and work objects — things that happen, use inputs,
       and produce outputs. Examples: projects, releases, design workflows.
     is_a: core_Entity
+    close_mappings:
+      - prov:Activity
+    related_mappings:
+      - obo:BFO_0000015
 
   ### Annotations
 
@@ -246,6 +262,8 @@ slots:
       One artifact is produced from or superseded by another artifact.
     domain: core_Artifact
     range: core_Artifact
+    related_mappings:
+      - obo:RO_0001001
 
   core_derivedFrom:
     abstract: true
@@ -257,6 +275,10 @@ slots:
     domain: core_Artifact
     range: core_Artifact
     inverse: core_derivesInto
+    close_mappings:
+      - prov:wasDerivedFrom
+    related_mappings:
+      - obo:RO_0001000
 
   core_partOf:
     abstract: true
@@ -268,6 +290,8 @@ slots:
     domain: core_Entity
     range: core_Entity
     transitive: true
+    related_mappings:
+      - obo:BFO_0000050
 
   core_hasPart:
     abstract: true
@@ -280,6 +304,8 @@ slots:
     range: core_Entity
     transitive: true
     inverse: core_partOf
+    related_mappings:
+      - obo:BFO_0000051
 
   core_inputOf:
     abstract: true
@@ -290,6 +316,8 @@ slots:
       This artifact is consumed by the referenced activity.
     domain: core_Artifact
     range: core_Activity
+    related_mappings:
+      - obo:RO_0002352
 
   core_hasInput:
     abstract: true
@@ -301,6 +329,10 @@ slots:
     domain: core_Activity
     range: core_Artifact
     inverse: core_inputOf
+    close_mappings:
+      - prov:used
+    related_mappings:
+      - obo:RO_0002233
 
   core_outputOf:
     abstract: true
@@ -311,6 +343,9 @@ slots:
       This artifact was produced by the referenced activity.
     domain: core_Artifact
     range: core_Activity
+    close_mappings:
+      - prov:wasGeneratedBy
+      - obo:RO_0002353
 
   core_hasOutput:
     abstract: true
@@ -322,6 +357,9 @@ slots:
     domain: core_Activity
     range: core_Artifact
     inverse: core_outputOf
+    close_mappings:
+      - prov:generated
+      - obo:RO_0002234
 
   core_informedBy:
     abstract: true
@@ -332,6 +370,8 @@ slots:
       This activity uses knowledge from or is dependent on another activity.
     domain: core_Activity
     range: core_Activity
+    close_mappings:
+      - prov:wasInformedBy
 
   core_informs:
     abstract: true
@@ -353,6 +393,8 @@ slots:
       This activity is scoped within the context of the referenced artifact.
     domain: core_Activity
     range: core_Artifact
+    related_mappings:
+      - obo:BFO_0000066
 
   ### useful relations
 

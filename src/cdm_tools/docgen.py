@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import argparse
 import sys
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Callable, Optional
 
@@ -18,7 +18,17 @@ from linkml.generators.docgen import DocGenerator
 
 from cdm_tools.api_snapshot import DEFAULT_API_DIR
 from cdm_tools.hub import build_hub, load_api_layers, schema_namespaces
+from cdm_tools.reference import grid_templates
 from cdm_tools.registry import DEFAULT_REGISTRY_PATH, LinkEntry, RegistryError, load_registry, split_url
+
+
+@dataclass
+class SubsetHub:
+    """Overview of one bounded context for its page."""
+
+    links: list[str] = field(default_factory=list)
+    grid: list[tuple[str, str]] = field(default_factory=list)
+    product_docs_none: bool = False
 
 
 def make_doc_link(registry: dict[str, LinkEntry]) -> Callable[[str], str]:
@@ -50,6 +60,25 @@ class CdmDocGenerator(DocGenerator):
         env.globals["hub"] = lambda element: build_hub(
             element, registry=registry, platform=platform, nexar_types=nexar_types, namespaces=namespaces
         )
+        self._register_subset_hub(env)
+
+    def _register_subset_hub(self, env: Environment) -> None:
+        sv = self.schemaview
+        cache: dict[str, SubsetHub] = {}
+
+        def subset_hub(element) -> SubsetHub:
+            name = str(element.name)
+            if name not in cache:
+                grid = [(c, t) for c, subset, _, t in grid_templates(sv) if subset == name]
+                cache[name] = SubsetHub(
+                    links=[str(u) for u in (element.see_also or [])],
+                    grid=sorted(grid),
+                    product_docs_none="productDocs" in element.annotations
+                    and str(element.annotations["productDocs"].value) == "none",
+                )
+            return cache[name]
+
+        env.globals["subset_hub"] = subset_hub
 
 
 def main(argv: Optional[list[str]] = None) -> int:
