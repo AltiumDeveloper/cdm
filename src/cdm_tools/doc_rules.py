@@ -10,7 +10,8 @@ DOC-05 warning  PRODUCTION core_Entity class with no see_also and no API type mu
 Semantics:
 - Annotations (platformAPI, nexarAPI, productDocs, maturity) and see_also are read from the class itself;
   they are not inherited. A missing maturity means PRODUCTION.
-- DOC rules currently cover classes only (not slots, enums or schema-level see_also).
+- DOC-01, DOC-02 and DOC-04 cover classes, slots (top-level and class attributes) and subsets; DOC-03 and
+  DOC-05 cover classes only. Enums and schema-level see_also are not checked.
 - DOC-05 applies only to descendants of core_Entity; value objects (core_Resource) and events
   (core_Event) have no product pages of their own.
 """
@@ -45,6 +46,28 @@ def _classes(sv: SchemaView, is_cdm: IsCdm) -> Iterable[tuple[str, object]]:
             yield name, cls
 
 
+def _slots(sv: SchemaView, is_cdm: IsCdm) -> Iterable[tuple[str, object]]:
+    for name, slot in sv.all_slots().items():
+        if is_cdm(getattr(slot, "from_schema", "") or ""):
+            yield name, slot
+
+
+def _subsets(sv: SchemaView, is_cdm: IsCdm) -> Iterable[tuple[str, object]]:
+    for name, subset in sv.all_subsets().items():
+        if is_cdm(getattr(subset, "from_schema", "") or ""):
+            yield name, subset
+
+
+def _link_elements(sv: SchemaView, is_cdm: IsCdm) -> Iterable[tuple[str, str, object]]:
+    """Every element whose documentation links are checked: (kind, name, element)."""
+    for name, cls in _classes(sv, is_cdm):
+        yield "class", name, cls
+    for name, slot in _slots(sv, is_cdm):
+        yield "slot", name, slot
+    for name, subset in _subsets(sv, is_cdm):
+        yield "subset", name, subset
+
+
 def _alias_sources(cls) -> list[str]:
     aliases = cls.structured_aliases or {}
     values = aliases.values() if isinstance(aliases, dict) else aliases
@@ -60,7 +83,7 @@ def check_doc_links(sv: SchemaView, registry: dict[str, LinkEntry], locate: Loca
                     registry_path: str) -> list[LintIssue]:
     issues: list[LintIssue] = []
     used: set[str] = set()
-    for name, cls in _classes(sv, is_cdm):
+    for kind, name, cls in _link_elements(sv, is_cdm):
         refs = [("links", str(u)) for u in (cls.see_also or [])] + [("links", u) for u in _alias_sources(cls)]
         for field in MAPPING_FIELDS:
             refs += [(field, str(v)) for v in getattr(cls, field, None) or []
@@ -70,19 +93,19 @@ def check_doc_links(sv: SchemaView, registry: dict[str, LinkEntry], locate: Loca
             used.add(base)
             entry = registry.get(base)
             if entry is None:
-                msg = (f"class '{name}' links '{url}', which is not in the link registry ({registry_path})"
+                msg = (f"{kind} '{name}' links '{url}', which is not in the link registry ({registry_path})"
                        if field == "links" else
-                       f"class '{name}' {field} '{url}' is not in the link registry ({registry_path})")
+                       f"{kind} '{name}' {field} '{url}' is not in the link registry ({registry_path})")
             elif frag is not None and frag not in entry.anchors:
-                msg = (f"class '{name}' links anchor '#{frag}', which is not listed in the registry entry for '{base}'"
+                msg = (f"{kind} '{name}' links anchor '#{frag}', which is not listed in the registry entry for '{base}'"
                        if field == "links" else
-                       f"class '{name}' {field} anchor '#{frag}' is not listed in the registry entry for '{base}'")
+                       f"{kind} '{name}' {field} anchor '#{frag}' is not listed in the registry entry for '{base}'")
             else:
                 continue
             issues.append(_issue(locate, name, "error", "DOC-01", msg))
     for base in sorted(set(registry) - used):
         issues.append(LintIssue(file=registry_path, line=1, severity="warning", rule_id="DOC-02",
-                                message=f"registry entry '{base}' is not used by any class", element=base))
+                                message=f"registry entry '{base}' is not used by any class, slot or subset", element=base))
     return issues
 
 
@@ -108,7 +131,7 @@ def check_api_types(sv: SchemaView, snapshots: dict[str, dict], locate: Locator,
 def check_mappings(sv: SchemaView, locate: Locator, is_cdm: IsCdm,
                    allowed_prefixes: frozenset[str] = ALLOWED_MAPPING_PREFIXES) -> list[LintIssue]:
     issues: list[LintIssue] = []
-    for name, cls in _classes(sv, is_cdm):
+    for kind, name, cls in _link_elements(sv, is_cdm):
         for field in MAPPING_FIELDS:
             for value in getattr(cls, field, None) or []:
                 v = str(value)
@@ -118,7 +141,7 @@ def check_mappings(sv: SchemaView, locate: Locator, is_cdm: IsCdm,
                 if m and m.group(1) in allowed_prefixes:
                     continue
                 issues.append(_issue(locate, name, "error", "DOC-04",
-                                     f"class '{name}' {field} value '{v}' must be a full http(s) URL or a CURIE "
+                                     f"{kind} '{name}' {field} value '{v}' must be a full http(s) URL or a CURIE "
                                      f"with an allow-listed prefix ({', '.join(sorted(allowed_prefixes))})"))
     return issues
 
