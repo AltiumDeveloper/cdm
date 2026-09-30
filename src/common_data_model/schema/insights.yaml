@@ -18,6 +18,7 @@ subsets:
       project releases or component revisions.
     annotations:
       style: "fill:#a64d79"
+      productDocs: none
 
 classes:
 

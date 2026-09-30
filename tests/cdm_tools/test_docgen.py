@@ -137,17 +137,26 @@ def test_subset_page_has_overview(tmp_path):
 
 
 def test_subset_page_empty_product_docs_state(tmp_path):
-    _serialize(tmp_path, registry_path=str(REPO / "src/docs/links/registry.yaml"),
-               api_dir=str(REPO / "src/docs/api"), findings_path=str(REPO / "MODEL-FINDINGS.md"))
-    ota = (tmp_path / "subsets" / "ota.md").read_text(encoding="utf-8")
-    assert "No product documentation linked yet." in ota.split("## Classes in Bounded Context")[0]
+    gen = CdmDocGenerator(
+        str(REPO / "src/common_data_model/schema/common_data_model.yaml"),
+        template_directory=str(REPO / "src/docs/templates"),
+        registry_path=str(REPO / "src/docs/links/registry.yaml"),
+        api_dir=str(REPO / "src/docs/api"),
+        findings_path=str(REPO / "MODEL-FINDINGS.md"),
+        subfolder_type_separation=True,
+        preserve_names=True,
+    )
+    gen.schemaview.get_subset("library").see_also = []
+    gen.serialize(directory=str(tmp_path))
+    head = (tmp_path / "subsets" / "library.md").read_text(encoding="utf-8").split("## Classes in Bounded Context")[0]
+    assert "No product documentation linked yet." in head
 
 
 def test_subset_page_product_docs_none(tmp_path):
     _serialize(tmp_path, registry_path=str(REPO / "src/docs/links/registry.yaml"),
                api_dir=str(REPO / "src/docs/api"), findings_path=str(REPO / "MODEL-FINDINGS.md"))
     core = (tmp_path / "subsets" / "core.md").read_text(encoding="utf-8").split("## Classes in Bounded Context")[0]
-    assert "No public product documentation \u2014 by design." in core
+    assert "No public product documentation exists for this bounded context." in core
     assert "No product documentation linked yet." not in core
 
 

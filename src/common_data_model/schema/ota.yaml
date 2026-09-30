@@ -17,6 +17,7 @@ subsets:
       hardware. All classes are experimental.
     annotations:
       style: "fill:#d29292"
+      productDocs: none
 
 enums:
 
