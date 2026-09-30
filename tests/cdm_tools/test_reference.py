@@ -121,8 +121,8 @@ def _build(env, out):
 def test_writes_all_pages(env, tmp_path):
     _build(env, tmp_path)
     got = sorted(str(p.relative_to(tmp_path)) for p in tmp_path.rglob("*.md"))
-    assert got == ["_snippets/class-hierarchy.md", "_snippets/grid-catalogue.md", "_snippets/grid-summary.md",
-                   "_snippets/prefixes.md", "_snippets/relations.md", "coverage.md", "glossary.md",
+    assert got == ["_snippets/class-hierarchy.md", "_snippets/grid-catalogue.md", "_snippets/prefixes.md",
+                   "_snippets/relations.md", "coverage.md", "glossary.md",
                    "reference/class-hierarchy.md", "reference/prefixes.md", "reference/relations.md"]
 
 
@@ -159,50 +159,16 @@ def test_prefixes(env, tmp_path):
     assert "| `prov` |" in t
 
 
-def test_grid_summary(env, tmp_path):
-    _build(env, tmp_path)
-    t = (tmp_path / "_snippets/grid-summary.md").read_text()
-    assert not t.startswith("#") and "../" not in t
-    assert "| Bounded context | GRID context | Area | Classes | Resource types |" in t
-    assert "| [alpha](#alpha) ([overview](subsets/alpha.md)) | `system-design` | `workspace` | 1 | `port` |" in t
-    assert "| [beta](#beta) ([overview](subsets/beta.md)) | `platform` | `global` | 1 | `port` |" in t
-    assert t.index("[alpha](#alpha)") < t.index("[beta](#beta)")
-    assert "| Area | Classes |" in t and "| `global` | 1 |" in t and "| `workspace` | 1 |" in t
-    assert "ex_NoGrid" not in t and "None" not in t and "(unparsed)" not in t   # empty annotation skipped
-
-
 def test_grid_catalogue(env, tmp_path):
     _build(env, tmp_path)
     t = (tmp_path / "_snippets/grid-catalogue.md").read_text()
     assert "../" not in t and "\n## " not in t
     assert t.startswith("### alpha\n") and "\n### beta\n" in t and t.index("### alpha") < t.index("### beta")
-    assert "| Class | GRID template | GRID context |" in t
-    assert "| [Port](classes/dm_Port.md) (`dm_Port`) | `grid:global::platform:port/{id}` | `platform` |" in t
+    assert "| Class | GRID template |" in t and "GRID context" not in t
+    assert "| [Port](classes/dm_Port.md) | `grid:global::platform:port/{id}` |" in t
+    assert "`dm_Port`" not in t                                          # titles only, no technical names
     assert "Bounded context page: [beta](subsets/beta.md)." in t
     assert "ex_NoGrid" not in t and "None" not in t
-
-
-def test_grid_catalogue_anchors_match_summary(env, tmp_path):
-    import re
-    from cdm_tools.reference import _anchor
-    _build(env, tmp_path)
-    summary = (tmp_path / "_snippets/grid-summary.md").read_text()
-    catalogue = (tmp_path / "_snippets/grid-catalogue.md").read_text()
-    ids = {_anchor(h) for h in re.findall(r"^### (.+)$", catalogue, re.M)}
-    assert set(re.findall(r"\]\(#([^)]+)\)", summary)) == ids == {"alpha", "beta"}
-
-
-def test_anchor_matches_markdown_toc_slug():
-    toc = pytest.importorskip("markdown.extensions.toc")
-    from cdm_tools.reference import _anchor
-    for name in ("library", "system-sdm", "deviceModel", "(none)"):
-        assert _anchor(name) == toc.slugify(name, "-")
-
-
-def test_grid_resource_types():
-    from cdm_tools.reference import _grid_resource_type
-    assert _grid_resource_type("grid:supply::platform:part/{id}/offer/{offerID}") == "part/offer"
-    assert _grid_resource_type("grid:workspace:{workspace-id}:library:component/{id}") == "component"
 
 
 def test_snippets(env, tmp_path):
@@ -322,6 +288,6 @@ def test_main_clears_stale_output(env, tmp_path):
     assert rc == 0
     assert not (tmp_path / "reference/grid-templates.md").exists()
     assert not (tmp_path / "_snippets/grid-templates.md").exists()
-    assert (tmp_path / "reference/relations.md").is_file() and (tmp_path / "_snippets/grid-summary.md").is_file()
+    assert (tmp_path / "reference/relations.md").is_file() and (tmp_path / "_snippets/grid-catalogue.md").is_file()
     assert (tmp_path / "keep.md").read_text() == "stale\n"               # nothing else in the output dir is touched
     assert (tmp_path / "classes/keep.md").read_text() == "stale\n"

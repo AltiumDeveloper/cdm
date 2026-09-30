@@ -6,10 +6,6 @@ Altium Developer Center page [GRID](https://www.altium.com/documentation/altium-
 that page is the authority for the format. This page explains how the CDM uses GRIDs and lists the GRID template
 the schema declares for each class, grouped by bounded context.
 
-## GRIDs by bounded context
-
---8<-- "docs/_snippets/grid-summary.md"
-
 ## Format
 
 ```text
@@ -28,27 +24,6 @@ for the full definition):
 - `context` names the bounded context, `resource-type` the kind of entity, and `resource-id` is the entity's
   **local identifier** — a GUID in some contexts, a number in others; it is not always a UUID.
 - GRIDs are **case-sensitive**.
-
-### Examples
-
-Each example below is taken from the official page and matches the template the CDM declares for the class.
-
-| GRID | CDM class | Template in the schema |
-| --- | --- | --- |
-| `grid:global::platform:user/837af973-180e-45ab-a93a-62a66f44d75a` | [plt_User](classes/plt_User.md) | `grid:global::platform:user/{id}` |
-| `grid:global::platform:organization/837af973-180e-45ab-a93a-62a66f44d75a` | [plt_Organization](classes/plt_Organization.md) | `grid:global::platform:organization/{id}` |
-| `grid:global::events:subscription/41428e10-d66a-4b27-8bbf-3a51496cceae` | [plt_EventSubscription](classes/plt_EventSubscription.md) | `grid:global::events:subscription/{id}` |
-| `grid:workspace:d2e3a7b0-4eb4-4339-a3d6-20276ca4f7eb:design:project/DA051CB4-13C4-41A7-A795-2A5EBC2B9A9B` | [des_Project](classes/des_Project.md) | `grid:workspace:{workspace-id}:design:project/{id}` |
-| `grid:workspace:d2e3a7b0-4eb4-4339-a3d6-20276ca4f7eb:library:component/0F629FA7-A5C5-4034-829A-83CC5E95B947` | [lib_Component](classes/lib_Component.md) | `grid:workspace:{workspace-id}:library:component/{id}` |
-| `grid:workspace:d2e3a7b0-4eb4-4339-a3d6-20276ca4f7eb:procurement:bom/BD74926A-7AFA-454E-8879-C79E8C8685EE` | [pro_ManagedBOM](classes/pro_ManagedBOM.md), [pro_ConsolidatedBOM](classes/pro_ConsolidatedBOM.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
-| `grid:workspace:d2e3a7b0-4eb4-4339-a3d6-20276ca4f7eb:collaboration:task/BCC891F1-49C3-46B2-9A03-85F882133050` | [col_Task](classes/col_Task.md) | `grid:workspace:{workspace-id}:collaboration:task/{id}` |
-| `grid:supply::platform:part/43736907` | [sup_Part](classes/sup_Part.md) | `grid:supply::platform:part/{id}` |
-
-The last example has a numeric local ID, and the Workspace examples use upper-case GUIDs as resource IDs.
-(The official page's API example uses the resource type `adproject` for a design project, unlike the
-`project` of its format examples and of the schema; see MF-051.)
-A sub-resource template in the schema is [sup_Offer](classes/sup_Offer.md):
-`grid:supply::platform:part/{id}/offer/{offerID}` (an offer of a supply part).
 
 ### Design principles
 
@@ -84,7 +59,8 @@ and are declared per class in the `grid` annotation.
 The `context` segment is the platform's bounded-context name, which often but not always equals the CDM subset.
 For example, the system classes use `system-design`, the full-stack device model uses `device-model`, supply
 records use context `platform` in area `supply`, scripts use `scripts`, Workspace users and groups use `team`,
-and event subscriptions use `events`. The catalogue above is grouped by bounded context and shows the GRID context of each class.
+and event subscriptions use `events`. The catalogue above is grouped by bounded context; the GRID context of a
+class is the `context` segment of its template.
 
 ## GRIDs in the schema
 
