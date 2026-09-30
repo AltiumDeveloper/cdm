@@ -48,6 +48,13 @@ The artifacts generated from the schema (JSON Schema, OWL, SHACL, GraphQL, Pytho
 on this site; they are built from the [repository](https://github.com/AltiumDeveloper/cdm) with
 `make gen-project`.
 
+## For tools
+
+AI assistants and other tools can start from [`llms.txt`](llms.txt) ([llmstxt.org](https://llmstxt.org/)): it
+links a plain-markdown version of the concept pages and the glossary, a catalogue of each bounded context and a
+card for every class. [`llms-full.txt`](llms-full.txt) holds all of them in one file, and
+[`hub.json`](hub.json) the hub data of the domain classes.
+
 ## Where to go next
 
 - [Bounded Contexts](index.md) — every context and its classes.
