@@ -29,3 +29,9 @@ jobs:
       # tests/test_flows.py is excluded: it fails on main (stale class names), tracked separately
       - name: Tooling and template tests
         run: poetry run python -m pytest tests/cdm_tools -v
+
+      - name: Generate documentation
+        run: make gendoc
+
+      - name: Build documentation site (strict)
+        run: poetry run mkdocs build --strict -d "$RUNNER_TEMP/site"
