@@ -11,7 +11,7 @@ as the authoritative reference for the GRIDs of platform entities.
 
 The classes are grouped into bounded contexts (LinkML subsets), such as design, library, procurement and
 collaboration. Each context has its own page with its product documentation and GRID templates, where it has
-any, and its classes. The [Bounded Contexts](bounded-contexts.md) page lists every context with its classes and
+any, and its classes. The [Bounded Contexts](index.md) page lists every context with its classes and
 their API types.
 
 ## Entities
@@ -50,7 +50,7 @@ on this site; they are built from the [repository](https://github.com/AltiumDeve
 
 ## Where to go next
 
-- [Bounded Contexts](bounded-contexts.md) — every context and its classes.
+- [Bounded Contexts](index.md) — every context and its classes.
 - Concepts — [Domain Model](domain-model.md), [Entity Classification](entity-classification.md) and
   [Relation Types](relation-types.md).
 - [GRIDs](grid-format.md) — the GRID format and the GRID templates declared by the classes.

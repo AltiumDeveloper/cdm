@@ -29,15 +29,15 @@ plugins:
   - mermaid2:
       version: 10.9.0
 nav:
-  - Index: index.md
-  - Bounded Contexts: bounded-contexts.md
+  - Bounded Contexts: index.md
+  - GRIDs: grid-format.md
   - Concepts:
       - Domain Model: domain-model.md
       - Entity Classification: entity-classification.md
       - Relation Types: relation-types.md
-  - GRIDs: grid-format.md
   - Glossary: glossary.md
   - Tags: tags.md
+  - About: about.md
 # Not pages of the site: snippet sources included into top-level pages with --8<--, and the reference
 # and coverage pages, which cdm-gen-reference generates for internal use
 exclude_docs: |

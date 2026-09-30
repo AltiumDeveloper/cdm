@@ -207,18 +207,20 @@ def test_grid_templates_shared_helper():
         "lib_Component", "library", "library", "grid:workspace:{workspace-id}:library:component/{id}")
 
 
-def test_main_writes_schema_index_as_bounded_contexts(tmp_path):
+def test_main_writes_schema_index_as_home_page(tmp_path):
     from cdm_tools.docgen import main
 
     out = tmp_path / "out"
     out.mkdir()
-    (out / "index.md").write_text("# Hand-written\n", encoding="utf-8")
+    about = REPO / "src/docs/files/about.md"
+    (out / "about.md").write_text(about.read_text(encoding="utf-8"), encoding="utf-8")
     rc = main([str(REPO / "src/common_data_model/schema/common_data_model.yaml"), "-d", str(out),
                "--template-directory", str(REPO / "src/docs/templates"),
                "--registry", str(REPO / "src/docs/links/registry.yaml"), "--api-dir", str(REPO / "src/docs/api")])
     assert rc == 0
-    assert (out / "index.md").read_text(encoding="utf-8") == "# Hand-written\n"
-    page = (out / "bounded-contexts.md").read_text(encoding="utf-8")
+    assert (out / "about.md").read_text(encoding="utf-8") == about.read_text(encoding="utf-8")
+    assert not (out / "bounded-contexts.md").exists()
+    page = (out / "index.md").read_text(encoding="utf-8")
     assert page.lstrip().startswith("# Bounded Contexts\n")
     assert "## Bounded Contexts" in page and "| Class | Description | Platform API |" in page
     assert "( classes/lib_Component.md )" in page

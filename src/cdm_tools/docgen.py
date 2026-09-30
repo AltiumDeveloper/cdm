@@ -22,10 +22,6 @@ from cdm_tools.reference import grid_templates
 from cdm_tools.registry import DEFAULT_REGISTRY_PATH, LinkEntry, RegistryError, load_registry, split_url
 
 
-# The schema index (index.md.jinja2) is written as the Bounded Contexts page; the site index is hand-written.
-INDEX_NAME = "bounded-contexts"
-
-
 @dataclass
 class SubsetHub:
     """Overview of one bounded context for its page."""
@@ -111,7 +107,6 @@ def main(argv: Optional[list[str]] = None) -> int:
         preserve_names=True,
         registry_path=args.registry,
         api_dir=args.api_dir,
-        index_name=INDEX_NAME,
     )
     gen.serialize(directory=args.directory)
     return 0
