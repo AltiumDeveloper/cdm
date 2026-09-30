@@ -66,6 +66,14 @@ https://www.altium.com/documentation/altium-365/esd:
   anchors:
   - using_the_device_configuration
   - generating_a_board_support_package
+  - defining_an_esd_document
+  - placing_and_configuring_functional_blocks
+  - hardware_component
+  - software_component
+  - port
+  - connecting_functional_blocks
+  - accessing_object_properties
+  - pushing_pulling_sdm
   last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/inviting-users:
   title: Inviting other Users to Your Workspace
@@ -120,6 +128,7 @@ https://www.altium.com/documentation/altium-365/renesas-365:
   - import_project
   - linking_an_evaluation_kit
   - exploring_a_solution
+  - system_data_model
   last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/requirements-integration:
   title: Working with Requirements
