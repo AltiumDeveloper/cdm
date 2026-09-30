@@ -30,6 +30,13 @@ plugins:
       version: 10.9.0
 nav:
   - Index: index.md
+  - Concepts:
+      - Domain Model: domain-model.md
+      - Entity Classification: entity-classification.md
+      - Relation Types: relation-types.md
+      - GRID: grid-format.md
+  - Glossary: glossary.md
+  - Coverage: coverage.md
   - About: about.md
   - Tags: tags.md
 # Snippet sources included into top-level pages with --8<--; not pages of their own
