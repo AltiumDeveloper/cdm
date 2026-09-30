@@ -43,7 +43,7 @@ def _table(header: list[str], rows: Iterable[list[str]]) -> list[str]:
     return lines
 
 
-def _first_sentence(description) -> str:
+def first_sentence(description) -> str:
     text = " ".join(str(description or "").split())
     if not text or text.upper() == "TBD":
         return ""
@@ -61,7 +61,7 @@ def _slot_link(name: str, prefix: str, sv) -> str:
 
 # ---------------------------------------------------------------- relations
 
-def _relation_slots(sv) -> dict:
+def relation_slots(sv) -> dict:
     slots = {n: s for n, s in sv.all_slots().items() if n.startswith("core_")}
     found: dict = {}
     changed = True
@@ -87,7 +87,7 @@ def _resolve(slots: dict, name: str, attr: str):
 
 
 def relations_body(sv, registry, namespaces, prefix: str) -> list[str]:
-    slots = _relation_slots(sv)
+    slots = relation_slots(sv)
     inverses: dict[str, set[str]] = {n: set() for n in slots}
     for name, slot in slots.items():
         if slot.inverse:
@@ -261,7 +261,7 @@ def write_glossary(sv, registry, platform, nexar_types, namespaces, path: Path) 
             entries.setdefault(key, {}).setdefault(name, {
                 "kind": kind, "title": title or name,
                 "subset": str(cls.in_subset[0]) if cls.in_subset else NO_SUBSET,
-                "sentence": _first_sentence(cls.description),
+                "sentence": first_sentence(cls.description),
                 "doc": f"[{_esc(hub.links[0].text)}]({hub.links[0].url})" if hub.links else "",
             })
     by_letter: dict[str, list[str]] = {}
