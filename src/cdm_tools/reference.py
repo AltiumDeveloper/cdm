@@ -51,6 +51,11 @@ def first_sentence(description) -> str:
     return text[:m.start() + 1] if m else text
 
 
+def titled_link(title: str, name: str, href: str) -> str:
+    """Markdown link titled *title*, followed by the class name *name* when the two differ."""
+    return f"[{title}]({href})" + (f" (`{name}`)" if title != name else "")
+
+
 def _class_link(name: str, prefix: str, sv) -> str:
     return f"[{name}]({prefix}classes/{name}.md)" if name in sv.all_classes() else name
 
@@ -277,14 +282,14 @@ def write_glossary(sv, registry, platform, nexar_types, namespaces, path: Path) 
             classes = entries[key]
             if len(classes) == 1:
                 (name, e), = classes.items()
-                rows.append([_esc(display[key]), f"[{_esc(e['title'])}](classes/{name}.md)", _esc(e["subset"]),
+                rows.append([_esc(display[key]), titled_link(_esc(e["title"]), name, f"classes/{name}.md"), _esc(e["subset"]),
                              _esc(e["kind"]), e["doc"]])
             else:
                 notes += ["", f'!!! note "{display[key].replace(chr(34), chr(39))} — {len(classes)} meanings"', ""]
                 for name in sorted(classes):
                     e = classes[name]
                     tail = f"{e['subset']}. {e['sentence']}".rstrip() if e["sentence"] else f"{e['subset']}."
-                    notes.append(f"    - [{e['title']}](classes/{name}.md) — {tail}")
+                    notes.append(f"    - {titled_link(e['title'], name, f'classes/{name}.md')} — {tail}")
         lines += ["", f"## {letter}", ""]
         if rows:
             lines += _table(["Term", "Class", "Bounded context", "Kind", "Product documentation"], rows)

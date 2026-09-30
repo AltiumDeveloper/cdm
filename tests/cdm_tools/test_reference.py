@@ -207,17 +207,23 @@ def test_glossary(env, tmp_path):
     assert t.index("## B") < t.index("## P") < t.index("## T")
     # homonym Port: two classes, one entry each (title == alias listed once)
     assert '!!! note "Port — 2 meanings"' in t
-    assert "    - [Port](classes/ex_Port.md) — alpha. A connection point." in t
-    assert "    - [Port](classes/dm_Port.md) — beta. Peripheral port" in t
+    assert "    - [Port](classes/ex_Port.md) (`ex_Port`) — alpha. A connection point." in t
+    assert "    - [Port](classes/dm_Port.md) (`dm_Port`) — beta. Peripheral port" in t
     assert "Second sentence" not in t
     # TBD description skipped
     assert "TBD" not in t
-    assert "| Terminal | [Port](classes/ex_Port.md) | alpha | narrower | [Port docs](" in t
-    assert "| Bare part | [Bare part](classes/ex_Bare.md) | beta | title |  |" in t
-    assert "| part | [Bare part](classes/ex_Bare.md) | beta | related |  |" in t
+    assert "| Terminal | [Port](classes/ex_Port.md) (`ex_Port`) | alpha | narrower | [Port docs](" in t
+    assert "| Bare part | [Bare part](classes/ex_Bare.md) (`ex_Bare`) | beta | title |  |" in t
+    assert "| part | [Bare part](classes/ex_Bare.md) (`ex_Bare`) | beta | related |  |" in t
     for line in t.splitlines():
         if line.startswith("|"):
             assert line.replace("\\|", "").count("|") == 6
+
+
+def test_titled_link():
+    from cdm_tools.reference import titled_link
+    assert titled_link("Port", "ex_Port", "classes/ex_Port.md") == "[Port](classes/ex_Port.md) (`ex_Port`)"
+    assert titled_link("ex_Bare", "ex_Bare", "classes/ex_Bare.md") == "[ex_Bare](classes/ex_Bare.md)"
 
 
 def test_glossary_escapes_pipes(env, tmp_path):
