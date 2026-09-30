@@ -15,9 +15,9 @@ subsets:
   procurement:
     description: >-
       Models bills of materials: BOMs kept in a Workspace and worked on in the BOM Portal (managed and
-      consolidated BOMs) with their releases, BOMs held on Octopart outside any Workspace (global BOMs), and
-      BOM lines with their alternate and substitute parts and the issues found when a BOM is analysed. It
-      corresponds to the Altium 365 BOM Portal.
+      consolidated BOMs) with their releases, global BOMs, which are not tied to a Workspace, and BOM lines
+      with their alternate and substitute parts and the issues found when a BOM is analysed. It corresponds to
+      the Altium 365 BOM Portal.
     see_also:
       - https://www.altium.com/documentation/altium-365/bom-portal
     annotations:
