@@ -119,7 +119,7 @@ Each prefix expands to a namespace declared by the schema files:
 
 --8<-- "docs/_snippets/prefixes.md"
 
-A new prefix needs formal approval of the subset it belongs to (see `AGENTS.md` §6 in the repository).
+A new subset prefix needs formal approval of the subset it belongs to (see `AGENTS.md` §6 in the repository). External vocabulary prefixes allow-listed for mappings (`prov:`, `obo:`) are exempt.
 
 ### Resolving IRIs through w3id.org
 
