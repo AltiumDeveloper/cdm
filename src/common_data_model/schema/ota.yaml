@@ -12,7 +12,9 @@ default_prefix: ota
 subsets:
   ota:
     description: >-
-      Over the Air (OTA) related entities
+      Models over-the-air (OTA) software updates: devices with their status and installed packages, fleets
+      that group devices, and packages with their version, size, checksums and target hardware. All classes
+      are experimental.
     annotations:
       style: "fill:#d29292"
 

@@ -13,10 +13,13 @@ default_prefix: pro
 
 subsets:
   procurement:
-    description: >- 
-      Streamlines the transition from design to sourcing by providing structured BOM management, supplier integration, 
-      and real-time component availability and pricing. It ensures that purchasing decisions are optimized, traceable, 
-      and seamlessly connected to the design process within Altium 365.
+    description: >-
+      Models bills of materials: BOMs kept in a Workspace and worked on in the BOM Portal (managed and
+      consolidated BOMs) with their releases, BOMs held on Octopart outside any Workspace (global BOMs), and
+      BOM lines with their alternate and substitute parts and the issues found when a BOM is analysed. It
+      corresponds to the Altium 365 BOM Portal.
+    see_also:
+      - https://www.altium.com/documentation/altium-365/bom-portal
     annotations:
       style: "fill:#dd7e6b"
 

@@ -14,9 +14,16 @@ default_prefix: lib
 
 subsets:
   library:
-    description: >- 
-      Ensures centralized control, organization, and standardization of component data, including symbols, footprints, and parameters. 
-      It enables seamless collaboration, versioning, and accessibility of design assets across teams within Altium 365.
+    description: >-
+      Models the components stored in a Workspace and their revisions, the symbols, footprints, parameters,
+      datasheets and part choices that make them up, and the component templates they can be created from. It
+      also covers manufacturer parts in the Workspace part catalog, part requests, and reusable design content
+      such as reuse blocks, managed sheets, and schematic and PCB snippets. It corresponds to Workspace
+      components and design reuse in Altium Designer and Altium 365.
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/components-libraries
+      - https://www.altium.com/documentation/altium-365/workspace-components
+      - https://www.altium.com/documentation/altium-designer/schematic/design-reuse
     annotations:
       style: "fill:#ffe599"
 

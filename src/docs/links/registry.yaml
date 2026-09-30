@@ -56,7 +56,7 @@ https://www.altium.com/documentation/altium-365/bom-portal:
   product: altium-365
   anchors:
   - release_naming
-  last_verified: '2026-09-29'
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/bom-portal/configuration-options:
   title: Configuration and Options
   source: altium-docs
@@ -142,7 +142,7 @@ https://www.altium.com/documentation/altium-365/management-specific-project:
   product: altium-365
   anchors:
   - SAMPYM
-  last_verified: '2026-09-29'
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/managing-environment-configurations:
   title: Managing Environment Configurations
   source: altium-docs
@@ -186,6 +186,18 @@ https://www.altium.com/documentation/altium-365/requirements-integration:
   anchors:
   - basic_requirements_portal_setup
   - linking_requirements_to_a_design_project
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-portal:
+  title: Requirements Portal
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-portal/features-explained:
+  title: Features Explained
+  source: altium-docs
+  product: altium-365
+  anchors: []
   last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/requirements-portal/project-module:
   title: Project Module
@@ -280,7 +292,7 @@ https://www.altium.com/documentation/altium-365/workspace-components:
   product: altium-365
   anchors:
   - view_edit_part_choices
-  last_verified: '2026-09-29'
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/workspace-projects:
   title: Workspace Projects
   source: altium-docs
@@ -288,7 +300,7 @@ https://www.altium.com/documentation/altium-365/workspace-projects:
   anchors:
   - project_parameters
   - uploading_or_creating_a_managed_bom
-  last_verified: '2026-09-29'
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-dashboard:
   title: Company Dashboard
   source: altium-docs
@@ -326,7 +338,7 @@ https://www.altium.com/documentation/altium-designer/components-libraries:
   product: altium-designer
   anchors:
   - WSL
-  last_verified: '2026-09-29'
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-designer/components-libraries/adding-datasheets-component:
   title: Adding Datasheets to a Component
   source: altium-docs
@@ -341,7 +353,7 @@ https://www.altium.com/documentation/altium-designer/components-libraries/adding
   - the_part_catalog
   - part_choices
   - anatomy_of_a_part_choice
-  last_verified: '2026-09-29'
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-designer/components-libraries/creating-pcb-footprint:
   title: Creating a PCB Footprint
   source: altium-docs
@@ -374,6 +386,12 @@ https://www.altium.com/documentation/altium-designer/components-libraries/worksp
   anchors:
   - UACPDT
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/connected-workspace:
+  title: Configuring and Administrating Your Workspace
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions:
   title: Defining Lifecycle Definitions for a Workspace
   source: altium-docs
@@ -447,7 +465,7 @@ https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/d
   source: altium-docs
   product: altium-designer
   anchors: []
-  last_verified: '2026-09-29'
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release/workspace:
   title: Releasing to a Workspace
   source: altium-docs
@@ -460,6 +478,12 @@ https://www.altium.com/documentation/altium-designer/schematic/creating-template
   product: altium-designer
   anchors:
   - creating_workspace_schematic_template
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-designer/schematic/design-reuse:
+  title: Design Reuse
+  source: altium-docs
+  product: altium-designer
+  anchors: []
   last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-designer/schematic/design-reuse/reuse-blocks:
   title: Working with Reuse Blocks
@@ -493,8 +517,21 @@ https://www.altium.com/documentation/altium-designer/working-renesas-365-solutio
   anchors:
   - pulling_sdm_into_a_hardware_project
   last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-developer-center/altium-365/api:
+  title: Altium 365 API
+  source: altium-dev-center
+  product: altium-developer-center
+  anchors:
+  - how_the_api_is_organized
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/realms:
   title: Realms
+  source: altium-dev-center
+  product: altium-developer-center
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-developer-center/octopart:
+  title: Octopart
   source: altium-dev-center
   product: altium-developer-center
   anchors: []

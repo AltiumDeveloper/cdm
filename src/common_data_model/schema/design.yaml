@@ -13,8 +13,14 @@ default_prefix: des
 subsets:
   design:
     description: >-
-      Provides a comprehensive environment for schematic capture, PCB layout, and simulation. It enables engineers to create, analyze, 
-      and optimize electronic designs with seamless integration into the broader Altium ecosystem.
+      Models design projects stored in a Workspace, including multi-board and harness projects, with their
+      parameters, variants and releases, the manufacturing packages shared from releases, project templates
+      with their revisions, and rule checks run against projects. It corresponds to Workspace projects in
+      Altium 365 and Altium Designer, from project creation through to design release.
+    see_also:
+      - https://www.altium.com/documentation/altium-365/workspace-projects
+      - https://www.altium.com/documentation/altium-365/management-specific-project
+      - https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release
     annotations:
       style: "fill:#93c47d"
 

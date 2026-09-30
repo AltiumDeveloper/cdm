@@ -13,10 +13,13 @@ default_prefix: dm
 subsets:
   deviceModel:
     description: >-
-      Provides a comprehensive representation of embedded hardware, including peripherals, 
-      pin multiplexing, and memory maps. This subset defines the constraints necessary 
-      to model valid hardware configurations and perform feasibility analysis—ensuring 
-      a device's physical resources can satisfy specific application use-cases.
+      Models an embedded device (e.g. an MCU) as a digital twin: its processors; its address map with
+      memories, registers, bit fields and their enumerated values; its peripherals with their instances, modes
+      and configurations; and its pins and ports with their functions and pin multiplexing. A configured
+      device model filters the full model to one device configuration, which in the product is edited on a
+      hardware component in an ESD document.
+    see_also:
+      - https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration
     annotations:
       style: "fill:#6fa8dc"
 
