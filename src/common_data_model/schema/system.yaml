@@ -14,13 +14,27 @@ subsets:
   system:
     title: System Design
     description: >-
-      Facilitates high-level design planning by defining system architecture, functional relationships, and design constraints. 
-      It helps engineers structure complex projects by integrating requirements management with schematic and PCB design workflows within Altium 365.
+      Models the Electronic System Design (ESD) document of a Renesas 365 solution: a system-level block
+      diagram of functional blocks with their key (hardware) and software components, ports and parameters,
+      the connections between blocks, and entries for the hardware and software projects that implement the
+      system. It corresponds to Electronic System Design in a Renesas 365 Workspace.
+    see_also:
+      - https://www.altium.com/documentation/altium-365/esd
+      - https://www.altium.com/documentation/altium-365/renesas-365
     annotations:
       style: "fill:#f1c232"
   system-sdm:
     title: System Design - System Data Model
-    description: TBD
+    description: >-
+      Models the System Data Model (SDM) of a Renesas 365 solution and its versions, each combining a
+      functional model with device, hardware and software models, plus metadata recording who created a
+      version and with which application, and client-specific metadata (e.g. for ESD, Altium Designer or e²
+      studio). The ESD document and e² studio push changes to and pull changes from the SDM, and Altium
+      Designer pulls it into hardware projects.
+    see_also:
+      - https://www.altium.com/documentation/altium-365/renesas-365#system_data_model
+      - https://www.altium.com/documentation/altium-365/esd#pushing_pulling_sdm
+      - https://www.altium.com/documentation/altium-designer/working-renesas-365-solutions#pulling_sdm_into_a_hardware_project
     annotations:
       style: "fill:#f1c232"
 

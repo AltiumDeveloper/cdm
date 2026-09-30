@@ -14,9 +14,15 @@ default_prefix: sup
 subsets:
   supply:
     description: >-
-      Focuses on providing reliable access to component sourcing, availability, pricing, and lifecycle data, 
-      integrating resources like Octopart to support informed procurement decisions. It enables engineers and 
-      procurement teams to seamlessly connect design choices with real-world supply chain constraints within the Altium ecosystem.
+      Models the supply catalog: manufacturer parts with their aggregated sourcing data and distributor
+      offers, the companies acting as their manufacturers or distributors, and the vendor-specific part family
+      hierarchy, along with catalog content such as reference designs, evaluation kits, solution templates and
+      software projects. Part, offer and company data correspond to the supply chain data that Octopart
+      aggregates and serves through the Octopart API.
+    see_also:
+      - https://www.altium.com/documentation/altium-developer-center/octopart
+      - https://www.altium.com/documentation/altium-developer-center/octopart/api
+      - https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component
     annotations:
       style: "fill:#0c559c"
 

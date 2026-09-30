@@ -14,7 +14,14 @@ default_prefix: col
 subsets:
   collaboration:
     description: >-
-      TBD
+      Models collaboration on Workspace content: comment threads attached to a document, design object or
+      area, the individual comments in each thread, and tasks that assign work to users or teams. In the
+      product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks
+      panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/document-commenting
+      - https://www.altium.com/documentation/altium-365/tasks
+      - https://www.altium.com/documentation/altium-developer-center/altium-365/api#how_the_api_is_organized
     annotations:
       style: "fill:#6fa8dc"
 

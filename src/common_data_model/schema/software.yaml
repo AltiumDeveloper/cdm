@@ -13,8 +13,14 @@ default_prefix: sft
 
 subsets:
   software:
-    description: >- 
-      TBD
+    description: >-
+      Models the embedded software of a Renesas 365 solution: software projects with their releases and build
+      artifacts, device configurations (with revisions) covering the ports, peripherals and pin assignments of
+      a device, and AI models. In Renesas 365 the software project is the software part of a solution, edited
+      in the built-in Web IDE or in e² studio.
+    see_also:
+      - https://www.altium.com/documentation/altium-365/renesas-365
+      - https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration
     annotations:
       style: "fill:#3c78d8"
 
