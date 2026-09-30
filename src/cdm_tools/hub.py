@@ -95,7 +95,7 @@ def _terms(cls) -> list[Term]:
                  source=str(a.source) if a.source else None) for a in values]
 
 
-def _mapping(relation: str, value: str, registry: dict[str, LinkEntry], namespaces: dict[str, str]) -> Mapping:
+def build_mapping(relation: str, value: str, registry: dict[str, LinkEntry], namespaces: dict[str, str]) -> Mapping:
     if value.startswith(("http://", "https://")):
         entry = registry.get(split_url(value)[0])
         return Mapping(relation=relation, text=entry.text_for(value) if entry else value, url=value)
@@ -122,7 +122,7 @@ def build_hub(cls, *, registry: dict[str, LinkEntry], platform: Optional[ApiInde
         links=[_doc_link(str(u), registry, i == 0) for i, u in enumerate(cls.see_also or [])],
         terms=_terms(cls),
         product_docs_none="productDocs" in ann and str(ann["productDocs"].value) == "none",
-        mappings=[_mapping(rel, str(v), registry, namespaces)
+        mappings=[build_mapping(rel, str(v), registry, namespaces)
                   for rel, attr in MAPPING_FIELDS for v in (getattr(cls, attr, None) or [])],
     )
     if "platformAPI" in ann:
