@@ -28,9 +28,14 @@ plugins:
       execute: false
   - mermaid2:
       version: 10.9.0
-# Publishes llms.txt, llms-full.txt and llms/ (cdm-gen-llms) with the site
+# Publishes llms.txt, llms-ctx.txt, llms-full.txt and llms/ (cdm-gen-llms) with the site
 hooks:
   - src/docs/hooks/llms.py
+# Inputs of the llms files besides docs/, rebuilt by mkdocs serve when they change
+watch:
+  - src/common_data_model/schema
+  - src/docs/links
+  - src/docs/api
 nav:
   - Bounded Contexts: index.md
   - GRIDs: grid-format.md
@@ -72,6 +77,9 @@ extra:
   tags:
     experimental: experimental
     obsolete: obsolete
+  # Base of the absolute links in llms.txt, llms-ctx.txt and llms-full.txt. The site is served here; w3id.org/altium/cdm/
+  # (site_url) redirects only the root to it today, not paths such as about/ or llms.txt (MF-076).
+  llms_base_url: https://altiumdeveloper.github.io/cdm/
 extra_css:
   - css/custom.css
 extra_javascript:
