@@ -82,6 +82,7 @@ wizard:
 
 # Doc generation with CDM hub helpers (overrides the template-provided gendoc)
 # Note: cdm-gendoc does not forward GEN_DOC_ARGS; it hard-codes --subfolder-type-separation --preserve-names (the current LINKML_GENERATORS_DOC_ARGS).
+# cdm-gendoc writes the schema index as bounded-contexts.md, so the hand-written index.md copied from files/ is kept.
 gendoc: $(DOCDIR)
 	cp -rf $(SRC)/docs/files/* $(DOCDIR) && \
 	$(RUN) cdm-gendoc --template-directory $(DOCTEMPLATES) --api-dir $(SRC)/docs/api --findings MODEL-FINDINGS.md -d $(DOCDIR) $(SOURCE_SCHEMA_PATH) && \
