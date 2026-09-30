@@ -14,13 +14,12 @@ system. A local ID alone therefore cannot identify an entity when services, even
 Some Platform API entities still expose opaque, base64-encoded node IDs from the underlying GraphQL framework;
 these are being replaced by GRIDs step by step.
 
-A GRID addresses three needs:
+A GRID therefore provides:
 
-1. **Uniqueness** — one identifier that is unique across products, tenants and bounded contexts.
+1. **Uniqueness** — one stable identifier that is unique across the whole platform.
 2. **Context in the identifier** — the GRID carries the area, tenant, bounded context and resource type next to
    the local ID, so the platform can locate the entity from the GRID alone. The Platform API gateway uses this
    to route a `node(id: …)` query to the right subgraph.
-3. **Parseability** — a plain URI-style string that a consumer can split into its parts without a lookup.
 
 ## Format
 
@@ -57,6 +56,8 @@ Each example below is taken from the official page and matches the template the 
 | `grid:supply::platform:part/43736907` | [sup_Part](classes/sup_Part.md) | `grid:supply::platform:part/{id}` |
 
 The last example has a numeric local ID, and the Workspace examples use upper-case GUIDs as resource IDs.
+(The official page's API example uses the resource type `adproject` for a design project, unlike the
+`project` of its format examples and of the schema; see MF-051.)
 A sub-resource template in the schema is [sup_Offer](classes/sup_Offer.md):
 `grid:supply::platform:part/{id}/offer/{offerID}` (an offer of a supply part).
 
@@ -64,7 +65,6 @@ A sub-resource template in the schema is [sup_Offer](classes/sup_Offer.md):
 
 - **Brand- and product-agnostic** — area names follow OAuth scope areas and contain no product names, so GRIDs
   stay valid when products are renamed.
-- **Technology-agnostic** — a plain string: no binary encoding and no language-specific types.
 - **Readable** — the resource type is a human-readable name from the domain vocabulary, so a GRID shows what kind
   of entity it identifies and which context owns it.
 
@@ -80,8 +80,8 @@ and event subscriptions use `events`. The catalogue below is grouped by GRID con
 - `GRID` is a scalar type in `core.yaml` with base `str`. LinkML does not validate the content of a GRID string;
   the platform defines and enforces the format.
 - Every class under `core_Entity` inherits the identifier slot `core_id` (alias `id`), whose range is `GRID`.
-  Resources (`core_Resource`) have no GRID; where they need an identifier they usually have `core_localId`,
-  which is unique only within its context. See [Entity Classification](entity-classification.md).
+  Resources (`core_Resource`) have no GRID; some of them (27 of 63 concrete Resources) have `core_localId`,
+  an identifier that is unique only within its context. See [Entity Classification](entity-classification.md).
 - A class documents the GRID of its instances with a `grid` annotation — a **template** with placeholders:
   `{workspace-id}` for the tenant, `{id}` for the local ID, and a named placeholder for a sub-resource ID
   (`{offerID}` in `sup_Offer`). The annotation is informational: it is shown in the documentation and consumed
@@ -124,8 +124,12 @@ A new prefix needs formal approval of the subset it belongs to (see `AGENTS.md` 
 ### Resolving IRIs through w3id.org
 
 IRIs under `https://w3id.org/altium/cdm/` are redirected by the [w3id.org](https://w3id.org/) persistent
-identifier service to this documentation site; the redirects are currently temporary (HTTP 302). Rules for
-changing them:
+identifier service to this documentation site; the redirects are currently temporary (HTTP 302). Not every
+class IRI resolves yet (MF-076): IRIs in the `system` namespace, such as
+`https://w3id.org/altium/cdm/system/ESDDocument`, redirect to `classes/sys_<Class>/`, which does not exist (the
+pages are `classes/system_<Class>/`), and IRIs in the `requirement` namespace (for example
+`https://w3id.org/altium/cdm/requirement/Requirement`) get a 404 from w3id.org, which redirects only the
+`requirements/` path. Rules for changing the redirects:
 
 - Keep redirects temporary (`R=302`) until the target URL is confirmed correct and stable.
 - Never deploy a permanent redirect (`R=301`) to an unverified target: browsers and ontology tools cache

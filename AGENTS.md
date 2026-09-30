@@ -13,10 +13,10 @@
 | Class | Parent | Role | Examples |
 |-------|--------|------|---------|
 | `core_Entity` | — | Identifiable, versioned, platform-accessible domain object | (abstract — never instantiated directly) |
-| `core_Artifact` | `core_Entity` | **Persistent data object** — created, stored, versioned, consumed | Component, ESDDocument, SystemModel |
-| `core_Activity` | `core_Entity` | **Process / work object** — something that happens, uses inputs, produces outputs | ESDProject, DesignProject, Release |
-| `core_Resource` | — | Lightweight object with platform API access; not an Entity; no GRID | PortConfiguration, EnumValue |
-| `core_Event` | — | Abstract base for domain events; no GRID, no versioning | (domain-specific subclasses) |
+| `core_Artifact` | `core_Entity` | **Persistent data object** — created, stored, versioned, consumed | `lib_Component`, `lib_ComponentRevision`, `system_SdmSystemModelVersion` |
+| `core_Activity` | `core_Entity` | **Process / work object** — something that happens, uses inputs, produces outputs | `system_ESDDocument`, `des_Project`, `req_Project` |
+| `core_Resource` | — | Lightweight object with platform API access; not an Entity; no GRID | `dm_PortConfiguration`, `pro_BomItem` |
+| `core_Event` | — | Abstract base for domain events; no GRID, no versioning | `cus_ScriptExecutionCompleted` |
 
 ### Distinguishing Artifact vs Activity
 
@@ -30,14 +30,15 @@
 
 ### Mixin Annotations
 
-All mixins extend `core_Meta` (abstract). They are applied via `instantiates:` on the base class, **not** via `is_a`.
+All mixins extend `core_Meta` (abstract). The core mixins are applied via `instantiates:`, **not** via `is_a`.
 
 | Mixin | Applied to | Provides |
 |-------|-----------|---------|
 | `core_WithGRID` | `core_Entity` | `grid:` annotation slot (type `GRID`, base: `str`) |
 | `core_WithMaturity` | `core_Entity` | `maturity:` slot (enum: `EXPERIMENTAL`, `PRODUCTION`, `OBSOLETE`) |
 | `core_WithPlatformAPI` | `core_Entity`, `core_Resource` | `platformAPI:` and `nexarAPI:` slots (string — API type names) |
-| `core_WithVault` | domain classes | `contentType:` slot (enum `VaultContentType`) |
+| `core_WithVault` | not applied yet | `contentType:` slot (enum `VaultContentType`) |
+| `core_WithVaultLink` | slot `lib_ComponentRevision_template` | vault link parent/child/type annotations |
 
 ### Full Class Hierarchy
 
@@ -127,28 +128,11 @@ Format (official): `grid:area:[tenant-id]:context:resource-type/resource-id` —
 
 The annotation is informational only (consumed by platform tooling). It does **not** affect LinkML validation.
 
-### Instance URI Pattern
+### Instance URIs
 
-For RDF serialization and external referencing, instance URIs follow:
-
-```
-https://w3id.org/altium/cdm/{subset}/{uuid}
-```
-
-**Rule:** `{uuid}` MUST be a real UUID (RFC 4122). Never use a placeholder string.
-
-### Examples from Different Subsets
-
-```
-# system subset
-https://w3id.org/altium/cdm/system/3fa85f64-5717-4562-b3fc-2c963f66afa6
-
-# deviceModel subset
-https://w3id.org/altium/cdm/deviceModel/7c9e6679-7425-40de-944b-e07fc1f90ae7
-
-# library subset
-https://w3id.org/altium/cdm/library/b3d99e4a-ec11-4c21-8a2a-d914e4f49e2b
-```
+No instance URI scheme is defined: nothing in the repository generates or uses URIs of the form
+`https://w3id.org/altium/cdm/{namespace}/{uuid}`, and such URIs would share the class namespaces.
+Whether one is intended is an open question (MODEL-FINDINGS.md MF-072). Entities are identified by their GRID.
 
 ### URI Patterns for Schema Elements
 
@@ -165,9 +149,10 @@ https://w3id.org/altium/cdm/library/b3d99e4a-ec11-4c21-8a2a-d914e4f49e2b
 ### Overview
 
 `core.yaml` defines abstract relation slots that form the CDM relation-type framework.
-These abstract slots are **never used directly** in domain classes. All domain-level relations
-are specialisations (`is_a:`) of one of these abstract slots. The set is split into **base**
-relations (from RO/PROV-O) and **expanded** relations (CDM extensions).
+These abstract slots are **never used directly** in domain classes. Domain-level relations
+should be specialisations (`is_a:`) of one of these abstract slots (not all are yet). `core.yaml`
+also provides a few ready-made specialisations (below), which domain classes may attach directly,
+narrowing the range with `slot_usage`.
 
 ### Base Relation Table
 
@@ -185,15 +170,6 @@ relations (from RO/PROV-O) and **expanded** relations (CDM extensions).
 | `core_informs` | `informs` | Activity → Activity | `core_informedBy` | No | Reverse of informedBy |
 | `core_occursIn` | `occursIn` | Activity → Artifact | — | No | Activity is scoped within an Artifact context |
 
-### Expanded Relation Table
-
-| Slot name | Alias | Domain → Range | Inverse | Transitive | Semantic |
-|-----------|-------|----------------|---------|-----------|---------|
-| `core_implements` | `implements` | Activity → Activity | `core_implementedBy` | No | Activity implements a requirement/spec Activity |
-| `core_implementedBy` | `implementedBy` | Activity → Activity | `core_implements` | No | Reverse of implements |
-
-> Note: core_implements is_a core_informedBy; core_implementedBy is_a core_informs.
-
 ### Pre-built Specialisations in core.yaml
 
 | Slot | is_a | Semantic |
@@ -208,20 +184,24 @@ relations (from RO/PROV-O) and **expanded** relations (CDM extensions).
 ### Rule: Always Specialise
 
 ```yaml
-# ✅ VALID — domain-specific slot with is_a pointing to abstract core slot
-slots:
-  system_ESDDocument_systemModels:
-    is_a: core_hasPart
-    slot_uri: sys:ESDDocument_systemModels
-    alias: systemModels
-    title: system models
-    domain: system_ESDDocument
-    range: system_SystemModel
-    multivalued: true
+# ✅ VALID — class-specific slot under attributes:, is_a pointing to an abstract core slot
+classes:
+  req_Project:
+    is_a: core_Activity
+    attributes:
+      req_Project_specifications:
+        is_a: core_hasPart
+        slot_uri: req:Project_specifications
+        alias: specifications
+        title: specifications
+        description: Specifications authored or curated within this requirements project.
+        range: req_RequirementSpecification
+        multivalued: true
+        required: true
 
 # ❌ INVALID — using abstract core slot directly on a domain class
 classes:
-  system_ESDDocument:
+  req_Project:
     slots:
       - core_hasPart   # Never do this
 ```
