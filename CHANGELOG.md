@@ -8,6 +8,14 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 ## [Unreleased]
 
 ### Added
+- Concept pages: Domain Model, Entity Classification, Relation Types and GRID.
+- Glossary of product terms (class titles and `structured_aliases`; terms shared by several classes are noted as homonyms).
+- Coverage dashboard: documentation coverage per bounded context.
+- Bounded-context overview pages with landing links, coverage line and GRID templates.
+- `cdm-gen-reference`: generates the relation, prefix, GRID and class-hierarchy reference tables, the glossary and the coverage page (`make gendoc`).
+- PROV-O, RO and BFO mappings on core classes and relations (`prov:` and `obo:` prefixes).
+- DOC-01/DOC-04 checks for `see_also` and mappings on slots and subsets.
+- Bounded-context descriptions and links to their product areas.
 - Hub panel on class pages (product links and terms, Platform/Nexar API type, standards). API links are emitted unfiltered without `platform-docs-pages.json`, and the type name is shown without links without the Platform snapshot.
 - `cdm-hub-export`: `hub.json` export of the documentation hub; `make gendoc` publishes it with `hub.schema.json`, and the test suite checks the export against the schema (not checked at export time).
 - `nexarAPI` annotation for supply-chain types served by the Nexar (Octopart) API.
@@ -21,6 +29,7 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - Governance files `VIOLATIONS.md` and `MODEL-FINDINGS.md`.
 
 ### Changed
+- Subset descriptions rewritten.
 - Class pages no longer show separate Documentation and Platform API boxes; API links use the canonical trailing-slash URLs.
 - Class index tables link API types via the hub data (Nexar types link to the Octopart API docs).
 
