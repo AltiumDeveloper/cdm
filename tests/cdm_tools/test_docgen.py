@@ -174,3 +174,32 @@ def test_main_fails_on_missing_findings(tmp_path, capsys):
                "--api-dir", str(REPO / "src/docs/api"), "--findings", str(missing)])
     assert rc == 2
     assert f"cdm-gendoc: findings file not found: {missing}" in capsys.readouterr().err
+
+
+def test_subset_see_also_rendered_once(tmp_path):
+    url = "https://www.altium.com/documentation/altium-365/lifecycle-management"
+    gen = CdmDocGenerator(
+        str(REPO / "src/common_data_model/schema/common_data_model.yaml"),
+        template_directory=str(REPO / "src/docs/templates"),
+        registry_path=str(REPO / "src/docs/links/registry.yaml"),
+        api_dir=str(REPO / "src/docs/api"),
+        findings_path=str(REPO / "MODEL-FINDINGS.md"),
+        subfolder_type_separation=True,
+        preserve_names=True,
+    )
+    gen.schemaview.get_subset("library").see_also = [url]
+    gen.serialize(directory=str(tmp_path))
+    page = (tmp_path / "subsets" / "library.md").read_text(encoding="utf-8")
+    assert page.count(url) == 1
+    assert "## See Also" not in page
+
+
+def test_grid_templates_shared_helper():
+    from linkml_runtime.utils.schemaview import SchemaView
+
+    from cdm_tools.reference import grid_templates
+
+    sv = SchemaView(str(REPO / "src/common_data_model/schema/common_data_model.yaml"))
+    rows = {r[0]: r for r in grid_templates(sv)}
+    assert rows["lib_Component"] == (
+        "lib_Component", "library", "library", "grid:workspace:{workspace-id}:library:component/{id}")
