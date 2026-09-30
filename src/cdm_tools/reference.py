@@ -1,6 +1,7 @@
 """
 cdm-gen-reference — generate the reference tables, the glossary and the documentation coverage page
 from the schema: relations, prefixes, GRID templates, core class hierarchy, glossary, coverage.
+Each reference table is also written without its H1 to `_snippets/` for inclusion in top-level pages.
 Output is deterministic (sorted, no timestamps other than the API snapshot retrieval date).
 """
 
@@ -10,7 +11,7 @@ import argparse
 import re
 import sys
 from pathlib import Path
-from typing import Iterable, Optional, Union
+from typing import Callable, Iterable, Optional, Union
 
 from linkml_runtime.utils.schemaview import SchemaView
 
@@ -25,6 +26,7 @@ FINDINGS_URL = "https://github.com/AltiumDeveloper/cdm/blob/main/MODEL-FINDINGS.
 VIOLATIONS_URL = "https://github.com/AltiumDeveloper/cdm/blob/main/VIOLATIONS.md"
 DEFAULT_FINDINGS_PATH = "MODEL-FINDINGS.md"
 SENTENCE_END = re.compile(r"(?<!\be\.g)(?<!\bi\.e)\. ")   # "e.g. " and "i.e. " do not end a sentence
+SNIPPETS_DIR = "_snippets"
 SUBSET_NAMESPACE = re.compile(r"^https://w3id\.org/altium/cdm/([^/]+)/$")
 
 
@@ -82,7 +84,7 @@ def _resolve(slots: dict, name: str, attr: str):
     return None, False
 
 
-def write_relations(sv, registry, namespaces, path: Path) -> None:
+def relations_body(sv, registry, namespaces, prefix: str) -> list[str]:
     slots = _relation_slots(sv)
     inverses: dict[str, set[str]] = {n: set() for n in slots}
     for name, slot in slots.items():
@@ -98,7 +100,7 @@ def write_relations(sv, registry, namespaces, path: Path) -> None:
         for attr in ("domain", "range"):
             value, inherited = _resolve(slots, name, attr)
             if value:
-                ends.append(_class_link(str(value), "../", sv) + (note if inherited else ""))
+                ends.append(_class_link(str(value), prefix, sv) + (note if inherited else ""))
         transitive, trans_inherited = _resolve(slots, name, "transitive")
         maps = []
         for rel, attr in MAPPING_FIELDS:
@@ -106,39 +108,36 @@ def write_relations(sv, registry, namespaces, path: Path) -> None:
                 m = build_mapping(rel, str(value), registry, namespaces)
                 maps.append(f"{rel}: [{_esc(m.text)}]({m.url})" if m.url else f"{rel}: {_esc(m.text)}")
         rows.append([
-            _slot_link(name, "../", sv), _esc(slot.alias or ""), " → ".join(ends),
-            ", ".join(_slot_link(i, "../", sv) for i in sorted(inverses[name])),
+            _slot_link(name, prefix, sv), _esc(slot.alias or ""), " → ".join(ends),
+            ", ".join(_slot_link(i, prefix, sv) for i in sorted(inverses[name])),
             ("yes" + (note if trans_inherited else "")) if transitive else "",
-            _slot_link(str(slot.is_a), "../", sv) if slot.is_a else "",
+            _slot_link(str(slot.is_a), prefix, sv) if slot.is_a else "",
             "; ".join(maps),
         ])
-    lines = ["# Relation types", "",
-             "Abstract relation slots defined in the core schema and their specialisations there. Domain "
+    lines = ["Abstract relation slots defined in the core schema and their specialisations there. Domain "
              "relations specialise one of these through `is_a`; an inverse is shown when either side declares it.", ""]
-    lines += _table(["Slot", "Alias", "Domain → Range", "Inverse", "Transitive", "Is a", "Mappings"], rows)
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return lines + _table(["Slot", "Alias", "Domain → Range", "Inverse", "Transitive", "Is a", "Mappings"], rows)
 
 
 # ---------------------------------------------------------------- prefixes
 
-def write_prefixes(sv, path: Path) -> None:
+def prefixes_body(sv, prefix: str) -> list[str]:
     prefixes: dict[str, str] = {}
     for schema in sv.all_schema(imports=True):
-        for prefix in (schema.prefixes or {}).values():
-            prefixes.setdefault(str(prefix.prefix_prefix), str(prefix.prefix_reference))
+        for declared in (schema.prefixes or {}).values():
+            prefixes.setdefault(str(declared.prefix_prefix), str(declared.prefix_reference))
     subsets = {str(s) for s in sv.all_subsets()}
     rows = []
-    for prefix in sorted(prefixes):
-        ns = prefixes[prefix]
+    for name in sorted(prefixes):
+        ns = prefixes[name]
         m = SUBSET_NAMESPACE.match(ns)
         owner = ""
         if m:
-            owner = f"[{m.group(1)}](../subsets/{m.group(1)}.md)" if m.group(1) in subsets else m.group(1)
-        rows.append([f"`{prefix}`", f"`{ns}`", owner])
-    lines = ["# Prefixes", "", "Every prefix declared by the schema files, with the bounded context that owns "
+            owner = f"[{m.group(1)}]({prefix}subsets/{m.group(1)}.md)" if m.group(1) in subsets else m.group(1)
+        rows.append([f"`{name}`", f"`{ns}`", owner])
+    lines = ["Every prefix declared by the schema files, with the bounded context that owns "
              "the namespace where it has the form `https://w3id.org/altium/cdm/<subset>/`.", ""]
-    lines += _table(["Prefix", "Namespace", "Bounded context"], rows)
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return lines + _table(["Prefix", "Namespace", "Bounded context"], rows)
 
 
 # ---------------------------------------------------------------- GRID templates
@@ -149,39 +148,39 @@ def _grid_parts(template: str) -> tuple[str, str]:
 
 
 def grid_templates(sv) -> list[tuple[str, str, str, str]]:
-    """(class name, first subset, GRID context, template) for every class with a `grid` annotation."""
+    """(class name, first subset, GRID context, template) for every class with a non-empty `grid` annotation."""
     rows = []
     for name, cls in sv.all_classes().items():
         ann = cls.annotations or {}
-        if "grid" not in ann:
+        value = ann["grid"].value if "grid" in ann else None
+        template = "" if value is None else str(value).strip()
+        if not template:
             continue
-        template = str(ann["grid"].value)
         subset = str(cls.in_subset[0]) if cls.in_subset else ""
         rows.append((str(name), subset, _grid_parts(template)[1], template))
     return rows
 
 
-def write_grid_templates(sv, path: Path) -> None:
+def grid_templates_body(sv, prefix: str) -> list[str]:
     by_context: dict[str, list[tuple[str, str]]] = {}
     areas: dict[str, int] = {}
     for name, _, context, template in grid_templates(sv):
         area = _grid_parts(template)[0]
         by_context.setdefault(context, []).append((name, template))
         areas[area] = areas.get(area, 0) + 1
-    lines = ["# GRID templates", "",
-             "Format: `grid:area:[tenant-id]:context:resource-type/resource-id`. Templates are informational "
+    lines = ["Format: `grid:area:[tenant-id]:context:resource-type/resource-id`. Templates are informational "
              "and are declared per class in the `grid` annotation.", "", "## Areas", ""]
     lines += _table(["Area", "Classes"], [[f"`{a}`", str(areas[a])] for a in sorted(areas)])
     for context in sorted(by_context):
         lines += ["", f"## {context}", ""]
         lines += _table(["Class", "GRID template"],
-                        [[_class_link(n, "../", sv), f"`{t}`"] for n, t in sorted(by_context[context])])
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+                        [[_class_link(n, prefix, sv), f"`{t}`"] for n, t in sorted(by_context[context])])
+    return lines
 
 
 # ---------------------------------------------------------------- class hierarchy
 
-def write_class_hierarchy(sv, path: Path) -> None:
+def class_hierarchy_body(sv, prefix: str) -> list[str]:
     nodes = {n: c for n, c in sv.all_classes().items() if n == "Any" or n.startswith("core_")}
     children: dict[str, list[str]] = {}
     roots = []
@@ -202,10 +201,28 @@ def write_class_hierarchy(sv, path: Path) -> None:
 
     for root in roots:
         emit(root, 0)
-    lines = ["# Core class hierarchy", "",
-             "Base classes and mixins of the core schema. Mixins are attached with `instantiates`, not `is_a`.",
-             "", "```text"] + out + ["```"]
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return ["Base classes and mixins of the core schema. Mixins are attached with `instantiates`, not `is_a`.",
+            "", "```text"] + out + ["```"]
+
+
+# ---------------------------------------------------------------- reference pages and snippets
+
+def _demote(lines: list[str]) -> list[str]:
+    """Headings one level down (outside fenced code), so a snippet nests under a section of the including page."""
+    out, fenced = [], False
+    for line in lines:
+        if line.startswith("```"):
+            fenced = not fenced
+        out.append("#" + line if not fenced and re.match(r"#+ ", line) else line)
+    return out
+
+
+def write_reference_page(out: Path, name: str, title: str, body: Callable[[str], list[str]]) -> None:
+    """Write `reference/<name>.md` (a page with its own H1) and `_snippets/<name>.md` (no H1, headings demoted,
+    links relative to the docs root) for inclusion with `--8<-- "docs/_snippets/<name>.md"` in top-level pages."""
+    page = [f"# {title}", ""] + body("../")
+    (out / "reference" / f"{name}.md").write_text("\n".join(page) + "\n", encoding="utf-8")
+    (out / SNIPPETS_DIR / f"{name}.md").write_text("\n".join(_demote(body(""))) + "\n", encoding="utf-8")
 
 
 # ---------------------------------------------------------------- glossary
@@ -289,15 +306,17 @@ def write_coverage(sv, coverage: dict[str, SubsetCoverage], retrieved: Optional[
 def build_reference(sv, *, registry_path: str, api_dir: str, findings_path: str, out_dir: Union[str, Path]) -> None:
     out = Path(out_dir)
     (out / "reference").mkdir(parents=True, exist_ok=True)
+    (out / SNIPPETS_DIR).mkdir(parents=True, exist_ok=True)
     registry = load_registry(registry_path)
     platform, nexar_types = load_api_layers(api_dir)
     namespaces = schema_namespaces(sv)
     coverage = subset_coverage(sv, platform_index=platform, nexar_types=nexar_types,
                                findings=load_findings(findings_path))
-    write_relations(sv, registry, namespaces, out / "reference/relations.md")
-    write_prefixes(sv, out / "reference/prefixes.md")
-    write_grid_templates(sv, out / "reference/grid-templates.md")
-    write_class_hierarchy(sv, out / "reference/class-hierarchy.md")
+    write_reference_page(out, "relations", "Relation types",
+                         lambda p: relations_body(sv, registry, namespaces, p))
+    write_reference_page(out, "prefixes", "Prefixes", lambda p: prefixes_body(sv, p))
+    write_reference_page(out, "grid-templates", "GRID templates", lambda p: grid_templates_body(sv, p))
+    write_reference_page(out, "class-hierarchy", "Core class hierarchy", lambda p: class_hierarchy_body(sv, p))
     write_glossary(sv, registry, platform, nexar_types, namespaces, out / "glossary.md")
     write_coverage(sv, coverage, load_snapshots(api_dir).get("platform", {}).get("retrieved"), out / "coverage.md")
 

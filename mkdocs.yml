@@ -32,6 +32,9 @@ nav:
   - Index: index.md
   - About: about.md
   - Tags: tags.md
+# Snippet sources included into top-level pages with --8<--; not pages of their own
+exclude_docs: |
+  _snippets/
 site_url: https://w3id.org/altium/cdm/
 repo_url: https://github.com/AltiumDeveloper/cdm
 markdown_extensions:
