@@ -120,6 +120,7 @@ classes:
     is_a: core_Entity
     close_mappings:
       - prov:Activity
+    related_mappings:
       - obo:BFO_0000015
 
   ### Annotations
@@ -283,7 +284,7 @@ slots:
     domain: core_Entity
     range: core_Entity
     transitive: true
-    close_mappings:
+    related_mappings:
       - obo:BFO_0000050
 
   core_hasPart:
@@ -297,7 +298,7 @@ slots:
     range: core_Entity
     transitive: true
     inverse: core_partOf
-    close_mappings:
+    related_mappings:
       - obo:BFO_0000051
 
   core_inputOf:
