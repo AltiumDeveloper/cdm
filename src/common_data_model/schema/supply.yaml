@@ -148,8 +148,7 @@ classes:
     title: Part Group
     description: >-
       A leaf of the part family hierarchy in the supply data, holding the parts that belong to it together
-      with group-level information such as its manufacturer, overview, key features, documents and lifecycle
-      status. Groups sharing the same parent family are usually close alternatives to one another.
+      with group-level information such as its manufacturer, overview, key features and documents. Groups sharing the same parent family are usually close alternatives to one another.
     annotations:
       grid: grid:supply::platform:part-group/{id}
       platformAPI: SupPartGroup
