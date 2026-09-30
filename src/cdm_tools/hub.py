@@ -81,7 +81,7 @@ def load_api_layers(api_dir: Union[str, Path]) -> tuple[Optional[ApiIndex], Opti
     return platform, nexar_types
 
 
-def _doc_link(url: str, registry: dict[str, LinkEntry], primary: bool) -> DocLink:
+def doc_link(url: str, registry: dict[str, LinkEntry], primary: bool) -> DocLink:
     entry = registry.get(split_url(url)[0])
     return DocLink(text=entry.text_for(url) if entry else url, url=url, primary=primary)
 
@@ -119,7 +119,7 @@ def build_hub(cls, *, registry: dict[str, LinkEntry], platform: Optional[ApiInde
               nexar_types: Optional[dict], namespaces: dict[str, str]) -> HubView:
     ann = cls.annotations or {}
     hub = HubView(
-        links=[_doc_link(str(u), registry, i == 0) for i, u in enumerate(cls.see_also or [])],
+        links=[doc_link(str(u), registry, i == 0) for i, u in enumerate(cls.see_also or [])],
         terms=_terms(cls),
         product_docs_none="productDocs" in ann and str(ann["productDocs"].value) == "none",
         mappings=[build_mapping(rel, str(v), registry, namespaces)

@@ -90,11 +90,11 @@ def test_standards_layer(sv):
 
 
 def test_mapping_uses_anchor_label():
-    from cdm_tools.hub import _doc_link, build_mapping
+    from cdm_tools.hub import doc_link, build_mapping
     m = build_mapping("close", SVD + "#elem_x", REGISTRY, {})
     assert m.text == "CMSIS-SVD x element"
     assert build_mapping("close", SVD, REGISTRY, {}).text == "CMSIS-SVD register"
-    assert _doc_link(SVD + "#elem_x", REGISTRY, False).text == "CMSIS-SVD x element"
+    assert doc_link(SVD + "#elem_x", REGISTRY, False).text == "CMSIS-SVD x element"
 
 
 def test_nexar_and_empty_states(sv):

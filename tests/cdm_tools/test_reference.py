@@ -273,10 +273,10 @@ def test_missing_inputs(tmp_path, capsys):
 
 
 def test_first_sentence_skips_abbreviations():
-    from cdm_tools.reference import _first_sentence
-    assert _first_sentence("Shown as a block (e.g. a chip, i.e. a part). Next.") == "Shown as a block (e.g. a chip, i.e. a part)."
-    assert _first_sentence("Only one") == "Only one"
-    assert _first_sentence("TBD") == ""
+    from cdm_tools.reference import first_sentence
+    assert first_sentence("Shown as a block (e.g. a chip, i.e. a part). Next.") == "Shown as a block (e.g. a chip, i.e. a part)."
+    assert first_sentence("Only one") == "Only one"
+    assert first_sentence("TBD") == ""
 
 
 def test_main_clears_stale_output(env, tmp_path):
