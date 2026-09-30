@@ -311,3 +311,17 @@ def test_first_sentence_skips_abbreviations():
     assert _first_sentence("Shown as a block (e.g. a chip, i.e. a part). Next.") == "Shown as a block (e.g. a chip, i.e. a part)."
     assert _first_sentence("Only one") == "Only one"
     assert _first_sentence("TBD") == ""
+
+
+def test_main_clears_stale_output(env, tmp_path):
+    for rel in ("reference/grid-templates.md", "_snippets/grid-templates.md", "keep.md", "classes/keep.md"):
+        (tmp_path / rel).parent.mkdir(parents=True, exist_ok=True)
+        (tmp_path / rel).write_text("stale\n", encoding="utf-8")
+    rc = main([str(env / "c.yaml"), "-o", str(tmp_path), "--registry", str(env / "registry.yaml"),
+               "--api-dir", str(env / "api"), "--findings", str(env / "MF.md")])
+    assert rc == 0
+    assert not (tmp_path / "reference/grid-templates.md").exists()
+    assert not (tmp_path / "_snippets/grid-templates.md").exists()
+    assert (tmp_path / "reference/relations.md").is_file() and (tmp_path / "_snippets/grid-summary.md").is_file()
+    assert (tmp_path / "keep.md").read_text() == "stale\n"               # nothing else in the output dir is touched
+    assert (tmp_path / "classes/keep.md").read_text() == "stale\n"

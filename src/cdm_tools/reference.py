@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import shutil
 import sys
 import unicodedata
 from pathlib import Path
@@ -360,8 +361,9 @@ def write_coverage(sv, coverage: dict[str, SubsetCoverage], retrieved: Optional[
 
 def build_reference(sv, *, registry_path: str, api_dir: str, findings_path: str, out_dir: Union[str, Path]) -> None:
     out = Path(out_dir)
-    (out / "reference").mkdir(parents=True, exist_ok=True)
-    (out / SNIPPETS_DIR).mkdir(parents=True, exist_ok=True)
+    for sub in ("reference", SNIPPETS_DIR):         # own output only: removed pages must not linger
+        shutil.rmtree(out / sub, ignore_errors=True)
+        (out / sub).mkdir(parents=True)
     registry = load_registry(registry_path)
     platform, nexar_types = load_api_layers(api_dir)
     namespaces = schema_namespaces(sv)
