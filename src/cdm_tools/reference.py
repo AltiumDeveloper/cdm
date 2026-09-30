@@ -70,6 +70,18 @@ def _relation_slots(sv) -> dict:
     return found
 
 
+def _resolve(slots: dict, name: str, attr: str):
+    """Value of *attr* for slot *name*, taken from the nearest slot on its is_a chain; (value, inherited)."""
+    seen, current = set(), name
+    while current in slots and current not in seen:
+        seen.add(current)
+        value = getattr(slots[current], attr, None)
+        if value:
+            return value, current != name
+        current = str(slots[current].is_a) if slots[current].is_a else None
+    return None, False
+
+
 def write_relations(sv, registry, namespaces, path: Path) -> None:
     slots = _relation_slots(sv)
     inverses: dict[str, set[str]] = {n: set() for n in slots}
@@ -81,16 +93,22 @@ def write_relations(sv, registry, namespaces, path: Path) -> None:
     rows = []
     for name in sorted(slots):
         slot = slots[name]
-        ends = " → ".join(_class_link(str(e), "../", sv) for e in (slot.domain, slot.range) if e)
+        note = " *(inherited)*"
+        ends = []
+        for attr in ("domain", "range"):
+            value, inherited = _resolve(slots, name, attr)
+            if value:
+                ends.append(_class_link(str(value), "../", sv) + (note if inherited else ""))
+        transitive, trans_inherited = _resolve(slots, name, "transitive")
         maps = []
         for rel, attr in MAPPING_FIELDS:
             for value in getattr(slot, attr, None) or []:
                 m = build_mapping(rel, str(value), registry, namespaces)
                 maps.append(f"{rel}: [{_esc(m.text)}]({m.url})" if m.url else f"{rel}: {_esc(m.text)}")
         rows.append([
-            _slot_link(name, "../", sv), _esc(slot.alias or ""), ends,
+            _slot_link(name, "../", sv), _esc(slot.alias or ""), " → ".join(ends),
             ", ".join(_slot_link(i, "../", sv) for i in sorted(inverses[name])),
-            "yes" if slot.transitive else "",
+            ("yes" + (note if trans_inherited else "")) if transitive else "",
             _slot_link(str(slot.is_a), "../", sv) if slot.is_a else "",
             "; ".join(maps),
         ])
