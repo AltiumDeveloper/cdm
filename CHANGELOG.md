@@ -15,7 +15,8 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - Glossary of product terms (class titles and `structured_aliases`; terms shared by several classes are noted as homonyms).
 - Bounded-context overview pages with landing links and GRID templates.
 - `cdm-gen-reference`: generates the relation, prefix and class-hierarchy tables for the concept pages, the GRID catalogue for the GRIDs page and the glossary (`make gendoc`); it also generates the reference pages and a documentation coverage page for internal use, which are not published on the site.
-- `llms.txt` for AI tools (`cdm-gen-llms`, published by an MkDocs hook): a catalogue per bounded context, a card per class, the concept pages and the glossary as plain markdown, and `llms-full.txt`; the About page links them.
+- `llms.txt` for AI tools (`cdm-gen-llms`, published by an MkDocs hook): a catalogue per bounded context, a card per class and per enumeration, the concept pages and the glossary as plain markdown, `llms-ctx.txt` and `llms-full.txt`; the About page links them.
+- Glossary: the class name is shown next to the class title.
 - PROV-O, RO and BFO mappings on core classes and relations (`prov:` and `obo:` prefixes).
 - DOC-01/DOC-04 checks for `see_also` and mappings on slots and subsets.
 - Bounded-context descriptions (rewritten) and links to their product areas.
@@ -41,6 +42,7 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - Class index tables link API types via the hub data (Nexar types link to the Octopart API docs).
 
 ### Fixed
+- `hub.json`: an empty `grid` annotation is exported as `null`, not `"None"`.
 - Platform API type names corrected against production for `des_RuleCheck`, `des_RuleCheckExecution`,
   `dm_ConfiguredDeviceModel`, `dm_AddressMap`, `dm_Memory`, `dm_Register`, `dm_RegisterField`,
   `dm_FieldEnum`, `dm_PortConfigurationEnumValue`, `dm_PortConfigurationDependency`, `sup_ReferenceDesign`;
