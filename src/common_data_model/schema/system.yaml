@@ -77,7 +77,8 @@ classes:
       project) to describe the architecture of the system at a functional level. It holds functional blocks with
       their hardware components, software components and ports, the connections between blocks, and blankets
       through which parts of the design can be linked to PCB or software projects. Pushing to and pulling from the
-      solution's System Data Model (SDM) for the system design is done from the ESD document.
+      solution's System Data Model (SDM) for the system design is done from the ESD document. Blankets are not
+      modelled as a separate entity here (see MF-068).
     annotations:
       grid: grid:workspace:{workspace-id}:system-design:esd/{id}
       platformAPI: SysEsdDocument
@@ -142,8 +143,8 @@ classes:
       ports, and associations. In the ESD editor a functional block can also contain other blocks; this nesting is
       not modelled here.
     see_also:
-      - https://www.altium.com/documentation/altium-365/esd#placing_and_configuring_functional_blocks
       - https://www.altium.com/documentation/altium-365/esd#defining_an_esd_document
+      - https://www.altium.com/documentation/altium-365/esd#placing_and_configuring_functional_blocks
     slots:
       - core_localId
       - core_name
@@ -204,8 +205,8 @@ classes:
       block's boundaries; connection lines between blocks can start and end at ports. It is a logical interface,
       distinct from dm_Port, which is a physical port of a device.
     see_also:
-      - https://www.altium.com/documentation/altium-365/esd#port
       - https://www.altium.com/documentation/altium-365/esd#defining_an_esd_document
+      - https://www.altium.com/documentation/altium-365/esd#port
     slots:
       - core_localId
       - core_name
@@ -229,7 +230,7 @@ classes:
       A key component of a functional block in an ESD document, shown in the editor as a hardware component (e.g.
       a Renesas RA MCU chosen with the RA Explorer). Its device configuration (ports, package information,
       peripherals and pin assignments) can be viewed and edited on the hardware component. Software components of
-      the block reference their parent key component.
+      the block reference their parent key component. Its SDM counterpart is system_SdmHardwareComponent.
     see_also:
       - https://www.altium.com/documentation/altium-365/esd#hardware_component
       - https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration
@@ -386,9 +387,8 @@ classes:
     title: Software Project
     description: >-
       An entry of an ESD document for a software project (sft_SoftwareProject) that implements part of the
-      system, listing the software components that project covers. In the ESD editor a software project is
-      attached to the design by linking it to a software blanket; each project can be linked to at most one blanket
-      in a document.
+      system, listing the software components that project covers. In the ESD editor a software project can be
+      linked to a software blanket, and each project can be linked to at most one blanket in a document.
     slots:
       - core_localId
       - core_implementedBy
@@ -412,8 +412,8 @@ classes:
     title: Hardware Project
     description: >-
       An entry of an ESD document for a PCB design project (des_Project) that implements part of the system,
-      listing the functional blocks that project covers. In the ESD editor a PCB project is attached to the design
-      by linking it to a hardware blanket placed around functional blocks; each project can be linked to at most
+      listing the functional blocks that project covers. In the ESD editor a PCB project can be linked to a
+      hardware blanket (which can be placed around functional blocks), and each project can be linked to at most
       one blanket in a document.
     slots:
       - core_localId
