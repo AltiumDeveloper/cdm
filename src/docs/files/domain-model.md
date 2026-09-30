@@ -15,11 +15,11 @@ from the root schema, and `cdm-lint` checks it against the naming and documentat
   as *has part*, *has input* or *derived from*; 28 entity-valued slots do not yet. See
   [Relation Types](relation-types.md).
 - **Identity.** Entities are identified on the platform by a GRID (Global Resource ID); each class can declare
-  the GRID template of its instances. See [GRID](grid-format.md).
+  the GRID template of its instances. See [GRIDs](grid-format.md).
 - **Names.** Class names carry a short context prefix and a PascalCase name (`lib_Component`, `des_Project`,
   `system_ESDDocument`); each class also has an IRI in its context's namespace (`lib:Component`). Class-specific
   slots add a camelCase field name (`req_Project_specifications`). The prefixes are listed on the
-  [GRID](grid-format.md#grids-and-schema-iris) page.
+  [GRIDs](grid-format.md#grids-and-schema-iris) page.
 
 ## Bounded contexts
 
