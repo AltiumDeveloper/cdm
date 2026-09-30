@@ -8,11 +8,12 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 ## [Unreleased]
 
 ### Added
-- Concept pages: Domain Model, Entity Classification, Relation Types and GRID.
+- Concept pages: Domain Model, Entity Classification and Relation Types.
+- GRIDs page (top-level): GRIDs by bounded context (summary), format, and the catalogue of class GRID templates per bounded context.
 - Glossary of product terms (class titles and `structured_aliases`; terms shared by several classes are noted as homonyms).
 - Coverage dashboard: documentation coverage per bounded context.
 - Bounded-context overview pages with landing links, coverage line and GRID templates.
-- `cdm-gen-reference`: generates the relation, prefix, GRID and class-hierarchy reference tables, the glossary and the coverage page (`make gendoc`).
+- `cdm-gen-reference`: generates the relation, prefix and class-hierarchy reference tables, the GRID summary and catalogue for the GRIDs page, the glossary and the coverage page (`make gendoc`).
 - PROV-O, RO and BFO mappings on core classes and relations (`prov:` and `obo:` prefixes).
 - DOC-01/DOC-04 checks for `see_also` and mappings on slots and subsets.
 - Bounded-context descriptions (rewritten) and links to their product areas.
@@ -29,7 +30,7 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - Governance files `VIOLATIONS.md` and `MODEL-FINDINGS.md`.
 - `cdm-gendoc --findings` (exits 2 when `MODEL-FINDINGS.md` is missing).
 - Subsets can declare `annotations: {productDocs: none}`; their page then states that no public product documentation exists (set on `core`).
-- Reference pages (relations, prefixes, GRID templates, class hierarchy) in the site navigation.
+- Reference pages (relations, prefixes, class hierarchy) in the site navigation.
 - Snippet includes are checked (`pymdownx.snippets` `check_paths`).
 - PR CI builds the documentation (`make gendoc` and `mkdocs build --strict`); `make gendoc` stops at the first failing step.
 

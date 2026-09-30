@@ -1,25 +1,14 @@
-# GRID
+# GRIDs
 
 A **GRID** (Global Resource ID) is the platform-wide identifier of an entity on the Altium platform, such as a
 project, a component, a BOM or a task. The format is defined by the platform and documented on the
 Altium Developer Center page [GRID](https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/grid);
 that page is the authority for the format. This page explains how the CDM uses GRIDs and lists the GRID template
-the schema declares for each class.
+the schema declares for each class, grouped by bounded context.
 
-## Why GRIDs exist
+## GRIDs by bounded context
 
-Most platform entities have a local ID — a GUID or a number — that is unique only where it was issued: two
-projects in different Workspaces may share a GUID, and the ID of a supply part is meaningful only to the supply
-system. A local ID alone therefore cannot identify an entity when services, events or integrations exchange references.
-Some Platform API entities still expose opaque, base64-encoded node IDs from the underlying GraphQL framework;
-these are being replaced by GRIDs step by step.
-
-A GRID therefore provides:
-
-1. **Uniqueness** — one stable identifier that is unique across the whole platform.
-2. **Context in the identifier** — the GRID carries the area, tenant, bounded context and resource type next to
-   the local ID, so the platform can locate the entity from the GRID alone. The Platform API gateway uses this
-   to route a `node(id: …)` query to the right subgraph.
+--8<-- "docs/_snippets/grid-summary.md"
 
 ## Format
 
@@ -68,12 +57,34 @@ A sub-resource template in the schema is [sup_Offer](classes/sup_Offer.md):
 - **Readable** — the resource type is a human-readable name from the domain vocabulary, so a GRID shows what kind
   of entity it identifies and which context owns it.
 
-### The GRID context is not the CDM subset
+### Why GRIDs exist
+
+Most platform entities have a local ID — a GUID or a number — that is unique only where it was issued: two
+projects in different Workspaces may share a GUID, and the ID of a supply part is meaningful only to the supply
+system. A local ID alone therefore cannot identify an entity when services, events or integrations exchange references.
+Some Platform API entities still expose opaque, base64-encoded node IDs from the underlying GraphQL framework;
+these are being replaced by GRIDs step by step.
+
+A GRID therefore provides:
+
+1. **Uniqueness** — one stable identifier that is unique across the whole platform.
+2. **Context in the identifier** — the GRID carries the area, tenant, bounded context and resource type next to
+   the local ID, so the platform can locate the entity from the GRID alone. The Platform API gateway uses this
+   to route a `node(id: …)` query to the right subgraph.
+
+## Catalogue
+
+The GRID template of every class that declares one, per bounded context. Templates are informational
+and are declared per class in the `grid` annotation.
+
+--8<-- "docs/_snippets/grid-catalogue.md"
+
+## The GRID context is not the CDM subset
 
 The `context` segment is the platform's bounded-context name, which often but not always equals the CDM subset.
 For example, the system classes use `system-design`, the full-stack device model uses `device-model`, supply
 records use context `platform` in area `supply`, scripts use `scripts`, Workspace users and groups use `team`,
-and event subscriptions use `events`. The catalogue below is grouped by GRID context.
+and event subscriptions use `events`. The catalogue above is grouped by bounded context and shows the GRID context of each class.
 
 ## GRIDs in the schema
 
@@ -99,10 +110,6 @@ system_ESDDocument:
 ```
 
 Not every entity class has a template yet; the catalogue lists those that do.
-
-## GRID templates by context
-
---8<-- "docs/_snippets/grid-templates.md"
 
 ## GRIDs and schema IRIs
 

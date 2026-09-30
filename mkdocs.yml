@@ -34,11 +34,10 @@ nav:
       - Domain Model: domain-model.md
       - Entity Classification: entity-classification.md
       - Relation Types: relation-types.md
-      - GRID: grid-format.md
+  - GRIDs: grid-format.md
   - Reference:
       - Relations: reference/relations.md
       - Prefixes: reference/prefixes.md
-      - GRID templates: reference/grid-templates.md
       - Class hierarchy: reference/class-hierarchy.md
   - Glossary: glossary.md
   - Coverage: coverage.md
