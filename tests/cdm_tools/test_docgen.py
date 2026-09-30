@@ -143,6 +143,14 @@ def test_subset_page_empty_product_docs_state(tmp_path):
     assert "No product documentation linked yet." in ota.split("## Classes in Bounded Context")[0]
 
 
+def test_subset_page_product_docs_none(tmp_path):
+    _serialize(tmp_path, registry_path=str(REPO / "src/docs/links/registry.yaml"),
+               api_dir=str(REPO / "src/docs/api"), findings_path=str(REPO / "MODEL-FINDINGS.md"))
+    core = (tmp_path / "subsets" / "core.md").read_text(encoding="utf-8").split("## Classes in Bounded Context")[0]
+    assert "No public product documentation \u2014 by design." in core
+    assert "No product documentation linked yet." not in core
+
+
 def test_subset_hub_computed_once_per_subset():
     gen = CdmDocGenerator(
         str(REPO / "src/common_data_model/schema/common_data_model.yaml"),

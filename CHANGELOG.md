@@ -15,7 +15,7 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - `cdm-gen-reference`: generates the relation, prefix, GRID and class-hierarchy reference tables, the glossary and the coverage page (`make gendoc`).
 - PROV-O, RO and BFO mappings on core classes and relations (`prov:` and `obo:` prefixes).
 - DOC-01/DOC-04 checks for `see_also` and mappings on slots and subsets.
-- Bounded-context descriptions and links to their product areas.
+- Bounded-context descriptions (rewritten) and links to their product areas.
 - Hub panel on class pages (product links and terms, Platform/Nexar API type, standards). API links are emitted unfiltered without `platform-docs-pages.json`, and the type name is shown without links without the Platform snapshot.
 - `cdm-hub-export`: `hub.json` export of the documentation hub; `make gendoc` publishes it with `hub.schema.json`, and the test suite checks the export against the schema (not checked at export time).
 - `nexarAPI` annotation for supply-chain types served by the Nexar (Octopart) API.
@@ -27,9 +27,15 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - `see_also` replaces `extensions: documentation` for product documentation links.
 - PR CI workflow (`.github/workflows/pr.yaml`) running `make lint` and `tests/cdm_tools`.
 - Governance files `VIOLATIONS.md` and `MODEL-FINDINGS.md`.
+- `cdm-gendoc --findings` (exits 2 when `MODEL-FINDINGS.md` is missing).
+- Subsets can declare `annotations: {productDocs: none}`; their page then states that no public product documentation exists (set on `core`).
+- Reference pages (relations, prefixes, GRID templates, class hierarchy) in the site navigation.
+- Snippet includes are checked (`pymdownx.snippets` `check_paths`).
+- PR CI builds the documentation (`make gendoc` and `mkdocs build --strict`); `make gendoc` stops at the first failing step.
 
 ### Changed
-- Subset descriptions rewritten.
+- DOC-02 counts registry entries used by slots and subsets as used.
+- `AGENTS.md`: the instance-URI rule is withdrawn (see MF-072); concept-page pointers name their sources.
 - Class pages no longer show separate Documentation and Platform API boxes; API links use the canonical trailing-slash URLs.
 - Class index tables link API types via the hub data (Nexar types link to the Octopart API docs).
 

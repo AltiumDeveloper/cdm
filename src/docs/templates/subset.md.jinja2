@@ -20,6 +20,8 @@ _{{ element_description_line }}_
 - {{ doc_link(u) }}{% if loop.first %} *(primary)*{% endif %}
 
 {% endfor %}
+{%- elif sh.product_docs_none -%}
+No public product documentation — by design.
 {%- else -%}
 No product documentation linked yet.
 {% endif %}

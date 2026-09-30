@@ -30,6 +30,7 @@ class SubsetHub:
     links: list[str] = field(default_factory=list)
     coverage: SubsetCoverage = field(default_factory=SubsetCoverage)
     grid: list[tuple[str, str]] = field(default_factory=list)
+    product_docs_none: bool = False
 
     @property
     def coverage_line(self) -> str:
@@ -88,6 +89,8 @@ class CdmDocGenerator(DocGenerator):
                     links=[str(u) for u in (element.see_also or [])],
                     coverage=coverage.get(name, SubsetCoverage()),
                     grid=sorted(grid),
+                    product_docs_none="productDocs" in element.annotations
+                    and str(element.annotations["productDocs"].value) == "none",
                 )
             return cache[name]
 
