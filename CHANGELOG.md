@@ -9,6 +9,8 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 
 ### Added
 - Concept pages: Domain Model, Entity Classification and Relation Types.
+- Introduction as the site index: the model, its bounded contexts and entities, the APIs behind it, the class-page hub panel and `hub.json`.
+- Bounded Contexts page: every bounded context with its classes and their API types (the generated schema index, written as `bounded-contexts.md`).
 - GRIDs page (top-level): GRIDs by bounded context (summary), format, and the catalogue of class GRID templates per bounded context.
 - Glossary of product terms (class titles and `structured_aliases`; terms shared by several classes are noted as homonyms).
 - Coverage dashboard: documentation coverage per bounded context.
