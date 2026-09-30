@@ -201,7 +201,7 @@ def class_hierarchy_body(sv, prefix: str) -> list[str]:
 
     for root in roots:
         emit(root, 0)
-    return ["Base classes and mixins of the core schema. Mixins are attached with `instantiates`, not `is_a`.",
+    return ["Base classes and mixins of the core schema. Core mixins are attached with `instantiates`; domain mixins use `mixins:`. Neither uses `is_a`.",
             "", "```text"] + out + ["```"]
 
 

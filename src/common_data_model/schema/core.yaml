@@ -21,6 +21,8 @@ subsets:
       API type; shared slots such as id and name; and the abstract relations (e.g. part of, input of, derived
       from) that domain relations specialise. It is not a product area and has no product documentation of its
       own.
+    annotations:
+      productDocs: none
 
 enums:
 
