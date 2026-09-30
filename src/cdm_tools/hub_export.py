@@ -16,6 +16,7 @@ from typing import Optional
 from linkml_runtime.utils.schemaview import SchemaView
 
 from cdm_tools.api_snapshot import DEFAULT_API_DIR, load_snapshots
+from cdm_tools.coverage import is_concrete_domain_class
 from cdm_tools.hub import build_hub, load_api_layers, schema_namespaces
 from cdm_tools.registry import DEFAULT_REGISTRY_PATH, RegistryError, load_registry
 
@@ -28,9 +29,7 @@ def build_export(schema_path: str, *, registry_path: str, api_dir: str) -> dict:
     namespaces = schema_namespaces(sv)
     classes: dict[str, dict] = {}
     for name, cls in sorted(sv.all_classes().items()):
-        if cls.abstract or cls.mixin or name.startswith("core_"):
-            continue
-        if name == "Any" or str(cls.class_uri or "").startswith("linkml:"):
+        if not is_concrete_domain_class(name, cls):
             continue
         ann = cls.annotations or {}
         classes[name] = {
