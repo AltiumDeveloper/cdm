@@ -36,16 +36,14 @@ nav:
       - Entity Classification: entity-classification.md
       - Relation Types: relation-types.md
   - GRIDs: grid-format.md
-  - Reference:
-      - Relations: reference/relations.md
-      - Prefixes: reference/prefixes.md
-      - Class hierarchy: reference/class-hierarchy.md
   - Glossary: glossary.md
-  - Coverage: coverage.md
   - Tags: tags.md
-# Snippet sources included into top-level pages with --8<--; not pages of their own
+# Not pages of the site: snippet sources included into top-level pages with --8<--, and the reference
+# and coverage pages, which cdm-gen-reference generates for internal use
 exclude_docs: |
   _snippets/
+  /reference/
+  /coverage.md
 site_url: https://w3id.org/altium/cdm/
 repo_url: https://github.com/AltiumDeveloper/cdm
 markdown_extensions:

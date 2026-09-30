@@ -17,9 +17,8 @@ from jinja2 import Environment
 from linkml.generators.docgen import DocGenerator
 
 from cdm_tools.api_snapshot import DEFAULT_API_DIR
-from cdm_tools.coverage import SubsetCoverage, load_findings, subset_coverage
 from cdm_tools.hub import build_hub, load_api_layers, schema_namespaces
-from cdm_tools.reference import DEFAULT_FINDINGS_PATH, grid_templates
+from cdm_tools.reference import grid_templates
 from cdm_tools.registry import DEFAULT_REGISTRY_PATH, LinkEntry, RegistryError, load_registry, split_url
 
 
@@ -32,15 +31,8 @@ class SubsetHub:
     """Overview of one bounded context for its page."""
 
     links: list[str] = field(default_factory=list)
-    coverage: SubsetCoverage = field(default_factory=SubsetCoverage)
     grid: list[tuple[str, str]] = field(default_factory=list)
     product_docs_none: bool = False
-
-    @property
-    def coverage_line(self) -> str:
-        c = self.coverage
-        return (f"{c.classes} classes · {c.with_docs} with product docs · {c.with_api} with API type · "
-                f"{c.tbd} TBD · {c.findings_open} open findings")
 
 
 def make_doc_link(registry: dict[str, LinkEntry]) -> Callable[[str], str]:
@@ -58,7 +50,6 @@ def make_doc_link(registry: dict[str, LinkEntry]) -> Callable[[str], str]:
 class CdmDocGenerator(DocGenerator):
     registry_path: Optional[str] = None
     api_dir: Optional[str] = None
-    findings_path: Optional[str] = None
 
     def customize_environment(self, env: Environment) -> None:
         super().customize_environment(env)
@@ -73,25 +64,18 @@ class CdmDocGenerator(DocGenerator):
         env.globals["hub"] = lambda element: build_hub(
             element, registry=registry, platform=platform, nexar_types=nexar_types, namespaces=namespaces
         )
-        if self.findings_path and Path(self.findings_path).is_file():
-            self._register_subset_hub(env, platform, nexar_types)
+        self._register_subset_hub(env)
 
-    def _register_subset_hub(self, env: Environment, platform, nexar_types) -> None:
+    def _register_subset_hub(self, env: Environment) -> None:
         sv = self.schemaview
         cache: dict[str, SubsetHub] = {}
-        coverage: dict[str, SubsetCoverage] = {}
 
         def subset_hub(element) -> SubsetHub:
             name = str(element.name)
             if name not in cache:
-                if not coverage:
-                    coverage.update(subset_coverage(
-                        sv, platform_index=platform, nexar_types=nexar_types,
-                        findings=load_findings(self.findings_path)))
                 grid = [(c, t) for c, subset, _, t in grid_templates(sv) if subset == name]
                 cache[name] = SubsetHub(
                     links=[str(u) for u in (element.see_also or [])],
-                    coverage=coverage.get(name, SubsetCoverage()),
                     grid=sorted(grid),
                     product_docs_none="productDocs" in element.annotations
                     and str(element.annotations["productDocs"].value) == "none",
@@ -108,13 +92,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     parser.add_argument("--template-directory", required=True)
     parser.add_argument("--registry", default=DEFAULT_REGISTRY_PATH)
     parser.add_argument("--api-dir", default=DEFAULT_API_DIR)
-    parser.add_argument("--findings", default=DEFAULT_FINDINGS_PATH)
     args = parser.parse_args(argv)
     if not Path(args.api_dir).is_dir():
         print(f"cdm-gendoc: API snapshot directory not found: {args.api_dir}", file=sys.stderr)
-        return 2
-    if not Path(args.findings).is_file():
-        print(f"cdm-gendoc: findings file not found: {args.findings}", file=sys.stderr)
         return 2
     if not Path(args.registry).exists():
         print(f"cdm-gendoc: link registry not found: {args.registry}", file=sys.stderr)
@@ -131,7 +111,6 @@ def main(argv: Optional[list[str]] = None) -> int:
         preserve_names=True,
         registry_path=args.registry,
         api_dir=args.api_dir,
-        findings_path=args.findings,
         index_name=INDEX_NAME,
     )
     gen.serialize(directory=args.directory)

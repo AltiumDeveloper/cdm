@@ -45,7 +45,5 @@ Each page below describes the context, links its product documentation where it 
 
 - [Glossary](glossary.md) — product terms and class names, including terms that mean different things in
   different contexts.
-- [Coverage](coverage.md) — for each bounded context, how many classes have product documentation, an API type,
-  product terms and standards mappings, and how many findings are open.
 - [MODEL-FINDINGS.md](https://github.com/AltiumDeveloper/cdm/blob/main/MODEL-FINDINGS.md) — open questions where
   the model and the product documentation or standards disagree.

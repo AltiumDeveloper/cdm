@@ -127,11 +127,11 @@ def _serialize(tmp_path, **kw):
 
 def test_subset_page_has_overview(tmp_path):
     _serialize(tmp_path, registry_path=str(REPO / "src/docs/links/registry.yaml"),
-               api_dir=str(REPO / "src/docs/api"), findings_path=str(REPO / "MODEL-FINDINGS.md"))
+               api_dir=str(REPO / "src/docs/api"))
     page = (tmp_path / "subsets" / "library.md").read_text(encoding="utf-8")
     head = page.split("## Classes in Bounded Context")[0]
     assert "In the product" in head
-    assert "Coverage" in head and "classes" in head and "(../coverage.md)" in head
+    assert "Coverage" not in head and "coverage.md" not in page
     assert "GRID" in head and "(../classes/lib_Component.md)" in head and "`grid:" in head
     assert "## Classes in Bounded Context" in page
 
@@ -142,7 +142,6 @@ def test_subset_page_empty_product_docs_state(tmp_path):
         template_directory=str(REPO / "src/docs/templates"),
         registry_path=str(REPO / "src/docs/links/registry.yaml"),
         api_dir=str(REPO / "src/docs/api"),
-        findings_path=str(REPO / "MODEL-FINDINGS.md"),
         subfolder_type_separation=True,
         preserve_names=True,
     )
@@ -154,7 +153,7 @@ def test_subset_page_empty_product_docs_state(tmp_path):
 
 def test_subset_page_product_docs_none(tmp_path):
     _serialize(tmp_path, registry_path=str(REPO / "src/docs/links/registry.yaml"),
-               api_dir=str(REPO / "src/docs/api"), findings_path=str(REPO / "MODEL-FINDINGS.md"))
+               api_dir=str(REPO / "src/docs/api"))
     core = (tmp_path / "subsets" / "core.md").read_text(encoding="utf-8").split("## Classes in Bounded Context")[0]
     assert "No public product documentation exists for this bounded context." in core
     assert "No product documentation linked yet." not in core
@@ -166,7 +165,6 @@ def test_subset_hub_computed_once_per_subset():
         template_directory=str(REPO / "src/docs/templates"),
         registry_path=str(REPO / "src/docs/links/registry.yaml"),
         api_dir=str(REPO / "src/docs/api"),
-        findings_path=str(REPO / "MODEL-FINDINGS.md"),
     )
     env = jinja2.Environment()
     gen.customize_environment(env)
@@ -174,23 +172,11 @@ def test_subset_hub_computed_once_per_subset():
     assert env.globals["subset_hub"](element) is env.globals["subset_hub"](element)
 
 
-def test_subset_page_without_subset_hub_still_renders(tmp_path):
-    _serialize(tmp_path)  # no registry, api or findings
-    page = (tmp_path / "subsets" / "library.md").read_text(encoding="utf-8")
-    assert "## Classes in Bounded Context" in page
-    assert "Coverage" not in page.split("## Classes in Bounded Context")[0]
-
-
-def test_main_fails_on_missing_findings(tmp_path, capsys):
-    from cdm_tools.docgen import main
-
-    missing = tmp_path / "nope.md"
-    rc = main([str(REPO / "src/common_data_model/schema/common_data_model.yaml"), "-d", str(tmp_path / "out"),
-               "--template-directory", str(REPO / "src/docs/templates"),
-               "--registry", str(REPO / "src/docs/links/registry.yaml"),
-               "--api-dir", str(REPO / "src/docs/api"), "--findings", str(missing)])
-    assert rc == 2
-    assert f"cdm-gendoc: findings file not found: {missing}" in capsys.readouterr().err
+def test_subset_page_overview_without_registry(tmp_path):
+    _serialize(tmp_path)  # no registry or api: links render as autolinks
+    head = (tmp_path / "subsets" / "library.md").read_text(encoding="utf-8").split("## Classes in Bounded Context")[0]
+    assert "## In the product" in head and "- <https://" in head
+    assert "(../classes/lib_Component.md)" in head
 
 
 def test_subset_see_also_rendered_once(tmp_path):
@@ -200,7 +186,6 @@ def test_subset_see_also_rendered_once(tmp_path):
         template_directory=str(REPO / "src/docs/templates"),
         registry_path=str(REPO / "src/docs/links/registry.yaml"),
         api_dir=str(REPO / "src/docs/api"),
-        findings_path=str(REPO / "MODEL-FINDINGS.md"),
         subfolder_type_separation=True,
         preserve_names=True,
     )
