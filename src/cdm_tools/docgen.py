@@ -27,7 +27,7 @@ def make_doc_link(registry: dict[str, LinkEntry]) -> Callable[[str], str]:
         entry = registry.get(base)
         if entry is None:
             return f"<{url}>"
-        return f"[{entry.display_text}]({url})"
+        return f"[{entry.text_for(url)}]({url})"
 
     return doc_link
 

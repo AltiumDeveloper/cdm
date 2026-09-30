@@ -55,7 +55,8 @@ def sv(tmp_path_factory):
 REGISTRY = {
     AD: LinkEntry(url=AD, title="AD Page", source="altium-docs"),
     DOC: LinkEntry(url=DOC, title="Lifecycle Management", source="altium-docs", anchors=["states"]),
-    SVD: LinkEntry(url=SVD, title="raw", label="CMSIS-SVD register", source="standard", anchors=["elem_register"]),
+    SVD: LinkEntry(url=SVD, title="raw", label="CMSIS-SVD register", source="standard",
+                  anchors=["elem_register", "elem_x"], anchor_labels={"elem_x": "CMSIS-SVD x element"}),
 }
 
 
@@ -86,6 +87,14 @@ def test_standards_layer(sv):
         ("exact", "prov:Entity", "http://www.w3.org/ns/prov#Entity"),
         ("close", "CMSIS-SVD register", SVD + "#elem_register"),
     ]
+
+
+def test_mapping_uses_anchor_label():
+    from cdm_tools.hub import _doc_link, _mapping
+    m = _mapping("close", SVD + "#elem_x", REGISTRY, {})
+    assert m.text == "CMSIS-SVD x element"
+    assert _mapping("close", SVD, REGISTRY, {}).text == "CMSIS-SVD register"
+    assert _doc_link(SVD + "#elem_x", REGISTRY, False).text == "CMSIS-SVD x element"
 
 
 def test_nexar_and_empty_states(sv):

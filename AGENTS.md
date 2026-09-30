@@ -602,6 +602,8 @@ plt_LifecycleDefinition:
       source: https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions
 ```
 
+Registry entries may give `anchor_labels` (fragment → label) so links to different sections of one page render with their own text.
+
 **Adding a link:** (1) open the page and read it — only link pages that genuinely describe the concept;
 (2) add a registry entry with the exact `<title>` text before `" | "` and any anchors you use;
 (3) add the URL to `see_also`; (4) run `make verify-links` and `make lint`.

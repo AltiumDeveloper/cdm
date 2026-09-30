@@ -38,10 +38,18 @@ class LinkEntry:
     label: Optional[str] = None
     anchors: list[str] = field(default_factory=list)
     last_verified: Optional[str] = None
+    anchor_labels: dict[str, str] = field(default_factory=dict)
 
     @property
     def display_text(self) -> str:
         return self.label or self.title
+
+    def text_for(self, url: str) -> str:
+        """Link text for *url*: the label of its fragment if one is defined, else the page-level text."""
+        frag = split_url(url)[1]
+        if frag is not None and frag in self.anchor_labels:
+            return self.anchor_labels[frag]
+        return self.display_text
 
 
 def split_url(url: str) -> tuple[str, Optional[str]]:
@@ -67,6 +75,15 @@ def load_registry(path: Union[str, Path]) -> dict[str, LinkEntry]:
         anchors = data.get("anchors")
         if anchors is not None and not isinstance(anchors, list):
             raise RegistryError(f"{url}: 'anchors' must be a list")
+        anchor_labels = data.get("anchor_labels")
+        if anchor_labels is not None:
+            if not isinstance(anchor_labels, dict) or not all(
+                isinstance(k, str) and isinstance(v, str) for k, v in anchor_labels.items()
+            ):
+                raise RegistryError(f"{url}: 'anchor_labels' must be a mapping of fragment -> label")
+            unlisted = sorted(set(anchor_labels) - {str(a) for a in (anchors or [])})
+            if unlisted:
+                raise RegistryError(f"{url}: 'anchor_labels' keys must also be listed in 'anchors': {unlisted}")
         last = data.get("last_verified")
         if isinstance(last, datetime.date):
             last = last.isoformat()
@@ -78,6 +95,7 @@ def load_registry(path: Union[str, Path]) -> dict[str, LinkEntry]:
             label=data.get("label"),
             anchors=[str(a) for a in (anchors or [])],
             last_verified=str(last) if last else None,
+            anchor_labels=dict(anchor_labels or {}),
         )
     return entries
 
@@ -102,6 +120,8 @@ def dump_registry(registry: dict[str, LinkEntry], path: Union[str, Path]) -> Non
         if e.product:
             d["product"] = e.product
         d["anchors"] = list(e.anchors)
+        if e.anchor_labels:
+            d["anchor_labels"] = {k: e.anchor_labels[k] for k in sorted(e.anchor_labels)}
         if e.last_verified:
             d["last_verified"] = e.last_verified
         data[url] = d
