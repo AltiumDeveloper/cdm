@@ -68,6 +68,9 @@ SCHEMA = textwrap.dedent(
         description: mappings
         exact_mappings: [prov:Entity, "https://std.example/x#y"]
         close_mappings: [svd:register]
+      ex_MappedOk:
+        description: registered mapping url with a listed anchor
+        exact_mappings: ["https://std.example/ok#sec"]
       ex_Uncovered:
         is_a: core_Entity
         description: production class without links
@@ -113,7 +116,9 @@ def _by_element(issues):
 
 def test_doc_links(sv):
     registry = {DOC: LinkEntry(url=DOC, title="Lifecycle Management", source="altium-docs"),
-                "https://orphan.example/": LinkEntry(url="https://orphan.example/", title="O", source="standard")}
+                "https://orphan.example/": LinkEntry(url="https://orphan.example/", title="O", source="standard"),
+                "https://std.example/ok": LinkEntry(url="https://std.example/ok", title="Std", source="standard",
+                                                    anchors=["sec"])}
     got = _by_element(check_doc_links(sv, registry, locate, is_cdm, "registry.yaml"))
     issues = check_doc_links(sv, registry, locate, is_cdm, "registry.yaml")
     def n(el):
@@ -130,6 +135,11 @@ def test_doc_links(sv):
     assert "https://unknown.example/source" in str([i.message for i in got.values()])
     assert ("DOC-01", "ex_Linked") not in got
     assert got[("DOC-02", "https://orphan.example/")].severity == "warning"
+    mapped = n("ex_Mapped")
+    assert len(mapped) == 1
+    assert "exact_mappings" in mapped[0].message and "https://std.example/x#y" in mapped[0].message
+    assert n("ex_MappedOk") == []
+    assert ("DOC-02", "https://std.example/ok") not in got
 
 
 def test_api_types(sv):
