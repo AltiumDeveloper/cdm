@@ -573,7 +573,7 @@ Every class can link three layers: product docs, API, and standards. Rules are e
 | `structured_aliases:` | Product terms for the concept, with `predicate`, `contexts`, `source` URL | `source` must be in the registry (DOC-01) |
 | `annotations.platformAPI` | Altium 365 Platform API GraphQL type. Read from the class itself, not inherited | Must exist in `src/docs/api/platform-schema.json` as OBJECT/INTERFACE/UNION (DOC-03) |
 | `annotations.nexarAPI` | Nexar (Octopart) GraphQL type for supply entities. Read from the class itself, not inherited | Must exist in `src/docs/api/nexar-schema.json` as OBJECT/INTERFACE/UNION (DOC-03) |
-| `exact_mappings` / `close_mappings` / `related_mappings` | External standards (SVD, PDSC, SysML v2, PROV-O, RO/BFO) | Full http(s) URL, or CURIE with prefix `prov:` / `obo:` (DOC-04) |
+| `exact_mappings` / `close_mappings` / `related_mappings` | External standards (SVD, PDSC, SysML v2, PROV-O, RO/BFO) | Full http(s) URL, or CURIE with prefix `prov:` / `obo:` (DOC-04); full URLs must also be in the registry (DOC-01), with `source: standard` |
 | `annotations.productDocs: none` | Declares that no public product documentation exists (after checking) | Silences DOC-05 |
 
 Severities: DOC-01 error, DOC-02 warning (registry entry not used by any class), DOC-03 error,
