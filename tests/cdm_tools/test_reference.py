@@ -50,6 +50,12 @@ SCHEMA = textwrap.dedent(f"""
         in_subset: [beta]
         description: Peripheral port
         annotations: {{grid: "grid:global::platform:port/{{id}}"}}
+      ex_NoGrid:
+        abstract: true
+        in_subset: [beta]
+        description: abstract class whose GRID template is not filled in
+        annotations:
+          grid:
       ex_Bare:
         in_subset: [beta]
         title: Bare part
@@ -115,8 +121,9 @@ def _build(env, out):
 def test_writes_all_pages(env, tmp_path):
     _build(env, tmp_path)
     got = sorted(str(p.relative_to(tmp_path)) for p in tmp_path.rglob("*.md"))
-    assert got == ["coverage.md", "glossary.md", "reference/class-hierarchy.md", "reference/grid-templates.md",
-                   "reference/prefixes.md", "reference/relations.md"]
+    assert got == ["_snippets/class-hierarchy.md", "_snippets/grid-templates.md", "_snippets/prefixes.md",
+                   "_snippets/relations.md", "coverage.md", "glossary.md", "reference/class-hierarchy.md",
+                   "reference/grid-templates.md", "reference/prefixes.md", "reference/relations.md"]
 
 
 def test_relations(env, tmp_path):
@@ -158,6 +165,31 @@ def test_grid_templates(env, tmp_path):
     assert "## platform" in t and "## system-design" in t
     assert "| [dm_Port](../classes/dm_Port.md) | `grid:global::platform:port/{id}` |" in t
     assert "| `global` | 1 |" in t and "| `workspace` | 1 |" in t
+    assert "ex_NoGrid" not in t and "None" not in t and "(unparsed)" not in t   # empty annotation skipped
+
+
+def test_snippets(env, tmp_path):
+    _build(env, tmp_path)
+    for name in ("relations", "prefixes", "grid-templates", "class-hierarchy"):
+        page = (tmp_path / "reference" / f"{name}.md").read_text()
+        snippet = (tmp_path / "_snippets" / f"{name}.md").read_text()
+        assert page.startswith("# ") and not snippet.startswith("#")
+        assert "../" not in snippet
+    rel = (tmp_path / "_snippets/relations.md").read_text()
+    assert "| [core_hasPart](slots/core_hasPart.md) |" in rel
+    assert "[core_Entity](classes/core_Entity.md)" in rel
+    assert "[alpha](subsets/alpha.md)" in (tmp_path / "_snippets/prefixes.md").read_text()
+    grid = (tmp_path / "_snippets/grid-templates.md").read_text()
+    assert "\n### Areas\n" in grid and "\n### platform\n" in grid and "\n## " not in grid
+    assert "| [dm_Port](classes/dm_Port.md) | `grid:global::platform:port/{id}` |" in grid
+    tree = (tmp_path / "_snippets/class-hierarchy.md").read_text()
+    assert tree.count("```") == 2 and "core_Meta\n  core_WithX" in tree
+
+
+def test_demote_skips_code_fences():
+    from cdm_tools.reference import _demote
+    assert _demote(["## A", "```", "# not a heading", "```", "#tag", "### B"]) == \
+        ["### A", "```", "# not a heading", "```", "#tag", "#### B"]
 
 
 def test_class_hierarchy(env, tmp_path):
