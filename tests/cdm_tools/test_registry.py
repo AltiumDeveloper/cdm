@@ -98,3 +98,60 @@ def test_non_string_source_is_rejected(tmp_path):
 def test_non_mapping_entry_message(tmp_path):
     with pytest.raises(RegistryError, match="entry must be a mapping with a 'title'"):
         load_registry(_write(tmp_path, "https://x.example/:\n"))
+
+
+LABELED = """\
+https://x.example/spec.html:
+  title: Spec
+  label: Spec page
+  source: standard
+  anchors: [b, a]
+  anchor_labels:
+    b: Section B
+    a: Section A
+"""
+
+
+def test_anchor_labels_load_and_text_for(tmp_path):
+    e = load_registry(_write(tmp_path, LABELED))["https://x.example/spec.html"]
+    assert e.anchor_labels == {"b": "Section B", "a": "Section A"}
+    assert e.text_for("https://x.example/spec.html#a") == "Section A"
+    assert e.text_for("https://x.example/spec.html#b") == "Section B"
+
+
+def test_text_for_falls_back_to_display_text(tmp_path):
+    e = load_registry(_write(tmp_path, LABELED))["https://x.example/spec.html"]
+    assert e.text_for("https://x.example/spec.html") == "Spec page"
+    assert e.text_for("https://x.example/spec.html#other") == "Spec page"
+    plain = LinkEntry(url="u", title="T", source="standard")
+    assert plain.text_for("u#a") == "T"
+
+
+def test_anchor_label_key_must_be_listed_anchor(tmp_path):
+    text = "https://x.example/:\n  title: X\n  source: standard\n  anchors: [a]\n  anchor_labels: {z: Zed}\n"
+    with pytest.raises(RegistryError, match="anchor_labels"):
+        load_registry(_write(tmp_path, text))
+
+
+def test_anchor_labels_must_be_str_mapping(tmp_path):
+    for bad in ("[a]", "{a: [x]}"):
+        text = f"https://x.example/:\n  title: X\n  source: standard\n  anchors: [a]\n  anchor_labels: {bad}\n"
+        with pytest.raises(RegistryError, match="anchor_labels"):
+            load_registry(_write(tmp_path, text))
+
+
+def test_dump_writes_sorted_anchor_labels_after_anchors(tmp_path):
+    reg = load_registry(_write(tmp_path, LABELED))
+    out = tmp_path / "out.yaml"
+    dump_registry(reg, out)
+    assert load_registry(out) == reg
+    body = out.read_text(encoding="utf-8")
+    assert body.index("anchors:") < body.index("anchor_labels:")
+    assert body.index("    a: Section A") < body.index("    b: Section B")
+
+
+def test_dump_omits_empty_anchor_labels(tmp_path):
+    reg = load_registry(_write(tmp_path, SAMPLE))
+    out = tmp_path / "out.yaml"
+    dump_registry(reg, out)
+    assert "anchor_labels" not in out.read_text(encoding="utf-8")

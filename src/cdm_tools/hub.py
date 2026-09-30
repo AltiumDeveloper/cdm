@@ -83,7 +83,7 @@ def load_api_layers(api_dir: Union[str, Path]) -> tuple[Optional[ApiIndex], Opti
 
 def _doc_link(url: str, registry: dict[str, LinkEntry], primary: bool) -> DocLink:
     entry = registry.get(split_url(url)[0])
-    return DocLink(text=entry.display_text if entry else url, url=url, primary=primary)
+    return DocLink(text=entry.text_for(url) if entry else url, url=url, primary=primary)
 
 
 def _terms(cls) -> list[Term]:
@@ -98,7 +98,7 @@ def _terms(cls) -> list[Term]:
 def _mapping(relation: str, value: str, registry: dict[str, LinkEntry], namespaces: dict[str, str]) -> Mapping:
     if value.startswith(("http://", "https://")):
         entry = registry.get(split_url(value)[0])
-        return Mapping(relation=relation, text=entry.display_text if entry else value, url=value)
+        return Mapping(relation=relation, text=entry.text_for(value) if entry else value, url=value)
     prefix, _, local = value.partition(":")
     base = namespaces.get(prefix)
     return Mapping(relation=relation, text=value, url=f"{base}{local}" if base else None)
