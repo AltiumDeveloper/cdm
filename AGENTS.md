@@ -128,6 +128,8 @@ Format (official): `grid:area:[tenant-id]:context:resource-type/resource-id` —
 
 The annotation is informational only (consumed by platform tooling). It does **not** affect LinkML validation.
 
+Concept page: `docs/grid-format.md` (generated table of all class GRID templates: `docs/reference/grid-templates.md`).
+
 ### Instance URIs
 
 No instance URI scheme is defined: nothing in the repository generates or uses URIs of the form
@@ -153,6 +155,8 @@ These abstract slots are **never used directly** in domain classes. Domain-level
 should be specialisations (`is_a:`) of one of these abstract slots (not all are yet). `core.yaml`
 also provides a few ready-made specialisations (below), which domain classes may attach directly,
 narrowing the range with `slot_usage`.
+
+Concept page: `docs/relation-types.md` (generated relation table: `docs/reference/relations.md`).
 
 ### Base Relation Table
 
@@ -608,3 +612,11 @@ data.
 `make gendoc` also writes `hub.json` (via `cdm-hub-export`) into the site and copies `hub.schema.json` next to it, for
 tools and AI agents. `hub.json` is checked against the schema in the test suite, not at export time. Each class entry has its title,
 `class_uri`, subset, GRID template and the hub (product links and terms, Platform or Nexar API type, mappings). Abstract and mixin classes, `core_*` classes and `linkml:Any` are omitted.
+
+**Hub pages.** `make gendoc` also runs `cdm-gen-reference`, which writes the relation, prefix, GRID-template and
+class-hierarchy reference tables (`docs/reference/`, plus root-relative snippets in `docs/_snippets/` that the concept
+pages include via `pymdownx.snippets` with `check_paths`), the **Glossary** (class titles and `structured_aliases`;
+a term shared by several classes becomes a homonym note) and the **Coverage** dashboard (per bounded context, computed
+from the schema, the API snapshots and `MODEL-FINDINGS.md`). Bounded-context pages show the subset's `see_also` links,
+a coverage line and its GRID templates. Subset `see_also` and slot/subset mappings are checked by DOC-01/DOC-04.
+Do not edit these generated pages by hand.
