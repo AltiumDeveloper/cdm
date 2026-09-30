@@ -23,7 +23,29 @@ SCHEMA = textwrap.dedent(
       ex: https://example.org/t/
     default_prefix: ex
     imports: [linkml:types]
+    subsets:
+      ex_sub:
+        description: subset with an unregistered link
+        see_also: ["https://unknown.example/subset"]
+      ex_subok:
+        description: subset with a registered link
+        see_also: ["{DOC}"]
+    slots:
+      ex_slot_bad:
+        description: slot with unregistered and malformed links
+        see_also: ["https://unknown.example/slot"]
+        exact_mappings: ["https://slot.example/x", "svd:reg"]
+      ex_slot_ok:
+        description: slot with registered link and good CURIE
+        see_also: ["{DOC}"]
+        exact_mappings: [prov:Entity]
     classes:
+      ex_Holder:
+        description: has an attribute with a bad mapping
+        attributes:
+          ex_Holder_attr:
+            description: attribute
+            close_mappings: ["bogus:thing"]
       core_Entity:
         abstract: true
         description: e
@@ -154,9 +176,9 @@ def test_api_types_skips_missing_snapshot(sv):
 
 
 def test_mappings(sv):
-    issues = check_mappings(sv, locate, is_cdm)
+    issues = [i for i in check_mappings(sv, locate, is_cdm) if i.element == "ex_Mapped"]
     assert [(i.rule_id, i.element) for i in issues] == [("DOC-04", "ex_Mapped")]
-    assert "svd:register" in issues[0].message
+    assert "class 'ex_Mapped'" in issues[0].message and "svd:register" in issues[0].message
 
 
 def test_coverage(sv):
@@ -172,3 +194,26 @@ def test_downgrade_baselined(sv):
     out = _by_element(downgrade_baselined(issues, {"api_type": {"ex_Missing"}}))
     assert out[("DOC-03", "ex_Missing")].severity == "warning"
     assert out[("DOC-03", "ex_Input")].severity == "error"
+
+
+def _kinds(issues, rule):
+    return [(i.element, i.message) for i in issues if i.rule_id == rule]
+
+
+def test_doc_links_cover_slots_and_subsets(sv):
+    registry = {DOC: LinkEntry(url=DOC, title="Lifecycle Management", source="altium-docs")}
+    issues = check_doc_links(sv, registry, locate, is_cdm, "registry.yaml")
+    got = dict(_kinds(issues, "DOC-01"))
+    slot_msgs = " ".join(m for e, m in _kinds(issues, "DOC-01") if e == "ex_slot_bad")
+    assert "slot 'ex_slot_bad'" in slot_msgs
+    assert "https://unknown.example/slot" in slot_msgs and "https://slot.example/x" in slot_msgs
+    assert "subset 'ex_sub'" in got["ex_sub"] and "https://unknown.example/subset" in got["ex_sub"]
+    assert "ex_slot_ok" not in got and "ex_subok" not in got
+    assert ("DOC-02", DOC) not in {(i.rule_id, i.element) for i in issues}
+
+
+def test_mappings_cover_slots_and_attributes(sv):
+    got = dict(_kinds(check_mappings(sv, locate, is_cdm), "DOC-04"))
+    assert "slot 'ex_slot_bad'" in got["ex_slot_bad"] and "svd:reg" in got["ex_slot_bad"]
+    assert "ex_slot_ok" not in got
+    assert "bogus:thing" in got["ex_Holder_attr"]
