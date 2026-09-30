@@ -39,3 +39,9 @@ def test_main_writes_file(tmp_path):
     assert main([ROOT, "-o", str(out), "--registry", str(REPO / "src/docs/links/registry.yaml"),
                  "--api-dir", str(REPO / "src/docs/api")]) == 0
     assert json.loads(out.read_text())["classes"]
+
+
+def test_empty_grid_annotation_is_null():
+    grids = {name: c["grid"] for name, c in _export()["classes"].items()}
+    assert all(g is None or g.startswith("grid:") for g in grids.values())
+    assert grids["con_EnvironmentConfiguration"] is None          # declares `grid:` without a value
