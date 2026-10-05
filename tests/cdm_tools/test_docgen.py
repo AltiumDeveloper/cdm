@@ -111,3 +111,116 @@ def test_main_exits_2_when_api_dir_missing(tmp_path, capsys):
                "--api-dir", str(tmp_path / "nope")])
     assert rc == 2
     assert "API snapshot directory not found" in capsys.readouterr().err
+
+
+def _serialize(tmp_path, **kw):
+    gen = CdmDocGenerator(
+        str(REPO / "src/common_data_model/schema/common_data_model.yaml"),
+        template_directory=str(REPO / "src/docs/templates"),
+        subfolder_type_separation=True,
+        preserve_names=True,
+        **kw,
+    )
+    gen.serialize(directory=str(tmp_path))
+    return gen
+
+
+def test_subset_page_has_overview(tmp_path):
+    _serialize(tmp_path, registry_path=str(REPO / "src/docs/links/registry.yaml"),
+               api_dir=str(REPO / "src/docs/api"))
+    page = (tmp_path / "subsets" / "library.md").read_text(encoding="utf-8")
+    head = page.split("## Classes in Bounded Context")[0]
+    assert "In the product" in head
+    assert "Coverage" not in head and "coverage.md" not in page
+    assert "GRID" in head and "(../classes/lib_Component.md)" in head and "`grid:" in head
+    assert "## Classes in Bounded Context" in page
+
+
+def test_subset_page_empty_product_docs_state(tmp_path):
+    gen = CdmDocGenerator(
+        str(REPO / "src/common_data_model/schema/common_data_model.yaml"),
+        template_directory=str(REPO / "src/docs/templates"),
+        registry_path=str(REPO / "src/docs/links/registry.yaml"),
+        api_dir=str(REPO / "src/docs/api"),
+        subfolder_type_separation=True,
+        preserve_names=True,
+    )
+    gen.schemaview.get_subset("library").see_also = []
+    gen.serialize(directory=str(tmp_path))
+    head = (tmp_path / "subsets" / "library.md").read_text(encoding="utf-8").split("## Classes in Bounded Context")[0]
+    assert "No product documentation linked yet." in head
+
+
+def test_subset_page_product_docs_none(tmp_path):
+    _serialize(tmp_path, registry_path=str(REPO / "src/docs/links/registry.yaml"),
+               api_dir=str(REPO / "src/docs/api"))
+    core = (tmp_path / "subsets" / "core.md").read_text(encoding="utf-8").split("## Classes in Bounded Context")[0]
+    assert "No public product documentation exists for this bounded context." in core
+    assert "No product documentation linked yet." not in core
+
+
+def test_subset_hub_computed_once_per_subset():
+    gen = CdmDocGenerator(
+        str(REPO / "src/common_data_model/schema/common_data_model.yaml"),
+        template_directory=str(REPO / "src/docs/templates"),
+        registry_path=str(REPO / "src/docs/links/registry.yaml"),
+        api_dir=str(REPO / "src/docs/api"),
+    )
+    env = jinja2.Environment()
+    gen.customize_environment(env)
+    element = gen.schemaview.get_subset("library")
+    assert env.globals["subset_hub"](element) is env.globals["subset_hub"](element)
+
+
+def test_subset_page_overview_without_registry(tmp_path):
+    _serialize(tmp_path)  # no registry or api: links render as autolinks
+    head = (tmp_path / "subsets" / "library.md").read_text(encoding="utf-8").split("## Classes in Bounded Context")[0]
+    assert "## In the product" in head and "- <https://" in head
+    assert "(../classes/lib_Component.md)" in head
+
+
+def test_subset_see_also_rendered_once(tmp_path):
+    url = "https://www.altium.com/documentation/altium-365/lifecycle-management"
+    gen = CdmDocGenerator(
+        str(REPO / "src/common_data_model/schema/common_data_model.yaml"),
+        template_directory=str(REPO / "src/docs/templates"),
+        registry_path=str(REPO / "src/docs/links/registry.yaml"),
+        api_dir=str(REPO / "src/docs/api"),
+        subfolder_type_separation=True,
+        preserve_names=True,
+    )
+    gen.schemaview.get_subset("library").see_also = [url]
+    gen.serialize(directory=str(tmp_path))
+    page = (tmp_path / "subsets" / "library.md").read_text(encoding="utf-8")
+    assert page.count(url) == 1
+    assert "## See Also" not in page
+
+
+def test_grid_templates_shared_helper():
+    from linkml_runtime.utils.schemaview import SchemaView
+
+    from cdm_tools.reference import grid_templates
+
+    sv = SchemaView(str(REPO / "src/common_data_model/schema/common_data_model.yaml"))
+    rows = {r[0]: r for r in grid_templates(sv)}
+    assert rows["lib_Component"] == (
+        "lib_Component", "library", "library", "grid:workspace:{workspace-id}:library:component/{id}")
+
+
+def test_main_writes_schema_index_as_home_page(tmp_path):
+    from cdm_tools.docgen import main
+
+    out = tmp_path / "out"
+    out.mkdir()
+    about = REPO / "src/docs/files/about.md"
+    (out / "about.md").write_text(about.read_text(encoding="utf-8"), encoding="utf-8")
+    rc = main([str(REPO / "src/common_data_model/schema/common_data_model.yaml"), "-d", str(out),
+               "--template-directory", str(REPO / "src/docs/templates"),
+               "--registry", str(REPO / "src/docs/links/registry.yaml"), "--api-dir", str(REPO / "src/docs/api")])
+    assert rc == 0
+    assert (out / "about.md").read_text(encoding="utf-8") == about.read_text(encoding="utf-8")
+    assert not (out / "bounded-contexts.md").exists()
+    page = (out / "index.md").read_text(encoding="utf-8")
+    assert page.lstrip().startswith("# Bounded Contexts\n")
+    assert "## Bounded Contexts" in page and "| Class | Description | Platform API |" in page
+    assert "( classes/lib_Component.md )" in page

@@ -85,6 +85,13 @@ def _build_line_map(yaml_path: str) -> dict[str, int]:
             _, line = _unwrap(val)
             result[str(name)] = line
 
+    # --- Subsets ---
+    subsets_raw, _ = _unwrap(data.get("subsets"))
+    if isinstance(subsets_raw, dict):
+        for name, val in subsets_raw.items():
+            _, line = _unwrap(val)
+            result[str(name)] = line
+
     # --- Classes (names) and their attributes ---
     classes_raw, _ = _unwrap(data.get("classes"))
     if isinstance(classes_raw, dict):
@@ -740,7 +747,7 @@ def run_lint(
 
     # --- Documentation hub rules (DOC-01 … DOC-05) ---
     def locate(element_name: str) -> tuple[str, int]:
-        element = sv.get_element(element_name)
+        element = sv.get_element(element_name) or sv.get_subset(element_name)
         file_path = resolve_file(getattr(element, "from_schema", "") or "")
         return file_path, get_line(file_path, element_name)
 

@@ -16,7 +16,9 @@ from typing import Optional
 from linkml_runtime.utils.schemaview import SchemaView
 
 from cdm_tools.api_snapshot import DEFAULT_API_DIR, load_snapshots
+from cdm_tools.coverage import is_concrete_domain_class
 from cdm_tools.hub import build_hub, load_api_layers, schema_namespaces
+from cdm_tools.reference import grid_templates
 from cdm_tools.registry import DEFAULT_REGISTRY_PATH, RegistryError, load_registry
 
 
@@ -26,18 +28,16 @@ def build_export(schema_path: str, *, registry_path: str, api_dir: str) -> dict:
     snapshots = load_snapshots(api_dir)
     platform, nexar_types = load_api_layers(api_dir)
     namespaces = schema_namespaces(sv)
+    grids = {name: template for name, _, _, template in grid_templates(sv)}   # empty templates omitted
     classes: dict[str, dict] = {}
     for name, cls in sorted(sv.all_classes().items()):
-        if cls.abstract or cls.mixin or name.startswith("core_"):
+        if not is_concrete_domain_class(name, cls):
             continue
-        if name == "Any" or str(cls.class_uri or "").startswith("linkml:"):
-            continue
-        ann = cls.annotations or {}
         classes[name] = {
             "title": cls.title,
             "class_uri": cls.class_uri,
             "subset": str(cls.in_subset[0]) if cls.in_subset else None,
-            "grid": str(ann["grid"].value) if "grid" in ann else None,
+            "grid": grids.get(name),
             "hub": build_hub(cls, registry=registry, platform=platform, nexar_types=nexar_types,
                              namespaces=namespaces).to_dict(),
         }

@@ -13,9 +13,12 @@ default_prefix: ins
 subsets:
   insights:
     description: >-
-      TBD
+      Models insights that can be followed up by tasks. The only concrete kind is the part insight: it
+      concerns one Workspace part, may be informed by BOMs or design projects, and occurs in BOM releases,
+      project releases or component revisions.
     annotations:
       style: "fill:#a64d79"
+      productDocs: none
 
 classes:
 

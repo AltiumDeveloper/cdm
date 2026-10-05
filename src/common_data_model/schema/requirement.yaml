@@ -13,8 +13,14 @@ default_prefix: req
 subsets:
   requirements:
     description: >-
-      Captures behavioral, performance, compliance, and process expectations that govern solutions
-      throughout conception, design, verification, and release lifecycle milestones.
+      Models requirements and their revisions, the specifications that group them, baselines approved for
+      execution, change requests, the requirements projects that scope this work, and verification cases that
+      provide evidence against requirements; most of its classes are experimental. It corresponds to
+      requirements management and verification & validation in the Altium 365 Requirements Portal.
+    see_also:
+      - https://www.altium.com/documentation/altium-365/requirements-portal
+      - https://www.altium.com/documentation/altium-365/requirements-portal/features-explained
+      - https://www.altium.com/documentation/altium-365/requirements-integration
     annotations:
       style: "fill:#f6b26b"
       maturity: EXPERIMENTAL
