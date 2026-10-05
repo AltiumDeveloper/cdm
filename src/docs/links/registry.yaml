@@ -1,0 +1,21 @@
+# CDM documentation link registry (see AGENTS.md §8)
+# Keyed by URL without fragment. `title` = page <title> text before ' | '.
+# `anchors` lists every #fragment used by the schema. Verify with: make verify-links
+https://www.altium.com/documentation/altium-365/lifecycle-management:
+  title: Lifecycle Management
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions:
+  title: Defining Lifecycle Definitions for a Workspace
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/connected-workspace/defining-naming-schemes:
+  title: Defining Revision Naming Schemes for a Workspace
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'

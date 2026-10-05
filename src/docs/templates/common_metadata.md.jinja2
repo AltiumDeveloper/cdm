@@ -32,7 +32,7 @@
 {% endfor %}
 {% endif -%}
 
-{% if element.see_also -%}
+{% if element.see_also and element.__class__.__name__ != "ClassDefinition" -%}
 ## See Also
 
 {% for x in element.see_also -%}

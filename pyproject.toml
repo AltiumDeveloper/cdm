@@ -47,3 +47,6 @@ rich = ">=13.0.0"
 [project.scripts]
 cdm-lint = "cdm_tools.lint:main"
 cdm-wizard = "cdm_tools.wizard:main"
+cdm-gendoc = "cdm_tools.docgen:main"
+cdm-api-snapshot = "cdm_tools.api_snapshot:main"
+cdm-verify-links = "cdm_tools.verify_links:main"

@@ -1,7 +1,17 @@
+{#- GraphQL interfaces documented under /types/interfaces/ (verified against production
+    introspection 2026-09-29). Temporary until the kind is derived from the API snapshot. -#}
 {%- macro platform_api_url(element) -%}
   {%- if 'platformAPI' in element.annotations -%}
-    {%- set camelCase = element.annotations["platformAPI"].value -%}
-    [{{ camelCase }}](https://altiumdeveloper.github.io/platform-api-docs/types/objects/{{ camelCase }})    
+    {%- set name = element.annotations["platformAPI"].value -%}
+    {%- set kind = "interfaces" if name in ["Bom", "BomItemElement", "GloEvtSubscription"] else "objects" -%}
+    [{{ name }}](https://altiumdeveloper.github.io/platform-api-docs/types/{{ kind }}/{{ name }})
+  {%- endif -%}
+{% endmacro -%}
+
+{%- macro nexar_api_url(element) -%}
+  {%- if 'nexarAPI' in element.annotations -%}
+    {%- set name = element.annotations["nexarAPI"].value -%}
+    [{{ name }} (Nexar)](https://www.altium.com/documentation/altium-developer-center/octopart/api)
   {%- endif -%}
 {% endmacro -%}
 
