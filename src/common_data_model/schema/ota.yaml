@@ -518,8 +518,7 @@ classes:
         description: >-
           The checksums of the package binary. This is optional in the generic model;
           integrity-enforcing distribution profiles must require at least one hash and
-          any required signature metadata. A single provider checksum without an algorithm
-          (for example the R365 checksum) is represented with the algorithm sha256.
+          any required signature metadata.
         range: ota_PackageHash
         multivalued: true
         required: false
@@ -654,6 +653,7 @@ classes:
           to the targets in Uptane terminology.
         range: ota_DeploymentAssignment
         multivalued: true
+        minimum_cardinality: 1
         required: true
         inlined: true
         inlined_as_list: true
@@ -1102,6 +1102,7 @@ slots:
     range: ota_Device
     multivalued: true
     required: false
+    inverse: ota_Device_fleets
 
   ota_Deployment_target:
     is_a: core_hasInput
