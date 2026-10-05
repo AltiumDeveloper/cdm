@@ -2,6 +2,7 @@ id: https://w3id.org/altium/cdm/ota/
 name: cdm-ota
 prefixes:
   linkml: https://w3id.org/linkml/
+  core: https://w3id.org/altium/cdm/core/
   ota: https://w3id.org/altium/cdm/ota/
 imports:
   - linkml:types
@@ -132,6 +133,7 @@ classes:
       platformAPI: OtaDevice
     slots:
       - core_name
+      - ota_Device_fleets
     attributes:
       ota_Device_deviceId:
         slot_uri: ota:Device_deviceId
@@ -207,6 +209,7 @@ classes:
         range: ota_DeviceNetworkInfo
         multivalued: false
         required: false
+        inlined: true
       ota_Device_notes:
         slot_uri: ota:Device_notes
         alias: notes
@@ -223,6 +226,8 @@ classes:
         range: ota_DeviceTag
         multivalued: true
         required: false
+        inlined: true
+        inlined_as_list: true
       ota_Device_ecus:
         slot_uri: ota:Device_ecus
         alias: ecus
@@ -233,6 +238,8 @@ classes:
         range: ota_Ecu
         multivalued: true
         required: false
+        inlined: true
+        inlined_as_list: true
       ota_Device_primaryEcuId:
         slot_uri: ota:Device_primaryEcuId
         alias: primaryEcuId
@@ -244,14 +251,6 @@ classes:
         range: string
         multivalued: false
         required: false
-      ota_Device_fleets:
-        slot_uri: ota:Device_fleets
-        alias: fleets
-        title: fleets
-        description: Fleets this device belongs to
-        range: ota_Fleet
-        multivalued: true
-        required: false
       ota_Device_metrics:
         slot_uri: ota:Device_metrics
         alias: metrics
@@ -260,6 +259,8 @@ classes:
         range: ota_MetricSeries
         multivalued: true
         required: false
+        inlined: true
+        inlined_as_list: true
       ota_Device_metricThresholds:
         slot_uri: ota:Device_metricThresholds
         alias: metricThresholds
@@ -268,6 +269,8 @@ classes:
         range: ota_MetricThreshold
         multivalued: true
         required: false
+        inlined: true
+        inlined_as_list: true
 
   ota_DeviceTag:
     is_a: Resource
@@ -276,6 +279,8 @@ classes:
     title: Device Tag
     description: >-
       Device Tag is a key-value pair attached to a device for organization and filtering.
+    annotations:
+      platformAPI: OtaDeviceTag
     attributes:
       ota_DeviceTag_key:
         slot_uri: ota:DeviceTag_key
@@ -286,7 +291,6 @@ classes:
           or hyphens.
         range: string
         multivalued: false
-        pattern: '^[A-Za-z0-9_-]{1,20}$'
         required: true
       ota_DeviceTag_value:
         slot_uri: ota:DeviceTag_value
@@ -297,7 +301,6 @@ classes:
           or spaces.
         range: string
         multivalued: false
-        pattern: '^[A-Za-z0-9_/ -]{1,50}$'
         required: true
 
   ota_DeviceNetworkInfo:
@@ -307,6 +310,8 @@ classes:
     title: Device Network Info
     description: >-
       Device Network Info is the network configuration last reported by a device.
+    annotations:
+      platformAPI: OtaDeviceNetworkInfo
     attributes:
       ota_DeviceNetworkInfo_localIpV4Address:
         slot_uri: ota:DeviceNetworkInfo_localIpV4Address
@@ -341,15 +346,16 @@ classes:
     description: >-
       ECU represents an electronic control unit within a device. Each device has exactly
       one primary ECU; secondary ECUs are updated through the primary ECU (Uptane).
+    annotations:
+      platformAPI: OtaEcu
     attributes:
       ota_Ecu_ecuId:
         slot_uri: ota:Ecu_ecuId
         alias: ecuId
         title: ecuId
-        description: The ECU identifier (serial) unique within the device.
+        description: The ECU identifier (serial) unique within the device. At most 64 characters.
         range: string
         multivalued: false
-        pattern: '^.{1,64}$'
         required: true
       ota_Ecu_hardwareId:
         slot_uri: ota:Ecu_hardwareId
@@ -439,6 +445,7 @@ classes:
       platformAPI: OtaFleet
     slots:
       - core_name
+      - ota_Fleet_devices
     attributes:
       ota_Fleet_createdAt:
         slot_uri: ota:Fleet_createdAt
@@ -448,14 +455,6 @@ classes:
         range: datetime
         multivalued: false
         required: true
-      ota_Fleet_devices:
-        slot_uri: ota:Fleet_devices
-        alias: devices
-        title: devices
-        description: Devices in this fleet
-        range: ota_Device
-        multivalued: true
-        required: false
       ota_Fleet_metrics:
         slot_uri: ota:Fleet_metrics
         alias: metrics
@@ -464,6 +463,8 @@ classes:
         range: ota_MetricSeries
         multivalued: true
         required: false
+        inlined: true
+        inlined_as_list: true
 
   ota_Package:
     is_a: core_Artifact
@@ -485,12 +486,6 @@ classes:
       core_name:
         description: The package name. Packages sharing a name are versions of the same package.
         required: true
-    unique_keys:
-      ota_Package_nameVersion:
-        description: A package is uniquely identified by its name and version.
-        unique_key_slots:
-          - core_name
-          - ota_Package_version
     attributes:
       ota_Package_version:
         slot_uri: ota:Package_version
@@ -528,6 +523,8 @@ classes:
         range: ota_PackageHash
         multivalued: true
         required: false
+        inlined: true
+        inlined_as_list: true
       ota_Package_hardwareIds:
         slot_uri: ota:Package_hardwareIds
         alias: hardwareIds
@@ -568,15 +565,16 @@ classes:
     title: Package Hash
     description: >-
       Package Hash is a checksum of a package binary, used for Uptane target metadata.
+    annotations:
+      platformAPI: OtaPackageHash
     attributes:
       ota_PackageHash_algorithm:
         slot_uri: ota:PackageHash_algorithm
         alias: algorithm
         title: algorithm
-        description: The hash algorithm identifier, for example sha256 or sha512.
+        description: The lowercase hash algorithm identifier, for example sha256 or sha512.
         range: string
         multivalued: false
-        pattern: '^[a-z][a-z0-9-]*$'
         required: true
       ota_PackageHash_value:
         slot_uri: ota:PackageHash_value
@@ -587,29 +585,7 @@ classes:
           digest length of the algorithm (64 characters for sha256, 128 for sha512).
         range: string
         multivalued: false
-        pattern: '^[0-9A-Fa-f]+$'
         required: true
-    rules:
-      - title: SHA-256 digest length
-        description: A sha256 hash value is 64 hexadecimal characters.
-        preconditions:
-          slot_conditions:
-            algorithm:
-              equals_string: sha256
-        postconditions:
-          slot_conditions:
-            value:
-              pattern: '^[0-9A-Fa-f]{64}$'
-      - title: SHA-512 digest length
-        description: A sha512 hash value is 128 hexadecimal characters.
-        preconditions:
-          slot_conditions:
-            algorithm:
-              equals_string: sha512
-        postconditions:
-          slot_conditions:
-            value:
-              pattern: '^[0-9A-Fa-f]{128}$'
 
   ota_Deployment:
     is_a: Activity
@@ -624,6 +600,8 @@ classes:
       grid: grid:workspace:{workspace-id}:ota:deployment/{id}
       maturity: EXPERIMENTAL
       platformAPI: OtaDeployment
+    slots:
+      - ota_Deployment_target
     attributes:
       ota_Deployment_targetType:
         slot_uri: ota:Deployment_targetType
@@ -667,30 +645,18 @@ classes:
         range: datetime
         multivalued: false
         required: false
-      ota_Deployment_target:
-        slot_uri: ota:Deployment_target
-        alias: target
-        title: target
-        description: >-
-          The target of the deployment: a device when targetType is Device, or a fleet
-          when targetType is Fleet.
-        range: Any
-        any_of:
-          - range: ota_Device
-          - range: ota_Fleet
-        multivalued: false
-        required: true
       ota_Deployment_assignments:
         slot_uri: ota:Deployment_assignments
         alias: assignments
         title: assignments
         description: >-
-          The packages assigned per hardware identifier. These correspond to the targets
-          in Uptane terminology.
+          The packages assigned per hardware identifier, at least one. These correspond
+          to the targets in Uptane terminology.
         range: ota_DeploymentAssignment
         multivalued: true
-        minimum_cardinality: 1
         required: true
+        inlined: true
+        inlined_as_list: true
       ota_Deployment_deviceResults:
         slot_uri: ota:Deployment_deviceResults
         alias: deviceResults
@@ -699,6 +665,8 @@ classes:
         range: ota_DeploymentDeviceResult
         multivalued: true
         required: false
+        inlined: true
+        inlined_as_list: true
 
   ota_DeploymentAssignment:
     is_a: Resource
@@ -709,6 +677,8 @@ classes:
       Deployment Assignment assigns a package to the ECUs with a given hardware identifier.
       Deployment requests may name packages only; the provider then resolves the hardware
       identifier from the package and the target device's ECUs.
+    annotations:
+      platformAPI: OtaDeploymentAssignment
     attributes:
       ota_DeploymentAssignment_hardwareId:
         slot_uri: ota:DeploymentAssignment_hardwareId
@@ -738,6 +708,8 @@ classes:
     title: Deployment Device Result
     description: >-
       Deployment Device Result is the outcome of a deployment on one target device.
+    annotations:
+      platformAPI: OtaDeploymentDeviceResult
     attributes:
       ota_DeploymentDeviceResult_device:
         slot_uri: ota:DeploymentDeviceResult_device
@@ -795,6 +767,8 @@ classes:
         range: ota_DeploymentComponentResult
         multivalued: true
         required: false
+        inlined: true
+        inlined_as_list: true
       ota_DeploymentDeviceResult_events:
         slot_uri: ota:DeploymentDeviceResult_events
         alias: events
@@ -803,6 +777,8 @@ classes:
         range: ota_DeploymentEvent
         multivalued: true
         required: false
+        inlined: true
+        inlined_as_list: true
 
   ota_DeploymentComponentResult:
     is_a: Resource
@@ -812,15 +788,16 @@ classes:
     description: >-
       Deployment Component Result is the outcome of a deployment on one ECU (Uptane component)
       of a target device.
+    annotations:
+      platformAPI: OtaDeploymentComponentResult
     attributes:
       ota_DeploymentComponentResult_ecuId:
         slot_uri: ota:DeploymentComponentResult_ecuId
         alias: ecuId
         title: ecuId
-        description: The identifier of the ECU the package was assigned to.
+        description: The identifier of the ECU the package was assigned to. At most 64 characters.
         range: string
         multivalued: false
-        pattern: '^.{1,64}$'
         required: true
       ota_DeploymentComponentResult_hardwareId:
         slot_uri: ota:DeploymentComponentResult_hardwareId
@@ -908,10 +885,9 @@ classes:
         slot_uri: ota:DeploymentEvent_ecuId
         alias: ecuId
         title: ecuId
-        description: The identifier of the ECU that reported the event.
+        description: The identifier of the ECU that reported the event. At most 64 characters.
         range: string
         multivalued: false
-        pattern: '^.{1,64}$'
         required: false
       ota_DeploymentEvent_isSuccessful:
         slot_uri: ota:DeploymentEvent_isSuccessful
@@ -931,6 +907,8 @@ classes:
       Metric Series is the time series of one metric within a period, owned by a device
       or a fleet. A fleet series holds values aggregated from the devices belonging to
       that fleet.
+    annotations:
+      platformAPI: OtaMetricSeries
     attributes:
       ota_MetricSeries_name:
         slot_uri: ota:MetricSeries_name
@@ -982,6 +960,7 @@ classes:
         range: ota_MetricThreshold
         multivalued: false
         required: false
+        inlined: true
       ota_MetricSeries_isAlerting:
         slot_uri: ota:MetricSeries_isAlerting
         alias: isAlerting
@@ -998,6 +977,8 @@ classes:
         range: ota_MetricDataPoint
         multivalued: true
         required: false
+        inlined: true
+        inlined_as_list: true
 
   ota_MetricDataPoint:
     is_a: Resource
@@ -1006,6 +987,8 @@ classes:
     title: Metric Data Point
     description: >-
       Metric Data Point is a single metric value at a point in time.
+    annotations:
+      platformAPI: OtaMetricDataPoint
     attributes:
       ota_MetricDataPoint_timestamp:
         slot_uri: ota:MetricDataPoint_timestamp
@@ -1042,6 +1025,8 @@ classes:
     description: >-
       Metric Threshold defines the acceptable range of one metric and whether violations
       raise alerts or notifications.
+    annotations:
+      platformAPI: OtaMetricThreshold
     attributes:
       ota_MetricThreshold_metricName:
         slot_uri: ota:MetricThreshold_metricName
@@ -1093,3 +1078,43 @@ classes:
         range: boolean
         multivalued: false
         required: false
+
+slots:
+
+  ota_Device_fleets:
+    is_a: core_partOf
+    slot_uri: ota:Device_fleets
+    alias: fleets
+    title: fleets
+    description: Fleets this device belongs to
+    domain: ota_Device
+    range: ota_Fleet
+    multivalued: true
+    required: false
+
+  ota_Fleet_devices:
+    is_a: core_hasPart
+    slot_uri: ota:Fleet_devices
+    alias: devices
+    title: devices
+    description: Devices in this fleet
+    domain: ota_Fleet
+    range: ota_Device
+    multivalued: true
+    required: false
+
+  ota_Deployment_target:
+    is_a: core_hasInput
+    slot_uri: ota:Deployment_target
+    alias: target
+    title: target
+    description: >-
+      The target of the deployment: a device when targetType is Device, or a fleet
+      when targetType is Fleet.
+    domain: ota_Deployment
+    range: Any
+    any_of:
+      - range: ota_Device
+      - range: ota_Fleet
+    multivalued: false
+    required: true
