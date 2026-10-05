@@ -72,10 +72,25 @@ classes:
     in_subset: system
     class_uri: sys:ESDDocument
     title: ESD Document
-    description: TBD
+    description: >-
+      A system-level block diagram document used in a Renesas 365 solution (listed there as a System Design
+      project) to describe the architecture of the system at a functional level. It holds functional blocks with
+      their hardware components, software components and ports, the connections between blocks, and blankets
+      through which parts of the design can be linked to PCB or software projects. Pushing to and pulling from the
+      solution's System Data Model (SDM) for the system design is done from the ESD document. Blankets are not
+      modelled as a separate entity here (see MF-068).
     annotations:
       grid: grid:workspace:{workspace-id}:system-design:esd/{id}
       platformAPI: SysEsdDocument
+    see_also:
+      - https://www.altium.com/documentation/altium-365/esd
+      - https://www.altium.com/documentation/altium-365/renesas-365#exploring_a_solution
+      - https://www.altium.com/documentation/altium-365/esd#pushing_pulling_sdm
+    structured_aliases:
+      - literal_form: System Design
+        predicate: RELATED_SYNONYM
+        contexts: [altium-365]
+        source: https://www.altium.com/documentation/altium-365/renesas-365
     mixins:
       - plt_SolutionItem
     slots:
@@ -123,8 +138,13 @@ classes:
     class_uri: sys:FunctionalBlock
     title: Functional Block
     description: >-
-      Represents a logical block within a PCB design (e.g., MCU subsystem, LED driver block), including parameters, 
-      key components, ports, and associations.
+      Represents a logical block within an ESD document (e.g., MCU subsystem, LED driver block) that stands for a
+      function, operation or device of the system, including parameters, key components, software components,
+      ports, and associations. In the ESD editor a functional block can also contain other blocks; this nesting is
+      not modelled here.
+    see_also:
+      - https://www.altium.com/documentation/altium-365/esd#defining_an_esd_document
+      - https://www.altium.com/documentation/altium-365/esd#placing_and_configuring_functional_blocks
     slots:
       - core_localId
       - core_name
@@ -180,7 +200,13 @@ classes:
     in_subset: system
     class_uri: sys:Port
     title: Port
-    description: TBD
+    description: >-
+      An interface of a functional block in an ESD document (e.g. the I2C interface of an MPU), placed inside the
+      block's boundaries; connection lines between blocks can start and end at ports. It is a logical interface,
+      distinct from dm_Port, which is a physical port of a device.
+    see_also:
+      - https://www.altium.com/documentation/altium-365/esd#defining_an_esd_document
+      - https://www.altium.com/documentation/altium-365/esd#port
     slots:
       - core_localId
       - core_name
@@ -200,7 +226,19 @@ classes:
     in_subset: system
     class_uri: sys:KeyComponent
     title: Key Component
-    description: TBD
+    description: >-
+      A key component of a functional block in an ESD document, shown in the editor as a hardware component (e.g.
+      a Renesas RA MCU chosen with the RA Explorer). Its device configuration (ports, package information,
+      peripherals and pin assignments) can be viewed and edited on the hardware component. Software components of
+      the block reference their parent key component. Its SDM counterpart is system_SdmHardwareComponent.
+    see_also:
+      - https://www.altium.com/documentation/altium-365/esd#hardware_component
+      - https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration
+    structured_aliases:
+      - literal_form: Hardware Component
+        predicate: EXACT_SYNONYM
+        contexts: [altium-365]
+        source: https://www.altium.com/documentation/altium-365/esd
     slots:
       - core_localId
       - core_name
@@ -220,6 +258,8 @@ classes:
     class_uri: sys:SoftwareComponent
     title: Software Component
     description: Functional in nature, abstracted from but connected to logical implementation.
+    see_also:
+      - https://www.altium.com/documentation/altium-365/esd#software_component
     slots:
       - core_localId
       - core_name
@@ -277,7 +317,13 @@ classes:
     class_uri: sys:Connection
     title: Connection
     description: >-
-      TBD
+      A connection line in an ESD document representing an interconnection between functional blocks (e.g.
+      signals passed between the interfaces of two devices), drawn directly between blocks or between their ports.
+      In the editor a line can also start or end on other objects or in free space; this model records each end as
+      a functional block and port (see system_Endpoint).
+    see_also:
+      - https://www.altium.com/documentation/altium-365/esd#connecting_functional_blocks
+      - https://www.altium.com/documentation/altium-365/esd#defining_an_esd_document
     slots:
       - core_localId
       - core_name
@@ -297,7 +343,8 @@ classes:
     class_uri: sys:Endpoint
     title: Endpoint
     description: >-
-      TBD
+      One end of a connection in an ESD document, identified by the functional block and the port where the
+      connection line starts or ends.
     attributes:
       system_Endpoint_functionalBlock:
         slot_uri: sys:Endpoint_functionalBlock
@@ -321,6 +368,8 @@ classes:
     title: Parameter
     description: >-
       Name–value parameter associated with functional blocks, ports, or other system design resources.
+    see_also:
+      - https://www.altium.com/documentation/altium-365/esd#accessing_object_properties
     attributes:
       system_Parameter_value:
         alias: value
@@ -336,7 +385,10 @@ classes:
     in_subset: system
     class_uri: sys:SoftwareProject
     title: Software Project
-    description: TBD
+    description: >-
+      An entry of an ESD document for a software project (sft_SoftwareProject) that implements part of the
+      system, listing the software components that project covers. In the ESD editor a software project can be
+      linked to a software blanket, and each project can be linked to at most one blanket in a document.
     slots:
       - core_localId
       - core_implementedBy
@@ -358,7 +410,11 @@ classes:
     in_subset: system
     class_uri: sys:HardwareProject
     title: Hardware Project
-    description: TBD
+    description: >-
+      An entry of an ESD document for a PCB design project (des_Project) that implements part of the system,
+      listing the functional blocks that project covers. In the ESD editor a PCB project can be linked to a
+      hardware blanket (which can be placed around functional blocks), and each project can be linked to at most
+      one blanket in a document.
     slots:
       - core_localId
       - core_implementedBy
@@ -424,10 +480,23 @@ classes:
     is_a: core_Activity
     in_subset: system-sdm
     class_uri: sys:SystemModel
-    title: System  Model
+    title: System Model
     annotations:
       platformAPI: SysSdmSystemModel
       grid: grid:workspace:{workspace-id}:system-design:sdm/{id}
+    see_also:
+      - https://www.altium.com/documentation/altium-365/renesas-365#system_data_model
+      - https://www.altium.com/documentation/altium-365/esd#pushing_pulling_sdm
+      - https://www.altium.com/documentation/altium-designer/working-renesas-365-solutions#pulling_sdm_into_a_hardware_project
+    structured_aliases:
+      - literal_form: System Data Model
+        predicate: EXACT_SYNONYM
+        contexts: [altium-365, altium-designer]
+        source: https://www.altium.com/documentation/altium-365/renesas-365
+      - literal_form: SDM
+        predicate: EXACT_SYNONYM
+        contexts: [altium-365, altium-designer]
+        source: https://www.altium.com/documentation/altium-365/renesas-365
     slots:
       - core_name
     description: >-
@@ -452,7 +521,7 @@ classes:
     is_a: core_Artifact
     in_subset: system-sdm
     class_uri: sys:SystemModelVersion
-    title: System  Model Version
+    title: System Model Version
     annotations:
       platformAPI: SysSdmSystemModelVersion
       grid: grid:workspace:{workspace-id}:system-design:sdm-version/{id}
@@ -660,7 +729,8 @@ classes:
     annotations:
       platformAPI: SysSdmPort
     description: >-
-      Represents a port within a system design.
+      Represents a port within a system design. It is a logical interface of a functional block, distinct from
+      dm_Port, which is a physical port of a device.
     mixins:
       - system_SdmMappableEntity
       - system_HasSdmReferenceDesignator
@@ -746,6 +816,9 @@ classes:
     title: Device Model
     annotations:
       platformAPI: SysSdmDeviceModel
+    see_also:
+      - https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration
+      - https://www.altium.com/documentation/altium-365/esd#generating_a_board_support_package
     description: >-
       Represents a device model within the system design.
     mixins:
@@ -951,6 +1024,9 @@ classes:
     title: Hardware Component
     annotations:
       platformAPI: SysSdmHardwareComponent
+    see_also:
+      - https://www.altium.com/documentation/altium-365/esd#hardware_component
+      - https://www.altium.com/documentation/altium-designer/working-renesas-365-solutions#pulling_sdm_into_a_hardware_project
     description: >-
       Represents a hardware component / part.
     mixins:

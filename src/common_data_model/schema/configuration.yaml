@@ -26,11 +26,20 @@ classes:
     class_uri: con:EnvironmentConfiguration
     title: Environment Configuration
     description: >-
-      TBD
+      A named set of configuration data items that the Workspace members it targets are allowed to use in
+      Altium Designer. The items are revisions of Workspace Items of supported content types (e.g. schematic,
+      BOM, project and Draftsman templates, output job files and layer stacks, plus at most one Altium Designer
+      Preferences revision), and the same item can be used by several configurations. Administrators define
+      configurations in the Workspace's Team Configuration Center (TC2) and assign them to Workspace groups,
+      called roles there; when a group member signs in to the Workspace from Altium Designer, each controlled
+      area of the design environment is restricted to the chosen configuration's items.
     comments:
       - TBD
     annotations:
       grid: 
+    see_also:
+      - https://www.altium.com/documentation/altium-365/environment-configuration-management
+      - https://www.altium.com/documentation/altium-365/managing-environment-configurations
     attributes:
       con_EnvironmentConfiguration_schematicTemplates:
         is_a: core_hasPart
@@ -49,11 +58,16 @@ classes:
     class_uri: con:SchematicTemplate
     title: Schematic Template
     description: >-
-      TBD
+      A schematic template stored as a Workspace Item. When applied to a schematic sheet, the template sets the
+      sheet's size, its graphics such as a title block, and its sheet-level parameters, so that a team's
+      schematics look consistent. The template content is kept in successive revisions of the Item, and
+      environment configurations can reference those revisions to control which templates designers may use.
     comments:
       - TBD
     annotations:
       grid: 
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/schematic/creating-templates
     slots:
       - core_revisions
     slot_usage:
@@ -66,8 +80,13 @@ classes:
     class_uri: con:SchematicTemplateRevision
     title: Schematic Template Revision
     description: >-
-      TBD
+      One revision of a Workspace schematic template Item, holding the template as saved at that point, e.g.
+      from Altium Designer with Save to Server or uploaded from a *.SchDot file. Editing the template saves the
+      result into the next revision, and environment configurations list template revisions, rather than the
+      Item itself, as their configuration data.
     comments:
       - TBD
     annotations:
       grid:  
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/schematic/creating-templates#creating_workspace_schematic_template

@@ -30,6 +30,13 @@ def test_doc_link_prefers_label():
     assert make_doc_link(_registry())("https://std.example/svd.html") == "[Nice Label](https://std.example/svd.html)"
 
 
+def test_doc_link_uses_anchor_label():
+    reg = _registry()
+    reg[URL].anchor_labels = {"states": "Lifecycle states"}
+    assert make_doc_link(reg)(URL + "#states") == f"[Lifecycle states]({URL}#states)"
+    assert make_doc_link(reg)(URL) == f"[Lifecycle Management]({URL})"
+
+
 def test_doc_link_unknown_url_renders_autolink():
     assert make_doc_link({})("https://unknown.example/") == "<https://unknown.example/>"
 

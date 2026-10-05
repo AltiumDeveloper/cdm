@@ -25,7 +25,11 @@ classes:
     in_subset: design 
     class_uri: des:Project
     title: Hardware Project
-    description: TBD
+    description: >-
+      A design project stored in a Workspace, normally under its built-in version control, such as a PCB project. It
+      groups the design documents that together define one implementation of a product, along with its project
+      parameters and variants; it is the source from which releases are made and from which Managed BOMs can be
+      created.
     aliases:
       - PCB Project
     mixins:
@@ -33,6 +37,18 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:design:project/{id}
       platformAPI: DesProject
+    see_also:
+      - https://www.altium.com/documentation/altium-365/workspace-projects
+      - https://www.altium.com/documentation/altium-designer/creating-projects-documents
+    structured_aliases:
+      - literal_form: Workspace project
+        predicate: EXACT_SYNONYM
+        contexts: [altium-365, altium-designer]
+        source: https://www.altium.com/documentation/altium-365/workspace-projects
+      - literal_form: design project
+        predicate: RELATED_SYNONYM
+        contexts: [altium-designer, altium-365]
+        source: https://www.altium.com/documentation/altium-designer/creating-projects-documents
     attributes:
       des_Project_parameters:
         slot_uri: des:Project_parameters
@@ -63,9 +79,16 @@ classes:
     in_subset: design
     class_uri: des:ProjectParameter
     title: Project Parameter
-    description: TBD
+    description: >-
+      A name/value parameter defined at the level of a design project. It is either a Workspace-side (server-side)
+      parameter, kept with the project in the Workspace and editable only there, or a design-side parameter, kept in
+      the project file (e.g. *.PrjPcb) and editable in Altium Designer. Both kinds appear in the project options and can be
+      used as special strings in design documents.
     annotations:
       platformAPI: DesProjectParameter
+    see_also:
+      - https://www.altium.com/documentation/altium-365/workspace-projects#project_parameters
+      - https://www.altium.com/documentation/altium-designer/accessing-defining-managing-project-options#parameters
     attributes:
       des_ProjectParameter_name:
         slot_uri: des:ProjectParameter_name
@@ -89,9 +112,21 @@ classes:
     in_subset: design 
     class_uri: des:ProjectVariant
     title: Hardware Project Variant
-    description: TBD
+    description: >-
+      A design variant of a project: a named variation of the same base design that is assembled with a different set
+      of components. Within a variant, each component can be fitted, not fitted, fitted with varied parameters, or
+      replaced by an alternate part, and the variant can define its own variant-level parameters. Assembly variants
+      share one bare board, whereas fabrication variants also change overlay information and so need a different board.
     annotations:
       platformAPI: DesWipVariant
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/design-variants
+      - https://www.altium.com/documentation/altium-designer/variant-manager
+    structured_aliases:
+      - literal_form: design variant
+        predicate: EXACT_SYNONYM
+        contexts: [altium-designer]
+        source: https://www.altium.com/documentation/altium-designer/design-variants
 
   des_MultiboardProject:
     is_a: des_Project
@@ -108,6 +143,8 @@ classes:
         and integration workflows across ECAD and MCAD domains.
     annotations:
       platformAPI: DesProject
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/multi-board-design#structure_multi_board_design_project
     attributes:
       des_MultiboardProject_projects:
         is_a: core_hasPart
@@ -133,6 +170,8 @@ classes:
         in a way that is traceable, manufacturable, and tightly integrated with Multiboard and MCAD workflows within the Altium ecosystem.
     annotations:
       platformAPI: DesProject
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/harness-design
 
   des_ProjectRelease:
     is_a: core_Activity
@@ -149,6 +188,14 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:design:project-release/{id}
       platformAPI: DesRelease
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release
+      - https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release/workspace
+    structured_aliases:
+      - literal_form: design project release
+        predicate: RELATED_SYNONYM
+        contexts: [altium-designer]
+        source: https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release
     mixins:
       - plt_HasLifecycle
     slots:
@@ -159,18 +206,22 @@ classes:
     in_subset: design 
     class_uri: des:ProjectTemplate
     title: Project Template
-    description:
-      A project template includes document configurations and settings that you know you will frequently apply to various projects. 
+    description: >-
+      A reusable starting point for new design projects that bundles the documents, files and project settings a team
+      wants to apply again and again. A project created from a template receives the template's documents and its
+      project options.
     comments:
-      - Project templates can include the common document and file types that make up a project, as well as additional reference documentation 
-        and configuration files. Project options configured in a project template will also be applied when creating design projects using this template. 
-        The advantage of using project templates is that a template can contain, if required, a full set of common project files 
-        (including Output Jobs) and ratified project/document options, design rules, parameters, units settings, document title blocks, 
-        grid settings, project release options, and much more.
-      - Project templates can be created for PCB, multi-board and harness project types.
+      - Besides the usual project documents, a template may carry reference documentation, configuration files and
+        Output Jobs, together with agreed project and document settings such as design rules, parameters, title blocks
+        and release options.
+      - Templates are available for PCB, multi-board and harness projects. A Workspace project template is kept as a
+        series of revisions; saving an edited template creates its next revision, and new projects are based on the
+        latest revisions shared with the user.
     annotations:
       grid: grid:workspace:{workspace-id}:design:project-template/{id}
       platformAPI: DesProjectTemplate
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/creating-project-template
     slots:
       - core_revisions
     slot_usage:
@@ -200,6 +251,14 @@ classes:
       of manufacturing the board (e.g. Manufacturing Package may contain fabrication/assembly files required by the factories, but not the sources of the project)
     annotations:
       grid: grid:workspace:{workspace-id}:design:manufacturing-package/{id}
+    see_also:
+      - https://www.altium.com/documentation/altium-365/viewers/manufacturing-package-viewer
+      - https://www.altium.com/documentation/altium-365/management-specific-project#SAMPYM
+    structured_aliases:
+      - literal_form: Build Package
+        predicate: RELATED_SYNONYM
+        contexts: [altium-365]
+        source: https://www.altium.com/documentation/altium-365/viewers/manufacturing-package-viewer
     attributes:
       des_ManufacturingPackage_projectRelease:
         is_a: core_derivedFrom

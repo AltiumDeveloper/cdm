@@ -35,6 +35,8 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:collaboration:task/{id}
       platformAPI: DesTask
+    see_also:
+      - https://www.altium.com/documentation/altium-365/tasks
 
   col_CommentThread:
     is_a: core_Activity
@@ -51,6 +53,9 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:collaboration:comment-thread/{id}
       platformAPI: DesCommentThread
+    see_also:
+      - https://www.altium.com/documentation/altium-365/viewers/web-viewer#commenting
+      - https://www.altium.com/documentation/altium-designer/document-commenting
     attributes:
       col_CommentThread_comments:
         slot_uri: col:CommentThread_comments
@@ -66,6 +71,12 @@ classes:
     in_subset: collaboration
     class_uri: col:Comment
     title: Comment
-    description: TBD
+    description: >-
+      A single entry in a comment thread: either the initial comment, pinned to a point, an object or an area
+      of a design document (or to a BOM line), or a reply to it. A comment can mention people or groups using @,
+      and it can be assigned to a Workspace member as a task, either when it is posted or later by converting it.
+      Only the author can edit or delete a comment, and deleting the initial comment also deletes its replies.
     annotations:
       platformAPI: DesComment
+    see_also:
+      - https://www.altium.com/documentation/altium-365/viewers/web-viewer#comment_placement

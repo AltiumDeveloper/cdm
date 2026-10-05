@@ -161,6 +161,8 @@ classes:
       It exposes the device model filtered to specific device configuration.
     annotations:
       platformAPI: DmDeviceModelAsConfigured
+    see_also:
+      - https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration
     slots:
       - core_localId
       - dm_boardName
@@ -179,6 +181,9 @@ classes:
     annotations:
       grid: grid:global::device-model:fullstack-dm/{id}
       platformAPI: DmFullStackDeviceModel
+    close_mappings:
+      - https://open-cmsis-pack.github.io/svd-spec/main/elem_device.html
+      - https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_device
     slots:
       - dm_mpn
       - dm_peripherals
@@ -216,6 +221,9 @@ classes:
       Represents a physical processing core. Defining endianness and clock 
       frequency allows the system to determine if the hardware can meet 
       the computational and data-ordering requirements of a use-case.
+    close_mappings:
+      - https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_processor
+      - https://open-cmsis-pack.github.io/svd-spec/main/elem_cpu.html
     attributes:
       dm_Processor_name:
         slot_uri: dm:Processor_name
@@ -324,6 +332,8 @@ classes:
     description: Address block with start, size, and optional registers and peripherals.
     annotations:
       platformAPI: DmAddressBlock
+    related_mappings:
+      - https://open-cmsis-pack.github.io/svd-spec/main/elem_peripherals.html#elem_addressBlock
     mixins:
       - dm_HasAddressRange
     slots:
@@ -374,6 +384,8 @@ classes:
     description: A memory entry within an address block.
     annotations:
       platformAPI: DmAmMemory
+    close_mappings:
+      - https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_memory
     attributes:
       dm_Memory_name:
         slot_uri: dm:Memory_name
@@ -402,6 +414,8 @@ classes:
     description: A hardware register within an address block.
     annotations:
       platformAPI: DmAmRegister
+    close_mappings:
+      - https://open-cmsis-pack.github.io/svd-spec/main/elem_registers.html#elem_register
     mixins:
       - dm_HasAddressRange
     slots:
@@ -449,6 +463,8 @@ classes:
     description: A bit field within a register.
     annotations:
       platformAPI: DmAmRegisterField
+    exact_mappings:
+      - https://open-cmsis-pack.github.io/svd-spec/main/elem_registers.html#elem_field
     slots:
       - core_description
     attributes:
@@ -494,6 +510,8 @@ classes:
     description: An enumerated value for a register field.
     annotations:
       platformAPI: DmAmFieldEnum
+    exact_mappings:
+      - https://open-cmsis-pack.github.io/svd-spec/main/elem_registers.html#elem_enumeratedValue
     slots:
       - core_description
     attributes:
@@ -518,6 +536,8 @@ classes:
     description: A single peripheral definition, including its instances and properties.
     annotations:
       platformAPI: DmPeripheral
+    related_mappings:
+      - https://open-cmsis-pack.github.io/svd-spec/main/elem_peripherals.html#elem_peripheral
     slots:
       - core_localId
     attributes:
@@ -545,6 +565,8 @@ classes:
     description: A concrete instance of a peripheral (e.g., SCI0), including available modes.
     annotations:
       platformAPI: DmPeripheralInstance
+    close_mappings:
+      - https://open-cmsis-pack.github.io/svd-spec/main/elem_peripherals.html#elem_peripheral
     slots:
       - core_localId
     attributes:
@@ -731,7 +753,7 @@ classes:
     in_subset: deviceModel
     class_uri: dm:PeripheralParameter
     title: PeripheralParameter
-    description: A paramter associated with peripheral instance configuration.
+    description: A parameter associated with peripheral instance configuration.
     annotations:
       platformAPI: DmPeripheralParameters
     attributes:
@@ -834,6 +856,8 @@ classes:
     description: A specific function that a port can perform.
     annotations:
       platformAPI: DmPortFunction
+    see_also:
+      - https://www.altium.com/documentation/altium-designer/working-renesas-365-solutions#pulling_sdm_into_a_hardware_project
     attributes:
       dm_PortFunction_name:
         slot_uri: dm:PortFunction_name

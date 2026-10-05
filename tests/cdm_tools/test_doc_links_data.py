@@ -29,8 +29,15 @@ def test_no_class_uses_documentation_extension(sv):
     "cls,expected",
     [
         ("plt_LifecycleDefinition", [AD + "defining-lifecycle-definitions", A365_LIFECYCLE]),
-        ("plt_LifecycleStage", [A365_LIFECYCLE]),
-        ("plt_LifecycleState", [A365_LIFECYCLE]),
+        ("plt_LifecycleStage", [AD + "defining-lifecycle-definitions", A365_LIFECYCLE]),
+        (
+            "plt_LifecycleState",
+            [
+                AD + "defining-lifecycle-definitions#options_and_controls_of_the_state_properties_dialog",
+                AD + "items/managing-revision-lifecycle",
+                A365_LIFECYCLE,
+            ],
+        ),
         ("plt_NamingScheme", [AD + "defining-naming-schemes"]),
     ],
 )

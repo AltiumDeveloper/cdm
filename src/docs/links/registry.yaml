@@ -1,21 +1,507 @@
 # CDM documentation link registry (see AGENTS.md §8)
 # Keyed by URL without fragment. `title` = page <title> text before ' | '.
 # `anchors` lists every #fragment used by the schema. Verify with: make verify-links
+https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html:
+  title: /package/devices/family element
+  label: CMSIS-Pack PDSC device family elements
+  source: standard
+  anchors:
+  - element_device
+  - element_processor
+  - element_memory
+  anchor_labels:
+    element_device: CMSIS-Pack PDSC device element
+    element_memory: CMSIS-Pack PDSC memory element
+    element_processor: CMSIS-Pack PDSC processor element
+  last_verified: '2026-09-30'
+https://open-cmsis-pack.github.io/svd-spec/main/elem_cpu.html:
+  title: 'Open-CMSIS-SVD: /device/cpu element'
+  label: CMSIS-SVD cpu element
+  source: standard
+  anchors: []
+  last_verified: '2026-09-30'
+https://open-cmsis-pack.github.io/svd-spec/main/elem_device.html:
+  title: 'Open-CMSIS-SVD: /device element'
+  label: CMSIS-SVD device element
+  source: standard
+  anchors: []
+  last_verified: '2026-09-30'
+https://open-cmsis-pack.github.io/svd-spec/main/elem_peripherals.html:
+  title: 'Open-CMSIS-SVD: /device/peripherals element'
+  label: CMSIS-SVD peripheral and address block elements
+  source: standard
+  anchors:
+  - elem_peripheral
+  - elem_addressBlock
+  anchor_labels:
+    elem_addressBlock: CMSIS-SVD addressBlock element
+    elem_peripheral: CMSIS-SVD peripheral element
+  last_verified: '2026-09-30'
+https://open-cmsis-pack.github.io/svd-spec/main/elem_registers.html:
+  title: 'Open-CMSIS-SVD: /device/peripherals/peripheral/registers element'
+  label: CMSIS-SVD register, field and enumerated value elements
+  source: standard
+  anchors:
+  - elem_register
+  - elem_field
+  - elem_enumeratedValue
+  anchor_labels:
+    elem_enumeratedValue: CMSIS-SVD enumeratedValue element
+    elem_field: CMSIS-SVD field element
+    elem_register: CMSIS-SVD register element
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/bom-portal:
+  title: BOM Portal
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - release_naming
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/bom-portal/configuration-options:
+  title: Configuration and Options
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - add_alternate
+  - bom-structure-features
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/bom-portal/consolidated-bom:
+  title: Consolidated BOM
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/bom-portal/error-detection-correction:
+  title: BOM Error Detection and Correction
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/bom-portal/sourced-manufacturer-supplier-data:
+  title: Sourced Manufacturer and Supplier Data
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - order_list
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/bom-portal/workspace-components-integration:
+  title: Workspace Components Integration
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/creating-managing-processes:
+  title: Create & Manage Electronics Design Processes
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/defining-process-workflow:
+  title: Defining a Process Workflow
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/environment-configuration-management:
+  title: Environment Configuration Management
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/esd:
+  title: Electronic System Design
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - using_the_device_configuration
+  - generating_a_board_support_package
+  - defining_an_esd_document
+  - placing_and_configuring_functional_blocks
+  - hardware_component
+  - software_component
+  - port
+  - connecting_functional_blocks
+  - accessing_object_properties
+  - pushing_pulling_sdm
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/inviting-users:
+  title: Inviting other Users to Your Workspace
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-365/lifecycle-management:
   title: Lifecycle Management
   source: altium-docs
   product: altium-365
   anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/management-specific-project:
+  title: Management of a Specific Project
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - SAMPYM
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/managing-environment-configurations:
+  title: Managing Environment Configurations
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/managing-workspace-membership:
+  title: Managing Workspace Membership
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - admin_groups
+  - workspace_members
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/part-source-configuration:
+  title: Part Source Configuration
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/processes-workflows:
+  title: Processes & Workflows
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/renesas-365:
+  title: Renesas 365
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - import_project
+  - linking_an_evaluation_kit
+  - exploring_a_solution
+  - system_data_model
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-integration:
+  title: Working with Requirements
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - basic_requirements_portal_setup
+  - linking_requirements_to_a_design_project
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-portal/project-module:
+  title: Project Module
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - creating_a_new_requirements_project
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/create-specifications:
+  title: Create Specifications
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/creating-requirements:
+  title: Creating Requirements
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/requirement-fields:
+  title: Requirement Fields
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/requirements-breakdown-process:
+  title: Requirements Breakdown Process
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/requirements-portal/verification-validation-module:
+  title: Verification & Validation Module
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+? https://www.altium.com/documentation/altium-365/requirements-portal/verification-validation-module/flow-1-plan-verification-activities
+: title: 'Flow 1: Plan Verification Activities'
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+? https://www.altium.com/documentation/altium-365/requirements-systems-portal/requirements-module/requirement-versioning-and-releasing
+: title: Requirement Versioning and Releasing
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/tasks:
+  title: Working with Tasks
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/viewers/manufacturing-package-viewer:
+  title: Viewing Manufacturing Packages
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/viewers/web-viewer:
+  title: Web Viewer
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - commenting
+  - comment_placement
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/workflow-part-requests:
+  title: Part Requests
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/workspace:
+  title: Altium 365 Workspace
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/workspace-activation-management:
+  title: Activation & Management
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/workspace-components:
+  title: Workspace Components
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - view_edit_part_choices
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-365/workspace-projects:
+  title: Workspace Projects
+  source: altium-docs
+  product: altium-365
+  anchors:
+  - project_parameters
+  - uploading_or_creating_a_managed_bom
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-dashboard:
+  title: Company Dashboard
+  source: altium-docs
+  product: altium-dashboard
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-dashboard/managing-groups:
+  title: Managing Groups
+  source: altium-docs
+  product: altium-dashboard
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-dashboard/managing-users:
+  title: Managing Users
+  source: altium-docs
+  product: altium-dashboard
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-dashboard/profile:
+  title: Configuring Your Company Profile
+  source: altium-docs
+  product: altium-dashboard
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-designer/accessing-defining-managing-project-options:
+  title: Accessing, Defining & Managing Project Options
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - parameters
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/components-libraries:
+  title: Building & Maintaining Your Components and Libraries
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - WSL
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/components-libraries/adding-datasheets-component:
+  title: Adding Datasheets to a Component
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component:
+  title: Adding Supply Chain Information to a Component
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - the_part_catalog
+  - part_choices
+  - anatomy_of_a_part_choice
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/components-libraries/creating-pcb-footprint:
+  title: Creating a PCB Footprint
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/components-libraries/creating-schematic-symbol:
+  title: Creating a Schematic Symbol
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/components-libraries/searching-manufacturer-parts:
+  title: Searching for Manufacturer Parts
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - manufacturer_and_supplier_data
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-designer/components-libraries/single-component-editing:
+  title: Single Component Editing
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/components-libraries/workspace-component-templates:
+  title: Component Templates
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - UACPDT
   last_verified: '2026-09-29'
 https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions:
   title: Defining Lifecycle Definitions for a Workspace
   source: altium-docs
   product: altium-designer
-  anchors: []
-  last_verified: '2026-09-29'
+  anchors:
+  - options_and_controls_of_the_state_properties_dialog
+  last_verified: '2026-09-30'
 https://www.altium.com/documentation/altium-designer/connected-workspace/defining-naming-schemes:
   title: Defining Revision Naming Schemes for a Workspace
   source: altium-docs
   product: altium-designer
   anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-designer/connected-workspace/items:
+  title: Working with Items
+  source: altium-docs
+  product: altium-designer
+  anchors: []
   last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/connected-workspace/items/managing-revision-lifecycle:
+  title: Managing Item Revision Lifecycle
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-designer/creating-project-template:
+  title: Creating a Project Template
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/creating-projects-documents:
+  title: Creating Projects and Documents
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/design-variants:
+  title: Design Variants
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/document-commenting:
+  title: Document Commenting
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-designer/harness-design:
+  title: Harness Design
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/interactive-process-workflows/part-requests:
+  title: Process-based Part Requests
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/multi-board-design:
+  title: Designing with Multiple PCBs
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - structure_multi_board_design_project
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release:
+  title: Design Project Release
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release/workspace:
+  title: Releasing to a Workspace
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/schematic/creating-templates:
+  title: Creating a Schematic Template
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - creating_workspace_schematic_template
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-designer/schematic/design-reuse/reuse-blocks:
+  title: Working with Reuse Blocks
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets:
+  title: Working with Snippets
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/schematic/design-reuse/workspace-managed-schematic-sheets:
+  title: Working with Managed Schematic Sheets
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - just_what_is_a_managed_schematic_sheet
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/variant-manager:
+  title: Working with the Variant Manager
+  source: altium-docs
+  product: altium-designer
+  anchors: []
+  last_verified: '2026-09-29'
+https://www.altium.com/documentation/altium-designer/working-renesas-365-solutions:
+  title: Working with Renesas 365 Solutions
+  source: altium-docs
+  product: altium-designer
+  anchors:
+  - pulling_sdm_into_a_hardware_project
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/realms:
+  title: Realms
+  source: altium-dev-center
+  product: altium-developer-center
+  anchors: []
+  last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-developer-center/octopart/api:
+  title: Octopart API
+  source: altium-dev-center
+  product: altium-developer-center
+  anchors: []
+  last_verified: '2026-09-30'
