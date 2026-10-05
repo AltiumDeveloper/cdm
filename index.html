@@ -6,7 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://w3id.org/altium/cdm/" rel="canonical"/>
-<link href="about/" rel="next"/>
+<link href="grid-format/" rel="next"/>
 <link href="assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
 <title>Common Data Model (CDM)</title>
@@ -26,7 +26,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#common-data-model">
+<a class="md-skip" href="#bounded-contexts">
           Skip to content
         </a>
 </div>
@@ -50,7 +50,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Index
+              Bounded Contexts
             
           </span>
 </div>
@@ -108,18 +108,38 @@
   
     
   
-  Index
+  Bounded Contexts
 
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="about/">
+<a class="md-tabs__link" href="grid-format/">
         
   
   
     
   
-  About
+  GRIDs
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="domain-model/">
+          
+  
+  
+  Concepts
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="glossary/">
+        
+  
+  
+    
+  
+  Glossary
 
       </a>
 </li>
@@ -131,6 +151,17 @@
     
   
   Tags
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="about/">
+        
+  
+  
+    
+  
+  About
 
       </a>
 </li>
@@ -166,14 +197,14 @@
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
 <span class="md-ellipsis">
-    Index
+    Bounded Contexts
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href=".">
 <span class="md-ellipsis">
-    Index
+    Bounded Contexts
     
   </span>
 </a>
@@ -184,7 +215,7 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#bounded-contexts">
+<a class="md-nav__link" href="#bounded-contexts_1">
 <span class="md-ellipsis">
       Bounded Contexts
     </span>
@@ -306,20 +337,63 @@
 </ul>
 </nav>
 </li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#grids">
+<a class="md-nav__link" href="grid-format/">
 <span class="md-ellipsis">
-      GRIDs
-    </span>
+    GRIDs
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Concepts
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Concepts
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="domain-model/">
+<span class="md-ellipsis">
+    Domain Model
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="entity-classification/">
+<span class="md-ellipsis">
+    Entity Classification
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="relation-types/">
+<span class="md-ellipsis">
+    Relation Types
+    
+  </span>
 </a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="about/">
+<a class="md-nav__link" href="glossary/">
 <span class="md-ellipsis">
-    About
+    Glossary
     
   </span>
 </a>
@@ -332,6 +406,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="about/">
+<span class="md-ellipsis">
+    About
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </div>
@@ -339,12 +421,12 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="common-data-model">Common Data Model</h1>
+<h1 id="bounded-contexts">Bounded Contexts</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/">https://w3id.org/altium/cdm/</a></p>
 <p>Common Data Model (longer description)</p>
-<h2 id="bounded-contexts">Bounded Contexts</h2>
+<h2 id="bounded-contexts_1">Bounded Contexts</h2>
 <h3 id="collaboration"><a href="subsets/collaboration/">collaboration</a></h3>
-<p>TBD</p>
+<p>Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, and tasks that assign work to users or teams. In the product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.</p>
 <table>
 <thead>
 <tr>
@@ -372,7 +454,7 @@
 </tbody>
 </table>
 <h3 id="configuration"><a href="subsets/configuration/">configuration</a></h3>
-<p>TBD</p>
+<p>Models environment configurations, which restrict the Altium Designer working environment of the Workspace members they target to approved configuration data, together with schematic templates and their revisions stored as Workspace Items. In Altium 365 this corresponds to environment configuration management through the Team Configuration Center.</p>
 <table>
 <thead>
 <tr>
@@ -400,7 +482,7 @@
 </tbody>
 </table>
 <h3 id="core"><a href="subsets/core/">core</a></h3>
-<p>The core subset contains abstract base classes and mixins shared by all CDM bounded contexts.</p>
+<p>Holds the abstract foundations shared by every bounded context: the base classes Entity (specialised as Artifact and Activity), Resource and Event; the mixins that add annotations such as GRID, maturity and API type; shared slots such as id and name; and the abstract relations (e.g. part of, input of, derived from) that domain relations specialise. It is not a product area and has no product documentation of its own.</p>
 <table>
 <thead>
 <tr>
@@ -438,7 +520,7 @@
 </tbody>
 </table>
 <h3 id="customization"><a href="subsets/customization/">customization</a></h3>
-<p>TBD</p>
+<p>Models ways to customize and automate a Workspace: process workflows, and scripts with their versions, their executions and the event raised when an execution completes. In the product, each workflow belongs to a process definition that a Workspace administrator creates and manages in the Workspace browser interface.</p>
 <table>
 <thead>
 <tr>
@@ -476,7 +558,7 @@
 </tbody>
 </table>
 <h3 id="design"><a href="subsets/design/">design</a></h3>
-<p>Provides a comprehensive environment for schematic capture, PCB layout, and simulation. It enables engineers to create, analyze,  and optimize electronic designs with seamless integration into the broader Altium ecosystem.</p>
+<p>Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, and rule checks run against projects. It corresponds to Workspace projects in Altium 365 and Altium Designer, from project creation through to design release.</p>
 <table>
 <thead>
 <tr>
@@ -544,7 +626,7 @@
 </tbody>
 </table>
 <h3 id="devicemodel"><a href="subsets/deviceModel/">deviceModel</a></h3>
-<p>Provides a comprehensive representation of embedded hardware, including peripherals,  pin multiplexing, and memory maps. This subset defines the constraints necessary  to model valid hardware configurations and perform feasibility analysis—ensuring  a device's physical resources can satisfy specific application use-cases.</p>
+<p>Models an embedded device (e.g. an MCU), which the CDM calls a digital twin: its processors; its address map with memories, registers, bit fields and their enumerated values; its peripherals with their instances, modes and configurations; and its pins and ports with the alternative functions of each port. A configured device model filters the full model to one device configuration, which in the product is edited on a hardware component in an ESD document.</p>
 <table>
 <thead>
 <tr>
@@ -677,7 +759,7 @@
 </tbody>
 </table>
 <h3 id="insights"><a href="subsets/insights/">insights</a></h3>
-<p>TBD</p>
+<p>Models insights that can be followed up by tasks. The only concrete kind is the part insight: it concerns one Workspace part, may be informed by BOMs or design projects, and occurs in BOM releases, project releases or component revisions.</p>
 <table>
 <thead>
 <tr>
@@ -695,7 +777,7 @@
 </tbody>
 </table>
 <h3 id="library"><a href="subsets/library/">library</a></h3>
-<p>Ensures centralized control, organization, and standardization of component data, including symbols, footprints, and parameters.  It enables seamless collaboration, versioning, and accessibility of design assets across teams within Altium 365.</p>
+<p>Models the components stored in a Workspace and their revisions, the symbols, footprints, parameters, datasheets and part choices that make them up, and the component templates they can be created from. It also covers manufacturer parts in the Workspace part catalog, part requests, and reusable design content such as reuse blocks, managed sheets, and schematic and PCB snippets. It corresponds to Workspace components and design reuse in Altium Designer and Altium 365.</p>
 <table>
 <thead>
 <tr>
@@ -818,7 +900,7 @@
 </tbody>
 </table>
 <h3 id="ota"><a href="subsets/ota/">ota</a></h3>
-<p>Over the Air (OTA) related entities</p>
+<p>Models over-the-air (OTA) firmware and software updates: devices with their status and installed packages, fleets that group devices, and packages with their version, size, checksums and target hardware. All classes are experimental.</p>
 <table>
 <thead>
 <tr>
@@ -846,7 +928,7 @@
 </tbody>
 </table>
 <h3 id="platform"><a href="subsets/platform/">platform</a></h3>
-<p>TBD</p>
+<p>Models the platform-wide objects that other bounded contexts build on: organizations (Company Accounts) with their users and user groups, Workspaces with their members and groups, applications, event subscriptions, and Renesas 365 solutions with their releases. It also holds the lifecycle definitions (with their stages and states) and revision naming schemes that govern Workspace Items. Organization-level data is managed in the Company Dashboard; Workspace-level configuration, including these definitions and schemes, is managed from Altium Designer or the Workspace browser interface.</p>
 <table>
 <thead>
 <tr>
@@ -929,7 +1011,7 @@
 </tbody>
 </table>
 <h3 id="procurement"><a href="subsets/procurement/">procurement</a></h3>
-<p>Streamlines the transition from design to sourcing by providing structured BOM management, supplier integration,  and real-time component availability and pricing. It ensures that purchasing decisions are optimized, traceable,  and seamlessly connected to the design process within Altium 365.</p>
+<p>Models bills of materials: BOMs kept in a Workspace and worked on in the BOM Portal (managed and consolidated BOMs) with their releases, global BOMs, which are not tied to a Workspace, and BOM lines with their alternate and substitute parts and the issues found when a BOM is analysed. It corresponds to the Altium 365 BOM Portal.</p>
 <table>
 <thead>
 <tr>
@@ -982,7 +1064,7 @@
 </tbody>
 </table>
 <h3 id="requirements"><a href="subsets/requirements/">requirements</a></h3>
-<p>Captures behavioral, performance, compliance, and process expectations that govern solutions throughout conception, design, verification, and release lifecycle milestones.</p>
+<p>Models requirements and their revisions, the specifications that group them, baselines approved for execution, change requests, the requirements projects that scope this work, and verification cases that provide evidence against requirements; most of its classes are experimental. It corresponds to requirements management and verification &amp; validation in the Altium 365 Requirements Portal.</p>
 <table>
 <thead>
 <tr>
@@ -1035,7 +1117,7 @@
 </tbody>
 </table>
 <h3 id="software"><a href="subsets/software/">software</a></h3>
-<p>TBD</p>
+<p>Models the embedded software of a Renesas 365 solution: software projects with their releases and build artifacts, device configurations (with revisions) and their pin assignments, and AI models. In Renesas 365 the software project is the software part of a solution, edited in the built-in Web IDE or in e² studio; a device configuration there also covers the ports, package information and peripherals of a hardware component.</p>
 <table>
 <thead>
 <tr>
@@ -1088,7 +1170,7 @@
 </tbody>
 </table>
 <h3 id="supply"><a href="subsets/supply/">supply</a></h3>
-<p>Focuses on providing reliable access to component sourcing, availability, pricing, and lifecycle data,  integrating resources like Octopart to support informed procurement decisions. It enables engineers and  procurement teams to seamlessly connect design choices with real-world supply chain constraints within the Altium ecosystem.</p>
+<p>Models the supply catalog: manufacturer parts with their aggregated sourcing data and distributor offers, the companies acting as their manufacturers or distributors, and the vendor-specific part family hierarchy, along with catalog content such as reference designs, evaluation kits, solution templates and software projects. Part, offer and company data correspond to the supply chain data that Octopart aggregates and serves through the Octopart API.</p>
 <table>
 <thead>
 <tr>
@@ -1146,7 +1228,7 @@
 </tbody>
 </table>
 <h3 id="system"><a href="subsets/system/">system</a></h3>
-<p>Facilitates high-level design planning by defining system architecture, functional relationships, and design constraints.  It helps engineers structure complex projects by integrating requirements management with schematic and PCB design workflows within Altium 365.</p>
+<p>Models the Electronic System Design (ESD) document of a Renesas 365 solution: a system-level block diagram of functional blocks with their key (hardware) and software components, ports and parameters, the connections between blocks, and entries for the hardware and software projects that implement the system. It corresponds to Electronic System Design in a Renesas 365 Workspace.</p>
 <table>
 <thead>
 <tr>
@@ -1214,7 +1296,7 @@
 </tbody>
 </table>
 <h3 id="system-sdm"><a href="subsets/system-sdm/">system-sdm</a></h3>
-<p>TBD</p>
+<p>Models the System Data Model (SDM) of a Renesas 365 solution and its versions, each combining a functional model with device, hardware and software models, plus metadata recording who created a version and with which application, and client-specific metadata (e.g. for ESD, Altium Designer or e² studio). The ESD document and e² studio push changes to and pull changes from the SDM, and Altium Designer pulls it into hardware projects.</p>
 <table>
 <thead>
 <tr>
@@ -1308,398 +1390,6 @@
 <td><a href="classes/system_SdmSystemModelVersionMetadata/">System Model Version Metadata </a></td>
 <td>Metadata associated with a specific version of a system model, capturing provenance information.</td>
 <td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="grids">GRIDs</h2>
-<table>
-<thead>
-<tr>
-<th>BC</th>
-<th>Class</th>
-<th>GRID</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="subsets/collaboration/">collaboration</a></td>
-<td><a href="classes/col_CommentThread/">Comment Thread </a></td>
-<td><code>grid:workspace:{workspace-id}:collaboration:comment-thread/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/collaboration/">collaboration</a></td>
-<td><a href="classes/col_Task/">Task </a></td>
-<td><code>grid:workspace:{workspace-id}:collaboration:task/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/configuration/">configuration</a></td>
-<td><a href="classes/con_EnvironmentConfiguration/">Environment Configuration </a></td>
-<td><code>None</code></td>
-</tr>
-<tr>
-<td><a href="subsets/configuration/">configuration</a></td>
-<td><a href="classes/con_SchematicTemplate/">Schematic Template </a></td>
-<td><code>None</code></td>
-</tr>
-<tr>
-<td><a href="subsets/configuration/">configuration</a></td>
-<td><a href="classes/con_SchematicTemplateRevision/">Schematic Template Revision </a></td>
-<td><code>None</code></td>
-</tr>
-<tr>
-<td><a href="subsets/customization/">customization</a></td>
-<td><a href="classes/cus_Script/">Script </a></td>
-<td><code>grid:workspace:{workspace-id}:scripts:script/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/customization/">customization</a></td>
-<td><a href="classes/cus_ScriptExecution/">Script Execution </a></td>
-<td><code>grid:workspace:{workspace-id}:scripts:script-execution/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/customization/">customization</a></td>
-<td><a href="classes/cus_ScriptVersion/">Script Version </a></td>
-<td><code>grid:workspace:{workspace-id}:scripts:script-version/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/customization/">customization</a></td>
-<td><a href="classes/cus_Workflow/">Workflow </a></td>
-<td><code>grid:workspace:{workspace-id}:customization:workflow/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/design/">design</a></td>
-<td><a href="classes/des_ManufacturingPackage/">Manufacturing Package </a></td>
-<td><code>grid:workspace:{workspace-id}:design:manufacturing-package/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/design/">design</a></td>
-<td><a href="classes/des_Project/">Hardware Project </a></td>
-<td><code>grid:workspace:{workspace-id}:design:project/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/design/">design</a></td>
-<td><a href="classes/des_ProjectRelease/">Hardware Project Release </a></td>
-<td><code>grid:workspace:{workspace-id}:design:project-release/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/design/">design</a></td>
-<td><a href="classes/des_ProjectTemplate/">Project Template </a></td>
-<td><code>grid:workspace:{workspace-id}:design:project-template/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/design/">design</a></td>
-<td><a href="classes/des_ProjectTemplateRevision/">Project Template Revision </a></td>
-<td><code>grid:workspace:{workspace-id}:design:project-template-revision/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/design/">design</a></td>
-<td><a href="classes/des_RuleCheck/">Rule Check </a></td>
-<td><code>grid:workspace:{workspace-id}:design:rule-check/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/design/">design</a></td>
-<td><a href="classes/des_RuleCheckExecution/">Rule Check Execution </a></td>
-<td><code>grid:workspace:{workspace-id}:design:rule-check-execution/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/deviceModel/">deviceModel</a></td>
-<td><a href="classes/dm_FullStackDeviceModel/">FullStackDeviceModel </a></td>
-<td><code>grid:global::device-model:fullstack-dm/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/insights/">insights</a></td>
-<td><a href="classes/ins_PartInsight/">Part Insight </a></td>
-<td><code>grid:workspace:{workspace-id}:insights:insight/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/library/">library</a></td>
-<td><a href="classes/lib_Component/">Component </a></td>
-<td><code>grid:workspace:{workspace-id}:library:component/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/library/">library</a></td>
-<td><a href="classes/lib_ComponentRevision/">Component Revision </a></td>
-<td><code>grid:workspace:{workspace-id}:library:component-revision/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/library/">library</a></td>
-<td><a href="classes/lib_ComponentTemplate/">Component Template </a></td>
-<td><code>grid:workspace:{workspace-id}:library:component-template/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/library/">library</a></td>
-<td><a href="classes/lib_ComponentTemplateRevision/">Component Template Revision </a></td>
-<td><code>grid:workspace:{workspace-id}:library:component-template-revision/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/library/">library</a></td>
-<td><a href="classes/lib_Datasheet/">Datasheet </a></td>
-<td><code>grid:workspace:{workspace-id}:library:datasheet/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/library/">library</a></td>
-<td><a href="classes/lib_Footprint/">Footprint </a></td>
-<td><code>grid:workspace:{workspace-id}:library:footprint/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/library/">library</a></td>
-<td><a href="classes/lib_FootprintRevision/">Footprint Revision </a></td>
-<td><code>grid:workspace:{workspace-id}:library:footprint-revision/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/library/">library</a></td>
-<td><a href="classes/lib_ManagedSheet/">Managed Sheet </a></td>
-<td><code>grid:workspace:{workspace-id}:library:managed-sheet/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/library/">library</a></td>
-<td><a href="classes/lib_ManagedSheetRevision/">Managed Sheet Revision </a></td>
-<td><code>grid:workspace:{workspace-id}:library:managed-sheet-revision/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/library/">library</a></td>
-<td><a href="classes/lib_Part/">Part </a></td>
-<td><code>grid:workspace:{workspace-id}:library:part/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/library/">library</a></td>
-<td><a href="classes/lib_PartRequest/">Part Request </a></td>
-<td><code>grid:workspace:{workspace-id}:library:part-request/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/library/">library</a></td>
-<td><a href="classes/lib_ReuseBlock/">Reuse Block </a></td>
-<td><code>grid:workspace:{workspace-id}:library:reuse-block/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/library/">library</a></td>
-<td><a href="classes/lib_ReuseBlockRevision/">Reuse Block Revision </a></td>
-<td><code>grid:workspace:{workspace-id}:library:reuse-block-revision/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/library/">library</a></td>
-<td><a href="classes/lib_Symbol/">Symbol </a></td>
-<td><code>grid:workspace:{workspace-id}:library:symbol/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/library/">library</a></td>
-<td><a href="classes/lib_SymbolRevision/">Symbol Revision </a></td>
-<td><code>grid:workspace:{workspace-id}:library:symbol-revision/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/ota/">ota</a></td>
-<td><a href="classes/ota_Device/">Device </a></td>
-<td><code>grid:workspace:{workspace-id}:ota:device/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/ota/">ota</a></td>
-<td><a href="classes/ota_Fleet/">Fleet </a></td>
-<td><code>grid:workspace:{workspace-id}:ota:fleet/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/ota/">ota</a></td>
-<td><a href="classes/ota_Package/">Package </a></td>
-<td><code>grid:workspace:{workspace-id}:ota:package/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/platform/">platform</a></td>
-<td><a href="classes/plt_Application/">Application </a></td>
-<td><code>grid:global::platform:application/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/platform/">platform</a></td>
-<td><a href="classes/plt_EventSubscription/">Event Subscription </a></td>
-<td><code>grid:global::events:subscription/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/platform/">platform</a></td>
-<td><a href="classes/plt_LifecycleDefinition/">Lifecycle Definition </a></td>
-<td><code>grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/platform/">platform</a></td>
-<td><a href="classes/plt_NamingScheme/">Revision Naming Scheme </a></td>
-<td><code>grid:workspace:{workspace-id}:platform:revision-naming-scheme/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/platform/">platform</a></td>
-<td><a href="classes/plt_Organization/">Organization </a></td>
-<td><code>grid:global::platform:organization/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/platform/">platform</a></td>
-<td><a href="classes/plt_Solution/">Solution </a></td>
-<td><code>grid:workspace:{workspace-id}:platform:solution/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/platform/">platform</a></td>
-<td><a href="classes/plt_SolutionRelease/">Solution Release </a></td>
-<td><code>grid:workspace:{workspace-id}:platform:solution-release/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/platform/">platform</a></td>
-<td><a href="classes/plt_User/">User </a></td>
-<td><code>grid:global::platform:user/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/platform/">platform</a></td>
-<td><a href="classes/plt_UserGroup/">User Group </a></td>
-<td><code>grid:global::platform:group/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/platform/">platform</a></td>
-<td><a href="classes/plt_Workspace/">Workspace </a></td>
-<td><code>grid:global::platform:workspace/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/platform/">platform</a></td>
-<td><a href="classes/plt_WorkspaceGroup/">Workspace Group </a></td>
-<td><code>grid:workspace:{workspace-id}:team:group/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/platform/">platform</a></td>
-<td><a href="classes/plt_WorkspaceUser/">Workspace User </a></td>
-<td><code>grid:workspace:{workspace-id}:team:user/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/procurement/">procurement</a></td>
-<td><a href="classes/pro_BomRelease/">BOM Release </a></td>
-<td><code>grid:workspace:{workspace-id}:procurement:bom-release/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/procurement/">procurement</a></td>
-<td><a href="classes/pro_ConsolidatedBOM/">Consolidated BOM </a></td>
-<td><code>grid:workspace:{workspace-id}:procurement:bom/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/procurement/">procurement</a></td>
-<td><a href="classes/pro_GlobalBOM/">Global BOM </a></td>
-<td><code>grid:global::procurement:bom/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/procurement/">procurement</a></td>
-<td><a href="classes/pro_ManagedBOM/">Managed BOM </a></td>
-<td><code>grid:workspace:{workspace-id}:procurement:bom/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/requirements/">requirements</a></td>
-<td><a href="classes/req_Project/">Requirements Project </a></td>
-<td><code>grid:workspace:{workspace-id}:requirements:project/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/requirements/">requirements</a></td>
-<td><a href="classes/req_Requirement/">Requirement </a></td>
-<td><code>grid:workspace:{workspace-id}:requirements:requirement/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/requirements/">requirements</a></td>
-<td><a href="classes/req_RequirementBaseline/">Requirement Baseline </a></td>
-<td><code>grid:workspace:{workspace-id}:requirements:baseline/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/requirements/">requirements</a></td>
-<td><a href="classes/req_RequirementChangeRequest/">Requirement Change Request </a></td>
-<td><code>grid:workspace:{workspace-id}:requirements:change-request/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/requirements/">requirements</a></td>
-<td><a href="classes/req_RequirementRevision/">Requirement Revision </a></td>
-<td><code>grid:workspace:{workspace-id}:requirements:requirement-revision/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/requirements/">requirements</a></td>
-<td><a href="classes/req_RequirementSpecification/">Requirement Specification </a></td>
-<td><code>grid:workspace:{workspace-id}:requirements:specification/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/requirements/">requirements</a></td>
-<td><a href="classes/req_VerificationCase/">Verification Case </a></td>
-<td><code>grid:workspace:{workspace-id}:requirements:verification-case/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/software/">software</a></td>
-<td><a href="classes/sft_AIModel/">AI Model </a></td>
-<td><code>grid:workspace:{workspace-id}:software:ai-model/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/software/">software</a></td>
-<td><a href="classes/sft_DeviceConfiguration/">Device Configuration </a></td>
-<td><code>grid:workspace:{workspace-id}:software:device-configuration/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/software/">software</a></td>
-<td><a href="classes/sft_DeviceConfigurationRevision/">Device Configuration Revision </a></td>
-<td><code>grid:workspace:{workspace-id}:software:device-configuration-revision/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/software/">software</a></td>
-<td><a href="classes/sft_SoftwareProject/">Software Project </a></td>
-<td><code>grid:workspace:{workspace-id}:software:software-project/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/software/">software</a></td>
-<td><a href="classes/sft_SoftwareRelease/">Software Release </a></td>
-<td><code>grid:workspace:{workspace-id}:software:software-release/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/supply/">supply</a></td>
-<td><a href="classes/sup_Company/">Company </a></td>
-<td><code>grid:supply::platform:company/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/supply/">supply</a></td>
-<td><a href="classes/sup_EvalKit/">Evaluation Kit </a></td>
-<td><code>grid:supply::platform:eval-kit/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/supply/">supply</a></td>
-<td><a href="classes/sup_Offer/">Offer </a></td>
-<td><code>grid:supply::platform:part/{id}/offer/{offerID}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/supply/">supply</a></td>
-<td><a href="classes/sup_Part/">Part </a></td>
-<td><code>grid:supply::platform:part/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/supply/">supply</a></td>
-<td><a href="classes/sup_PartFamily/">Part Family </a></td>
-<td><code>grid:supply::platform:part-family/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/supply/">supply</a></td>
-<td><a href="classes/sup_PartGroup/">Part Group </a></td>
-<td><code>grid:supply::platform:part-group/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/supply/">supply</a></td>
-<td><a href="classes/sup_ReferenceDesign/">Reference Design </a></td>
-<td><code>grid:supply::platform:ref-design/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/supply/">supply</a></td>
-<td><a href="classes/sup_SoftwareProject/">Software Project </a></td>
-<td><code>grid:supply::platform:software-project/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/supply/">supply</a></td>
-<td><a href="classes/sup_SolutionTemplate/">Solution Template </a></td>
-<td><code>grid:supply::platform:solution-template/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/system/">system</a></td>
-<td><a href="classes/system_ESDDocument/">ESD Document </a></td>
-<td><code>grid:workspace:{workspace-id}:system-design:esd/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/system-sdm/">system-sdm</a></td>
-<td><a href="classes/system_SdmSystemModel/">System Model </a></td>
-<td><code>grid:workspace:{workspace-id}:system-design:sdm/{id}</code></td>
-</tr>
-<tr>
-<td><a href="subsets/system-sdm/">system-sdm</a></td>
-<td><a href="classes/system_SdmSystemModelVersion/">System Model Version </a></td>
-<td><code>grid:workspace:{workspace-id}:system-design:sdm-version/{id}</code></td>
 </tr>
 </tbody>
 </table>

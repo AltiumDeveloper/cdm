@@ -107,18 +107,38 @@
   
     
   
-  Index
+  Bounded Contexts
 
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../about/">
+<a class="md-tabs__link" href="../../grid-format/">
         
   
   
     
   
-  About
+  GRIDs
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../domain-model/">
+          
+  
+  
+  Concepts
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../glossary/">
+        
+  
+  
+    
+  
+  Glossary
 
       </a>
 </li>
@@ -130,6 +150,17 @@
     
   
   Tags
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../about/">
+        
+  
+  
+    
+  
+  About
 
       </a>
 </li>
@@ -164,15 +195,65 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../..">
 <span class="md-ellipsis">
-    Index
+    Bounded Contexts
     
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../about/">
+<a class="md-nav__link" href="../../grid-format/">
 <span class="md-ellipsis">
-    About
+    GRIDs
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Concepts
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Concepts
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../domain-model/">
+<span class="md-ellipsis">
+    Domain Model
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../entity-classification/">
+<span class="md-ellipsis">
+    Entity Classification
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../relation-types/">
+<span class="md-ellipsis">
+    Relation Types
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../glossary/">
+<span class="md-ellipsis">
+    Glossary
     
   </span>
 </a>
@@ -185,6 +266,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../about/">
+<span class="md-ellipsis">
+    About
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </div>
@@ -193,7 +282,47 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="bounded-context-software">Bounded Context: software</h1>
-<p><em>TBD</em></p>
+<p><em>Models the embedded software of a Renesas 365 solution: software projects with their releases and build artifacts, device configurations (with revisions) and their pin assignments, and AI models. In Renesas 365 the software project is the software part of a solution, edited in the built-in Web IDE or in e² studio; a device configuration there also covers the ports, package information and peripherals of a hardware component.</em></p>
+<h2 id="in-the-product">In the product</h2>
+<ul>
+<li>
+<p><a href="https://www.altium.com/documentation/altium-365/renesas-365">Renesas 365</a> <em>(primary)</em></p>
+</li>
+<li>
+<p><a href="https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration">Electronic System Design</a></p>
+</li>
+</ul>
+<h2 id="grid">GRID</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>GRID template</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../classes/sft_AIModel/">sft_AIModel</a></td>
+<td><code>grid:workspace:{workspace-id}:software:ai-model/{id}</code></td>
+</tr>
+<tr>
+<td><a href="../../classes/sft_DeviceConfiguration/">sft_DeviceConfiguration</a></td>
+<td><code>grid:workspace:{workspace-id}:software:device-configuration/{id}</code></td>
+</tr>
+<tr>
+<td><a href="../../classes/sft_DeviceConfigurationRevision/">sft_DeviceConfigurationRevision</a></td>
+<td><code>grid:workspace:{workspace-id}:software:device-configuration-revision/{id}</code></td>
+</tr>
+<tr>
+<td><a href="../../classes/sft_SoftwareProject/">sft_SoftwareProject</a></td>
+<td><code>grid:workspace:{workspace-id}:software:software-project/{id}</code></td>
+</tr>
+<tr>
+<td><a href="../../classes/sft_SoftwareRelease/">sft_SoftwareRelease</a></td>
+<td><code>grid:workspace:{workspace-id}:software:software-release/{id}</code></td>
+</tr>
+</tbody>
+</table>
 <p>URI: <a href="./">software</a></p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>

@@ -85,7 +85,7 @@
   },
   "con_EnvironmentConfiguration": {
    "class_uri": "con:EnvironmentConfiguration",
-   "grid": "None",
+   "grid": null,
    "hub": {
     "api": null,
     "api_missing": null,
@@ -112,7 +112,7 @@
   },
   "con_SchematicTemplate": {
    "class_uri": "con:SchematicTemplate",
-   "grid": "None",
+   "grid": null,
    "hub": {
     "api": null,
     "api_missing": null,
@@ -134,7 +134,7 @@
   },
   "con_SchematicTemplateRevision": {
    "class_uri": "con:SchematicTemplateRevision",
-   "grid": "None",
+   "grid": null,
    "hub": {
     "api": null,
     "api_missing": null,

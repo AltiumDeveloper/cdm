@@ -9,6 +9,26 @@
          <lastmod>2026-10-05</lastmod>
     </url>
     <url>
+         <loc>https://w3id.org/altium/cdm/domain-model/</loc>
+         <lastmod>2026-10-05</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/entity-classification/</loc>
+         <lastmod>2026-10-05</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/glossary/</loc>
+         <lastmod>2026-10-05</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/grid-format/</loc>
+         <lastmod>2026-10-05</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/relation-types/</loc>
+         <lastmod>2026-10-05</lastmod>
+    </url>
+    <url>
          <loc>https://w3id.org/altium/cdm/tags/</loc>
          <lastmod>2026-10-05</lastmod>
     </url>

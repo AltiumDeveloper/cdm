@@ -1,0 +1,1612 @@
+# Altium Common Data Model (CDM)
+
+> The Altium Common Data Model (CDM) describes the entities of the Altium platform — projects, components, BOMs, tasks, users and many more — as a LinkML schema. For each class it records what the entity is, how it relates to other entities, how it is identified by a GRID (Global Resource ID) and, where one exists, its type in the API.
+
+This file follows https://llmstxt.org/. Its links are absolute; the links in the files under `llms/` are relative to the file that contains them. `llms-ctx.txt` holds this file, the pages and the catalogues in one file, and `llms-full.txt` also the class and enumeration cards; their links are absolute.
+
+The model has 168 classes: 147 concrete domain classes, listed in the catalogues below, and 21 core, abstract and mixin classes, including LinkML's `Any`. 164 of them belong to one of the 16 bounded contexts (LinkML subsets); 4 classes belong to none and are listed in [llms/core.md](https://altiumdeveloper.github.io/cdm/llms/core.md).
+
+- Class names are `{prefix}_{ClassName}` (`lib_Component`). Each card gives the class IRI; it is usually `{prefix}:{ClassName}` (`lib:Component`) — `system_*` classes use `sys:`, and a few IRIs differ from the name (see [VIOLATIONS.md](https://github.com/AltiumDeveloper/cdm/blob/main/VIOLATIONS.md)).
+- Slot names usually follow `{prefix}_{ClassName}_{fieldName}`; the JSON key is always the slot's `alias` (the Field column of a card).
+- Every domain class other than a mixin specialises a base class of the `core` subset: Artifact or Activity (entities, identified by a GRID), Resource (a lightweight object, usually part of an entity, with no GRID) or Event (a record of something that happened, with no GRID).
+- `llms/<bounded context>.md` lists the classes of a bounded context with their kind, API type and GRID template. `llms/classes/<class>.md` is a class card: name, IRI, bounded context, kind, parent and mixins; the description; product documentation and product terms (In the product); the Platform API or Nexar type (In the API); mappings to standards (In standards); the GRID template; the attributes with range, cardinality and the core relation each specialises; and the slots of other classes that refer to it. `llms/enums/<enumeration>.md` lists the permissible values of an enumeration.
+- `hub.json` holds the product, API and standards data and the GRID template of every concrete domain class.
+- API types are checked against a snapshot of the Platform API schema retrieved on 2026-09-29.
+
+## Start here
+
+- [About](https://altiumdeveloper.github.io/cdm/llms/pages/about.md): what the CDM is: bounded contexts, kinds of entities, the API behind the model and the hub data
+- [GRIDs](https://altiumdeveloper.github.io/cdm/llms/pages/grid-format.md): the GRID format, the GRID template of every class that declares one, prefixes and IRIs
+- [Domain Model](https://altiumdeveloper.github.io/cdm/llms/pages/domain-model.md): how the schema is organised: base classes, relations, identity, names; the bounded contexts
+- [Entity Classification](https://altiumdeveloper.github.io/cdm/llms/pages/entity-classification.md): the base classes Entity, Artifact, Activity, Resource and Event, the mixins, and how a class is classified
+- [Relation Types](https://altiumdeveloper.github.io/cdm/llms/pages/relation-types.md): the core relations, their inverses and mappings, and how domain relations specialise them
+- [Glossary](https://altiumdeveloper.github.io/cdm/llms/pages/glossary.md): product terms and class names, with the class each one names
+
+## Bounded contexts
+
+- [core](https://altiumdeveloper.github.io/cdm/llms/core.md): Holds the abstract foundations shared by every bounded context: the base classes Entity (specialised as Artifact and Activity), Resource and Event; the mixins that add annotations such as GRID, maturity and API type; shared slots such as id and name; and the abstract relations (e.g. part of, input of, derived from) that domain relations specialise. (11 base classes and mixins)
+- [platform](https://altiumdeveloper.github.io/cdm/llms/platform.md): Models the platform-wide objects that other bounded contexts build on: organizations (Company Accounts) with their users and user groups, Workspaces with their members and groups, applications, event subscriptions, and Renesas 365 solutions with their releases. (14 classes; 2 base classes and mixins)
+- [configuration](https://altiumdeveloper.github.io/cdm/llms/configuration.md): Models environment configurations, which restrict the Altium Designer working environment of the Workspace members they target to approved configuration data, together with schematic templates and their revisions stored as Workspace Items. (3 classes)
+- [collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md): Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, and tasks that assign work to users or teams. (3 classes)
+- [customization](https://altiumdeveloper.github.io/cdm/llms/customization.md): Models ways to customize and automate a Workspace: process workflows, and scripts with their versions, their executions and the event raised when an execution completes. (5 classes)
+- [design](https://altiumdeveloper.github.io/cdm/llms/design.md): Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, and rule checks run against projects. (11 classes)
+- [deviceModel](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md): Models an embedded device (e.g. an MCU), which the CDM calls a digital twin: its processors; its address map with memories, registers, bit fields and their enumerated values; its peripherals with their instances, modes and configurations; and its pins and ports with the alternative functions of each port. (24 classes)
+- [insights](https://altiumdeveloper.github.io/cdm/llms/insights.md): Models insights that can be followed up by tasks. (1 class; 1 base class or mixin)
+- [library](https://altiumdeveloper.github.io/cdm/llms/library.md): Models the components stored in a Workspace and their revisions, the symbols, footprints, parameters, datasheets and part choices that make them up, and the component templates they can be created from. (22 classes)
+- [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md): Models over-the-air (OTA) firmware and software updates: devices with their status and installed packages, fleets that group devices, and packages with their version, size, checksums and target hardware. (3 classes)
+- [procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md): Models bills of materials: BOMs kept in a Workspace and worked on in the BOM Portal (managed and consolidated BOMs) with their releases, global BOMs, which are not tied to a Workspace, and BOM lines with their alternate and substitute parts and the issues found when a BOM is analysed. (8 classes; 3 base classes and mixins)
+- [supply](https://altiumdeveloper.github.io/cdm/llms/supply.md): Models the supply catalog: manufacturer parts with their aggregated sourcing data and distributor offers, the companies acting as their manufacturers or distributors, and the vendor-specific part family hierarchy, along with catalog content such as reference designs, evaluation kits, solution templates and software projects. (9 classes)
+- [software](https://altiumdeveloper.github.io/cdm/llms/software.md): Models the embedded software of a Renesas 365 solution: software projects with their releases and build artifacts, device configurations (with revisions) and their pin assignments, and AI models. (8 classes)
+- [system](https://altiumdeveloper.github.io/cdm/llms/system.md): Models the Electronic System Design (ESD) document of a Renesas 365 solution: a system-level block diagram of functional blocks with their key (hardware) and software components, ports and parameters, the connections between blocks, and entries for the hardware and software projects that implement the system. (11 classes)
+- [system-sdm](https://altiumdeveloper.github.io/cdm/llms/system-sdm.md): Models the System Data Model (SDM) of a Renesas 365 solution and its versions, each combining a functional model with device, hardware and software models, plus metadata recording who created a version and with which application, and client-specific metadata (e.g. for ESD, Altium Designer or e² studio). (17 classes)
+- [requirements](https://altiumdeveloper.github.io/cdm/llms/requirements.md): Models requirements and their revisions, the specifications that group them, baselines approved for execution, change requests, the requirements projects that scope this work, and verification cases that provide evidence against requirements; most of its classes are experimental. (8 classes)
+
+## Machine-readable data
+
+- [hub.json](https://altiumdeveloper.github.io/cdm/hub.json): product documentation links and terms, API type, standards mappings and GRID template of every concrete domain class
+- [hub.schema.json](https://altiumdeveloper.github.io/cdm/hub.schema.json): JSON Schema of hub.json
+- [llms-ctx.txt](https://altiumdeveloper.github.io/cdm/llms-ctx.txt): this file, the pages and the catalogues in one file
+- [llms-full.txt](https://altiumdeveloper.github.io/cdm/llms-full.txt): this file, the pages, the catalogues and all class and enumeration cards in one file
+
+## Optional
+
+- [Documentation site](https://altiumdeveloper.github.io/cdm/): the HTML pages, including a page for every class, slot and enumeration
+- [Platform API GraphQL documentation](https://altiumdeveloper.github.io/platform-api-docs/): the types, queries and mutations of the Platform API
+- [Altium 365 API](https://www.altium.com/documentation/altium-developer-center/altium-365/api): the GraphQL API to Altium 365 Workspace data, its endpoints and authentication
+- [Octopart API](https://www.altium.com/documentation/altium-developer-center/octopart/api): the GraphQL API for supply chain data (Nexar types)
+- [Schema repository](https://github.com/AltiumDeveloper/cdm): the LinkML source (`src/common_data_model/schema/`) and the generators of JSON Schema, OWL, SHACL, GraphQL, Python and other artifacts
+- [MODEL-FINDINGS.md](https://github.com/AltiumDeveloper/cdm/blob/main/MODEL-FINDINGS.md): open questions where the model and the product documentation or standards disagree
+
+---
+
+# File: llms/pages/about.md
+
+# Common Data Model
+
+The Altium Common Data Model (CDM) describes the entities of the Altium platform — projects, components, BOMs,
+tasks, users and many more — as a [LinkML](https://linkml.io/) schema. For each class it records what the entity
+is, how it relates to other entities, how it is identified by a GRID (Global Resource ID) and, where one
+exists, its type in the API. The Altium Developer Center page
+[GRID](https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/grid) names the CDM
+as the authoritative reference for the GRIDs of platform entities.
+
+## Bounded contexts
+
+The classes are grouped into bounded contexts (LinkML subsets), such as design, library, procurement and
+collaboration. Each context has its own page with its product documentation and GRID templates, where it has
+any, and its classes. The [Bounded Contexts](https://altiumdeveloper.github.io/cdm/llms.txt) page lists every context with its classes and
+their API types.
+
+## Entities
+
+- **Entity** — an identifiable, versioned object with a GRID. Every entity is one of two kinds:
+    - **Artifact** — a persistent data object that is created, stored, versioned and consumed, such as a
+      component revision or a BOM release;
+    - **Activity** — a process or work object that uses inputs and produces outputs, such as a project or a task.
+- **Resource** — a lightweight object that is not an entity and has no GRID, usually part of an entity, such
+  as a BOM line.
+- **Event** — a record of something that happened, with no GRID.
+
+See [Entity Classification](https://altiumdeveloper.github.io/cdm/llms/pages/entity-classification.md).
+
+## The API behind the model
+
+- [Platform API GraphQL documentation](https://altiumdeveloper.github.io/platform-api-docs/) — the reference
+  of the Platform API's types, queries and mutations. Class pages link their Platform API type here.
+- [Altium 365 API](https://www.altium.com/documentation/altium-developer-center/altium-365/api) on the Altium
+  Developer Center — the GraphQL API to Altium 365 Workspace data: how it is organised, its endpoints,
+  authentication and tools for exploring the schema.
+- [Octopart API](https://www.altium.com/documentation/altium-developer-center/octopart/api) on the Altium
+  Developer Center — the GraphQL API for supply chain data, with its endpoint on `api.nexar.com`. Supply
+  classes such as [Part](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Part.md) name their Nexar type.
+
+## How class pages link out
+
+Each class page has a hub panel: **In the product** (links to the product documentation and the product terms
+for the concept), **In the API** (the Platform API or Nexar type) and, where the class has mappings,
+**In standards** (mappings to external standards and ontologies). The hub data of the domain classes is also
+published for tools as [`hub.json`](https://altiumdeveloper.github.io/cdm/hub.json), described by the JSON Schema [`hub.schema.json`](https://altiumdeveloper.github.io/cdm/hub.schema.json).
+
+The artifacts generated from the schema (JSON Schema, OWL, SHACL, GraphQL, Python and others) are not published
+on this site; they are built from the [repository](https://github.com/AltiumDeveloper/cdm) with
+`make gen-project`.
+
+## For tools
+
+AI assistants and other tools can start from [`llms.txt`](https://altiumdeveloper.github.io/cdm/llms.txt) ([llmstxt.org](https://llmstxt.org/)): it
+links a plain-markdown version of the concept pages and the glossary, a catalogue of each bounded context and a
+card for every class and enumeration. [`llms-ctx.txt`](https://altiumdeveloper.github.io/cdm/llms-ctx.txt) holds llms.txt, the pages and the
+catalogues in one file, [`llms-full.txt`](https://altiumdeveloper.github.io/cdm/llms-full.txt) also every card, and [`hub.json`](https://altiumdeveloper.github.io/cdm/hub.json) the hub data
+of the domain classes.
+
+## Where to go next
+
+- [Bounded Contexts](https://altiumdeveloper.github.io/cdm/llms.txt) — every context and its classes.
+- Concepts — [Domain Model](https://altiumdeveloper.github.io/cdm/llms/pages/domain-model.md), [Entity Classification](https://altiumdeveloper.github.io/cdm/llms/pages/entity-classification.md) and
+  [Relation Types](https://altiumdeveloper.github.io/cdm/llms/pages/relation-types.md).
+- [GRIDs](https://altiumdeveloper.github.io/cdm/llms/pages/grid-format.md) — the GRID format and the GRID templates declared by the classes.
+- [Glossary](https://altiumdeveloper.github.io/cdm/llms/pages/glossary.md) — product terms and class names.
+
+---
+
+# File: llms/pages/grid-format.md
+
+# GRIDs
+
+A **GRID** (Global Resource ID) is the platform-wide identifier of an entity on the Altium platform, such as a
+project, a component, a BOM or a task. The format is defined by the platform and documented on the
+Altium Developer Center page [GRID](https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/grid);
+that page is the authority for the format. This page explains how the CDM uses GRIDs and lists the GRID template
+the schema declares for each class, grouped by bounded context.
+
+## Format
+
+```text
+grid:area:[tenant-id]:context:resource-type/resource-id
+```
+
+In short (see the [official page](https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/grid)
+for the full definition):
+
+- The **context path** `area:[tenant-id]:context` uses `:` as separator; the **resource path**
+  `resource-type/resource-id` uses `/` and is defined by the bounded context. Sub-resources extend the resource
+  path (`resource-type/id/sub-type/sub-id`).
+- `area` is one of `global`, `workspace`, `supply`, `community`, `manufacture`.
+- `tenant-id` identifies the owning tenant (the Workspace GUID for Workspace resources). It is left empty for
+  resources that no tenant owns, which gives a double colon (`::`).
+- `context` names the bounded context, `resource-type` the kind of entity, and `resource-id` is the entity's
+  **local identifier** — a GUID in some contexts, a number in others; it is not always a UUID.
+- GRIDs are **case-sensitive**.
+
+### Design principles
+
+- **Brand- and product-agnostic** — area names follow OAuth scope areas and contain no product names, so GRIDs
+  stay valid when products are renamed.
+- **Readable** — the resource type is a human-readable name from the domain vocabulary, so a GRID shows what kind
+  of entity it identifies and which context owns it.
+
+### Why GRIDs exist
+
+Most platform entities have a local ID — a GUID or a number — that is unique only where it was issued: two
+projects in different Workspaces may share a GUID, and the ID of a supply part is meaningful only to the supply
+system. A local ID alone therefore cannot identify an entity when services, events or integrations exchange references.
+Some Platform API entities still expose opaque, base64-encoded node IDs from the underlying GraphQL framework;
+these are being replaced by GRIDs step by step.
+
+A GRID therefore provides:
+
+1. **Uniqueness** — one stable identifier that is unique across the whole platform.
+2. **Context in the identifier** — the GRID carries the area, tenant, bounded context and resource type next to
+   the local ID, so the platform can locate the entity from the GRID alone. The Platform API gateway uses this
+   to route a `node(id: …)` query to the right subgraph.
+
+## Catalogue
+
+The GRID template of every class that declares one, per bounded context. Templates are informational
+and are declared per class in the `grid` annotation.
+
+### collaboration
+
+Bounded context page: [collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md).
+
+| Class | GRID template |
+| --- | --- |
+| [Comment Thread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md) | `grid:workspace:{workspace-id}:collaboration:comment-thread/{id}` |
+| [Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md) | `grid:workspace:{workspace-id}:collaboration:task/{id}` |
+
+### customization
+
+Bounded context page: [customization](https://altiumdeveloper.github.io/cdm/llms/customization.md).
+
+| Class | GRID template |
+| --- | --- |
+| [Script](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Script.md) | `grid:workspace:{workspace-id}:scripts:script/{id}` |
+| [Script Execution](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecution.md) | `grid:workspace:{workspace-id}:scripts:script-execution/{id}` |
+| [Script Version](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptVersion.md) | `grid:workspace:{workspace-id}:scripts:script-version/{id}` |
+| [Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md) | `grid:workspace:{workspace-id}:customization:workflow/{id}` |
+
+### design
+
+Bounded context page: [design](https://altiumdeveloper.github.io/cdm/llms/design.md).
+
+| Class | GRID template |
+| --- | --- |
+| [Manufacturing Package](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md) | `grid:workspace:{workspace-id}:design:manufacturing-package/{id}` |
+| [Hardware Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) | `grid:workspace:{workspace-id}:design:project/{id}` |
+| [Hardware Project Release](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md) | `grid:workspace:{workspace-id}:design:project-release/{id}` |
+| [Project Template](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplate.md) | `grid:workspace:{workspace-id}:design:project-template/{id}` |
+| [Project Template Revision](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplateRevision.md) | `grid:workspace:{workspace-id}:design:project-template-revision/{id}` |
+| [Rule Check](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheck.md) | `grid:workspace:{workspace-id}:design:rule-check/{id}` |
+| [Rule Check Execution](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheckExecution.md) | `grid:workspace:{workspace-id}:design:rule-check-execution/{id}` |
+
+### deviceModel
+
+Bounded context page: [deviceModel](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md).
+
+| Class | GRID template |
+| --- | --- |
+| [FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md) | `grid:global::device-model:fullstack-dm/{id}` |
+
+### insights
+
+Bounded context page: [insights](https://altiumdeveloper.github.io/cdm/llms/insights.md).
+
+| Class | GRID template |
+| --- | --- |
+| [Part Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) | `grid:workspace:{workspace-id}:insights:insight/{id}` |
+
+### library
+
+Bounded context page: [library](https://altiumdeveloper.github.io/cdm/llms/library.md).
+
+| Class | GRID template |
+| --- | --- |
+| [Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md) | `grid:workspace:{workspace-id}:library:component/{id}` |
+| [Component Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) | `grid:workspace:{workspace-id}:library:component-revision/{id}` |
+| [Component Template](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplate.md) | `grid:workspace:{workspace-id}:library:component-template/{id}` |
+| [Component Template Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplateRevision.md) | `grid:workspace:{workspace-id}:library:component-template-revision/{id}` |
+| [Datasheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Datasheet.md) | `grid:workspace:{workspace-id}:library:datasheet/{id}` |
+| [Footprint](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Footprint.md) | `grid:workspace:{workspace-id}:library:footprint/{id}` |
+| [Footprint Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_FootprintRevision.md) | `grid:workspace:{workspace-id}:library:footprint-revision/{id}` |
+| [Managed Sheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheet.md) | `grid:workspace:{workspace-id}:library:managed-sheet/{id}` |
+| [Managed Sheet Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheetRevision.md) | `grid:workspace:{workspace-id}:library:managed-sheet-revision/{id}` |
+| [Part](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Part.md) | `grid:workspace:{workspace-id}:library:part/{id}` |
+| [Part Request](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartRequest.md) | `grid:workspace:{workspace-id}:library:part-request/{id}` |
+| [Reuse Block](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlock.md) | `grid:workspace:{workspace-id}:library:reuse-block/{id}` |
+| [Reuse Block Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlockRevision.md) | `grid:workspace:{workspace-id}:library:reuse-block-revision/{id}` |
+| [Symbol](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Symbol.md) | `grid:workspace:{workspace-id}:library:symbol/{id}` |
+| [Symbol Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SymbolRevision.md) | `grid:workspace:{workspace-id}:library:symbol-revision/{id}` |
+
+### ota
+
+Bounded context page: [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md).
+
+| Class | GRID template |
+| --- | --- |
+| [Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) | `grid:workspace:{workspace-id}:ota:device/{id}` |
+| [Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md) | `grid:workspace:{workspace-id}:ota:fleet/{id}` |
+| [Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) | `grid:workspace:{workspace-id}:ota:package/{id}` |
+
+### platform
+
+Bounded context page: [platform](https://altiumdeveloper.github.io/cdm/llms/platform.md).
+
+| Class | GRID template |
+| --- | --- |
+| [Application](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Application.md) | `grid:global::platform:application/{id}` |
+| [Event Subscription](https://altiumdeveloper.github.io/cdm/llms/classes/plt_EventSubscription.md) | `grid:global::events:subscription/{id}` |
+| [Lifecycle Definition](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleDefinition.md) | `grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}` |
+| [Revision Naming Scheme](https://altiumdeveloper.github.io/cdm/llms/classes/plt_NamingScheme.md) | `grid:workspace:{workspace-id}:platform:revision-naming-scheme/{id}` |
+| [Organization](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Organization.md) | `grid:global::platform:organization/{id}` |
+| [Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md) | `grid:workspace:{workspace-id}:platform:solution/{id}` |
+| [Solution Release](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionRelease.md) | `grid:workspace:{workspace-id}:platform:solution-release/{id}` |
+| [User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_User.md) | `grid:global::platform:user/{id}` |
+| [User Group](https://altiumdeveloper.github.io/cdm/llms/classes/plt_UserGroup.md) | `grid:global::platform:group/{id}` |
+| [Workspace](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Workspace.md) | `grid:global::platform:workspace/{id}` |
+| [Workspace Group](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceGroup.md) | `grid:workspace:{workspace-id}:team:group/{id}` |
+| [Workspace User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceUser.md) | `grid:workspace:{workspace-id}:team:user/{id}` |
+
+### procurement
+
+Bounded context page: [procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md).
+
+| Class | GRID template |
+| --- | --- |
+| [BOM Release](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomRelease.md) | `grid:workspace:{workspace-id}:procurement:bom-release/{id}` |
+| [Consolidated BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ConsolidatedBOM.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
+| [Global BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_GlobalBOM.md) | `grid:global::procurement:bom/{id}` |
+| [Managed BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ManagedBOM.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
+
+### requirements
+
+Bounded context page: [requirements](https://altiumdeveloper.github.io/cdm/llms/requirements.md).
+
+| Class | GRID template |
+| --- | --- |
+| [Requirements Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md) | `grid:workspace:{workspace-id}:requirements:project/{id}` |
+| [Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md) | `grid:workspace:{workspace-id}:requirements:requirement/{id}` |
+| [Requirement Baseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md) | `grid:workspace:{workspace-id}:requirements:baseline/{id}` |
+| [Requirement Change Request](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md) | `grid:workspace:{workspace-id}:requirements:change-request/{id}` |
+| [Requirement Revision](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementRevision.md) | `grid:workspace:{workspace-id}:requirements:requirement-revision/{id}` |
+| [Requirement Specification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md) | `grid:workspace:{workspace-id}:requirements:specification/{id}` |
+| [Verification Case](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md) | `grid:workspace:{workspace-id}:requirements:verification-case/{id}` |
+
+### software
+
+Bounded context page: [software](https://altiumdeveloper.github.io/cdm/llms/software.md).
+
+| Class | GRID template |
+| --- | --- |
+| [AI Model](https://altiumdeveloper.github.io/cdm/llms/classes/sft_AIModel.md) | `grid:workspace:{workspace-id}:software:ai-model/{id}` |
+| [Device Configuration](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfiguration.md) | `grid:workspace:{workspace-id}:software:device-configuration/{id}` |
+| [Device Configuration Revision](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfigurationRevision.md) | `grid:workspace:{workspace-id}:software:device-configuration-revision/{id}` |
+| [Software Project](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md) | `grid:workspace:{workspace-id}:software:software-project/{id}` |
+| [Software Release](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareRelease.md) | `grid:workspace:{workspace-id}:software:software-release/{id}` |
+
+### supply
+
+Bounded context page: [supply](https://altiumdeveloper.github.io/cdm/llms/supply.md).
+
+| Class | GRID template |
+| --- | --- |
+| [Company](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Company.md) | `grid:supply::platform:company/{id}` |
+| [Evaluation Kit](https://altiumdeveloper.github.io/cdm/llms/classes/sup_EvalKit.md) | `grid:supply::platform:eval-kit/{id}` |
+| [Offer](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Offer.md) | `grid:supply::platform:part/{id}/offer/{offerID}` |
+| [Part](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Part.md) | `grid:supply::platform:part/{id}` |
+| [Part Family](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartFamily.md) | `grid:supply::platform:part-family/{id}` |
+| [Part Group](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartGroup.md) | `grid:supply::platform:part-group/{id}` |
+| [Reference Design](https://altiumdeveloper.github.io/cdm/llms/classes/sup_ReferenceDesign.md) | `grid:supply::platform:ref-design/{id}` |
+| [Software Project](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SoftwareProject.md) | `grid:supply::platform:software-project/{id}` |
+| [Solution Template](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SolutionTemplate.md) | `grid:supply::platform:solution-template/{id}` |
+
+### system
+
+Bounded context page: [system](https://altiumdeveloper.github.io/cdm/llms/system.md).
+
+| Class | GRID template |
+| --- | --- |
+| [ESD Document](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md) | `grid:workspace:{workspace-id}:system-design:esd/{id}` |
+
+### system-sdm
+
+Bounded context page: [system-sdm](https://altiumdeveloper.github.io/cdm/llms/system-sdm.md).
+
+| Class | GRID template |
+| --- | --- |
+| [System Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md) | `grid:workspace:{workspace-id}:system-design:sdm/{id}` |
+| [System Model Version](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md) | `grid:workspace:{workspace-id}:system-design:sdm-version/{id}` |
+
+## The GRID context is not the CDM subset
+
+The `context` segment is the platform's bounded-context name, which often but not always equals the CDM subset.
+For example, the system classes use `system-design`, the full-stack device model uses `device-model`, supply
+records use context `platform` in area `supply`, scripts use `scripts`, Workspace users and groups use `team`,
+and event subscriptions use `events`. The catalogue above is grouped by bounded context; the GRID context of a
+class is the `context` segment of its template.
+
+## GRIDs in the schema
+
+- `GRID` is a scalar type in `core.yaml` with base `str`. LinkML does not validate the content of a GRID string;
+  the platform defines and enforces the format.
+- Every class under `core_Entity` inherits the identifier slot `core_id` (alias `id`), whose range is `GRID`.
+  Resources (`core_Resource`) have no GRID; some of them (27 of 63 concrete Resources) have `core_localId`,
+  an identifier that is unique only within its context. See [Entity Classification](https://altiumdeveloper.github.io/cdm/llms/pages/entity-classification.md).
+- A class documents the GRID of its instances with a `grid` annotation — a **template** with placeholders:
+  `{workspace-id}` for the tenant, `{id}` for the local ID, and a named placeholder for a sub-resource ID
+  (`{offerID}` in `sup_Offer`). The annotation is informational: it is shown in the documentation and consumed
+  by tooling, and it does not affect LinkML validation. `cdm-lint` checks that it has the shape of a GRID
+  (rule LINT-07).
+
+```yaml
+system_ESDDocument:
+  is_a: core_Activity
+  in_subset: system
+  class_uri: sys:ESDDocument
+  annotations:
+    grid: grid:workspace:{workspace-id}:system-design:esd/{id}
+    platformAPI: SysEsdDocument
+```
+
+Not every entity class has a template yet; the catalogue lists those that do.
+
+## GRIDs and schema IRIs
+
+A GRID identifies an **instance** on the platform. Classes, slots and enums of the schema are identified by
+**IRIs**, declared with `class_uri`, `slot_uri` and `enum_uri`:
+
+| Element | Pattern | Example |
+| --- | --- | --- |
+| Class | `prefix:ClassName` | `sys:ESDDocument` |
+| Class-specific slot | `prefix:ClassName_fieldName` | `sys:ESDDocument_functionalBlocks` |
+| Enum | `prefix:EnumName` | `sys:PortType` |
+
+Each prefix expands to a namespace declared by the schema files:
+
+Every prefix declared by the schema files, with the bounded context that owns the namespace where it has the form `https://w3id.org/altium/cdm/<subset>/`.
+
+| Prefix | Namespace | Bounded context |
+| --- | --- | --- |
+| `cdm` | `https://w3id.org/altium/cdm/` |  |
+| `col` | `https://w3id.org/altium/cdm/collaboration/` | [collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md) |
+| `con` | `https://w3id.org/altium/cdm/configuration/` | [configuration](https://altiumdeveloper.github.io/cdm/llms/configuration.md) |
+| `core` | `https://w3id.org/altium/cdm/core/` | [core](https://altiumdeveloper.github.io/cdm/llms/core.md) |
+| `cus` | `https://w3id.org/altium/cdm/customization/` | [customization](https://altiumdeveloper.github.io/cdm/llms/customization.md) |
+| `des` | `https://w3id.org/altium/cdm/design/` | [design](https://altiumdeveloper.github.io/cdm/llms/design.md) |
+| `dm` | `https://w3id.org/altium/cdm/deviceModel/` | [deviceModel](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md) |
+| `ins` | `https://w3id.org/altium/cdm/insights/` | [insights](https://altiumdeveloper.github.io/cdm/llms/insights.md) |
+| `lib` | `https://w3id.org/altium/cdm/library/` | [library](https://altiumdeveloper.github.io/cdm/llms/library.md) |
+| `linkml` | `https://w3id.org/linkml/` |  |
+| `obo` | `http://purl.obolibrary.org/obo/` |  |
+| `ota` | `https://w3id.org/altium/cdm/ota/` | [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md) |
+| `plt` | `https://w3id.org/altium/cdm/platform/` | [platform](https://altiumdeveloper.github.io/cdm/llms/platform.md) |
+| `pro` | `https://w3id.org/altium/cdm/procurement/` | [procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md) |
+| `prov` | `http://www.w3.org/ns/prov#` |  |
+| `req` | `https://w3id.org/altium/cdm/requirement/` | requirement |
+| `schema` | `http://schema.org/` |  |
+| `sft` | `https://w3id.org/altium/cdm/software/` | [software](https://altiumdeveloper.github.io/cdm/llms/software.md) |
+| `shex` | `http://www.w3.org/ns/shex#` |  |
+| `sup` | `https://w3id.org/altium/cdm/supply/` | [supply](https://altiumdeveloper.github.io/cdm/llms/supply.md) |
+| `sys` | `https://w3id.org/altium/cdm/system/` | [system](https://altiumdeveloper.github.io/cdm/llms/system.md) |
+| `xsd` | `http://www.w3.org/2001/XMLSchema#` |  |
+
+A new subset prefix needs formal approval of the subset it belongs to (see `AGENTS.md` §6 in the repository). External vocabulary prefixes allow-listed for mappings (`prov:`, `obo:`) are exempt.
+
+### Resolving IRIs through w3id.org
+
+IRIs under `https://w3id.org/altium/cdm/` are redirected by the [w3id.org](https://w3id.org/) persistent
+identifier service to this documentation site; the redirects are currently temporary (HTTP 302). Not every
+class IRI resolves yet (MF-076): IRIs in the `system` namespace, such as
+`https://w3id.org/altium/cdm/system/ESDDocument`, redirect to `classes/sys_<Class>/`, which does not exist (the
+pages are `classes/system_<Class>/`), and IRIs in the `requirement` namespace (for example
+`https://w3id.org/altium/cdm/requirement/Requirement`) get a 404 from w3id.org, which redirects only the
+`requirements/` path. Rules for changing the redirects:
+
+- Keep redirects temporary (`R=302`) until the target URL is confirmed correct and stable.
+- Never deploy a permanent redirect (`R=301`) to an unverified target: browsers and ontology tools cache
+  permanent redirects, and there is no easy way to roll them back.
+- Switch to `R=301` only after the target has been confirmed, tested and merged in the w3id.org repository.
+
+---
+
+# File: llms/pages/domain-model.md
+
+# Domain Model
+
+The Altium Common Data Model (CDM) describes the data of the Altium platform as a
+[LinkML](https://linkml.io/) schema. Its classes are grouped into **bounded contexts** (LinkML subsets), and each
+schema file holds one context (`system.yaml` holds two); the root schema `common_data_model.yaml` imports them all. This
+documentation and the generated artifacts (JSON Schema, OWL, SHACL, GraphQL, Python and others) are produced
+from the root schema, and `cdm-lint` checks it against the naming and documentation conventions.
+
+## Building blocks
+
+- **Base classes.** Every domain class other than a mixin specialises an abstract base class from the `core` subset:
+  `core_Artifact` or `core_Activity` (both entities with a GRID), `core_Resource` (a lightweight part of an
+  entity) or `core_Event`. Mixins add annotations and slots. See [Entity Classification](https://altiumdeveloper.github.io/cdm/llms/pages/entity-classification.md).
+- **Relations.** Relations between domain classes should specialise abstract relations defined in `core`, such
+  as *has part*, *has input* or *derived from*; 28 entity-valued slots do not yet. See
+  [Relation Types](https://altiumdeveloper.github.io/cdm/llms/pages/relation-types.md).
+- **Identity.** Entities are identified on the platform by a GRID (Global Resource ID); each class can declare
+  the GRID template of its instances. See [GRIDs](https://altiumdeveloper.github.io/cdm/llms/pages/grid-format.md).
+- **Names.** Class names carry a short context prefix and a PascalCase name (`lib_Component`, `des_Project`,
+  `system_ESDDocument`); each class also has an IRI in its context's namespace (`lib:Component`). Class-specific
+  slots add a camelCase field name (`req_Project_specifications`). The prefixes are listed on the
+  [GRIDs](https://altiumdeveloper.github.io/cdm/llms/pages/grid-format.md#grids-and-schema-iris) page.
+
+## Bounded contexts
+
+Each page below describes the context, links its product documentation where it has any, and lists its classes.
+
+- [core](https://altiumdeveloper.github.io/cdm/llms/core.md) — `core.yaml`
+- [platform](https://altiumdeveloper.github.io/cdm/llms/platform.md) — `platform.yaml`
+- [configuration](https://altiumdeveloper.github.io/cdm/llms/configuration.md) — `configuration.yaml`
+- [collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md) — `collaboration.yaml`
+- [customization](https://altiumdeveloper.github.io/cdm/llms/customization.md) — `customization.yaml`
+- [design](https://altiumdeveloper.github.io/cdm/llms/design.md) — `design.yaml`
+- [deviceModel](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md) — `device_model.yaml`
+- [insights](https://altiumdeveloper.github.io/cdm/llms/insights.md) — `insights.yaml`
+- [library](https://altiumdeveloper.github.io/cdm/llms/library.md) — `library.yaml`
+- [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md) — `ota.yaml`
+- [procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md) — `procurement.yaml`
+- [supply](https://altiumdeveloper.github.io/cdm/llms/supply.md) — `supply.yaml`
+- [software](https://altiumdeveloper.github.io/cdm/llms/software.md) — `software.yaml`
+- [system](https://altiumdeveloper.github.io/cdm/llms/system.md) and [system-sdm](https://altiumdeveloper.github.io/cdm/llms/system-sdm.md) — both in `system.yaml`
+- [requirements](https://altiumdeveloper.github.io/cdm/llms/requirements.md) — `requirement.yaml`
+
+## Finding your way
+
+- [Glossary](https://altiumdeveloper.github.io/cdm/llms/pages/glossary.md) — product terms and class names, including terms that mean different things in
+  different contexts.
+- [MODEL-FINDINGS.md](https://github.com/AltiumDeveloper/cdm/blob/main/MODEL-FINDINGS.md) — open questions where
+  the model and the product documentation or standards disagree.
+
+---
+
+# File: llms/pages/entity-classification.md
+
+# Entity Classification
+
+Every domain class of the CDM specialises one of a few abstract base classes defined in the `core` subset. The
+choice decides whether instances have a platform-wide identity (a [GRID](https://altiumdeveloper.github.io/cdm/llms/pages/grid-format.md)), which core
+[relations](https://altiumdeveloper.github.io/cdm/llms/pages/relation-types.md) the class can take part in — their domains and ranges are stated in terms of
+these base classes — and how the class relates to external ontologies. The base set is deliberately minimal;
+bounded contexts refine it with their own classes and mixins.
+
+## Base classes
+
+Base classes and mixins of the core schema. Core mixins are attached with `instantiates`; domain mixins use `mixins:`. Neither uses `is_a`.
+
+```text
+Any
+core_Entity  [instantiates: core_WithGRID, core_WithMaturity, core_WithPlatformAPI]
+  core_Activity
+  core_Artifact
+core_Event
+core_Meta
+  core_WithGRID
+  core_WithMaturity
+  core_WithPlatformAPI
+  core_WithVault
+  core_WithVaultLink
+core_Resource  [instantiates: core_WithPlatformAPI]
+```
+
+### Entity
+
+[`core_Entity`](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) is the abstract root of identifiable, versioned, platform-accessible
+domain objects. It is never used directly: every entity is either an Artifact or an Activity. It has the
+identifier slot `core_id`, whose range is `GRID`, and it instantiates three core mixins, which allow these
+class-level annotations:
+
+- `grid` — the GRID template of the class (`core_WithGRID`);
+- `maturity` — `EXPERIMENTAL`, `PRODUCTION` or `OBSOLETE` (`core_WithMaturity`); `cdm-lint` treats a class
+  without the annotation as `PRODUCTION`;
+- `platformAPI` / `nexarAPI` — the Altium 365 Platform API or Nexar GraphQL type of the class
+  (`core_WithPlatformAPI`).
+
+### Artifact
+
+[`core_Artifact`](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md): a persistent data object that is created, stored, versioned and
+consumed. Artifacts are the things other work refers to or uses. Typical Artifacts in the schema:
+
+- library items and their revisions — [lib_Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md),
+  [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md), [lib_Footprint](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Footprint.md);
+- templates — [des_ProjectTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplate.md),
+  [con_SchematicTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/con_SchematicTemplate.md);
+- snapshots and releases — [system_SdmSystemModelVersion](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md),
+  [pro_BomRelease](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomRelease.md), [sft_SoftwareRelease](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareRelease.md),
+  [req_RequirementBaseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md);
+- produced outputs — [des_ManufacturingPackage](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md),
+  [sft_BuildArtifact](https://altiumdeveloper.github.io/cdm/llms/classes/sft_BuildArtifact.md);
+- platform and catalogue records — [plt_Workspace](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Workspace.md), [plt_User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_User.md),
+  [sup_Part](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Part.md), [sup_Offer](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Offer.md).
+
+### Activity
+
+[`core_Activity`](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md): a process or work object — something that happens, uses inputs and
+produces outputs. Typical Activities in the schema:
+
+- projects and documents that organise ongoing work — [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md),
+  [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md), [sft_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md),
+  [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md), [plt_Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md),
+  [system_SdmSystemModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md);
+- the editable working state of a BOM — [pro_ManagedBOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ManagedBOM.md) and
+  [pro_ConsolidatedBOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ConsolidatedBOM.md) (both through `pro_BomWIP`);
+- work items and requests — [col_Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md), [col_CommentThread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md),
+  [lib_PartRequest](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartRequest.md),
+  [req_RequirementChangeRequest](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md);
+- process runs — [des_RuleCheckExecution](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheckExecution.md).
+
+### Resource
+
+[`core_Resource`](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md) is **not** an Entity. A Resource is a lightweight object that
+typically exists as part of an Entity: it has no GRID and no versioning lifecycle of its own, but it can have a
+Platform API type (`core_Resource` instantiates `core_WithPlatformAPI`). Examples: BOM lines
+([pro_BomItem](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md)), parameters and variants
+([des_ProjectParameter](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectParameter.md), [des_ProjectVariant](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectVariant.md)),
+lifecycle stages and states ([plt_LifecycleState](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleState.md)), comments
+([col_Comment](https://altiumdeveloper.github.io/cdm/llms/classes/col_Comment.md)), the contents of a device model
+([dm_Peripheral](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Peripheral.md), [dm_PortConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfiguration.md)), and the
+models inside a system model version ([system_SdmFunctionalModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalModel.md)).
+
+About half of the Resources have no identifier slot. 27 of the 63 concrete Resources have `core_localId`, an identifier that
+is unique only within its context — for example `dm_Peripheral`, `dm_PortConfiguration` and
+`system_SdmFunctionalModel`; five device-model Resources use a natural key instead, such as the name of a pin
+(`dm_Pin`) or a start address (`dm_Register`).
+
+### Event
+
+[`core_Event`](https://altiumdeveloper.github.io/cdm/llms/classes/core_Event.md) is the abstract base for domain events: things that happened, with no GRID
+and no versioning lifecycle. The schema currently has one event class,
+[cus_ScriptExecutionCompleted](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecutionCompleted.md).
+
+### Mixins
+
+Mixins extend `core_Meta` and are never used as a parent with `is_a`.
+
+- The **core mixins** are attached with `instantiates`: `core_WithGRID`, `core_WithMaturity` and
+  `core_WithPlatformAPI` on `core_Entity`, `core_WithPlatformAPI` on `core_Resource`. `core_WithVaultLink` is
+  attached to one slot (`lib_ComponentRevision_template`); `core_WithVault` is defined but not attached anywhere
+  yet.
+- **Domain mixins** add slots and are attached with `mixins`, for example `plt_HasLifecycle` (a lifecycle state,
+  on revision and release classes), `plt_SolutionItem` (membership in a solution, on `des_Project`,
+  `sft_SoftwareProject`, `system_ESDDocument` and `sft_AIModel`) and `pro_Bom` (on the BOM classes).
+
+## How to classify a class
+
+The current classification follows these criteria, in this order:
+
+| Question | If yes | Examples |
+| --- | --- | --- |
+| Is it a lightweight object held within another object, with no GRID of its own? | `core_Resource` | `pro_BomItem`, `dm_PortConfiguration` |
+| Is it a record that something happened rather than a persistent object? | `core_Event` | `cus_ScriptExecutionCompleted` |
+| Is it a project or document that organises ongoing work, or the editable working state of something? | `core_Activity` | `des_Project`, `system_ESDDocument`, `pro_ManagedBOM` |
+| Is it a unit of work, a request or the run of a process? | `core_Activity` | `col_Task`, `lib_PartRequest`, `des_RuleCheckExecution` |
+| Is it a stored item, revision, snapshot, release or produced output that other work uses? | `core_Artifact` | `lib_ComponentRevision`, `system_SdmSystemModelVersion`, `pro_BomRelease` |
+| Is it a platform or catalogue record (user, Workspace, supply part)? | `core_Artifact` | `plt_User`, `plt_Workspace`, `sup_Part` |
+
+A recurring pattern is a working Activity paired with Artifact snapshots of it:
+
+- `system_SdmSystemModel` → `system_SdmSystemModelVersion`, linked by the slots `system_SdmSystemModel_versions`
+  and `system_SdmSystemModel_latestVersion` (which specialise no core relation); the version is described as the
+  state of the system model at a point in time.
+- `pro_BomWIP` (and so `pro_ManagedBOM`, `pro_ConsolidatedBOM`) → `pro_BomRelease`, `plt_Solution` →
+  `plt_SolutionRelease` and `sft_SoftwareProject` → `sft_SoftwareRelease`, linked by `core_releases`. The BOM
+  release and the solution release are described as snapshots of the BOM and the solution; the software release
+  has no description yet, so for it the pairing rests only on the name and the `core_releases` slot.
+
+It is a pattern, not a rule that splits design work from released data. Exceptions and open questions, tracked
+in [MODEL-FINDINGS.md](https://github.com/AltiumDeveloper/cdm/blob/main/MODEL-FINDINGS.md):
+
+- [des_ProjectRelease](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md) is described as an immutable snapshot yet is an Activity
+  (MF-007, MF-070); the other release classes are Artifacts.
+- The run of a script ([cus_ScriptExecution](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecution.md)) is an Artifact, while the run of a
+  rule check is an Activity (MF-073).
+- [cus_Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md) is an Activity, but its Platform API type is a workflow definition
+  (MF-026).
+- [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) is an Activity without a description, so none of the criteria
+  explains the choice, and its relations do not fit the domains and ranges of the core relations (MF-075).
+- The description of `core_Activity` in `core.yaml` names releases as examples, although every release class
+  except `des_ProjectRelease` is an Artifact; the description of `core_Artifact` names system models, although
+  `system_SdmSystemModel` is an Activity (MF-077).
+
+## Ontological basis
+
+The Artifact/Activity split is aligned with the entity/activity distinction of the W3C provenance ontology
+[PROV-O](https://www.w3.org/TR/prov-o/) and the continuant/occurrent distinction of the Basic Formal Ontology
+([BFO](https://bfo-ontology.github.io/)). The mappings are declared in `core.yaml` and exported to OWL as
+`skos:closeMatch` and `skos:relatedMatch`:
+
+- `core_Artifact` — close match [prov:Entity](https://www.w3.org/TR/prov-o/#Entity); related match
+  [BFO_0000031](http://purl.obolibrary.org/obo/BFO_0000031) (generically dependent continuant).
+- `core_Activity` — close match [prov:Activity](https://www.w3.org/TR/prov-o/#Activity); related match
+  [BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (process).
+
+None of them is an exact match:
+
+- The CDM classes are narrower than the PROV-O classes: they are records on the platform. `prov:Entity` is also
+  broader in another way — in PROV terms a persisted project, which the CDM models as an Activity, is an entity
+  too.
+- Artifacts are documents, models and data — information that can be copied from one carrier to another. That is
+  closer to BFO's *generically dependent continuant* than to BFO *object* (a material entity), but the CDM does
+  not commit to BFO categories, so the mapping is only a related match.
+- BFO *process* is an occurrent that unfolds in time, and the BFO/RO parthood relations do not let an
+  occurrent have continuants as parts.
+  CDM Activities are persistent, versioned records with Artifact parts (for example `req_Project_specifications`
+  links a requirements project to its specifications), so this is a related match as well.
+
+`core_Entity`, `core_Resource` and `core_Event` have no mappings. The mappings of the core relations are listed
+on [Relation Types](https://altiumdeveloper.github.io/cdm/llms/pages/relation-types.md).
+
+---
+
+# File: llms/pages/relation-types.md
+
+# Relation Types
+
+The `core` subset defines a small set of **abstract relation slots** — derivation, composition, input, output,
+information flow and scope. Domain classes do not use the abstract slots directly. A relation between domain
+classes should be a slot that specialises one of them with `is_a`, narrowing the domain and range to concrete
+classes, so that relations mean the same thing in every bounded context. The schema does not yet follow this
+everywhere: 28 domain slots whose range is an entity class specialise no core relation (for example
+`req_Project_changeRequests`, `ota_Device_fleets`, `cus_ScriptVersion_executions`, `lib_PartChoice_part`).
+
+## Core relations
+
+The table is generated from `core.yaml` and is the reference for names, domains, ranges, inverses,
+transitivity and mappings. It lists the abstract slots and the specialisations that `core.yaml` itself provides:
+`core_implements` / `core_implementedBy` (under `core_informedBy` / `core_informs`), `core_revisionOf` /
+`core_revisions` (under `core_derivedFrom` / `core_derivesInto`) and `core_releaseOf` / `core_releases` (under
+`core_outputOf` / `core_hasOutput`). Unlike the abstract slots, these specialisations are attached to domain
+classes directly, with `slot_usage` narrowing the range (for example `core_releases` on `pro_BomWIP` with range
+`pro_BomRelease`, and `core_revisions` on the library item classes).
+
+Abstract relation slots defined in the core schema and their specialisations there. Domain relations specialise one of these through `is_a`; an inverse is shown when either side declares it.
+
+| Slot | Alias | Domain → Range | Inverse | Transitive | Is a | Mappings |
+| --- | --- | --- | --- | --- | --- | --- |
+| [core_derivedFrom](https://altiumdeveloper.github.io/cdm/slots/core_derivedFrom/) | derivedFrom | [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) → [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) | [core_derivesInto](https://altiumdeveloper.github.io/cdm/slots/core_derivesInto/) |  |  | close: [prov:wasDerivedFrom](http://www.w3.org/ns/prov#wasDerivedFrom); related: [obo:RO_0001000](http://purl.obolibrary.org/obo/RO_0001000) |
+| [core_derivesInto](https://altiumdeveloper.github.io/cdm/slots/core_derivesInto/) | derivesInto | [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) → [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) | [core_derivedFrom](https://altiumdeveloper.github.io/cdm/slots/core_derivedFrom/) |  |  | related: [obo:RO_0001001](http://purl.obolibrary.org/obo/RO_0001001) |
+| [core_hasInput](https://altiumdeveloper.github.io/cdm/slots/core_hasInput/) | hasInput | [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) → [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) | [core_inputOf](https://altiumdeveloper.github.io/cdm/slots/core_inputOf/) |  |  | close: [prov:used](http://www.w3.org/ns/prov#used); related: [obo:RO_0002233](http://purl.obolibrary.org/obo/RO_0002233) |
+| [core_hasOutput](https://altiumdeveloper.github.io/cdm/slots/core_hasOutput/) | hasOutput | [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) → [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) | [core_outputOf](https://altiumdeveloper.github.io/cdm/slots/core_outputOf/) |  |  | close: [prov:generated](http://www.w3.org/ns/prov#generated); close: [obo:RO_0002234](http://purl.obolibrary.org/obo/RO_0002234) |
+| [core_hasPart](https://altiumdeveloper.github.io/cdm/slots/core_hasPart/) | hasPart | [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) → [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) | [core_partOf](https://altiumdeveloper.github.io/cdm/slots/core_partOf/) | yes |  | related: [obo:BFO_0000051](http://purl.obolibrary.org/obo/BFO_0000051) |
+| [core_implementedBy](https://altiumdeveloper.github.io/cdm/slots/core_implementedBy/) | implementedBy | [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) → [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) | [core_implements](https://altiumdeveloper.github.io/cdm/slots/core_implements/) |  | [core_informs](https://altiumdeveloper.github.io/cdm/slots/core_informs/) |  |
+| [core_implements](https://altiumdeveloper.github.io/cdm/slots/core_implements/) | implements | [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) → [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) | [core_implementedBy](https://altiumdeveloper.github.io/cdm/slots/core_implementedBy/) |  | [core_informedBy](https://altiumdeveloper.github.io/cdm/slots/core_informedBy/) |  |
+| [core_informedBy](https://altiumdeveloper.github.io/cdm/slots/core_informedBy/) | informedBy | [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) → [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) | [core_informs](https://altiumdeveloper.github.io/cdm/slots/core_informs/) |  |  | close: [prov:wasInformedBy](http://www.w3.org/ns/prov#wasInformedBy) |
+| [core_informs](https://altiumdeveloper.github.io/cdm/slots/core_informs/) | informs | [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) → [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) | [core_informedBy](https://altiumdeveloper.github.io/cdm/slots/core_informedBy/) |  |  |  |
+| [core_inputOf](https://altiumdeveloper.github.io/cdm/slots/core_inputOf/) | inputOf | [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) → [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) | [core_hasInput](https://altiumdeveloper.github.io/cdm/slots/core_hasInput/) |  |  | related: [obo:RO_0002352](http://purl.obolibrary.org/obo/RO_0002352) |
+| [core_occursIn](https://altiumdeveloper.github.io/cdm/slots/core_occursIn/) | occursIn | [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) → [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) |  |  |  | related: [obo:BFO_0000066](http://purl.obolibrary.org/obo/BFO_0000066) |
+| [core_outputOf](https://altiumdeveloper.github.io/cdm/slots/core_outputOf/) | outputOf | [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) → [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) | [core_hasOutput](https://altiumdeveloper.github.io/cdm/slots/core_hasOutput/) |  |  | close: [prov:wasGeneratedBy](http://www.w3.org/ns/prov#wasGeneratedBy); close: [obo:RO_0002353](http://purl.obolibrary.org/obo/RO_0002353) |
+| [core_partOf](https://altiumdeveloper.github.io/cdm/slots/core_partOf/) | partOf | [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) → [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) | [core_hasPart](https://altiumdeveloper.github.io/cdm/slots/core_hasPart/) | yes |  | related: [obo:BFO_0000050](http://purl.obolibrary.org/obo/BFO_0000050) |
+| [core_releaseOf](https://altiumdeveloper.github.io/cdm/slots/core_releaseOf/) | releaseOf | [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) *(inherited)* → [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) *(inherited)* | [core_releases](https://altiumdeveloper.github.io/cdm/slots/core_releases/) |  | [core_outputOf](https://altiumdeveloper.github.io/cdm/slots/core_outputOf/) |  |
+| [core_releases](https://altiumdeveloper.github.io/cdm/slots/core_releases/) | releases | [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) *(inherited)* → [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) *(inherited)* | [core_releaseOf](https://altiumdeveloper.github.io/cdm/slots/core_releaseOf/) |  | [core_hasOutput](https://altiumdeveloper.github.io/cdm/slots/core_hasOutput/) |  |
+| [core_revisionOf](https://altiumdeveloper.github.io/cdm/slots/core_revisionOf/) | revisionOf | [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) *(inherited)* → [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) *(inherited)* | [core_revisions](https://altiumdeveloper.github.io/cdm/slots/core_revisions/) |  | [core_derivedFrom](https://altiumdeveloper.github.io/cdm/slots/core_derivedFrom/) |  |
+| [core_revisions](https://altiumdeveloper.github.io/cdm/slots/core_revisions/) | revisions | [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) *(inherited)* → [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) *(inherited)* | [core_revisionOf](https://altiumdeveloper.github.io/cdm/slots/core_revisionOf/) |  | [core_derivesInto](https://altiumdeveloper.github.io/cdm/slots/core_derivesInto/) |  |
+
+Notes:
+
+- Domains and ranges are stated in terms of the [base classes](https://altiumdeveloper.github.io/cdm/llms/pages/entity-classification.md): derivation links
+  Artifacts, input and output link an Activity and an Artifact, information flow links Activities, and
+  composition links any Entities.
+- Inverse pairs are declared once, on one side; the table shows the inverse on both. `core_occursIn` has no
+  inverse.
+- Only `core_partOf` and `core_hasPart` are transitive (`transitive: true`; `owl:TransitiveProperty` in the OWL
+  export).
+
+## Choosing the parent relation
+
+1. **One Artifact is produced from, or superseded by, another** → `core_derivedFrom` / `core_derivesInto`;
+   for versions of the same thing, `core_revisionOf` / `core_revisions`.
+2. **Whole and part** → `core_hasPart` (whole to part) or `core_partOf` (part to whole).
+3. **An Activity consumes an Artifact** → `core_hasInput` (from the Activity) or `core_inputOf` (from the
+   Artifact).
+4. **An Activity produces an Artifact** → `core_hasOutput` or `core_outputOf`; for releases,
+   `core_releases` / `core_releaseOf`.
+5. **One Activity uses knowledge from another** → `core_informedBy` / `core_informs`; when one implements a
+   requirement or specification, `core_implements` / `core_implementedBy`.
+6. **An Activity takes place within the context of an Artifact** → `core_occursIn`.
+
+The domain and range of the domain slot should stay within those of its parent — for example, a specialisation
+of `core_hasInput` goes from an Activity to an Artifact. Current exceptions, recorded in
+[MODEL-FINDINGS.md](https://github.com/AltiumDeveloper/cdm/blob/main/MODEL-FINDINGS.md):
+
+- `des_ManufacturingPackage_projectRelease` specialises `core_derivedFrom` (Artifact to Artifact) but its range
+  `des_ProjectRelease` is an Activity, and `des_Project` narrows `core_releases` (range Artifact) to the same
+  class (MF-070).
+- `ins_PartInsight_part` specialises `core_informs` (Activity to Activity) but its range `lib_Part` is an
+  Artifact; `ins_PartInsight_informedBy` and `ins_PartInsight_occursIn` have range `Any`, and the alternatives of
+  `ins_PartInsight_occursIn` include `des_ProjectRelease`, an Activity (MF-075).
+
+## Declaring a domain relation
+
+A relation that belongs to one class is defined under that class's `attributes:` with the three-part name
+`{prefix}_{ClassName}_{fieldName}`, its own `slot_uri`, `alias`, `title`, `description`, `range`,
+`multivalued` and `required` (see `AGENTS.md` §4 in the repository). An example from the requirements schema:
+
+```yaml
+# excerpt from requirement.yaml
+req_Project:
+  is_a: core_Activity
+  attributes:
+    req_Project_specifications:
+      is_a: core_hasPart
+      slot_uri: req:Project_specifications
+      alias: specifications
+      title: specifications
+      description: Specifications authored or curated within this requirements project.
+      range: req_RequirementSpecification
+      multivalued: true
+      required: true
+```
+
+Here a requirements project (an Activity) has its specifications (Artifacts) as parts. Another example is
+`sft_SoftwareProject_aiModels`, which specialises `core_hasInput`: a software project uses AI models as inputs.
+
+Never attach an abstract core slot to a class:
+
+```yaml
+# Invalid: abstract core slot used directly
+req_Project:
+  slots:
+    - core_hasPart
+```
+
+A domain slot may declare its inverse with `inverse:`; no domain relation in the current schema does, so the
+inverse direction of a domain relation is not modelled. Do not add `transitive: true` to specialisations of
+non-transitive relations.
+
+In the OWL export, only the two core composition properties are declared transitive (and in OWL a sub-property
+of a transitive property is not transitive itself). `gen-owl` also keeps the `is_a` of a relation as
+`rdfs:subPropertyOf` only for slots defined in the top-level `slots:` section — today 11 triples: the six core
+specialisations plus `lib_uses_components`, `lib_uses_parts`, `lib_consists_of_components`,
+`lib_consists_of_parts` and `sup_eval_kits`. Relations defined under `attributes:`, such as
+`req_Project_specifications`, lose their parent relation in OWL (MF-074).
+
+## Ontological basis
+
+The relations are aligned with the W3C provenance ontology [PROV-O](https://www.w3.org/TR/prov-o/) and with the
+OBO [Relation Ontology](https://obofoundry.org/ontology/ro.html) (RO), which also defines the relations
+*part of*, *has part* and *occurs in* (their identifiers use the `BFO_` prefix). The **Mappings** column above
+lists them; they are declared in `core.yaml` and exported to OWL as `skos:closeMatch` and `skos:relatedMatch`. None is exact, because the CDM domains and
+ranges are narrower than the upper-ontology terms:
+
+- **PROV-O** terms are close matches: `prov:wasDerivedFrom`, `prov:used`, `prov:generated`,
+  `prov:wasGeneratedBy` and `prov:wasInformedBy` relate PROV entities and activities in the same directions as the
+  CDM relations. PROV-O itself defines only two inverse properties, `prov:generated` and `prov:invalidated`;
+  its Appendix B merely recommends names for the other inverses (such as `prov:wasUsedBy`, `prov:hadDerivation`
+  and `prov:informed`), which are declared in the separate `prov-o-inverses` module. They are not mapped, so
+  `core_derivesInto`, `core_inputOf` and `core_informs` have no PROV-O mapping.
+- **RO has output / output of** are close matches: they only require the output to take part in the process and
+  to be present at its end in a new state, which fits an Artifact produced by an Activity.
+- **RO derives from / derives into** are related matches: RO defines them for material entities, where the new
+  entity takes over the matter of the old one and the old one ceases to exist; CDM sources persist.
+- **RO has input / input of** are related matches: RO requires a material input whose state changes during the
+  process; CDM inputs are information that usually stays unchanged.
+- **BFO part of / has part** are related matches: RO parthood requires compatible categories (an occurrent cannot
+  have continuants as parts), while CDM composition also links Activities and Artifacts, as in
+  `req_Project_specifications` above.
+- **BFO occurs in** is a related match: its range is a material or immaterial entity that spatially contains the
+  process, while the range of `core_occursIn` is an Artifact that gives the Activity its context.
+
+---
+
+# File: llms/pages/glossary.md
+
+# Glossary
+
+Product terms and class names of the model. A term used by several classes is listed with each meaning.
+
+## A
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| AddressBlock | [AddressBlock](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressBlock.md) (`dm_AddressBlock`) | deviceModel | title |  |
+| AddressMap | [AddressMap](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressMap.md) (`dm_AddressMap`) | deviceModel | title |  |
+| AddressSegment | [AddressSegment](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressSegment.md) (`dm_AddressSegment`) | deviceModel | title |  |
+| AI Model | [AI Model](https://altiumdeveloper.github.io/cdm/llms/classes/sft_AIModel.md) (`sft_AIModel`) | software | title |  |
+| Alternate | [BOM Item Alternate](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemAlternate.md) (`pro_BomItemAlternate`) | procurement | exact | [Configuration and Options](https://www.altium.com/documentation/altium-365/bom-portal/configuration-options#add_alternate) |
+| Altium 365 Workspace | [Workspace](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Workspace.md) (`plt_Workspace`) | platform | exact | [Altium 365 Workspace](https://www.altium.com/documentation/altium-365/workspace) |
+| Altium Account | [User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_User.md) (`plt_User`) | platform | related | [Managing Users](https://www.altium.com/documentation/altium-dashboard/managing-users) |
+| Application | [Application](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Application.md) (`plt_Application`) | platform | title |  |
+| Authoring Application | [Authoring Application](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmAuthoringApplication.md) (`system_SdmAuthoringApplication`) | system-sdm | title |  |
+
+## B
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| BOM Issue | [BOM Issue](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomIssue.md) (`pro_BomIssue`) | procurement | title | [BOM Error Detection and Correction](https://www.altium.com/documentation/altium-365/bom-portal/error-detection-correction) |
+| BOM Item | [BOM Item](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md) (`pro_BomItem`) | procurement | title | [Configuration and Options](https://www.altium.com/documentation/altium-365/bom-portal/configuration-options#bom-structure-features) |
+| BOM Item Alternate | [BOM Item Alternate](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemAlternate.md) (`pro_BomItemAlternate`) | procurement | title | [Configuration and Options](https://www.altium.com/documentation/altium-365/bom-portal/configuration-options#add_alternate) |
+| BOM Item Substitute | [BOM Item Substitute](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemSubstitute.md) (`pro_BomItemSubstitute`) | procurement | title |  |
+| BOM line | [BOM Item](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md) (`pro_BomItem`) | procurement | exact | [Configuration and Options](https://www.altium.com/documentation/altium-365/bom-portal/configuration-options#bom-structure-features) |
+| BOM Release | [BOM Release](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomRelease.md) (`pro_BomRelease`) | procurement | title | [BOM Portal](https://www.altium.com/documentation/altium-365/bom-portal#release_naming) |
+| Build Artifact | [Build Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/sft_BuildArtifact.md) (`sft_BuildArtifact`) | software | title |  |
+| Build Package | [Manufacturing Package](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md) (`des_ManufacturingPackage`) | design | related | [Viewing Manufacturing Packages](https://www.altium.com/documentation/altium-365/viewers/manufacturing-package-viewer) |
+
+## C
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| Comment | [Comment](https://altiumdeveloper.github.io/cdm/llms/classes/col_Comment.md) (`col_Comment`) | collaboration | title | [Web Viewer](https://www.altium.com/documentation/altium-365/viewers/web-viewer#comment_placement) |
+| Comment Thread | [Comment Thread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md) (`col_CommentThread`) | collaboration | title | [Web Viewer](https://www.altium.com/documentation/altium-365/viewers/web-viewer#commenting) |
+| Company | [Company](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Company.md) (`sup_Company`) | supply | title |  |
+| Company Account | [Organization](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Organization.md) (`plt_Organization`) | platform | exact | [Company Dashboard](https://www.altium.com/documentation/altium-dashboard) |
+| Component | [Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md) (`lib_Component`) | library | title | [Building & Maintaining Your Components and Libraries](https://www.altium.com/documentation/altium-designer/components-libraries#WSL) |
+| Component Parameter | [Component Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentParameter.md) (`lib_ComponentParameter`) | library | title | [Component Templates](https://www.altium.com/documentation/altium-designer/components-libraries/workspace-component-templates#UACPDT) |
+| Component Revision | [Component Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) (`lib_ComponentRevision`) | library | title | [Building & Maintaining Your Components and Libraries](https://www.altium.com/documentation/altium-designer/components-libraries#WSL) |
+| Component Template | [Component Template](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplate.md) (`lib_ComponentTemplate`) | library | title | [Component Templates](https://www.altium.com/documentation/altium-designer/components-libraries/workspace-component-templates) |
+| Component Template Revision | [Component Template Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplateRevision.md) (`lib_ComponentTemplateRevision`) | library | title | [Component Templates](https://www.altium.com/documentation/altium-designer/components-libraries/workspace-component-templates) |
+| ConfiguredDeviceModel | [ConfiguredDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_ConfiguredDeviceModel.md) (`dm_ConfiguredDeviceModel`) | deviceModel | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration) |
+| Consolidated BOM | [Consolidated BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ConsolidatedBOM.md) (`pro_ConsolidatedBOM`) | procurement | title | [Consolidated BOM](https://www.altium.com/documentation/altium-365/bom-portal/consolidated-bom) |
+
+**Connection — 2 meanings**
+
+- [Connection](https://altiumdeveloper.github.io/cdm/llms/classes/system_Connection.md) (`system_Connection`) — system. A connection line in an ESD document representing an interconnection between functional blocks (e.g. signals passed between the interfaces of two devices), drawn directly between blocks or between their ports.
+- [Connection](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmConnection.md) (`system_SdmConnection`) — system-sdm. Represents a connection between functional blocks.
+
+## D
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| Datasheet | [Datasheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Datasheet.md) (`lib_Datasheet`) | library | title | [Adding Datasheets to a Component](https://www.altium.com/documentation/altium-designer/components-libraries/adding-datasheets-component) |
+| design project | [Hardware Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) (`des_Project`) | design | related | [Workspace Projects](https://www.altium.com/documentation/altium-365/workspace-projects) |
+| design project release | [Hardware Project Release](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md) (`des_ProjectRelease`) | design | related | [Design Project Release](https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release) |
+| design variant | [Hardware Project Variant](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectVariant.md) (`des_ProjectVariant`) | design | exact | [Design Variants](https://www.altium.com/documentation/altium-designer/design-variants) |
+| Device | [Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) (`ota_Device`) | ota | title |  |
+| Device Configuration | [Device Configuration](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfiguration.md) (`sft_DeviceConfiguration`) | software | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration) |
+| Device Configuration Revision | [Device Configuration Revision](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfigurationRevision.md) (`sft_DeviceConfigurationRevision`) | software | title |  |
+| Device Model | [Device Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmDeviceModel.md) (`system_SdmDeviceModel`) | system-sdm | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration) |
+| Domain Metadata | [Domain Metadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmClientMetadata.md) (`system_SdmClientMetadata`) | system-sdm | title |  |
+
+## E
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| Environment Configuration | [Environment Configuration](https://altiumdeveloper.github.io/cdm/llms/classes/con_EnvironmentConfiguration.md) (`con_EnvironmentConfiguration`) | configuration | title | [Environment Configuration Management](https://www.altium.com/documentation/altium-365/environment-configuration-management) |
+| ESD Document | [ESD Document](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md) (`system_ESDDocument`) | system | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd) |
+| Eval Kit | [Evaluation Kit](https://altiumdeveloper.github.io/cdm/llms/classes/sup_EvalKit.md) (`sup_EvalKit`) | supply | exact | [Renesas 365](https://www.altium.com/documentation/altium-365/renesas-365#linking_an_evaluation_kit) |
+| Evaluation Kit | [Evaluation Kit](https://altiumdeveloper.github.io/cdm/llms/classes/sup_EvalKit.md) (`sup_EvalKit`) | supply | title | [Renesas 365](https://www.altium.com/documentation/altium-365/renesas-365#linking_an_evaluation_kit) |
+| Event Subscription | [Event Subscription](https://altiumdeveloper.github.io/cdm/llms/classes/plt_EventSubscription.md) (`plt_EventSubscription`) | platform | title |  |
+
+**Endpoint — 2 meanings**
+
+- [Endpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_Endpoint.md) (`system_Endpoint`) — system. One end of a connection in an ESD document, identified by the functional block and the port where the connection line starts or ends.
+- [Endpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmEndpoint.md) (`system_SdmEndpoint`) — system-sdm. Represents an endpoint of a connection.
+
+## F
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| FieldEnum | [FieldEnum](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FieldEnum.md) (`dm_FieldEnum`) | deviceModel | title |  |
+| Fleet | [Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md) (`ota_Fleet`) | ota | title |  |
+| Footprint | [Footprint](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Footprint.md) (`lib_Footprint`) | library | title | [Creating a PCB Footprint](https://www.altium.com/documentation/altium-designer/components-libraries/creating-pcb-footprint) |
+| Footprint Revision | [Footprint Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_FootprintRevision.md) (`lib_FootprintRevision`) | library | title | [Creating a PCB Footprint](https://www.altium.com/documentation/altium-designer/components-libraries/creating-pcb-footprint) |
+| FullStackDeviceModel | [FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md) (`dm_FullStackDeviceModel`) | deviceModel | title |  |
+| Functional Model | [Functional Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalModel.md) (`system_SdmFunctionalModel`) | system-sdm | title |  |
+
+**Functional Block — 2 meanings**
+
+- [Functional Block](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md) (`system_FunctionalBlock`) — system. Represents a logical block within an ESD document (e.g., MCU subsystem, LED driver block) that stands for a function, operation or device of the system, including parameters, key components, software components, ports, and associations.
+- [Functional Block](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalBlock.md) (`system_SdmFunctionalBlock`) — system-sdm. Represents a logical block within a system functional model.
+
+## G
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| Global BOM | [Global BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_GlobalBOM.md) (`pro_GlobalBOM`) | procurement | title |  |
+
+## H
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| Hardware Model | [Hardware Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareModel.md) (`system_SdmHardwareModel`) | system-sdm | title |  |
+| Hardware Project Release | [Hardware Project Release](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md) (`des_ProjectRelease`) | design | title | [Design Project Release](https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release) |
+| Hardware Project Variant | [Hardware Project Variant](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectVariant.md) (`des_ProjectVariant`) | design | title | [Design Variants](https://www.altium.com/documentation/altium-designer/design-variants) |
+| Harness Project | [Harness Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_HarnessProject.md) (`des_HarnessProject`) | design | title | [Harness Design](https://www.altium.com/documentation/altium-designer/harness-design) |
+
+**Hardware Component — 2 meanings**
+
+- [Key Component](https://altiumdeveloper.github.io/cdm/llms/classes/system_KeyComponent.md) (`system_KeyComponent`) — system. A key component of a functional block in an ESD document, shown in the editor as a hardware component (e.g. a Renesas RA MCU chosen with the RA Explorer).
+- [Hardware Component](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareComponent.md) (`system_SdmHardwareComponent`) — system-sdm. Represents a hardware component / part.
+
+**Hardware Project — 2 meanings**
+
+- [Hardware Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) (`des_Project`) — design. A design project stored in a Workspace, normally under its built-in version control, such as a PCB project.
+- [Hardware Project](https://altiumdeveloper.github.io/cdm/llms/classes/system_HardwareProject.md) (`system_HardwareProject`) — system. An entry of an ESD document for a PCB design project (des_Project) that implements part of the system, listing the functional blocks that project covers.
+
+## K
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| Key Component | [Key Component](https://altiumdeveloper.github.io/cdm/llms/classes/system_KeyComponent.md) (`system_KeyComponent`) | system | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#hardware_component) |
+
+## L
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| library component | [Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md) (`lib_Component`) | library | exact | [Building & Maintaining Your Components and Libraries](https://www.altium.com/documentation/altium-designer/components-libraries#WSL) |
+| Lifecycle Definition | [Lifecycle Definition](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleDefinition.md) (`plt_LifecycleDefinition`) | platform | title | [Defining Lifecycle Definitions for a Workspace](https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions) |
+| Lifecycle Stage | [Lifecycle Stage](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleStage.md) (`plt_LifecycleStage`) | platform | title | [Defining Lifecycle Definitions for a Workspace](https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions) |
+| Lifecycle State | [Lifecycle State](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleState.md) (`plt_LifecycleState`) | platform | title | [Defining Lifecycle Definitions for a Workspace](https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions#options_and_controls_of_the_state_properties_dialog) |
+
+## M
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| Managed BOM | [Managed BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ManagedBOM.md) (`pro_ManagedBOM`) | procurement | title | [BOM Portal](https://www.altium.com/documentation/altium-365/bom-portal) |
+| managed component | [Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md) (`lib_Component`) | library | exact | [Building & Maintaining Your Components and Libraries](https://www.altium.com/documentation/altium-designer/components-libraries#WSL) |
+| managed schematic sheet | [Managed Sheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheet.md) (`lib_ManagedSheet`) | library | exact | [Working with Managed Schematic Sheets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/workspace-managed-schematic-sheets#just_what_is_a_managed_schematic_sheet) |
+| Managed Sheet | [Managed Sheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheet.md) (`lib_ManagedSheet`) | library | title | [Working with Managed Schematic Sheets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/workspace-managed-schematic-sheets#just_what_is_a_managed_schematic_sheet) |
+| Managed Sheet Revision | [Managed Sheet Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheetRevision.md) (`lib_ManagedSheetRevision`) | library | title | [Working with Managed Schematic Sheets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/workspace-managed-schematic-sheets#just_what_is_a_managed_schematic_sheet) |
+| Manufacturing Package | [Manufacturing Package](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md) (`des_ManufacturingPackage`) | design | title | [Viewing Manufacturing Packages](https://www.altium.com/documentation/altium-365/viewers/manufacturing-package-viewer) |
+| Memory | [Memory](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Memory.md) (`dm_Memory`) | deviceModel | title |  |
+| Multiboard Project | [Multiboard Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_MultiboardProject.md) (`des_MultiboardProject`) | design | title | [Designing with Multiple PCBs](https://www.altium.com/documentation/altium-designer/multi-board-design#structure_multi_board_design_project) |
+
+**Manufacturer Part — 2 meanings**
+
+- [Part](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Part.md) (`lib_Part`) — library. A manufacturer part, identified by manufacturer and part number, as held in the Workspace's Part Catalog together with the supplier parts through which it is sold.
+- [Part](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Part.md) (`sup_Part`) — supply. Supply Part represents a market-available instance of a manufactured Part, providing aggregated sourcing data such as pricing, stock levels, and supplier offers.
+
+## O
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| Offer | [Offer](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Offer.md) (`sup_Offer`) | supply | title | [Sourced Manufacturer and Supplier Data](https://www.altium.com/documentation/altium-365/bom-portal/sourced-manufacturer-supplier-data#order_list) |
+| Organization | [Organization](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Organization.md) (`plt_Organization`) | platform | title | [Company Dashboard](https://www.altium.com/documentation/altium-dashboard) |
+
+## P
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| Package | [Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) (`ota_Package`) | ota | title |  |
+| Parameter | [Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/system_Parameter.md) (`system_Parameter`) | system | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#accessing_object_properties) |
+| Part Choice | [Part Choice](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoice.md) (`lib_PartChoice`) | library | title | [Adding Supply Chain Information to a Component](https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component#anatomy_of_a_part_choice) |
+| Part Choice List | [Part Choice List](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoiceList.md) (`lib_PartChoiceList`) | library | title | [Adding Supply Chain Information to a Component](https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component#part_choices) |
+| Part Family | [Part Family](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartFamily.md) (`sup_PartFamily`) | supply | title |  |
+| Part Group | [Part Group](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartGroup.md) (`sup_PartGroup`) | supply | title |  |
+| Part Insight | [Part Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) (`ins_PartInsight`) | insights | title |  |
+| Part Request | [Part Request](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartRequest.md) (`lib_PartRequest`) | library | title | [Part Requests](https://www.altium.com/documentation/altium-365/workflow-part-requests) |
+| PCB footprint | [Footprint](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Footprint.md) (`lib_Footprint`) | library | related | [Creating a PCB Footprint](https://www.altium.com/documentation/altium-designer/components-libraries/creating-pcb-footprint) |
+| PCB Snippet | [PCB Snippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippet.md) (`lib_PcbSnippet`) | library | title | [Working with Snippets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets) |
+| PCB Snippet Revision | [PCB Snippet Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippetRevision.md) (`lib_PcbSnippetRevision`) | library | title | [Working with Snippets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets) |
+| Peripheral | [Peripheral](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Peripheral.md) (`dm_Peripheral`) | deviceModel | title |  |
+| PeripheralConfiguration | [PeripheralConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralConfiguration.md) (`dm_PeripheralConfiguration`) | deviceModel | title |  |
+| PeripheralInstance | [PeripheralInstance](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralInstance.md) (`dm_PeripheralInstance`) | deviceModel | title |  |
+| PeripheralMode | [PeripheralMode](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralMode.md) (`dm_PeripheralMode`) | deviceModel | title |  |
+| PeripheralParameter | [PeripheralParameter](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralParameter.md) (`dm_PeripheralParameter`) | deviceModel | title |  |
+| PeripheralPinConfig | [PeripheralPinConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinConfig.md) (`dm_PeripheralPinConfig`) | deviceModel | title |  |
+| PeripheralPinDependencyConfig | [PeripheralPinDependencyConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinDependencyConfig.md) (`dm_PeripheralPinDependencyConfig`) | deviceModel | title |  |
+| Pin | [Pin](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Pin.md) (`dm_Pin`) | deviceModel | title |  |
+| Pin Assignment | [Pin Assignment](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignment.md) (`sft_PinAssignment`) | software | title | [Working with Renesas 365 Solutions](https://www.altium.com/documentation/altium-designer/working-renesas-365-solutions#pulling_sdm_into_a_hardware_project) |
+| Pin Assignment Model | [Pin Assignment Model](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignmentModel.md) (`sft_PinAssignmentModel`) | software | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration) |
+| Port Association | [Port Association](https://altiumdeveloper.github.io/cdm/llms/classes/system_PortAssociation.md) (`system_PortAssociation`) | system | title |  |
+| PortConfiguration | [PortConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfiguration.md) (`dm_PortConfiguration`) | deviceModel | title |  |
+| PortConfigurationDependency | [PortConfigurationDependency](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationDependency.md) (`dm_PortConfigurationDependency`) | deviceModel | title |  |
+| PortConfigurationEnumValue | [PortConfigurationEnumValue](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationEnumValue.md) (`dm_PortConfigurationEnumValue`) | deviceModel | title |  |
+| PortConnection | [PortConnection](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConnection.md) (`dm_PortConnection`) | deviceModel | title |  |
+| PortFunction | [PortFunction](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortFunction.md) (`dm_PortFunction`) | deviceModel | title | [Working with Renesas 365 Solutions](https://www.altium.com/documentation/altium-designer/working-renesas-365-solutions#pulling_sdm_into_a_hardware_project) |
+| Process Definition | [Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md) (`cus_Workflow`) | customization | related | [Processes & Workflows](https://www.altium.com/documentation/altium-365/processes-workflows) |
+| Process Workflow | [Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md) (`cus_Workflow`) | customization | exact | [Processes & Workflows](https://www.altium.com/documentation/altium-365/processes-workflows) |
+| Processor | [Processor](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Processor.md) (`dm_Processor`) | deviceModel | title |  |
+| Project Parameter | [Project Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectParameter.md) (`des_ProjectParameter`) | design | title | [Workspace Projects](https://www.altium.com/documentation/altium-365/workspace-projects#project_parameters) |
+| Project Template | [Project Template](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplate.md) (`des_ProjectTemplate`) | design | title | [Creating a Project Template](https://www.altium.com/documentation/altium-designer/creating-project-template) |
+| Project Template Revision | [Project Template Revision](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplateRevision.md) (`des_ProjectTemplateRevision`) | design | title |  |
+
+**Part — 2 meanings**
+
+- [Part](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Part.md) (`lib_Part`) — library. A manufacturer part, identified by manufacturer and part number, as held in the Workspace's Part Catalog together with the supplier parts through which it is sold.
+- [Part](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Part.md) (`sup_Part`) — supply. Supply Part represents a market-available instance of a manufactured Part, providing aggregated sourcing data such as pricing, stock levels, and supplier offers.
+
+**Port — 3 meanings**
+
+- [Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md) (`dm_Port`) — deviceModel. A physical port on the device, with its functions, configurations, and connections.
+- [Port](https://altiumdeveloper.github.io/cdm/llms/classes/system_Port.md) (`system_Port`) — system. An interface of a functional block in an ESD document (e.g. the I2C interface of an MPU), placed inside the block's boundaries; connection lines between blocks can start and end at ports.
+- [Port](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md) (`system_SdmPort`) — system-sdm. Represents a port within a system design.
+
+## R
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| Reference Design | [Reference Design](https://altiumdeveloper.github.io/cdm/llms/classes/sup_ReferenceDesign.md) (`sup_ReferenceDesign`) | supply | title | [Renesas 365](https://www.altium.com/documentation/altium-365/renesas-365#import_project) |
+| Register | [Register](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Register.md) (`dm_Register`) | deviceModel | title |  |
+| RegisterField | [RegisterField](https://altiumdeveloper.github.io/cdm/llms/classes/dm_RegisterField.md) (`dm_RegisterField`) | deviceModel | title |  |
+| Release Specification | [Requirement Baseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md) (`req_RequirementBaseline`) | requirements | related | [Requirement Versioning and Releasing](https://www.altium.com/documentation/altium-365/requirements-systems-portal/requirements-module/requirement-versioning-and-releasing) |
+| Renesas 365 solution | [Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md) (`plt_Solution`) | platform | exact | [Renesas 365](https://www.altium.com/documentation/altium-365/renesas-365) |
+| Requirement | [Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md) (`req_Requirement`) | requirements | title | [Requirement Fields](https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/requirement-fields) |
+| Requirement Artifact | [Requirement Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/req_Artifact.md) (`req_Artifact`) | requirements | title |  |
+| Requirement Baseline | [Requirement Baseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md) (`req_RequirementBaseline`) | requirements | title | [Requirement Versioning and Releasing](https://www.altium.com/documentation/altium-365/requirements-systems-portal/requirements-module/requirement-versioning-and-releasing) |
+| Requirement Change Request | [Requirement Change Request](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md) (`req_RequirementChangeRequest`) | requirements | title |  |
+| Requirement Revision | [Requirement Revision](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementRevision.md) (`req_RequirementRevision`) | requirements | title | [Requirement Versioning and Releasing](https://www.altium.com/documentation/altium-365/requirements-systems-portal/requirements-module/requirement-versioning-and-releasing) |
+| Requirement Specification | [Requirement Specification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md) (`req_RequirementSpecification`) | requirements | title | [Create Specifications](https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/create-specifications) |
+| Requirements Project | [Requirements Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md) (`req_Project`) | requirements | title | [Project Module](https://www.altium.com/documentation/altium-365/requirements-portal/project-module#creating_a_new_requirements_project) |
+| Reuse Block | [Reuse Block](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlock.md) (`lib_ReuseBlock`) | library | title | [Working with Reuse Blocks](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/reuse-blocks) |
+| Reuse Block Revision | [Reuse Block Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlockRevision.md) (`lib_ReuseBlockRevision`) | library | title | [Working with Reuse Blocks](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/reuse-blocks) |
+| Revision Naming Scheme | [Revision Naming Scheme](https://altiumdeveloper.github.io/cdm/llms/classes/plt_NamingScheme.md) (`plt_NamingScheme`) | platform | title | [Defining Revision Naming Schemes for a Workspace](https://www.altium.com/documentation/altium-designer/connected-workspace/defining-naming-schemes) |
+| Rule Check | [Rule Check](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheck.md) (`des_RuleCheck`) | design | title |  |
+| Rule Check Execution | [Rule Check Execution](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheckExecution.md) (`des_RuleCheckExecution`) | design | title |  |
+
+## S
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| SCH Snippet | [SCH Snippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippet.md) (`lib_SchSnippet`) | library | title | [Working with Snippets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets) |
+| SCH Snippet Revision | [SCH Snippet Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippetRevision.md) (`lib_SchSnippetRevision`) | library | title | [Working with Snippets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets) |
+| schematic snippet | [SCH Snippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippet.md) (`lib_SchSnippet`) | library | exact | [Working with Snippets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets) |
+| schematic symbol | [Symbol](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Symbol.md) (`lib_Symbol`) | library | related | [Creating a Schematic Symbol](https://www.altium.com/documentation/altium-designer/components-libraries/creating-schematic-symbol) |
+| Schematic Template | [Schematic Template](https://altiumdeveloper.github.io/cdm/llms/classes/con_SchematicTemplate.md) (`con_SchematicTemplate`) | configuration | title | [Creating a Schematic Template](https://www.altium.com/documentation/altium-designer/schematic/creating-templates) |
+| Schematic Template Revision | [Schematic Template Revision](https://altiumdeveloper.github.io/cdm/llms/classes/con_SchematicTemplateRevision.md) (`con_SchematicTemplateRevision`) | configuration | title | [Creating a Schematic Template](https://www.altium.com/documentation/altium-designer/schematic/creating-templates#creating_workspace_schematic_template) |
+| Script | [Script](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Script.md) (`cus_Script`) | customization | title |  |
+| Script Execution | [Script Execution](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecution.md) (`cus_ScriptExecution`) | customization | title |  |
+| Script Execution Completed | [Script Execution Completed](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecutionCompleted.md) (`cus_ScriptExecutionCompleted`) | customization | title |  |
+| Script Version | [Script Version](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptVersion.md) (`cus_ScriptVersion`) | customization | title |  |
+| SDM | [System Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md) (`system_SdmSystemModel`) | system-sdm | exact | [Renesas 365](https://www.altium.com/documentation/altium-365/renesas-365#system_data_model) |
+| Software Model | [Software Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareModel.md) (`system_SdmSoftwareModel`) | system-sdm | title |  |
+| Software Release | [Software Release](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareRelease.md) (`sft_SoftwareRelease`) | software | title |  |
+| Software Specification | [Software Specification](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareSpecification.md) (`system_SdmSoftwareSpecification`) | system-sdm | title |  |
+| Software Stack Instance | [Software Stack Instance](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareStackInstance.md) (`system_SdmSoftwareStackInstance`) | system-sdm | title |  |
+| Solution | [Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md) (`plt_Solution`) | platform | title | [Renesas 365](https://www.altium.com/documentation/altium-365/renesas-365) |
+| Solution Release | [Solution Release](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionRelease.md) (`plt_SolutionRelease`) | platform | title |  |
+| Solution Template | [Solution Template](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SolutionTemplate.md) (`sup_SolutionTemplate`) | supply | title |  |
+| Specification | [Requirement Specification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md) (`req_RequirementSpecification`) | requirements | exact | [Create Specifications](https://www.altium.com/documentation/altium-365/requirements-portal/requirements-module/create-specifications) |
+| Supplier Part | [Offer](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Offer.md) (`sup_Offer`) | supply | related | [Sourced Manufacturer and Supplier Data](https://www.altium.com/documentation/altium-365/bom-portal/sourced-manufacturer-supplier-data#order_list) |
+| Symbol | [Symbol](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Symbol.md) (`lib_Symbol`) | library | title | [Creating a Schematic Symbol](https://www.altium.com/documentation/altium-designer/components-libraries/creating-schematic-symbol) |
+| Symbol Revision | [Symbol Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SymbolRevision.md) (`lib_SymbolRevision`) | library | title | [Creating a Schematic Symbol](https://www.altium.com/documentation/altium-designer/components-libraries/creating-schematic-symbol) |
+| System Data Model | [System Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md) (`system_SdmSystemModel`) | system-sdm | exact | [Renesas 365](https://www.altium.com/documentation/altium-365/renesas-365#system_data_model) |
+| System Design | [ESD Document](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md) (`system_ESDDocument`) | system | related | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd) |
+| System Model | [System Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md) (`system_SdmSystemModel`) | system-sdm | title | [Renesas 365](https://www.altium.com/documentation/altium-365/renesas-365#system_data_model) |
+| System Model Version | [System Model Version](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md) (`system_SdmSystemModelVersion`) | system-sdm | title |  |
+| System Model Version Metadata | [System Model Version Metadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersionMetadata.md) (`system_SdmSystemModelVersionMetadata`) | system-sdm | title |  |
+
+**Software Component — 2 meanings**
+
+- [Software Component](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareComponent.md) (`system_SdmSoftwareComponent`) — system-sdm. Represents a software component instance and its dependencies.
+- [Software Component](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareComponent.md) (`system_SoftwareComponent`) — system. Functional in nature, abstracted from but connected to logical implementation.
+
+**Software Project — 3 meanings**
+
+- [Software Project](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md) (`sft_SoftwareProject`) — software. The software part of a Renesas 365 solution, developed in the built-in Web IDE (based on the Theia framework) or in e² studio; it can also be created with an external repository type.
+- [Software Project](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SoftwareProject.md) (`sup_SoftwareProject`) — supply. A software project published in the supply catalog, together with the evaluation kits it is compatible with.
+- [Software Project](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareProject.md) (`system_SoftwareProject`) — system. An entry of an ESD document for a software project (sft_SoftwareProject) that implements part of the system, listing the software components that project covers.
+
+## T
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| Task | [Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md) (`col_Task`) | collaboration | title | [Working with Tasks](https://www.altium.com/documentation/altium-365/tasks) |
+
+## U
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| User | [User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_User.md) (`plt_User`) | platform | title | [Managing Users](https://www.altium.com/documentation/altium-dashboard/managing-users) |
+| User Group | [User Group](https://altiumdeveloper.github.io/cdm/llms/classes/plt_UserGroup.md) (`plt_UserGroup`) | platform | title | [Managing Groups](https://www.altium.com/documentation/altium-dashboard/managing-groups) |
+
+## V
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| V&V Activity | [Verification Case](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md) (`req_VerificationCase`) | requirements | related | [Verification & Validation Module](https://www.altium.com/documentation/altium-365/requirements-portal/verification-validation-module) |
+| Verification Case | [Verification Case](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md) (`req_VerificationCase`) | requirements | title | [Verification & Validation Module](https://www.altium.com/documentation/altium-365/requirements-portal/verification-validation-module) |
+
+## W
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| Workflow | [Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md) (`cus_Workflow`) | customization | title | [Processes & Workflows](https://www.altium.com/documentation/altium-365/processes-workflows) |
+| Workspace | [Workspace](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Workspace.md) (`plt_Workspace`) | platform | title | [Altium 365 Workspace](https://www.altium.com/documentation/altium-365/workspace) |
+| Workspace component | [Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md) (`lib_Component`) | library | exact | [Building & Maintaining Your Components and Libraries](https://www.altium.com/documentation/altium-designer/components-libraries#WSL) |
+| Workspace Footprint | [Footprint](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Footprint.md) (`lib_Footprint`) | library | exact | [Creating a PCB Footprint](https://www.altium.com/documentation/altium-designer/components-libraries/creating-pcb-footprint) |
+| Workspace Group | [Workspace Group](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceGroup.md) (`plt_WorkspaceGroup`) | platform | title | [Managing Workspace Membership](https://www.altium.com/documentation/altium-365/managing-workspace-membership#admin_groups) |
+| Workspace member | [Workspace User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceUser.md) (`plt_WorkspaceUser`) | platform | exact | [Managing Workspace Membership](https://www.altium.com/documentation/altium-365/managing-workspace-membership#workspace_members) |
+| Workspace project | [Hardware Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) (`des_Project`) | design | exact | [Workspace Projects](https://www.altium.com/documentation/altium-365/workspace-projects) |
+| Workspace Symbol | [Symbol](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Symbol.md) (`lib_Symbol`) | library | exact | [Creating a Schematic Symbol](https://www.altium.com/documentation/altium-designer/components-libraries/creating-schematic-symbol) |
+| Workspace User | [Workspace User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceUser.md) (`plt_WorkspaceUser`) | platform | title | [Managing Workspace Membership](https://www.altium.com/documentation/altium-365/managing-workspace-membership#workspace_members) |
+
+---
+
+# File: llms/core.md
+
+# Bounded context: core
+
+Holds the abstract foundations shared by every bounded context: the base classes Entity (specialised as Artifact and Activity), Resource and Event; the mixins that add annotations such as GRID, maturity and API type; shared slots such as id and name; and the abstract relations (e.g. part of, input of, derived from) that domain relations specialise. It is not a product area and has no product documentation of its own.
+
+HTML page: [subsets/core/](https://altiumdeveloper.github.io/cdm/subsets/core/)
+
+## In the product
+
+No public product documentation exists for this bounded context.
+
+## Base classes and mixins
+
+- [Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md) (`core_Activity`): Abstract base for process and work objects — things that happen, use inputs, and produce outputs. · Activity, abstract
+- [Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md) (`core_Artifact`): Abstract base for persistent data objects that are created, stored, versioned, and consumed. · Artifact, abstract
+- [Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) (`core_Entity`): Abstract base for all identifiable, versioned, platform-accessible domain objects. · Entity, abstract
+- [Event](https://altiumdeveloper.github.io/cdm/llms/classes/core_Event.md) (`core_Event`): Abstract base for domain events. · Event, abstract
+- [Meta](https://altiumdeveloper.github.io/cdm/llms/classes/core_Meta.md) (`core_Meta`): Abstract base for all CDM mixin classes. · abstract
+- [Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md) (`core_Resource`): Abstract base for lightweight platform-accessible objects that have API access but are not Entities; they carry no GRID and no versioning lifecycle. · Resource, abstract
+- [With GRID](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithGRID.md) (`core_WithGRID`): Mixin that adds a GRID annotation slot to a class. · mixin
+- [With Maturity](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithMaturity.md) (`core_WithMaturity`): Mixin that adds a maturity annotation slot indicating the lifecycle readiness level. · mixin
+- [With Platform API](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithPlatformAPI.md) (`core_WithPlatformAPI`): Mixin that adds API type annotations: platformAPI names the Altium 365 Platform API GraphQL type; nexarAPI names the Nexar (Octopart) GraphQL type for supply-chain entities served by Nexar rather than the Platform API. · mixin
+- [With Vault](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithVault.md) (`core_WithVault`): Mixin that adds a vault content type annotation to a class, indicating how its content is stored in the platform vault. · mixin
+- [With Vault Link](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithVaultLink.md) (`core_WithVaultLink`): Mixin that adds vault link parent, child, and type annotation slots for tracking hierarchical vault relationships. · mixin
+
+## Classes without a bounded context
+
+- [Any](https://altiumdeveloper.github.io/cdm/llms/classes/Any.md)
+- [dm_HasAddressRange](https://altiumdeveloper.github.io/cdm/llms/classes/dm_HasAddressRange.md): A mixin for entities that occupy a specific span of the memory map. · abstract, mixin
+- [system_HasSdmReferenceDesignator](https://altiumdeveloper.github.io/cdm/llms/classes/system_HasSdmReferenceDesignator.md): A mixin for entities within the System Data Model (SDM) that are identifiable by reference designators · abstract, mixin
+- [system_SdmMappableEntity](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmMappableEntity.md): A mixin for entities within the System Data Model (SDM) that are mappable to domain-specific concepts · abstract, mixin
+
+---
+
+# File: llms/platform.md
+
+# Bounded context: platform
+
+Models the platform-wide objects that other bounded contexts build on: organizations (Company Accounts) with their users and user groups, Workspaces with their members and groups, applications, event subscriptions, and Renesas 365 solutions with their releases. It also holds the lifecycle definitions (with their stages and states) and revision naming schemes that govern Workspace Items. Organization-level data is managed in the Company Dashboard; Workspace-level configuration, including these definitions and schemes, is managed from Altium Designer or the Workspace browser interface.
+
+HTML page: [subsets/platform/](https://altiumdeveloper.github.io/cdm/subsets/platform/)
+
+## In the product
+
+- [Company Dashboard](https://www.altium.com/documentation/altium-dashboard) (primary)
+- [Configuring and Administrating Your Workspace](https://www.altium.com/documentation/altium-designer/connected-workspace)
+- [Altium 365 API](https://www.altium.com/documentation/altium-developer-center/altium-365/api#how_the_api_is_organized)
+
+## Classes
+
+- [Application](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Application.md) (`plt_Application`): Artifact · API GloApp · GRID `grid:global::platform:application/{id}`
+- [Event Subscription](https://altiumdeveloper.github.io/cdm/llms/classes/plt_EventSubscription.md) (`plt_EventSubscription`): Artifact · API GloEvtSubscription · GRID `grid:global::events:subscription/{id}`
+- [Lifecycle Definition](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleDefinition.md) (`plt_LifecycleDefinition`): Defines the set of states that an entity can transition through in its lifecycle. · Artifact · API DesLifeCycleDefinition · GRID `grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}`
+- [Lifecycle Stage](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleStage.md) (`plt_LifecycleStage`): A named stage that groups lifecycle states in a lifecycle definition using the Advanced management style (e.g. Design, Prototype, Production), indicating how far a revision has progressed in its development. · Resource · API DesLifeCycleStage
+- [Lifecycle State](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleState.md) (`plt_LifecycleState`): A named point in an Item Revision's lifecycle (e.g. Planned, New From Design, In Production, Obsolete) that shows its status from a business perspective. · Resource · API DesLifeCycleState
+- [Organization](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Organization.md) (`plt_Organization`): An Altium customer organization, represented by its Company Account. · Artifact · API GloOrganization · GRID `grid:global::platform:organization/{id}`
+- [Revision Naming Scheme](https://altiumdeveloper.github.io/cdm/llms/classes/plt_NamingScheme.md) (`plt_NamingScheme`): Defines the format of Revision IDs for the Items that use it: one to three levels (e.g. Model, Prototype and Revision), each with its own format, separator and minimum width. · Artifact · API DesRevisionNamingScheme · GRID `grid:workspace:{workspace-id}:platform:revision-naming-scheme/{id}`
+- [Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md) (`plt_Solution`): A Renesas 365 solution: the main, top-level object of a Renesas 365 Workspace, which brings together the system design (an ESD document), PCB projects and software projects of one system. · Activity · API SolSolution · GRID `grid:workspace:{workspace-id}:platform:solution/{id}`
+- [Solution Release](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionRelease.md) (`plt_SolutionRelease`): Release of the Solution. · Artifact · GRID `grid:workspace:{workspace-id}:platform:solution-release/{id}`
+- [User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_User.md) (`plt_User`): A person identified by a global Altium Account, the identity used for signing in to Altium services. · Artifact · API GloUser · GRID `grid:global::platform:user/{id}`
+- [User Group](https://altiumdeveloper.github.io/cdm/llms/classes/plt_UserGroup.md) (`plt_UserGroup`): A named group of users within an organization's Company Account, managed in the Company Dashboard. · Artifact · API GloUserGroup · GRID `grid:global::platform:group/{id}`
+- [Workspace](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Workspace.md) (`plt_Workspace`): The top-level entity that plays a role of a closed environment for other entities (members, projects, components, etc.). · Artifact · API DesWorkspace · GRID `grid:global::platform:workspace/{id}`
+- [Workspace Group](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceGroup.md) (`plt_WorkspaceGroup`): Workspace Group represents a logical collection of users within a workspace, used to manage access control, permissions, and collaboration roles across projects and data assets. · Artifact · API DesWorkspaceGroup · GRID `grid:workspace:{workspace-id}:team:group/{id}`
+- [Workspace User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceUser.md) (`plt_WorkspaceUser`): A person's membership in a particular Workspace, connecting their Altium Account to that Workspace and to the Workspace groups they are assigned to. · Artifact · API DesWorkspaceUser · GRID `grid:workspace:{workspace-id}:team:user/{id}`
+
+## Base classes and mixins
+
+- [Has Lifecycle](https://altiumdeveloper.github.io/cdm/llms/classes/plt_HasLifecycle.md) (`plt_HasLifecycle`): Mixin that adds a lifecycle state reference to an entity. · abstract, mixin
+- [Solution Item](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionItem.md) (`plt_SolutionItem`): Mixin that marks an entity as an item belonging to a platform Solution. · abstract, mixin
+
+---
+
+# File: llms/configuration.md
+
+# Bounded context: configuration
+
+Models environment configurations, which restrict the Altium Designer working environment of the Workspace members they target to approved configuration data, together with schematic templates and their revisions stored as Workspace Items. In Altium 365 this corresponds to environment configuration management through the Team Configuration Center.
+
+HTML page: [subsets/configuration/](https://altiumdeveloper.github.io/cdm/subsets/configuration/)
+
+## In the product
+
+- [Environment Configuration Management](https://www.altium.com/documentation/altium-365/environment-configuration-management) (primary)
+
+## Classes
+
+- [Environment Configuration](https://altiumdeveloper.github.io/cdm/llms/classes/con_EnvironmentConfiguration.md) (`con_EnvironmentConfiguration`): A named set of configuration data items that the Workspace members it targets are allowed to use in Altium Designer. · Artifact
+- [Schematic Template](https://altiumdeveloper.github.io/cdm/llms/classes/con_SchematicTemplate.md) (`con_SchematicTemplate`): A schematic template stored as a Workspace Item. · Artifact
+- [Schematic Template Revision](https://altiumdeveloper.github.io/cdm/llms/classes/con_SchematicTemplateRevision.md) (`con_SchematicTemplateRevision`): One revision of a Workspace schematic template Item, holding the template as saved at that point, e.g. from Altium Designer with Save to Server or uploaded from a *.SchDot file. · Artifact
+
+---
+
+# File: llms/collaboration.md
+
+# Bounded context: collaboration
+
+Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, and tasks that assign work to users or teams. In the product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.
+
+HTML page: [subsets/collaboration/](https://altiumdeveloper.github.io/cdm/subsets/collaboration/)
+
+## In the product
+
+- [Document Commenting](https://www.altium.com/documentation/altium-designer/document-commenting) (primary)
+- [Working with Tasks](https://www.altium.com/documentation/altium-365/tasks)
+- [Altium 365 API](https://www.altium.com/documentation/altium-developer-center/altium-365/api#how_the_api_is_organized)
+
+## Classes
+
+- [Comment](https://altiumdeveloper.github.io/cdm/llms/classes/col_Comment.md) (`col_Comment`): A single entry in a comment thread: either the initial comment, pinned to a point, an object or an area of a design document (or to a BOM line), or a reply to it. · Resource · API DesComment
+- [Comment Thread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md) (`col_CommentThread`): Comment Thread represents a structured discussion linked to a specific design object, document, or workspace item, capturing feedback, decisions, and context directly within the collaborative design environment. · Activity · API DesCommentThread · GRID `grid:workspace:{workspace-id}:collaboration:comment-thread/{id}`
+- [Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md) (`col_Task`): Task represents a discrete unit of work assigned to a user or team within the design workflow, used to track progress, responsibility, and completion status for design, review, or management activities. · Activity · API DesTask · GRID `grid:workspace:{workspace-id}:collaboration:task/{id}`
+
+---
+
+# File: llms/customization.md
+
+# Bounded context: customization
+
+Models ways to customize and automate a Workspace: process workflows, and scripts with their versions, their executions and the event raised when an execution completes. In the product, each workflow belongs to a process definition that a Workspace administrator creates and manages in the Workspace browser interface.
+
+HTML page: [subsets/customization/](https://altiumdeveloper.github.io/cdm/subsets/customization/)
+
+## In the product
+
+- [Processes & Workflows](https://www.altium.com/documentation/altium-365/processes-workflows) (primary)
+- [Altium 365 API](https://www.altium.com/documentation/altium-developer-center/altium-365/api#how_the_api_is_organized)
+
+## Classes
+
+- [Script](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Script.md) (`cus_Script`): Artifact · API GloScrScript · GRID `grid:workspace:{workspace-id}:scripts:script/{id}`
+- [Script Execution](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecution.md) (`cus_ScriptExecution`): Artifact · API GloScrScriptExecution · GRID `grid:workspace:{workspace-id}:scripts:script-execution/{id}`
+- [Script Execution Completed](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecutionCompleted.md) (`cus_ScriptExecutionCompleted`): Event
+- [Script Version](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptVersion.md) (`cus_ScriptVersion`): Artifact · API GloScrScriptVersion · GRID `grid:workspace:{workspace-id}:scripts:script-version/{id}`
+- [Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md) (`cus_Workflow`): A process workflow of an Altium 365 Workspace: the workflow that belongs to a process definition and steps designers through an everyday design process (e.g. requesting a new part, a design review or creating a new project). · Activity · API DesWorkflowDefinition · GRID `grid:workspace:{workspace-id}:customization:workflow/{id}`
+
+---
+
+# File: llms/design.md
+
+# Bounded context: design
+
+Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, and rule checks run against projects. It corresponds to Workspace projects in Altium 365 and Altium Designer, from project creation through to design release.
+
+HTML page: [subsets/design/](https://altiumdeveloper.github.io/cdm/subsets/design/)
+
+## In the product
+
+- [Workspace Projects](https://www.altium.com/documentation/altium-365/workspace-projects) (primary)
+- [Management of a Specific Project](https://www.altium.com/documentation/altium-365/management-specific-project)
+- [Design Project Release](https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release)
+
+## Classes
+
+- [Hardware Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) (`des_Project`): A design project stored in a Workspace, normally under its built-in version control, such as a PCB project. · Activity · API DesProject · GRID `grid:workspace:{workspace-id}:design:project/{id}`
+- [Hardware Project Release](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md) (`des_ProjectRelease`): Project Release captures an immutable snapshot of a PCB design project at a specific point in its lifecycle, packaging all design data, outputs, and metadata required for manufacturing, assembly, and downstream processes. · Activity · API DesRelease · GRID `grid:workspace:{workspace-id}:design:project-release/{id}`
+- [Hardware Project Variant](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectVariant.md) (`des_ProjectVariant`): A design variant of a project: a named variation of the same base design that is assembled with a different set of components. · Resource · API DesWipVariant
+- [Harness Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_HarnessProject.md) (`des_HarnessProject`): Harness Project defines the design of a cable and wiring harness as a standalone yet integrable artifact, capturing connectors, wires, splices, and pin-to-pin mappings required to implement electrical interconnects between boards and system elements. · Activity · API DesProject
+- [Manufacturing Package](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md) (`des_ManufacturingPackage`): A read-only package that contains a subset of Project Release artifacts that is typically shared with an external party for the purposes of manufacturing the board (e.g. Manufacturing Package may contain fabrication/assembly files required by the factories, but not the sources of the project) · Artifact · GRID `grid:workspace:{workspace-id}:design:manufacturing-package/{id}`
+- [Multiboard Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_MultiboardProject.md) (`des_MultiboardProject`): Multiboard Project represents the coordinated design of multiple interconnected PCB projects assembled into a single system, capturing both their logical interconnects and physical arrangements. · Activity · API DesProject
+- [Project Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectParameter.md) (`des_ProjectParameter`): A name/value parameter defined at the level of a design project. · Resource · API DesProjectParameter
+- [Project Template](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplate.md) (`des_ProjectTemplate`): A reusable starting point for new design projects that bundles the documents, files and project settings a team wants to apply again and again. · Artifact · API DesProjectTemplate · GRID `grid:workspace:{workspace-id}:design:project-template/{id}`
+- [Project Template Revision](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplateRevision.md) (`des_ProjectTemplateRevision`): An immutable revision of a project template. · Artifact · API DesProjectTemplateRevision · GRID `grid:workspace:{workspace-id}:design:project-template-revision/{id}`
+- [Rule Check](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheck.md) (`des_RuleCheck`): Rule check definitions that can be executed against a project to validate design integrity and compliance with specified constraints. · Artifact · API RuleCheck · GRID `grid:workspace:{workspace-id}:design:rule-check/{id}`
+- [Rule Check Execution](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheckExecution.md) (`des_RuleCheckExecution`): Execution of a rule check against a project to validate design integrity and compliance with specified constraints. · Activity · API RuleCheckExecution · GRID `grid:workspace:{workspace-id}:design:rule-check-execution/{id}`
+
+---
+
+# File: llms/deviceModel.md
+
+# Bounded context: deviceModel
+
+Models an embedded device (e.g. an MCU), which the CDM calls a digital twin: its processors; its address map with memories, registers, bit fields and their enumerated values; its peripherals with their instances, modes and configurations; and its pins and ports with the alternative functions of each port. A configured device model filters the full model to one device configuration, which in the product is edited on a hardware component in an ESD document.
+
+HTML page: [subsets/deviceModel/](https://altiumdeveloper.github.io/cdm/subsets/deviceModel/)
+
+## In the product
+
+- [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration) (primary)
+
+## Classes
+
+- [AddressBlock](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressBlock.md) (`dm_AddressBlock`): Address block with start, size, and optional registers and peripherals. · Resource · API DmAddressBlock
+- [AddressMap](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressMap.md) (`dm_AddressMap`): Address map for the device including memory and peripheral regions. · Resource · API DmAddressMapModel
+- [AddressSegment](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressSegment.md) (`dm_AddressSegment`): A contiguous region of the device's memory map. · Resource · API DmAddressSegment
+- [ConfiguredDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_ConfiguredDeviceModel.md) (`dm_ConfiguredDeviceModel`): A digital twin of an embedded hardware device as configured for a specific use-case. · Resource · API DmDeviceModelAsConfigured
+- [FieldEnum](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FieldEnum.md) (`dm_FieldEnum`): An enumerated value for a register field. · Resource · API DmAmFieldEnum
+- [FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md) (`dm_FullStackDeviceModel`): A digital twin of an embedded hardware device. · Artifact · API DmFullStackDeviceModel · GRID `grid:global::device-model:fullstack-dm/{id}`
+- [Memory](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Memory.md) (`dm_Memory`): A memory entry within an address block. · Resource · API DmAmMemory
+- [Peripheral](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Peripheral.md) (`dm_Peripheral`): A single peripheral definition, including its instances and properties. · Resource · API DmPeripheral
+- [PeripheralConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralConfiguration.md) (`dm_PeripheralConfiguration`): A concrete configuration for a peripheral role, containing pin multiplexing details. · Resource
+- [PeripheralInstance](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralInstance.md) (`dm_PeripheralInstance`): A concrete instance of a peripheral (e.g., SCI0), including available modes. · Resource · API DmPeripheralInstance
+- [PeripheralMode](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralMode.md) (`dm_PeripheralMode`): A specific mode that a peripheral instance can fulfill, · Resource · API DmPeripheralMode
+- [PeripheralParameter](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralParameter.md) (`dm_PeripheralParameter`): A parameter associated with peripheral instance configuration. · Resource
+- [PeripheralPinConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinConfig.md) (`dm_PeripheralPinConfig`): A specific pin multiplexing configuration within peripheral configuration. · Resource
+- [PeripheralPinDependencyConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinDependencyConfig.md) (`dm_PeripheralPinDependencyConfig`): A pin dependency to port mapping entry within peripheral configuration. · Resource
+- [Pin](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Pin.md) (`dm_Pin`): A physical pin on the device. · Resource · API DmPin
+- [Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md) (`dm_Port`): A physical port on the device, with its functions, configurations, and connections. · Resource · API DmPort
+- [PortConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfiguration.md) (`dm_PortConfiguration`): A specific configuration for a port. · Resource · API DmPortConfiguration
+- [PortConfigurationDependency](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationDependency.md) (`dm_PortConfigurationDependency`): A dependency describing how a configuration value maps to GPIO or alternate function usage. · Resource · API DmConfigDependency
+- [PortConfigurationEnumValue](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationEnumValue.md) (`dm_PortConfigurationEnumValue`): An enumerated value for a port configuration. · Resource · API DmConfigEnumValue
+- [PortConnection](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConnection.md) (`dm_PortConnection`): A connection from this port to another component or signal. · Resource · API DmPortConnection
+- [PortFunction](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortFunction.md) (`dm_PortFunction`): A specific function that a port can perform. · Resource · API DmPortFunction
+- [Processor](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Processor.md) (`dm_Processor`): Represents a physical processing core. · Resource
+- [Register](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Register.md) (`dm_Register`): A hardware register within an address block. · Resource · API DmAmRegister
+- [RegisterField](https://altiumdeveloper.github.io/cdm/llms/classes/dm_RegisterField.md) (`dm_RegisterField`): A bit field within a register. · Resource · API DmAmRegisterField
+
+---
+
+# File: llms/insights.md
+
+# Bounded context: insights
+
+Models insights that can be followed up by tasks. The only concrete kind is the part insight: it concerns one Workspace part, may be informed by BOMs or design projects, and occurs in BOM releases, project releases or component revisions.
+
+HTML page: [subsets/insights/](https://altiumdeveloper.github.io/cdm/subsets/insights/)
+
+## In the product
+
+No public product documentation exists for this bounded context.
+
+## Classes
+
+- [Part Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) (`ins_PartInsight`): Activity · API DesWorkspaceInsInsight · GRID `grid:workspace:{workspace-id}:insights:insight/{id}`
+
+## Base classes and mixins
+
+- [Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_Insight.md) (`ins_Insight`): Activity, abstract
+
+---
+
+# File: llms/library.md
+
+# Bounded context: library
+
+Models the components stored in a Workspace and their revisions, the symbols, footprints, parameters, datasheets and part choices that make them up, and the component templates they can be created from. It also covers manufacturer parts in the Workspace part catalog, part requests, and reusable design content such as reuse blocks, managed sheets, and schematic and PCB snippets. It corresponds to Workspace components and design reuse in Altium Designer and Altium 365.
+
+HTML page: [subsets/library/](https://altiumdeveloper.github.io/cdm/subsets/library/)
+
+## In the product
+
+- [Building & Maintaining Your Components and Libraries](https://www.altium.com/documentation/altium-designer/components-libraries) (primary)
+- [Workspace Components](https://www.altium.com/documentation/altium-365/workspace-components)
+- [Design Reuse](https://www.altium.com/documentation/altium-designer/schematic/design-reuse)
+
+## Classes
+
+- [Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md) (`lib_Component`): Component represents a uniquely identifiable electronic part, defined by both its abstract design intent and its concrete realizations in manufacturing and supply. · Artifact · GRID `grid:workspace:{workspace-id}:library:component/{id}`
+- [Component Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentParameter.md) (`lib_ComponentParameter`): A named parameter of a Workspace component, holding a value and, optionally, a data type. · Resource · API DesComponentParameter
+- [Component Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) (`lib_ComponentRevision`): Revision of a Component. · Artifact · API DesComponent · GRID `grid:workspace:{workspace-id}:library:component-revision/{id}`
+- [Component Template](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplate.md) (`lib_ComponentTemplate`): Component Template defines a reusable blueprint for creating and managing electronic components with consistent parameters, metadata, and lifecycle policies. · Artifact · API DesComponentTemplate · GRID `grid:workspace:{workspace-id}:library:component-template/{id}`
+- [Component Template Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplateRevision.md) (`lib_ComponentTemplateRevision`): A revision of a Component Template: the template definition, stored as a *.CMPT document, saved into the Workspace at one point in time. · Artifact · API DesComponentTemplateRevision · GRID `grid:workspace:{workspace-id}:library:component-template-revision/{id}`
+- [Datasheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Datasheet.md) (`lib_Datasheet`): Datasheet represents a technical document associated with a Component or Part, providing authoritative specifications, electrical characteristics, and manufacturer information. · Artifact · API DesDatasheet · GRID `grid:workspace:{workspace-id}:library:datasheet/{id}`
+- [Footprint](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Footprint.md) (`lib_Footprint`): Footprint represents the physical layout definition of a Component on a PCB, specifying pad geometry, land patterns, and mechanical clearances required for assembly and manufacturing. · Artifact · GRID `grid:workspace:{workspace-id}:library:footprint/{id}`
+- [Footprint Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_FootprintRevision.md) (`lib_FootprintRevision`): A revision of a Footprint: the PCB footprint as saved into the Workspace at one point in time, with its own lifecycle state. · Artifact · API DesFootprint · GRID `grid:workspace:{workspace-id}:library:footprint-revision/{id}`
+- [Managed Sheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheet.md) (`lib_ManagedSheet`): A schematic sheet, with its components and wiring, stored in a Workspace so that it can be reused in other designs. · Artifact · GRID `grid:workspace:{workspace-id}:library:managed-sheet/{id}`
+- [Managed Sheet Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheetRevision.md) (`lib_ManagedSheetRevision`): A revision of a Managed Sheet: the schematic sheet as saved into the Workspace at one point in time. · Artifact · GRID `grid:workspace:{workspace-id}:library:managed-sheet-revision/{id}`
+- [Part](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Part.md) (`lib_Part`): A manufacturer part, identified by manufacturer and part number, as held in the Workspace's Part Catalog together with the supplier parts through which it is sold. · Artifact · API DesPart · GRID `grid:workspace:{workspace-id}:library:part/{id}`
+- [Part Choice](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoice.md) (`lib_PartChoice`): One entry in a component's Part Choice list: a manufacturer part, rather than a specific supplier, that may be used to implement the component, bringing with it the offers of the suppliers that sell it. · Resource
+- [Part Choice List](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoiceList.md) (`lib_PartChoiceList`): The list of Part Choices for a component: the manufacturer parts that may be used to implement it on the assembled board. · Resource
+- [Part Request](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartRequest.md) (`lib_PartRequest`): Part Request represents a formal demand from a designer to introduce a new Component or Part into the managed library, typically triggered when an item is not yet available in the workspace. · Activity · GRID `grid:workspace:{workspace-id}:library:part-request/{id}`
+- [PCB Snippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippet.md) (`lib_PcbSnippet`): A selection of circuitry from a PCB design, including its components and routing, saved so that it can be placed in other PCB documents. · Artifact
+- [PCB Snippet Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippetRevision.md) (`lib_PcbSnippetRevision`): A revision of a PCB snippet as saved into the Workspace at one point in time. · Artifact
+- [Reuse Block](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlock.md) (`lib_ReuseBlock`): A reusable section of a design stored in a Workspace, typically combining schematic circuitry with its PCB representation; a block can also be schematic-only or PCB-only. · Artifact · API DesReuseBlock · GRID `grid:workspace:{workspace-id}:library:reuse-block/{id}`
+- [Reuse Block Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlockRevision.md) (`lib_ReuseBlockRevision`): A revision of a Reuse Block: its schematic and/or PCB content as saved into the Workspace at one point in time, with its own lifecycle state. · Artifact · API DesReuseBlockRevision · GRID `grid:workspace:{workspace-id}:library:reuse-block-revision/{id}`
+- [SCH Snippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippet.md) (`lib_SchSnippet`): A selection of circuitry from a single schematic sheet, including its components, saved so that it can be placed in other designs. · Artifact
+- [SCH Snippet Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippetRevision.md) (`lib_SchSnippetRevision`): A revision of a schematic snippet as saved into the Workspace at one point in time. · Artifact
+- [Symbol](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Symbol.md) (`lib_Symbol`): Symbol represents the logical schematic view of a Component, defining its electrical interface, pins, and attributes used to express circuit intent in design schematics. · Artifact · GRID `grid:workspace:{workspace-id}:library:symbol/{id}`
+- [Symbol Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SymbolRevision.md) (`lib_SymbolRevision`): A revision of a Symbol: the schematic symbol as saved into the Workspace at one point in time, with its own lifecycle state. · Artifact · API DesSymbol · GRID `grid:workspace:{workspace-id}:library:symbol-revision/{id}`
+
+---
+
+# File: llms/ota.md
+
+# Bounded context: ota
+
+Models over-the-air (OTA) firmware and software updates: devices with their status and installed packages, fleets that group devices, and packages with their version, size, checksums and target hardware. All classes are experimental.
+
+HTML page: [subsets/ota/](https://altiumdeveloper.github.io/cdm/subsets/ota/)
+
+## In the product
+
+No public product documentation exists for this bounded context.
+
+## Classes
+
+- [Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) (`ota_Device`): Artifact · GRID `grid:workspace:{workspace-id}:ota:device/{id}`
+- [Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md) (`ota_Fleet`): Artifact · GRID `grid:workspace:{workspace-id}:ota:fleet/{id}`
+- [Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) (`ota_Package`): Artifact · GRID `grid:workspace:{workspace-id}:ota:package/{id}`
+
+---
+
+# File: llms/procurement.md
+
+# Bounded context: procurement
+
+Models bills of materials: BOMs kept in a Workspace and worked on in the BOM Portal (managed and consolidated BOMs) with their releases, global BOMs, which are not tied to a Workspace, and BOM lines with their alternate and substitute parts and the issues found when a BOM is analysed. It corresponds to the Altium 365 BOM Portal.
+
+HTML page: [subsets/procurement/](https://altiumdeveloper.github.io/cdm/subsets/procurement/)
+
+## In the product
+
+- [BOM Portal](https://www.altium.com/documentation/altium-365/bom-portal) (primary)
+
+## Classes
+
+- [BOM Issue](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomIssue.md) (`pro_BomIssue`): A problem found when a BOM is analysed, usually against a particular BOM line: for example an unknown part number, a duplicated designator, or a part that is deprecated, low in stock or not compliant with a standard such as REACH. · Resource · API BomIssue
+- [BOM Item](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md) (`pro_BomItem`): One line of a BOM: its designators and quantity, the primary manufacturer part used for it (identified by manufacturer and manufacturer part number), and any alternate parts recorded for that line. · Resource · API BomItem
+- [BOM Item Alternate](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemAlternate.md) (`pro_BomItemAlternate`): An alternate part recorded for one BOM line: another manufacturer part that could be used instead of the line's primary part. · Resource · API BomItemAlternate
+- [BOM Item Substitute](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemSubstitute.md) (`pro_BomItemSubstitute`): Substitute is a replacement of a part by another within an individual BOM. · Resource · API BomItemSubstitute
+- [BOM Release](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomRelease.md) (`pro_BomRelease`): A static snapshot of a Managed BOM's data, saved under a release name with an incremented revision number and optional notes. · Artifact · API BomRelease · GRID `grid:workspace:{workspace-id}:procurement:bom-release/{id}`
+- [Consolidated BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ConsolidatedBOM.md) (`pro_ConsolidatedBOM`): Consolidated BOM represents the aggregated bill of materials across one or more Projects or variants, combining all required Parts into a single, unified view for procurement and manufacturing. · Activity · API BomWip · GRID `grid:workspace:{workspace-id}:procurement:bom/{id}`
+- [Global BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_GlobalBOM.md) (`pro_GlobalBOM`): Global BOM represents a bill of materials that resides outside of any workspace, on Octopart, where users can create, edit, collaborate on and share it with others. · Activity · GRID `grid:global::procurement:bom/{id}`
+- [Managed BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ManagedBOM.md) (`pro_ManagedBOM`): A bill of materials kept in a Workspace and worked on in the BOM Portal, where its lines are enriched with manufacturer and supplier data for review and procurement. · Activity · API BomWip · GRID `grid:workspace:{workspace-id}:procurement:bom/{id}`
+
+## Base classes and mixins
+
+- [BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_Bom.md) (`pro_Bom`): Bill of Materials · abstract, mixin
+- [BOM Item Element](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemElement.md) (`pro_BomItemElement`): An element (part) that might be used for a particular BOM item. · Resource, abstract
+- [BOM WIP](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomWIP.md) (`pro_BomWIP`): The current, editable working state of a Workspace BOM, as opposed to a BOM release, which is a static snapshot of its data. · Activity, abstract
+
+---
+
+# File: llms/supply.md
+
+# Bounded context: supply
+
+Models the supply catalog: manufacturer parts with their aggregated sourcing data and distributor offers, the companies acting as their manufacturers or distributors, and the vendor-specific part family hierarchy, along with catalog content such as reference designs, evaluation kits, solution templates and software projects. Part, offer and company data correspond to the supply chain data that Octopart aggregates and serves through the Octopart API.
+
+HTML page: [subsets/supply/](https://altiumdeveloper.github.io/cdm/subsets/supply/)
+
+## In the product
+
+- [Octopart](https://www.altium.com/documentation/altium-developer-center/octopart) (primary)
+- [Octopart API](https://www.altium.com/documentation/altium-developer-center/octopart/api)
+- [Adding Supply Chain Information to a Component](https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component)
+
+## Classes
+
+- [Company](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Company.md) (`sup_Company`): Supply Company represents an organization in the electronics supply chain. · Artifact · Nexar SupCompany · GRID `grid:supply::platform:company/{id}`
+- [Evaluation Kit](https://altiumdeveloper.github.io/cdm/llms/classes/sup_EvalKit.md) (`sup_EvalKit`): A vendor evaluation kit in the supply catalog, described by its associated devices, its reference designs (including a main one) and the software projects compatible with it. · Artifact · API SupEvalKit · GRID `grid:supply::platform:eval-kit/{id}`
+- [Offer](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Offer.md) (`sup_Offer`): Supply Offer represents a specific commercial listing of a Part from a supplier, detailing price breaks, stock availability, lead times, and ordering conditions at a given point in time. · Artifact · Nexar SupOffer · GRID `grid:supply::platform:part/{id}/offer/{offerID}`
+- [Part](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Part.md) (`sup_Part`): Supply Part represents a market-available instance of a manufactured Part, providing aggregated sourcing data such as pricing, stock levels, and supplier offers. · Artifact · Nexar SupPart · GRID `grid:supply::platform:part/{id}`
+- [Part Family](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartFamily.md) (`sup_PartFamily`): A manufacturer's grouping of parts in the supply data, where the kind of family is vendor-specific (e.g. Series or Family). · Artifact · API SupPartFamily · GRID `grid:supply::platform:part-family/{id}`
+- [Part Group](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartGroup.md) (`sup_PartGroup`): A leaf of the part family hierarchy in the supply data, holding the parts that belong to it together with group-level information such as its manufacturer, overview, key features and documents. · Artifact · API SupPartGroup · GRID `grid:supply::platform:part-group/{id}`
+- [Reference Design](https://altiumdeveloper.github.io/cdm/llms/classes/sup_ReferenceDesign.md) (`sup_ReferenceDesign`): An example design published in the supply catalog, bringing together its design files (e.g. schematics and layouts), documentation and the parts it uses. · Artifact · API SupRefDesign · GRID `grid:supply::platform:ref-design/{id}`
+- [Software Project](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SoftwareProject.md) (`sup_SoftwareProject`): A software project published in the supply catalog, together with the evaluation kits it is compatible with. · Artifact · API SupSoftwareProject · GRID `grid:supply::platform:software-project/{id}`
+- [Solution Template](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SolutionTemplate.md) (`sup_SolutionTemplate`): A publisher's template for a solution, held in the supply catalog. · Artifact · API SupSolutionTemplate · GRID `grid:supply::platform:solution-template/{id}`
+
+---
+
+# File: llms/software.md
+
+# Bounded context: software
+
+Models the embedded software of a Renesas 365 solution: software projects with their releases and build artifacts, device configurations (with revisions) and their pin assignments, and AI models. In Renesas 365 the software project is the software part of a solution, edited in the built-in Web IDE or in e² studio; a device configuration there also covers the ports, package information and peripherals of a hardware component.
+
+HTML page: [subsets/software/](https://altiumdeveloper.github.io/cdm/subsets/software/)
+
+## In the product
+
+- [Renesas 365](https://www.altium.com/documentation/altium-365/renesas-365) (primary)
+- [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration)
+
+## Classes
+
+- [AI Model](https://altiumdeveloper.github.io/cdm/llms/classes/sft_AIModel.md) (`sft_AIModel`): AI model artifact in context of a workspace · Artifact · GRID `grid:workspace:{workspace-id}:software:ai-model/{id}`
+- [Build Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/sft_BuildArtifact.md) (`sft_BuildArtifact`): Artifact
+- [Device Configuration](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfiguration.md) (`sft_DeviceConfiguration`): The configuration of a device (e.g. an MCU placed as a hardware component in an ESD document), covering its ports, package information, peripherals and pin assignments. · Artifact · API SftDevCfgDeviceConfiguration · GRID `grid:workspace:{workspace-id}:software:device-configuration/{id}`
+- [Device Configuration Revision](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfigurationRevision.md) (`sft_DeviceConfigurationRevision`): Artifact · API SftDevCfgDeviceConfigurationRevision · GRID `grid:workspace:{workspace-id}:software:device-configuration-revision/{id}`
+- [Pin Assignment](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignment.md) (`sft_PinAssignment`): The assignment of a function to one pin of a device, identified by pin number and name. · Resource
+- [Pin Assignment Model](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignmentModel.md) (`sft_PinAssignmentModel`): The set of pin assignments of a device, one part of its device configuration alongside ports, package information and peripherals. · Resource
+- [Software Project](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md) (`sft_SoftwareProject`): The software part of a Renesas 365 solution, developed in the built-in Web IDE (based on the Theia framework) or in e² studio; it can also be created with an external repository type. · Activity · API SftSoftwareProject · GRID `grid:workspace:{workspace-id}:software:software-project/{id}`
+- [Software Release](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareRelease.md) (`sft_SoftwareRelease`): Artifact · GRID `grid:workspace:{workspace-id}:software:software-release/{id}`
+
+---
+
+# File: llms/system.md
+
+# Bounded context: System Design
+
+Models the Electronic System Design (ESD) document of a Renesas 365 solution: a system-level block diagram of functional blocks with their key (hardware) and software components, ports and parameters, the connections between blocks, and entries for the hardware and software projects that implement the system. It corresponds to Electronic System Design in a Renesas 365 Workspace.
+
+HTML page: [subsets/system/](https://altiumdeveloper.github.io/cdm/subsets/system/)
+
+## In the product
+
+- [Electronic System Design](https://www.altium.com/documentation/altium-365/esd) (primary)
+- [Renesas 365](https://www.altium.com/documentation/altium-365/renesas-365)
+
+## Classes
+
+- [Connection](https://altiumdeveloper.github.io/cdm/llms/classes/system_Connection.md) (`system_Connection`): A connection line in an ESD document representing an interconnection between functional blocks (e.g. signals passed between the interfaces of two devices), drawn directly between blocks or between their ports. · Resource
+- [Endpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_Endpoint.md) (`system_Endpoint`): One end of a connection in an ESD document, identified by the functional block and the port where the connection line starts or ends. · Resource
+- [ESD Document](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md) (`system_ESDDocument`): A system-level block diagram document used in a Renesas 365 solution (listed there as a System Design project) to describe the architecture of the system at a functional level. · Activity · API SysEsdDocument · GRID `grid:workspace:{workspace-id}:system-design:esd/{id}`
+- [Functional Block](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md) (`system_FunctionalBlock`): Represents a logical block within an ESD document (e.g., MCU subsystem, LED driver block) that stands for a function, operation or device of the system, including parameters, key components, software components, ports, and associations. · Resource
+- [Hardware Project](https://altiumdeveloper.github.io/cdm/llms/classes/system_HardwareProject.md) (`system_HardwareProject`): An entry of an ESD document for a PCB design project (des_Project) that implements part of the system, listing the functional blocks that project covers. · Resource
+- [Key Component](https://altiumdeveloper.github.io/cdm/llms/classes/system_KeyComponent.md) (`system_KeyComponent`): A key component of a functional block in an ESD document, shown in the editor as a hardware component (e.g. a Renesas RA MCU chosen with the RA Explorer). · Resource
+- [Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/system_Parameter.md) (`system_Parameter`): Name–value parameter associated with functional blocks, ports, or other system design resources. · Resource
+- [Port](https://altiumdeveloper.github.io/cdm/llms/classes/system_Port.md) (`system_Port`): An interface of a functional block in an ESD document (e.g. the I2C interface of an MPU), placed inside the block's boundaries; connection lines between blocks can start and end at ports. · Resource
+- [Port Association](https://altiumdeveloper.github.io/cdm/llms/classes/system_PortAssociation.md) (`system_PortAssociation`): Resource
+- [Software Component](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareComponent.md) (`system_SoftwareComponent`): Functional in nature, abstracted from but connected to logical implementation. · Resource
+- [Software Project](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareProject.md) (`system_SoftwareProject`): An entry of an ESD document for a software project (sft_SoftwareProject) that implements part of the system, listing the software components that project covers. · Resource
+
+---
+
+# File: llms/system-sdm.md
+
+# Bounded context: System Design - System Data Model
+
+Models the System Data Model (SDM) of a Renesas 365 solution and its versions, each combining a functional model with device, hardware and software models, plus metadata recording who created a version and with which application, and client-specific metadata (e.g. for ESD, Altium Designer or e² studio). The ESD document and e² studio push changes to and pull changes from the SDM, and Altium Designer pulls it into hardware projects.
+
+HTML page: [subsets/system-sdm/](https://altiumdeveloper.github.io/cdm/subsets/system-sdm/)
+
+## In the product
+
+- [Renesas 365](https://www.altium.com/documentation/altium-365/renesas-365#system_data_model) (primary)
+- [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#pushing_pulling_sdm)
+- [Working with Renesas 365 Solutions](https://www.altium.com/documentation/altium-designer/working-renesas-365-solutions#pulling_sdm_into_a_hardware_project)
+
+## Classes
+
+- [Authoring Application](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmAuthoringApplication.md) (`system_SdmAuthoringApplication`): Identifies the application used to create a system model version. · Resource
+- [Connection](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmConnection.md) (`system_SdmConnection`): Represents a connection between functional blocks. · Resource · API SysSdmConnection
+- [Device Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmDeviceModel.md) (`system_SdmDeviceModel`): Represents a device model within the system design. · Resource · API SysSdmDeviceModel
+- [Domain Metadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmClientMetadata.md) (`system_SdmClientMetadata`): Captures metadata specific to a particular client (e.g., ESD, AD, E2Studio). · Resource
+- [Endpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmEndpoint.md) (`system_SdmEndpoint`): Represents an endpoint of a connection. · Resource · API SysSdmEndpoint
+- [Functional Block](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalBlock.md) (`system_SdmFunctionalBlock`): Represents a logical block within a system functional model. · Resource · API SysSdmFunctionalBlock
+- [Functional Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalModel.md) (`system_SdmFunctionalModel`): Captures the functional aspects of the system design, focusing on the behavior and interactions of functional blocks. · Resource · API SysSdmFunctionalModel
+- [Hardware Component](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareComponent.md) (`system_SdmHardwareComponent`): Represents a hardware component / part. · Resource · API SysSdmHardwareComponent
+- [Hardware Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareModel.md) (`system_SdmHardwareModel`): Captures the hardware components and their interactions within the system design. · Resource · API SysSdmHardwareModel
+- [Port](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md) (`system_SdmPort`): Represents a port within a system design. · Resource · API SysSdmPort
+- [Software Component](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareComponent.md) (`system_SdmSoftwareComponent`): Represents a software component instance and its dependencies. · Resource · API SysSdmSoftwareComponent
+- [Software Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareModel.md) (`system_SdmSoftwareModel`): Captures the software components and their interactions within the system design. · Resource · API SysSdmSoftwareModel
+- [Software Specification](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareSpecification.md) (`system_SdmSoftwareSpecification`): The "blueprint" for a software component. · Resource · API SysSdmSoftwareSpecification
+- [Software Stack Instance](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareStackInstance.md) (`system_SdmSoftwareStackInstance`): Represents a software stack instance and its dependencies. · Resource · API SysSdmSoftwareStackInstance
+- [System Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md) (`system_SdmSystemModel`): A high-level system model that captures the overall system architecture, crossing boundary between functional and logical domains (e.g., hardware and software). · Activity · API SysSdmSystemModel · GRID `grid:workspace:{workspace-id}:system-design:sdm/{id}`
+- [System Model Version](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md) (`system_SdmSystemModelVersion`): A specific version of a system model, capturing the state of the system design at a particular point in time. · Artifact · API SysSdmSystemModelVersion · GRID `grid:workspace:{workspace-id}:system-design:sdm-version/{id}`
+- [System Model Version Metadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersionMetadata.md) (`system_SdmSystemModelVersionMetadata`): Metadata associated with a specific version of a system model, capturing provenance information. · Resource
+
+---
+
+# File: llms/requirements.md
+
+# Bounded context: requirements
+
+Models requirements and their revisions, the specifications that group them, baselines approved for execution, change requests, the requirements projects that scope this work, and verification cases that provide evidence against requirements; most of its classes are experimental. It corresponds to requirements management and verification & validation in the Altium 365 Requirements Portal.
+
+HTML page: [subsets/requirements/](https://altiumdeveloper.github.io/cdm/subsets/requirements/)
+
+## In the product
+
+- [Requirements Portal](https://www.altium.com/documentation/altium-365/requirements-portal) (primary)
+- [Features Explained](https://www.altium.com/documentation/altium-365/requirements-portal/features-explained)
+- [Working with Requirements](https://www.altium.com/documentation/altium-365/requirements-integration)
+
+## Classes
+
+- [Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md) (`req_Requirement`): A single, testable statement of intent or constraint that governs a solution or process outcome. · Artifact · GRID `grid:workspace:{workspace-id}:requirements:requirement/{id}`
+- [Requirement Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/req_Artifact.md) (`req_Artifact`): Resource
+- [Requirement Baseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md) (`req_RequirementBaseline`): A version-managed release of a specification or subset of requirements approved for execution. · Artifact · GRID `grid:workspace:{workspace-id}:requirements:baseline/{id}`
+- [Requirement Change Request](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md) (`req_RequirementChangeRequest`): Structured workflow item proposing additions, updates, or removals of requirements. · Activity · GRID `grid:workspace:{workspace-id}:requirements:change-request/{id}`
+- [Requirement Revision](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementRevision.md) (`req_RequirementRevision`): An immutable snapshot of a requirement statement at a specific revision. · Artifact · GRID `grid:workspace:{workspace-id}:requirements:requirement-revision/{id}`
+- [Requirement Specification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md) (`req_RequirementSpecification`): A curated collection of requirements scoped to a program, domain, or release horizon. · Artifact · GRID `grid:workspace:{workspace-id}:requirements:specification/{id}`
+- [Requirements Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md) (`req_Project`): The orchestration space for capturing, evolving, and validating requirements scoped to a product, program increment, or regulatory engagement. · Activity · GRID `grid:workspace:{workspace-id}:requirements:project/{id}`
+- [Verification Case](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md) (`req_VerificationCase`): A planned verification procedure or test that produces objective evidence against requirements. · Activity · GRID `grid:workspace:{workspace-id}:requirements:verification-case/{id}`

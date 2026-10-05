@@ -107,18 +107,38 @@
   
     
   
-  Index
+  Bounded Contexts
 
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../about/">
+<a class="md-tabs__link" href="../../grid-format/">
         
   
   
     
   
-  About
+  GRIDs
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../domain-model/">
+          
+  
+  
+  Concepts
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../glossary/">
+        
+  
+  
+    
+  
+  Glossary
 
       </a>
 </li>
@@ -130,6 +150,17 @@
     
   
   Tags
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../about/">
+        
+  
+  
+    
+  
+  About
 
       </a>
 </li>
@@ -164,15 +195,65 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../..">
 <span class="md-ellipsis">
-    Index
+    Bounded Contexts
     
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../about/">
+<a class="md-nav__link" href="../../grid-format/">
 <span class="md-ellipsis">
-    About
+    GRIDs
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Concepts
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Concepts
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../domain-model/">
+<span class="md-ellipsis">
+    Domain Model
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../entity-classification/">
+<span class="md-ellipsis">
+    Entity Classification
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../relation-types/">
+<span class="md-ellipsis">
+    Relation Types
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../glossary/">
+<span class="md-ellipsis">
+    Glossary
     
   </span>
 </a>
@@ -185,6 +266,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../about/">
+<span class="md-ellipsis">
+    About
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </div>
@@ -193,7 +282,26 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="bounded-context-devicemodel">Bounded Context: deviceModel</h1>
-<p><em>Provides a comprehensive representation of embedded hardware, including peripherals,  pin multiplexing, and memory maps. This subset defines the constraints necessary  to model valid hardware configurations and perform feasibility analysis—ensuring  a device's physical resources can satisfy specific application use-cases.</em></p>
+<p><em>Models an embedded device (e.g. an MCU), which the CDM calls a digital twin: its processors; its address map with memories, registers, bit fields and their enumerated values; its peripherals with their instances, modes and configurations; and its pins and ports with the alternative functions of each port. A configured device model filters the full model to one device configuration, which in the product is edited on a hardware component in an ESD document.</em></p>
+<h2 id="in-the-product">In the product</h2>
+<ul>
+<li><a href="https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration">Electronic System Design</a> <em>(primary)</em></li>
+</ul>
+<h2 id="grid">GRID</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>GRID template</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../classes/dm_FullStackDeviceModel/">dm_FullStackDeviceModel</a></td>
+<td><code>grid:global::device-model:fullstack-dm/{id}</code></td>
+</tr>
+</tbody>
+</table>
 <p>URI: <a href="./">deviceModel</a></p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>

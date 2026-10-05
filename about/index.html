@@ -6,8 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://w3id.org/altium/cdm/about/" rel="canonical"/>
-<link href=".." rel="prev"/>
-<link href="../tags/" rel="next"/>
+<link href="../tags/" rel="prev"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
 <title>About - Common Data Model (CDM)</title>
@@ -109,18 +108,38 @@
   
     
   
-  Index
+  Bounded Contexts
 
       </a>
 </li>
-<li class="md-tabs__item md-tabs__item--active">
-<a class="md-tabs__link" href="./">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../grid-format/">
         
   
   
     
   
-  About
+  GRIDs
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../domain-model/">
+          
+  
+  
+  Concepts
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../glossary/">
+        
+  
+  
+    
+  
+  Glossary
 
       </a>
 </li>
@@ -132,6 +151,17 @@
     
   
   Tags
+
+      </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="./">
+        
+  
+  
+    
+  
+  About
 
       </a>
 </li>
@@ -166,16 +196,65 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="..">
 <span class="md-ellipsis">
-    Index
+    Bounded Contexts
     
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../grid-format/">
 <span class="md-ellipsis">
-    About
+    GRIDs
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Concepts
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Concepts
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../domain-model/">
+<span class="md-ellipsis">
+    Domain Model
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../entity-classification/">
+<span class="md-ellipsis">
+    Entity Classification
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../relation-types/">
+<span class="md-ellipsis">
+    Relation Types
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../glossary/">
+<span class="md-ellipsis">
+    Glossary
     
   </span>
 </a>
@@ -188,6 +267,72 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    About
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    About
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bounded-contexts">
+<span class="md-ellipsis">
+      Bounded contexts
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#entities">
+<span class="md-ellipsis">
+      Entities
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-api-behind-the-model">
+<span class="md-ellipsis">
+      The API behind the model
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-class-pages-link-out">
+<span class="md-ellipsis">
+      How class pages link out
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#for-tools">
+<span class="md-ellipsis">
+      For tools
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#where-to-go-next">
+<span class="md-ellipsis">
+      Where to go next
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
 </ul>
 </nav>
 </div>
@@ -195,8 +340,64 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="common-data-model">common-data-model</h1>
-<p>Common Data Model</p>
+<h1 id="common-data-model">Common Data Model</h1>
+<p>The Altium Common Data Model (CDM) describes the entities of the Altium platform — projects, components, BOMs,
+tasks, users and many more — as a <a href="https://linkml.io/">LinkML</a> schema. For each class it records what the entity
+is, how it relates to other entities, how it is identified by a GRID (Global Resource ID) and, where one
+exists, its type in the API. The Altium Developer Center page
+<a href="https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/grid">GRID</a> names the CDM
+as the authoritative reference for the GRIDs of platform entities.</p>
+<h2 id="bounded-contexts">Bounded contexts</h2>
+<p>The classes are grouped into bounded contexts (LinkML subsets), such as design, library, procurement and
+collaboration. Each context has its own page with its product documentation and GRID templates, where it has
+any, and its classes. The <a href="../">Bounded Contexts</a> page lists every context with its classes and
+their API types.</p>
+<h2 id="entities">Entities</h2>
+<ul>
+<li><strong>Entity</strong> — an identifiable, versioned object with a GRID. Every entity is one of two kinds:<ul>
+<li><strong>Artifact</strong> — a persistent data object that is created, stored, versioned and consumed, such as a
+  component revision or a BOM release;</li>
+<li><strong>Activity</strong> — a process or work object that uses inputs and produces outputs, such as a project or a task.</li>
+</ul>
+</li>
+<li><strong>Resource</strong> — a lightweight object that is not an entity and has no GRID, usually part of an entity, such
+  as a BOM line.</li>
+<li><strong>Event</strong> — a record of something that happened, with no GRID.</li>
+</ul>
+<p>See <a href="../entity-classification/">Entity Classification</a>.</p>
+<h2 id="the-api-behind-the-model">The API behind the model</h2>
+<ul>
+<li><a href="https://altiumdeveloper.github.io/platform-api-docs/">Platform API GraphQL documentation</a> — the reference
+  of the Platform API's types, queries and mutations. Class pages link their Platform API type here.</li>
+<li><a href="https://www.altium.com/documentation/altium-developer-center/altium-365/api">Altium 365 API</a> on the Altium
+  Developer Center — the GraphQL API to Altium 365 Workspace data: how it is organised, its endpoints,
+  authentication and tools for exploring the schema.</li>
+<li><a href="https://www.altium.com/documentation/altium-developer-center/octopart/api">Octopart API</a> on the Altium
+  Developer Center — the GraphQL API for supply chain data, with its endpoint on <code>api.nexar.com</code>. Supply
+  classes such as <a href="../classes/sup_Part/">Part</a> name their Nexar type.</li>
+</ul>
+<h2 id="how-class-pages-link-out">How class pages link out</h2>
+<p>Each class page has a hub panel: <strong>In the product</strong> (links to the product documentation and the product terms
+for the concept), <strong>In the API</strong> (the Platform API or Nexar type) and, where the class has mappings,
+<strong>In standards</strong> (mappings to external standards and ontologies). The hub data of the domain classes is also
+published for tools as <a href="../hub.json"><code>hub.json</code></a>, described by the JSON Schema <a href="../hub.schema.json"><code>hub.schema.json</code></a>.</p>
+<p>The artifacts generated from the schema (JSON Schema, OWL, SHACL, GraphQL, Python and others) are not published
+on this site; they are built from the <a href="https://github.com/AltiumDeveloper/cdm">repository</a> with
+<code>make gen-project</code>.</p>
+<h2 id="for-tools">For tools</h2>
+<p>AI assistants and other tools can start from <a href="../llms.txt"><code>llms.txt</code></a> (<a href="https://llmstxt.org/">llmstxt.org</a>): it
+links a plain-markdown version of the concept pages and the glossary, a catalogue of each bounded context and a
+card for every class and enumeration. <a href="../llms-ctx.txt"><code>llms-ctx.txt</code></a> holds llms.txt, the pages and the
+catalogues in one file, <a href="../llms-full.txt"><code>llms-full.txt</code></a> also every card, and <a href="../hub.json"><code>hub.json</code></a> the hub data
+of the domain classes.</p>
+<h2 id="where-to-go-next">Where to go next</h2>
+<ul>
+<li><a href="../">Bounded Contexts</a> — every context and its classes.</li>
+<li>Concepts — <a href="../domain-model/">Domain Model</a>, <a href="../entity-classification/">Entity Classification</a> and
+  <a href="../relation-types/">Relation Types</a>.</li>
+<li><a href="../grid-format/">GRIDs</a> — the GRID format and the GRID templates declared by the classes.</li>
+<li><a href="../glossary/">Glossary</a> — product terms and class names.</li>
+</ul>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>

@@ -1,0 +1,58 @@
+# Altium Common Data Model (CDM)
+
+> The Altium Common Data Model (CDM) describes the entities of the Altium platform — projects, components, BOMs, tasks, users and many more — as a LinkML schema. For each class it records what the entity is, how it relates to other entities, how it is identified by a GRID (Global Resource ID) and, where one exists, its type in the API.
+
+This file follows https://llmstxt.org/. Its links are absolute; the links in the files under `llms/` are relative to the file that contains them. `llms-ctx.txt` holds this file, the pages and the catalogues in one file, and `llms-full.txt` also the class and enumeration cards; their links are absolute.
+
+The model has 168 classes: 147 concrete domain classes, listed in the catalogues below, and 21 core, abstract and mixin classes, including LinkML's `Any`. 164 of them belong to one of the 16 bounded contexts (LinkML subsets); 4 classes belong to none and are listed in [llms/core.md](https://altiumdeveloper.github.io/cdm/llms/core.md).
+
+- Class names are `{prefix}_{ClassName}` (`lib_Component`). Each card gives the class IRI; it is usually `{prefix}:{ClassName}` (`lib:Component`) — `system_*` classes use `sys:`, and a few IRIs differ from the name (see [VIOLATIONS.md](https://github.com/AltiumDeveloper/cdm/blob/main/VIOLATIONS.md)).
+- Slot names usually follow `{prefix}_{ClassName}_{fieldName}`; the JSON key is always the slot's `alias` (the Field column of a card).
+- Every domain class other than a mixin specialises a base class of the `core` subset: Artifact or Activity (entities, identified by a GRID), Resource (a lightweight object, usually part of an entity, with no GRID) or Event (a record of something that happened, with no GRID).
+- `llms/<bounded context>.md` lists the classes of a bounded context with their kind, API type and GRID template. `llms/classes/<class>.md` is a class card: name, IRI, bounded context, kind, parent and mixins; the description; product documentation and product terms (In the product); the Platform API or Nexar type (In the API); mappings to standards (In standards); the GRID template; the attributes with range, cardinality and the core relation each specialises; and the slots of other classes that refer to it. `llms/enums/<enumeration>.md` lists the permissible values of an enumeration.
+- `hub.json` holds the product, API and standards data and the GRID template of every concrete domain class.
+- API types are checked against a snapshot of the Platform API schema retrieved on 2026-09-29.
+
+## Start here
+
+- [About](https://altiumdeveloper.github.io/cdm/llms/pages/about.md): what the CDM is: bounded contexts, kinds of entities, the API behind the model and the hub data
+- [GRIDs](https://altiumdeveloper.github.io/cdm/llms/pages/grid-format.md): the GRID format, the GRID template of every class that declares one, prefixes and IRIs
+- [Domain Model](https://altiumdeveloper.github.io/cdm/llms/pages/domain-model.md): how the schema is organised: base classes, relations, identity, names; the bounded contexts
+- [Entity Classification](https://altiumdeveloper.github.io/cdm/llms/pages/entity-classification.md): the base classes Entity, Artifact, Activity, Resource and Event, the mixins, and how a class is classified
+- [Relation Types](https://altiumdeveloper.github.io/cdm/llms/pages/relation-types.md): the core relations, their inverses and mappings, and how domain relations specialise them
+- [Glossary](https://altiumdeveloper.github.io/cdm/llms/pages/glossary.md): product terms and class names, with the class each one names
+
+## Bounded contexts
+
+- [core](https://altiumdeveloper.github.io/cdm/llms/core.md): Holds the abstract foundations shared by every bounded context: the base classes Entity (specialised as Artifact and Activity), Resource and Event; the mixins that add annotations such as GRID, maturity and API type; shared slots such as id and name; and the abstract relations (e.g. part of, input of, derived from) that domain relations specialise. (11 base classes and mixins)
+- [platform](https://altiumdeveloper.github.io/cdm/llms/platform.md): Models the platform-wide objects that other bounded contexts build on: organizations (Company Accounts) with their users and user groups, Workspaces with their members and groups, applications, event subscriptions, and Renesas 365 solutions with their releases. (14 classes; 2 base classes and mixins)
+- [configuration](https://altiumdeveloper.github.io/cdm/llms/configuration.md): Models environment configurations, which restrict the Altium Designer working environment of the Workspace members they target to approved configuration data, together with schematic templates and their revisions stored as Workspace Items. (3 classes)
+- [collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md): Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, and tasks that assign work to users or teams. (3 classes)
+- [customization](https://altiumdeveloper.github.io/cdm/llms/customization.md): Models ways to customize and automate a Workspace: process workflows, and scripts with their versions, their executions and the event raised when an execution completes. (5 classes)
+- [design](https://altiumdeveloper.github.io/cdm/llms/design.md): Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, and rule checks run against projects. (11 classes)
+- [deviceModel](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md): Models an embedded device (e.g. an MCU), which the CDM calls a digital twin: its processors; its address map with memories, registers, bit fields and their enumerated values; its peripherals with their instances, modes and configurations; and its pins and ports with the alternative functions of each port. (24 classes)
+- [insights](https://altiumdeveloper.github.io/cdm/llms/insights.md): Models insights that can be followed up by tasks. (1 class; 1 base class or mixin)
+- [library](https://altiumdeveloper.github.io/cdm/llms/library.md): Models the components stored in a Workspace and their revisions, the symbols, footprints, parameters, datasheets and part choices that make them up, and the component templates they can be created from. (22 classes)
+- [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md): Models over-the-air (OTA) firmware and software updates: devices with their status and installed packages, fleets that group devices, and packages with their version, size, checksums and target hardware. (3 classes)
+- [procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md): Models bills of materials: BOMs kept in a Workspace and worked on in the BOM Portal (managed and consolidated BOMs) with their releases, global BOMs, which are not tied to a Workspace, and BOM lines with their alternate and substitute parts and the issues found when a BOM is analysed. (8 classes; 3 base classes and mixins)
+- [supply](https://altiumdeveloper.github.io/cdm/llms/supply.md): Models the supply catalog: manufacturer parts with their aggregated sourcing data and distributor offers, the companies acting as their manufacturers or distributors, and the vendor-specific part family hierarchy, along with catalog content such as reference designs, evaluation kits, solution templates and software projects. (9 classes)
+- [software](https://altiumdeveloper.github.io/cdm/llms/software.md): Models the embedded software of a Renesas 365 solution: software projects with their releases and build artifacts, device configurations (with revisions) and their pin assignments, and AI models. (8 classes)
+- [system](https://altiumdeveloper.github.io/cdm/llms/system.md): Models the Electronic System Design (ESD) document of a Renesas 365 solution: a system-level block diagram of functional blocks with their key (hardware) and software components, ports and parameters, the connections between blocks, and entries for the hardware and software projects that implement the system. (11 classes)
+- [system-sdm](https://altiumdeveloper.github.io/cdm/llms/system-sdm.md): Models the System Data Model (SDM) of a Renesas 365 solution and its versions, each combining a functional model with device, hardware and software models, plus metadata recording who created a version and with which application, and client-specific metadata (e.g. for ESD, Altium Designer or e² studio). (17 classes)
+- [requirements](https://altiumdeveloper.github.io/cdm/llms/requirements.md): Models requirements and their revisions, the specifications that group them, baselines approved for execution, change requests, the requirements projects that scope this work, and verification cases that provide evidence against requirements; most of its classes are experimental. (8 classes)
+
+## Machine-readable data
+
+- [hub.json](https://altiumdeveloper.github.io/cdm/hub.json): product documentation links and terms, API type, standards mappings and GRID template of every concrete domain class
+- [hub.schema.json](https://altiumdeveloper.github.io/cdm/hub.schema.json): JSON Schema of hub.json
+- [llms-ctx.txt](https://altiumdeveloper.github.io/cdm/llms-ctx.txt): this file, the pages and the catalogues in one file
+- [llms-full.txt](https://altiumdeveloper.github.io/cdm/llms-full.txt): this file, the pages, the catalogues and all class and enumeration cards in one file
+
+## Optional
+
+- [Documentation site](https://altiumdeveloper.github.io/cdm/): the HTML pages, including a page for every class, slot and enumeration
+- [Platform API GraphQL documentation](https://altiumdeveloper.github.io/platform-api-docs/): the types, queries and mutations of the Platform API
+- [Altium 365 API](https://www.altium.com/documentation/altium-developer-center/altium-365/api): the GraphQL API to Altium 365 Workspace data, its endpoints and authentication
+- [Octopart API](https://www.altium.com/documentation/altium-developer-center/octopart/api): the GraphQL API for supply chain data (Nexar types)
+- [Schema repository](https://github.com/AltiumDeveloper/cdm): the LinkML source (`src/common_data_model/schema/`) and the generators of JSON Schema, OWL, SHACL, GraphQL, Python and other artifacts
+- [MODEL-FINDINGS.md](https://github.com/AltiumDeveloper/cdm/blob/main/MODEL-FINDINGS.md): open questions where the model and the product documentation or standards disagree

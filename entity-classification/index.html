@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://w3id.org/altium/cdm/entity-classification/" rel="canonical"/>
+<link href="../domain-model/" rel="prev"/>
+<link href="../relation-types/" rel="next"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
+<title>Entity Classification - Common Data Model (CDM)</title>
+<link href="../assets/stylesheets/main.2a3383ac.min.css" rel="stylesheet"/>
+<style>:root{.md-tag.md-tag--experimental{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20448%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%207.0.1%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M288%200H128c-17.7%200-32%2014.3-32%2032s14.3%2032%2032%2032v151.5L7.5%20426.3C2.6%20435%200%20444.7%200%20454.7%200%20486.4%2025.6%20512%2057.3%20512h333.4c31.6%200%2057.3-25.6%2057.3-57.3%200-10-2.6-19.8-7.5-28.4L320%20215.5V64c17.7%200%2032-14.3%2032-32S337.7%200%20320%200zm-96%20215.5V64h64v151.5c0%2011.1%202.9%2022.1%208.4%2031.8L306%20320H142l41.6-72.7c5.5-9.7%208.4-20.6%208.4-31.8%22/%3E%3C/svg%3E');}.md-tag.md-tag--obsolete{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%207.0.1%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M256.5%200c-25.3%200-47.2%2014.7-57.6%2036-7-2.6-14.5-4-22.4-4-35.3%200-64%2028.7-64%2064v165.5l-2.7-2.7c-25-25-65.5-25-90.5%200s-25%2065.5%200%2090.5L107%20437c48%2048%20113.1%2075%20181%2075h16.5c1.5%200%203-.1%204.5-.4%2091.7-6.2%20165-79.4%20171.1-171.1.3-1.5.4-3%20.4-4.5V160c0-35.3-28.7-64-64-64-5.5%200-10.9.7-16%202v-2c0-35.3-28.7-64-64-64-7.9%200-15.4%201.4-22.4%204-10.4-21.3-32.3-36-57.6-36m-16%2096.1V64c0-8.8%207.2-16%2016-16s16%207.2%2016%2016v168c0%2013.3%2010.7%2024%2024%2024s24-10.7%2024-24V96c0-8.8%207.2-16%2016-16s16%207.2%2016%2016v136c0%2013.3%2010.7%2024%2024%2024s24-10.7%2024-24v-72c0-8.8%207.2-16%2016-16s16%207.2%2016%2016v172.9c-.1.6-.1%201.3-.2%201.9-3.4%2069.7-59.3%20125.6-129%20129-.6%200-1.3.1-1.9.2H288c-55.1%200-108-21.9-147-60.9l-87.8-87.8c-6.2-6.2-6.2-16.4%200-22.6s16.4-6.2%2022.6%200l43.7%2043.7c6.9%206.9%2017.2%208.9%2026.2%205.2s14.8-12.5%2014.8-22.2V96c0-8.8%207.2-16%2016-16s16%207.1%2016%2015.9V232c0%2013.3%2010.7%2024%2024%2024s24-10.7%2024-24z%22/%3E%3C/svg%3E');}}</style>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/custom.css" rel="stylesheet"/>
+<link href="../css/ansi-colours.css" rel="stylesheet"/>
+<link href="../css/jupyter-cells.css" rel="stylesheet"/>
+<link href="../css/pandas-dataframe.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#entity-classification">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Common Data Model (CDM)" class="md-header__button md-logo" data-md-component="logo" href=".." title="Common Data Model (CDM)">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Common Data Model (CDM)
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Entity Classification
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/AltiumDeveloper/cdm" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="..">
+        
+  
+  
+    
+  
+  Bounded Contexts
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../grid-format/">
+        
+  
+  
+    
+  
+  GRIDs
+
+      </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../domain-model/">
+          
+  
+  
+  Concepts
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../glossary/">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../tags/">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../about/">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Common Data Model (CDM)" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Common Data Model (CDM)">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Common Data Model (CDM)
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/AltiumDeveloper/cdm" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    Bounded Contexts
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../grid-format/">
+<span class="md-ellipsis">
+    GRIDs
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    Concepts
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Concepts
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../domain-model/">
+<span class="md-ellipsis">
+    Domain Model
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Entity Classification
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Entity Classification
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#base-classes">
+<span class="md-ellipsis">
+      Base classes
+    </span>
+</a>
+<nav aria-label="Base classes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#entity">
+<span class="md-ellipsis">
+      Entity
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#artifact">
+<span class="md-ellipsis">
+      Artifact
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#activity">
+<span class="md-ellipsis">
+      Activity
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#resource">
+<span class="md-ellipsis">
+      Resource
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#event">
+<span class="md-ellipsis">
+      Event
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mixins">
+<span class="md-ellipsis">
+      Mixins
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-to-classify-a-class">
+<span class="md-ellipsis">
+      How to classify a class
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ontological-basis">
+<span class="md-ellipsis">
+      Ontological basis
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../relation-types/">
+<span class="md-ellipsis">
+    Relation Types
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../glossary/">
+<span class="md-ellipsis">
+    Glossary
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tags/">
+<span class="md-ellipsis">
+    Tags
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../about/">
+<span class="md-ellipsis">
+    About
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="entity-classification">Entity Classification</h1>
+<p>Every domain class of the CDM specialises one of a few abstract base classes defined in the <code>core</code> subset. The
+choice decides whether instances have a platform-wide identity (a <a href="../grid-format/">GRID</a>), which core
+<a href="../relation-types/">relations</a> the class can take part in — their domains and ranges are stated in terms of
+these base classes — and how the class relates to external ontologies. The base set is deliberately minimal;
+bounded contexts refine it with their own classes and mixins.</p>
+<h2 id="base-classes">Base classes</h2>
+<p>Base classes and mixins of the core schema. Core mixins are attached with <code>instantiates</code>; domain mixins use <code>mixins:</code>. Neither uses <code>is_a</code>.</p>
+<div class="highlight"><pre><span></span><code>Any
+core_Entity  [instantiates: core_WithGRID, core_WithMaturity, core_WithPlatformAPI]
+  core_Activity
+  core_Artifact
+core_Event
+core_Meta
+  core_WithGRID
+  core_WithMaturity
+  core_WithPlatformAPI
+  core_WithVault
+  core_WithVaultLink
+core_Resource  [instantiates: core_WithPlatformAPI]
+</code></pre></div>
+<h3 id="entity">Entity</h3>
+<p><a href="../classes/core_Entity/"><code>core_Entity</code></a> is the abstract root of identifiable, versioned, platform-accessible
+domain objects. It is never used directly: every entity is either an Artifact or an Activity. It has the
+identifier slot <code>core_id</code>, whose range is <code>GRID</code>, and it instantiates three core mixins, which allow these
+class-level annotations:</p>
+<ul>
+<li><code>grid</code> — the GRID template of the class (<code>core_WithGRID</code>);</li>
+<li><code>maturity</code> — <code>EXPERIMENTAL</code>, <code>PRODUCTION</code> or <code>OBSOLETE</code> (<code>core_WithMaturity</code>); <code>cdm-lint</code> treats a class
+  without the annotation as <code>PRODUCTION</code>;</li>
+<li><code>platformAPI</code> / <code>nexarAPI</code> — the Altium 365 Platform API or Nexar GraphQL type of the class
+  (<code>core_WithPlatformAPI</code>).</li>
+</ul>
+<h3 id="artifact">Artifact</h3>
+<p><a href="../classes/core_Artifact/"><code>core_Artifact</code></a>: a persistent data object that is created, stored, versioned and
+consumed. Artifacts are the things other work refers to or uses. Typical Artifacts in the schema:</p>
+<ul>
+<li>library items and their revisions — <a href="../classes/lib_Component/">lib_Component</a>,
+  <a href="../classes/lib_ComponentRevision/">lib_ComponentRevision</a>, <a href="../classes/lib_Footprint/">lib_Footprint</a>;</li>
+<li>templates — <a href="../classes/des_ProjectTemplate/">des_ProjectTemplate</a>,
+  <a href="../classes/con_SchematicTemplate/">con_SchematicTemplate</a>;</li>
+<li>snapshots and releases — <a href="../classes/system_SdmSystemModelVersion/">system_SdmSystemModelVersion</a>,
+  <a href="../classes/pro_BomRelease/">pro_BomRelease</a>, <a href="../classes/sft_SoftwareRelease/">sft_SoftwareRelease</a>,
+  <a href="../classes/req_RequirementBaseline/">req_RequirementBaseline</a>;</li>
+<li>produced outputs — <a href="../classes/des_ManufacturingPackage/">des_ManufacturingPackage</a>,
+  <a href="../classes/sft_BuildArtifact/">sft_BuildArtifact</a>;</li>
+<li>platform and catalogue records — <a href="../classes/plt_Workspace/">plt_Workspace</a>, <a href="../classes/plt_User/">plt_User</a>,
+  <a href="../classes/sup_Part/">sup_Part</a>, <a href="../classes/sup_Offer/">sup_Offer</a>.</li>
+</ul>
+<h3 id="activity">Activity</h3>
+<p><a href="../classes/core_Activity/"><code>core_Activity</code></a>: a process or work object — something that happens, uses inputs and
+produces outputs. Typical Activities in the schema:</p>
+<ul>
+<li>projects and documents that organise ongoing work — <a href="../classes/des_Project/">des_Project</a>,
+  <a href="../classes/req_Project/">req_Project</a>, <a href="../classes/sft_SoftwareProject/">sft_SoftwareProject</a>,
+  <a href="../classes/system_ESDDocument/">system_ESDDocument</a>, <a href="../classes/plt_Solution/">plt_Solution</a>,
+  <a href="../classes/system_SdmSystemModel/">system_SdmSystemModel</a>;</li>
+<li>the editable working state of a BOM — <a href="../classes/pro_ManagedBOM/">pro_ManagedBOM</a> and
+  <a href="../classes/pro_ConsolidatedBOM/">pro_ConsolidatedBOM</a> (both through <code>pro_BomWIP</code>);</li>
+<li>work items and requests — <a href="../classes/col_Task/">col_Task</a>, <a href="../classes/col_CommentThread/">col_CommentThread</a>,
+  <a href="../classes/lib_PartRequest/">lib_PartRequest</a>,
+  <a href="../classes/req_RequirementChangeRequest/">req_RequirementChangeRequest</a>;</li>
+<li>process runs — <a href="../classes/des_RuleCheckExecution/">des_RuleCheckExecution</a>.</li>
+</ul>
+<h3 id="resource">Resource</h3>
+<p><a href="../classes/core_Resource/"><code>core_Resource</code></a> is <strong>not</strong> an Entity. A Resource is a lightweight object that
+typically exists as part of an Entity: it has no GRID and no versioning lifecycle of its own, but it can have a
+Platform API type (<code>core_Resource</code> instantiates <code>core_WithPlatformAPI</code>). Examples: BOM lines
+(<a href="../classes/pro_BomItem/">pro_BomItem</a>), parameters and variants
+(<a href="../classes/des_ProjectParameter/">des_ProjectParameter</a>, <a href="../classes/des_ProjectVariant/">des_ProjectVariant</a>),
+lifecycle stages and states (<a href="../classes/plt_LifecycleState/">plt_LifecycleState</a>), comments
+(<a href="../classes/col_Comment/">col_Comment</a>), the contents of a device model
+(<a href="../classes/dm_Peripheral/">dm_Peripheral</a>, <a href="../classes/dm_PortConfiguration/">dm_PortConfiguration</a>), and the
+models inside a system model version (<a href="../classes/system_SdmFunctionalModel/">system_SdmFunctionalModel</a>).</p>
+<p>About half of the Resources have no identifier slot. 27 of the 63 concrete Resources have <code>core_localId</code>, an identifier that
+is unique only within its context — for example <code>dm_Peripheral</code>, <code>dm_PortConfiguration</code> and
+<code>system_SdmFunctionalModel</code>; five device-model Resources use a natural key instead, such as the name of a pin
+(<code>dm_Pin</code>) or a start address (<code>dm_Register</code>).</p>
+<h3 id="event">Event</h3>
+<p><a href="../classes/core_Event/"><code>core_Event</code></a> is the abstract base for domain events: things that happened, with no GRID
+and no versioning lifecycle. The schema currently has one event class,
+<a href="../classes/cus_ScriptExecutionCompleted/">cus_ScriptExecutionCompleted</a>.</p>
+<h3 id="mixins">Mixins</h3>
+<p>Mixins extend <code>core_Meta</code> and are never used as a parent with <code>is_a</code>.</p>
+<ul>
+<li>The <strong>core mixins</strong> are attached with <code>instantiates</code>: <code>core_WithGRID</code>, <code>core_WithMaturity</code> and
+  <code>core_WithPlatformAPI</code> on <code>core_Entity</code>, <code>core_WithPlatformAPI</code> on <code>core_Resource</code>. <code>core_WithVaultLink</code> is
+  attached to one slot (<code>lib_ComponentRevision_template</code>); <code>core_WithVault</code> is defined but not attached anywhere
+  yet.</li>
+<li><strong>Domain mixins</strong> add slots and are attached with <code>mixins</code>, for example <code>plt_HasLifecycle</code> (a lifecycle state,
+  on revision and release classes), <code>plt_SolutionItem</code> (membership in a solution, on <code>des_Project</code>,
+  <code>sft_SoftwareProject</code>, <code>system_ESDDocument</code> and <code>sft_AIModel</code>) and <code>pro_Bom</code> (on the BOM classes).</li>
+</ul>
+<h2 id="how-to-classify-a-class">How to classify a class</h2>
+<p>The current classification follows these criteria, in this order:</p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>If yes</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Is it a lightweight object held within another object, with no GRID of its own?</td>
+<td><code>core_Resource</code></td>
+<td><code>pro_BomItem</code>, <code>dm_PortConfiguration</code></td>
+</tr>
+<tr>
+<td>Is it a record that something happened rather than a persistent object?</td>
+<td><code>core_Event</code></td>
+<td><code>cus_ScriptExecutionCompleted</code></td>
+</tr>
+<tr>
+<td>Is it a project or document that organises ongoing work, or the editable working state of something?</td>
+<td><code>core_Activity</code></td>
+<td><code>des_Project</code>, <code>system_ESDDocument</code>, <code>pro_ManagedBOM</code></td>
+</tr>
+<tr>
+<td>Is it a unit of work, a request or the run of a process?</td>
+<td><code>core_Activity</code></td>
+<td><code>col_Task</code>, <code>lib_PartRequest</code>, <code>des_RuleCheckExecution</code></td>
+</tr>
+<tr>
+<td>Is it a stored item, revision, snapshot, release or produced output that other work uses?</td>
+<td><code>core_Artifact</code></td>
+<td><code>lib_ComponentRevision</code>, <code>system_SdmSystemModelVersion</code>, <code>pro_BomRelease</code></td>
+</tr>
+<tr>
+<td>Is it a platform or catalogue record (user, Workspace, supply part)?</td>
+<td><code>core_Artifact</code></td>
+<td><code>plt_User</code>, <code>plt_Workspace</code>, <code>sup_Part</code></td>
+</tr>
+</tbody>
+</table>
+<p>A recurring pattern is a working Activity paired with Artifact snapshots of it:</p>
+<ul>
+<li><code>system_SdmSystemModel</code> → <code>system_SdmSystemModelVersion</code>, linked by the slots <code>system_SdmSystemModel_versions</code>
+  and <code>system_SdmSystemModel_latestVersion</code> (which specialise no core relation); the version is described as the
+  state of the system model at a point in time.</li>
+<li><code>pro_BomWIP</code> (and so <code>pro_ManagedBOM</code>, <code>pro_ConsolidatedBOM</code>) → <code>pro_BomRelease</code>, <code>plt_Solution</code> →
+  <code>plt_SolutionRelease</code> and <code>sft_SoftwareProject</code> → <code>sft_SoftwareRelease</code>, linked by <code>core_releases</code>. The BOM
+  release and the solution release are described as snapshots of the BOM and the solution; the software release
+  has no description yet, so for it the pairing rests only on the name and the <code>core_releases</code> slot.</li>
+</ul>
+<p>It is a pattern, not a rule that splits design work from released data. Exceptions and open questions, tracked
+in <a href="https://github.com/AltiumDeveloper/cdm/blob/main/MODEL-FINDINGS.md">MODEL-FINDINGS.md</a>:</p>
+<ul>
+<li><a href="../classes/des_ProjectRelease/">des_ProjectRelease</a> is described as an immutable snapshot yet is an Activity
+  (MF-007, MF-070); the other release classes are Artifacts.</li>
+<li>The run of a script (<a href="../classes/cus_ScriptExecution/">cus_ScriptExecution</a>) is an Artifact, while the run of a
+  rule check is an Activity (MF-073).</li>
+<li><a href="../classes/cus_Workflow/">cus_Workflow</a> is an Activity, but its Platform API type is a workflow definition
+  (MF-026).</li>
+<li><a href="../classes/ins_PartInsight/">ins_PartInsight</a> is an Activity without a description, so none of the criteria
+  explains the choice, and its relations do not fit the domains and ranges of the core relations (MF-075).</li>
+<li>The description of <code>core_Activity</code> in <code>core.yaml</code> names releases as examples, although every release class
+  except <code>des_ProjectRelease</code> is an Artifact; the description of <code>core_Artifact</code> names system models, although
+  <code>system_SdmSystemModel</code> is an Activity (MF-077).</li>
+</ul>
+<h2 id="ontological-basis">Ontological basis</h2>
+<p>The Artifact/Activity split is aligned with the entity/activity distinction of the W3C provenance ontology
+<a href="https://www.w3.org/TR/prov-o/">PROV-O</a> and the continuant/occurrent distinction of the Basic Formal Ontology
+(<a href="https://bfo-ontology.github.io/">BFO</a>). The mappings are declared in <code>core.yaml</code> and exported to OWL as
+<code>skos:closeMatch</code> and <code>skos:relatedMatch</code>:</p>
+<ul>
+<li><code>core_Artifact</code> — close match <a href="https://www.w3.org/TR/prov-o/#Entity">prov:Entity</a>; related match
+  <a href="http://purl.obolibrary.org/obo/BFO_0000031">BFO_0000031</a> (generically dependent continuant).</li>
+<li><code>core_Activity</code> — close match <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a>; related match
+  <a href="http://purl.obolibrary.org/obo/BFO_0000015">BFO_0000015</a> (process).</li>
+</ul>
+<p>None of them is an exact match:</p>
+<ul>
+<li>The CDM classes are narrower than the PROV-O classes: they are records on the platform. <code>prov:Entity</code> is also
+  broader in another way — in PROV terms a persisted project, which the CDM models as an Activity, is an entity
+  too.</li>
+<li>Artifacts are documents, models and data — information that can be copied from one carrier to another. That is
+  closer to BFO's <em>generically dependent continuant</em> than to BFO <em>object</em> (a material entity), but the CDM does
+  not commit to BFO categories, so the mapping is only a related match.</li>
+<li>BFO <em>process</em> is an occurrent that unfolds in time, and the BFO/RO parthood relations do not let an
+  occurrent have continuants as parts.
+  CDM Activities are persistent, versioned records with Artifact parts (for example <code>req_Project_specifications</code>
+  links a requirements project to its specifications), so this is a related match as well.</li>
+</ul>
+<p><code>core_Entity</code>, <code>core_Resource</code> and <code>core_Event</code> have no mappings. The mappings of the core relations are listed
+on <a href="../relation-types/">Relation Types</a>.</p>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "content.tooltips", "toc.integrate", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.instant", "navigation.instant.progress", "navigation.sections", "navigation.expand"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": {"experimental": "experimental", "obsolete": "obsolete"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascript/tablesort.js"></script>
+<script src="../javascript/mermaid.mjs" type="module"></script>
+</body>
+</html>
