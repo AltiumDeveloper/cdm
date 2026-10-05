@@ -226,7 +226,7 @@
 </tr>
 <tr>
 <td><a href="../../classes/lib_ComponentParameter/">Component Parameter </a></td>
-<td>TBD</td>
+<td>A named parameter of a Workspace component, holding a value and, optionally, a data type. Parameters can be inherited from a component template or added directly to the component; a template can give them unit-aware (e.g. Farad, Ohm) or dictionary-defined types.</td>
 </tr>
 <tr>
 <td><a href="../../classes/lib_ComponentRevision/">Component Revision </a></td>
@@ -238,7 +238,7 @@
 </tr>
 <tr>
 <td><a href="../../classes/lib_ComponentTemplateRevision/">Component Template Revision </a></td>
-<td>TBD</td>
+<td>A revision of a Component Template: the template definition, stored as a *.CMPT document, saved into the Workspace at one point in time. A component revision can be linked to a specific template revision, from which it takes its predefined parameters, models and settings.</td>
 </tr>
 <tr>
 <td><a href="../../classes/lib_Datasheet/">Datasheet </a></td>
@@ -250,27 +250,27 @@
 </tr>
 <tr>
 <td><a href="../../classes/lib_FootprintRevision/">Footprint Revision </a></td>
-<td>TBD</td>
+<td>A revision of a Footprint: the PCB footprint as saved into the Workspace at one point in time, with its own lifecycle state. Editing a Workspace Footprint saves it into the next revision; components that still link to an earlier revision become out of date until they are updated.</td>
 </tr>
 <tr>
 <td><a href="../../classes/lib_ManagedSheet/">Managed Sheet </a></td>
-<td>TBD</td>
+<td>A schematic sheet, with its components and wiring, stored in a Workspace so that it can be reused in other designs. A managed sheet may itself contain further managed sheets beneath it in a hierarchy, and the Workspace lets you trace which components it contains and which designs use it.</td>
 </tr>
 <tr>
 <td><a href="../../classes/lib_ManagedSheetRevision/">Managed Sheet Revision </a></td>
-<td>TBD</td>
+<td>A revision of a Managed Sheet: the schematic sheet as saved into the Workspace at one point in time. A design uses a specific revision, so when the sheet is revised, existing designs can be updated to the new revision or kept on the previous one.</td>
 </tr>
 <tr>
 <td><a href="../../classes/lib_Part/">Part </a></td>
-<td>TBD</td>
+<td>A manufacturer part, identified by manufacturer and part number, as held in the Workspace's Part Catalog together with the supplier parts through which it is sold. Workspace components reference manufacturer parts through their Part Choices.</td>
 </tr>
 <tr>
 <td><a href="../../classes/lib_PartChoice/">Part Choice </a></td>
-<td>TBD</td>
+<td>One entry in a component's Part Choice list: a manufacturer part, rather than a specific supplier, that may be used to implement the component, bringing with it the offers of the suppliers that sell it. Entries are ranked automatically by availability, price and lifecycle, and users can override the order with their own rank; the top preferred entry is used as the component's part choice in a BOM.</td>
 </tr>
 <tr>
 <td><a href="../../classes/lib_PartChoiceList/">Part Choice List </a></td>
-<td>TBD</td>
+<td>The list of Part Choices for a component: the manufacturer parts that may be used to implement it on the assembled board. In the product the list is associated with the component and seen by all of its revisions; when part choice revision control is enabled, changing the list saves a new component revision.</td>
 </tr>
 <tr>
 <td><a href="../../classes/lib_PartRequest/">Part Request </a></td>
@@ -278,27 +278,27 @@
 </tr>
 <tr>
 <td><a href="../../classes/lib_PcbSnippet/">PCB Snippet </a></td>
-<td>TBD</td>
+<td>A selection of circuitry from a PCB design, including its components and routing, saved so that it can be placed in other PCB documents. A snippet saved to a Workspace is revised like other Workspace items; snippets can also be kept in local folders.</td>
 </tr>
 <tr>
 <td><a href="../../classes/lib_PcbSnippetRevision/">PCB Snippet Revision </a></td>
-<td>TBD</td>
+<td>A revision of a PCB snippet as saved into the Workspace at one point in time. Editing a Workspace snippet saves it into the next revision.</td>
 </tr>
 <tr>
 <td><a href="../../classes/lib_ReuseBlock/">Reuse Block </a></td>
-<td>TBD</td>
+<td>A reusable section of a design stored in a Workspace, typically combining schematic circuitry with its PCB representation; a block can also be schematic-only or PCB-only. Placing a reuse block on a schematic sheet brings its PCB content into the board design when changes are transferred through an ECO.</td>
 </tr>
 <tr>
 <td><a href="../../classes/lib_ReuseBlockRevision/">Reuse Block Revision </a></td>
-<td>TBD</td>
+<td>A revision of a Reuse Block: its schematic and/or PCB content as saved into the Workspace at one point in time, with its own lifecycle state. Editing a reuse block saves it into the next revision.</td>
 </tr>
 <tr>
 <td><a href="../../classes/lib_SchSnippet/">SCH Snippet </a></td>
-<td>TBD</td>
+<td>A selection of circuitry from a single schematic sheet, including its components, saved so that it can be placed in other designs. A snippet saved to a Workspace is revised like other Workspace items; snippets can also be kept in local folders.</td>
 </tr>
 <tr>
 <td><a href="../../classes/lib_SchSnippetRevision/">SCH Snippet Revision </a></td>
-<td>TBD</td>
+<td>A revision of a schematic snippet as saved into the Workspace at one point in time. Editing a Workspace snippet saves it into the next revision.</td>
 </tr>
 <tr>
 <td><a href="../../classes/lib_Symbol/">Symbol </a></td>
@@ -306,7 +306,7 @@
 </tr>
 <tr>
 <td><a href="../../classes/lib_SymbolRevision/">Symbol Revision </a></td>
-<td>TBD</td>
+<td>A revision of a Symbol: the schematic symbol as saved into the Workspace at one point in time, with its own lifecycle state. Editing a Workspace Symbol saves it into the next revision; components that still link to an earlier revision become out of date until they are updated.</td>
 </tr>
 </tbody>
 </table>

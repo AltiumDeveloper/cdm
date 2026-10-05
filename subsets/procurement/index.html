@@ -226,15 +226,15 @@
 </tr>
 <tr>
 <td><a href="../../classes/pro_BomIssue/">BOM Issue </a></td>
-<td>TBD</td>
+<td>A problem found when a BOM is analysed, usually against a particular BOM line: for example an unknown part number, a duplicated designator, or a part that is deprecated, low in stock or not compliant with a standard such as REACH. The level at which each kind of check reports (Fatal Error, Error or Warning, or No Report to ignore it) is configurable, and an individual issue can be waived.</td>
 </tr>
 <tr>
 <td><a href="../../classes/pro_BomItem/">BOM Item </a></td>
-<td>TBD</td>
+<td>One line of a BOM: its designators and quantity, the primary manufacturer part used for it (identified by manufacturer and manufacturer part number), and any alternate parts recorded for that line. A line can be linked to a Workspace component that lists its part among its Part Choices, and BOM checks report issues against individual lines.</td>
 </tr>
 <tr>
 <td><a href="../../classes/pro_BomItemAlternate/">BOM Item Alternate </a></td>
-<td>Alternate is a global replacement of a part by another in all BOMs where it's used.</td>
+<td>An alternate part recorded for one BOM line: another manufacturer part that could be used instead of the line's primary part. Alternates belong to the individual BOM line rather than applying across BOMs. They can come from an uploaded BOM file, be added by hand, or be filled in automatically from the linked component's Part Choices and from suggested alternates, and an alternate can be promoted to become the line's primary part.</td>
 </tr>
 <tr>
 <td><a href="../../classes/pro_BomItemElement/">BOM Item Element </a></td>
@@ -246,11 +246,11 @@
 </tr>
 <tr>
 <td><a href="../../classes/pro_BomRelease/">BOM Release </a></td>
-<td>TBD</td>
+<td>A static snapshot of a Managed BOM's data, saved under a release name with an incremented revision number and optional notes. The BOM Portal makes a release automatically when a Managed BOM is first created and again once its data has been mapped, and further releases can be made whenever needed. Each release moves through its own lifecycle states (by default Draft, Approved and Obsolete), and a Workspace can be configured to block releasing while the BOM has Error or Fatal Error issues.</td>
 </tr>
 <tr>
 <td><a href="../../classes/pro_BomWIP/">BOM WIP </a></td>
-<td>TBD</td>
+<td>The current, editable working state of a Workspace BOM, as opposed to a BOM release, which is a static snapshot of its data. It is the common base of Managed BOM and Consolidated BOM; in the BOM Portal, BOM releases are made from a Managed BOM's working state.</td>
 </tr>
 <tr>
 <td><a href="../../classes/pro_ConsolidatedBOM/">Consolidated BOM </a></td>
@@ -262,7 +262,7 @@
 </tr>
 <tr>
 <td><a href="../../classes/pro_ManagedBOM/">Managed BOM </a></td>
-<td>Managed BOM represents a version-controlled, workspace-stored bill of materials derived from a specific Project,  preserving all Part selections, metadata, and supply chain links at a fixed point in time.</td>
+<td>A bill of materials kept in a Workspace and worked on in the BOM Portal, where its lines are enriched with manufacturer and supplier data for review and procurement. It can be created from a design project (one of its variants or releases) or uploaded as a CSV/XLS file from any source. A Managed BOM made from a project keeps a link to that project, so it can be updated when the project changes, either in place or as a new revision; snapshots of its data at a point in time are kept as BOM releases.</td>
 </tr>
 </tbody>
 </table>

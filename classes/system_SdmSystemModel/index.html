@@ -192,13 +192,18 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="system-model">System  Model</h1>
+<h1 id="system-model">System Model</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/system/SystemModel">https://w3id.org/altium/cdm/system/SystemModel</a></p>
 <p class="page-subtitle">Bounded context: <a href="../../subsets/system-sdm/">system-sdm</a></p>
 <p>A high-level system model that captures the overall system architecture, crossing boundary between  functional and logical domains (e.g., hardware and software).</p>
 <div class="admonition abstract">
 <p class="admonition-title">In the product</p>
-<p>No product documentation linked yet.</p>
+<p>Known as: <strong>System Data Model</strong> (altium-365, altium-designer); <strong>SDM</strong> (altium-365, altium-designer)</p>
+<ul>
+<li><a href="https://www.altium.com/documentation/altium-365/renesas-365#system_data_model">Renesas 365</a> <em>(primary)</em></li>
+<li><a href="https://www.altium.com/documentation/altium-365/esd#pushing_pulling_sdm">Electronic System Design</a></li>
+<li><a href="https://www.altium.com/documentation/altium-designer/working-renesas-365-solutions#pulling_sdm_into_a_hardware_project">Working with Renesas 365 Solutions</a></li>
+</ul>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">In the API</p>
@@ -225,7 +230,7 @@
     direction LR
 
 
-  class system_SdmSystemModel["System  Model"]
+  class system_SdmSystemModel["System Model"]
 
 
 
@@ -263,7 +268,7 @@
       click system_SdmSystemModelVersion href "../../classes/system_SdmSystemModelVersion/"
 
 
-  class system_SdmSystemModelVersion["System  Model Version"]
+  class system_SdmSystemModelVersion["System Model Version"]
 
 
 
@@ -283,7 +288,7 @@
       click system_SdmSystemModelVersion href "../../classes/system_SdmSystemModelVersion/"
 
 
-  class system_SdmSystemModelVersion["System  Model Version"]
+  class system_SdmSystemModelVersion["System Model Version"]
 
 
 
@@ -340,14 +345,14 @@
 <tr>
 <td><a href="../../slots/system_SdmSystemModel_latestVersion">latest version</a></td>
 <td><code>1</code></td>
-<td><a href="../system_SdmSystemModelVersion/">System  Model Version</a></td>
+<td><a href="../system_SdmSystemModelVersion/">System Model Version</a></td>
 <td>Latest version of the system model.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/system_SdmSystemModel_versions">versions</a></td>
 <td><code>*</code></td>
-<td><a href="../system_SdmSystemModelVersion/">System  Model Version</a></td>
+<td><a href="../system_SdmSystemModelVersion/">System Model Version</a></td>
 <td>Versions  of the system model, used for tracking changes over time.</td>
 <td>direct</td>
 </tr>

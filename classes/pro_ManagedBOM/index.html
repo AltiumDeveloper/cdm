@@ -195,10 +195,13 @@
 <h1 id="managed-bom">Managed BOM</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/procurement/ManagedBOM">https://w3id.org/altium/cdm/procurement/ManagedBOM</a></p>
 <p class="page-subtitle">Bounded context: <a href="../../subsets/procurement/">procurement</a></p>
-<p>Managed BOM represents a version-controlled, workspace-stored bill of materials derived from a specific Project,  preserving all Part selections, metadata, and supply chain links at a fixed point in time. </p>
+<p>A bill of materials kept in a Workspace and worked on in the BOM Portal, where its lines are enriched with manufacturer and supplier data for review and procurement. It can be created from a design project (one of its variants or releases) or uploaded as a CSV/XLS file from any source. A Managed BOM made from a project keeps a link to that project, so it can be updated when the project changes, either in place or as a new revision; snapshots of its data at a point in time are kept as BOM releases.</p>
 <div class="admonition abstract">
 <p class="admonition-title">In the product</p>
-<p>No product documentation linked yet.</p>
+<ul>
+<li><a href="https://www.altium.com/documentation/altium-365/bom-portal">BOM Portal</a> <em>(primary)</em></li>
+<li><a href="https://www.altium.com/documentation/altium-365/workspace-projects#uploading_or_creating_a_managed_bom">Workspace Projects</a></li>
+</ul>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">In the API</p>
@@ -360,7 +363,7 @@
 
 </code></pre>
 <h2 id="comments">Comments</h2>
-<p>Managed BOM has its own identity and lifecycle, decoupled from the evolving design, and serves as the authoritative reference for procurement, manufacturing, and compliance processes. It ensures traceability, repeatability, and governance by locking in sourcing decisions and alternates, while enabling collaboration between engineering, supply chain, and manufacturing teams within the Altium 365 environment.</p>
+<p>Managed BOM has its own identity and lifecycle, separate from any design project it is created from (though linked to it), and serves as the authoritative reference for procurement, manufacturing, and compliance processes. It supports traceability, repeatability, and governance by recording sourcing decisions and alternates and capturing them in BOM releases, while enabling collaboration between engineering, supply chain, and manufacturing teams within the Altium 365 environment.</p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../core_Entity/">core_Entity</a><ul>

@@ -356,7 +356,7 @@
 <tbody>
 <tr>
 <td><a href="classes/col_Comment/">Comment </a></td>
-<td>TBD</td>
+<td>A single entry in a comment thread: either the initial comment, pinned to a point, an object or an area of a design document (or to a BOM line), or a reply to it. A comment can mention people or groups using @, and it can be assigned to a Workspace member as a task, either when it is posted or later by converting it. Only the author can edit or delete a comment, and deleting the initial comment also deletes its replies.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComment/"><code>DesComment</code></a></td>
 </tr>
 <tr>
@@ -384,17 +384,17 @@
 <tbody>
 <tr>
 <td><a href="classes/con_EnvironmentConfiguration/">Environment Configuration </a></td>
-<td>TBD</td>
+<td>A named set of configuration data items that the Workspace members it targets are allowed to use in Altium Designer. The items are revisions of Workspace Items of supported content types (e.g. schematic, BOM, project and Draftsman templates, output job files and layer stacks, plus at most one Altium Designer Preferences revision), and the same item can be used by several configurations. Administrators define configurations in the Workspace's Team Configuration Center (TC2) and assign them to Workspace groups, called roles there; when a group member signs in to the Workspace from Altium Designer, each controlled area of the design environment is restricted to the chosen configuration's items.</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="classes/con_SchematicTemplate/">Schematic Template </a></td>
-<td>TBD</td>
+<td>A schematic template stored as a Workspace Item. When applied to a schematic sheet, the template sets the sheet's size, its graphics such as a title block, and its sheet-level parameters, so that a team's schematics look consistent. The template content is kept in successive revisions of the Item, and environment configurations can reference those revisions to control which templates designers may use.</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="classes/con_SchematicTemplateRevision/">Schematic Template Revision </a></td>
-<td>TBD</td>
+<td>One revision of a Workspace schematic template Item, holding the template as saved at that point, e.g. from Altium Designer with Save to Server or uploaded from a *.SchDot file. Editing the template saves the result into the next revision, and environment configurations list template revisions, rather than the Item itself, as their configuration data.</td>
 <td></td>
 </tr>
 </tbody>
@@ -470,7 +470,7 @@
 </tr>
 <tr>
 <td><a href="classes/cus_Workflow/">Workflow </a></td>
-<td>TBD</td>
+<td>A process workflow of an Altium 365 Workspace: the workflow that belongs to a process definition and steps designers through an everyday design process (e.g. requesting a new part, a design review or creating a new project). Workspace administrators build process definitions in the Process Workflow Editor, grouped by process theme (Part Requests, Project Activities, Project Creations), and activate them; each started instance of a process follows the workflow and creates tasks for the users whose action is needed to move it on.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkflowDefinition/"><code>DesWorkflowDefinition</code></a></td>
 </tr>
 </tbody>
@@ -503,12 +503,12 @@
 </tr>
 <tr>
 <td><a href="classes/des_Project/">Hardware Project </a></td>
-<td>TBD</td>
+<td>A design project stored in a Workspace, normally under its built-in version control, such as a PCB project. It groups the design documents that together define one implementation of a product, along with its project parameters and variants; it is the source from which releases are made and from which Managed BOMs can be created.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProject/"><code>DesProject</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/des_ProjectParameter/">Project Parameter </a></td>
-<td>TBD</td>
+<td>A name/value parameter defined at the level of a design project. It is either a Workspace-side (server-side) parameter, kept with the project in the Workspace and editable only there, or a design-side parameter, kept in the project file (e.g. *.PrjPcb) and editable in Altium Designer. Both kinds appear in the project options and can be used as special strings in design documents.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProjectParameter/"><code>DesProjectParameter</code></a></td>
 </tr>
 <tr>
@@ -518,7 +518,7 @@
 </tr>
 <tr>
 <td><a href="classes/des_ProjectTemplate/">Project Template </a></td>
-<td>A project template includes document configurations and settings that you know you will frequently apply to various projects.</td>
+<td>A reusable starting point for new design projects that bundles the documents, files and project settings a team wants to apply again and again. A project created from a template receives the template's documents and its project options.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProjectTemplate/"><code>DesProjectTemplate</code></a></td>
 </tr>
 <tr>
@@ -528,7 +528,7 @@
 </tr>
 <tr>
 <td><a href="classes/des_ProjectVariant/">Hardware Project Variant </a></td>
-<td>TBD</td>
+<td>A design variant of a project: a named variation of the same base design that is assembled with a different set of components. Within a variant, each component can be fitted, not fitted, fitted with varied parameters, or replaced by an alternate part, and the variant can define its own variant-level parameters. Assembly variants share one bare board, whereas fabrication variants also change overlay information and so need a different board.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWipVariant/"><code>DesWipVariant</code></a></td>
 </tr>
 <tr>
@@ -611,7 +611,7 @@
 </tr>
 <tr>
 <td><a href="classes/dm_PeripheralParameter/">PeripheralParameter </a></td>
-<td>A paramter associated with peripheral instance configuration.</td>
+<td>A parameter associated with peripheral instance configuration.</td>
 <td><code>DmPeripheralParameters</code> (not in Platform API snapshot)</td>
 </tr>
 <tr>
@@ -712,7 +712,7 @@
 </tr>
 <tr>
 <td><a href="classes/lib_ComponentParameter/">Component Parameter </a></td>
-<td>TBD</td>
+<td>A named parameter of a Workspace component, holding a value and, optionally, a data type. Parameters can be inherited from a component template or added directly to the component; a template can give them unit-aware (e.g. Farad, Ohm) or dictionary-defined types.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComponentParameter/"><code>DesComponentParameter</code></a></td>
 </tr>
 <tr>
@@ -727,7 +727,7 @@
 </tr>
 <tr>
 <td><a href="classes/lib_ComponentTemplateRevision/">Component Template Revision </a></td>
-<td>TBD</td>
+<td>A revision of a Component Template: the template definition, stored as a *.CMPT document, saved into the Workspace at one point in time. A component revision can be linked to a specific template revision, from which it takes its predefined parameters, models and settings.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComponentTemplateRevision/"><code>DesComponentTemplateRevision</code></a></td>
 </tr>
 <tr>
@@ -742,32 +742,32 @@
 </tr>
 <tr>
 <td><a href="classes/lib_FootprintRevision/">Footprint Revision </a></td>
-<td>TBD</td>
+<td>A revision of a Footprint: the PCB footprint as saved into the Workspace at one point in time, with its own lifecycle state. Editing a Workspace Footprint saves it into the next revision; components that still link to an earlier revision become out of date until they are updated.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesFootprint/"><code>DesFootprint</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/lib_ManagedSheet/">Managed Sheet </a></td>
-<td>TBD</td>
+<td>A schematic sheet, with its components and wiring, stored in a Workspace so that it can be reused in other designs. A managed sheet may itself contain further managed sheets beneath it in a hierarchy, and the Workspace lets you trace which components it contains and which designs use it.</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="classes/lib_ManagedSheetRevision/">Managed Sheet Revision </a></td>
-<td>TBD</td>
+<td>A revision of a Managed Sheet: the schematic sheet as saved into the Workspace at one point in time. A design uses a specific revision, so when the sheet is revised, existing designs can be updated to the new revision or kept on the previous one.</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="classes/lib_Part/">Part </a></td>
-<td>TBD</td>
+<td>A manufacturer part, identified by manufacturer and part number, as held in the Workspace's Part Catalog together with the supplier parts through which it is sold. Workspace components reference manufacturer parts through their Part Choices.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesPart/"><code>DesPart</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/lib_PartChoice/">Part Choice </a></td>
-<td>TBD</td>
+<td>One entry in a component's Part Choice list: a manufacturer part, rather than a specific supplier, that may be used to implement the component, bringing with it the offers of the suppliers that sell it. Entries are ranked automatically by availability, price and lifecycle, and users can override the order with their own rank; the top preferred entry is used as the component's part choice in a BOM.</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="classes/lib_PartChoiceList/">Part Choice List </a></td>
-<td>TBD</td>
+<td>The list of Part Choices for a component: the manufacturer parts that may be used to implement it on the assembled board. In the product the list is associated with the component and seen by all of its revisions; when part choice revision control is enabled, changing the list saves a new component revision.</td>
 <td></td>
 </tr>
 <tr>
@@ -777,32 +777,32 @@
 </tr>
 <tr>
 <td><a href="classes/lib_PcbSnippet/">PCB Snippet </a></td>
-<td>TBD</td>
+<td>A selection of circuitry from a PCB design, including its components and routing, saved so that it can be placed in other PCB documents. A snippet saved to a Workspace is revised like other Workspace items; snippets can also be kept in local folders.</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="classes/lib_PcbSnippetRevision/">PCB Snippet Revision </a></td>
-<td>TBD</td>
+<td>A revision of a PCB snippet as saved into the Workspace at one point in time. Editing a Workspace snippet saves it into the next revision.</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="classes/lib_ReuseBlock/">Reuse Block </a></td>
-<td>TBD</td>
+<td>A reusable section of a design stored in a Workspace, typically combining schematic circuitry with its PCB representation; a block can also be schematic-only or PCB-only. Placing a reuse block on a schematic sheet brings its PCB content into the board design when changes are transferred through an ECO.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesReuseBlock/"><code>DesReuseBlock</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/lib_ReuseBlockRevision/">Reuse Block Revision </a></td>
-<td>TBD</td>
+<td>A revision of a Reuse Block: its schematic and/or PCB content as saved into the Workspace at one point in time, with its own lifecycle state. Editing a reuse block saves it into the next revision.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesReuseBlockRevision/"><code>DesReuseBlockRevision</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/lib_SchSnippet/">SCH Snippet </a></td>
-<td>TBD</td>
+<td>A selection of circuitry from a single schematic sheet, including its components, saved so that it can be placed in other designs. A snippet saved to a Workspace is revised like other Workspace items; snippets can also be kept in local folders.</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="classes/lib_SchSnippetRevision/">SCH Snippet Revision </a></td>
-<td>TBD</td>
+<td>A revision of a schematic snippet as saved into the Workspace at one point in time. Editing a Workspace snippet saves it into the next revision.</td>
 <td></td>
 </tr>
 <tr>
@@ -812,7 +812,7 @@
 </tr>
 <tr>
 <td><a href="classes/lib_SymbolRevision/">Symbol Revision </a></td>
-<td>TBD</td>
+<td>A revision of a Symbol: the schematic symbol as saved into the Workspace at one point in time, with its own lifecycle state. Editing a Workspace Symbol saves it into the next revision; components that still link to an earlier revision become out of date until they are updated.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesSymbol/"><code>DesSymbol</code></a></td>
 </tr>
 </tbody>
@@ -862,7 +862,7 @@
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloApp/"><code>GloApp</code></a></td>
 </tr>
 <tr>
-<td><a href="classes/plt_EventSubscription/">Subscription </a></td>
+<td><a href="classes/plt_EventSubscription/">Event Subscription </a></td>
 <td>TBD</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/interfaces/GloEvtSubscription/"><code>GloEvtSubscription</code></a></td>
 </tr>
@@ -873,27 +873,27 @@
 </tr>
 <tr>
 <td><a href="classes/plt_LifecycleStage/">Lifecycle Stage </a></td>
-<td>TBD</td>
+<td>A named stage that groups lifecycle states in a lifecycle definition using the Advanced management style (e.g. Design, Prototype, Production), indicating how far a revision has progressed in its development. Stages can be linked to the levels of the revision naming scheme. Definitions using the Simple style have states and transitions but no stages.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleStage/"><code>DesLifeCycleStage</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/plt_LifecycleState/">Lifecycle State </a></td>
-<td>TBD</td>
+<td>A named point in an Item Revision's lifecycle (e.g. Planned, New From Design, In Production, Obsolete) that shows its status from a business perspective. Each state's properties include whether revisions in that state are shown in the Explorer panel and whether they may be used in designs; a revision moves to another state only through a transition defined in its lifecycle definition.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleState/"><code>DesLifeCycleState</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/plt_NamingScheme/">Revision Naming Scheme </a></td>
-<td>TBD</td>
+<td>Defines the format of Revision IDs for the Items that use it: one to three levels (e.g. Model, Prototype and Revision), each with its own format, separator and minimum width. The scheme is chosen per Item when the Item is created and cannot be changed after its first release. It is distinct from the Item Naming Scheme, which determines the Item ID rather than the revision's ID.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesRevisionNamingScheme/"><code>DesRevisionNamingScheme</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/plt_Organization/">Organization </a></td>
-<td>TBD</td>
+<td>An Altium customer organization, represented by its Company Account. The Company Account brings together the organization's users and groups of users, its purchased licenses and the Altium 365 Workspaces created for it, along with a company profile (e.g. name, logo and website). Administrators manage it through the Company Dashboard.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloOrganization/"><code>GloOrganization</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/plt_Solution/">Solution </a></td>
-<td>TBD</td>
+<td>A Renesas 365 solution: the main, top-level object of a Renesas 365 Workspace, which brings together the system design (an ESD document), PCB projects and software projects of one system. System designs and software projects both push their changes to the solution's System Data Model (SDM) and pull from it; Altium Designer can open a solution's PCB projects and pull SDM changes into them.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SolSolution/"><code>SolSolution</code></a></td>
 </tr>
 <tr>
@@ -903,12 +903,12 @@
 </tr>
 <tr>
 <td><a href="classes/plt_User/">User </a></td>
-<td>TBD</td>
+<td>A person identified by a global Altium Account, the identity used for signing in to Altium services. A user can be registered in an organization's Company Account, either added by an administrator or admitted through an approved join request, and can then be given access to licenses through the Company Account's user groups. Access to a Workspace is granted separately, by making the user a member of that Workspace.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloUser/"><code>GloUser</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/plt_UserGroup/">User Group </a></td>
-<td>A way to group multiple users together (e.g. for the purposes of SCIM syncrhonization). User may be a member of multiple groups.</td>
+<td>A named group of users within an organization's Company Account, managed in the Company Dashboard. Licenses can be allocated to a group so that its members can use them, and the Group Administrators system group gives its members Dashboard administration rights. A user can belong to any number of groups, groups can be provisioned from an identity provider via SCIM, and they are distinct from the groups defined inside a Workspace.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloUserGroup/"><code>GloUserGroup</code></a></td>
 </tr>
 <tr>
@@ -923,7 +923,7 @@
 </tr>
 <tr>
 <td><a href="classes/plt_WorkspaceUser/">Workspace User </a></td>
-<td>TBD</td>
+<td>A person's membership in a particular Workspace, connecting their Altium Account to that Workspace and to the Workspace groups they are assigned to. Members can come from the organization that owns the Workspace or from other organizations, and inviting an outside user does not add them to the owning organization. People who only have a project shared with them (External Share guests) are not members.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceUser/"><code>DesWorkspaceUser</code></a></td>
 </tr>
 </tbody>
@@ -941,17 +941,17 @@
 <tbody>
 <tr>
 <td><a href="classes/pro_BomIssue/">BOM Issue </a></td>
-<td>TBD</td>
+<td>A problem found when a BOM is analysed, usually against a particular BOM line: for example an unknown part number, a duplicated designator, or a part that is deprecated, low in stock or not compliant with a standard such as REACH. The level at which each kind of check reports (Fatal Error, Error or Warning, or No Report to ignore it) is configurable, and an individual issue can be waived.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomIssue/"><code>BomIssue</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/pro_BomItem/">BOM Item </a></td>
-<td>TBD</td>
+<td>One line of a BOM: its designators and quantity, the primary manufacturer part used for it (identified by manufacturer and manufacturer part number), and any alternate parts recorded for that line. A line can be linked to a Workspace component that lists its part among its Part Choices, and BOM checks report issues against individual lines.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomItem/"><code>BomItem</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/pro_BomItemAlternate/">BOM Item Alternate </a></td>
-<td>Alternate is a global replacement of a part by another in all BOMs where it's used.</td>
+<td>An alternate part recorded for one BOM line: another manufacturer part that could be used instead of the line's primary part. Alternates belong to the individual BOM line rather than applying across BOMs. They can come from an uploaded BOM file, be added by hand, or be filled in automatically from the linked component's Part Choices and from suggested alternates, and an alternate can be promoted to become the line's primary part.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomItemAlternate/"><code>BomItemAlternate</code></a></td>
 </tr>
 <tr>
@@ -961,7 +961,7 @@
 </tr>
 <tr>
 <td><a href="classes/pro_BomRelease/">BOM Release </a></td>
-<td>TBD</td>
+<td>A static snapshot of a Managed BOM's data, saved under a release name with an incremented revision number and optional notes. The BOM Portal makes a release automatically when a Managed BOM is first created and again once its data has been mapped, and further releases can be made whenever needed. Each release moves through its own lifecycle states (by default Draft, Approved and Obsolete), and a Workspace can be configured to block releasing while the BOM has Error or Fatal Error issues.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomRelease/"><code>BomRelease</code></a></td>
 </tr>
 <tr>
@@ -976,7 +976,7 @@
 </tr>
 <tr>
 <td><a href="classes/pro_ManagedBOM/">Managed BOM </a></td>
-<td>Managed BOM represents a version-controlled, workspace-stored bill of materials derived from a specific Project,  preserving all Part selections, metadata, and supply chain links at a fixed point in time.</td>
+<td>A bill of materials kept in a Workspace and worked on in the BOM Portal, where its lines are enriched with manufacturer and supplier data for review and procurement. It can be created from a design project (one of its variants or releases) or uploaded as a CSV/XLS file from any source. A Managed BOM made from a project keeps a link to that project, so it can be updated when the project changes, either in place or as a new revision; snapshots of its data at a point in time are kept as BOM releases.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomWip/"><code>BomWip</code></a></td>
 </tr>
 </tbody>
@@ -1009,7 +1009,7 @@
 </tr>
 <tr>
 <td><a href="classes/req_RequirementBaseline/">Requirement Baseline </a></td>
-<td>A version-managed release of a specification or subset of requirements approved for execution.</td>
+<td>A version-managed release of a specification or subset of requirements approved for execution. In the product this corresponds to a released specification (Release Specification). It is not what the product calls a baseline: in the Requirements &amp; Systems Portal (Legacy), a baseline is a named bookmark for a point in time (e.g. a design review) that is used to compare how requirements and values have changed.</td>
 <td></td>
 </tr>
 <tr>
@@ -1057,7 +1057,7 @@
 </tr>
 <tr>
 <td><a href="classes/sft_DeviceConfiguration/">Device Configuration </a></td>
-<td>TBD</td>
+<td>The configuration of a device (e.g. an MCU placed as a hardware component in an ESD document), covering its ports, package information, peripherals and pin assignments. It is viewed and edited on the hardware component in the ESD document, and the pin functions it defines can be pulled from the solution's SDM onto the pins of the associated component in a hardware project in Altium Designer.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SftDevCfgDeviceConfiguration/"><code>SftDevCfgDeviceConfiguration</code></a></td>
 </tr>
 <tr>
@@ -1066,18 +1066,18 @@
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SftDevCfgDeviceConfigurationRevision/"><code>SftDevCfgDeviceConfigurationRevision</code></a></td>
 </tr>
 <tr>
-<td><a href="classes/sft_PinAssignment/">Device pin assgnment </a></td>
-<td>TBD</td>
+<td><a href="classes/sft_PinAssignment/">Pin Assignment </a></td>
+<td>The assignment of a function to one pin of a device, identified by pin number and name. When a hardware project pulls changes from the solution's SDM, pin functions from the device configuration are added to or removed from the pins of the associated component.</td>
 <td></td>
 </tr>
 <tr>
-<td><a href="classes/sft_PinAssignmentModel/">Device pin assgnment </a></td>
-<td>TBD</td>
+<td><a href="classes/sft_PinAssignmentModel/">Pin Assignment Model </a></td>
+<td>The set of pin assignments of a device, one part of its device configuration alongside ports, package information and peripherals.</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="classes/sft_SoftwareProject/">Software Project </a></td>
-<td>TBD</td>
+<td>The software part of a Renesas 365 solution, developed in the built-in Web IDE (based on the Theia framework) or in e² studio; it can also be created with an external repository type. In the solution's ESD document it can be linked to a software blanket, and generating a board support package (BSP) from that blanket pushes the SDM and applies the changes to the linked project, creating the project first if none exists yet.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SftSoftwareProject/"><code>SftSoftwareProject</code></a></td>
 </tr>
 <tr>
@@ -1100,12 +1100,12 @@
 <tbody>
 <tr>
 <td><a href="classes/sup_Company/">Company </a></td>
-<td>Supply Company represents an organization that provides Parts to the market,  acting as a supplier, distributor, or reseller within the electronics supply chain.</td>
+<td>Supply Company represents an organization in the electronics supply chain. Depending on context it is the manufacturer of a Part or a distributor (or broker) that sells it.</td>
 <td><a href="https://www.altium.com/documentation/altium-developer-center/octopart/api"><code>SupCompany</code></a> (Nexar)</td>
 </tr>
 <tr>
 <td><a href="classes/sup_EvalKit/">Evaluation Kit </a></td>
-<td>TBD</td>
+<td>A vendor evaluation kit in the supply catalog, described by its associated devices, its reference designs (including a main one) and the software projects compatible with it. In Renesas 365 an eval kit can be linked to a solution, and the browser can connect to the kit over J-Link.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupEvalKit/"><code>SupEvalKit</code></a></td>
 </tr>
 <tr>
@@ -1120,27 +1120,27 @@
 </tr>
 <tr>
 <td><a href="classes/sup_PartFamily/">Part Family </a></td>
-<td>TBD</td>
+<td>A manufacturer's grouping of parts in the supply data, where the kind of family is vendor-specific (e.g. Series or Family). Part families form a hierarchy: a family has either child families or, at the lowest level, Part Groups. Families sharing the same parent are usually close alternatives to one another.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupPartFamily/"><code>SupPartFamily</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/sup_PartGroup/">Part Group </a></td>
-<td>TBD</td>
+<td>A leaf of the part family hierarchy in the supply data, holding the parts that belong to it together with group-level information such as its manufacturer, overview, key features and documents. Groups sharing the same parent family are usually close alternatives to one another.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupPartGroup/"><code>SupPartGroup</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/sup_ReferenceDesign/">Reference Design </a></td>
-<td>TBD</td>
+<td>An example design published in the supply catalog, bringing together its design files (e.g. schematics and layouts), documentation and the parts it uses. In Renesas 365 a reference design can be imported into a solution, which adds it to the Workspace as a PCB project linked to that solution.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupRefDesign/"><code>SupRefDesign</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/sup_SoftwareProject/">Software Project </a></td>
-<td>TBD</td>
+<td>A software project published in the supply catalog, together with the evaluation kits it is compatible with. In Renesas 365 it can be imported into a solution with a compatible eval kit; the import places the project in the Workspace and links it to the solution (see sft_SoftwareProject).</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupSoftwareProject/"><code>SupSoftwareProject</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/sup_SolutionTemplate/">Solution Template </a></td>
-<td>TBD</td>
+<td>A publisher's template for a solution, held in the supply catalog. It brings together catalog software projects, evaluation kits and a system design (ESD) source, and users can clone it.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupSolutionTemplate/"><code>SupSolutionTemplate</code></a></td>
 </tr>
 </tbody>
@@ -1158,32 +1158,32 @@
 <tbody>
 <tr>
 <td><a href="classes/system_Connection/">Connection </a></td>
-<td>TBD</td>
+<td>A connection line in an ESD document representing an interconnection between functional blocks (e.g. signals passed between the interfaces of two devices), drawn directly between blocks or between their ports. In the editor a line can also start or end on other objects or in free space; this model records each end as a functional block and port (see system_Endpoint).</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="classes/system_Endpoint/">Endpoint </a></td>
-<td>TBD</td>
+<td>One end of a connection in an ESD document, identified by the functional block and the port where the connection line starts or ends.</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="classes/system_ESDDocument/">ESD Document </a></td>
-<td>TBD</td>
+<td>A system-level block diagram document used in a Renesas 365 solution (listed there as a System Design project) to describe the architecture of the system at a functional level. It holds functional blocks with their hardware components, software components and ports, the connections between blocks, and blankets through which parts of the design can be linked to PCB or software projects. Pushing to and pulling from the solution's System Data Model (SDM) for the system design is done from the ESD document. Blankets are not modelled as a separate entity here (see MF-068).</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysEsdDocument/"><code>SysEsdDocument</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/system_FunctionalBlock/">Functional Block </a></td>
-<td>Represents a logical block within a PCB design (e.g., MCU subsystem, LED driver block), including parameters,  key components, ports, and associations.</td>
+<td>Represents a logical block within an ESD document (e.g., MCU subsystem, LED driver block) that stands for a function, operation or device of the system, including parameters, key components, software components, ports, and associations. In the ESD editor a functional block can also contain other blocks; this nesting is not modelled here.</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="classes/system_HardwareProject/">Hardware Project </a></td>
-<td>TBD</td>
+<td>An entry of an ESD document for a PCB design project (des_Project) that implements part of the system, listing the functional blocks that project covers. In the ESD editor a PCB project can be linked to a hardware blanket (which can be placed around functional blocks), and each project can be linked to at most one blanket in a document.</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="classes/system_KeyComponent/">Key Component </a></td>
-<td>TBD</td>
+<td>A key component of a functional block in an ESD document, shown in the editor as a hardware component (e.g. a Renesas RA MCU chosen with the RA Explorer). Its device configuration (ports, package information, peripherals and pin assignments) can be viewed and edited on the hardware component. Software components of the block reference their parent key component. Its SDM counterpart is system_SdmHardwareComponent.</td>
 <td></td>
 </tr>
 <tr>
@@ -1193,7 +1193,7 @@
 </tr>
 <tr>
 <td><a href="classes/system_Port/">Port </a></td>
-<td>TBD</td>
+<td>An interface of a functional block in an ESD document (e.g. the I2C interface of an MPU), placed inside the block's boundaries; connection lines between blocks can start and end at ports. It is a logical interface, distinct from dm_Port, which is a physical port of a device.</td>
 <td></td>
 </tr>
 <tr>
@@ -1208,7 +1208,7 @@
 </tr>
 <tr>
 <td><a href="classes/system_SoftwareProject/">Software Project </a></td>
-<td>TBD</td>
+<td>An entry of an ESD document for a software project (sft_SoftwareProject) that implements part of the system, listing the software components that project covers. In the ESD editor a software project can be linked to a software blanket, and each project can be linked to at most one blanket in a document.</td>
 <td></td>
 </tr>
 </tbody>
@@ -1271,7 +1271,7 @@
 </tr>
 <tr>
 <td><a href="classes/system_SdmPort/">Port </a></td>
-<td>Represents a port within a system design.</td>
+<td>Represents a port within a system design. It is a logical interface of a functional block, distinct from dm_Port, which is a physical port of a device.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmPort/"><code>SysSdmPort</code></a></td>
 </tr>
 <tr>
@@ -1295,12 +1295,12 @@
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSoftwareStackInstance/"><code>SysSdmSoftwareStackInstance</code></a></td>
 </tr>
 <tr>
-<td><a href="classes/system_SdmSystemModel/">System  Model </a></td>
+<td><a href="classes/system_SdmSystemModel/">System Model </a></td>
 <td>A high-level system model that captures the overall system architecture, crossing boundary between  functional and logical domains (e.g., hardware and software).</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSystemModel/"><code>SysSdmSystemModel</code></a></td>
 </tr>
 <tr>
-<td><a href="classes/system_SdmSystemModelVersion/">System  Model Version </a></td>
+<td><a href="classes/system_SdmSystemModelVersion/">System Model Version </a></td>
 <td>A specific version of a system model, capturing the state of the system design at a particular point in time.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSystemModelVersion/"><code>SysSdmSystemModelVersion</code></a></td>
 </tr>
@@ -1508,7 +1508,7 @@
 </tr>
 <tr>
 <td><a href="subsets/platform/">platform</a></td>
-<td><a href="classes/plt_EventSubscription/">Subscription </a></td>
+<td><a href="classes/plt_EventSubscription/">Event Subscription </a></td>
 <td><code>grid:global::events:subscription/{id}</code></td>
 </tr>
 <tr>
@@ -1693,12 +1693,12 @@
 </tr>
 <tr>
 <td><a href="subsets/system-sdm/">system-sdm</a></td>
-<td><a href="classes/system_SdmSystemModel/">System  Model </a></td>
+<td><a href="classes/system_SdmSystemModel/">System Model </a></td>
 <td><code>grid:workspace:{workspace-id}:system-design:sdm/{id}</code></td>
 </tr>
 <tr>
 <td><a href="subsets/system-sdm/">system-sdm</a></td>
-<td><a href="classes/system_SdmSystemModelVersion/">System  Model Version </a></td>
+<td><a href="classes/system_SdmSystemModelVersion/">System Model Version </a></td>
 <td><code>grid:workspace:{workspace-id}:system-design:sdm-version/{id}</code></td>
 </tr>
 </tbody>

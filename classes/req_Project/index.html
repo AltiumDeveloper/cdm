@@ -201,7 +201,11 @@
 <p>The orchestration space for capturing, evolving, and validating requirements scoped to a product, program increment, or regulatory engagement.</p>
 <div class="admonition abstract">
 <p class="admonition-title">In the product</p>
-<p>No product documentation linked yet.</p>
+<ul>
+<li><a href="https://www.altium.com/documentation/altium-365/requirements-portal/project-module#creating_a_new_requirements_project">Project Module</a> <em>(primary)</em></li>
+<li><a href="https://www.altium.com/documentation/altium-365/requirements-integration#basic_requirements_portal_setup">Working with Requirements</a></li>
+<li><a href="https://www.altium.com/documentation/altium-365/requirements-integration#linking_requirements_to_a_design_project">Working with Requirements</a></li>
+</ul>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">In the API</p>
@@ -391,7 +395,7 @@
 </code></pre>
 <h2 id="comments">Comments</h2>
 <p>Provides planning scaffolding comparable to Hardware Projects, enabling traceable alignment between requirement deliverables and downstream design artifacts.
-Future linking ideas: establish cross-domain slots that map requirement projects to design projects, and synchronize milestone states via baselines vs. releases.</p>
+The product already links requirements projects to design projects, through blocks of the Electronics type that are linked to PCB projects (e.g. choosing PCB projects when creating a requirements project creates a linked block and a specification for each); cross-domain slots for this link are not modelled yet. Future idea: synchronize milestone states via baselines vs. releases.</p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../core_Entity/">core_Entity</a><ul>
