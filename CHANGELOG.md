@@ -8,14 +8,21 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 ## [Unreleased]
 
 ### Added
+- Hub panel on class pages (product links and terms, Platform/Nexar API type, standards). API links are emitted unfiltered without `platform-docs-pages.json`, and the type name is shown without links without the Platform snapshot.
+- `cdm-hub-export`: `hub.json` export of the documentation hub; `make gendoc` publishes it with `hub.schema.json`, and the test suite checks the export against the schema (not checked at export time).
 - `nexarAPI` annotation for supply-chain types served by the Nexar (Octopart) API.
 - Documentation hub foundations: link registry, API snapshots, lint rules DOC-01…DOC-05, link verifier.
 - `cdm-gendoc`: registry-aware documentation generation (`make gendoc`).
-- `cdm-api-snapshot` with checked-in Platform API and Nexar GraphQL schema snapshots (`make refresh-api-snapshot`).
+- `cdm-api-snapshot` with checked-in Platform API and Nexar GraphQL schema snapshots (`make refresh-api-snapshot`); it also records existing API docs pages (`platform-docs-pages.json`).
+- `cdm-gendoc --api-dir` (exits 2 if missing).
 - `cdm-verify-links`: online verifier for registry links (`make verify-links`).
 - `see_also` replaces `extensions: documentation` for product documentation links.
 - PR CI workflow (`.github/workflows/pr.yaml`) running `make lint` and `tests/cdm_tools`.
 - Governance files `VIOLATIONS.md` and `MODEL-FINDINGS.md`.
+
+### Changed
+- Class pages no longer show separate Documentation and Platform API boxes; API links use the canonical trailing-slash URLs.
+- Class index tables link API types via the hub data (Nexar types link to the Octopart API docs).
 
 ### Fixed
 - Platform API type names corrected against production for `des_RuleCheck`, `des_RuleCheckExecution`,

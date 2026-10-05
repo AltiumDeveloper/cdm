@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CDM documentation hub export",
+  "type": "object",
+  "required": ["schema", "classes"],
+  "properties": {
+    "schema": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {"id": {"type": "string"}, "name": {"type": "string"}, "api_snapshot_retrieved": {"type": ["string", "null"]}}
+    },
+    "classes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["title", "class_uri", "subset", "grid", "hub"],
+        "properties": {
+          "title": {"type": ["string", "null"]},
+          "class_uri": {"type": ["string", "null"]},
+          "subset": {"type": ["string", "null"]},
+          "grid": {"type": ["string", "null"]},
+          "hub": {
+            "type": "object",
+            "required": ["links", "terms", "product_docs_none", "api", "api_missing", "nexar", "nexar_missing", "mappings"],
+            "properties": {
+              "links": {"type": "array", "items": {"type": "object", "required": ["text", "url", "primary"]}},
+              "terms": {"type": "array", "items": {"type": "object", "required": ["text", "predicate", "contexts", "source"]}},
+              "product_docs_none": {"type": "boolean"},
+              "api": {"type": ["object", "null"], "required": ["type_name", "kind", "url"]},
+              "api_missing": {"type": ["string", "null"]},
+              "nexar": {"type": ["object", "null"], "required": ["type_name", "url"]},
+              "nexar_missing": {"type": ["string", "null"]},
+              "mappings": {"type": "array", "items": {"type": "object", "required": ["relation", "text", "url"]}}
+            }
+          }
+        }
+      }
+    }
+  }
+}

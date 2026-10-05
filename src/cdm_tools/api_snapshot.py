@@ -12,9 +12,11 @@ from __future__ import annotations
 import argparse
 import datetime
 import json
+import re
 import sys
 import urllib.error
 import urllib.request
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Callable, Optional, Union
 
@@ -24,6 +26,9 @@ ENDPOINTS = {
     "nexar": "https://api.nexar.com/graphql",
 }
 SNAPSHOT_FILES = {"platform": "platform-schema.json", "nexar": "nexar-schema.json"}
+DOCS_SITEMAP = "https://altiumdeveloper.github.io/platform-api-docs/sitemap.xml"
+DOCS_PAGES_FILE = "platform-docs-pages.json"
+_DOCS_PATH_RE = re.compile(r"^https?://[^/]+/platform-api-docs/")
 
 INTROSPECTION_QUERY = """
 query CdmIntrospection {
@@ -138,6 +143,32 @@ def format_diff(label: str, diff: dict[str, list[str]]) -> str:
     return "\n".join(lines)
 
 
+def docs_pages_from_sitemap(xml_text: str) -> list[str]:
+    """Paths (relative to the docs base, no trailing slash) of every page in the API docs sitemap."""
+    ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+    root = ET.fromstring(xml_text)
+    paths = {_DOCS_PATH_RE.sub("", (loc.text or "").strip()).rstrip("/") for loc in root.iter(f"{ns}loc")}
+    return sorted(p for p in paths if p)
+
+
+def fetch_docs_pages(url: str = DOCS_SITEMAP) -> list[str]:
+    req = urllib.request.Request(url, headers={"User-Agent": "cdm-api-snapshot"})
+    try:
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            return docs_pages_from_sitemap(resp.read().decode("utf-8"))
+    except (urllib.error.URLError, TimeoutError, ET.ParseError) as exc:
+        raise RuntimeError(f"API docs sitemap {url} could not be read: {exc}") from exc
+
+
+def write_docs_pages(paths: list[str], path: Union[str, Path]) -> None:
+    Path(path).write_text(json.dumps(sorted(paths), indent=1) + "\n", encoding="utf-8")
+
+
+def load_docs_pages(api_dir: Union[str, Path]) -> Optional[set[str]]:
+    p = Path(api_dir) / DOCS_PAGES_FILE
+    return set(json.loads(p.read_text(encoding="utf-8"))) if p.is_file() else None
+
+
 def main(argv: Optional[list[str]] = None) -> int:
     parser = argparse.ArgumentParser(prog="cdm-api-snapshot", description=__doc__)
     parser.add_argument("--out-dir", default=DEFAULT_API_DIR)
@@ -147,10 +178,12 @@ def main(argv: Optional[list[str]] = None) -> int:
     Path(args.out_dir).mkdir(parents=True, exist_ok=True)
     today = datetime.date.today().isoformat()
     results = []
+    docs_pages = None
     try:
         for target in targets:
             new = to_snapshot(fetch_introspection(ENDPOINTS[target]), ENDPOINTS[target], today)
             results.append((target, new))
+        docs_pages = fetch_docs_pages() if "platform" in targets else None
     except RuntimeError as exc:
         print(f"cdm-api-snapshot: {exc}", file=sys.stderr)
         return 1
@@ -159,4 +192,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         old = load_snapshot(path) if path.is_file() else {"types": {}}
         write_snapshot(new, path)
         print(format_diff(target, diff_snapshots(old, new)))
+    if docs_pages is not None:
+        write_docs_pages(docs_pages, Path(args.out_dir) / DOCS_PAGES_FILE)
+        print(f"[platform docs] {len(docs_pages)} pages")
     return 0

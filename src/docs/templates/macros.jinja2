@@ -1,20 +1,3 @@
-{#- GraphQL interfaces documented under /types/interfaces/ (verified against production
-    introspection 2026-09-29). Temporary until the kind is derived from the API snapshot. -#}
-{%- macro platform_api_url(element) -%}
-  {%- if 'platformAPI' in element.annotations -%}
-    {%- set name = element.annotations["platformAPI"].value -%}
-    {%- set kind = "interfaces" if name in ["Bom", "BomItemElement", "GloEvtSubscription"] else "objects" -%}
-    [{{ name }}](https://altiumdeveloper.github.io/platform-api-docs/types/{{ kind }}/{{ name }})
-  {%- endif -%}
-{% endmacro -%}
-
-{%- macro nexar_api_url(element) -%}
-  {%- if 'nexarAPI' in element.annotations -%}
-    {%- set name = element.annotations["nexarAPI"].value -%}
-    [{{ name }} (Nexar)](https://www.altium.com/documentation/altium-developer-center/octopart/api)
-  {%- endif -%}
-{% endmacro -%}
-
 {%- macro slot_range_url(slot_range) -%}
   {%- set element = schemaview.get_element(slot_range) -%}
   {%- if element.__class__.__name__ == "ClassDefinition" -%}
@@ -30,4 +13,53 @@
 
 {%- macro slot_url(slot) -%}
   [{{ slot_title(slot) }}]( ../../slots/{{slot.name}})
+{%- endmacro -%}
+
+{%- macro hub_panel(h) -%}
+!!! abstract "In the product"
+{%- if h.terms %}
+    Known as: {% for t in h.terms %}**{{ t.text }}**{% if t.contexts %} ({{ t.contexts | join(", ") }}){% endif %}{% if not loop.last %}; {% endif %}{% endfor %}
+{% endif %}
+{%- if h.links %}
+{% for l in h.links %}
+    - [{{ l.text }}]({{ l.url }}){% if l.primary %} *(primary)*{% endif %}
+{%- endfor %}
+{%- elif h.product_docs_none %}
+    No public product documentation exists for this concept.
+{%- else %}
+    No product documentation linked yet.
+{%- endif %}
+
+!!! abstract "In the API"
+{%- if h.api %}
+    Type: {% if h.api.url %}[`{{ h.api.type_name }}`]({{ h.api.url }}){% else %}`{{ h.api.type_name }}`{% endif %} {% if h.api.kind %}({{ h.api.kind | lower }}){% endif %}
+{%- elif h.api_missing %}
+    `{{ h.api_missing }}` is not in the Platform API snapshot.
+{%- elif not h.nexar and not h.nexar_missing %}
+    No Platform API type.
+{%- endif %}
+{%- if h.nexar_missing %}
+
+    `{{ h.nexar_missing }}` is not in the Nexar API snapshot.
+{%- endif %}
+{%- if h.nexar %}
+
+    Nexar type: `{{ h.nexar.type_name }}` ([Octopart API]({{ h.nexar.url }}))
+{%- endif %}
+{% if h.mappings %}
+
+!!! abstract "In standards"
+{% for m in h.mappings %}
+    - {{ m.relation }}: {% if m.url %}[{{ m.text }}]({{ m.url }}){% else %}`{{ m.text }}`{% endif %}
+{%- endfor %}
+{% endif %}
+{%- endmacro -%}
+
+{%- macro api_type_link(h) -%}
+  {%- if h.api -%}
+    {%- if h.api.url -%}[`{{ h.api.type_name }}`]({{ h.api.url }}){%- else -%}`{{ h.api.type_name }}`{%- endif -%}
+  {%- elif h.nexar -%}[`{{ h.nexar.type_name }}`]({{ h.nexar.url }}) (Nexar)
+  {%- elif h.api_missing -%}`{{ h.api_missing }}` (not in Platform API snapshot)
+  {%- elif h.nexar_missing -%}`{{ h.nexar_missing }}` (not in Nexar API snapshot)
+  {%- endif -%}
 {%- endmacro -%}

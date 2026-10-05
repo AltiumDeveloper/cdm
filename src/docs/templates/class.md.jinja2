@@ -9,8 +9,7 @@ tags:
 
 ---
 
-{% from "macros.jinja2" import platform_api_url with context %}
-{% from "macros.jinja2" import nexar_api_url with context %}
+{% from "macros.jinja2" import hub_panel with context %}
 {% from "macros.jinja2" import slot_url with context %}
 {% from "macros.jinja2" import slot_range_url with context %}
 
@@ -55,17 +54,11 @@ Bounded context: [{{ element.in_subset[0] }}]( ../subsets/{{ element.in_subset[0
 {% endfor %}
 {% endif %}
 
-{% if element.see_also %}
-!!! info "Documentation"
-    {% for url in element.see_also %}
-    - {{ doc_link(url) if doc_link is defined else '<' ~ url ~ '>' }}
-    {% endfor %}
+{% if hub is defined %}
+{{ hub_panel(hub(element)) }}
 {% endif %}
 
 <div class="grid" markdown>
-
-!!! quote "Platform API"
-    {{ platform_api_url(element) }}{{ nexar_api_url(element) }}
 
 !!! quote annotate "GRID (1)"
     {% if 'grid' in element.annotations %}
