@@ -64,19 +64,6 @@ enums:
       Cancelled:
         description: The deployment was cancelled before it was received by the device.
 
-  ota_DeploymentTargetType:
-    is_a: Enumeration
-    in_subset: ota
-    enum_uri: ota:DeploymentTargetType
-    description: The kind of target a deployment addresses.
-    implements:
-      - owl:NamedIndividual
-    permissible_values:
-      Device:
-        description: The deployment addresses a single device.
-      Fleet:
-        description: The deployment addresses all devices of a single fleet.
-
   ota_PackageCategory:
     is_a: Enumeration
     in_subset: ota
@@ -110,7 +97,6 @@ classes:
       platformAPI: OtaDevice
     slots:
       - core_name
-      - ota_Device_fleets
     attributes:
       ota_Device_deviceId:
         slot_uri: ota:Device_deviceId
@@ -126,7 +112,7 @@ classes:
         title: hardwareId
         description: >-
           The hardware identifier of the device as reported by the source, when provided.
-          It does not identify the primary ECU; use primaryEcuId for that.
+          It does not identify the primary ECU; use Ecu.isPrimary for that.
         range: string
         multivalued: false
         required: false
@@ -217,17 +203,6 @@ classes:
         required: false
         inlined: true
         inlined_as_list: true
-      ota_Device_primaryEcuId:
-        slot_uri: ota:Device_primaryEcuId
-        alias: primaryEcuId
-        title: primaryEcuId
-        description: >-
-          The ECU identifier of the device's unique primary ECU. This is the authoritative
-          reference to the primary ECU. When ecus is present, it must match exactly one
-          ecuId in ecus.
-        range: string
-        multivalued: false
-        required: false
 
   ota_DeviceTag:
     is_a: Resource
@@ -249,6 +224,7 @@ classes:
         range: string
         multivalued: false
         required: true
+        identifier: true
       ota_DeviceTag_value:
         slot_uri: ota:DeviceTag_value
         alias: value
@@ -314,6 +290,7 @@ classes:
         range: string
         multivalued: false
         required: true
+        identifier: true
       ota_Ecu_hardwareId:
         slot_uri: ota:Ecu_hardwareId
         alias: hardwareId
@@ -327,8 +304,9 @@ classes:
         alias: isPrimary
         title: isPrimary
         description: >-
-          Provider-reported primary ECU flag, informational only. The primary ECU is
-          identified by Device.primaryEcuId, which takes precedence when they disagree.
+          Indicates whether this is the primary ECU of the device. Exactly one ECU of a
+          device must be primary; this is not enforced by the schema and must be checked
+          by the consumer.
         range: boolean
         multivalued: false
         required: false
@@ -338,8 +316,7 @@ classes:
         title: installedPackageName
         description: >-
           The name of the software currently installed on the ECU, as reported by the device.
-          Set only when installedPackage is absent (unregistered software); otherwise the
-          name is that of installedPackage.
+          Always set from the device report, whether or not it matches a registered package.
         range: string
         multivalued: false
         required: false
@@ -349,8 +326,7 @@ classes:
         title: installedVersion
         description: >-
           The version of the software currently installed on the ECU, as reported by the device.
-          Set only when installedPackage is absent (unregistered software); otherwise the
-          version is that of installedPackage.
+          Always set from the device report, whether or not it matches a registered package.
         range: string
         multivalued: false
         required: false
@@ -358,7 +334,9 @@ classes:
         slot_uri: ota:Ecu_installedPackage
         alias: installedPackage
         title: installedPackage
-        description: The registered package currently installed on the ECU, if known.
+        description: >-
+          The registered package matching installedPackageName and installedVersion.
+          Absent when the installed software does not match any registered package.
         range: ota_Package
         multivalued: false
         required: false
@@ -375,16 +353,6 @@ classes:
         alias: isAssigned
         title: isAssigned
         description: Indicates whether an update is currently assigned to the ECU.
-        range: boolean
-        multivalued: false
-        required: false
-      ota_Ecu_isUnknown:
-        slot_uri: ota:Ecu_isUnknown
-        alias: isUnknown
-        title: isUnknown
-        description: >-
-          Indicates whether the software installed on the ECU does not match any
-          registered package.
         range: boolean
         multivalued: false
         required: false
@@ -547,18 +515,16 @@ classes:
       maturity: EXPERIMENTAL
       platformAPI: OtaDeployment
     slots:
-      - ota_Deployment_target
+      - ota_Deployment_targetDevice
+      - ota_Deployment_targetFleet
+    exactly_one_of:
+      - slot_conditions:
+          ota_Deployment_targetDevice:
+            required: true
+      - slot_conditions:
+          ota_Deployment_targetFleet:
+            required: true
     attributes:
-      ota_Deployment_targetType:
-        slot_uri: ota:Deployment_targetType
-        alias: targetType
-        title: targetType
-        description: >-
-          Whether the deployment targets a single device or a single fleet. Determines
-          the kind of the target reference.
-        range: ota_DeploymentTargetType
-        multivalued: false
-        required: true
       ota_Deployment_status:
         slot_uri: ota:Deployment_status
         alias: status
@@ -847,17 +813,6 @@ classes:
 
 slots:
 
-  ota_Device_fleets:
-    is_a: core_partOf
-    slot_uri: ota:Device_fleets
-    alias: fleets
-    title: fleets
-    description: Fleets this device belongs to
-    domain: ota_Device
-    range: ota_Fleet
-    multivalued: true
-    required: false
-
   ota_Fleet_devices:
     is_a: core_hasPart
     slot_uri: ota:Fleet_devices
@@ -868,20 +823,29 @@ slots:
     range: ota_Device
     multivalued: true
     required: false
-    inverse: ota_Device_fleets
 
-  ota_Deployment_target:
+  ota_Deployment_targetDevice:
     is_a: core_hasInput
-    slot_uri: ota:Deployment_target
-    alias: target
-    title: target
+    slot_uri: ota:Deployment_targetDevice
+    alias: targetDevice
+    title: targetDevice
     description: >-
-      The target of the deployment: a device when targetType is Device, or a fleet
-      when targetType is Fleet.
+      The single device targeted by the deployment. Exactly one of targetDevice and
+      targetFleet must be set.
     domain: ota_Deployment
-    range: Any
-    any_of:
-      - range: ota_Device
-      - range: ota_Fleet
+    range: ota_Device
     multivalued: false
-    required: true
+    required: false
+
+  ota_Deployment_targetFleet:
+    is_a: core_hasInput
+    slot_uri: ota:Deployment_targetFleet
+    alias: targetFleet
+    title: targetFleet
+    description: >-
+      The fleet targeted by the deployment; all devices of the fleet are addressed.
+      Exactly one of targetDevice and targetFleet must be set.
+    domain: ota_Deployment
+    range: ota_Fleet
+    multivalued: false
+    required: false
