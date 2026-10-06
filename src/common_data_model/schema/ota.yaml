@@ -94,29 +94,6 @@ enums:
       Other:
         description: Any other software.
 
-  ota_MetricAggregationMethod:
-    is_a: Enumeration
-    in_subset: ota
-    enum_uri: ota:MetricAggregationMethod
-    description: The method used to aggregate metric values within a time bucket.
-    implements:
-      - owl:NamedIndividual
-    permissible_values:
-      Last:
-        description: The last value reported in the bucket.
-      Average:
-        description: The average of the values reported in the bucket.
-      Max:
-        description: The highest value reported in the bucket.
-      Min:
-        description: The lowest value reported in the bucket.
-      Count:
-        description: The number of values reported in the bucket.
-      Raw:
-        description: >-
-          The values are not aggregated (raw data points). Corresponds to none in
-          provider APIs.
-
 classes:
 
   ota_Device:
@@ -251,26 +228,6 @@ classes:
         range: string
         multivalued: false
         required: false
-      ota_Device_metrics:
-        slot_uri: ota:Device_metrics
-        alias: metrics
-        title: metrics
-        description: Metric series reported by this device.
-        range: ota_MetricSeries
-        multivalued: true
-        required: false
-        inlined: true
-        inlined_as_list: true
-      ota_Device_metricThresholds:
-        slot_uri: ota:Device_metricThresholds
-        alias: metricThresholds
-        title: metricThresholds
-        description: The metric thresholds configured for this device.
-        range: ota_MetricThreshold
-        multivalued: true
-        required: false
-        inlined: true
-        inlined_as_list: true
 
   ota_DeviceTag:
     is_a: Resource
@@ -455,16 +412,6 @@ classes:
         range: datetime
         multivalued: false
         required: true
-      ota_Fleet_metrics:
-        slot_uri: ota:Fleet_metrics
-        alias: metrics
-        title: metrics
-        description: Metric series aggregated from the devices in this fleet.
-        range: ota_MetricSeries
-        multivalued: true
-        required: false
-        inlined: true
-        inlined_as_list: true
 
   ota_Package:
     is_a: core_Artifact
@@ -894,187 +841,6 @@ classes:
         alias: isSuccessful
         title: isSuccessful
         description: Indicates whether the reported step succeeded, when applicable.
-        range: boolean
-        multivalued: false
-        required: false
-
-  ota_MetricSeries:
-    is_a: Resource
-    in_subset: ota
-    class_uri: ota:MetricSeries
-    title: Metric Series
-    description: >-
-      Metric Series is the time series of one metric within a period, owned by a device
-      or a fleet. A fleet series holds values aggregated from the devices belonging to
-      that fleet.
-    annotations:
-      platformAPI: OtaMetricSeries
-    attributes:
-      ota_MetricSeries_name:
-        slot_uri: ota:MetricSeries_name
-        alias: name
-        title: name
-        description: The metric name, for example cpu_usage.
-        range: string
-        multivalued: false
-        required: true
-      ota_MetricSeries_aggregationMethod:
-        slot_uri: ota:MetricSeries_aggregationMethod
-        alias: aggregationMethod
-        title: aggregationMethod
-        description: The method used to aggregate values within each time bucket.
-        range: ota_MetricAggregationMethod
-        multivalued: false
-        required: false
-      ota_MetricSeries_aggregationBucket:
-        slot_uri: ota:MetricSeries_aggregationBucket
-        alias: aggregationBucket
-        title: aggregationBucket
-        description: The length of each aggregation time bucket, for example 1h.
-        range: string
-        multivalued: false
-        required: false
-      ota_MetricSeries_periodStart:
-        slot_uri: ota:MetricSeries_periodStart
-        alias: periodStart
-        title: periodStart
-        description: The start of the period covered by the series, in UTC.
-        range: datetime
-        multivalued: false
-        required: false
-      ota_MetricSeries_periodEnd:
-        slot_uri: ota:MetricSeries_periodEnd
-        alias: periodEnd
-        title: periodEnd
-        description: The end of the period covered by the series, in UTC.
-        range: datetime
-        multivalued: false
-        required: false
-      ota_MetricSeries_threshold:
-        slot_uri: ota:MetricSeries_threshold
-        alias: threshold
-        title: threshold
-        description: >-
-          A snapshot of the threshold in effect when the series was produced, used to
-          evaluate isAlerting. It is not updated when the device's metricThresholds change.
-        range: ota_MetricThreshold
-        multivalued: false
-        required: false
-        inlined: true
-      ota_MetricSeries_isAlerting:
-        slot_uri: ota:MetricSeries_isAlerting
-        alias: isAlerting
-        title: isAlerting
-        description: Indicates whether the series violates its threshold in the period.
-        range: boolean
-        multivalued: false
-        required: false
-      ota_MetricSeries_dataPoints:
-        slot_uri: ota:MetricSeries_dataPoints
-        alias: dataPoints
-        title: dataPoints
-        description: The data points in chronological order.
-        range: ota_MetricDataPoint
-        multivalued: true
-        required: false
-        inlined: true
-        inlined_as_list: true
-
-  ota_MetricDataPoint:
-    is_a: Resource
-    in_subset: ota
-    class_uri: ota:MetricDataPoint
-    title: Metric Data Point
-    description: >-
-      Metric Data Point is a single metric value at a point in time.
-    annotations:
-      platformAPI: OtaMetricDataPoint
-    attributes:
-      ota_MetricDataPoint_timestamp:
-        slot_uri: ota:MetricDataPoint_timestamp
-        alias: timestamp
-        title: timestamp
-        description: The date and time of the value, in UTC.
-        range: datetime
-        multivalued: false
-        required: true
-      ota_MetricDataPoint_value:
-        slot_uri: ota:MetricDataPoint_value
-        alias: value
-        title: value
-        description: The metric value. Absent when no value was reported in the time bucket.
-        range: float
-        multivalued: false
-        required: false
-      ota_MetricDataPoint_state:
-        slot_uri: ota:MetricDataPoint_state
-        alias: state
-        title: state
-        description: >-
-          The state of the value relative to the series threshold, when evaluated, as a
-          provider-defined value passed through unchanged.
-        range: string
-        multivalued: false
-        required: false
-
-  ota_MetricThreshold:
-    is_a: Resource
-    in_subset: ota
-    class_uri: ota:MetricThreshold
-    title: Metric Threshold
-    description: >-
-      Metric Threshold defines the acceptable range of one metric and whether violations
-      raise alerts or notifications.
-    annotations:
-      platformAPI: OtaMetricThreshold
-    attributes:
-      ota_MetricThreshold_metricName:
-        slot_uri: ota:MetricThreshold_metricName
-        alias: metricName
-        title: metricName
-        description: The name of the metric the threshold applies to.
-        range: string
-        multivalued: false
-        required: true
-      ota_MetricThreshold_condition:
-        slot_uri: ota:MetricThreshold_condition
-        alias: condition
-        title: condition
-        description: >-
-          The condition used to compare values against the bounds, as a provider-defined
-          value passed through unchanged.
-        range: string
-        multivalued: false
-        required: false
-      ota_MetricThreshold_upper:
-        slot_uri: ota:MetricThreshold_upper
-        alias: upper
-        title: upper
-        description: The upper bound of the acceptable range.
-        range: float
-        multivalued: false
-        required: false
-      ota_MetricThreshold_lower:
-        slot_uri: ota:MetricThreshold_lower
-        alias: lower
-        title: lower
-        description: The lower bound of the acceptable range. When upper is also set, it must not exceed upper.
-        range: float
-        multivalued: false
-        required: false
-      ota_MetricThreshold_isAlertEnabled:
-        slot_uri: ota:MetricThreshold_isAlertEnabled
-        alias: isAlertEnabled
-        title: isAlertEnabled
-        description: Indicates whether threshold violations raise alerts.
-        range: boolean
-        multivalued: false
-        required: false
-      ota_MetricThreshold_isNotificationEnabled:
-        slot_uri: ota:MetricThreshold_isNotificationEnabled
-        alias: isNotificationEnabled
-        title: isNotificationEnabled
-        description: Indicates whether threshold violations send notifications.
         range: boolean
         multivalued: false
         required: false
