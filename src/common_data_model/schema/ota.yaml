@@ -371,6 +371,10 @@ classes:
     slots:
       - core_name
       - ota_Fleet_devices
+    slot_usage:
+      core_name:
+        description: The fleet name.
+        required: true
     attributes:
       ota_Fleet_createdAt:
         slot_uri: ota:Fleet_createdAt
