@@ -13,9 +13,10 @@ default_prefix: ota
 subsets:
   ota:
     description: >-
-      Models over-the-air (OTA) firmware and software updates: devices with their status and installed
-      packages, fleets that group devices, and packages with their version, size, checksums and target
-      hardware. All classes are experimental.
+      Models over-the-air (OTA) firmware and software updates: devices with their ECUs and the software
+      each ECU reports, fleets that group devices, packages with their version, size, checksums and target
+      hardware, and deployments that roll packages out to a device or fleet and record their results.
+      All classes are experimental.
     annotations:
       style: "fill:#d29292"
       productDocs: none
@@ -94,7 +95,6 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:ota:device/{id}
       maturity: EXPERIMENTAL
-      platformAPI: OtaDevice
     slots:
       - core_name
     attributes:
@@ -205,14 +205,12 @@ classes:
         inlined_as_list: true
 
   ota_DeviceTag:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: ota
     class_uri: ota:DeviceTag
     title: Device Tag
     description: >-
       Device Tag is a key-value pair attached to a device for organization and filtering.
-    annotations:
-      platformAPI: OtaDeviceTag
     attributes:
       ota_DeviceTag_key:
         slot_uri: ota:DeviceTag_key
@@ -237,14 +235,12 @@ classes:
         required: true
 
   ota_DeviceNetworkInfo:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: ota
     class_uri: ota:DeviceNetworkInfo
     title: Device Network Info
     description: >-
       Device Network Info is the network configuration last reported by a device.
-    annotations:
-      platformAPI: OtaDeviceNetworkInfo
     attributes:
       ota_DeviceNetworkInfo_localIpV4Address:
         slot_uri: ota:DeviceNetworkInfo_localIpV4Address
@@ -272,15 +268,13 @@ classes:
         required: false
 
   ota_Ecu:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: ota
     class_uri: ota:Ecu
     title: ECU
     description: >-
       ECU represents an electronic control unit within a device. Each device has exactly
       one primary ECU; secondary ECUs are updated through the primary ECU (Uptane).
-    annotations:
-      platformAPI: OtaEcu
     attributes:
       ota_Ecu_ecuId:
         slot_uri: ota:Ecu_ecuId
@@ -367,7 +361,6 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:ota:fleet/{id}
       maturity: EXPERIMENTAL
-      platformAPI: OtaFleet
     slots:
       - core_name
       - ota_Fleet_devices
@@ -397,7 +390,6 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:ota:package/{id}
       maturity: EXPERIMENTAL
-      platformAPI: OtaPackage
     slots:
       - core_name
       - core_description
@@ -477,14 +469,12 @@ classes:
         required: false
 
   ota_PackageHash:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: ota
     class_uri: ota:PackageHash
     title: Package Hash
     description: >-
       Package Hash is a checksum of a package binary, used for Uptane target metadata.
-    annotations:
-      platformAPI: OtaPackageHash
     attributes:
       ota_PackageHash_algorithm:
         slot_uri: ota:PackageHash_algorithm
@@ -506,7 +496,7 @@ classes:
         required: true
 
   ota_Deployment:
-    is_a: Activity
+    is_a: core_Activity
     in_subset: ota
     class_uri: ota:Deployment
     title: Deployment
@@ -517,7 +507,6 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:ota:deployment/{id}
       maturity: EXPERIMENTAL
-      platformAPI: OtaDeployment
     slots:
       - ota_Deployment_targetDevice
       - ota_Deployment_targetFleet
@@ -586,7 +575,7 @@ classes:
         inlined_as_list: true
 
   ota_DeploymentAssignment:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: ota
     class_uri: ota:DeploymentAssignment
     title: Deployment Assignment
@@ -594,8 +583,6 @@ classes:
       Deployment Assignment assigns a package to the ECUs with a given hardware identifier.
       Deployment requests may name packages only; the provider then resolves the hardware
       identifier from the package and the target device's ECUs.
-    annotations:
-      platformAPI: OtaDeploymentAssignment
     attributes:
       ota_DeploymentAssignment_hardwareId:
         slot_uri: ota:DeploymentAssignment_hardwareId
@@ -619,14 +606,12 @@ classes:
         required: true
 
   ota_DeploymentDeviceResult:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: ota
     class_uri: ota:DeploymentDeviceResult
     title: Deployment Device Result
     description: >-
       Deployment Device Result is the outcome of a deployment on one target device.
-    annotations:
-      platformAPI: OtaDeploymentDeviceResult
     attributes:
       ota_DeploymentDeviceResult_device:
         slot_uri: ota:DeploymentDeviceResult_device
@@ -698,15 +683,13 @@ classes:
         inlined_as_list: true
 
   ota_DeploymentComponentResult:
-    is_a: Resource
+    is_a: core_Resource
     in_subset: ota
     class_uri: ota:DeploymentComponentResult
     title: Deployment Component Result
     description: >-
       Deployment Component Result is the outcome of a deployment on one ECU (Uptane component)
       of a target device.
-    annotations:
-      platformAPI: OtaDeploymentComponentResult
     attributes:
       ota_DeploymentComponentResult_ecuId:
         slot_uri: ota:DeploymentComponentResult_ecuId
@@ -758,7 +741,7 @@ classes:
         required: false
 
   ota_DeploymentEvent:
-    is_a: Event
+    is_a: core_Event
     in_subset: ota
     class_uri: ota:DeploymentEvent
     title: Deployment Event
