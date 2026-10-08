@@ -61,9 +61,31 @@ enums:
       InProgress:
         description: The device has received the update instructions and is installing.
       Completed:
-        description: The deployment finished, either successfully or with a failure.
+        description: >-
+          The deployment finished, either successfully or with a failure. A partially completed
+          deployment, where only some ECUs installed successfully, is also Completed, with
+          isSuccessful false and the per-ECU outcome in the component results.
       Cancelled:
         description: The deployment was cancelled before it was received by the device.
+
+  ota_DeploymentCreationStatus:
+    is_a: Enumeration
+    in_subset: ota
+    enum_uri: ota:DeploymentCreationStatus
+    description: >-
+      Whether the update for one device of a fleet deployment has been created. Devices whose
+      update was not created are not updated, and the reasons are reported as errors.
+    implements:
+      - owl:NamedIndividual
+    permissible_values:
+      Requested:
+        description: Creating the update for the device has been requested.
+      Creating:
+        description: The update for the device is being created.
+      Created:
+        description: The update for the device was created.
+      NotCreated:
+        description: The update for the device was not created, for example because no ECU is compatible.
 
   ota_PackageCategory:
     is_a: Enumeration
@@ -222,7 +244,7 @@ classes:
         range: string
         multivalued: false
         required: true
-        identifier: true
+        key: true
       ota_DeviceTag_value:
         slot_uri: ota:DeviceTag_value
         alias: value
@@ -284,7 +306,7 @@ classes:
         range: string
         multivalued: false
         required: true
-        identifier: true
+        key: true
       ota_Ecu_hardwareId:
         slot_uri: ota:Ecu_hardwareId
         alias: hardwareId
@@ -363,7 +385,6 @@ classes:
       maturity: EXPERIMENTAL
     slots:
       - core_name
-      - ota_Fleet_devices
     slot_usage:
       core_name:
         description: The fleet name.
@@ -377,6 +398,16 @@ classes:
         range: datetime
         multivalued: false
         required: true
+      ota_Fleet_devices:
+        slot_uri: ota:Fleet_devices
+        alias: devices
+        title: devices
+        description: >-
+          The devices that are members of this fleet. A device can be a member of several
+          fleets, so this is an association, not compositional containment.
+        range: ota_Device
+        multivalued: true
+        required: false
 
   ota_Package:
     is_a: core_Artifact
@@ -507,9 +538,6 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:ota:deployment/{id}
       maturity: EXPERIMENTAL
-    slots:
-      - ota_Deployment_targetDevice
-      - ota_Deployment_targetFleet
     exactly_one_of:
       - slot_conditions:
           ota_Deployment_targetDevice:
@@ -518,22 +546,46 @@ classes:
           ota_Deployment_targetFleet:
             required: true
     attributes:
+      ota_Deployment_targetDevice:
+        slot_uri: ota:Deployment_targetDevice
+        alias: targetDevice
+        title: targetDevice
+        description: >-
+          The single device targeted by the deployment. Exactly one of targetDevice and
+          targetFleet must be set.
+        range: ota_Device
+        multivalued: false
+        required: false
+      ota_Deployment_targetFleet:
+        slot_uri: ota:Deployment_targetFleet
+        alias: targetFleet
+        title: targetFleet
+        description: >-
+          The fleet targeted by the deployment; all devices of the fleet are addressed.
+          Exactly one of targetDevice and targetFleet must be set.
+        range: ota_Fleet
+        multivalued: false
+        required: false
       ota_Deployment_status:
         slot_uri: ota:Deployment_status
         alias: status
         title: status
-        description: The overall status of the deployment.
+        description: >-
+          The overall status of the deployment. Set for device deployments. For fleet
+          deployments the status is tracked per device in deviceResults, and providers
+          may not report an overall status.
         range: ota_DeploymentStatus
         multivalued: false
-        required: true
+        required: false
       ota_Deployment_createdAt:
         slot_uri: ota:Deployment_createdAt
         alias: createdAt
         title: createdAt
-        description: The date and time the deployment was created, in UTC.
+        description: >-
+          The date and time the deployment was created, in UTC, when reported by the provider.
         range: datetime
         multivalued: false
-        required: true
+        required: false
       ota_Deployment_scheduledFor:
         slot_uri: ota:Deployment_scheduledFor
         alias: scheduledFor
@@ -621,14 +673,25 @@ classes:
         range: ota_Device
         multivalued: false
         required: true
+      ota_DeploymentDeviceResult_creationStatus:
+        slot_uri: ota:DeploymentDeviceResult_creationStatus
+        alias: creationStatus
+        title: creationStatus
+        description: >-
+          Whether the update for the device has been created. Reported for fleet deployments only.
+        range: ota_DeploymentCreationStatus
+        multivalued: false
+        required: false
       ota_DeploymentDeviceResult_status:
         slot_uri: ota:DeploymentDeviceResult_status
         alias: status
         title: status
-        description: The deployment status on the device.
+        description: >-
+          The deployment status on the device. Absent while the update for the device has not
+          been created, see creationStatus.
         range: ota_DeploymentStatus
         multivalued: false
-        required: true
+        required: false
       ota_DeploymentDeviceResult_completedAt:
         slot_uri: ota:DeploymentDeviceResult_completedAt
         alias: completedAt
@@ -661,6 +724,17 @@ classes:
         range: string
         multivalued: false
         required: false
+      ota_DeploymentDeviceResult_errors:
+        slot_uri: ota:DeploymentDeviceResult_errors
+        alias: errors
+        title: errors
+        description: >-
+          The errors reported for the device, for example the reasons its update was not created.
+        range: ota_DeploymentError
+        multivalued: true
+        required: false
+        inlined: true
+        inlined_as_list: true
       ota_DeploymentDeviceResult_componentResults:
         slot_uri: ota:DeploymentDeviceResult_componentResults
         alias: componentResults
@@ -681,6 +755,32 @@ classes:
         required: false
         inlined: true
         inlined_as_list: true
+
+  ota_DeploymentError:
+    is_a: core_Resource
+    in_subset: ota
+    class_uri: ota:DeploymentError
+    title: Deployment Error
+    description: >-
+      Deployment Error is an error reported for one ECU of a device during a deployment, for
+      example that no package of the deployment is compatible with the ECU's hardware.
+    attributes:
+      ota_DeploymentError_ecuId:
+        slot_uri: ota:DeploymentError_ecuId
+        alias: ecuId
+        title: ecuId
+        description: The identifier of the ECU the error applies to. At most 64 characters.
+        range: string
+        multivalued: false
+        required: true
+      ota_DeploymentError_code:
+        slot_uri: ota:DeploymentError_code
+        alias: code
+        title: code
+        description: The error code reported by the provider, for example device_no_compatible_hardware.
+        range: string
+        multivalued: false
+        required: true
 
   ota_DeploymentComponentResult:
     is_a: core_Resource
@@ -798,41 +898,3 @@ classes:
         multivalued: false
         required: false
 
-slots:
-
-  ota_Fleet_devices:
-    is_a: core_hasPart
-    slot_uri: ota:Fleet_devices
-    alias: devices
-    title: devices
-    description: Devices in this fleet
-    domain: ota_Fleet
-    range: ota_Device
-    multivalued: true
-    required: false
-
-  ota_Deployment_targetDevice:
-    is_a: core_hasInput
-    slot_uri: ota:Deployment_targetDevice
-    alias: targetDevice
-    title: targetDevice
-    description: >-
-      The single device targeted by the deployment. Exactly one of targetDevice and
-      targetFleet must be set.
-    domain: ota_Deployment
-    range: ota_Device
-    multivalued: false
-    required: false
-
-  ota_Deployment_targetFleet:
-    is_a: core_hasInput
-    slot_uri: ota:Deployment_targetFleet
-    alias: targetFleet
-    title: targetFleet
-    description: >-
-      The fleet targeted by the deployment; all devices of the fleet are addressed.
-      Exactly one of targetDevice and targetFleet must be set.
-    domain: ota_Deployment
-    range: ota_Fleet
-    multivalued: false
-    required: false
