@@ -1,22 +1,915 @@
+/**
+ * Theme for the Common Data Model site.
+ * Shares its visual language with the Altium 365 API reference (AltiumDeveloper/platform-api-docs,
+ * src/css/custom.css): fonts, colours, header, sidebar, tables, code and the bounded-context colours.
+ * Keep the two in step when changing tokens.
+ * Order: fonts, tokens, header, sidebar and TOC, content, tables, code, admonitions, footer, page-specific rules.
+ */
+
+/* ---------- Fonts (self-hosted, SIL OFL; licences in ../fonts/) ---------- */
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/inter-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('../fonts/jetbrains-mono-latin-wght-normal.woff2') format('woff2-variations');
+}
+
+/* ---------- Tokens ---------- */
+
+:root {
+  --md-text-font: 'Inter';
+  --md-code-font: 'JetBrains Mono';
+  --alt-header-bg: #0b0d11;
+}
+
+[data-md-color-scheme='default'] {
+  --md-primary-fg-color: var(--alt-header-bg);
+  --md-primary-fg-color--light: #1d222c;
+  --md-primary-fg-color--dark: #000;
+  --md-primary-bg-color: #fff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.78);
+  --md-accent-fg-color: #0b66d4;
+  --md-accent-fg-color--transparent: rgba(11, 102, 212, 0.1);
+
+  --md-default-fg-color: #14181f;
+  --md-default-fg-color--light: #596273;
+  --md-default-fg-color--lighter: #8b94a5;
+  --md-default-fg-color--lightest: #e5e8ee;
+  --md-default-bg-color: #fff;
+  --md-typeset-color: #14181f;
+  --md-typeset-a-color: #0b66d4;
+  --md-code-fg-color: #14181f;
+  --md-code-bg-color: #f6f7f9;
+  --md-typeset-table-color: #e5e8ee;
+
+  --alt-border: #e5e8ee;
+  --alt-border-strong: #d3d8e1;
+  --alt-surface: #f6f7f9;
+  --alt-accent-bg: #e8f1fd;
+  --alt-accent-fg: #0a56b5;
+  --alt-muted: #596273;
+  --alt-nav-fg: #3b4352;
+}
+
+[data-md-color-scheme='slate'] {
+  --md-hue: 220;
+  --md-primary-fg-color: var(--alt-header-bg);
+  --md-primary-bg-color: #fff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.78);
+  --md-accent-fg-color: #5aa5ff;
+  --md-accent-fg-color--transparent: rgba(90, 165, 255, 0.12);
+
+  --md-default-fg-color: #e6e9ef;
+  --md-default-fg-color--light: #98a1b3;
+  --md-default-fg-color--lighter: #6b7385;
+  --md-default-fg-color--lightest: #232933;
+  --md-default-bg-color: #0f1217;
+  --md-typeset-color: #e6e9ef;
+  --md-typeset-a-color: #5aa5ff;
+  --md-code-fg-color: #e6e9ef;
+  --md-code-bg-color: #161a22;
+  --md-typeset-table-color: #232933;
+  --md-footer-bg-color: var(--alt-header-bg);
+
+  --alt-border: #232933;
+  --alt-border-strong: #343c4a;
+  --alt-surface: #161a22;
+  --alt-accent-bg: rgba(90, 165, 255, 0.14);
+  --alt-accent-fg: #8fc0ff;
+  --alt-muted: #98a1b3;
+  --alt-nav-fg: #b3bbca;
+}
+
+/* Sizes below are the Altium 365 API reference's, in Material's 20px root (API px / 20 = rem). Material grows the
+   root to 137.5% and 150% on wide screens; the API site does not, so the root is pinned. */
+html {
+  font-size: 125% !important;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'cv11', 'ss03';
+}
+
+.md-grid {
+  max-width: 88rem;
+}
+
+/* Material puts a top margin on the main area, so the sticky sidebars start lower than where they stick once the page
+   scrolls, and jump. Without it they sit at the same place either way; the content column keeps the space itself. */
+.md-main__inner {
+  margin-top: 0;
+}
+
+.md-content__inner {
+  padding-top: 1.5rem;
+}
+
+/* ---------- Header: black bar with the Altium wordmark, one title block, sibling-site links ---------- */
+
+.md-header {
+  height: 2.8rem;
+  border-bottom: 1px solid #1f242d;
+  box-shadow: none !important;
+}
+
+.md-header__inner {
+  height: 2.8rem;
+  padding: 0 0.6rem;
+}
+
+.md-header__button.md-logo {
+  margin: 0 0 0 0.2rem;
+  padding: 0.4rem 0.2rem;
+}
+
+.md-header__button.md-logo img {
+  width: auto;
+  height: 1rem;
+}
+
+.md-header__title {
+  flex-grow: 1;
+  margin-left: 0.6rem;
+  font-size: 0.7rem;
+  line-height: 2.8rem;
+}
+
+.md-header__site-title {
+  padding-left: 0.65rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.86);
+  font-weight: 500;
+}
+
+.md-header__site-title:hover {
+  color: #fff;
+}
+
+.md-header__links {
+  display: flex;
+  gap: 1.1rem;
+  margin: 0 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.md-header__link {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.656rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.md-header__link::after {
+  content: ' ↗';
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+.md-header__link:hover {
+  color: #fff;
+}
+
+@media screen and (max-width: 76.2344em) {
+  .md-header__links {
+    display: none;
+  }
+}
+
+/* Search box on the dark bar */
+.md-search__form {
+  height: 1.7rem;
+  border: 1px solid #2a303b;
+  border-radius: 6px;
+  background-color: #171b22;
+}
+
+.md-search__form:hover {
+  background-color: #1d222c;
+}
+
+.md-search__input {
+  font-size: 0.68rem;
+}
+
+.md-search__input::placeholder {
+  color: #8b94a5;
+}
+
+[data-md-toggle='search']:checked ~ .md-header .md-search__form {
+  border-radius: 6px 6px 0 0;
+}
+
+/* ---------- Sidebar and table of contents ---------- */
+
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    width: 16rem;
+  }
+
+  /* Material sizes the navigation to 11.5rem by padding the sidebar's inner box on the right
+     (calc(100% - 11.5rem)); let it fill the wider sidebar */
+  .md-sidebar--primary .md-sidebar__inner {
+    padding-right: 0.4rem !important;
+  }
+}
+
+/* The divider goes on the scrolling box: the sidebar element itself is only as tall as its first rows */
+.md-sidebar--primary .md-sidebar__scrollwrap {
+  border-right: 1px solid var(--alt-border);
+}
+
+.md-nav {
+  font-size: 0.65rem;
+  line-height: 1.4;
+}
+
+.md-nav__link {
+  color: var(--alt-nav-fg);
+  margin-top: 0.15em;
+  padding: 0.225rem 0.45rem;
+  font-weight: 450;
+  border-radius: 6px;
+}
+
+.md-nav__link:hover {
+  color: var(--md-default-fg-color);
+  background: var(--md-accent-fg-color--transparent);
+}
+
+.md-nav__link--active,
+.md-nav__item .md-nav__link--active {
+  color: var(--alt-accent-fg);
+  background: var(--alt-accent-bg);
+  font-weight: 550;
+}
+
+/* The site name above the navigation repeats the header title (desktop only; the mobile drawer keeps it) */
+@media screen and (min-width: 76.25em) {
+  .md-nav--primary > .md-nav__title {
+    display: none;
+  }
+}
+
+/* Section headings (navigation.sections): small caps labels like the API sidebar */
+.md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__link {
+  margin-top: 1rem;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.525rem;
+  font-weight: 650;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background: none;
+}
+
+.md-nav__item--section > .md-nav {
+  margin-left: 0;
+}
+
+/* A section row with an index page (bounded contexts) is a container holding the link and the caret toggle; Material
+   styles both as links, which gives two pills. The row is highlighted as one instead. */
+.md-sidebar--primary .md-nav__container {
+  border-radius: 6px;
+}
+
+.md-sidebar--primary .md-nav__container > .md-nav__link {
+  margin-top: 0;
+  background: none !important;
+}
+
+.md-sidebar--primary .md-nav__container:hover {
+  background: var(--md-accent-fg-color--transparent);
+}
+
+.md-sidebar--primary .md-nav__container:has(> a.md-nav__link--active) {
+  background: var(--alt-accent-bg);
+}
+
+/* Entity hierarchy inside a bounded context (hooks/nav.py, partials/nav-item.html): subclasses are indented under
+   their parent with a thin guide line instead of expand/collapse */
+.md-nav__item--depth-1 > .md-nav__link,
+.md-nav__item--depth-2 > .md-nav__link,
+.md-nav__item--depth-3 > .md-nav__link {
+  margin-top: 0;
+  border-left: 1px solid var(--alt-border-strong);
+  border-radius: 0 6px 6px 0;
+}
+
+.md-nav__item--depth-1 > .md-nav__link {
+  margin-left: 0.55rem;
+}
+
+.md-nav__item--depth-2 > .md-nav__link {
+  margin-left: 1.1rem;
+}
+
+.md-nav__item--depth-3 > .md-nav__link {
+  margin-left: 1.65rem;
+}
+
+/* Right-hand table of contents */
+.md-sidebar--secondary .md-nav {
+  font-size: 0.6rem;
+}
+
+.md-sidebar--secondary .md-nav__title {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.56rem;
+  font-weight: 650;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background: none;
+  box-shadow: none;
+}
+
+.md-sidebar--secondary .md-nav__link--active {
+  background: none;
+}
+
+/* ---------- Content ---------- */
+
+.md-typeset {
+  font-size: 0.75rem;
+  line-height: 1.65;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  color: var(--md-default-fg-color);
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.md-typeset h1 {
+  margin: 0 0 0.6rem;
+  font-size: 2.25rem;
+  letter-spacing: -0.022em;
+}
+
+.md-typeset h2 {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+
+.md-typeset h3 {
+  margin-top: 1.6rem;
+  font-size: 0.9rem;
+}
+
+.md-typeset a {
+  font-weight: 500;
+}
+
+.md-typeset a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.md-typeset hr {
+  border-bottom-color: var(--alt-border);
+}
+
+/* IRI / bounded-context lines under a page title */
+.page-subtitle {
+  margin: 0;
+  color: var(--alt-muted);
+  font-family: var(--md-code-font-family);
+  font-size: 0.66rem;
+}
+
+.md-typeset .page-subtitle a {
+  font-weight: 450;
+}
+
+/* ---------- Tables ---------- */
+
 .md-typeset__table {
-   min-width: 100%;
+  min-width: 100%;
 }
 
 .md-typeset table:not([class]) {
-    display: table;
+  display: table;
+  width: 100%;
+  border: 1px solid var(--alt-border);
+  border-radius: 8px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  box-shadow: none;
+  font-size: 0.675rem;
 }
 
-/* ******************************************************** */
-/* Subtitles     */
-/* ******************************************************** */
-.md-typeset h1 { /* Add Line under Header like GitHub */
-  margin: 0px;
+.md-typeset table:not([class]) th {
+  background: var(--alt-surface);
+  color: var(--md-default-fg-color--light);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.page-subtitle {
-  font-family: monospace;
-  font-size: 0.8em;
-  color: rgb(168, 168, 168);
-  margin-top: 0px;
-  margin-bottom: 0px;
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  padding: 0.4125rem 0.6rem;
+  border-top: 0;
+  border-bottom: 1px solid var(--alt-border);
+  vertical-align: top;
+}
+
+.md-typeset table:not([class]) tr:last-child td {
+  border-bottom: 0;
+}
+
+.md-typeset table:not([class]) tbody tr:hover {
+  background: var(--alt-surface);
+  box-shadow: none;
+}
+
+/* ---------- Code ---------- */
+
+.md-typeset code {
+  padding: 0.1em 0.4em;
+  border: 1px solid var(--alt-border);
+  border-radius: 5px;
+  font-size: 0.85em;
+  font-weight: 450;
+}
+
+.md-typeset a code {
+  color: var(--md-typeset-a-color);
+}
+
+.md-typeset table code {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.md-typeset pre > code {
+  padding: 0.9rem 1.1rem;
+  border: 0;
+  border-radius: 8px;
+}
+
+.md-typeset pre {
+  border: 1px solid var(--alt-border);
+  border-radius: 8px;
+}
+
+/* ---------- Admonitions (class hub panels) ---------- */
+
+.md-typeset .admonition,
+.md-typeset details {
+  margin: 0.8rem 0;
+  padding: 0 0.8rem 0.55rem;
+  border: 1px solid var(--alt-border) !important;
+  border-radius: 8px;
+  background: var(--alt-surface);
+  box-shadow: none;
+  font-size: 0.68rem;
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  margin: 0 -0.8rem;
+  padding: 0.55rem 0.8rem 0 !important;
+  border: 0;
+  background: none !important;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.56rem;
+  font-weight: 650;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.md-typeset .admonition-title::before,
+.md-typeset summary::before {
+  display: none;
+}
+
+.md-typeset .admonition > :not(.admonition-title) {
+  margin-top: 0.35em;
+  margin-bottom: 0;
+}
+
+.md-typeset .admonition ul {
+  margin-left: 1.1em;
+}
+
+.md-typeset .admonition li {
+  margin-bottom: 0.1em;
+}
+
+/* ---------- Breadcrumbs and "View as Markdown" (partials/content.html) ---------- */
+
+.doc-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 0.6rem;
+}
+
+.doc-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem 0.35rem;
+  min-width: 0;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.6rem;
+}
+
+.doc-crumbs a {
+  color: var(--md-default-fg-color--light);
+}
+
+.doc-crumbs a:hover {
+  color: var(--md-default-fg-color);
+}
+
+.doc-crumbs__home svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  fill: currentColor;
+  vertical-align: -0.15rem;
+}
+
+.doc-crumbs__sep {
+  opacity: 0.5;
+}
+
+.doc-crumbs__current {
+  color: var(--md-default-fg-color);
+}
+
+.doc-md-link {
+  flex-shrink: 0;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--alt-border);
+  border-radius: 6px;
+  color: var(--md-default-fg-color--light) !important;
+  font-size: 0.58rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.doc-md-link:hover {
+  border-color: var(--alt-border-strong);
+  background: var(--alt-surface);
+  color: var(--md-default-fg-color) !important;
+}
+
+/* ---------- Copy buttons on IRI and GRID (javascript/copy.js) ---------- */
+
+.copy-btn {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-left: 0.3rem;
+  padding: 0;
+  border: 0;
+  background-color: var(--md-default-fg-color--light);
+  cursor: pointer;
+  opacity: 0;
+  vertical-align: -0.12rem;
+  transition: opacity 0.15s;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='9' width='12' height='12' rx='2'/%3E%3Cpath d='M5 15V5a2 2 0 012-2h10'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='9' width='12' height='12' rx='2'/%3E%3Cpath d='M5 15V5a2 2 0 012-2h10'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.page-subtitle:hover .copy-btn,
+.copy-btn:focus-visible {
+  opacity: 1;
+}
+
+.copy-btn:hover {
+  background-color: var(--md-default-fg-color);
+}
+
+.copy-btn.copied {
+  opacity: 1;
+  background-color: #2f9e5b;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E");
+}
+
+/* ---------- Bounded contexts: colours and icons ----------
+ * Colours are the CDM subset colours (`annotations.style` fill in the schema); `core` has none and is neutral.
+ * Glyphs are the ones the Altium 365 API reference uses for the same contexts. A rule per subset applies to the
+ * `.bc-<subset>` class: home-page cards, page titles, and the sidebar's bounded-context sections (set by
+ * hooks/nav.py and partials/nav-item.html, so it does not depend on the link's relative URL).
+ * Every subset of the schema needs a rule here (tests/cdm_tools/test_bc_styles.py). */
+.bc-platform {
+  --bc-bg: #cccccc;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%230b0d11%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M12%203l8%204.5v9L12%2021l-8-4.5v-9z%22/%3E%3Cpath%20d=%22M12%2012l8-4.5M12%2012v9M12%2012L4%207.5%22/%3E%3C/svg%3E");
+}
+.bc-design {
+  --bc-bg: #93c47d;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%230b0d11%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Crect%20x=%227%22%20y=%227%22%20width=%2210%22%20height=%2210%22%20rx=%221.5%22/%3E%3Cpath%20d=%22M9%203v4M15%203v4M9%2017v4M15%2017v4M3%209h4M3%2015h4M17%209h4M17%2015h4%22/%3E%3C/svg%3E");
+}
+.bc-insights {
+  --bc-bg: #a64d79;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%23ffffff%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M5%2020V11M12%2020V4M19%2020v-6%22/%3E%3C/svg%3E");
+}
+.bc-library {
+  --bc-bg: #ffe599;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%230b0d11%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M4%205a2%202%200%20012-2h13v16H6a2%202%200%2000-2%202z%22/%3E%3Cpath%20d=%22M4%2021V5M9%207h6%22/%3E%3C/svg%3E");
+}
+.bc-collaboration {
+  --bc-bg: #6fa8dc;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%230b0d11%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M4%205h16v11H9l-5%204z%22/%3E%3C/svg%3E");
+}
+.bc-configuration {
+  --bc-bg: #ead1dc;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%230b0d11%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M4%207h10M18%207h2M4%2017h2M10%2017h10%22/%3E%3Ccircle%20cx=%2216%22%20cy=%227%22%20r=%222%22/%3E%3Ccircle%20cx=%228%22%20cy=%2217%22%20r=%222%22/%3E%3C/svg%3E");
+}
+.bc-procurement {
+  --bc-bg: #dd7e6b;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%230b0d11%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M3%204h2l2%2011h11l2-8H6%22/%3E%3Ccircle%20cx=%229%22%20cy=%2219%22%20r=%221%22/%3E%3Ccircle%20cx=%2217%22%20cy=%2219%22%20r=%221%22/%3E%3C/svg%3E");
+}
+.bc-supply {
+  --bc-bg: #0c559c;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%23ffffff%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M2%206h11v10H2zM13%2010h5l3%203v3h-8z%22/%3E%3Ccircle%20cx=%226%22%20cy=%2218%22%20r=%221.5%22/%3E%3Ccircle%20cx=%2217%22%20cy=%2218%22%20r=%221.5%22/%3E%3C/svg%3E");
+}
+.bc-customization {
+  --bc-bg: #a2c4c9;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%230b0d11%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M8%207l-5%205%205%205M16%207l5%205-5%205%22/%3E%3C/svg%3E");
+}
+.bc-system {
+  --bc-bg: #f1c232;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%230b0d11%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M12%203l9%205-9%205-9-5zM3%2013l9%205%209-5%22/%3E%3C/svg%3E");
+}
+.bc-system-sdm {
+  --bc-bg: #f1c232;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%230b0d11%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M12%202l8%204-8%204-8-4zM4%2011l8%204%208-4M4%2016l8%204%208-4%22/%3E%3C/svg%3E");
+}
+.bc-requirements {
+  --bc-bg: #f6b26b;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%230b0d11%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M4%206l2%202%203-3M4%2014l2%202%203-3M13%207h7M13%2015h7%22/%3E%3C/svg%3E");
+}
+.bc-deviceModel {
+  --bc-bg: #6fa8dc;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%230b0d11%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2212%22%20height=%2212%22%20rx=%221.5%22/%3E%3Crect%20x=%229.5%22%20y=%229.5%22%20width=%225%22%20height=%225%22/%3E%3Cpath%20d=%22M9%202v4M15%202v4M9%2018v4M15%2018v4M2%209h4M2%2015h4M18%209h4M18%2015h4%22/%3E%3C/svg%3E");
+}
+.bc-software {
+  --bc-bg: #3c78d8;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%23ffffff%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M13%203L5%2014h6l-1%207%208-11h-6z%22/%3E%3C/svg%3E");
+}
+.bc-ota {
+  --bc-bg: #d29292;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%230b0d11%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M4.5%2010a11%2011%200%200115%200M7.5%2013.5a6.5%206.5%200%20019%200%22/%3E%3Ccircle%20cx=%2212%22%20cy=%2218%22%20r=%221.5%22/%3E%3C/svg%3E");
+}
+.bc-core {
+  --bc-bg: #98a1b3;
+  --bc-img: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%230b0d11%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Ccircle%20cx=%226%22%20cy=%2212%22%20r=%222%22/%3E%3Ccircle%20cx=%2218%22%20cy=%226%22%20r=%222%22/%3E%3Ccircle%20cx=%2218%22%20cy=%2218%22%20r=%222%22/%3E%3Cpath%20d=%22M8%2011l8-4M8%2013l8%204%22/%3E%3C/svg%3E");
+}
+
+/* The swatch: card icons, page titles, index headings and sidebar links */
+.bc-icon,
+.md-typeset .bc-title::before,
+.md-typeset .bc-heading::before,
+.md-sidebar--primary .md-nav__item[class*="bc-"] > .md-nav__container > a.md-nav__link::before {
+  content: '';
+  display: inline-block;
+  flex-shrink: 0;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 4px;
+  background: var(--bc-img) center / 74% no-repeat, var(--bc-bg);
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.12);
+}
+
+.md-sidebar--primary .md-nav__item[class*="bc-"] > .md-nav__container > a.md-nav__link {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.md-typeset .bc-title::before {
+  width: 1.15em;
+  height: 1.15em;
+  margin-right: 0.45em;
+  border-radius: 7px;
+  vertical-align: -0.16em;
+}
+
+.md-typeset .bc-heading::before {
+  width: 1.1em;
+  height: 1.1em;
+  margin-right: 0.45em;
+  border-radius: 5px;
+  vertical-align: -0.18em;
+}
+
+/* Home page cards */
+.bc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 0.6rem;
+  margin: 1.2rem 0 1.6rem;
+}
+
+.bc-grid p {
+  display: flex;
+  margin: 0;
+}
+
+.md-typeset .bc-grid a {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.75rem 0.8rem;
+  border: 1px solid var(--alt-border);
+  border-radius: 10px;
+  color: var(--md-default-fg-color);
+  font-weight: 400;
+  text-decoration: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.md-typeset .bc-grid a:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 0 0 3px var(--md-accent-fg-color--transparent);
+}
+
+.bc-grid .bc-icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-bottom: 0.3rem;
+  border-radius: 6px;
+}
+
+.bc-grid strong {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.bc-grid strong + span {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.64rem;
+}
+
+/* ---------- Class diagrams (mermaid; rendering in javascript/mermaid.mjs, node colours in class_diagram.md.jinja2) ----------
+ * Node fills and text are set per node; lines, labels, arrowheads and the panel follow the colour scheme here. */
+
+.cdm-diagram {
+  --diagram-bg: #fff;
+  --diagram-line: #98a1b3;
+  --diagram-label: #596273;
+  --diagram-cardinality: #8b94a5;
+  position: relative;
+  margin: 0.8rem 0 1.2rem;
+  padding: 0.6rem;
+  border: 1px solid var(--alt-border);
+  border-radius: 8px;
+  background: var(--diagram-bg);
+  white-space: normal;
+}
+
+[data-md-color-scheme='slate'] .cdm-diagram {
+  --diagram-bg: #161a22;
+  --diagram-line: #6b7385;
+  --diagram-label: #98a1b3;
+  --diagram-cardinality: #6b7385;
+}
+
+/* Node titles are links: no underline; the text colour comes from the node style (dark or white for its fill) */
+.md-typeset .cdm-diagram a,
+.md-typeset .cdm-diagram a:hover,
+.md-typeset .cdm-diagram .nodeLabel,
+.cdm-diagram-overlay .nodeLabel {
+  text-decoration: none !important;
+}
+
+.cdm-diagram .nodeLabel {
+  font-weight: 550;
+}
+
+/* Thin relations, muted labels and cardinalities, arrowheads in the line colour */
+.cdm-diagram .relation {
+  stroke: var(--diagram-line) !important;
+  stroke-width: 1px !important;
+}
+
+.cdm-diagram marker path,
+.cdm-diagram marker circle {
+  fill: var(--diagram-line) !important;
+  stroke: var(--diagram-line) !important;
+}
+
+.cdm-diagram marker[id*='extension'] path {
+  fill: var(--diagram-bg) !important;
+}
+
+.cdm-diagram .edgeLabel,
+.cdm-diagram .edgeLabel p {
+  color: var(--diagram-label);
+  font-size: 11px;
+}
+
+.cdm-diagram .edgeLabel rect,
+.cdm-diagram .labelBkg {
+  background: var(--diagram-bg) !important;
+  fill: var(--diagram-bg) !important;
+  opacity: 0.9;
+}
+
+.cdm-diagram .cardinality text,
+.cdm-diagram text.cardinality {
+  fill: var(--diagram-cardinality) !important;
+  font-size: 11px;
+}
+
+/* "Expand" for diagrams wider than the column, and the full-size overlay */
+.md-typeset .cdm-diagram:has(> .cdm-diagram__expand) {
+  padding-top: 2rem;
+}
+
+.cdm-diagram__expand,
+.cdm-diagram-overlay__close {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--alt-border);
+  border-radius: 6px;
+  background: var(--diagram-bg);
+  color: var(--md-default-fg-color--light);
+  font-family: var(--md-text-font-family);
+  font-size: 0.58rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cdm-diagram__expand:hover,
+.cdm-diagram-overlay__close:hover {
+  border-color: var(--alt-border-strong);
+  color: var(--md-default-fg-color);
+}
+
+.cdm-diagram-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(11, 13, 17, 0.55);
+}
+
+.cdm-diagram-overlay__panel {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  margin: 0;
+  padding: 2rem 1.2rem 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- Footer ---------- */
+
+.md-footer,
+.md-footer-meta {
+  background: var(--alt-header-bg);
+}
+
+.md-footer-meta {
+  border-top: 1px solid #1f242d;
+}
+
+.md-copyright {
+  color: #8b94a5;
+  font-size: 0.6rem;
 }

@@ -13,6 +13,7 @@ default_prefix: pro
 
 subsets:
   procurement:
+    title: Procurement
     description: >-
       Models bills of materials: BOMs kept in a Workspace and worked on in the BOM Portal (managed and
       consolidated BOMs) with their releases, global BOMs, which are not tied to a Workspace, and BOM lines

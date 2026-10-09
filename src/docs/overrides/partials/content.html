@@ -1,0 +1,52 @@
+{#-
+  Material's partials/content.html (mkdocs-material 9.6) with a row above the page, as on the Altium 365 API
+  reference: breadcrumbs (home, navigation sections, page) on the left, "View as Markdown" on the right. The
+  Markdown link points to the page's llms equivalent written by cdm-gen-llms (src/docs/hooks/llms.py); pages
+  without one get no link.
+-#}
+{%- set src = page.file.src_uri if page.file else "" -%}
+{%- set md = none -%}
+{%- if src == "index.md" -%}
+  {%- set md = "llms.txt" -%}
+{%- elif src.startswith("classes/") or src.startswith("enums/") -%}
+  {%- set md = "llms/" ~ src -%}
+{%- elif src.startswith("subsets/") -%}
+  {%- set md = "llms/" ~ src[8:] -%}
+{%- elif src in ["about.md", "grid-format.md", "domain-model.md", "entity-classification.md", "relation-types.md", "glossary.md"] -%}
+  {%- set md = "llms/pages/" ~ src -%}
+{%- endif -%}
+<div class="doc-row">
+  <nav class="doc-crumbs" aria-label="Breadcrumbs">
+    <a class="doc-crumbs__home" href="{{ nav.homepage.url | url }}" title="Home" aria-label="Home">
+      {% include ".icons/material/home.svg" %}
+    </a>
+    {%- if not page.is_homepage %}
+      {%- for section in page.ancestors | reverse %}
+        {%- set first = section.children | selectattr("is_page") | first if section.children else none %}
+        {#- a section whose index is this page is not repeated: the page itself is the last crumb -#}
+        {%- if not (first and first.url == page.url) %}
+          <span class="doc-crumbs__sep" aria-hidden="true">›</span>
+          {%- if first and first.url %}
+            <a href="{{ first.url | url }}">{{ section.title }}</a>
+          {%- else %}
+            <span>{{ section.title }}</span>
+          {%- endif %}
+        {%- endif %}
+      {%- endfor %}
+      <span class="doc-crumbs__sep" aria-hidden="true">›</span>
+      <span class="doc-crumbs__current">{{ page.title }}</span>
+    {%- endif %}
+  </nav>
+  {% if md %}
+    <a class="doc-md-link" href="{{ base_url }}/{{ md }}" title="Markdown version of this page for AI assistants">View as Markdown</a>
+  {% endif %}
+</div>
+{% include "partials/tags.html" %}
+{% include "partials/actions.html" %}
+{% if "<h1" not in page.content %}
+  <h1>{{ page.title | d(config.site_name, true)}}</h1>
+{% endif %}
+{{ page.content }}
+{% include "partials/source-file.html" %}
+{% include "partials/feedback.html" %}
+{% include "partials/comments.html" %}

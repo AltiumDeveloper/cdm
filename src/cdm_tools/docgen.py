@@ -15,8 +15,10 @@ from typing import Callable, Optional
 
 from jinja2 import Environment
 from linkml.generators.docgen import DocGenerator
+from linkml_runtime.utils.schemaview import SchemaView
 
 from cdm_tools.api_snapshot import DEFAULT_API_DIR
+from cdm_tools.contexts import BC_ORDER, api_context
 from cdm_tools.hub import build_hub, load_api_layers, schema_namespaces
 from cdm_tools.reference import grid_templates
 from cdm_tools.registry import DEFAULT_REGISTRY_PATH, LinkEntry, RegistryError, load_registry, split_url
@@ -29,6 +31,41 @@ class SubsetHub:
     links: list[str] = field(default_factory=list)
     grid: list[tuple[str, str]] = field(default_factory=list)
     product_docs_none: bool = False
+    iri: Optional[str] = None
+    api: Optional[tuple[str, str]] = None   # (title, URL) of the bounded context in the Altium 365 API reference
+
+
+def darken(color: str, amount: float = 0.35) -> str:
+    """A darker shade of a #rrggbb colour (mixed with black by *amount*), e.g. a node border for a fill colour."""
+    value = color.strip().lstrip("#")
+    if len(value) != 6:
+        return color
+    channels = [int(value[i:i + 2], 16) for i in (0, 2, 4)]
+    return "#" + "".join(f"{round(c * (1 - amount)):02x}" for c in channels)
+
+
+def text_on(color: str) -> str:
+    """Readable text colour on a #rrggbb fill: white or near-black, whichever has the higher WCAG contrast ratio."""
+    value = color.strip().lstrip("#")
+    if len(value) != 6:
+        return "#14181f"
+
+    def linear(c: int) -> float:
+        c /= 255
+        return c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4
+
+    r, g, b = (linear(int(value[i:i + 2], 16)) for i in (0, 2, 4))
+    luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
+    dark = 0.0089   # relative luminance of #14181f
+    on_white, on_dark = 1.05 / (luminance + 0.05), (luminance + 0.05) / (dark + 0.05)
+    return "#ffffff" if on_white > on_dark else "#14181f"
+
+
+def subset_iri(sv: SchemaView, name: str) -> str:
+    """IRI of a bounded context: the root schema IRI followed by the subset name, without a trailing slash
+    (https://w3id.org/altium/cdm/design). Subsets have no IRI of their own in LinkML; this form is the one w3id.org
+    resolves to the subset page."""
+    return f"{str(sv.schema.id).rstrip('/')}/{name}"
 
 
 def make_doc_link(registry: dict[str, LinkEntry]) -> Callable[[str], str]:
@@ -53,6 +90,9 @@ class CdmDocGenerator(DocGenerator):
         if self.registry_path and Path(self.registry_path).exists():
             registry = load_registry(self.registry_path)
         env.globals["doc_link"] = make_doc_link(registry)
+        env.globals["bc_order"] = BC_ORDER
+        env.filters["darken"] = darken
+        env.filters["text_on"] = text_on
         platform, nexar_types = (
             load_api_layers(self.api_dir) if self.api_dir and Path(self.api_dir).is_dir() else (None, None)
         )
@@ -75,6 +115,8 @@ class CdmDocGenerator(DocGenerator):
                     grid=sorted(grid),
                     product_docs_none="productDocs" in element.annotations
                     and str(element.annotations["productDocs"].value) == "none",
+                    iri=subset_iri(sv, name),
+                    api=api_context(name),
                 )
             return cache[name]
 

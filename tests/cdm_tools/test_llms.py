@@ -329,13 +329,15 @@ def test_class_card(files):
                  "| owner | [ex_Project](ex_Project.md) | 1 | The owning project. | core_partOf |  |",
                  "| label | string | 0..1 |  |  |  |",
                  "| kind | [ex_Kind](../enums/ex_Kind.md) | 0..1 |  |  |  |",
-                 "- [ex_Project](ex_Project.md): `ports`"):
+                 "| From | Field | Cardinality | Relation |",
+                 "| [ex_Project](ex_Project.md) | ports | * | core_hasPart |",
+                 "- Subclasses: [ex_SubPort](ex_SubPort.md)"):
         assert line in t.splitlines(), line
     assert "Maturity" not in t and "Mixins" not in t
     project = files["llms/classes/ex_Project.md"]
     assert "- Maturity: EXPERIMENTAL" in project and "- Mixins: [ex_Named](ex_Named.md)" in project
     assert "| ports | [ex_Port](ex_Port.md) | * |  | core_hasPart |  |" in project
-    assert "- [ex_Port](ex_Port.md): `owner`" in project
+    assert "| [ex_Port](ex_Port.md) | owner | 1 | core_partOf |" in project   # incoming edge, as in the diagram
     assert "## GRID\n\nNone declared.\n" in project
     sub = files["llms/classes/ex_SubPort.md"]
     assert "| owner | [ex_Project](ex_Project.md) | 1 | The owning project. | core_partOf | [ex_Port](ex_Port.md) |" in sub
@@ -357,7 +359,7 @@ def test_enum_card(files):
     assert t.startswith("# ex_Kind\n\n- Name: `ex_Kind`\n- IRI: `ex:Kind` (https://w3id.org/altium/cdm/alpha/Kind)\n")
     for line in ("- HTML page: [enums/ex_Kind/](../../enums/ex_Kind/)", "Kinds of port.",
                  "| Value | Description | Meaning |", "| `IN` | Input port. | ex:In |", "| `OUT` |  |  |",
-                 "- [ex_Port](../classes/ex_Port.md): `kind`"):
+                 "| [ex_Port](../classes/ex_Port.md) | kind | 0..1 |  |"):
         assert line in t.splitlines(), line
 
 

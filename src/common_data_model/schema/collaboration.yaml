@@ -1,4 +1,4 @@
-id: https://w3id.org/altium/cdm/collaboration
+id: https://w3id.org/altium/cdm/collaboration/
 name: cdm-collaboration
 
 prefixes:
@@ -13,6 +13,7 @@ default_prefix: col
 
 subsets:
   collaboration:
+    title: Collaboration
     description: >-
       Models collaboration on Workspace content: comment threads attached to a point, object or area of a
       document, the individual comments in each thread, and tasks that assign work to users or teams. In the

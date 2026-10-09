@@ -1,4 +1,12 @@
-# Bounded Context: {{ gen.name(element) }} {% if element.deprecated %} <span style="color: red;"><strong> (DEPRECATED) </strong></span> {% endif %}
+{% from "macros.jinja2" import subset_title, cdm_kind with context %}
+# {{ subset_title(element.name) }} { .bc-title .bc-{{ element.name }} }
+
+{% set iri = subset_hub(element).iri if subset_hub is defined else none %}
+{% if iri %}
+IRI: [{{ iri }}]({{ iri }})
+{ .page-subtitle }
+{% endif %}
+{% if element.deprecated %} <span style="color: red;"><strong> (DEPRECATED) </strong></span> {% endif %}
 
 {%- if header -%}
 {{ header }}
@@ -7,7 +15,7 @@
 {% if element.description %}
 {% set element_description_lines = element.description.split('\n') %}
 {% for element_description_line in element_description_lines %}
-_{{ element_description_line }}_
+{{ element_description_line }}
 {% endfor %}
 {% endif %}
 
@@ -26,18 +34,16 @@ No public product documentation exists for this bounded context.
 No product documentation linked yet.
 {% endif %}
 
-{% if sh.grid %}
-## GRID
+{% if sh.api %}
+## In the API
 
-| Class | GRID template |
-| --- | --- |
-{% for cname, template in sh.grid -%}
-| [{{ cname }}](../classes/{{ cname }}.md) | `{{ template }}` |
-{% endfor %}
-{% endif %}
+[{{ sh.api[0] }}]({{ sh.api[1] }}) in the Altium 365 API reference: the queries, mutations and types of this bounded
+context.
 {% endif %}
 
-URI: {{ gen.link(element) }}
+
+{% endif %}
+
 
 {% include "common_metadata.md.jinja2" %}
 
@@ -66,14 +72,20 @@ URI: {{ gen.link(element) }}
 
 {% if classes_in_subset %}
 
-## Classes in Bounded Context
+{#- Entities, resources and events of the bounded context ("class" is LinkML's term, not the CDM's) -#}
+{% set other_heading = "Base types and mixins" if element.name == "core" else "Mixins" %}
+{% for kind, heading in [("entity", "Entities"), ("resource", "Resources"), ("event", "Events"), ("other", other_heading)] %}
+{% set members = [] %}
+{% for c in classes_in_subset if element.name in c.in_subset and cdm_kind(c.name) == kind %}{% set _ = members.append(c) %}{% endfor %}
+{% if members %}
+## {{ heading }}
 
-| Class | Description |
+| Name | Description |
 | --- | --- |
-{% for c in classes_in_subset -%}
-{%- if element.name in c.in_subset -%}
-| [{{ c.title if c.title else gen.name(c) }} ]( ../classes/{{ gen.name(c)}}.md ) | {{ c.description }} |
-{% endif -%}
+{% for c in members -%}
+| [{{ c.title if c.title else gen.name(c) }}](../classes/{{ gen.name(c) }}.md) | {{ c.description }} |
+{% endfor %}
+{% endif %}
 {% endfor %}
 
 {% for c in classes_in_subset -%}

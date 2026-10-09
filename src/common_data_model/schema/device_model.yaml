@@ -12,6 +12,7 @@ default_prefix: dm
 
 subsets:
   deviceModel:
+    title: Device Model
     description: >-
       Models an embedded device (e.g. an MCU), which the CDM calls a digital twin: its processors; its address
       map with memories, registers, bit fields and their enumerated values; its peripherals with their

@@ -1,15 +1,19 @@
 {% from "macros.jinja2" import slot_title with context %}
 
-{% macro element_style(e) %}
+{#- A node: the class title, filled with its bounded-context colour (subset `annotations.style`), a darker shade of it
+    as the border and text that stays readable on it; the class the page is about gets a thicker border. -#}
+{% macro element_style(e, current=false) %}
   {% set element = schemaview.get_element(e) %}
   class {{ gen.name(element) }}["{{ element.title if element.title else gen.name(element) }}"]
   {% set elementSubsets = element.in_subset %}
+  {% set ns = namespace(fill="#e5e8ee") %}
   {%- if elementSubsets %}
     {% set styleAnnotation = schemaview.get_subset(elementSubsets[0]).annotations["style"] %}
-    {% if styleAnnotation %}
-      style {{ gen.name(element) }} {{ styleAnnotation.value }}    
+    {% if styleAnnotation and "fill:" in styleAnnotation.value %}
+      {% set ns.fill = styleAnnotation.value.split("fill:")[1].split(",")[0].strip() %}
     {% endif %}
   {%- endif %}
+      style {{ gen.name(element) }} fill:{{ ns.fill }},stroke:{{ ns.fill | darken }},color:{{ ns.fill | text_on }},stroke-width:{{ "2.5px" if current else "1px" }}
 {% endmacro %}
 
 {% macro slot_relationship(element, slot) %}
@@ -27,17 +31,17 @@
 ---
   config:
     layout: elk
-    theme: neutral
     class:
       hideEmptyMembersBox: true
 ---
  classDiagram
     direction LR
-    {{ element_style(element) }}
+    {{ element_style(element, current=true) }}
     click {{ gen.name(element) }} href "{{ gen.link_mermaid(element) }}"
       {% for s in schemaview.class_parents(element.name) -%}
         {% set parentElement = schemaview.get_element(s) %}
-        {% if gen.name(parentElement) is not in ["Activity", "Artifact", "Resource"] and not parentElement.mixin %}
+        {#- the core base types are on the Inheritance list, not drawn -#}
+        {% if parentElement.name not in ["core_Activity", "core_Artifact", "core_Resource", "core_Entity", "core_Event"] and not parentElement.mixin %}
           {{ element_style(s) }}
           {{ gen.name(parentElement) }} <|-- {{ gen.name(element) }}
           click {{ gen.name(parentElement) }} href "{{ gen.link_mermaid(parentElement) }}"

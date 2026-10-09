@@ -164,16 +164,18 @@ class _Model:
             parent = self.sv.get_slot(name).is_a if self.sv.get_slot(name) else None
         return name
 
-    def _references(self) -> dict[str, list[tuple[str, str]]]:
-        """Class or enum -> sorted (owning class, field) of the slots of other classes whose range includes it."""
-        refs: dict[str, set[tuple[str, str]]] = {}
+    def _references(self) -> dict[str, list[tuple[str, str, str, str]]]:
+        """Class or enum -> sorted (owning class, field, cardinality, core relation) of the slots of other classes whose
+        range includes it: the incoming edges of the class diagram."""
+        refs: dict[str, set[tuple[str, str, str, str]]] = {}
         for owner in sorted(self.classes):
             cls = self.classes[owner]
             for sn in list(cls.slots or []) + list(cls.attributes or {}):
                 slot = self.sv.induced_slot(sn, owner)
                 for target in self.ranges(slot):
                     if (target in self.classes or target in self.enums) and target != owner:
-                        refs.setdefault(target, set()).add((owner, str(slot.alias or sn)))
+                        refs.setdefault(target, set()).add(
+                            (owner, str(slot.alias or sn), DocGenerator.cardinality(slot), self.relation(slot)))
         return {k: sorted(v) for k, v in refs.items()}
 
 
@@ -240,10 +242,13 @@ def _referenced_by(m: _Model, name: str, prefix: str) -> list[str]:
     refs = m.referenced_by.get(name, [])
     if not refs:
         return []
+    # The incoming edges of the class diagram, in the shape of the Attributes table (its outgoing edges)
     lines = ["", "## Referenced by", ""]
-    lines += [f"- [{owner}]({prefix}{owner}.md): `{field}`" for owner, field in refs[:MAX_REFERENCES]]
+    rows = [[f"[{owner}]({prefix}{owner}.md)", _esc(field), cardinality, relation]
+            for owner, field, cardinality, relation in refs[:MAX_REFERENCES]]
+    lines += _table(["From", "Field", "Cardinality", "Relation"], rows)
     if len(refs) > MAX_REFERENCES:
-        lines.append(f"- … and {len(refs) - MAX_REFERENCES} more (see the HTML page)")
+        lines += ["", f"… and {len(refs) - MAX_REFERENCES} more (see the HTML page)."]
     return lines
 
 
@@ -266,6 +271,9 @@ def class_card(m: _Model, name: str) -> str:
         facts.append(f"- Kind: {m.kind(name)}")
     if cls.is_a:
         facts.append(f"- Is a: [{cls.is_a}]({cls.is_a}.md)")
+    children = m.sv.class_children(name, mixins=False)
+    if children:
+        facts.append(f"- Subclasses: {_class_links(m, sorted(children))}")
     if cls.mixins:
         facts.append(f"- Mixins: {_class_links(m, cls.mixins)}")
     if cls.instantiates:

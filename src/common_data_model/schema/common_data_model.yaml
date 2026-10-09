@@ -2,8 +2,11 @@
 id: https://w3id.org/altium/cdm/
 name: cdm
 title: Common Data Model
-description: |-
-  Common Data Model (longer description)
+description: >-
+  The Altium Common Data Model (CDM) describes the entities of the Altium platform, such as projects,
+  components, BOMs, tasks and users, grouped into bounded contexts. For each class it records what the entity
+  is, how it relates to other entities, how it is identified by a GRID (Global Resource ID) and, where one
+  exists, its type in the Altium 365 API.
 license: MIT
 see_also:
   - https://github.com/AltiumDeveloper/cdm

@@ -12,6 +12,7 @@ default_prefix: req
 
 subsets:
   requirements:
+    title: Requirements
     description: >-
       Models requirements and their revisions, the specifications that group them, baselines approved for
       execution, change requests, the requirements projects that scope this work, and verification cases that
