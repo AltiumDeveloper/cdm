@@ -69,23 +69,6 @@ enums:
       Cancelled:
         description: The deployment was cancelled before it was received by the device.
 
-  ota_PackageCategory:
-    is_a: Enumeration
-    in_subset: ota
-    enum_uri: ota:PackageCategory
-    description: The category of OTA software, either a package or the software installed on an ECU.
-    implements:
-      - owl:NamedIndividual
-    permissible_values:
-      Base:
-        description: The base operating system or the application for a primary ECU.
-      Bootloader:
-        description: The bootloader.
-      Applications:
-        description: Application software.
-      Other:
-        description: Any other software or the application for a secondary ECU.
-
 classes:
 
   ota_Device:
@@ -371,8 +354,6 @@ classes:
         title: created at
         description: >-
           The date and time the deployment was requested, in UTC, when reported by the provider.
-          Some providers report only the creation time of the update for each device, see
-          DeploymentResult.createdAt.
         range: datetime
         multivalued: false
         required: false
@@ -459,18 +440,6 @@ classes:
         title: device
         description: The target device the result applies to, referenced by its GRID.
         range: ota_Device
-        multivalued: false
-        required: false
-      ota_DeploymentResult_createdAt:
-        slot_uri: ota:DeploymentResult_createdAt
-        alias: createdAt
-        title: created at
-        description: >-
-          The date and time the update for the device was created from the deployment, in UTC.
-          For a fleet deployment the updates of the devices are created after the deployment and
-          at different times, so this can differ from Deployment.createdAt. Absent while the
-          update for the device has not been created yet.
-        range: datetime
         multivalued: false
         required: false
       ota_DeploymentResult_status:
