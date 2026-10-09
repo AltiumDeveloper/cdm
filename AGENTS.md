@@ -616,8 +616,9 @@ data.
 tools and AI agents. `hub.json` is checked against the schema in the test suite, not at export time. Each class entry has its title,
 `class_uri`, subset, GRID template and the hub (product links and terms, Platform or Nexar API type, mappings). Abstract and mixin classes, `core_*` classes and `linkml:Any` are omitted.
 
-**Hub pages.** The home page (`index.md`) is the **Bounded Contexts** page: `cdm-gendoc` renders the schema index
-template (`index.md.jinja2`) as every bounded context with its classes and their API types. The hand-written
+**Hub pages.** The home page (`index.md`), titled with the schema title (**Common Data Model**): `cdm-gendoc` renders the
+schema index template (`index.md.jinja2`) as the model's IRI and description, a card per bounded context and every
+bounded context with its classes and their API types. The hand-written
 introduction is `src/docs/files/about.md` (the **About** page), copied unchanged into `docs/`. `make gendoc` also runs `cdm-gen-reference`, which writes the relation, prefix and class-hierarchy
 tables as root-relative snippets in `docs/_snippets/` that the concept pages include via `pymdownx.snippets` with
 `check_paths`, the GRID catalogue snippet for the GRIDs page and the **Glossary** (class titles and

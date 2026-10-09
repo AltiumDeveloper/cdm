@@ -223,7 +223,7 @@ def test_main_writes_schema_index_as_home_page(tmp_path):
     assert (out / "about.md").read_text(encoding="utf-8") == about.read_text(encoding="utf-8")
     assert not (out / "bounded-contexts.md").exists()
     page = (out / "index.md").read_text(encoding="utf-8")
-    assert page.lstrip().startswith("# Bounded Contexts\n")
+    assert page.lstrip().startswith("# Common Data Model\n")   # the schema title, not a section name
     assert "## Bounded Contexts" in page and "| Name | Description | Platform API |" in page
     assert "( classes/lib_Component.md )" in page
 
@@ -275,3 +275,14 @@ def test_class_diagram_styles_nodes_and_hides_core_parents(tmp_path):
     assert "style des_Project fill:#93c47d,stroke:#607f51,color:#14181f,stroke-width:2.5px" in page   # current node
     assert "style des_HarnessProject fill:#93c47d,stroke:#607f51,color:#14181f,stroke-width:1px" in page
     assert "core_Activity <|-- des_Project" not in page    # core base types are not drawn as parents
+
+
+
+def test_class_page_shows_the_nearest_ancestors_grid(tmp_path):
+    _serialize(tmp_path, registry_path=str(REPO / "src/docs/links/registry.yaml"), api_dir=str(REPO / "src/docs/api"))
+    harness = (tmp_path / "classes" / "des_HarnessProject.md").read_text(encoding="utf-8")
+    assert "GRID: `grid:workspace:{workspace-id}:design:project/{id}` (from [Hardware Project](../classes/des_Project.md))" in harness
+    wip = (tmp_path / "classes" / "pro_BomWIP.md").read_text(encoding="utf-8")
+    managed = (tmp_path / "classes" / "pro_ManagedBOM.md").read_text(encoding="utf-8")
+    assert "GRID: `grid:workspace:{workspace-id}:procurement:bom/{id}`\n" in wip            # declared on BOM WIP
+    assert "(from [BOM WIP](../classes/pro_BomWIP.md))" in managed                          # inherited by Managed BOM

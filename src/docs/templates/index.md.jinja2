@@ -1,6 +1,6 @@
 {% from "macros.jinja2" import api_type_link, subset_title, cdm_kind with context %}
 
-# Bounded Contexts
+# {{ schema.title or "Common Data Model" }}
 
 {% set iri = schema.id %}
 IRI: [{{ iri }}]({{ iri }})
