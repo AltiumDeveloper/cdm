@@ -73,9 +73,8 @@ as the authoritative reference for the GRIDs of platform entities.
 ## Bounded contexts
 
 The classes are grouped into bounded contexts (LinkML subsets), such as design, library, procurement and
-collaboration. Each context has its own page with its product documentation and GRID templates, where it has
-any, and its classes. The [Bounded Contexts](https://altiumdeveloper.github.io/cdm/llms.txt) page lists every context with its classes and
-their API types.
+collaboration. Each context has its own page with its product documentation, where it has any, and its classes. The
+[home page](https://altiumdeveloper.github.io/cdm/llms.txt) lists every context with its classes and their API types.
 
 ## Entities
 
@@ -121,7 +120,7 @@ of the domain classes.
 
 ## Where to go next
 
-- [Bounded Contexts](https://altiumdeveloper.github.io/cdm/llms.txt) — every context and its classes.
+- [Home page](https://altiumdeveloper.github.io/cdm/llms.txt) — every bounded context and its classes.
 - Concepts — [Domain Model](https://altiumdeveloper.github.io/cdm/llms/pages/domain-model.md), [Entity Classification](https://altiumdeveloper.github.io/cdm/llms/pages/entity-classification.md) and
   [Relation Types](https://altiumdeveloper.github.io/cdm/llms/pages/relation-types.md).
 - [GRIDs](https://altiumdeveloper.github.io/cdm/llms/pages/grid-format.md) — the GRID format and the GRID templates declared by the classes.
@@ -264,9 +263,8 @@ Bounded context page: [Procurement](https://altiumdeveloper.github.io/cdm/llms/p
 | Entity | GRID template |
 | --- | --- |
 | [BOM Release](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomRelease.md) | `grid:workspace:{workspace-id}:procurement:bom-release/{id}` |
-| [Consolidated BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ConsolidatedBOM.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
+| [BOM WIP](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomWIP.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
 | [Global BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_GlobalBOM.md) | `grid:global::procurement:bom/{id}` |
-| [Managed BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ManagedBOM.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
 
 ### Supply
 
@@ -1455,9 +1453,9 @@ HTML page: [subsets/procurement/](https://altiumdeveloper.github.io/cdm/subsets/
 - [BOM Item Alternate](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemAlternate.md) (`pro_BomItemAlternate`): An alternate part recorded for one BOM line: another manufacturer part that could be used instead of the line's primary part. · Resource · API BomItemAlternate
 - [BOM Item Substitute](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemSubstitute.md) (`pro_BomItemSubstitute`): Substitute is a replacement of a part by another within an individual BOM. · Resource · API BomItemSubstitute
 - [BOM Release](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomRelease.md) (`pro_BomRelease`): A static snapshot of a Managed BOM's data, saved under a release name with an incremented revision number and optional notes. · Artifact · API BomRelease · GRID `grid:workspace:{workspace-id}:procurement:bom-release/{id}`
-- [Consolidated BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ConsolidatedBOM.md) (`pro_ConsolidatedBOM`): Consolidated BOM represents the aggregated bill of materials across one or more Projects or variants, combining all required Parts into a single, unified view for procurement and manufacturing. · Activity · API BomWip · GRID `grid:workspace:{workspace-id}:procurement:bom/{id}`
+- [Consolidated BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ConsolidatedBOM.md) (`pro_ConsolidatedBOM`): Consolidated BOM represents the aggregated bill of materials across one or more Projects or variants, combining all required Parts into a single, unified view for procurement and manufacturing. · Activity · API BomWip
 - [Global BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_GlobalBOM.md) (`pro_GlobalBOM`): Global BOM represents a bill of materials that resides outside of any workspace, on Octopart, where users can create, edit, collaborate on and share it with others. · Activity · GRID `grid:global::procurement:bom/{id}`
-- [Managed BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ManagedBOM.md) (`pro_ManagedBOM`): A bill of materials kept in a Workspace and worked on in the BOM Portal, where its lines are enriched with manufacturer and supplier data for review and procurement. · Activity · API BomWip · GRID `grid:workspace:{workspace-id}:procurement:bom/{id}`
+- [Managed BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ManagedBOM.md) (`pro_ManagedBOM`): A bill of materials kept in a Workspace and worked on in the BOM Portal, where its lines are enriched with manufacturer and supplier data for review and procurement. · Activity · API BomWip
 
 ## Base classes and mixins
 

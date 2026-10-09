@@ -131,9 +131,8 @@ Bounded context page: [Procurement](../procurement.md).
 | Entity | GRID template |
 | --- | --- |
 | [BOM Release](../classes/pro_BomRelease.md) | `grid:workspace:{workspace-id}:procurement:bom-release/{id}` |
-| [Consolidated BOM](../classes/pro_ConsolidatedBOM.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
+| [BOM WIP](../classes/pro_BomWIP.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
 | [Global BOM](../classes/pro_GlobalBOM.md) | `grid:global::procurement:bom/{id}` |
-| [Managed BOM](../classes/pro_ManagedBOM.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
 
 ### Supply
 

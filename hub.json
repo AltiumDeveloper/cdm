@@ -2487,7 +2487,7 @@
   },
   "pro_ConsolidatedBOM": {
    "class_uri": "pro:ConsolidatedBOM",
-   "grid": "grid:workspace:{workspace-id}:procurement:bom/{id}",
+   "grid": null,
    "hub": {
     "api": {
      "kind": "OBJECT",
@@ -2529,7 +2529,7 @@
   },
   "pro_ManagedBOM": {
    "class_uri": "pro:ManagedBOM",
-   "grid": "grid:workspace:{workspace-id}:procurement:bom/{id}",
+   "grid": null,
    "hub": {
     "api": {
      "kind": "OBJECT",

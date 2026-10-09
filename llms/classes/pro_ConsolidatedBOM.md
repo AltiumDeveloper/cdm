@@ -23,7 +23,7 @@ Consolidated BOM represents the aggregated bill of materials across one or more 
 
 ## GRID
 
-`grid:workspace:{workspace-id}:procurement:bom/{id}`
+None declared (nearest ancestor `pro_BomWIP`: `grid:workspace:{workspace-id}:procurement:bom/{id}`).
 
 ## Attributes
 

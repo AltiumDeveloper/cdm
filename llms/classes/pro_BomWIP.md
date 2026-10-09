@@ -15,6 +15,10 @@ The current, editable working state of a Workspace BOM, as opposed to a BOM rele
 
 - Term: **WIP BOM** (related; altium-365)
 
+## GRID
+
+`grid:workspace:{workspace-id}:procurement:bom/{id}`
+
 ## Attributes
 
 | Field | Range | Cardinality | Description | Relation | Inherited from |

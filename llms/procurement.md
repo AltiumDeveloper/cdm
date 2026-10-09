@@ -15,9 +15,9 @@ HTML page: [subsets/procurement/](../subsets/procurement/)
 - [BOM Item Alternate](classes/pro_BomItemAlternate.md) (`pro_BomItemAlternate`): An alternate part recorded for one BOM line: another manufacturer part that could be used instead of the line's primary part. · Resource · API BomItemAlternate
 - [BOM Item Substitute](classes/pro_BomItemSubstitute.md) (`pro_BomItemSubstitute`): Substitute is a replacement of a part by another within an individual BOM. · Resource · API BomItemSubstitute
 - [BOM Release](classes/pro_BomRelease.md) (`pro_BomRelease`): A static snapshot of a Managed BOM's data, saved under a release name with an incremented revision number and optional notes. · Artifact · API BomRelease · GRID `grid:workspace:{workspace-id}:procurement:bom-release/{id}`
-- [Consolidated BOM](classes/pro_ConsolidatedBOM.md) (`pro_ConsolidatedBOM`): Consolidated BOM represents the aggregated bill of materials across one or more Projects or variants, combining all required Parts into a single, unified view for procurement and manufacturing. · Activity · API BomWip · GRID `grid:workspace:{workspace-id}:procurement:bom/{id}`
+- [Consolidated BOM](classes/pro_ConsolidatedBOM.md) (`pro_ConsolidatedBOM`): Consolidated BOM represents the aggregated bill of materials across one or more Projects or variants, combining all required Parts into a single, unified view for procurement and manufacturing. · Activity · API BomWip
 - [Global BOM](classes/pro_GlobalBOM.md) (`pro_GlobalBOM`): Global BOM represents a bill of materials that resides outside of any workspace, on Octopart, where users can create, edit, collaborate on and share it with others. · Activity · GRID `grid:global::procurement:bom/{id}`
-- [Managed BOM](classes/pro_ManagedBOM.md) (`pro_ManagedBOM`): A bill of materials kept in a Workspace and worked on in the BOM Portal, where its lines are enriched with manufacturer and supplier data for review and procurement. · Activity · API BomWip · GRID `grid:workspace:{workspace-id}:procurement:bom/{id}`
+- [Managed BOM](classes/pro_ManagedBOM.md) (`pro_ManagedBOM`): A bill of materials kept in a Workspace and worked on in the BOM Portal, where its lines are enriched with manufacturer and supplier data for review and procurement. · Activity · API BomWip
 
 ## Base classes and mixins
 

@@ -24,7 +24,7 @@ A bill of materials kept in a Workspace and worked on in the BOM Portal, where i
 
 ## GRID
 
-`grid:workspace:{workspace-id}:procurement:bom/{id}`
+None declared (nearest ancestor `pro_BomWIP`: `grid:workspace:{workspace-id}:procurement:bom/{id}`).
 
 ## Attributes
 

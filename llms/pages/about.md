@@ -10,9 +10,8 @@ as the authoritative reference for the GRIDs of platform entities.
 ## Bounded contexts
 
 The classes are grouped into bounded contexts (LinkML subsets), such as design, library, procurement and
-collaboration. Each context has its own page with its product documentation and GRID templates, where it has
-any, and its classes. The [Bounded Contexts](../../llms.txt) page lists every context with its classes and
-their API types.
+collaboration. Each context has its own page with its product documentation, where it has any, and its classes. The
+[home page](../../llms.txt) lists every context with its classes and their API types.
 
 ## Entities
 
@@ -58,7 +57,7 @@ of the domain classes.
 
 ## Where to go next
 
-- [Bounded Contexts](../../llms.txt) — every context and its classes.
+- [Home page](../../llms.txt) — every bounded context and its classes.
 - Concepts — [Domain Model](domain-model.md), [Entity Classification](entity-classification.md) and
   [Relation Types](relation-types.md).
 - [GRIDs](grid-format.md) — the GRID format and the GRID templates declared by the classes.
