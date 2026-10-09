@@ -62,6 +62,8 @@ classes:
       The current, editable working state of a Workspace BOM, as opposed to a BOM release, which is a static
       snapshot of its data. It is the common base of Managed BOM and Consolidated BOM; in the BOM Portal, BOM
       releases are made from a Managed BOM's working state.
+    annotations:
+      grid: grid:workspace:{workspace-id}:procurement:bom/{id}
     structured_aliases:
       - literal_form: WIP BOM
         predicate: RELATED_SYNONYM
@@ -95,7 +97,6 @@ classes:
         them in BOM releases, while enabling collaboration between engineering, supply chain, and manufacturing teams
         within the Altium 365 environment.
     annotations:
-      grid: grid:workspace:{workspace-id}:procurement:bom/{id}
       platformAPI: BomWip
     see_also:
       - https://www.altium.com/documentation/altium-365/bom-portal
@@ -117,7 +118,6 @@ classes:
     aliases:
       - Order BOM
     annotations:
-      grid: grid:workspace:{workspace-id}:procurement:bom/{id}
       platformAPI: BomWip
     see_also:
       - https://www.altium.com/documentation/altium-365/bom-portal/consolidated-bom

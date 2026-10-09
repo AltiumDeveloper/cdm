@@ -37,6 +37,7 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - PR CI builds the documentation (`make gendoc` and `mkdocs build --strict`); `make gendoc` stops at the first failing step.
 
 ### Changed
+- The GRID template of Managed BOM and Consolidated BOM moves to their common parent BOM WIP (same template; both inherit it).
 - Site look aligned with the Altium 365 API reference: Altium header and favicon, self-hosted Inter and JetBrains Mono, Altium blue in light and dark schemes, a sidebar listing every bounded context with its CDM colour and icon (no top tabs), header links to the API reference and the Developer Center, bounded-context cards on the home page, bounded-context titles and chips on subset and class pages.
 - Root schema description: replaces the placeholder with a summary of the model.
 - Bounded-context pages: the IRI of the context (`https://w3id.org/altium/cdm/<subset>`, resolvable through w3id.org) under the title; the GRID table and the "Identifier and Mapping Information" section are dropped.
@@ -55,6 +56,7 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - Class index tables link API types via the hub data (Nexar types link to the Octopart API docs).
 
 ### Fixed
+- Class pages show the GRID template of the nearest ancestor, and which class it comes from, when a class declares none (e.g. Harness Project).
 - Home page title: the schema title (Common Data Model) instead of "Bounded Contexts", which is a section of the page.
 - Class diagrams render again: Mermaid is pinned (the floating `mermaid@11` tag moved to a release that showed a syntax error on every diagram), diagrams are rendered by `javascript/mermaid.mjs` from their source text, and they use the class `cdm-diagram`, which Material's own Mermaid integration leaves alone.
 - Module ids of collaboration, configuration, customization and supply end with `/`, and core's id no longer has a doubled `/`, so each matches the namespace of its prefix.
