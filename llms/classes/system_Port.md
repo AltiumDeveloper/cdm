@@ -25,6 +25,8 @@ An interface of a functional block in an ESD document (e.g. the I2C interface of
 
 ## Referenced by
 
-- [system_Endpoint](system_Endpoint.md): `portId`
-- [system_FunctionalBlock](system_FunctionalBlock.md): `ports`
-- [system_PortAssociation](system_PortAssociation.md): `portId`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_Endpoint](system_Endpoint.md) | portId | 1 |  |
+| [system_FunctionalBlock](system_FunctionalBlock.md) | ports | * |  |
+| [system_PortAssociation](system_PortAssociation.md) | portId | 1 |  |

@@ -185,31 +185,30 @@ A GRID therefore provides:
 The GRID template of every class that declares one, per bounded context. Templates are informational
 and are declared per class in the `grid` annotation.
 
-### collaboration
+### Platform
 
-Bounded context page: [collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md).
+Bounded context page: [Platform](https://altiumdeveloper.github.io/cdm/llms/platform.md).
 
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
-| [Comment Thread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md) | `grid:workspace:{workspace-id}:collaboration:comment-thread/{id}` |
-| [Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md) | `grid:workspace:{workspace-id}:collaboration:task/{id}` |
+| [Application](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Application.md) | `grid:global::platform:application/{id}` |
+| [Event Subscription](https://altiumdeveloper.github.io/cdm/llms/classes/plt_EventSubscription.md) | `grid:global::events:subscription/{id}` |
+| [Lifecycle Definition](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleDefinition.md) | `grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}` |
+| [Revision Naming Scheme](https://altiumdeveloper.github.io/cdm/llms/classes/plt_NamingScheme.md) | `grid:workspace:{workspace-id}:platform:revision-naming-scheme/{id}` |
+| [Organization](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Organization.md) | `grid:global::platform:organization/{id}` |
+| [Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md) | `grid:workspace:{workspace-id}:platform:solution/{id}` |
+| [Solution Release](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionRelease.md) | `grid:workspace:{workspace-id}:platform:solution-release/{id}` |
+| [User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_User.md) | `grid:global::platform:user/{id}` |
+| [User Group](https://altiumdeveloper.github.io/cdm/llms/classes/plt_UserGroup.md) | `grid:global::platform:group/{id}` |
+| [Workspace](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Workspace.md) | `grid:global::platform:workspace/{id}` |
+| [Workspace Group](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceGroup.md) | `grid:workspace:{workspace-id}:team:group/{id}` |
+| [Workspace User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceUser.md) | `grid:workspace:{workspace-id}:team:user/{id}` |
 
-### customization
+### Design
 
-Bounded context page: [customization](https://altiumdeveloper.github.io/cdm/llms/customization.md).
+Bounded context page: [Design](https://altiumdeveloper.github.io/cdm/llms/design.md).
 
-| Class | GRID template |
-| --- | --- |
-| [Script](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Script.md) | `grid:workspace:{workspace-id}:scripts:script/{id}` |
-| [Script Execution](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecution.md) | `grid:workspace:{workspace-id}:scripts:script-execution/{id}` |
-| [Script Version](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptVersion.md) | `grid:workspace:{workspace-id}:scripts:script-version/{id}` |
-| [Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md) | `grid:workspace:{workspace-id}:customization:workflow/{id}` |
-
-### design
-
-Bounded context page: [design](https://altiumdeveloper.github.io/cdm/llms/design.md).
-
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [Manufacturing Package](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md) | `grid:workspace:{workspace-id}:design:manufacturing-package/{id}` |
 | [Hardware Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) | `grid:workspace:{workspace-id}:design:project/{id}` |
@@ -219,27 +218,19 @@ Bounded context page: [design](https://altiumdeveloper.github.io/cdm/llms/design
 | [Rule Check](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheck.md) | `grid:workspace:{workspace-id}:design:rule-check/{id}` |
 | [Rule Check Execution](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheckExecution.md) | `grid:workspace:{workspace-id}:design:rule-check-execution/{id}` |
 
-### deviceModel
+### Insights
 
-Bounded context page: [deviceModel](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md).
+Bounded context page: [Insights](https://altiumdeveloper.github.io/cdm/llms/insights.md).
 
-| Class | GRID template |
-| --- | --- |
-| [FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md) | `grid:global::device-model:fullstack-dm/{id}` |
-
-### insights
-
-Bounded context page: [insights](https://altiumdeveloper.github.io/cdm/llms/insights.md).
-
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [Part Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) | `grid:workspace:{workspace-id}:insights:insight/{id}` |
 
-### library
+### Library Management
 
-Bounded context page: [library](https://altiumdeveloper.github.io/cdm/llms/library.md).
+Bounded context page: [Library Management](https://altiumdeveloper.github.io/cdm/llms/library.md).
 
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md) | `grid:workspace:{workspace-id}:library:component/{id}` |
 | [Component Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) | `grid:workspace:{workspace-id}:library:component-revision/{id}` |
@@ -257,77 +248,31 @@ Bounded context page: [library](https://altiumdeveloper.github.io/cdm/llms/libra
 | [Symbol](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Symbol.md) | `grid:workspace:{workspace-id}:library:symbol/{id}` |
 | [Symbol Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SymbolRevision.md) | `grid:workspace:{workspace-id}:library:symbol-revision/{id}` |
 
-### ota
+### Collaboration
 
-Bounded context page: [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md).
+Bounded context page: [Collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md).
 
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
-| [Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) | `grid:workspace:{workspace-id}:ota:device/{id}` |
-| [Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md) | `grid:workspace:{workspace-id}:ota:fleet/{id}` |
-| [Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) | `grid:workspace:{workspace-id}:ota:package/{id}` |
+| [Comment Thread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md) | `grid:workspace:{workspace-id}:collaboration:comment-thread/{id}` |
+| [Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md) | `grid:workspace:{workspace-id}:collaboration:task/{id}` |
 
-### platform
+### Procurement
 
-Bounded context page: [platform](https://altiumdeveloper.github.io/cdm/llms/platform.md).
+Bounded context page: [Procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md).
 
-| Class | GRID template |
-| --- | --- |
-| [Application](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Application.md) | `grid:global::platform:application/{id}` |
-| [Event Subscription](https://altiumdeveloper.github.io/cdm/llms/classes/plt_EventSubscription.md) | `grid:global::events:subscription/{id}` |
-| [Lifecycle Definition](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleDefinition.md) | `grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}` |
-| [Revision Naming Scheme](https://altiumdeveloper.github.io/cdm/llms/classes/plt_NamingScheme.md) | `grid:workspace:{workspace-id}:platform:revision-naming-scheme/{id}` |
-| [Organization](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Organization.md) | `grid:global::platform:organization/{id}` |
-| [Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md) | `grid:workspace:{workspace-id}:platform:solution/{id}` |
-| [Solution Release](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionRelease.md) | `grid:workspace:{workspace-id}:platform:solution-release/{id}` |
-| [User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_User.md) | `grid:global::platform:user/{id}` |
-| [User Group](https://altiumdeveloper.github.io/cdm/llms/classes/plt_UserGroup.md) | `grid:global::platform:group/{id}` |
-| [Workspace](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Workspace.md) | `grid:global::platform:workspace/{id}` |
-| [Workspace Group](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceGroup.md) | `grid:workspace:{workspace-id}:team:group/{id}` |
-| [Workspace User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceUser.md) | `grid:workspace:{workspace-id}:team:user/{id}` |
-
-### procurement
-
-Bounded context page: [procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md).
-
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [BOM Release](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomRelease.md) | `grid:workspace:{workspace-id}:procurement:bom-release/{id}` |
 | [Consolidated BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ConsolidatedBOM.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
 | [Global BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_GlobalBOM.md) | `grid:global::procurement:bom/{id}` |
 | [Managed BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ManagedBOM.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
 
-### requirements
+### Supply
 
-Bounded context page: [requirements](https://altiumdeveloper.github.io/cdm/llms/requirements.md).
+Bounded context page: [Supply](https://altiumdeveloper.github.io/cdm/llms/supply.md).
 
-| Class | GRID template |
-| --- | --- |
-| [Requirements Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md) | `grid:workspace:{workspace-id}:requirements:project/{id}` |
-| [Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md) | `grid:workspace:{workspace-id}:requirements:requirement/{id}` |
-| [Requirement Baseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md) | `grid:workspace:{workspace-id}:requirements:baseline/{id}` |
-| [Requirement Change Request](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md) | `grid:workspace:{workspace-id}:requirements:change-request/{id}` |
-| [Requirement Revision](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementRevision.md) | `grid:workspace:{workspace-id}:requirements:requirement-revision/{id}` |
-| [Requirement Specification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md) | `grid:workspace:{workspace-id}:requirements:specification/{id}` |
-| [Verification Case](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md) | `grid:workspace:{workspace-id}:requirements:verification-case/{id}` |
-
-### software
-
-Bounded context page: [software](https://altiumdeveloper.github.io/cdm/llms/software.md).
-
-| Class | GRID template |
-| --- | --- |
-| [AI Model](https://altiumdeveloper.github.io/cdm/llms/classes/sft_AIModel.md) | `grid:workspace:{workspace-id}:software:ai-model/{id}` |
-| [Device Configuration](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfiguration.md) | `grid:workspace:{workspace-id}:software:device-configuration/{id}` |
-| [Device Configuration Revision](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfigurationRevision.md) | `grid:workspace:{workspace-id}:software:device-configuration-revision/{id}` |
-| [Software Project](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md) | `grid:workspace:{workspace-id}:software:software-project/{id}` |
-| [Software Release](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareRelease.md) | `grid:workspace:{workspace-id}:software:software-release/{id}` |
-
-### supply
-
-Bounded context page: [supply](https://altiumdeveloper.github.io/cdm/llms/supply.md).
-
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [Company](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Company.md) | `grid:supply::platform:company/{id}` |
 | [Evaluation Kit](https://altiumdeveloper.github.io/cdm/llms/classes/sup_EvalKit.md) | `grid:supply::platform:eval-kit/{id}` |
@@ -339,22 +284,77 @@ Bounded context page: [supply](https://altiumdeveloper.github.io/cdm/llms/supply
 | [Software Project](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SoftwareProject.md) | `grid:supply::platform:software-project/{id}` |
 | [Solution Template](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SolutionTemplate.md) | `grid:supply::platform:solution-template/{id}` |
 
-### system
+### Customization
 
-Bounded context page: [system](https://altiumdeveloper.github.io/cdm/llms/system.md).
+Bounded context page: [Customization](https://altiumdeveloper.github.io/cdm/llms/customization.md).
 
-| Class | GRID template |
+| Entity | GRID template |
+| --- | --- |
+| [Script](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Script.md) | `grid:workspace:{workspace-id}:scripts:script/{id}` |
+| [Script Execution](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecution.md) | `grid:workspace:{workspace-id}:scripts:script-execution/{id}` |
+| [Script Version](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptVersion.md) | `grid:workspace:{workspace-id}:scripts:script-version/{id}` |
+| [Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md) | `grid:workspace:{workspace-id}:customization:workflow/{id}` |
+
+### System Design
+
+Bounded context page: [System Design](https://altiumdeveloper.github.io/cdm/llms/system.md).
+
+| Entity | GRID template |
 | --- | --- |
 | [ESD Document](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md) | `grid:workspace:{workspace-id}:system-design:esd/{id}` |
 
-### system-sdm
+### System Design - System Data Model
 
-Bounded context page: [system-sdm](https://altiumdeveloper.github.io/cdm/llms/system-sdm.md).
+Bounded context page: [System Design - System Data Model](https://altiumdeveloper.github.io/cdm/llms/system-sdm.md).
 
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [System Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md) | `grid:workspace:{workspace-id}:system-design:sdm/{id}` |
 | [System Model Version](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md) | `grid:workspace:{workspace-id}:system-design:sdm-version/{id}` |
+
+### Requirements
+
+Bounded context page: [Requirements](https://altiumdeveloper.github.io/cdm/llms/requirements.md).
+
+| Entity | GRID template |
+| --- | --- |
+| [Requirements Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md) | `grid:workspace:{workspace-id}:requirements:project/{id}` |
+| [Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md) | `grid:workspace:{workspace-id}:requirements:requirement/{id}` |
+| [Requirement Baseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md) | `grid:workspace:{workspace-id}:requirements:baseline/{id}` |
+| [Requirement Change Request](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md) | `grid:workspace:{workspace-id}:requirements:change-request/{id}` |
+| [Requirement Revision](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementRevision.md) | `grid:workspace:{workspace-id}:requirements:requirement-revision/{id}` |
+| [Requirement Specification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md) | `grid:workspace:{workspace-id}:requirements:specification/{id}` |
+| [Verification Case](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md) | `grid:workspace:{workspace-id}:requirements:verification-case/{id}` |
+
+### Device Model
+
+Bounded context page: [Device Model](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md).
+
+| Entity | GRID template |
+| --- | --- |
+| [FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md) | `grid:global::device-model:fullstack-dm/{id}` |
+
+### Software
+
+Bounded context page: [Software](https://altiumdeveloper.github.io/cdm/llms/software.md).
+
+| Entity | GRID template |
+| --- | --- |
+| [AI Model](https://altiumdeveloper.github.io/cdm/llms/classes/sft_AIModel.md) | `grid:workspace:{workspace-id}:software:ai-model/{id}` |
+| [Device Configuration](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfiguration.md) | `grid:workspace:{workspace-id}:software:device-configuration/{id}` |
+| [Device Configuration Revision](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfigurationRevision.md) | `grid:workspace:{workspace-id}:software:device-configuration-revision/{id}` |
+| [Software Project](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md) | `grid:workspace:{workspace-id}:software:software-project/{id}` |
+| [Software Release](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareRelease.md) | `grid:workspace:{workspace-id}:software:software-release/{id}` |
+
+### Over-the-Air Updates
+
+Bounded context page: [Over-the-Air Updates](https://altiumdeveloper.github.io/cdm/llms/ota.md).
+
+| Entity | GRID template |
+| --- | --- |
+| [Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) | `grid:workspace:{workspace-id}:ota:device/{id}` |
+| [Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md) | `grid:workspace:{workspace-id}:ota:fleet/{id}` |
+| [Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) | `grid:workspace:{workspace-id}:ota:package/{id}` |
 
 ## The GRID context is not the CDM subset
 
@@ -407,26 +407,26 @@ Every prefix declared by the schema files, with the bounded context that owns th
 | Prefix | Namespace | Bounded context |
 | --- | --- | --- |
 | `cdm` | `https://w3id.org/altium/cdm/` |  |
-| `col` | `https://w3id.org/altium/cdm/collaboration/` | [collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md) |
-| `con` | `https://w3id.org/altium/cdm/configuration/` | [configuration](https://altiumdeveloper.github.io/cdm/llms/configuration.md) |
-| `core` | `https://w3id.org/altium/cdm/core/` | [core](https://altiumdeveloper.github.io/cdm/llms/core.md) |
-| `cus` | `https://w3id.org/altium/cdm/customization/` | [customization](https://altiumdeveloper.github.io/cdm/llms/customization.md) |
-| `des` | `https://w3id.org/altium/cdm/design/` | [design](https://altiumdeveloper.github.io/cdm/llms/design.md) |
-| `dm` | `https://w3id.org/altium/cdm/deviceModel/` | [deviceModel](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md) |
-| `ins` | `https://w3id.org/altium/cdm/insights/` | [insights](https://altiumdeveloper.github.io/cdm/llms/insights.md) |
-| `lib` | `https://w3id.org/altium/cdm/library/` | [library](https://altiumdeveloper.github.io/cdm/llms/library.md) |
+| `col` | `https://w3id.org/altium/cdm/collaboration/` | [Collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md) |
+| `con` | `https://w3id.org/altium/cdm/configuration/` | [Configuration Management](https://altiumdeveloper.github.io/cdm/llms/configuration.md) |
+| `core` | `https://w3id.org/altium/cdm/core/` | [Core](https://altiumdeveloper.github.io/cdm/llms/core.md) |
+| `cus` | `https://w3id.org/altium/cdm/customization/` | [Customization](https://altiumdeveloper.github.io/cdm/llms/customization.md) |
+| `des` | `https://w3id.org/altium/cdm/design/` | [Design](https://altiumdeveloper.github.io/cdm/llms/design.md) |
+| `dm` | `https://w3id.org/altium/cdm/deviceModel/` | [Device Model](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md) |
+| `ins` | `https://w3id.org/altium/cdm/insights/` | [Insights](https://altiumdeveloper.github.io/cdm/llms/insights.md) |
+| `lib` | `https://w3id.org/altium/cdm/library/` | [Library Management](https://altiumdeveloper.github.io/cdm/llms/library.md) |
 | `linkml` | `https://w3id.org/linkml/` |  |
 | `obo` | `http://purl.obolibrary.org/obo/` |  |
-| `ota` | `https://w3id.org/altium/cdm/ota/` | [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md) |
-| `plt` | `https://w3id.org/altium/cdm/platform/` | [platform](https://altiumdeveloper.github.io/cdm/llms/platform.md) |
-| `pro` | `https://w3id.org/altium/cdm/procurement/` | [procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md) |
+| `ota` | `https://w3id.org/altium/cdm/ota/` | [Over-the-Air Updates](https://altiumdeveloper.github.io/cdm/llms/ota.md) |
+| `plt` | `https://w3id.org/altium/cdm/platform/` | [Platform](https://altiumdeveloper.github.io/cdm/llms/platform.md) |
+| `pro` | `https://w3id.org/altium/cdm/procurement/` | [Procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md) |
 | `prov` | `http://www.w3.org/ns/prov#` |  |
-| `req` | `https://w3id.org/altium/cdm/requirement/` | requirement |
+| `req` | `https://w3id.org/altium/cdm/requirement/` | [Requirements](https://altiumdeveloper.github.io/cdm/llms/requirements.md) |
 | `schema` | `http://schema.org/` |  |
-| `sft` | `https://w3id.org/altium/cdm/software/` | [software](https://altiumdeveloper.github.io/cdm/llms/software.md) |
+| `sft` | `https://w3id.org/altium/cdm/software/` | [Software](https://altiumdeveloper.github.io/cdm/llms/software.md) |
 | `shex` | `http://www.w3.org/ns/shex#` |  |
-| `sup` | `https://w3id.org/altium/cdm/supply/` | [supply](https://altiumdeveloper.github.io/cdm/llms/supply.md) |
-| `sys` | `https://w3id.org/altium/cdm/system/` | [system](https://altiumdeveloper.github.io/cdm/llms/system.md) |
+| `sup` | `https://w3id.org/altium/cdm/supply/` | [Supply](https://altiumdeveloper.github.io/cdm/llms/supply.md) |
+| `sys` | `https://w3id.org/altium/cdm/system/` | [System Design](https://altiumdeveloper.github.io/cdm/llms/system.md) |
 | `xsd` | `http://www.w3.org/2001/XMLSchema#` |  |
 
 A new subset prefix needs formal approval of the subset it belongs to (see `AGENTS.md` §6 in the repository). External vocabulary prefixes allow-listed for mappings (`prov:`, `obo:`) are exempt.
@@ -1146,7 +1146,7 @@ Product terms and class names of the model. A term used by several classes is li
 
 # File: llms/core.md
 
-# Bounded context: core
+# Bounded context: Core
 
 Holds the abstract foundations shared by every bounded context: the base classes Entity (specialised as Artifact and Activity), Resource and Event; the mixins that add annotations such as GRID, maturity and API type; shared slots such as id and name; and the abstract relations (e.g. part of, input of, derived from) that domain relations specialise. It is not a product area and has no product documentation of its own.
 
@@ -1181,7 +1181,7 @@ No public product documentation exists for this bounded context.
 
 # File: llms/platform.md
 
-# Bounded context: platform
+# Bounded context: Platform
 
 Models the platform-wide objects that other bounded contexts build on: organizations (Company Accounts) with their users and user groups, Workspaces with their members and groups, applications, event subscriptions, and Renesas 365 solutions with their releases. It also holds the lifecycle definitions (with their stages and states) and revision naming schemes that govern Workspace Items. Organization-level data is managed in the Company Dashboard; Workspace-level configuration, including these definitions and schemes, is managed from Altium Designer or the Workspace browser interface.
 
@@ -1219,7 +1219,7 @@ HTML page: [subsets/platform/](https://altiumdeveloper.github.io/cdm/subsets/pla
 
 # File: llms/configuration.md
 
-# Bounded context: configuration
+# Bounded context: Configuration Management
 
 Models environment configurations, which restrict the Altium Designer working environment of the Workspace members they target to approved configuration data, together with schematic templates and their revisions stored as Workspace Items. In Altium 365 this corresponds to environment configuration management through the Team Configuration Center.
 
@@ -1239,7 +1239,7 @@ HTML page: [subsets/configuration/](https://altiumdeveloper.github.io/cdm/subset
 
 # File: llms/collaboration.md
 
-# Bounded context: collaboration
+# Bounded context: Collaboration
 
 Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, and tasks that assign work to users or teams. In the product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.
 
@@ -1261,7 +1261,7 @@ HTML page: [subsets/collaboration/](https://altiumdeveloper.github.io/cdm/subset
 
 # File: llms/customization.md
 
-# Bounded context: customization
+# Bounded context: Customization
 
 Models ways to customize and automate a Workspace: process workflows, and scripts with their versions, their executions and the event raised when an execution completes. In the product, each workflow belongs to a process definition that a Workspace administrator creates and manages in the Workspace browser interface.
 
@@ -1284,7 +1284,7 @@ HTML page: [subsets/customization/](https://altiumdeveloper.github.io/cdm/subset
 
 # File: llms/design.md
 
-# Bounded context: design
+# Bounded context: Design
 
 Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, and rule checks run against projects. It corresponds to Workspace projects in Altium 365 and Altium Designer, from project creation through to design release.
 
@@ -1314,7 +1314,7 @@ HTML page: [subsets/design/](https://altiumdeveloper.github.io/cdm/subsets/desig
 
 # File: llms/deviceModel.md
 
-# Bounded context: deviceModel
+# Bounded context: Device Model
 
 Models an embedded device (e.g. an MCU), which the CDM calls a digital twin: its processors; its address map with memories, registers, bit fields and their enumerated values; its peripherals with their instances, modes and configurations; and its pins and ports with the alternative functions of each port. A configured device model filters the full model to one device configuration, which in the product is edited on a hardware component in an ESD document.
 
@@ -1355,7 +1355,7 @@ HTML page: [subsets/deviceModel/](https://altiumdeveloper.github.io/cdm/subsets/
 
 # File: llms/insights.md
 
-# Bounded context: insights
+# Bounded context: Insights
 
 Models insights that can be followed up by tasks. The only concrete kind is the part insight: it concerns one Workspace part, may be informed by BOMs or design projects, and occurs in BOM releases, project releases or component revisions.
 
@@ -1377,7 +1377,7 @@ No public product documentation exists for this bounded context.
 
 # File: llms/library.md
 
-# Bounded context: library
+# Bounded context: Library Management
 
 Models the components stored in a Workspace and their revisions, the symbols, footprints, parameters, datasheets and part choices that make them up, and the component templates they can be created from. It also covers manufacturer parts in the Workspace part catalog, part requests, and reusable design content such as reuse blocks, managed sheets, and schematic and PCB snippets. It corresponds to Workspace components and design reuse in Altium Designer and Altium 365.
 
@@ -1418,7 +1418,7 @@ HTML page: [subsets/library/](https://altiumdeveloper.github.io/cdm/subsets/libr
 
 # File: llms/ota.md
 
-# Bounded context: ota
+# Bounded context: Over-the-Air Updates
 
 Models over-the-air (OTA) firmware and software updates: devices with their status and installed packages, fleets that group devices, and packages with their version, size, checksums and target hardware. All classes are experimental.
 
@@ -1438,7 +1438,7 @@ No public product documentation exists for this bounded context.
 
 # File: llms/procurement.md
 
-# Bounded context: procurement
+# Bounded context: Procurement
 
 Models bills of materials: BOMs kept in a Workspace and worked on in the BOM Portal (managed and consolidated BOMs) with their releases, global BOMs, which are not tied to a Workspace, and BOM lines with their alternate and substitute parts and the issues found when a BOM is analysed. It corresponds to the Altium 365 BOM Portal.
 
@@ -1469,7 +1469,7 @@ HTML page: [subsets/procurement/](https://altiumdeveloper.github.io/cdm/subsets/
 
 # File: llms/supply.md
 
-# Bounded context: supply
+# Bounded context: Supply
 
 Models the supply catalog: manufacturer parts with their aggregated sourcing data and distributor offers, the companies acting as their manufacturers or distributors, and the vendor-specific part family hierarchy, along with catalog content such as reference designs, evaluation kits, solution templates and software projects. Part, offer and company data correspond to the supply chain data that Octopart aggregates and serves through the Octopart API.
 
@@ -1497,7 +1497,7 @@ HTML page: [subsets/supply/](https://altiumdeveloper.github.io/cdm/subsets/suppl
 
 # File: llms/software.md
 
-# Bounded context: software
+# Bounded context: Software
 
 Models the embedded software of a Renesas 365 solution: software projects with their releases and build artifacts, device configurations (with revisions) and their pin assignments, and AI models. In Renesas 365 the software project is the software part of a solution, edited in the built-in Web IDE or in e² studio; a device configuration there also covers the ports, package information and peripherals of a hardware component.
 
@@ -1588,7 +1588,7 @@ HTML page: [subsets/system-sdm/](https://altiumdeveloper.github.io/cdm/subsets/s
 
 # File: llms/requirements.md
 
-# Bounded context: requirements
+# Bounded context: Requirements
 
 Models requirements and their revisions, the specifications that group them, baselines approved for execution, change requests, the requirements projects that scope this work, and verification cases that provide evidence against requirements; most of its classes are experimental. It corresponds to requirements management and verification & validation in the Altium 365 Requirements Portal.
 
@@ -1647,7 +1647,9 @@ A single entry in a comment thread: either the initial comment, pinned to a poin
 
 ## Referenced by
 
-- [col_CommentThread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md): `comments`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [col_CommentThread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md) | comments | 1..* |  |
 
 ---
 
@@ -1729,7 +1731,9 @@ Task represents a discrete unit of work assigned to a user or team within the de
 
 ## Referenced by
 
-- [ins_Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_Insight.md): `tasks`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ins_Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_Insight.md) | tasks | * | core_informs |
 
 ---
 
@@ -1768,7 +1772,9 @@ None declared.
 
 ## Referenced by
 
-- [plt_Workspace](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Workspace.md): `environmentConfigurations`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [plt_Workspace](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Workspace.md) | environmentConfigurations | * | core_hasPart |
 
 ---
 
@@ -1839,9 +1845,11 @@ None declared.
 
 ## Referenced by
 
-- [con_EnvironmentConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/con_EnvironmentConfiguration.md): `schematicTemplates`
-- [con_SchematicTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/con_SchematicTemplate.md): `revisions`
-- [lib_ManagedSheetRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheetRevision.md): `template`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [con_EnvironmentConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/con_EnvironmentConfiguration.md) | schematicTemplates | * | core_hasPart |
+| [con_SchematicTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/con_SchematicTemplate.md) | revisions | * | core_revisions |
+| [lib_ManagedSheetRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheetRevision.md) | template | 0..1 | core_derivedFrom |
 
 ---
 
@@ -1854,6 +1862,7 @@ None declared.
 - Bounded context: [core](https://altiumdeveloper.github.io/cdm/llms/core.md)
 - Kind: Activity, abstract
 - Is a: [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md)
+- Subclasses: [col_CommentThread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md), [col_Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md), [cus_Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md), [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md), [des_ProjectRelease](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md), [des_RuleCheckExecution](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheckExecution.md), [ins_Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_Insight.md), [lib_PartRequest](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartRequest.md), [plt_Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md), [pro_BomWIP](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomWIP.md), [pro_GlobalBOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_GlobalBOM.md), [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md), [req_RequirementChangeRequest](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md), [req_VerificationCase](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md), [sft_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md), [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md), [system_SdmSystemModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md)
 - HTML page: [classes/core_Activity/](https://altiumdeveloper.github.io/cdm/classes/core_Activity/)
 
 Abstract base for process and work objects — things that happen, use inputs, and produce outputs. Examples: projects, releases, design workflows.
@@ -1871,7 +1880,9 @@ Abstract base for process and work objects — things that happen, use inputs, a
 
 ## Referenced by
 
-- [req_Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md): `verifiedByActivities`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md) | verifiedByActivities | * |  |
 
 ---
 
@@ -1884,6 +1895,7 @@ Abstract base for process and work objects — things that happen, use inputs, a
 - Bounded context: [core](https://altiumdeveloper.github.io/cdm/llms/core.md)
 - Kind: Artifact, abstract
 - Is a: [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md)
+- Subclasses: [con_EnvironmentConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/con_EnvironmentConfiguration.md), [con_SchematicTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/con_SchematicTemplate.md), [con_SchematicTemplateRevision](https://altiumdeveloper.github.io/cdm/llms/classes/con_SchematicTemplateRevision.md), [cus_Script](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Script.md), [cus_ScriptExecution](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecution.md), [cus_ScriptVersion](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptVersion.md), [des_ManufacturingPackage](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md), [des_ProjectTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplate.md), [des_ProjectTemplateRevision](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplateRevision.md), [des_RuleCheck](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheck.md), [dm_FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md), [lib_Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md), [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md), [lib_ComponentTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplate.md), [lib_ComponentTemplateRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplateRevision.md), [lib_Datasheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Datasheet.md), [lib_Footprint](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Footprint.md), [lib_FootprintRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_FootprintRevision.md), [lib_ManagedSheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheet.md), [lib_ManagedSheetRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheetRevision.md), [lib_Part](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Part.md), [lib_PcbSnippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippet.md), [lib_PcbSnippetRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippetRevision.md), [lib_ReuseBlock](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlock.md), [lib_ReuseBlockRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlockRevision.md), [lib_SchSnippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippet.md), [lib_SchSnippetRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippetRevision.md), [lib_Symbol](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Symbol.md), [lib_SymbolRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SymbolRevision.md), [ota_Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md), [ota_Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md), [ota_Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md), [plt_Application](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Application.md), [plt_EventSubscription](https://altiumdeveloper.github.io/cdm/llms/classes/plt_EventSubscription.md), [plt_LifecycleDefinition](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleDefinition.md), [plt_NamingScheme](https://altiumdeveloper.github.io/cdm/llms/classes/plt_NamingScheme.md), [plt_Organization](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Organization.md), [plt_SolutionRelease](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionRelease.md), [plt_User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_User.md), [plt_UserGroup](https://altiumdeveloper.github.io/cdm/llms/classes/plt_UserGroup.md), [plt_Workspace](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Workspace.md), [plt_WorkspaceGroup](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceGroup.md), [plt_WorkspaceUser](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceUser.md), [pro_BomRelease](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomRelease.md), [req_Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md), [req_RequirementBaseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md), [req_RequirementRevision](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementRevision.md), [req_RequirementSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md), [sft_AIModel](https://altiumdeveloper.github.io/cdm/llms/classes/sft_AIModel.md), [sft_BuildArtifact](https://altiumdeveloper.github.io/cdm/llms/classes/sft_BuildArtifact.md), [sft_DeviceConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfiguration.md), [sft_DeviceConfigurationRevision](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfigurationRevision.md), [sft_SoftwareRelease](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareRelease.md), [sup_Company](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Company.md), [sup_EvalKit](https://altiumdeveloper.github.io/cdm/llms/classes/sup_EvalKit.md), [sup_Offer](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Offer.md), [sup_Part](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Part.md), [sup_PartFamily](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartFamily.md), [sup_PartGroup](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartGroup.md), [sup_ReferenceDesign](https://altiumdeveloper.github.io/cdm/llms/classes/sup_ReferenceDesign.md), [sup_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SoftwareProject.md), [sup_SolutionTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SolutionTemplate.md), [system_SdmSystemModelVersion](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md)
 - HTML page: [classes/core_Artifact/](https://altiumdeveloper.github.io/cdm/classes/core_Artifact/)
 
 Abstract base for persistent data objects that are created, stored, versioned, and consumed. Examples: components, documents, system models.
@@ -1909,6 +1921,7 @@ Abstract base for persistent data objects that are created, stored, versioned, a
 - IRI: `core:Entity` (https://w3id.org/altium/cdm/core/Entity)
 - Bounded context: [core](https://altiumdeveloper.github.io/cdm/llms/core.md)
 - Kind: Entity, abstract
+- Subclasses: [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md), [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md)
 - Mixins (instantiates): [core_WithGRID](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithGRID.md), [core_WithMaturity](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithMaturity.md), [core_WithPlatformAPI](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithPlatformAPI.md)
 - HTML page: [classes/core_Entity/](https://altiumdeveloper.github.io/cdm/classes/core_Entity/)
 
@@ -1930,6 +1943,7 @@ Abstract base for all identifiable, versioned, platform-accessible domain object
 - IRI: `core:Event` (https://w3id.org/altium/cdm/core/Event)
 - Bounded context: [core](https://altiumdeveloper.github.io/cdm/llms/core.md)
 - Kind: Event, abstract
+- Subclasses: [cus_ScriptExecutionCompleted](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecutionCompleted.md)
 - HTML page: [classes/core_Event/](https://altiumdeveloper.github.io/cdm/classes/core_Event/)
 
 Abstract base for domain events. Events carry no GRID and no versioning lifecycle; they represent things that happened rather than persistent domain objects.
@@ -1944,6 +1958,7 @@ Abstract base for domain events. Events carry no GRID and no versioning lifecycl
 - IRI: `core:Meta` (https://w3id.org/altium/cdm/core/Meta)
 - Bounded context: [core](https://altiumdeveloper.github.io/cdm/llms/core.md)
 - Kind: abstract
+- Subclasses: [core_WithGRID](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithGRID.md), [core_WithMaturity](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithMaturity.md), [core_WithPlatformAPI](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithPlatformAPI.md), [core_WithVault](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithVault.md), [core_WithVaultLink](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithVaultLink.md), [dm_HasAddressRange](https://altiumdeveloper.github.io/cdm/llms/classes/dm_HasAddressRange.md), [plt_HasLifecycle](https://altiumdeveloper.github.io/cdm/llms/classes/plt_HasLifecycle.md), [plt_SolutionItem](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionItem.md), [pro_Bom](https://altiumdeveloper.github.io/cdm/llms/classes/pro_Bom.md), [system_HasSdmReferenceDesignator](https://altiumdeveloper.github.io/cdm/llms/classes/system_HasSdmReferenceDesignator.md), [system_SdmMappableEntity](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmMappableEntity.md)
 - HTML page: [classes/core_Meta/](https://altiumdeveloper.github.io/cdm/classes/core_Meta/)
 
 Abstract base for all CDM mixin classes. Provides a common root for mixins without participating in the main Entity hierarchy.
@@ -1958,6 +1973,7 @@ Abstract base for all CDM mixin classes. Provides a common root for mixins witho
 - IRI: `core:Resource` (https://w3id.org/altium/cdm/core/Resource)
 - Bounded context: [core](https://altiumdeveloper.github.io/cdm/llms/core.md)
 - Kind: Resource, abstract
+- Subclasses: [col_Comment](https://altiumdeveloper.github.io/cdm/llms/classes/col_Comment.md), [des_ProjectParameter](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectParameter.md), [des_ProjectVariant](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectVariant.md), [dm_AddressBlock](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressBlock.md), [dm_AddressMap](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressMap.md), [dm_AddressSegment](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressSegment.md), [dm_ConfiguredDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_ConfiguredDeviceModel.md), [dm_FieldEnum](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FieldEnum.md), [dm_Memory](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Memory.md), [dm_Peripheral](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Peripheral.md), [dm_PeripheralConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralConfiguration.md), [dm_PeripheralInstance](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralInstance.md), [dm_PeripheralMode](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralMode.md), [dm_PeripheralParameter](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralParameter.md), [dm_PeripheralPinConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinConfig.md), [dm_PeripheralPinDependencyConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinDependencyConfig.md), [dm_Pin](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Pin.md), [dm_Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md), [dm_PortConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfiguration.md), [dm_PortConfigurationDependency](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationDependency.md), [dm_PortConfigurationEnumValue](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationEnumValue.md), [dm_PortConnection](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConnection.md), [dm_PortFunction](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortFunction.md), [dm_Processor](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Processor.md), [dm_Register](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Register.md), [dm_RegisterField](https://altiumdeveloper.github.io/cdm/llms/classes/dm_RegisterField.md), [lib_ComponentParameter](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentParameter.md), [lib_PartChoice](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoice.md), [lib_PartChoiceList](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoiceList.md), [plt_LifecycleStage](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleStage.md), [plt_LifecycleState](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleState.md), [pro_BomIssue](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomIssue.md), [pro_BomItem](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md), [pro_BomItemElement](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemElement.md), [req_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/req_Artifact.md), [sft_PinAssignment](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignment.md), [sft_PinAssignmentModel](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignmentModel.md), [system_Connection](https://altiumdeveloper.github.io/cdm/llms/classes/system_Connection.md), [system_Endpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_Endpoint.md), [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md), [system_HardwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_HardwareProject.md), [system_KeyComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_KeyComponent.md), [system_Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/system_Parameter.md), [system_Port](https://altiumdeveloper.github.io/cdm/llms/classes/system_Port.md), [system_PortAssociation](https://altiumdeveloper.github.io/cdm/llms/classes/system_PortAssociation.md), [system_SdmAuthoringApplication](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmAuthoringApplication.md), [system_SdmClientMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmClientMetadata.md), [system_SdmConnection](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmConnection.md), [system_SdmDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmDeviceModel.md), [system_SdmEndpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmEndpoint.md), [system_SdmFunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalBlock.md), [system_SdmFunctionalModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalModel.md), [system_SdmHardwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareComponent.md), [system_SdmHardwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareModel.md), [system_SdmPort](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md), [system_SdmSoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareComponent.md), [system_SdmSoftwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareModel.md), [system_SdmSoftwareSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareSpecification.md), [system_SdmSoftwareStackInstance](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareStackInstance.md), [system_SdmSystemModelVersionMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersionMetadata.md), [system_SoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareComponent.md), [system_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareProject.md)
 - Mixins (instantiates): [core_WithPlatformAPI](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithPlatformAPI.md)
 - HTML page: [classes/core_Resource/](https://altiumdeveloper.github.io/cdm/classes/core_Resource/)
 
@@ -2129,7 +2145,9 @@ Mixin that adds vault link parent, child, and type annotation slots for tracking
 
 ## Referenced by
 
-- [cus_ScriptVersion](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptVersion.md): `executions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [cus_ScriptVersion](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptVersion.md) | executions | * |  |
 
 ---
 
@@ -2146,7 +2164,9 @@ Mixin that adds vault link parent, child, and type annotation slots for tracking
 
 ## Referenced by
 
-- [cus_ScriptExecution](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecution.md): `emits`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [cus_ScriptExecution](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecution.md) | emits | 0..1 |  |
 
 ---
 
@@ -2178,7 +2198,9 @@ Mixin that adds vault link parent, child, and type annotation slots for tracking
 
 ## Referenced by
 
-- [cus_Script](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Script.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [cus_Script](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Script.md) | revisions | * | core_revisions |
 
 ---
 
@@ -2347,6 +2369,7 @@ None declared (nearest ancestor `des_Project`: `grid:workspace:{workspace-id}:de
 - Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
 - Kind: Activity
 - Is a: [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md)
+- Subclasses: [des_HarnessProject](https://altiumdeveloper.github.io/cdm/llms/classes/des_HarnessProject.md), [des_MultiboardProject](https://altiumdeveloper.github.io/cdm/llms/classes/des_MultiboardProject.md)
 - Mixins: [plt_SolutionItem](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionItem.md)
 - HTML page: [classes/des_Project/](https://altiumdeveloper.github.io/cdm/classes/des_Project/)
 
@@ -2381,12 +2404,14 @@ A design project stored in a Workspace, normally under its built-in version cont
 
 ## Referenced by
 
-- [des_MultiboardProject](https://altiumdeveloper.github.io/cdm/llms/classes/des_MultiboardProject.md): `projects`
-- [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md): `informedBy`
-- [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md): `usedByProjectVariant`
-- [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md): `implementedBy`
-- [system_HardwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_HardwareProject.md): `implementedBy`
-- [system_SdmHardwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareModel.md): `implementedBy`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_MultiboardProject](https://altiumdeveloper.github.io/cdm/llms/classes/des_MultiboardProject.md) | projects | * | core_hasPart |
+| [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) | informedBy | * | core_informedBy |
+| [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) | usedByProjectVariant | * | core_inputOf |
+| [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md) | implementedBy | 0..1 | core_implementedBy |
+| [system_HardwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_HardwareProject.md) | implementedBy | 0..1 | core_implementedBy |
+| [system_SdmHardwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareModel.md) | implementedBy | 0..1 | core_implementedBy |
 
 ---
 
@@ -2421,7 +2446,9 @@ A name/value parameter defined at the level of a design project. It is either a 
 
 ## Referenced by
 
-- [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md): `parameters`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) | parameters | * |  |
 
 ---
 
@@ -2467,10 +2494,12 @@ Project Release captures an immutable snapshot of a PCB design project at a spec
 
 ## Referenced by
 
-- [des_ManufacturingPackage](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md): `projectRelease`
-- [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md): `releases`
-- [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md): `occursIn`
-- [req_RequirementBaseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md): `targetsProjectReleases`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_ManufacturingPackage](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md) | projectRelease | 1 | core_derivedFrom |
+| [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) | releases | * | core_releases |
+| [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) | occursIn | * | core_occursIn |
+| [req_RequirementBaseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md) | targetsProjectReleases | * |  |
 
 ---
 
@@ -2544,7 +2573,9 @@ An immutable revision of a project template.
 
 ## Referenced by
 
-- [des_ProjectTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplate.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_ProjectTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplate.md) | revisions | * | core_revisions |
 
 ---
 
@@ -2573,7 +2604,9 @@ A design variant of a project: a named variation of the same base design that is
 
 ## Referenced by
 
-- [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md): `variants`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) | variants | * |  |
 
 ---
 
@@ -2674,7 +2707,9 @@ Address block with start, size, and optional registers and peripherals.
 
 ## Referenced by
 
-- [dm_AddressSegment](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressSegment.md): `blocks`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_AddressSegment](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressSegment.md) | blocks | * |  |
 
 ---
 
@@ -2703,7 +2738,9 @@ Address map for the device including memory and peripheral regions.
 
 ## Referenced by
 
-- [dm_FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md): `addressMap`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md) | addressMap | 0..1 |  |
 
 ---
 
@@ -2739,7 +2776,9 @@ A contiguous region of the device's memory map. Each segment can represent eithe
 
 ## Referenced by
 
-- [dm_AddressMap](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressMap.md): `segments`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_AddressMap](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressMap.md) | segments | * |  |
 
 ---
 
@@ -2776,8 +2815,10 @@ A digital twin of an embedded hardware device as configured for a specific use-c
 
 ## Referenced by
 
-- [system_SdmHardwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareComponent.md): `deviceModelId`
-- [system_SdmSoftwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareModel.md): `deviceModelId`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmHardwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareComponent.md) | deviceModelId | 0..1 |  |
+| [system_SdmSoftwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareModel.md) | deviceModelId | 0..1 |  |
 
 ---
 
@@ -2812,7 +2853,9 @@ An enumerated value for a register field.
 
 ## Referenced by
 
-- [dm_RegisterField](https://altiumdeveloper.github.io/cdm/llms/classes/dm_RegisterField.md): `enums`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_RegisterField](https://altiumdeveloper.github.io/cdm/llms/classes/dm_RegisterField.md) | enums | * |  |
 
 ---
 
@@ -2909,7 +2952,9 @@ A memory entry within an address block.
 
 ## Referenced by
 
-- [dm_AddressBlock](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressBlock.md): `memories`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_AddressBlock](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressBlock.md) | memories | * |  |
 
 ---
 
@@ -2944,10 +2989,12 @@ A single peripheral definition, including its instances and properties.
 
 ## Referenced by
 
-- [dm_AddressSegment](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressSegment.md): `peripherals`
-- [dm_ConfiguredDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_ConfiguredDeviceModel.md): `peripherals`
-- [dm_FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md): `peripherals`
-- [system_SdmDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmDeviceModel.md): `peripherals`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_AddressSegment](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressSegment.md) | peripherals | * |  |
+| [dm_ConfiguredDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_ConfiguredDeviceModel.md) | peripherals | * |  |
+| [dm_FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md) | peripherals | * |  |
+| [system_SdmDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmDeviceModel.md) | peripherals | * |  |
 
 ---
 
@@ -2979,7 +3026,9 @@ A concrete configuration for a peripheral role, containing pin multiplexing deta
 
 ## Referenced by
 
-- [dm_PeripheralMode](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralMode.md): `configurations`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PeripheralMode](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralMode.md) | configurations | * |  |
 
 ---
 
@@ -3017,11 +3066,13 @@ A concrete instance of a peripheral (e.g., SCI0), including available modes.
 
 ## Referenced by
 
-- [dm_AddressBlock](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressBlock.md): `peripheralInstance`
-- [dm_Peripheral](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Peripheral.md): `instances`
-- [dm_PortFunction](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortFunction.md): `peripheralInstance`
-- [system_SdmPort](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md): `peripheralInstanceId`
-- [system_SdmSoftwareStackInstance](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareStackInstance.md): `peripheralInstanceId`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_AddressBlock](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressBlock.md) | peripheralInstance | 0..1 |  |
+| [dm_Peripheral](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Peripheral.md) | instances | * |  |
+| [dm_PortFunction](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortFunction.md) | peripheralInstance | 0..1 |  |
+| [system_SdmPort](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md) | peripheralInstanceId | 0..1 |  |
+| [system_SdmSoftwareStackInstance](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareStackInstance.md) | peripheralInstanceId | 0..1 |  |
 
 ---
 
@@ -3051,7 +3102,9 @@ A specific mode that a peripheral instance can fulfill,
 
 ## Referenced by
 
-- [dm_PeripheralInstance](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralInstance.md): `modes`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PeripheralInstance](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralInstance.md) | modes | * |  |
 
 ---
 
@@ -3081,7 +3134,9 @@ A parameter associated with peripheral instance configuration.
 
 ## Referenced by
 
-- [dm_PeripheralConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralConfiguration.md): `parameters`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PeripheralConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralConfiguration.md) | parameters | * |  |
 
 ---
 
@@ -3115,7 +3170,9 @@ A specific pin multiplexing configuration within peripheral configuration.
 
 ## Referenced by
 
-- [dm_PeripheralConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralConfiguration.md): `pinConfigs`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PeripheralConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralConfiguration.md) | pinConfigs | * |  |
 
 ---
 
@@ -3145,7 +3202,9 @@ A pin dependency to port mapping entry within peripheral configuration.
 
 ## Referenced by
 
-- [dm_PeripheralConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralConfiguration.md): `pinDependencyConfigs`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PeripheralConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralConfiguration.md) | pinDependencyConfigs | * |  |
 
 ---
 
@@ -3174,7 +3233,9 @@ A physical pin on the device.
 
 ## Referenced by
 
-- [dm_Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md): `pin`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md) | pin | 0..1 |  |
 
 ---
 
@@ -3210,9 +3271,11 @@ A physical port on the device, with its functions, configurations, and connectio
 
 ## Referenced by
 
-- [dm_ConfiguredDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_ConfiguredDeviceModel.md): `ports`
-- [dm_FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md): `ports`
-- [system_SdmDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmDeviceModel.md): `ports`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_ConfiguredDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_ConfiguredDeviceModel.md) | ports | * |  |
+| [dm_FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md) | ports | * |  |
+| [system_SdmDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmDeviceModel.md) | ports | * |  |
 
 ---
 
@@ -3243,7 +3306,9 @@ A specific configuration for a port.
 
 ## Referenced by
 
-- [dm_Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md): `configurations`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md) | configurations | * |  |
 
 ---
 
@@ -3278,7 +3343,9 @@ A dependency describing how a configuration value maps to GPIO or alternate func
 
 ## Referenced by
 
-- [dm_PortConfigurationEnumValue](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationEnumValue.md): `dependencies`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PortConfigurationEnumValue](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationEnumValue.md) | dependencies | * |  |
 
 ---
 
@@ -3309,7 +3376,9 @@ An enumerated value for a port configuration.
 
 ## Referenced by
 
-- [dm_PortConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfiguration.md): `enumValues`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PortConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfiguration.md) | enumValues | * |  |
 
 ---
 
@@ -3339,7 +3408,9 @@ A connection from this port to another component or signal.
 
 ## Referenced by
 
-- [dm_Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md): `connections`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md) | connections | * |  |
 
 ---
 
@@ -3373,7 +3444,9 @@ A specific function that a port can perform.
 
 ## Referenced by
 
-- [dm_Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md): `functions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md) | functions | * |  |
 
 ---
 
@@ -3406,7 +3479,9 @@ Represents a physical processing core. Defining endianness and clock frequency a
 
 ## Referenced by
 
-- [dm_FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md): `processors`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md) | processors | * |  |
 
 ---
 
@@ -3447,7 +3522,9 @@ A hardware register within an address block.
 
 ## Referenced by
 
-- [dm_AddressBlock](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressBlock.md): `registers`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_AddressBlock](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressBlock.md) | registers | * |  |
 
 ---
 
@@ -3485,7 +3562,9 @@ A bit field within a register.
 
 ## Referenced by
 
-- [dm_Register](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Register.md): `fields`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_Register](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Register.md) | fields | * |  |
 
 ---
 
@@ -3498,6 +3577,7 @@ A bit field within a register.
 - Bounded context: [insights](https://altiumdeveloper.github.io/cdm/llms/insights.md)
 - Kind: Activity, abstract
 - Is a: [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md)
+- Subclasses: [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md)
 - HTML page: [classes/ins_Insight/](https://altiumdeveloper.github.io/cdm/classes/ins_Insight/)
 
 ## Attributes
@@ -3611,8 +3691,10 @@ A named parameter of a Workspace component, holding a value and, optionally, a d
 
 ## Referenced by
 
-- [lib_Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md): `parameters`
-- [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md): `parameters`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md) | parameters | * |  |
+| [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) | parameters | * |  |
 
 ---
 
@@ -3660,15 +3742,17 @@ Revision of a Component.
 
 ## Referenced by
 
-- [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md): `usesComponents`
-- [des_ProjectRelease](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md): `consistsOfComponents`
-- [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md): `occursIn`
-- [lib_Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md): `revisions`
-- [lib_ManagedSheetRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheetRevision.md): `consistsOfComponents`
-- [lib_ReuseBlockRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlockRevision.md): `consistsOfComponents`
-- [pro_BomItemElement](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemElement.md): `component`
-- [pro_BomRelease](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomRelease.md): `consistsOfComponents`
-- [pro_BomWIP](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomWIP.md): `usesComponents`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) | usesComponents | * | core_hasInput |
+| [des_ProjectRelease](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md) | consistsOfComponents | * | core_hasPart |
+| [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) | occursIn | * | core_occursIn |
+| [lib_Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md) | revisions | * | core_revisions |
+| [lib_ManagedSheetRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheetRevision.md) | consistsOfComponents | * | core_hasPart |
+| [lib_ReuseBlockRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlockRevision.md) | consistsOfComponents | * | core_hasPart |
+| [pro_BomItemElement](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemElement.md) | component | 0..1 |  |
+| [pro_BomRelease](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomRelease.md) | consistsOfComponents | * | core_hasPart |
+| [pro_BomWIP](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomWIP.md) | usesComponents | * | core_hasInput |
 
 ---
 
@@ -3746,8 +3830,10 @@ A revision of a Component Template: the template definition, stored as a *.CMPT 
 
 ## Referenced by
 
-- [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md): `template`
-- [lib_ComponentTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplate.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) | template | 0..1 | core_derivedFrom |
+| [lib_ComponentTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplate.md) | revisions | * | core_revisions |
 
 ---
 
@@ -3862,8 +3948,10 @@ A revision of a Footprint: the PCB footprint as saved into the Workspace at one 
 
 ## Referenced by
 
-- [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md): `footprints`
-- [lib_Footprint](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Footprint.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) | footprints | * | core_hasPart |
+| [lib_Footprint](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Footprint.md) | revisions | * | core_revisions |
 
 ---
 
@@ -3936,7 +4024,9 @@ A revision of a Managed Sheet: the schematic sheet as saved into the Workspace a
 
 ## Referenced by
 
-- [lib_ManagedSheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheet.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_ManagedSheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheet.md) | revisions | * | core_revisions |
 
 ---
 
@@ -3975,13 +4065,15 @@ A manufacturer part, identified by manufacturer and part number, as held in the 
 
 ## Referenced by
 
-- [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md): `usesParts`
-- [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md): `part`
-- [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md): `consistsOfParts`
-- [lib_PartChoice](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoice.md): `part`
-- [pro_BomItemElement](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemElement.md): `part`
-- [pro_BomRelease](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomRelease.md): `consistsOfParts`
-- [pro_BomWIP](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomWIP.md): `usesParts`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) | usesParts | * | core_hasInput |
+| [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) | part | 1 | core_informs |
+| [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) | consistsOfParts | * | core_hasPart |
+| [lib_PartChoice](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoice.md) | part | 1 |  |
+| [pro_BomItemElement](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemElement.md) | part | 0..1 |  |
+| [pro_BomRelease](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomRelease.md) | consistsOfParts | * | core_hasPart |
+| [pro_BomWIP](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomWIP.md) | usesParts | * | core_hasInput |
 
 ---
 
@@ -4012,7 +4104,9 @@ One entry in a component's Part Choice list: a manufacturer part, rather than a 
 
 ## Referenced by
 
-- [lib_PartChoiceList](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoiceList.md): `partChoices`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_PartChoiceList](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoiceList.md) | partChoices | * |  |
 
 ---
 
@@ -4042,7 +4136,9 @@ The list of Part Choices for a component: the manufacturer parts that may be use
 
 ## Referenced by
 
-- [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md): `partChoiceList`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) | partChoiceList | 1 |  |
 
 ---
 
@@ -4142,8 +4238,10 @@ None declared.
 
 ## Referenced by
 
-- [lib_PcbSnippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippet.md): `revisions`
-- [lib_ReuseBlockRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlockRevision.md): `pcbSnippet`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_PcbSnippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippet.md) | revisions | * | core_revisions |
+| [lib_ReuseBlockRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlockRevision.md) | pcbSnippet | 0..1 | core_hasPart |
 
 ---
 
@@ -4224,7 +4322,9 @@ A revision of a Reuse Block: its schematic and/or PCB content as saved into the 
 
 ## Referenced by
 
-- [lib_ReuseBlock](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlock.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_ReuseBlock](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlock.md) | revisions | * | core_revisions |
 
 ---
 
@@ -4291,8 +4391,10 @@ None declared.
 
 ## Referenced by
 
-- [lib_ReuseBlockRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlockRevision.md): `schSnippet`
-- [lib_SchSnippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippet.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_ReuseBlockRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlockRevision.md) | schSnippet | 0..1 | core_hasPart |
+| [lib_SchSnippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippet.md) | revisions | * | core_revisions |
 
 ---
 
@@ -4369,8 +4471,10 @@ A revision of a Symbol: the schematic symbol as saved into the Workspace at one 
 
 ## Referenced by
 
-- [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md): `symbols`
-- [lib_Symbol](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Symbol.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) | symbols | * | core_hasPart |
+| [lib_Symbol](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Symbol.md) | revisions | * | core_revisions |
 
 ---
 
@@ -4405,7 +4509,9 @@ A revision of a Symbol: the schematic symbol as saved into the Workspace at one 
 
 ## Referenced by
 
-- [ota_Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md): `devices`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ota_Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md) | devices | * |  |
 
 ---
 
@@ -4435,7 +4541,9 @@ A revision of a Symbol: the schematic symbol as saved into the Workspace at one 
 
 ## Referenced by
 
-- [ota_Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md): `fleets`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ota_Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) | fleets | * |  |
 
 ---
 
@@ -4468,7 +4576,9 @@ A revision of a Symbol: the schematic symbol as saved into the Workspace at one 
 
 ## Referenced by
 
-- [ota_Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md): `packages`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ota_Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) | packages | * |  |
 
 ---
 
@@ -4499,7 +4609,9 @@ A revision of a Symbol: the schematic symbol as saved into the Workspace at one 
 
 ## Referenced by
 
-- [system_SdmAuthoringApplication](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmAuthoringApplication.md): `applicationId`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmAuthoringApplication](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmAuthoringApplication.md) | applicationId | 1 |  |
 
 ---
 
@@ -4621,7 +4733,9 @@ A named stage that groups lifecycle states in a lifecycle definition using the A
 
 ## Referenced by
 
-- [plt_LifecycleDefinition](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleDefinition.md): `stages`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [plt_LifecycleDefinition](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleDefinition.md) | stages | * |  |
 
 ---
 
@@ -4656,8 +4770,10 @@ A named point in an Item Revision's lifecycle (e.g. Planned, New From Design, In
 
 ## Referenced by
 
-- [plt_HasLifecycle](https://altiumdeveloper.github.io/cdm/llms/classes/plt_HasLifecycle.md): `lifecycleState`
-- [plt_LifecycleStage](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleStage.md): `states`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [plt_HasLifecycle](https://altiumdeveloper.github.io/cdm/llms/classes/plt_HasLifecycle.md) | lifecycleState | 1 |  |
+| [plt_LifecycleStage](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleStage.md) | states | 1..* |  |
 
 ---
 
@@ -4766,7 +4882,9 @@ A Renesas 365 solution: the main, top-level object of a Renesas 365 Workspace, w
 
 ## Referenced by
 
-- [plt_SolutionItem](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionItem.md): `partOfSolution`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [plt_SolutionItem](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionItem.md) | partOfSolution | * | core_partOf |
 
 ---
 
@@ -4791,7 +4909,9 @@ Mixin that marks an entity as an item belonging to a platform Solution.
 
 ## Referenced by
 
-- [plt_Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md): `solutionItems`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [plt_Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md) | solutionItems | * | core_hasPart |
 
 ---
 
@@ -4824,7 +4944,9 @@ Release of the Solution. This is a formal immutable artifact, representing a spe
 
 ## Referenced by
 
-- [plt_Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md): `releases`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [plt_Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md) | releases | * | core_releases |
 
 ---
 
@@ -5010,7 +5132,9 @@ A person's membership in a particular Workspace, connecting their Altium Account
 
 ## Referenced by
 
-- [system_SdmSystemModelVersionMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersionMetadata.md): `createdBy`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModelVersionMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersionMetadata.md) | createdBy | 1 |  |
 
 ---
 
@@ -5071,9 +5195,11 @@ A problem found when a BOM is analysed, usually against a particular BOM line: f
 
 ## Referenced by
 
-- [pro_Bom](https://altiumdeveloper.github.io/cdm/llms/classes/pro_Bom.md): `issues`
-- [pro_BomItem](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md): `issues`
-- [pro_BomItemElement](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemElement.md): `issues`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [pro_Bom](https://altiumdeveloper.github.io/cdm/llms/classes/pro_Bom.md) | issues | * |  |
+| [pro_BomItem](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md) | issues | * |  |
+| [pro_BomItemElement](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemElement.md) | issues | * |  |
 
 ---
 
@@ -5112,7 +5238,9 @@ One line of a BOM: its designators and quantity, the primary manufacturer part u
 
 ## Referenced by
 
-- [pro_Bom](https://altiumdeveloper.github.io/cdm/llms/classes/pro_Bom.md): `items`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [pro_Bom](https://altiumdeveloper.github.io/cdm/llms/classes/pro_Bom.md) | items | * |  |
 
 ---
 
@@ -5150,7 +5278,9 @@ An alternate part recorded for one BOM line: another manufacturer part that coul
 
 ## Referenced by
 
-- [pro_BomItem](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md): `alternates`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [pro_BomItem](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md) | alternates | * |  |
 
 ---
 
@@ -5163,6 +5293,7 @@ An alternate part recorded for one BOM line: another manufacturer part that coul
 - Bounded context: [procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md)
 - Kind: Resource, abstract
 - Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Subclasses: [pro_BomItemAlternate](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemAlternate.md), [pro_BomItemSubstitute](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemSubstitute.md)
 - HTML page: [classes/pro_BomItemElement/](https://altiumdeveloper.github.io/cdm/classes/pro_BomItemElement/)
 
 An element (part) that might be used for a particular BOM item.
@@ -5187,7 +5318,9 @@ An element (part) that might be used for a particular BOM item.
 
 ## Referenced by
 
-- [pro_BomItem](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md): `primaryElement`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [pro_BomItem](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md) | primaryElement | 0..1 |  |
 
 ---
 
@@ -5220,7 +5353,9 @@ Substitute is a replacement of a part by another within an individual BOM.
 
 ## Referenced by
 
-- [pro_BomItem](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md): `substitutes`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [pro_BomItem](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md) | substitutes | * |  |
 
 ---
 
@@ -5263,8 +5398,10 @@ A static snapshot of a Managed BOM's data, saved under a release name with an in
 
 ## Referenced by
 
-- [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md): `occursIn`
-- [pro_BomWIP](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomWIP.md): `releases`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) | occursIn | * | core_occursIn |
+| [pro_BomWIP](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomWIP.md) | releases | * | core_releases |
 
 ---
 
@@ -5277,6 +5414,7 @@ A static snapshot of a Managed BOM's data, saved under a release name with an in
 - Bounded context: [procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md)
 - Kind: Activity, abstract
 - Is a: [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md)
+- Subclasses: [pro_ConsolidatedBOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ConsolidatedBOM.md), [pro_ManagedBOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ManagedBOM.md)
 - Mixins: [pro_Bom](https://altiumdeveloper.github.io/cdm/llms/classes/pro_Bom.md)
 - HTML page: [classes/pro_BomWIP/](https://altiumdeveloper.github.io/cdm/classes/pro_BomWIP/)
 
@@ -5299,7 +5437,9 @@ The current, editable working state of a Workspace BOM, as opposed to a BOM rele
 
 ## Referenced by
 
-- [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md): `informedBy`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) | informedBy | * | core_informedBy |
 
 ---
 
@@ -5440,12 +5580,14 @@ A bill of materials kept in a Workspace and worked on in the BOM Portal, where i
 
 ## Referenced by
 
-- [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md): `artifacts`
-- [req_Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md): `satisfiedByArtifacts`
-- [req_Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md): `tracedFromSources`
-- [req_RequirementSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md): `inputs`
-- [req_VerificationCase](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md): `generatesEvidence`
-- [req_VerificationCase](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md): `usesArtifacts`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md) | artifacts | * |  |
+| [req_Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md) | satisfiedByArtifacts | * |  |
+| [req_Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md) | tracedFromSources | * |  |
+| [req_RequirementSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md) | inputs | * |  |
+| [req_VerificationCase](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md) | generatesEvidence | * |  |
+| [req_VerificationCase](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md) | usesArtifacts | * |  |
 
 ---
 
@@ -5494,7 +5636,9 @@ The orchestration space for capturing, evolving, and validating requirements sco
 
 ## Referenced by
 
-- [req_RequirementSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md): `targetsProjects`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_RequirementSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md) | targetsProjects | * |  |
 
 ---
 
@@ -5549,11 +5693,13 @@ A single, testable statement of intent or constraint that governs a solution or 
 
 ## Referenced by
 
-- [req_RequirementBaseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md): `includesRequirements`
-- [req_RequirementChangeRequest](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md): `impactsRequirements`
-- [req_RequirementRevision](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementRevision.md): `revisionOf`
-- [req_RequirementSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md): `includesRequirements`
-- [req_VerificationCase](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md): `validatesRequirements`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_RequirementBaseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md) | includesRequirements | 1..* | core_hasPart |
+| [req_RequirementChangeRequest](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md) | impactsRequirements | 1..* |  |
+| [req_RequirementRevision](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementRevision.md) | revisionOf | 1 | core_revisionOf |
+| [req_RequirementSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md) | includesRequirements | 1..* | core_hasPart |
+| [req_VerificationCase](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md) | validatesRequirements | 1..* |  |
 
 ---
 
@@ -5595,8 +5741,10 @@ A version-managed release of a specification or subset of requirements approved 
 
 ## Referenced by
 
-- [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md): `baselines`
-- [req_RequirementSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md) | baselines | * | core_hasPart |
+| [req_RequirementSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md) | revisions | * | core_revisions |
 
 ---
 
@@ -5632,9 +5780,11 @@ Structured workflow item proposing additions, updates, or removals of requiremen
 
 ## Referenced by
 
-- [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md): `changeRequests`
-- [req_RequirementRevision](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementRevision.md): `derivesFromChange`
-- [req_VerificationCase](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md): `triggersChanges`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md) | changeRequests | * |  |
+| [req_RequirementRevision](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementRevision.md) | derivesFromChange | 0..1 |  |
+| [req_VerificationCase](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md) | triggersChanges | * |  |
 
 ---
 
@@ -5674,8 +5824,10 @@ An immutable snapshot of a requirement statement at a specific revision.
 
 ## Referenced by
 
-- [req_Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md): `revisions`
-- [req_RequirementChangeRequest](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md): `generatesRevisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md) | revisions | * | core_revisions |
+| [req_RequirementChangeRequest](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md) | generatesRevisions | * |  |
 
 ---
 
@@ -5717,9 +5869,11 @@ A curated collection of requirements scoped to a program, domain, or release hor
 
 ## Referenced by
 
-- [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md): `specifications`
-- [req_RequirementBaseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md): `ofSpecification`
-- [req_RequirementChangeRequest](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md): `impactsSpecifications`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md) | specifications | 1..* | core_hasPart |
+| [req_RequirementBaseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md) | ofSpecification | 1 |  |
+| [req_RequirementChangeRequest](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md) | impactsSpecifications | * |  |
 
 ---
 
@@ -5763,7 +5917,9 @@ A planned verification procedure or test that produces objective evidence agains
 
 ## Referenced by
 
-- [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md): `verificationCases`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md) | verificationCases | * |  |
 
 ---
 
@@ -5799,8 +5955,10 @@ AI model artifact in context of a workspace
 
 ## Referenced by
 
-- [sft_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md): `aiModels`
-- [sft_SoftwareRelease](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareRelease.md): `aiModels`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sft_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md) | aiModels | 0..1 | core_hasInput |
+| [sft_SoftwareRelease](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareRelease.md) | aiModels | 0..1 | core_hasPart |
 
 ---
 
@@ -5831,8 +5989,10 @@ None declared.
 
 ## Referenced by
 
-- [sft_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md): `latestBuildArtifacts`
-- [sft_SoftwareRelease](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareRelease.md): `buildArtifacts`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sft_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md) | latestBuildArtifacts | * | core_hasOutput |
+| [sft_SoftwareRelease](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareRelease.md) | buildArtifacts | * | core_hasPart |
 
 ---
 
@@ -5871,7 +6031,9 @@ The configuration of a device (e.g. an MCU placed as a hardware component in an 
 
 ## Referenced by
 
-- [sft_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md): `deviceConfiguration`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sft_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md) | deviceConfiguration | 0..1 | core_hasOutput |
 
 ---
 
@@ -5903,7 +6065,9 @@ The configuration of a device (e.g. an MCU placed as a hardware component in an 
 
 ## Referenced by
 
-- [sft_DeviceConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfiguration.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sft_DeviceConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfiguration.md) | revisions | * | core_revisions |
 
 ---
 
@@ -5935,7 +6099,9 @@ The assignment of a function to one pin of a device, identified by pin number an
 
 ## Referenced by
 
-- [sft_PinAssignmentModel](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignmentModel.md): `pins`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sft_PinAssignmentModel](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignmentModel.md) | pins | 1..* |  |
 
 ---
 
@@ -5964,7 +6130,9 @@ The set of pin assignments of a device, one part of its device configuration alo
 
 ## Referenced by
 
-- [sft_DeviceConfigurationRevision](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfigurationRevision.md): `pinModel`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sft_DeviceConfigurationRevision](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfigurationRevision.md) | pinModel | 1 |  |
 
 ---
 
@@ -6008,9 +6176,11 @@ The software part of a Renesas 365 solution, developed in the built-in Web IDE (
 
 ## Referenced by
 
-- [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md): `implementedBy`
-- [system_SdmSoftwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareModel.md): `implementedBy`
-- [system_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareProject.md): `implementedBy`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md) | implementedBy | 0..1 | core_implementedBy |
+| [system_SdmSoftwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareModel.md) | implementedBy | 0..1 | core_implementedBy |
+| [system_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareProject.md) | implementedBy | 0..1 | core_implementedBy |
 
 ---
 
@@ -6046,7 +6216,9 @@ The software part of a Renesas 365 solution, developed in the built-in Web IDE (
 
 ## Referenced by
 
-- [sft_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md): `releases`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sft_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md) | releases | * | core_releases |
 
 ---
 
@@ -6084,7 +6256,9 @@ Supply Company represents an organization in the electronics supply chain. Depen
 
 ## Referenced by
 
-- [sup_Part](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Part.md): `manufacturer`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sup_Part](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Part.md) | manufacturer | 1 |  |
 
 ---
 
@@ -6122,8 +6296,10 @@ A vendor evaluation kit in the supply catalog, described by its associated devic
 
 ## Referenced by
 
-- [sup_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SoftwareProject.md): `evalKits`
-- [sup_SolutionTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SolutionTemplate.md): `evalKits`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sup_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SoftwareProject.md) | evalKits | * | core_hasPart |
+| [sup_SolutionTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SolutionTemplate.md) | evalKits | * | core_hasPart |
 
 ---
 
@@ -6210,9 +6386,11 @@ Supply Part represents a market-available instance of a manufactured Part, provi
 
 ## Referenced by
 
-- [pro_BomItemElement](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemElement.md): `part`
-- [pro_GlobalBOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_GlobalBOM.md): `usesParts`
-- [sup_PartGroup](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartGroup.md): `parts`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [pro_BomItemElement](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemElement.md) | part | 0..1 |  |
+| [pro_GlobalBOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_GlobalBOM.md) | usesParts | * | core_hasInput |
+| [sup_PartGroup](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartGroup.md) | parts | * |  |
 
 ---
 
@@ -6278,7 +6456,9 @@ A leaf of the part family hierarchy in the supply data, holding the parts that b
 
 ## Referenced by
 
-- [sup_PartFamily](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartFamily.md): `partGroups`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sup_PartFamily](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartFamily.md) | partGroups | * |  |
 
 ---
 
@@ -6315,7 +6495,9 @@ An example design published in the supply catalog, bringing together its design 
 
 ## Referenced by
 
-- [sup_Part](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Part.md): `referenceDesigns`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sup_Part](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Part.md) | referenceDesigns | * |  |
 
 ---
 
@@ -6353,7 +6535,9 @@ A software project published in the supply catalog, together with the evaluation
 
 ## Referenced by
 
-- [sup_SolutionTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SolutionTemplate.md): `softwareProjects`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sup_SolutionTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SolutionTemplate.md) | softwareProjects | * | core_hasPart |
 
 ---
 
@@ -6417,7 +6601,9 @@ A connection line in an ESD document representing an interconnection between fun
 
 ## Referenced by
 
-- [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md): `connections`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md) | connections | * |  |
 
 ---
 
@@ -6464,7 +6650,9 @@ A system-level block diagram document used in a Renesas 365 solution (listed the
 
 ## Referenced by
 
-- [system_SdmFunctionalModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalModel.md): `implementedBy`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmFunctionalModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalModel.md) | implementedBy | 0..1 | core_implementedBy |
 
 ---
 
@@ -6490,7 +6678,9 @@ One end of a connection in an ESD document, identified by the functional block a
 
 ## Referenced by
 
-- [system_Connection](https://altiumdeveloper.github.io/cdm/llms/classes/system_Connection.md): `endpoints`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_Connection](https://altiumdeveloper.github.io/cdm/llms/classes/system_Connection.md) | endpoints | 1..* |  |
 
 ---
 
@@ -6527,9 +6717,11 @@ Represents a logical block within an ESD document (e.g., MCU subsystem, LED driv
 
 ## Referenced by
 
-- [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md): `functionalBlocks`
-- [system_Endpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_Endpoint.md): `functionalBlockId`
-- [system_HardwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_HardwareProject.md): `functionalBlocks`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md) | functionalBlocks | * |  |
+| [system_Endpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_Endpoint.md) | functionalBlockId | 1 |  |
+| [system_HardwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_HardwareProject.md) | functionalBlocks | * |  |
 
 ---
 
@@ -6556,7 +6748,9 @@ An entry of an ESD document for a PCB design project (des_Project) that implemen
 
 ## Referenced by
 
-- [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md): `hardwareProjects`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md) | hardwareProjects | * |  |
 
 ---
 
@@ -6611,8 +6805,10 @@ A key component of a functional block in an ESD document, shown in the editor as
 
 ## Referenced by
 
-- [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md): `keyComponents`
-- [system_SoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareComponent.md): `parentKeyComponentId`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md) | keyComponents | * |  |
+| [system_SoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareComponent.md) | parentKeyComponentId | 1 |  |
 
 ---
 
@@ -6643,19 +6839,21 @@ Name–value parameter associated with functional blocks, ports, or other system
 
 ## Referenced by
 
-- [system_Connection](https://altiumdeveloper.github.io/cdm/llms/classes/system_Connection.md): `parameters`
-- [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md): `parameters`
-- [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md): `parameters`
-- [system_KeyComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_KeyComponent.md): `parameters`
-- [system_Port](https://altiumdeveloper.github.io/cdm/llms/classes/system_Port.md): `parameters`
-- [system_SdmClientMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmClientMetadata.md): `parameters`
-- [system_SdmConnection](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmConnection.md): `parameters`
-- [system_SdmFunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalBlock.md): `parameters`
-- [system_SdmHardwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareComponent.md): `parameters`
-- [system_SdmPort](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md): `parameters`
-- [system_SdmSoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareComponent.md): `parameters`
-- [system_SdmSoftwareStackInstance](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareStackInstance.md): `parameters`
-- [system_SoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareComponent.md): `parameters`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_Connection](https://altiumdeveloper.github.io/cdm/llms/classes/system_Connection.md) | parameters | * |  |
+| [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md) | parameters | * |  |
+| [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md) | parameters | * |  |
+| [system_KeyComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_KeyComponent.md) | parameters | * |  |
+| [system_Port](https://altiumdeveloper.github.io/cdm/llms/classes/system_Port.md) | parameters | * |  |
+| [system_SdmClientMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmClientMetadata.md) | parameters | * |  |
+| [system_SdmConnection](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmConnection.md) | parameters | * |  |
+| [system_SdmFunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalBlock.md) | parameters | * |  |
+| [system_SdmHardwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareComponent.md) | parameters | * |  |
+| [system_SdmPort](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md) | parameters | * |  |
+| [system_SdmSoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareComponent.md) | parameters | * |  |
+| [system_SdmSoftwareStackInstance](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareStackInstance.md) | parameters | * |  |
+| [system_SoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareComponent.md) | parameters | * |  |
 
 ---
 
@@ -6688,9 +6886,11 @@ An interface of a functional block in an ESD document (e.g. the I2C interface of
 
 ## Referenced by
 
-- [system_Endpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_Endpoint.md): `portId`
-- [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md): `ports`
-- [system_PortAssociation](https://altiumdeveloper.github.io/cdm/llms/classes/system_PortAssociation.md): `portId`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_Endpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_Endpoint.md) | portId | 1 |  |
+| [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md) | ports | * |  |
+| [system_PortAssociation](https://altiumdeveloper.github.io/cdm/llms/classes/system_PortAssociation.md) | portId | 1 |  |
 
 ---
 
@@ -6716,9 +6916,11 @@ An interface of a functional block in an ESD document (e.g. the I2C interface of
 
 ## Referenced by
 
-- [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md): `portsAssociations`
-- [system_Port](https://altiumdeveloper.github.io/cdm/llms/classes/system_Port.md): `associationId`
-- [system_SoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareComponent.md): `portsAssociationsIds`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md) | portsAssociations | * |  |
+| [system_Port](https://altiumdeveloper.github.io/cdm/llms/classes/system_Port.md) | associationId | 0..1 |  |
+| [system_SoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareComponent.md) | portsAssociationsIds | * |  |
 
 ---
 
@@ -6745,7 +6947,9 @@ Identifies the application used to create a system model version.
 
 ## Referenced by
 
-- [system_SdmSystemModelVersionMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersionMetadata.md): `authoringApplication`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModelVersionMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersionMetadata.md) | authoringApplication | 1 |  |
 
 ---
 
@@ -6800,7 +7004,9 @@ Represents a connection between functional blocks.
 
 ## Referenced by
 
-- [system_SdmFunctionalModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalModel.md): `connections`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmFunctionalModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalModel.md) | connections | * |  |
 
 ---
 
@@ -6839,7 +7045,9 @@ Represents a device model within the system design.
 
 ## Referenced by
 
-- [system_SdmSystemModelVersion](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md): `deviceModels`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModelVersion](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md) | deviceModels | * |  |
 
 ---
 
@@ -6869,7 +7077,9 @@ Represents an endpoint of a connection.
 
 ## Referenced by
 
-- [system_SdmConnection](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmConnection.md): `endpoints`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmConnection](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmConnection.md) | endpoints | * |  |
 
 ---
 
@@ -6904,9 +7114,11 @@ Represents a logical block within a system functional model.
 
 ## Referenced by
 
-- [system_SdmEndpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmEndpoint.md): `functionalBlockId`
-- [system_SdmFunctionalModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalModel.md): `functionalBlocks`
-- [system_SdmHardwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareModel.md): `functionalBlockIds`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmEndpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmEndpoint.md) | functionalBlockId | 1 |  |
+| [system_SdmFunctionalModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalModel.md) | functionalBlocks | * |  |
+| [system_SdmHardwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareModel.md) | functionalBlockIds | * |  |
 
 ---
 
@@ -6940,7 +7152,9 @@ Captures the functional aspects of the system design, focusing on the behavior a
 
 ## Referenced by
 
-- [system_SdmSystemModelVersion](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md): `functionalModel`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModelVersion](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md) | functionalModel | 0..1 |  |
 
 ---
 
@@ -6979,9 +7193,11 @@ Represents a hardware component / part.
 
 ## Referenced by
 
-- [system_SdmFunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalBlock.md): `hardwareComponentIds`
-- [system_SdmHardwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareModel.md): `hardwareComponents`
-- [system_SdmPort](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md): `hardwareComponentId`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmFunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalBlock.md) | hardwareComponentIds | * |  |
+| [system_SdmHardwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareModel.md) | hardwareComponents | * |  |
+| [system_SdmPort](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md) | hardwareComponentId | 0..1 |  |
 
 ---
 
@@ -7016,7 +7232,9 @@ Captures the hardware components and their interactions within the system design
 
 ## Referenced by
 
-- [system_SdmSystemModelVersion](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md): `hardwareModels`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModelVersion](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md) | hardwareModels | * |  |
 
 ---
 
@@ -7074,8 +7292,10 @@ Represents a port within a system design. It is a logical interface of a functio
 
 ## Referenced by
 
-- [system_SdmEndpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmEndpoint.md): `portId`
-- [system_SdmFunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalBlock.md): `ports`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmEndpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmEndpoint.md) | portId | 1 |  |
+| [system_SdmFunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalBlock.md) | ports | * |  |
 
 ---
 
@@ -7110,8 +7330,10 @@ Represents a software component instance and its dependencies.
 
 ## Referenced by
 
-- [system_SdmPort](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md): `softwareComponentId`
-- [system_SdmSoftwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareModel.md): `softwareComponents`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmPort](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md) | softwareComponentId | 0..1 |  |
+| [system_SdmSoftwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareModel.md) | softwareComponents | * |  |
 
 ---
 
@@ -7147,7 +7369,9 @@ Captures the software components and their interactions within the system design
 
 ## Referenced by
 
-- [system_SdmSystemModelVersion](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md): `softwareModels`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModelVersion](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md) | softwareModels | * |  |
 
 ---
 
@@ -7180,7 +7404,9 @@ The "blueprint" for a software component. Captures the identity and classificati
 
 ## Referenced by
 
-- [system_SdmSoftwareStackInstance](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareStackInstance.md): `specification`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSoftwareStackInstance](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareStackInstance.md) | specification | 1 |  |
 
 ---
 
@@ -7214,8 +7440,10 @@ Represents a software stack instance and its dependencies.
 
 ## Referenced by
 
-- [system_SdmSoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareComponent.md): `implementedBy`
-- [system_SdmSoftwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareModel.md): `softwareStackInstances`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareComponent.md) | implementedBy | * | core_implementedBy |
+| [system_SdmSoftwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareModel.md) | softwareStackInstances | * |  |
 
 ---
 
@@ -7296,8 +7524,10 @@ A specific version of a system model, capturing the state of the system design a
 
 ## Referenced by
 
-- [system_SdmSystemModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md): `latestVersion`
-- [system_SdmSystemModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md): `versions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md) | latestVersion | 1 |  |
+| [system_SdmSystemModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md) | versions | * |  |
 
 ---
 
@@ -7325,7 +7555,9 @@ Metadata associated with a specific version of a system model, capturing provena
 
 ## Referenced by
 
-- [system_SdmSystemModelVersion](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md): `metadata`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModelVersion](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md) | metadata | 0..1 |  |
 
 ---
 
@@ -7358,10 +7590,12 @@ Functional in nature, abstracted from but connected to logical implementation.
 
 ## Referenced by
 
-- [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md): `softwareComponents`
-- [system_KeyComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_KeyComponent.md): `childSoftwareComponentsIds`
-- [system_PortAssociation](https://altiumdeveloper.github.io/cdm/llms/classes/system_PortAssociation.md): `softwareComponentId`
-- [system_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareProject.md): `softwareComponents`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md) | softwareComponents | * |  |
+| [system_KeyComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_KeyComponent.md) | childSoftwareComponentsIds | * |  |
+| [system_PortAssociation](https://altiumdeveloper.github.io/cdm/llms/classes/system_PortAssociation.md) | softwareComponentId | 1 |  |
+| [system_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareProject.md) | softwareComponents | * |  |
 
 ---
 
@@ -7388,7 +7622,9 @@ An entry of an ESD document for a software project (sft_SoftwareProject) that im
 
 ## Referenced by
 
-- [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md): `softwareProjects`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md) | softwareProjects | * |  |
 
 ---
 
@@ -7421,7 +7657,9 @@ An entry of an ESD document for a software project (sft_SoftwareProject) that im
 
 ## Referenced by
 
-- [core_WithMaturity](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithMaturity.md): `maturity`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [core_WithMaturity](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithMaturity.md) | maturity | 0..1 |  |
 
 ---
 
@@ -7445,7 +7683,9 @@ An entry of an ESD document for a software project (sft_SoftwareProject) that im
 
 ## Referenced by
 
-- [core_WithVault](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithVault.md): `contentType`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [core_WithVault](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithVault.md) | contentType | 0..1 |  |
 
 ---
 
@@ -7470,8 +7710,10 @@ Specifies the access permissions for a register or memory region.
 
 ## Referenced by
 
-- [dm_Register](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Register.md): `access`
-- [dm_RegisterField](https://altiumdeveloper.github.io/cdm/llms/classes/dm_RegisterField.md): `access`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_Register](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Register.md) | access | 0..1 |  |
+| [dm_RegisterField](https://altiumdeveloper.github.io/cdm/llms/classes/dm_RegisterField.md) | access | 0..1 |  |
 
 ---
 
@@ -7495,7 +7737,9 @@ Specifies the type of address block within the device's memory map.
 
 ## Referenced by
 
-- [dm_AddressBlock](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressBlock.md): `type`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_AddressBlock](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressBlock.md) | type | 0..1 |  |
 
 ---
 
@@ -7520,7 +7764,9 @@ Specifies the byte-ordering convention of the processor. Bi-endian indicates the
 
 ## Referenced by
 
-- [dm_Processor](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Processor.md): `endian`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_Processor](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Processor.md) | endian | 1 |  |
 
 ---
 
@@ -7546,7 +7792,9 @@ Defines the specific electrical and logical configuration of a pin when PortMode
 
 ## Referenced by
 
-- [dm_PortConfigurationDependency](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationDependency.md): `gpioMode`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PortConfigurationDependency](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationDependency.md) | gpioMode | 0..1 |  |
 
 ---
 
@@ -7570,7 +7818,9 @@ Defines the virtualization model used by a peripheral interface, describing whet
 
 ## Referenced by
 
-- [dm_PeripheralInstance](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralInstance.md): `virtualization`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PeripheralInstance](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralInstance.md) | virtualization | 0..1 |  |
 
 ---
 
@@ -7594,7 +7844,9 @@ Defines the primary operational mode of a physical port pin. Determines if the p
 
 ## Referenced by
 
-- [dm_PortConfigurationDependency](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationDependency.md): `portMode`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PortConfigurationDependency](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationDependency.md) | portMode | 0..1 |  |
 
 ---
 
@@ -7620,7 +7872,9 @@ Defines the primary operational mode of a physical port pin. Determines if the p
 
 ## Referenced by
 
-- [ota_Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md): `status`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ota_Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) | status | 0..1 |  |
 
 ---
 
@@ -7656,8 +7910,10 @@ Defines the primary operational mode of a physical port pin. Determines if the p
 
 ## Referenced by
 
-- [system_PortAssociation](https://altiumdeveloper.github.io/cdm/llms/classes/system_PortAssociation.md): `portLibraryName`
-- [system_SdmPort](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md): `portType`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_PortAssociation](https://altiumdeveloper.github.io/cdm/llms/classes/system_PortAssociation.md) | portLibraryName | 1 |  |
+| [system_SdmPort](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md) | portType | 0..1 |  |
 
 ---
 
@@ -7683,4 +7939,6 @@ High-level classification of software components.
 
 ## Referenced by
 
-- [system_SdmSoftwareSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareSpecification.md): `category`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSoftwareSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareSpecification.md) | category | 0..1 |  |

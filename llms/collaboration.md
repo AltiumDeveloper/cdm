@@ -1,4 +1,4 @@
-# Bounded context: collaboration
+# Bounded context: Collaboration
 
 Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, and tasks that assign work to users or teams. In the product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.
 

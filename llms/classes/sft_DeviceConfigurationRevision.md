@@ -24,4 +24,6 @@
 
 ## Referenced by
 
-- [sft_DeviceConfiguration](sft_DeviceConfiguration.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sft_DeviceConfiguration](sft_DeviceConfiguration.md) | revisions | * | core_revisions |

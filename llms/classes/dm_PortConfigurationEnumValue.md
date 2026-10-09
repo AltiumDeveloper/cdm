@@ -23,4 +23,6 @@ An enumerated value for a port configuration.
 
 ## Referenced by
 
-- [dm_PortConfiguration](dm_PortConfiguration.md): `enumValues`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PortConfiguration](dm_PortConfiguration.md) | enumValues | * |  |

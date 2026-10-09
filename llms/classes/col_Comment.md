@@ -19,4 +19,6 @@ A single entry in a comment thread: either the initial comment, pinned to a poin
 
 ## Referenced by
 
-- [col_CommentThread](col_CommentThread.md): `comments`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [col_CommentThread](col_CommentThread.md) | comments | 1..* |  |

@@ -35,4 +35,6 @@ A revision of a Reuse Block: its schematic and/or PCB content as saved into the 
 
 ## Referenced by
 
-- [lib_ReuseBlock](lib_ReuseBlock.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_ReuseBlock](lib_ReuseBlock.md) | revisions | * | core_revisions |

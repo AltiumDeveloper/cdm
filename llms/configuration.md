@@ -1,4 +1,4 @@
-# Bounded context: configuration
+# Bounded context: Configuration Management
 
 Models environment configurations, which restrict the Altium Designer working environment of the Workspace members they target to approved configuration data, together with schematic templates and their revisions stored as Workspace Items. In Altium 365 this corresponds to environment configuration management through the Team Configuration Center.
 

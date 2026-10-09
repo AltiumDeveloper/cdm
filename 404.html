@@ -11,16 +11,19 @@
       
       
       
-      <link rel="icon" href="/altium/cdm/assets/images/favicon.png">
+      <link rel="icon" href="/altium/cdm/img/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
     
     
       
-        <title>Common Data Model (CDM)</title>
+        <title>Common Data Model</title>
       
     
     
       <link rel="stylesheet" href="/altium/cdm/assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="/altium/cdm/assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,12 +55,6 @@
     
     
       
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-      
     
     
       <link rel="stylesheet" href="/altium/cdm/css/custom.css">
@@ -78,7 +75,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -92,16 +96,11 @@
     </div>
     
     
-      
-
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+      <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/altium/cdm/." title="Common Data Model (CDM)" class="md-header__button md-logo" aria-label="Common Data Model (CDM)" data-md-component="logo">
+    <a href="/altium/cdm/." title="Common Data Model" class="md-header__button md-logo" aria-label="Common Data Model" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="/altium/cdm/img/altium-logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,25 +108,50 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            Common Data Model (CDM)
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              
-            
-          </span>
-        </div>
-      </div>
+      <a class="md-header__site-title" href="/altium/cdm/.">
+        Common Data Model - Reference Documentation
+      </a>
     </div>
+    
+      <ul class="md-header__links">
+        
+          <li><a class="md-header__link" href="https://altiumdeveloper.github.io/platform-api-docs/">Altium 365 API</a></li>
+        
+          <li><a class="md-header__link" href="https://developer.altium.com/">Developer Center</a></li>
+        
+          <li><a class="md-header__link" href="https://github.com/AltiumDeveloper/cdm">GitHub</a></li>
+        
+      </ul>
+    
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
-    
     
     
       
@@ -170,152 +194,14 @@
 </div>
       
     
-    
-      <div class="md-header__source">
-        <a href="https://github.com/AltiumDeveloper/cdm" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
-  </div>
-  <div class="md-source__repository">
-    GitHub
-  </div>
-</a>
-      </div>
-    
   </nav>
-  
-    
-      
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="/altium/cdm/." class="md-tabs__link">
-        
-  
-  
-    
-  
-  Bounded Contexts
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="/altium/cdm/grid-format/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  GRIDs
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="/altium/cdm/domain-model/" class="md-tabs__link">
-          
-  
-  
-  Concepts
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="/altium/cdm/glossary/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Glossary
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="/altium/cdm/tags/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Tags
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="/altium/cdm/about/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  About
-
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
-    
-  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -329,20 +215,15 @@
                     
 
 
-  
 
-
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/altium/cdm/." title="Common Data Model (CDM)" class="md-nav__button md-logo" aria-label="Common Data Model (CDM)" data-md-component="logo">
+    <a href="/altium/cdm/." title="Common Data Model" class="md-nav__button md-logo" aria-label="Common Data Model" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="/altium/cdm/img/altium-logo.svg" alt="logo">
 
     </a>
-    Common Data Model (CDM)
+    Common Data Model
   </label>
   
     <div class="md-nav__source">
@@ -365,13 +246,15 @@
   
   
   
+  
+  
     <li class="md-nav__item">
       <a href="/altium/cdm/." class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Bounded Contexts
+    Overview
     
   </span>
   
@@ -383,6 +266,32 @@
     
       
       
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
   
@@ -409,26 +318,34 @@
   
   
   
-    
-    
+  
+  
     
     
       
+        
+      
+        
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    
       
         
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -441,8 +358,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Concepts
           </label>
@@ -450,6 +367,8 @@
             
               
                 
+  
+  
   
   
   
@@ -477,6 +396,8 @@
   
   
   
+  
+  
     <li class="md-nav__item">
       <a href="/altium/cdm/entity-classification/" class="md-nav__link">
         
@@ -496,6 +417,8 @@
             
               
                 
+  
+  
   
   
   
@@ -530,6 +453,3576 @@
   
   
   
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bounded Contexts
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Bounded Contexts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-platform md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/platform/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Platform
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Platform
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/plt_Application/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Application
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/plt_EventSubscription/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Event Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/plt_LifecycleDefinition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lifecycle Definition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/plt_Organization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Organization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/plt_NamingScheme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Revision Naming Scheme
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/plt_Solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Solution
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/plt_SolutionRelease/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Solution Release
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/plt_User/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/plt_UserGroup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Group
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/plt_Workspace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Workspace
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/plt_WorkspaceGroup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Workspace Group
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/plt_WorkspaceUser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Workspace User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-design md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/design/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Design
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/des_Project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hardware Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+  
+  
+    <li class="md-nav__item md-nav__item--depth-1">
+      <a href="/altium/cdm/classes/des_HarnessProject/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Harness Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+  
+  
+    <li class="md-nav__item md-nav__item--depth-1">
+      <a href="/altium/cdm/classes/des_MultiboardProject/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Multiboard Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/des_ProjectRelease/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hardware Project Release
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/des_ManufacturingPackage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Manufacturing Package
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/des_ProjectTemplate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Template
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/des_ProjectTemplateRevision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Template Revision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/des_RuleCheck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Rule Check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/des_RuleCheckExecution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Rule Check Execution
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-insights md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/insights/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Insights
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Insights
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/ins_Insight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Insight
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+  
+  
+    <li class="md-nav__item md-nav__item--depth-1">
+      <a href="/altium/cdm/classes/ins_PartInsight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Part Insight
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-library md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/library/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Library Management
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Library Management
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_Component/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Component
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_ComponentRevision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Component Revision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_ComponentTemplate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Component Template
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_ComponentTemplateRevision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Component Template Revision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_Datasheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Datasheet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_Footprint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Footprint
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_FootprintRevision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Footprint Revision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_ManagedSheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Managed Sheet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_ManagedSheetRevision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Managed Sheet Revision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_Part/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Part
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_PartRequest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Part Request
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_PcbSnippet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PCB Snippet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_PcbSnippetRevision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PCB Snippet Revision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_ReuseBlock/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reuse Block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_ReuseBlockRevision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reuse Block Revision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_SchSnippet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SCH Snippet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_SchSnippetRevision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SCH Snippet Revision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_Symbol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Symbol
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/lib_SymbolRevision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Symbol Revision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-collaboration md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/collaboration/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Collaboration
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Collaboration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/col_CommentThread/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Comment Thread
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/col_Task/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Task
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-configuration md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/configuration/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Configuration Management
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration Management
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/con_EnvironmentConfiguration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Environment Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/con_SchematicTemplate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Schematic Template
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/con_SchematicTemplateRevision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Schematic Template Revision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-procurement md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/procurement/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Procurement
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Procurement
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/pro_BomRelease/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BOM Release
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/pro_BomWIP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BOM WIP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+  
+  
+    <li class="md-nav__item md-nav__item--depth-1">
+      <a href="/altium/cdm/classes/pro_ConsolidatedBOM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Consolidated BOM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+  
+  
+    <li class="md-nav__item md-nav__item--depth-1">
+      <a href="/altium/cdm/classes/pro_ManagedBOM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Managed BOM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/pro_GlobalBOM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Global BOM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-supply md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/supply/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Supply
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            Supply
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/sup_Company/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Company
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/sup_EvalKit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Evaluation Kit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/sup_Offer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Offer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/sup_Part/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Part
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/sup_PartFamily/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Part Family
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/sup_PartGroup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Part Group
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/sup_ReferenceDesign/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reference Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/sup_SoftwareProject/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Software Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/sup_SolutionTemplate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Solution Template
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-customization md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/customization/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Customization
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            Customization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/cus_Script/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Script
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/cus_ScriptExecution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Script Execution
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/cus_ScriptVersion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Script Version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/cus_Workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-system md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/system/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    System Design
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
+            <span class="md-nav__icon md-icon"></span>
+            System Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/system_ESDDocument/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ESD Document
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-system-sdm md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/system-sdm/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    System Design - System Data Model
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_11" id="__nav_5_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_11">
+            <span class="md-nav__icon md-icon"></span>
+            System Design - System Data Model
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/system_SdmSystemModel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/system_SdmSystemModelVersion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System Model Version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-requirements md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/requirements/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_12" id="__nav_5_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_12">
+            <span class="md-nav__icon md-icon"></span>
+            Requirements
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/req_Requirement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/req_RequirementBaseline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirement Baseline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/req_RequirementChangeRequest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirement Change Request
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/req_RequirementRevision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirement Revision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/req_RequirementSpecification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirement Specification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/req_Project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/req_VerificationCase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Verification Case
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-deviceModel md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/deviceModel/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Device Model
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_13" id="__nav_5_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_13">
+            <span class="md-nav__icon md-icon"></span>
+            Device Model
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/dm_FullStackDeviceModel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FullStackDeviceModel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-software md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_14" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/software/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Software
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_14" id="__nav_5_14_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_14">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/sft_AIModel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/sft_BuildArtifact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build Artifact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/sft_DeviceConfiguration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Device Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/sft_DeviceConfigurationRevision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Device Configuration Revision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/sft_SoftwareProject/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Software Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/sft_SoftwareRelease/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Software Release
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-ota md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_15" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/ota/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Over-the-Air Updates
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_15" id="__nav_5_15_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_15">
+            <span class="md-nav__icon md-icon"></span>
+            Over-the-Air Updates
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/ota_Device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Device
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/ota_Fleet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fleet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/ota_Package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Package
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item bc-core md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_16" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="/altium/cdm/subsets/core/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Core
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_16" id="__nav_5_16_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            Core
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/core_Activity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Activity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/altium/cdm/classes/core_Artifact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Artifact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="/altium/cdm/glossary/" class="md-nav__link">
         
@@ -545,9 +4038,12 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
+  
+  
   
   
   
@@ -567,25 +4063,11 @@
     </li>
   
 
-    
+              
+            
+          </ul>
+        </nav>
       
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/altium/cdm/about/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    About
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -596,6 +4078,22 @@
                 </div>
               </div>
             
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
             
           
           
@@ -627,11 +4125,10 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
+    <div class="md-copyright__highlight">
+      Copyright &copy; Altium
+    </div>
   
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
   
 </div>
       
@@ -644,12 +4141,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
-    
     
     
       
-      <script id="__config" type="application/json">{"base": "/altium/cdm/", "features": ["content.tabs.link", "content.tooltips", "toc.integrate", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.instant", "navigation.instant.progress", "navigation.sections", "navigation.expand"], "search": "/altium/cdm/assets/javascripts/workers/search.973d3a69.min.js", "tags": {"experimental": "experimental", "obsolete": "obsolete"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "/altium/cdm/", "features": ["content.tabs.link", "content.tooltips", "navigation.top", "navigation.sections", "navigation.indexes"], "search": "/altium/cdm/assets/javascripts/workers/search.973d3a69.min.js", "tags": {"experimental": "experimental", "obsolete": "obsolete"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="/altium/cdm/assets/javascripts/bundle.f55a23d4.min.js"></script>
@@ -657,6 +4152,8 @@
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
         <script src="/altium/cdm/javascript/tablesort.js"></script>
+      
+        <script src="/altium/cdm/javascript/copy.js"></script>
       
         <script src="/altium/cdm/javascript/mermaid.mjs" type="module"></script>
       

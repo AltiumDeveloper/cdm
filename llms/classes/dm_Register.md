@@ -33,4 +33,6 @@ A hardware register within an address block.
 
 ## Referenced by
 
-- [dm_AddressBlock](dm_AddressBlock.md): `registers`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_AddressBlock](dm_AddressBlock.md) | registers | * |  |

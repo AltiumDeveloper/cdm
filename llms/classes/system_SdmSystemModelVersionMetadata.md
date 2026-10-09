@@ -20,4 +20,6 @@ Metadata associated with a specific version of a system model, capturing provena
 
 ## Referenced by
 
-- [system_SdmSystemModelVersion](system_SdmSystemModelVersion.md): `metadata`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModelVersion](system_SdmSystemModelVersion.md) | metadata | 0..1 |  |

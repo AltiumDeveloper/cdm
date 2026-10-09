@@ -32,5 +32,7 @@ A revision of a Symbol: the schematic symbol as saved into the Workspace at one 
 
 ## Referenced by
 
-- [lib_ComponentRevision](lib_ComponentRevision.md): `symbols`
-- [lib_Symbol](lib_Symbol.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_ComponentRevision](lib_ComponentRevision.md) | symbols | * | core_hasPart |
+| [lib_Symbol](lib_Symbol.md) | revisions | * | core_revisions |

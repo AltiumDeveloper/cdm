@@ -34,6 +34,8 @@ A curated collection of requirements scoped to a program, domain, or release hor
 
 ## Referenced by
 
-- [req_Project](req_Project.md): `specifications`
-- [req_RequirementBaseline](req_RequirementBaseline.md): `ofSpecification`
-- [req_RequirementChangeRequest](req_RequirementChangeRequest.md): `impactsSpecifications`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_Project](req_Project.md) | specifications | 1..* | core_hasPart |
+| [req_RequirementBaseline](req_RequirementBaseline.md) | ofSpecification | 1 |  |
+| [req_RequirementChangeRequest](req_RequirementChangeRequest.md) | impactsSpecifications | * |  |

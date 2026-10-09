@@ -1,4 +1,4 @@
-# Bounded context: library
+# Bounded context: Library Management
 
 Models the components stored in a Workspace and their revisions, the symbols, footprints, parameters, datasheets and part choices that make them up, and the component templates they can be created from. It also covers manufacturer parts in the Workspace part catalog, part requests, and reusable design content such as reuse blocks, managed sheets, and schematic and PCB snippets. It corresponds to Workspace components and design reuse in Altium Designer and Altium 365.
 

@@ -33,4 +33,6 @@ A Renesas 365 solution: the main, top-level object of a Renesas 365 Workspace, w
 
 ## Referenced by
 
-- [plt_SolutionItem](plt_SolutionItem.md): `partOfSolution`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [plt_SolutionItem](plt_SolutionItem.md) | partOfSolution | * | core_partOf |

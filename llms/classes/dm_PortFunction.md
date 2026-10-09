@@ -26,4 +26,6 @@ A specific function that a port can perform.
 
 ## Referenced by
 
-- [dm_Port](dm_Port.md): `functions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_Port](dm_Port.md) | functions | * |  |

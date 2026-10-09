@@ -33,5 +33,7 @@ A specific version of a system model, capturing the state of the system design a
 
 ## Referenced by
 
-- [system_SdmSystemModel](system_SdmSystemModel.md): `latestVersion`
-- [system_SdmSystemModel](system_SdmSystemModel.md): `versions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModel](system_SdmSystemModel.md) | latestVersion | 1 |  |
+| [system_SdmSystemModel](system_SdmSystemModel.md) | versions | * |  |

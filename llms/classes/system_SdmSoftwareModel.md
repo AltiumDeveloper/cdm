@@ -28,4 +28,6 @@ Captures the software components and their interactions within the system design
 
 ## Referenced by
 
-- [system_SdmSystemModelVersion](system_SdmSystemModelVersion.md): `softwareModels`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModelVersion](system_SdmSystemModelVersion.md) | softwareModels | * |  |

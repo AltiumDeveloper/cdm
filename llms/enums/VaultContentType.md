@@ -16,4 +16,6 @@
 
 ## Referenced by
 
-- [core_WithVault](../classes/core_WithVault.md): `contentType`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [core_WithVault](../classes/core_WithVault.md) | contentType | 0..1 |  |

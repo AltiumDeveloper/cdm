@@ -19,4 +19,6 @@ An entry of an ESD document for a software project (sft_SoftwareProject) that im
 
 ## Referenced by
 
-- [system_ESDDocument](system_ESDDocument.md): `softwareProjects`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_ESDDocument](system_ESDDocument.md) | softwareProjects | * |  |

@@ -38,7 +38,9 @@ Project Release captures an immutable snapshot of a PCB design project at a spec
 
 ## Referenced by
 
-- [des_ManufacturingPackage](des_ManufacturingPackage.md): `projectRelease`
-- [des_Project](des_Project.md): `releases`
-- [ins_PartInsight](ins_PartInsight.md): `occursIn`
-- [req_RequirementBaseline](req_RequirementBaseline.md): `targetsProjectReleases`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_ManufacturingPackage](des_ManufacturingPackage.md) | projectRelease | 1 | core_derivedFrom |
+| [des_Project](des_Project.md) | releases | * | core_releases |
+| [ins_PartInsight](ins_PartInsight.md) | occursIn | * | core_occursIn |
+| [req_RequirementBaseline](req_RequirementBaseline.md) | targetsProjectReleases | * |  |

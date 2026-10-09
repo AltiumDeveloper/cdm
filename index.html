@@ -6,22 +6,20 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://w3id.org/altium/cdm/" rel="canonical"/>
-<link href="grid-format/" rel="next"/>
-<link href="assets/images/favicon.png" rel="icon"/>
+<link href="about/" rel="next"/>
+<link href="img/favicon.svg" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
-<title>Common Data Model (CDM)</title>
+<title>Common Data Model</title>
 <link href="assets/stylesheets/main.2a3383ac.min.css" rel="stylesheet"/>
+<link href="assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <style>:root{.md-tag.md-tag--experimental{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20448%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%207.0.1%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M288%200H128c-17.7%200-32%2014.3-32%2032s14.3%2032%2032%2032v151.5L7.5%20426.3C2.6%20435%200%20444.7%200%20454.7%200%20486.4%2025.6%20512%2057.3%20512h333.4c31.6%200%2057.3-25.6%2057.3-57.3%200-10-2.6-19.8-7.5-28.4L320%20215.5V64c17.7%200%2032-14.3%2032-32S337.7%200%20320%200zm-96%20215.5V64h64v151.5c0%2011.1%202.9%2022.1%208.4%2031.8L306%20320H142l41.6-72.7c5.5-9.7%208.4-20.6%208.4-31.8%22/%3E%3C/svg%3E');}.md-tag.md-tag--obsolete{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%207.0.1%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M256.5%200c-25.3%200-47.2%2014.7-57.6%2036-7-2.6-14.5-4-22.4-4-35.3%200-64%2028.7-64%2064v165.5l-2.7-2.7c-25-25-65.5-25-90.5%200s-25%2065.5%200%2090.5L107%20437c48%2048%20113.1%2075%20181%2075h16.5c1.5%200%203-.1%204.5-.4%2091.7-6.2%20165-79.4%20171.1-171.1.3-1.5.4-3%20.4-4.5V160c0-35.3-28.7-64-64-64-5.5%200-10.9.7-16%202v-2c0-35.3-28.7-64-64-64-7.9%200-15.4%201.4-22.4%204-10.4-21.3-32.3-36-57.6-36m-16%2096.1V64c0-8.8%207.2-16%2016-16s16%207.2%2016%2016v168c0%2013.3%2010.7%2024%2024%2024s24-10.7%2024-24V96c0-8.8%207.2-16%2016-16s16%207.2%2016%2016v136c0%2013.3%2010.7%2024%2024%2024s24-10.7%2024-24v-72c0-8.8%207.2-16%2016-16s16%207.2%2016%2016v172.9c-.1.6-.1%201.3-.2%201.9-3.4%2069.7-59.3%20125.6-129%20129-.6%200-1.3.1-1.9.2H288c-55.1%200-108-21.9-147-60.9l-87.8-87.8c-6.2-6.2-6.2-16.4%200-22.6s16.4-6.2%2022.6%200l43.7%2043.7c6.9%206.9%2017.2%208.9%2026.2%205.2s14.8-12.5%2014.8-22.2V96c0-8.8%207.2-16%2016-16s16%207.1%2016%2015.9V232c0%2013.3%2010.7%2024%2024%2024s24-10.7%2024-24z%22/%3E%3C/svg%3E');}}</style>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
-<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
 <link href="css/custom.css" rel="stylesheet"/>
 <link href="css/ansi-colours.css" rel="stylesheet"/>
 <link href="css/jupyter-cells.css" rel="stylesheet"/>
 <link href="css/pandas-dataframe.css" rel="stylesheet"/>
 <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
-<body dir="ltr">
+<body data-md-color-accent="custom" data-md-color-primary="custom" data-md-color-scheme="default" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
@@ -32,30 +30,34 @@
 </div>
 <div data-md-component="announce">
 </div>
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<header class="md-header md-header--shadow" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="Common Data Model (CDM)" class="md-header__button md-logo" data-md-component="logo" href="." title="Common Data Model (CDM)">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+<a aria-label="Common Data Model" class="md-header__button md-logo" data-md-component="logo" href="." title="Common Data Model">
+<img alt="logo" src="img/altium-logo.svg"/>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
 </label>
 <div class="md-header__title" data-md-component="header-title">
-<div class="md-header__ellipsis">
-<div class="md-header__topic">
-<span class="md-ellipsis">
-            Common Data Model (CDM)
-          </span>
+<a class="md-header__site-title" href=".">
+        Common Data Model - Reference Documentation
+      </a>
 </div>
-<div class="md-header__topic" data-md-component="header-topic">
-<span class="md-ellipsis">
-            
-              Bounded Contexts
-            
-          </span>
-</div>
-</div>
-</div>
+<ul class="md-header__links">
+<li><a class="md-header__link" href="https://altiumdeveloper.github.io/platform-api-docs/">Altium 365 API</a></li>
+<li><a class="md-header__link" href="https://developer.altium.com/">Developer Center</a></li>
+<li><a class="md-header__link" href="https://github.com/AltiumDeveloper/cdm">GitHub</a></li>
+</ul>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="custom" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="custom" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="custom" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="custom" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
 <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
 <label class="md-header__button md-icon" for="__search">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
@@ -87,86 +89,6 @@
 </div>
 </div>
 </div>
-<div class="md-header__source">
-<a class="md-source" data-md-component="source" href="https://github.com/AltiumDeveloper/cdm" title="Go to repository">
-<div class="md-source__icon md-icon">
-<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
-</div>
-<div class="md-source__repository">
-    GitHub
-  </div>
-</a>
-</div>
-</nav>
-<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
-<div class="md-grid">
-<ul class="md-tabs__list">
-<li class="md-tabs__item md-tabs__item--active">
-<a class="md-tabs__link" href=".">
-        
-  
-  
-    
-  
-  Bounded Contexts
-
-      </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="grid-format/">
-        
-  
-  
-    
-  
-  GRIDs
-
-      </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="domain-model/">
-          
-  
-  
-  Concepts
-
-        </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="glossary/">
-        
-  
-  
-    
-  
-  Glossary
-
-      </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="tags/">
-        
-  
-  
-    
-  
-  Tags
-
-      </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="about/">
-        
-  
-  
-    
-  
-  About
-
-      </a>
-</li>
-</ul>
-</div>
 </nav>
 </header>
 <div class="md-container" data-md-component="container">
@@ -175,12 +97,12 @@
 <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
-<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="Common Data Model (CDM)" class="md-nav__button md-logo" data-md-component="logo" href="." title="Common Data Model (CDM)">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+<a aria-label="Common Data Model" class="md-nav__button md-logo" data-md-component="logo" href="." title="Common Data Model">
+<img alt="logo" src="img/altium-logo.svg"/>
 </a>
-    Common Data Model (CDM)
+    Common Data Model
   </label>
 <div class="md-nav__source">
 <a class="md-source" data-md-component="source" href="https://github.com/AltiumDeveloper/cdm" title="Go to repository">
@@ -197,14 +119,14 @@
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
 <span class="md-ellipsis">
-    Bounded Contexts
+    Overview
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href=".">
 <span class="md-ellipsis">
-    Bounded Contexts
+    Overview
     
   </span>
 </a>
@@ -223,114 +145,114 @@
 <nav aria-label="Bounded Contexts" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#collaboration">
+<a class="md-nav__link" href="#platform">
 <span class="md-ellipsis">
-      collaboration
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#configuration">
-<span class="md-ellipsis">
-      configuration
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#core">
-<span class="md-ellipsis">
-      core
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#customization">
-<span class="md-ellipsis">
-      customization
+      Platform
     </span>
 </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#design">
 <span class="md-ellipsis">
-      design
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#devicemodel">
-<span class="md-ellipsis">
-      deviceModel
+      Design
     </span>
 </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#insights">
 <span class="md-ellipsis">
-      insights
+      Insights
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#library">
+<a class="md-nav__link" href="#library-management">
 <span class="md-ellipsis">
-      library
+      Library Management
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#ota">
+<a class="md-nav__link" href="#collaboration">
 <span class="md-ellipsis">
-      ota
+      Collaboration
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#platform">
+<a class="md-nav__link" href="#configuration-management">
 <span class="md-ellipsis">
-      platform
+      Configuration Management
     </span>
 </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#procurement">
 <span class="md-ellipsis">
-      procurement
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#requirements">
-<span class="md-ellipsis">
-      requirements
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#software">
-<span class="md-ellipsis">
-      software
+      Procurement
     </span>
 </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#supply">
 <span class="md-ellipsis">
-      supply
+      Supply
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#system">
+<a class="md-nav__link" href="#customization">
 <span class="md-ellipsis">
-      system
+      Customization
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#system-sdm">
+<a class="md-nav__link" href="#system-design">
 <span class="md-ellipsis">
-      system-sdm
+      System Design
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#system-design-system-data-model">
+<span class="md-ellipsis">
+      System Design - System Data Model
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
+<span class="md-ellipsis">
+      Requirements
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#device-model">
+<span class="md-ellipsis">
+      Device Model
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#software">
+<span class="md-ellipsis">
+      Software
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#over-the-air-updates">
+<span class="md-ellipsis">
+      Over-the-Air Updates
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core">
+<span class="md-ellipsis">
+      Core
     </span>
 </a>
 </li>
@@ -339,6 +261,14 @@
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="about/">
+<span class="md-ellipsis">
+    About
+    
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="grid-format/">
@@ -348,17 +278,17 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
 <span class="md-ellipsis">
     Concepts
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_3">
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
 <span class="md-nav__icon md-icon"></span>
             Concepts
           </label>
@@ -390,6 +320,1087 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+<span class="md-ellipsis">
+    Bounded Contexts
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Bounded Contexts
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item bc-platform md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_1" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/platform/">
+<span class="md-ellipsis">
+    Platform
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_1">
+<span class="md-nav__icon md-icon"></span>
+            Platform
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/plt_Application/">
+<span class="md-ellipsis">
+    Application
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/plt_EventSubscription/">
+<span class="md-ellipsis">
+    Event Subscription
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/plt_LifecycleDefinition/">
+<span class="md-ellipsis">
+    Lifecycle Definition
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/plt_Organization/">
+<span class="md-ellipsis">
+    Organization
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/plt_NamingScheme/">
+<span class="md-ellipsis">
+    Revision Naming Scheme
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/plt_Solution/">
+<span class="md-ellipsis">
+    Solution
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/plt_SolutionRelease/">
+<span class="md-ellipsis">
+    Solution Release
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/plt_User/">
+<span class="md-ellipsis">
+    User
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/plt_UserGroup/">
+<span class="md-ellipsis">
+    User Group
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/plt_Workspace/">
+<span class="md-ellipsis">
+    Workspace
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/plt_WorkspaceGroup/">
+<span class="md-ellipsis">
+    Workspace Group
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/plt_WorkspaceUser/">
+<span class="md-ellipsis">
+    Workspace User
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-design md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/design/">
+<span class="md-ellipsis">
+    Design
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+            Design
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/des_Project/">
+<span class="md-ellipsis">
+    Hardware Project
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="classes/des_HarnessProject/">
+<span class="md-ellipsis">
+    Harness Project
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="classes/des_MultiboardProject/">
+<span class="md-ellipsis">
+    Multiboard Project
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/des_ProjectRelease/">
+<span class="md-ellipsis">
+    Hardware Project Release
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/des_ManufacturingPackage/">
+<span class="md-ellipsis">
+    Manufacturing Package
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/des_ProjectTemplate/">
+<span class="md-ellipsis">
+    Project Template
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/des_ProjectTemplateRevision/">
+<span class="md-ellipsis">
+    Project Template Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/des_RuleCheck/">
+<span class="md-ellipsis">
+    Rule Check
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/des_RuleCheckExecution/">
+<span class="md-ellipsis">
+    Rule Check Execution
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-insights md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/insights/">
+<span class="md-ellipsis">
+    Insights
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_3">
+<span class="md-nav__icon md-icon"></span>
+            Insights
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/ins_Insight/">
+<span class="md-ellipsis">
+    Insight
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="classes/ins_PartInsight/">
+<span class="md-ellipsis">
+    Part Insight
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-library md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/library/">
+<span class="md-ellipsis">
+    Library Management
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_4">
+<span class="md-nav__icon md-icon"></span>
+            Library Management
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_Component/">
+<span class="md-ellipsis">
+    Component
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_ComponentRevision/">
+<span class="md-ellipsis">
+    Component Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_ComponentTemplate/">
+<span class="md-ellipsis">
+    Component Template
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_ComponentTemplateRevision/">
+<span class="md-ellipsis">
+    Component Template Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_Datasheet/">
+<span class="md-ellipsis">
+    Datasheet
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_Footprint/">
+<span class="md-ellipsis">
+    Footprint
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_FootprintRevision/">
+<span class="md-ellipsis">
+    Footprint Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_ManagedSheet/">
+<span class="md-ellipsis">
+    Managed Sheet
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_ManagedSheetRevision/">
+<span class="md-ellipsis">
+    Managed Sheet Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_Part/">
+<span class="md-ellipsis">
+    Part
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_PartRequest/">
+<span class="md-ellipsis">
+    Part Request
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_PcbSnippet/">
+<span class="md-ellipsis">
+    PCB Snippet
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_PcbSnippetRevision/">
+<span class="md-ellipsis">
+    PCB Snippet Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_ReuseBlock/">
+<span class="md-ellipsis">
+    Reuse Block
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_ReuseBlockRevision/">
+<span class="md-ellipsis">
+    Reuse Block Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_SchSnippet/">
+<span class="md-ellipsis">
+    SCH Snippet
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_SchSnippetRevision/">
+<span class="md-ellipsis">
+    SCH Snippet Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_Symbol/">
+<span class="md-ellipsis">
+    Symbol
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/lib_SymbolRevision/">
+<span class="md-ellipsis">
+    Symbol Revision
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-collaboration md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/collaboration/">
+<span class="md-ellipsis">
+    Collaboration
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_5">
+<span class="md-nav__icon md-icon"></span>
+            Collaboration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/col_CommentThread/">
+<span class="md-ellipsis">
+    Comment Thread
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/col_Task/">
+<span class="md-ellipsis">
+    Task
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-configuration md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/configuration/">
+<span class="md-ellipsis">
+    Configuration Management
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_6">
+<span class="md-nav__icon md-icon"></span>
+            Configuration Management
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/con_EnvironmentConfiguration/">
+<span class="md-ellipsis">
+    Environment Configuration
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/con_SchematicTemplate/">
+<span class="md-ellipsis">
+    Schematic Template
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/con_SchematicTemplateRevision/">
+<span class="md-ellipsis">
+    Schematic Template Revision
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-procurement md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/procurement/">
+<span class="md-ellipsis">
+    Procurement
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_7">
+<span class="md-nav__icon md-icon"></span>
+            Procurement
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/pro_BomRelease/">
+<span class="md-ellipsis">
+    BOM Release
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/pro_BomWIP/">
+<span class="md-ellipsis">
+    BOM WIP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="classes/pro_ConsolidatedBOM/">
+<span class="md-ellipsis">
+    Consolidated BOM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="classes/pro_ManagedBOM/">
+<span class="md-ellipsis">
+    Managed BOM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/pro_GlobalBOM/">
+<span class="md-ellipsis">
+    Global BOM
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-supply md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_8" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/supply/">
+<span class="md-ellipsis">
+    Supply
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_8">
+<span class="md-nav__icon md-icon"></span>
+            Supply
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/sup_Company/">
+<span class="md-ellipsis">
+    Company
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/sup_EvalKit/">
+<span class="md-ellipsis">
+    Evaluation Kit
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/sup_Offer/">
+<span class="md-ellipsis">
+    Offer
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/sup_Part/">
+<span class="md-ellipsis">
+    Part
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/sup_PartFamily/">
+<span class="md-ellipsis">
+    Part Family
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/sup_PartGroup/">
+<span class="md-ellipsis">
+    Part Group
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/sup_ReferenceDesign/">
+<span class="md-ellipsis">
+    Reference Design
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/sup_SoftwareProject/">
+<span class="md-ellipsis">
+    Software Project
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/sup_SolutionTemplate/">
+<span class="md-ellipsis">
+    Solution Template
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-customization md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_9" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/customization/">
+<span class="md-ellipsis">
+    Customization
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_9">
+<span class="md-nav__icon md-icon"></span>
+            Customization
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/cus_Script/">
+<span class="md-ellipsis">
+    Script
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/cus_ScriptExecution/">
+<span class="md-ellipsis">
+    Script Execution
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/cus_ScriptVersion/">
+<span class="md-ellipsis">
+    Script Version
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/cus_Workflow/">
+<span class="md-ellipsis">
+    Workflow
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-system md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_10" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/system/">
+<span class="md-ellipsis">
+    System Design
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_10_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_10">
+<span class="md-nav__icon md-icon"></span>
+            System Design
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/system_ESDDocument/">
+<span class="md-ellipsis">
+    ESD Document
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-system-sdm md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_11" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/system-sdm/">
+<span class="md-ellipsis">
+    System Design - System Data Model
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_11" id="__nav_5_11_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_11_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_11">
+<span class="md-nav__icon md-icon"></span>
+            System Design - System Data Model
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/system_SdmSystemModel/">
+<span class="md-ellipsis">
+    System Model
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/system_SdmSystemModelVersion/">
+<span class="md-ellipsis">
+    System Model Version
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-requirements md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_12" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/requirements/">
+<span class="md-ellipsis">
+    Requirements
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_12" id="__nav_5_12_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_12_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_12">
+<span class="md-nav__icon md-icon"></span>
+            Requirements
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/req_Requirement/">
+<span class="md-ellipsis">
+    Requirement
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/req_RequirementBaseline/">
+<span class="md-ellipsis">
+    Requirement Baseline
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/req_RequirementChangeRequest/">
+<span class="md-ellipsis">
+    Requirement Change Request
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/req_RequirementRevision/">
+<span class="md-ellipsis">
+    Requirement Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/req_RequirementSpecification/">
+<span class="md-ellipsis">
+    Requirement Specification
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/req_Project/">
+<span class="md-ellipsis">
+    Requirements Project
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/req_VerificationCase/">
+<span class="md-ellipsis">
+    Verification Case
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-deviceModel md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_13" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/deviceModel/">
+<span class="md-ellipsis">
+    Device Model
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_13" id="__nav_5_13_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_13_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_13">
+<span class="md-nav__icon md-icon"></span>
+            Device Model
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/dm_FullStackDeviceModel/">
+<span class="md-ellipsis">
+    FullStackDeviceModel
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-software md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_14" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/software/">
+<span class="md-ellipsis">
+    Software
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_14" id="__nav_5_14_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_14_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_14">
+<span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/sft_AIModel/">
+<span class="md-ellipsis">
+    AI Model
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/sft_BuildArtifact/">
+<span class="md-ellipsis">
+    Build Artifact
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/sft_DeviceConfiguration/">
+<span class="md-ellipsis">
+    Device Configuration
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/sft_DeviceConfigurationRevision/">
+<span class="md-ellipsis">
+    Device Configuration Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/sft_SoftwareProject/">
+<span class="md-ellipsis">
+    Software Project
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/sft_SoftwareRelease/">
+<span class="md-ellipsis">
+    Software Release
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-ota md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_15" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/ota/">
+<span class="md-ellipsis">
+    Over-the-Air Updates
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_15" id="__nav_5_15_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_15_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_15">
+<span class="md-nav__icon md-icon"></span>
+            Over-the-Air Updates
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/ota_Device/">
+<span class="md-ellipsis">
+    Device
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/ota_Fleet/">
+<span class="md-ellipsis">
+    Fleet
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/ota_Package/">
+<span class="md-ellipsis">
+    Package
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-core md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_16" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="subsets/core/">
+<span class="md-ellipsis">
+    Core
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_16" id="__nav_5_16_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_16_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_16">
+<span class="md-nav__icon md-icon"></span>
+            Core
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/core_Activity/">
+<span class="md-ellipsis">
+    Activity
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/core_Artifact/">
+<span class="md-ellipsis">
+    Artifact
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+<span class="md-ellipsis">
+    Reference
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="glossary/">
 <span class="md-ellipsis">
@@ -406,13 +1417,145 @@
   </span>
 </a>
 </li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="about/">
+<a class="md-nav__link" href="#bounded-contexts_1">
 <span class="md-ellipsis">
-    About
-    
-  </span>
+      Bounded Contexts
+    </span>
 </a>
+<nav aria-label="Bounded Contexts" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#platform">
+<span class="md-ellipsis">
+      Platform
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#design">
+<span class="md-ellipsis">
+      Design
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#insights">
+<span class="md-ellipsis">
+      Insights
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#library-management">
+<span class="md-ellipsis">
+      Library Management
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#collaboration">
+<span class="md-ellipsis">
+      Collaboration
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration-management">
+<span class="md-ellipsis">
+      Configuration Management
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#procurement">
+<span class="md-ellipsis">
+      Procurement
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#supply">
+<span class="md-ellipsis">
+      Supply
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#customization">
+<span class="md-ellipsis">
+      Customization
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#system-design">
+<span class="md-ellipsis">
+      System Design
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#system-design-system-data-model">
+<span class="md-ellipsis">
+      System Design - System Data Model
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
+<span class="md-ellipsis">
+      Requirements
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#device-model">
+<span class="md-ellipsis">
+      Device Model
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#software">
+<span class="md-ellipsis">
+      Software
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#over-the-air-updates">
+<span class="md-ellipsis">
+      Over-the-Air Updates
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core">
+<span class="md-ellipsis">
+      Core
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -421,148 +1564,125 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
+<div class="doc-row">
+<nav aria-label="Breadcrumbs" class="doc-crumbs">
+<a aria-label="Home" class="doc-crumbs__home" href="." title="Home">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+</a>
+</nav>
+<a class="doc-md-link" href="./llms.txt" title="Markdown version of this page for AI assistants">View as Markdown</a>
+</div>
 <h1 id="bounded-contexts">Bounded Contexts</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/">https://w3id.org/altium/cdm/</a></p>
-<p>Common Data Model (longer description)</p>
+<p>The Altium Common Data Model (CDM) describes the entities of the Altium platform, such as projects, components, BOMs, tasks and users, grouped into bounded contexts. For each class it records what the entity is, how it relates to other entities, how it is identified by a GRID (Global Resource ID) and, where one exists, its type in the Altium 365 API.</p>
+<div class="bc-grid">
+<p><a href="subsets/platform/"><span class="bc-icon bc-platform"></span><strong>Platform</strong> <span>12 entities · 2 resources</span></a></p>
+<p><a href="subsets/design/"><span class="bc-icon bc-design"></span><strong>Design</strong> <span>9 entities · 2 resources</span></a></p>
+<p><a href="subsets/insights/"><span class="bc-icon bc-insights"></span><strong>Insights</strong> <span>1 entity</span></a></p>
+<p><a href="subsets/library/"><span class="bc-icon bc-library"></span><strong>Library Management</strong> <span>19 entities · 3 resources</span></a></p>
+<p><a href="subsets/collaboration/"><span class="bc-icon bc-collaboration"></span><strong>Collaboration</strong> <span>2 entities · 1 resource</span></a></p>
+<p><a href="subsets/configuration/"><span class="bc-icon bc-configuration"></span><strong>Configuration Management</strong> <span>3 entities</span></a></p>
+<p><a href="subsets/procurement/"><span class="bc-icon bc-procurement"></span><strong>Procurement</strong> <span>4 entities · 4 resources</span></a></p>
+<p><a href="subsets/supply/"><span class="bc-icon bc-supply"></span><strong>Supply</strong> <span>9 entities</span></a></p>
+<p><a href="subsets/customization/"><span class="bc-icon bc-customization"></span><strong>Customization</strong> <span>4 entities</span></a></p>
+<p><a href="subsets/system/"><span class="bc-icon bc-system"></span><strong>System Design</strong> <span>1 entity · 10 resources</span></a></p>
+<p><a href="subsets/system-sdm/"><span class="bc-icon bc-system-sdm"></span><strong>System Design - System Data Model</strong> <span>2 entities · 15 resources</span></a></p>
+<p><a href="subsets/requirements/"><span class="bc-icon bc-requirements"></span><strong>Requirements</strong> <span>7 entities · 1 resource</span></a></p>
+<p><a href="subsets/deviceModel/"><span class="bc-icon bc-deviceModel"></span><strong>Device Model</strong> <span>1 entity · 23 resources</span></a></p>
+<p><a href="subsets/software/"><span class="bc-icon bc-software"></span><strong>Software</strong> <span>6 entities · 2 resources</span></a></p>
+<p><a href="subsets/ota/"><span class="bc-icon bc-ota"></span><strong>Over-the-Air Updates</strong> <span>3 entities</span></a></p>
+<p><a href="subsets/core/"><span class="bc-icon bc-core"></span><strong>Core</strong> <span>Base types</span></a></p>
+</div>
 <h2 id="bounded-contexts_1">Bounded Contexts</h2>
-<h3 id="collaboration"><a href="subsets/collaboration/">collaboration</a></h3>
-<p>Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, and tasks that assign work to users or teams. In the product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.</p>
+<h3 class="bc-heading bc-platform" id="platform"><a href="subsets/platform/">Platform</a></h3>
+<p>Models the platform-wide objects that other bounded contexts build on: organizations (Company Accounts) with their users and user groups, Workspaces with their members and groups, applications, event subscriptions, and Renesas 365 solutions with their releases. It also holds the lifecycle definitions (with their stages and states) and revision naming schemes that govern Workspace Items. Organization-level data is managed in the Company Dashboard; Workspace-level configuration, including these definitions and schemes, is managed from Altium Designer or the Workspace browser interface.</p>
 <table>
 <thead>
 <tr>
-<th>Class</th>
+<th>Name</th>
 <th>Description</th>
 <th>Platform API</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="classes/col_Comment/">Comment </a></td>
-<td>A single entry in a comment thread: either the initial comment, pinned to a point, an object or an area of a design document (or to a BOM line), or a reply to it. A comment can mention people or groups using @, and it can be assigned to a Workspace member as a task, either when it is posted or later by converting it. Only the author can edit or delete a comment, and deleting the initial comment also deletes its replies.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComment/"><code>DesComment</code></a></td>
+<td><a href="classes/plt_Application/">Application </a></td>
+<td>TBD</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloApp/"><code>GloApp</code></a></td>
 </tr>
 <tr>
-<td><a href="classes/col_CommentThread/">Comment Thread </a></td>
-<td>Comment Thread represents a structured discussion linked to a specific design object, document, or workspace item,  capturing feedback, decisions, and context directly within the collaborative design environment.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesCommentThread/"><code>DesCommentThread</code></a></td>
+<td><a href="classes/plt_EventSubscription/">Event Subscription </a></td>
+<td>TBD</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/interfaces/GloEvtSubscription/"><code>GloEvtSubscription</code></a></td>
 </tr>
 <tr>
-<td><a href="classes/col_Task/">Task </a></td>
-<td>Task represents a discrete unit of work assigned to a user or team within the design workflow,  used to track progress, responsibility, and completion status for design, review, or management activities.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesTask/"><code>DesTask</code></a></td>
+<td><a href="classes/plt_LifecycleDefinition/">Lifecycle Definition </a></td>
+<td>Defines the set of states that an entity can transition through in its lifecycle. This definition clarifies what stage a revision of an entity has reached in its 'life' and what it can be safely used for. Different entities can have different lifecycle definitions assigned to them.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleDefinition/"><code>DesLifeCycleDefinition</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/plt_LifecycleStage/">Lifecycle Stage </a></td>
+<td>A named stage that groups lifecycle states in a lifecycle definition using the Advanced management style (e.g. Design, Prototype, Production), indicating how far a revision has progressed in its development. Stages can be linked to the levels of the revision naming scheme. Definitions using the Simple style have states and transitions but no stages.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleStage/"><code>DesLifeCycleStage</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/plt_LifecycleState/">Lifecycle State </a></td>
+<td>A named point in an Item Revision's lifecycle (e.g. Planned, New From Design, In Production, Obsolete) that shows its status from a business perspective. Each state's properties include whether revisions in that state are shown in the Explorer panel and whether they may be used in designs; a revision moves to another state only through a transition defined in its lifecycle definition.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleState/"><code>DesLifeCycleState</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/plt_NamingScheme/">Revision Naming Scheme </a></td>
+<td>Defines the format of Revision IDs for the Items that use it: one to three levels (e.g. Model, Prototype and Revision), each with its own format, separator and minimum width. The scheme is chosen per Item when the Item is created and cannot be changed after its first release. It is distinct from the Item Naming Scheme, which determines the Item ID rather than the revision's ID.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesRevisionNamingScheme/"><code>DesRevisionNamingScheme</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/plt_Organization/">Organization </a></td>
+<td>An Altium customer organization, represented by its Company Account. The Company Account brings together the organization's users and groups of users, its purchased licenses and the Altium 365 Workspaces created for it, along with a company profile (e.g. name, logo and website). Administrators manage it through the Company Dashboard.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloOrganization/"><code>GloOrganization</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/plt_Solution/">Solution </a></td>
+<td>A Renesas 365 solution: the main, top-level object of a Renesas 365 Workspace, which brings together the system design (an ESD document), PCB projects and software projects of one system. System designs and software projects both push their changes to the solution's System Data Model (SDM) and pull from it; Altium Designer can open a solution's PCB projects and pull SDM changes into them.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SolSolution/"><code>SolSolution</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/plt_SolutionRelease/">Solution Release </a></td>
+<td>Release of the Solution. This is a formal immutable artifact, representing a specific state of the Solution at the time of release.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/plt_User/">User </a></td>
+<td>A person identified by a global Altium Account, the identity used for signing in to Altium services. A user can be registered in an organization's Company Account, either added by an administrator or admitted through an approved join request, and can then be given access to licenses through the Company Account's user groups. Access to a Workspace is granted separately, by making the user a member of that Workspace.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloUser/"><code>GloUser</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/plt_UserGroup/">User Group </a></td>
+<td>A named group of users within an organization's Company Account, managed in the Company Dashboard. Licenses can be allocated to a group so that its members can use them, and the Group Administrators system group gives its members Dashboard administration rights. A user can belong to any number of groups, groups can be provisioned from an identity provider via SCIM, and they are distinct from the groups defined inside a Workspace.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloUserGroup/"><code>GloUserGroup</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/plt_Workspace/">Workspace </a></td>
+<td>The top-level entity that plays a role of a closed environment for other entities (members, projects, components, etc.).</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspace/"><code>DesWorkspace</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/plt_WorkspaceGroup/">Workspace Group </a></td>
+<td>Workspace Group represents a logical collection of users within a workspace,  used to manage access control, permissions, and collaboration roles across projects and data assets.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceGroup/"><code>DesWorkspaceGroup</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/plt_WorkspaceUser/">Workspace User </a></td>
+<td>A person's membership in a particular Workspace, connecting their Altium Account to that Workspace and to the Workspace groups they are assigned to. Members can come from the organization that owns the Workspace or from other organizations, and inviting an outside user does not add them to the owning organization. People who only have a project shared with them (External Share guests) are not members.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceUser/"><code>DesWorkspaceUser</code></a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="configuration"><a href="subsets/configuration/">configuration</a></h3>
-<p>Models environment configurations, which restrict the Altium Designer working environment of the Workspace members they target to approved configuration data, together with schematic templates and their revisions stored as Workspace Items. In Altium 365 this corresponds to environment configuration management through the Team Configuration Center.</p>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-<th>Platform API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="classes/con_EnvironmentConfiguration/">Environment Configuration </a></td>
-<td>A named set of configuration data items that the Workspace members it targets are allowed to use in Altium Designer. The items are revisions of Workspace Items of supported content types (e.g. schematic, BOM, project and Draftsman templates, output job files and layer stacks, plus at most one Altium Designer Preferences revision), and the same item can be used by several configurations. Administrators define configurations in the Workspace's Team Configuration Center (TC2) and assign them to Workspace groups, called roles there; when a group member signs in to the Workspace from Altium Designer, each controlled area of the design environment is restricted to the chosen configuration's items.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/con_SchematicTemplate/">Schematic Template </a></td>
-<td>A schematic template stored as a Workspace Item. When applied to a schematic sheet, the template sets the sheet's size, its graphics such as a title block, and its sheet-level parameters, so that a team's schematics look consistent. The template content is kept in successive revisions of the Item, and environment configurations can reference those revisions to control which templates designers may use.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/con_SchematicTemplateRevision/">Schematic Template Revision </a></td>
-<td>One revision of a Workspace schematic template Item, holding the template as saved at that point, e.g. from Altium Designer with Save to Server or uploaded from a *.SchDot file. Editing the template saves the result into the next revision, and environment configurations list template revisions, rather than the Item itself, as their configuration data.</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="core"><a href="subsets/core/">core</a></h3>
-<p>Holds the abstract foundations shared by every bounded context: the base classes Entity (specialised as Artifact and Activity), Resource and Event; the mixins that add annotations such as GRID, maturity and API type; shared slots such as id and name; and the abstract relations (e.g. part of, input of, derived from) that domain relations specialise. It is not a product area and has no product documentation of its own.</p>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-<th>Platform API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="classes/core_WithGRID/">With GRID </a></td>
-<td>Mixin that adds a GRID annotation slot to a class.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/core_WithMaturity/">With Maturity </a></td>
-<td>Mixin that adds a maturity annotation slot indicating the lifecycle readiness level.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/core_WithPlatformAPI/">With Platform API </a></td>
-<td>Mixin that adds API type annotations: platformAPI names the Altium 365 Platform API GraphQL type; nexarAPI names the Nexar (Octopart) GraphQL type for supply-chain entities served by Nexar rather than the Platform API.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/core_WithVault/">With Vault </a></td>
-<td>Mixin that adds a vault content type annotation to a class, indicating how its content is stored in the platform vault.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/core_WithVaultLink/">With Vault Link </a></td>
-<td>Mixin that adds vault link parent, child, and type annotation slots for tracking hierarchical vault relationships.</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="customization"><a href="subsets/customization/">customization</a></h3>
-<p>Models ways to customize and automate a Workspace: process workflows, and scripts with their versions, their executions and the event raised when an execution completes. In the product, each workflow belongs to a process definition that a Workspace administrator creates and manages in the Workspace browser interface.</p>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-<th>Platform API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="classes/cus_Script/">Script </a></td>
-<td>TBD</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloScrScript/"><code>GloScrScript</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/cus_ScriptExecution/">Script Execution </a></td>
-<td>TBD</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloScrScriptExecution/"><code>GloScrScriptExecution</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/cus_ScriptExecutionCompleted/">Script Execution Completed </a></td>
-<td>TBD</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/cus_ScriptVersion/">Script Version </a></td>
-<td>TBD</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloScrScriptVersion/"><code>GloScrScriptVersion</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/cus_Workflow/">Workflow </a></td>
-<td>A process workflow of an Altium 365 Workspace: the workflow that belongs to a process definition and steps designers through an everyday design process (e.g. requesting a new part, a design review or creating a new project). Workspace administrators build process definitions in the Process Workflow Editor, grouped by process theme (Part Requests, Project Activities, Project Creations), and activate them; each started instance of a process follows the workflow and creates tasks for the users whose action is needed to move it on.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkflowDefinition/"><code>DesWorkflowDefinition</code></a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="design"><a href="subsets/design/">design</a></h3>
+<h3 class="bc-heading bc-design" id="design"><a href="subsets/design/">Design</a></h3>
 <p>Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, and rule checks run against projects. It corresponds to Workspace projects in Altium 365 and Altium Designer, from project creation through to design release.</p>
 <table>
 <thead>
 <tr>
-<th>Class</th>
+<th>Name</th>
 <th>Description</th>
 <th>Platform API</th>
 </tr>
@@ -625,12 +1745,577 @@
 </tr>
 </tbody>
 </table>
-<h3 id="devicemodel"><a href="subsets/deviceModel/">deviceModel</a></h3>
+<h3 class="bc-heading bc-insights" id="insights"><a href="subsets/insights/">Insights</a></h3>
+<p>Models insights that can be followed up by tasks. The only concrete kind is the part insight: it concerns one Workspace part, may be informed by BOMs or design projects, and occurs in BOM releases, project releases or component revisions.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Platform API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="classes/ins_PartInsight/">Part Insight </a></td>
+<td>TBD</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceInsInsight/"><code>DesWorkspaceInsInsight</code></a></td>
+</tr>
+</tbody>
+</table>
+<h3 class="bc-heading bc-library" id="library-management"><a href="subsets/library/">Library Management</a></h3>
+<p>Models the components stored in a Workspace and their revisions, the symbols, footprints, parameters, datasheets and part choices that make them up, and the component templates they can be created from. It also covers manufacturer parts in the Workspace part catalog, part requests, and reusable design content such as reuse blocks, managed sheets, and schematic and PCB snippets. It corresponds to Workspace components and design reuse in Altium Designer and Altium 365.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Platform API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="classes/lib_Component/">Component </a></td>
+<td>Component represents a uniquely identifiable electronic part, defined by both  its abstract design intent and its concrete realizations in manufacturing and supply.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/lib_ComponentParameter/">Component Parameter </a></td>
+<td>A named parameter of a Workspace component, holding a value and, optionally, a data type. Parameters can be inherited from a component template or added directly to the component; a template can give them unit-aware (e.g. Farad, Ohm) or dictionary-defined types.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComponentParameter/"><code>DesComponentParameter</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/lib_ComponentRevision/">Component Revision </a></td>
+<td>Revision of a Component.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComponent/"><code>DesComponent</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/lib_ComponentTemplate/">Component Template </a></td>
+<td>Component Template defines a reusable blueprint for creating and managing electronic components with consistent parameters, metadata, and lifecycle policies.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComponentTemplate/"><code>DesComponentTemplate</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/lib_ComponentTemplateRevision/">Component Template Revision </a></td>
+<td>A revision of a Component Template: the template definition, stored as a *.CMPT document, saved into the Workspace at one point in time. A component revision can be linked to a specific template revision, from which it takes its predefined parameters, models and settings.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComponentTemplateRevision/"><code>DesComponentTemplateRevision</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/lib_Datasheet/">Datasheet </a></td>
+<td>Datasheet represents a technical document associated with a Component or Part,  providing authoritative specifications, electrical characteristics, and manufacturer information.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesDatasheet/"><code>DesDatasheet</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/lib_Footprint/">Footprint </a></td>
+<td>Footprint represents the physical layout definition of a Component on a PCB,  specifying pad geometry, land patterns, and mechanical clearances required for assembly and manufacturing.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/lib_FootprintRevision/">Footprint Revision </a></td>
+<td>A revision of a Footprint: the PCB footprint as saved into the Workspace at one point in time, with its own lifecycle state. Editing a Workspace Footprint saves it into the next revision; components that still link to an earlier revision become out of date until they are updated.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesFootprint/"><code>DesFootprint</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/lib_ManagedSheet/">Managed Sheet </a></td>
+<td>A schematic sheet, with its components and wiring, stored in a Workspace so that it can be reused in other designs. A managed sheet may itself contain further managed sheets beneath it in a hierarchy, and the Workspace lets you trace which components it contains and which designs use it.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/lib_ManagedSheetRevision/">Managed Sheet Revision </a></td>
+<td>A revision of a Managed Sheet: the schematic sheet as saved into the Workspace at one point in time. A design uses a specific revision, so when the sheet is revised, existing designs can be updated to the new revision or kept on the previous one.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/lib_Part/">Part </a></td>
+<td>A manufacturer part, identified by manufacturer and part number, as held in the Workspace's Part Catalog together with the supplier parts through which it is sold. Workspace components reference manufacturer parts through their Part Choices.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesPart/"><code>DesPart</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/lib_PartChoice/">Part Choice </a></td>
+<td>One entry in a component's Part Choice list: a manufacturer part, rather than a specific supplier, that may be used to implement the component, bringing with it the offers of the suppliers that sell it. Entries are ranked automatically by availability, price and lifecycle, and users can override the order with their own rank; the top preferred entry is used as the component's part choice in a BOM.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/lib_PartChoiceList/">Part Choice List </a></td>
+<td>The list of Part Choices for a component: the manufacturer parts that may be used to implement it on the assembled board. In the product the list is associated with the component and seen by all of its revisions; when part choice revision control is enabled, changing the list saves a new component revision.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/lib_PartRequest/">Part Request </a></td>
+<td>Part Request represents a formal demand from a designer to introduce a new Component or Part into the managed library,  typically triggered when an item is not yet available in the workspace.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/lib_PcbSnippet/">PCB Snippet </a></td>
+<td>A selection of circuitry from a PCB design, including its components and routing, saved so that it can be placed in other PCB documents. A snippet saved to a Workspace is revised like other Workspace items; snippets can also be kept in local folders.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/lib_PcbSnippetRevision/">PCB Snippet Revision </a></td>
+<td>A revision of a PCB snippet as saved into the Workspace at one point in time. Editing a Workspace snippet saves it into the next revision.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/lib_ReuseBlock/">Reuse Block </a></td>
+<td>A reusable section of a design stored in a Workspace, typically combining schematic circuitry with its PCB representation; a block can also be schematic-only or PCB-only. Placing a reuse block on a schematic sheet brings its PCB content into the board design when changes are transferred through an ECO.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesReuseBlock/"><code>DesReuseBlock</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/lib_ReuseBlockRevision/">Reuse Block Revision </a></td>
+<td>A revision of a Reuse Block: its schematic and/or PCB content as saved into the Workspace at one point in time, with its own lifecycle state. Editing a reuse block saves it into the next revision.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesReuseBlockRevision/"><code>DesReuseBlockRevision</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/lib_SchSnippet/">SCH Snippet </a></td>
+<td>A selection of circuitry from a single schematic sheet, including its components, saved so that it can be placed in other designs. A snippet saved to a Workspace is revised like other Workspace items; snippets can also be kept in local folders.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/lib_SchSnippetRevision/">SCH Snippet Revision </a></td>
+<td>A revision of a schematic snippet as saved into the Workspace at one point in time. Editing a Workspace snippet saves it into the next revision.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/lib_Symbol/">Symbol </a></td>
+<td>Symbol represents the logical schematic view of a Component, defining its electrical interface, pins, and attributes  used to express circuit intent in design schematics.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/lib_SymbolRevision/">Symbol Revision </a></td>
+<td>A revision of a Symbol: the schematic symbol as saved into the Workspace at one point in time, with its own lifecycle state. Editing a Workspace Symbol saves it into the next revision; components that still link to an earlier revision become out of date until they are updated.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesSymbol/"><code>DesSymbol</code></a></td>
+</tr>
+</tbody>
+</table>
+<h3 class="bc-heading bc-collaboration" id="collaboration"><a href="subsets/collaboration/">Collaboration</a></h3>
+<p>Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, and tasks that assign work to users or teams. In the product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Platform API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="classes/col_Comment/">Comment </a></td>
+<td>A single entry in a comment thread: either the initial comment, pinned to a point, an object or an area of a design document (or to a BOM line), or a reply to it. A comment can mention people or groups using @, and it can be assigned to a Workspace member as a task, either when it is posted or later by converting it. Only the author can edit or delete a comment, and deleting the initial comment also deletes its replies.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComment/"><code>DesComment</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/col_CommentThread/">Comment Thread </a></td>
+<td>Comment Thread represents a structured discussion linked to a specific design object, document, or workspace item,  capturing feedback, decisions, and context directly within the collaborative design environment.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesCommentThread/"><code>DesCommentThread</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/col_Task/">Task </a></td>
+<td>Task represents a discrete unit of work assigned to a user or team within the design workflow,  used to track progress, responsibility, and completion status for design, review, or management activities.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesTask/"><code>DesTask</code></a></td>
+</tr>
+</tbody>
+</table>
+<h3 class="bc-heading bc-configuration" id="configuration-management"><a href="subsets/configuration/">Configuration Management</a></h3>
+<p>Models environment configurations, which restrict the Altium Designer working environment of the Workspace members they target to approved configuration data, together with schematic templates and their revisions stored as Workspace Items. In Altium 365 this corresponds to environment configuration management through the Team Configuration Center.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Platform API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="classes/con_EnvironmentConfiguration/">Environment Configuration </a></td>
+<td>A named set of configuration data items that the Workspace members it targets are allowed to use in Altium Designer. The items are revisions of Workspace Items of supported content types (e.g. schematic, BOM, project and Draftsman templates, output job files and layer stacks, plus at most one Altium Designer Preferences revision), and the same item can be used by several configurations. Administrators define configurations in the Workspace's Team Configuration Center (TC2) and assign them to Workspace groups, called roles there; when a group member signs in to the Workspace from Altium Designer, each controlled area of the design environment is restricted to the chosen configuration's items.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/con_SchematicTemplate/">Schematic Template </a></td>
+<td>A schematic template stored as a Workspace Item. When applied to a schematic sheet, the template sets the sheet's size, its graphics such as a title block, and its sheet-level parameters, so that a team's schematics look consistent. The template content is kept in successive revisions of the Item, and environment configurations can reference those revisions to control which templates designers may use.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/con_SchematicTemplateRevision/">Schematic Template Revision </a></td>
+<td>One revision of a Workspace schematic template Item, holding the template as saved at that point, e.g. from Altium Designer with Save to Server or uploaded from a *.SchDot file. Editing the template saves the result into the next revision, and environment configurations list template revisions, rather than the Item itself, as their configuration data.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 class="bc-heading bc-procurement" id="procurement"><a href="subsets/procurement/">Procurement</a></h3>
+<p>Models bills of materials: BOMs kept in a Workspace and worked on in the BOM Portal (managed and consolidated BOMs) with their releases, global BOMs, which are not tied to a Workspace, and BOM lines with their alternate and substitute parts and the issues found when a BOM is analysed. It corresponds to the Altium 365 BOM Portal.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Platform API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="classes/pro_BomIssue/">BOM Issue </a></td>
+<td>A problem found when a BOM is analysed, usually against a particular BOM line: for example an unknown part number, a duplicated designator, or a part that is deprecated, low in stock or not compliant with a standard such as REACH. The level at which each kind of check reports (Fatal Error, Error or Warning, or No Report to ignore it) is configurable, and an individual issue can be waived.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomIssue/"><code>BomIssue</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/pro_BomItem/">BOM Item </a></td>
+<td>One line of a BOM: its designators and quantity, the primary manufacturer part used for it (identified by manufacturer and manufacturer part number), and any alternate parts recorded for that line. A line can be linked to a Workspace component that lists its part among its Part Choices, and BOM checks report issues against individual lines.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomItem/"><code>BomItem</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/pro_BomItemAlternate/">BOM Item Alternate </a></td>
+<td>An alternate part recorded for one BOM line: another manufacturer part that could be used instead of the line's primary part. Alternates belong to the individual BOM line rather than applying across BOMs. They can come from an uploaded BOM file, be added by hand, or be filled in automatically from the linked component's Part Choices and from suggested alternates, and an alternate can be promoted to become the line's primary part.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomItemAlternate/"><code>BomItemAlternate</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/pro_BomItemSubstitute/">BOM Item Substitute </a></td>
+<td>Substitute is a replacement of a part by another within an individual BOM.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomItemSubstitute/"><code>BomItemSubstitute</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/pro_BomRelease/">BOM Release </a></td>
+<td>A static snapshot of a Managed BOM's data, saved under a release name with an incremented revision number and optional notes. The BOM Portal makes a release automatically when a Managed BOM is first created and again once its data has been mapped, and further releases can be made whenever needed. Each release moves through its own lifecycle states (by default Draft, Approved and Obsolete), and a Workspace can be configured to block releasing while the BOM has Error or Fatal Error issues.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomRelease/"><code>BomRelease</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/pro_ConsolidatedBOM/">Consolidated BOM </a></td>
+<td>Consolidated BOM represents the aggregated bill of materials across one or more Projects or variants, combining all required  Parts into a single, unified view for procurement and manufacturing.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomWip/"><code>BomWip</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/pro_GlobalBOM/">Global BOM </a></td>
+<td>Global BOM represents a bill of materials that resides outside of any workspace, on Octopart, where users can create, edit, collaborate on and share it with others.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/pro_ManagedBOM/">Managed BOM </a></td>
+<td>A bill of materials kept in a Workspace and worked on in the BOM Portal, where its lines are enriched with manufacturer and supplier data for review and procurement. It can be created from a design project (one of its variants or releases) or uploaded as a CSV/XLS file from any source. A Managed BOM made from a project keeps a link to that project, so it can be updated when the project changes, either in place or as a new revision; snapshots of its data at a point in time are kept as BOM releases.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomWip/"><code>BomWip</code></a></td>
+</tr>
+</tbody>
+</table>
+<h3 class="bc-heading bc-supply" id="supply"><a href="subsets/supply/">Supply</a></h3>
+<p>Models the supply catalog: manufacturer parts with their aggregated sourcing data and distributor offers, the companies acting as their manufacturers or distributors, and the vendor-specific part family hierarchy, along with catalog content such as reference designs, evaluation kits, solution templates and software projects. Part, offer and company data correspond to the supply chain data that Octopart aggregates and serves through the Octopart API.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Platform API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="classes/sup_Company/">Company </a></td>
+<td>Supply Company represents an organization in the electronics supply chain. Depending on context it is the manufacturer of a Part or a distributor (or broker) that sells it.</td>
+<td><a href="https://www.altium.com/documentation/altium-developer-center/octopart/api"><code>SupCompany</code></a> (Nexar)</td>
+</tr>
+<tr>
+<td><a href="classes/sup_EvalKit/">Evaluation Kit </a></td>
+<td>A vendor evaluation kit in the supply catalog, described by its associated devices, its reference designs (including a main one) and the software projects compatible with it. In Renesas 365 an eval kit can be linked to a solution, and the browser can connect to the kit over J-Link.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupEvalKit/"><code>SupEvalKit</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/sup_Offer/">Offer </a></td>
+<td>Supply Offer represents a specific commercial listing of a Part from a supplier,  detailing price breaks, stock availability, lead times, and ordering conditions at a given point in time.</td>
+<td><a href="https://www.altium.com/documentation/altium-developer-center/octopart/api"><code>SupOffer</code></a> (Nexar)</td>
+</tr>
+<tr>
+<td><a href="classes/sup_Part/">Part </a></td>
+<td>Supply Part represents a market-available instance of a manufactured Part,  providing aggregated sourcing data such as pricing, stock levels, and supplier offers.</td>
+<td><a href="https://www.altium.com/documentation/altium-developer-center/octopart/api"><code>SupPart</code></a> (Nexar)</td>
+</tr>
+<tr>
+<td><a href="classes/sup_PartFamily/">Part Family </a></td>
+<td>A manufacturer's grouping of parts in the supply data, where the kind of family is vendor-specific (e.g. Series or Family). Part families form a hierarchy: a family has either child families or, at the lowest level, Part Groups. Families sharing the same parent are usually close alternatives to one another.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupPartFamily/"><code>SupPartFamily</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/sup_PartGroup/">Part Group </a></td>
+<td>A leaf of the part family hierarchy in the supply data, holding the parts that belong to it together with group-level information such as its manufacturer, overview, key features and documents. Groups sharing the same parent family are usually close alternatives to one another.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupPartGroup/"><code>SupPartGroup</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/sup_ReferenceDesign/">Reference Design </a></td>
+<td>An example design published in the supply catalog, bringing together its design files (e.g. schematics and layouts), documentation and the parts it uses. In Renesas 365 a reference design can be imported into a solution, which adds it to the Workspace as a PCB project linked to that solution.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupRefDesign/"><code>SupRefDesign</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/sup_SoftwareProject/">Software Project </a></td>
+<td>A software project published in the supply catalog, together with the evaluation kits it is compatible with. In Renesas 365 it can be imported into a solution with a compatible eval kit; the import places the project in the Workspace and links it to the solution (see sft_SoftwareProject).</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupSoftwareProject/"><code>SupSoftwareProject</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/sup_SolutionTemplate/">Solution Template </a></td>
+<td>A publisher's template for a solution, held in the supply catalog. It brings together catalog software projects, evaluation kits and a system design (ESD) source, and users can clone it.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupSolutionTemplate/"><code>SupSolutionTemplate</code></a></td>
+</tr>
+</tbody>
+</table>
+<h3 class="bc-heading bc-customization" id="customization"><a href="subsets/customization/">Customization</a></h3>
+<p>Models ways to customize and automate a Workspace: process workflows, and scripts with their versions, their executions and the event raised when an execution completes. In the product, each workflow belongs to a process definition that a Workspace administrator creates and manages in the Workspace browser interface.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Platform API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="classes/cus_Script/">Script </a></td>
+<td>TBD</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloScrScript/"><code>GloScrScript</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/cus_ScriptExecution/">Script Execution </a></td>
+<td>TBD</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloScrScriptExecution/"><code>GloScrScriptExecution</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/cus_ScriptExecutionCompleted/">Script Execution Completed </a></td>
+<td>TBD</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/cus_ScriptVersion/">Script Version </a></td>
+<td>TBD</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloScrScriptVersion/"><code>GloScrScriptVersion</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/cus_Workflow/">Workflow </a></td>
+<td>A process workflow of an Altium 365 Workspace: the workflow that belongs to a process definition and steps designers through an everyday design process (e.g. requesting a new part, a design review or creating a new project). Workspace administrators build process definitions in the Process Workflow Editor, grouped by process theme (Part Requests, Project Activities, Project Creations), and activate them; each started instance of a process follows the workflow and creates tasks for the users whose action is needed to move it on.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkflowDefinition/"><code>DesWorkflowDefinition</code></a></td>
+</tr>
+</tbody>
+</table>
+<h3 class="bc-heading bc-system" id="system-design"><a href="subsets/system/">System Design</a></h3>
+<p>Models the Electronic System Design (ESD) document of a Renesas 365 solution: a system-level block diagram of functional blocks with their key (hardware) and software components, ports and parameters, the connections between blocks, and entries for the hardware and software projects that implement the system. It corresponds to Electronic System Design in a Renesas 365 Workspace.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Platform API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="classes/system_Connection/">Connection </a></td>
+<td>A connection line in an ESD document representing an interconnection between functional blocks (e.g. signals passed between the interfaces of two devices), drawn directly between blocks or between their ports. In the editor a line can also start or end on other objects or in free space; this model records each end as a functional block and port (see system_Endpoint).</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/system_Endpoint/">Endpoint </a></td>
+<td>One end of a connection in an ESD document, identified by the functional block and the port where the connection line starts or ends.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/system_ESDDocument/">ESD Document </a></td>
+<td>A system-level block diagram document used in a Renesas 365 solution (listed there as a System Design project) to describe the architecture of the system at a functional level. It holds functional blocks with their hardware components, software components and ports, the connections between blocks, and blankets through which parts of the design can be linked to PCB or software projects. Pushing to and pulling from the solution's System Data Model (SDM) for the system design is done from the ESD document. Blankets are not modelled as a separate entity here (see MF-068).</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysEsdDocument/"><code>SysEsdDocument</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/system_FunctionalBlock/">Functional Block </a></td>
+<td>Represents a logical block within an ESD document (e.g., MCU subsystem, LED driver block) that stands for a function, operation or device of the system, including parameters, key components, software components, ports, and associations. In the ESD editor a functional block can also contain other blocks; this nesting is not modelled here.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/system_HardwareProject/">Hardware Project </a></td>
+<td>An entry of an ESD document for a PCB design project (des_Project) that implements part of the system, listing the functional blocks that project covers. In the ESD editor a PCB project can be linked to a hardware blanket (which can be placed around functional blocks), and each project can be linked to at most one blanket in a document.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/system_KeyComponent/">Key Component </a></td>
+<td>A key component of a functional block in an ESD document, shown in the editor as a hardware component (e.g. a Renesas RA MCU chosen with the RA Explorer). Its device configuration (ports, package information, peripherals and pin assignments) can be viewed and edited on the hardware component. Software components of the block reference their parent key component. Its SDM counterpart is system_SdmHardwareComponent.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/system_Parameter/">Parameter </a></td>
+<td>Name–value parameter associated with functional blocks, ports, or other system design resources.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/system_Port/">Port </a></td>
+<td>An interface of a functional block in an ESD document (e.g. the I2C interface of an MPU), placed inside the block's boundaries; connection lines between blocks can start and end at ports. It is a logical interface, distinct from dm_Port, which is a physical port of a device.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/system_PortAssociation/">Port Association </a></td>
+<td>TBD</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/system_SoftwareComponent/">Software Component </a></td>
+<td>Functional in nature, abstracted from but connected to logical implementation.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/system_SoftwareProject/">Software Project </a></td>
+<td>An entry of an ESD document for a software project (sft_SoftwareProject) that implements part of the system, listing the software components that project covers. In the ESD editor a software project can be linked to a software blanket, and each project can be linked to at most one blanket in a document.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 class="bc-heading bc-system-sdm" id="system-design-system-data-model"><a href="subsets/system-sdm/">System Design - System Data Model</a></h3>
+<p>Models the System Data Model (SDM) of a Renesas 365 solution and its versions, each combining a functional model with device, hardware and software models, plus metadata recording who created a version and with which application, and client-specific metadata (e.g. for ESD, Altium Designer or e² studio). The ESD document and e² studio push changes to and pull changes from the SDM, and Altium Designer pulls it into hardware projects.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Platform API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="classes/system_SdmAuthoringApplication/">Authoring Application </a></td>
+<td>Identifies the application used to create a system model version.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmClientMetadata/">Domain Metadata </a></td>
+<td>Captures metadata specific to a particular client (e.g., ESD, AD, E2Studio).</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmConnection/">Connection </a></td>
+<td>Represents a connection between functional blocks.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmConnection/"><code>SysSdmConnection</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmDeviceModel/">Device Model </a></td>
+<td>Represents a device model within the system design.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmDeviceModel/"><code>SysSdmDeviceModel</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmEndpoint/">Endpoint </a></td>
+<td>Represents an endpoint of a connection.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmEndpoint/"><code>SysSdmEndpoint</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmFunctionalBlock/">Functional Block </a></td>
+<td>Represents a logical block within a system functional model.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmFunctionalBlock/"><code>SysSdmFunctionalBlock</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmFunctionalModel/">Functional Model </a></td>
+<td>Captures the functional aspects of the system design, focusing on the behavior and interactions of functional blocks.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmFunctionalModel/"><code>SysSdmFunctionalModel</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmHardwareComponent/">Hardware Component </a></td>
+<td>Represents a hardware component / part.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmHardwareComponent/"><code>SysSdmHardwareComponent</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmHardwareModel/">Hardware Model </a></td>
+<td>Captures the hardware components and their interactions within the system design.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmHardwareModel/"><code>SysSdmHardwareModel</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmPort/">Port </a></td>
+<td>Represents a port within a system design. It is a logical interface of a functional block, distinct from dm_Port, which is a physical port of a device.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmPort/"><code>SysSdmPort</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmSoftwareComponent/">Software Component </a></td>
+<td>Represents a software component instance and its dependencies.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSoftwareComponent/"><code>SysSdmSoftwareComponent</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmSoftwareModel/">Software Model </a></td>
+<td>Captures the software components and their interactions within the system design.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSoftwareModel/"><code>SysSdmSoftwareModel</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmSoftwareSpecification/">Software Specification </a></td>
+<td>The "blueprint" for a software component. Captures the identity and  classification of the software independently of any specific instance.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSoftwareSpecification/"><code>SysSdmSoftwareSpecification</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmSoftwareStackInstance/">Software Stack Instance </a></td>
+<td>Represents a software stack instance and its dependencies.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSoftwareStackInstance/"><code>SysSdmSoftwareStackInstance</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmSystemModel/">System Model </a></td>
+<td>A high-level system model that captures the overall system architecture, crossing boundary between  functional and logical domains (e.g., hardware and software).</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSystemModel/"><code>SysSdmSystemModel</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmSystemModelVersion/">System Model Version </a></td>
+<td>A specific version of a system model, capturing the state of the system design at a particular point in time.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSystemModelVersion/"><code>SysSdmSystemModelVersion</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/system_SdmSystemModelVersionMetadata/">System Model Version Metadata </a></td>
+<td>Metadata associated with a specific version of a system model, capturing provenance information.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 class="bc-heading bc-requirements" id="requirements"><a href="subsets/requirements/">Requirements</a></h3>
+<p>Models requirements and their revisions, the specifications that group them, baselines approved for execution, change requests, the requirements projects that scope this work, and verification cases that provide evidence against requirements; most of its classes are experimental. It corresponds to requirements management and verification &amp; validation in the Altium 365 Requirements Portal.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Platform API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="classes/req_Artifact/">Requirement Artifact </a></td>
+<td>TBD</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/req_Project/">Requirements Project </a></td>
+<td>The orchestration space for capturing, evolving, and validating requirements scoped to a product, program increment, or regulatory engagement.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/req_Requirement/">Requirement </a></td>
+<td>A single, testable statement of intent or constraint that governs a solution or process outcome.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/req_RequirementBaseline/">Requirement Baseline </a></td>
+<td>A version-managed release of a specification or subset of requirements approved for execution. In the product this corresponds to a released specification (Release Specification). It is not what the product calls a baseline: in the Requirements &amp; Systems Portal (Legacy), a baseline is a named bookmark for a point in time (e.g. a design review) that is used to compare how requirements and values have changed.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/req_RequirementChangeRequest/">Requirement Change Request </a></td>
+<td>Structured workflow item proposing additions, updates, or removals of requirements.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/req_RequirementRevision/">Requirement Revision </a></td>
+<td>An immutable snapshot of a requirement statement at a specific revision.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/req_RequirementSpecification/">Requirement Specification </a></td>
+<td>A curated collection of requirements scoped to a program, domain, or release horizon.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/req_VerificationCase/">Verification Case </a></td>
+<td>A planned verification procedure or test that produces objective evidence against requirements.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 class="bc-heading bc-deviceModel" id="device-model"><a href="subsets/deviceModel/">Device Model</a></h3>
 <p>Models an embedded device (e.g. an MCU), which the CDM calls a digital twin: its processors; its address map with memories, registers, bit fields and their enumerated values; its peripherals with their instances, modes and configurations; and its pins and ports with the alternative functions of each port. A configured device model filters the full model to one device configuration, which in the product is edited on a hardware component in an ESD document.</p>
 <table>
 <thead>
 <tr>
-<th>Class</th>
+<th>Name</th>
 <th>Description</th>
 <th>Platform API</th>
 </tr>
@@ -758,370 +2443,12 @@
 </tr>
 </tbody>
 </table>
-<h3 id="insights"><a href="subsets/insights/">insights</a></h3>
-<p>Models insights that can be followed up by tasks. The only concrete kind is the part insight: it concerns one Workspace part, may be informed by BOMs or design projects, and occurs in BOM releases, project releases or component revisions.</p>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-<th>Platform API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="classes/ins_PartInsight/">Part Insight </a></td>
-<td>TBD</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceInsInsight/"><code>DesWorkspaceInsInsight</code></a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="library"><a href="subsets/library/">library</a></h3>
-<p>Models the components stored in a Workspace and their revisions, the symbols, footprints, parameters, datasheets and part choices that make them up, and the component templates they can be created from. It also covers manufacturer parts in the Workspace part catalog, part requests, and reusable design content such as reuse blocks, managed sheets, and schematic and PCB snippets. It corresponds to Workspace components and design reuse in Altium Designer and Altium 365.</p>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-<th>Platform API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="classes/lib_Component/">Component </a></td>
-<td>Component represents a uniquely identifiable electronic part, defined by both  its abstract design intent and its concrete realizations in manufacturing and supply.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/lib_ComponentParameter/">Component Parameter </a></td>
-<td>A named parameter of a Workspace component, holding a value and, optionally, a data type. Parameters can be inherited from a component template or added directly to the component; a template can give them unit-aware (e.g. Farad, Ohm) or dictionary-defined types.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComponentParameter/"><code>DesComponentParameter</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/lib_ComponentRevision/">Component Revision </a></td>
-<td>Revision of a Component.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComponent/"><code>DesComponent</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/lib_ComponentTemplate/">Component Template </a></td>
-<td>Component Template defines a reusable blueprint for creating and managing electronic components with consistent parameters, metadata, and lifecycle policies.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComponentTemplate/"><code>DesComponentTemplate</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/lib_ComponentTemplateRevision/">Component Template Revision </a></td>
-<td>A revision of a Component Template: the template definition, stored as a *.CMPT document, saved into the Workspace at one point in time. A component revision can be linked to a specific template revision, from which it takes its predefined parameters, models and settings.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComponentTemplateRevision/"><code>DesComponentTemplateRevision</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/lib_Datasheet/">Datasheet </a></td>
-<td>Datasheet represents a technical document associated with a Component or Part,  providing authoritative specifications, electrical characteristics, and manufacturer information.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesDatasheet/"><code>DesDatasheet</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/lib_Footprint/">Footprint </a></td>
-<td>Footprint represents the physical layout definition of a Component on a PCB,  specifying pad geometry, land patterns, and mechanical clearances required for assembly and manufacturing.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/lib_FootprintRevision/">Footprint Revision </a></td>
-<td>A revision of a Footprint: the PCB footprint as saved into the Workspace at one point in time, with its own lifecycle state. Editing a Workspace Footprint saves it into the next revision; components that still link to an earlier revision become out of date until they are updated.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesFootprint/"><code>DesFootprint</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/lib_ManagedSheet/">Managed Sheet </a></td>
-<td>A schematic sheet, with its components and wiring, stored in a Workspace so that it can be reused in other designs. A managed sheet may itself contain further managed sheets beneath it in a hierarchy, and the Workspace lets you trace which components it contains and which designs use it.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/lib_ManagedSheetRevision/">Managed Sheet Revision </a></td>
-<td>A revision of a Managed Sheet: the schematic sheet as saved into the Workspace at one point in time. A design uses a specific revision, so when the sheet is revised, existing designs can be updated to the new revision or kept on the previous one.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/lib_Part/">Part </a></td>
-<td>A manufacturer part, identified by manufacturer and part number, as held in the Workspace's Part Catalog together with the supplier parts through which it is sold. Workspace components reference manufacturer parts through their Part Choices.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesPart/"><code>DesPart</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/lib_PartChoice/">Part Choice </a></td>
-<td>One entry in a component's Part Choice list: a manufacturer part, rather than a specific supplier, that may be used to implement the component, bringing with it the offers of the suppliers that sell it. Entries are ranked automatically by availability, price and lifecycle, and users can override the order with their own rank; the top preferred entry is used as the component's part choice in a BOM.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/lib_PartChoiceList/">Part Choice List </a></td>
-<td>The list of Part Choices for a component: the manufacturer parts that may be used to implement it on the assembled board. In the product the list is associated with the component and seen by all of its revisions; when part choice revision control is enabled, changing the list saves a new component revision.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/lib_PartRequest/">Part Request </a></td>
-<td>Part Request represents a formal demand from a designer to introduce a new Component or Part into the managed library,  typically triggered when an item is not yet available in the workspace.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/lib_PcbSnippet/">PCB Snippet </a></td>
-<td>A selection of circuitry from a PCB design, including its components and routing, saved so that it can be placed in other PCB documents. A snippet saved to a Workspace is revised like other Workspace items; snippets can also be kept in local folders.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/lib_PcbSnippetRevision/">PCB Snippet Revision </a></td>
-<td>A revision of a PCB snippet as saved into the Workspace at one point in time. Editing a Workspace snippet saves it into the next revision.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/lib_ReuseBlock/">Reuse Block </a></td>
-<td>A reusable section of a design stored in a Workspace, typically combining schematic circuitry with its PCB representation; a block can also be schematic-only or PCB-only. Placing a reuse block on a schematic sheet brings its PCB content into the board design when changes are transferred through an ECO.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesReuseBlock/"><code>DesReuseBlock</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/lib_ReuseBlockRevision/">Reuse Block Revision </a></td>
-<td>A revision of a Reuse Block: its schematic and/or PCB content as saved into the Workspace at one point in time, with its own lifecycle state. Editing a reuse block saves it into the next revision.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesReuseBlockRevision/"><code>DesReuseBlockRevision</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/lib_SchSnippet/">SCH Snippet </a></td>
-<td>A selection of circuitry from a single schematic sheet, including its components, saved so that it can be placed in other designs. A snippet saved to a Workspace is revised like other Workspace items; snippets can also be kept in local folders.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/lib_SchSnippetRevision/">SCH Snippet Revision </a></td>
-<td>A revision of a schematic snippet as saved into the Workspace at one point in time. Editing a Workspace snippet saves it into the next revision.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/lib_Symbol/">Symbol </a></td>
-<td>Symbol represents the logical schematic view of a Component, defining its electrical interface, pins, and attributes  used to express circuit intent in design schematics.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/lib_SymbolRevision/">Symbol Revision </a></td>
-<td>A revision of a Symbol: the schematic symbol as saved into the Workspace at one point in time, with its own lifecycle state. Editing a Workspace Symbol saves it into the next revision; components that still link to an earlier revision become out of date until they are updated.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesSymbol/"><code>DesSymbol</code></a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="ota"><a href="subsets/ota/">ota</a></h3>
-<p>Models over-the-air (OTA) firmware and software updates: devices with their status and installed packages, fleets that group devices, and packages with their version, size, checksums and target hardware. All classes are experimental.</p>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-<th>Platform API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="classes/ota_Device/">Device </a></td>
-<td>TBD</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/ota_Fleet/">Fleet </a></td>
-<td>TBD</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/ota_Package/">Package </a></td>
-<td>TBD</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="platform"><a href="subsets/platform/">platform</a></h3>
-<p>Models the platform-wide objects that other bounded contexts build on: organizations (Company Accounts) with their users and user groups, Workspaces with their members and groups, applications, event subscriptions, and Renesas 365 solutions with their releases. It also holds the lifecycle definitions (with their stages and states) and revision naming schemes that govern Workspace Items. Organization-level data is managed in the Company Dashboard; Workspace-level configuration, including these definitions and schemes, is managed from Altium Designer or the Workspace browser interface.</p>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-<th>Platform API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="classes/plt_Application/">Application </a></td>
-<td>TBD</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloApp/"><code>GloApp</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/plt_EventSubscription/">Event Subscription </a></td>
-<td>TBD</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/interfaces/GloEvtSubscription/"><code>GloEvtSubscription</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/plt_LifecycleDefinition/">Lifecycle Definition </a></td>
-<td>Defines the set of states that an entity can transition through in its lifecycle. This definition clarifies what stage a revision of an entity has reached in its 'life' and what it can be safely used for. Different entities can have different lifecycle definitions assigned to them.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleDefinition/"><code>DesLifeCycleDefinition</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/plt_LifecycleStage/">Lifecycle Stage </a></td>
-<td>A named stage that groups lifecycle states in a lifecycle definition using the Advanced management style (e.g. Design, Prototype, Production), indicating how far a revision has progressed in its development. Stages can be linked to the levels of the revision naming scheme. Definitions using the Simple style have states and transitions but no stages.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleStage/"><code>DesLifeCycleStage</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/plt_LifecycleState/">Lifecycle State </a></td>
-<td>A named point in an Item Revision's lifecycle (e.g. Planned, New From Design, In Production, Obsolete) that shows its status from a business perspective. Each state's properties include whether revisions in that state are shown in the Explorer panel and whether they may be used in designs; a revision moves to another state only through a transition defined in its lifecycle definition.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleState/"><code>DesLifeCycleState</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/plt_NamingScheme/">Revision Naming Scheme </a></td>
-<td>Defines the format of Revision IDs for the Items that use it: one to three levels (e.g. Model, Prototype and Revision), each with its own format, separator and minimum width. The scheme is chosen per Item when the Item is created and cannot be changed after its first release. It is distinct from the Item Naming Scheme, which determines the Item ID rather than the revision's ID.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesRevisionNamingScheme/"><code>DesRevisionNamingScheme</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/plt_Organization/">Organization </a></td>
-<td>An Altium customer organization, represented by its Company Account. The Company Account brings together the organization's users and groups of users, its purchased licenses and the Altium 365 Workspaces created for it, along with a company profile (e.g. name, logo and website). Administrators manage it through the Company Dashboard.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloOrganization/"><code>GloOrganization</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/plt_Solution/">Solution </a></td>
-<td>A Renesas 365 solution: the main, top-level object of a Renesas 365 Workspace, which brings together the system design (an ESD document), PCB projects and software projects of one system. System designs and software projects both push their changes to the solution's System Data Model (SDM) and pull from it; Altium Designer can open a solution's PCB projects and pull SDM changes into them.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SolSolution/"><code>SolSolution</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/plt_SolutionRelease/">Solution Release </a></td>
-<td>Release of the Solution. This is a formal immutable artifact, representing a specific state of the Solution at the time of release.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/plt_User/">User </a></td>
-<td>A person identified by a global Altium Account, the identity used for signing in to Altium services. A user can be registered in an organization's Company Account, either added by an administrator or admitted through an approved join request, and can then be given access to licenses through the Company Account's user groups. Access to a Workspace is granted separately, by making the user a member of that Workspace.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloUser/"><code>GloUser</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/plt_UserGroup/">User Group </a></td>
-<td>A named group of users within an organization's Company Account, managed in the Company Dashboard. Licenses can be allocated to a group so that its members can use them, and the Group Administrators system group gives its members Dashboard administration rights. A user can belong to any number of groups, groups can be provisioned from an identity provider via SCIM, and they are distinct from the groups defined inside a Workspace.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloUserGroup/"><code>GloUserGroup</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/plt_Workspace/">Workspace </a></td>
-<td>The top-level entity that plays a role of a closed environment for other entities (members, projects, components, etc.).</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspace/"><code>DesWorkspace</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/plt_WorkspaceGroup/">Workspace Group </a></td>
-<td>Workspace Group represents a logical collection of users within a workspace,  used to manage access control, permissions, and collaboration roles across projects and data assets.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceGroup/"><code>DesWorkspaceGroup</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/plt_WorkspaceUser/">Workspace User </a></td>
-<td>A person's membership in a particular Workspace, connecting their Altium Account to that Workspace and to the Workspace groups they are assigned to. Members can come from the organization that owns the Workspace or from other organizations, and inviting an outside user does not add them to the owning organization. People who only have a project shared with them (External Share guests) are not members.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceUser/"><code>DesWorkspaceUser</code></a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="procurement"><a href="subsets/procurement/">procurement</a></h3>
-<p>Models bills of materials: BOMs kept in a Workspace and worked on in the BOM Portal (managed and consolidated BOMs) with their releases, global BOMs, which are not tied to a Workspace, and BOM lines with their alternate and substitute parts and the issues found when a BOM is analysed. It corresponds to the Altium 365 BOM Portal.</p>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-<th>Platform API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="classes/pro_BomIssue/">BOM Issue </a></td>
-<td>A problem found when a BOM is analysed, usually against a particular BOM line: for example an unknown part number, a duplicated designator, or a part that is deprecated, low in stock or not compliant with a standard such as REACH. The level at which each kind of check reports (Fatal Error, Error or Warning, or No Report to ignore it) is configurable, and an individual issue can be waived.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomIssue/"><code>BomIssue</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/pro_BomItem/">BOM Item </a></td>
-<td>One line of a BOM: its designators and quantity, the primary manufacturer part used for it (identified by manufacturer and manufacturer part number), and any alternate parts recorded for that line. A line can be linked to a Workspace component that lists its part among its Part Choices, and BOM checks report issues against individual lines.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomItem/"><code>BomItem</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/pro_BomItemAlternate/">BOM Item Alternate </a></td>
-<td>An alternate part recorded for one BOM line: another manufacturer part that could be used instead of the line's primary part. Alternates belong to the individual BOM line rather than applying across BOMs. They can come from an uploaded BOM file, be added by hand, or be filled in automatically from the linked component's Part Choices and from suggested alternates, and an alternate can be promoted to become the line's primary part.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomItemAlternate/"><code>BomItemAlternate</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/pro_BomItemSubstitute/">BOM Item Substitute </a></td>
-<td>Substitute is a replacement of a part by another within an individual BOM.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomItemSubstitute/"><code>BomItemSubstitute</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/pro_BomRelease/">BOM Release </a></td>
-<td>A static snapshot of a Managed BOM's data, saved under a release name with an incremented revision number and optional notes. The BOM Portal makes a release automatically when a Managed BOM is first created and again once its data has been mapped, and further releases can be made whenever needed. Each release moves through its own lifecycle states (by default Draft, Approved and Obsolete), and a Workspace can be configured to block releasing while the BOM has Error or Fatal Error issues.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomRelease/"><code>BomRelease</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/pro_ConsolidatedBOM/">Consolidated BOM </a></td>
-<td>Consolidated BOM represents the aggregated bill of materials across one or more Projects or variants, combining all required  Parts into a single, unified view for procurement and manufacturing.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomWip/"><code>BomWip</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/pro_GlobalBOM/">Global BOM </a></td>
-<td>Global BOM represents a bill of materials that resides outside of any workspace, on Octopart, where users can create, edit, collaborate on and share it with others.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/pro_ManagedBOM/">Managed BOM </a></td>
-<td>A bill of materials kept in a Workspace and worked on in the BOM Portal, where its lines are enriched with manufacturer and supplier data for review and procurement. It can be created from a design project (one of its variants or releases) or uploaded as a CSV/XLS file from any source. A Managed BOM made from a project keeps a link to that project, so it can be updated when the project changes, either in place or as a new revision; snapshots of its data at a point in time are kept as BOM releases.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomWip/"><code>BomWip</code></a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="requirements"><a href="subsets/requirements/">requirements</a></h3>
-<p>Models requirements and their revisions, the specifications that group them, baselines approved for execution, change requests, the requirements projects that scope this work, and verification cases that provide evidence against requirements; most of its classes are experimental. It corresponds to requirements management and verification &amp; validation in the Altium 365 Requirements Portal.</p>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-<th>Platform API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="classes/req_Artifact/">Requirement Artifact </a></td>
-<td>TBD</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/req_Project/">Requirements Project </a></td>
-<td>The orchestration space for capturing, evolving, and validating requirements scoped to a product, program increment, or regulatory engagement.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/req_Requirement/">Requirement </a></td>
-<td>A single, testable statement of intent or constraint that governs a solution or process outcome.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/req_RequirementBaseline/">Requirement Baseline </a></td>
-<td>A version-managed release of a specification or subset of requirements approved for execution. In the product this corresponds to a released specification (Release Specification). It is not what the product calls a baseline: in the Requirements &amp; Systems Portal (Legacy), a baseline is a named bookmark for a point in time (e.g. a design review) that is used to compare how requirements and values have changed.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/req_RequirementChangeRequest/">Requirement Change Request </a></td>
-<td>Structured workflow item proposing additions, updates, or removals of requirements.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/req_RequirementRevision/">Requirement Revision </a></td>
-<td>An immutable snapshot of a requirement statement at a specific revision.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/req_RequirementSpecification/">Requirement Specification </a></td>
-<td>A curated collection of requirements scoped to a program, domain, or release horizon.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/req_VerificationCase/">Verification Case </a></td>
-<td>A planned verification procedure or test that produces objective evidence against requirements.</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="software"><a href="subsets/software/">software</a></h3>
+<h3 class="bc-heading bc-software" id="software"><a href="subsets/software/">Software</a></h3>
 <p>Models the embedded software of a Renesas 365 solution: software projects with their releases and build artifacts, device configurations (with revisions) and their pin assignments, and AI models. In Renesas 365 the software project is the software part of a solution, edited in the built-in Web IDE or in e² studio; a device configuration there also covers the ports, package information and peripherals of a hardware component.</p>
 <table>
 <thead>
 <tr>
-<th>Class</th>
+<th>Name</th>
 <th>Description</th>
 <th>Platform API</th>
 </tr>
@@ -1169,226 +2496,68 @@
 </tr>
 </tbody>
 </table>
-<h3 id="supply"><a href="subsets/supply/">supply</a></h3>
-<p>Models the supply catalog: manufacturer parts with their aggregated sourcing data and distributor offers, the companies acting as their manufacturers or distributors, and the vendor-specific part family hierarchy, along with catalog content such as reference designs, evaluation kits, solution templates and software projects. Part, offer and company data correspond to the supply chain data that Octopart aggregates and serves through the Octopart API.</p>
+<h3 class="bc-heading bc-ota" id="over-the-air-updates"><a href="subsets/ota/">Over-the-Air Updates</a></h3>
+<p>Models over-the-air (OTA) firmware and software updates: devices with their status and installed packages, fleets that group devices, and packages with their version, size, checksums and target hardware. All classes are experimental.</p>
 <table>
 <thead>
 <tr>
-<th>Class</th>
+<th>Name</th>
 <th>Description</th>
 <th>Platform API</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="classes/sup_Company/">Company </a></td>
-<td>Supply Company represents an organization in the electronics supply chain. Depending on context it is the manufacturer of a Part or a distributor (or broker) that sells it.</td>
-<td><a href="https://www.altium.com/documentation/altium-developer-center/octopart/api"><code>SupCompany</code></a> (Nexar)</td>
-</tr>
-<tr>
-<td><a href="classes/sup_EvalKit/">Evaluation Kit </a></td>
-<td>A vendor evaluation kit in the supply catalog, described by its associated devices, its reference designs (including a main one) and the software projects compatible with it. In Renesas 365 an eval kit can be linked to a solution, and the browser can connect to the kit over J-Link.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupEvalKit/"><code>SupEvalKit</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/sup_Offer/">Offer </a></td>
-<td>Supply Offer represents a specific commercial listing of a Part from a supplier,  detailing price breaks, stock availability, lead times, and ordering conditions at a given point in time.</td>
-<td><a href="https://www.altium.com/documentation/altium-developer-center/octopart/api"><code>SupOffer</code></a> (Nexar)</td>
-</tr>
-<tr>
-<td><a href="classes/sup_Part/">Part </a></td>
-<td>Supply Part represents a market-available instance of a manufactured Part,  providing aggregated sourcing data such as pricing, stock levels, and supplier offers.</td>
-<td><a href="https://www.altium.com/documentation/altium-developer-center/octopart/api"><code>SupPart</code></a> (Nexar)</td>
-</tr>
-<tr>
-<td><a href="classes/sup_PartFamily/">Part Family </a></td>
-<td>A manufacturer's grouping of parts in the supply data, where the kind of family is vendor-specific (e.g. Series or Family). Part families form a hierarchy: a family has either child families or, at the lowest level, Part Groups. Families sharing the same parent are usually close alternatives to one another.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupPartFamily/"><code>SupPartFamily</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/sup_PartGroup/">Part Group </a></td>
-<td>A leaf of the part family hierarchy in the supply data, holding the parts that belong to it together with group-level information such as its manufacturer, overview, key features and documents. Groups sharing the same parent family are usually close alternatives to one another.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupPartGroup/"><code>SupPartGroup</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/sup_ReferenceDesign/">Reference Design </a></td>
-<td>An example design published in the supply catalog, bringing together its design files (e.g. schematics and layouts), documentation and the parts it uses. In Renesas 365 a reference design can be imported into a solution, which adds it to the Workspace as a PCB project linked to that solution.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupRefDesign/"><code>SupRefDesign</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/sup_SoftwareProject/">Software Project </a></td>
-<td>A software project published in the supply catalog, together with the evaluation kits it is compatible with. In Renesas 365 it can be imported into a solution with a compatible eval kit; the import places the project in the Workspace and links it to the solution (see sft_SoftwareProject).</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupSoftwareProject/"><code>SupSoftwareProject</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/sup_SolutionTemplate/">Solution Template </a></td>
-<td>A publisher's template for a solution, held in the supply catalog. It brings together catalog software projects, evaluation kits and a system design (ESD) source, and users can clone it.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupSolutionTemplate/"><code>SupSolutionTemplate</code></a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="system"><a href="subsets/system/">system</a></h3>
-<p>Models the Electronic System Design (ESD) document of a Renesas 365 solution: a system-level block diagram of functional blocks with their key (hardware) and software components, ports and parameters, the connections between blocks, and entries for the hardware and software projects that implement the system. It corresponds to Electronic System Design in a Renesas 365 Workspace.</p>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-<th>Platform API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="classes/system_Connection/">Connection </a></td>
-<td>A connection line in an ESD document representing an interconnection between functional blocks (e.g. signals passed between the interfaces of two devices), drawn directly between blocks or between their ports. In the editor a line can also start or end on other objects or in free space; this model records each end as a functional block and port (see system_Endpoint).</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/system_Endpoint/">Endpoint </a></td>
-<td>One end of a connection in an ESD document, identified by the functional block and the port where the connection line starts or ends.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/system_ESDDocument/">ESD Document </a></td>
-<td>A system-level block diagram document used in a Renesas 365 solution (listed there as a System Design project) to describe the architecture of the system at a functional level. It holds functional blocks with their hardware components, software components and ports, the connections between blocks, and blankets through which parts of the design can be linked to PCB or software projects. Pushing to and pulling from the solution's System Data Model (SDM) for the system design is done from the ESD document. Blankets are not modelled as a separate entity here (see MF-068).</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysEsdDocument/"><code>SysEsdDocument</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/system_FunctionalBlock/">Functional Block </a></td>
-<td>Represents a logical block within an ESD document (e.g., MCU subsystem, LED driver block) that stands for a function, operation or device of the system, including parameters, key components, software components, ports, and associations. In the ESD editor a functional block can also contain other blocks; this nesting is not modelled here.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/system_HardwareProject/">Hardware Project </a></td>
-<td>An entry of an ESD document for a PCB design project (des_Project) that implements part of the system, listing the functional blocks that project covers. In the ESD editor a PCB project can be linked to a hardware blanket (which can be placed around functional blocks), and each project can be linked to at most one blanket in a document.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/system_KeyComponent/">Key Component </a></td>
-<td>A key component of a functional block in an ESD document, shown in the editor as a hardware component (e.g. a Renesas RA MCU chosen with the RA Explorer). Its device configuration (ports, package information, peripherals and pin assignments) can be viewed and edited on the hardware component. Software components of the block reference their parent key component. Its SDM counterpart is system_SdmHardwareComponent.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/system_Parameter/">Parameter </a></td>
-<td>Name–value parameter associated with functional blocks, ports, or other system design resources.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/system_Port/">Port </a></td>
-<td>An interface of a functional block in an ESD document (e.g. the I2C interface of an MPU), placed inside the block's boundaries; connection lines between blocks can start and end at ports. It is a logical interface, distinct from dm_Port, which is a physical port of a device.</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="classes/system_PortAssociation/">Port Association </a></td>
+<td><a href="classes/ota_Device/">Device </a></td>
 <td>TBD</td>
 <td></td>
 </tr>
 <tr>
-<td><a href="classes/system_SoftwareComponent/">Software Component </a></td>
-<td>Functional in nature, abstracted from but connected to logical implementation.</td>
+<td><a href="classes/ota_Fleet/">Fleet </a></td>
+<td>TBD</td>
 <td></td>
 </tr>
 <tr>
-<td><a href="classes/system_SoftwareProject/">Software Project </a></td>
-<td>An entry of an ESD document for a software project (sft_SoftwareProject) that implements part of the system, listing the software components that project covers. In the ESD editor a software project can be linked to a software blanket, and each project can be linked to at most one blanket in a document.</td>
+<td><a href="classes/ota_Package/">Package </a></td>
+<td>TBD</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h3 id="system-sdm"><a href="subsets/system-sdm/">system-sdm</a></h3>
-<p>Models the System Data Model (SDM) of a Renesas 365 solution and its versions, each combining a functional model with device, hardware and software models, plus metadata recording who created a version and with which application, and client-specific metadata (e.g. for ESD, Altium Designer or e² studio). The ESD document and e² studio push changes to and pull changes from the SDM, and Altium Designer pulls it into hardware projects.</p>
+<h3 class="bc-heading bc-core" id="core"><a href="subsets/core/">Core</a></h3>
+<p>Holds the abstract foundations shared by every bounded context: the base classes Entity (specialised as Artifact and Activity), Resource and Event; the mixins that add annotations such as GRID, maturity and API type; shared slots such as id and name; and the abstract relations (e.g. part of, input of, derived from) that domain relations specialise. It is not a product area and has no product documentation of its own.</p>
 <table>
 <thead>
 <tr>
-<th>Class</th>
+<th>Name</th>
 <th>Description</th>
 <th>Platform API</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="classes/system_SdmAuthoringApplication/">Authoring Application </a></td>
-<td>Identifies the application used to create a system model version.</td>
+<td><a href="classes/core_WithGRID/">With GRID </a></td>
+<td>Mixin that adds a GRID annotation slot to a class.</td>
 <td></td>
 </tr>
 <tr>
-<td><a href="classes/system_SdmClientMetadata/">Domain Metadata </a></td>
-<td>Captures metadata specific to a particular client (e.g., ESD, AD, E2Studio).</td>
+<td><a href="classes/core_WithMaturity/">With Maturity </a></td>
+<td>Mixin that adds a maturity annotation slot indicating the lifecycle readiness level.</td>
 <td></td>
 </tr>
 <tr>
-<td><a href="classes/system_SdmConnection/">Connection </a></td>
-<td>Represents a connection between functional blocks.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmConnection/"><code>SysSdmConnection</code></a></td>
+<td><a href="classes/core_WithPlatformAPI/">With Platform API </a></td>
+<td>Mixin that adds API type annotations: platformAPI names the Altium 365 Platform API GraphQL type; nexarAPI names the Nexar (Octopart) GraphQL type for supply-chain entities served by Nexar rather than the Platform API.</td>
+<td></td>
 </tr>
 <tr>
-<td><a href="classes/system_SdmDeviceModel/">Device Model </a></td>
-<td>Represents a device model within the system design.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmDeviceModel/"><code>SysSdmDeviceModel</code></a></td>
+<td><a href="classes/core_WithVault/">With Vault </a></td>
+<td>Mixin that adds a vault content type annotation to a class, indicating how its content is stored in the platform vault.</td>
+<td></td>
 </tr>
 <tr>
-<td><a href="classes/system_SdmEndpoint/">Endpoint </a></td>
-<td>Represents an endpoint of a connection.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmEndpoint/"><code>SysSdmEndpoint</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/system_SdmFunctionalBlock/">Functional Block </a></td>
-<td>Represents a logical block within a system functional model.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmFunctionalBlock/"><code>SysSdmFunctionalBlock</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/system_SdmFunctionalModel/">Functional Model </a></td>
-<td>Captures the functional aspects of the system design, focusing on the behavior and interactions of functional blocks.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmFunctionalModel/"><code>SysSdmFunctionalModel</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/system_SdmHardwareComponent/">Hardware Component </a></td>
-<td>Represents a hardware component / part.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmHardwareComponent/"><code>SysSdmHardwareComponent</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/system_SdmHardwareModel/">Hardware Model </a></td>
-<td>Captures the hardware components and their interactions within the system design.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmHardwareModel/"><code>SysSdmHardwareModel</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/system_SdmPort/">Port </a></td>
-<td>Represents a port within a system design. It is a logical interface of a functional block, distinct from dm_Port, which is a physical port of a device.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmPort/"><code>SysSdmPort</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/system_SdmSoftwareComponent/">Software Component </a></td>
-<td>Represents a software component instance and its dependencies.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSoftwareComponent/"><code>SysSdmSoftwareComponent</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/system_SdmSoftwareModel/">Software Model </a></td>
-<td>Captures the software components and their interactions within the system design.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSoftwareModel/"><code>SysSdmSoftwareModel</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/system_SdmSoftwareSpecification/">Software Specification </a></td>
-<td>The "blueprint" for a software component. Captures the identity and  classification of the software independently of any specific instance.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSoftwareSpecification/"><code>SysSdmSoftwareSpecification</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/system_SdmSoftwareStackInstance/">Software Stack Instance </a></td>
-<td>Represents a software stack instance and its dependencies.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSoftwareStackInstance/"><code>SysSdmSoftwareStackInstance</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/system_SdmSystemModel/">System Model </a></td>
-<td>A high-level system model that captures the overall system architecture, crossing boundary between  functional and logical domains (e.g., hardware and software).</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSystemModel/"><code>SysSdmSystemModel</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/system_SdmSystemModelVersion/">System Model Version </a></td>
-<td>A specific version of a system model, capturing the state of the system design at a particular point in time.</td>
-<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSystemModelVersion/"><code>SysSdmSystemModelVersion</code></a></td>
-</tr>
-<tr>
-<td><a href="classes/system_SdmSystemModelVersionMetadata/">System Model Version Metadata </a></td>
-<td>Metadata associated with a specific version of a system model, capturing provenance information.</td>
+<td><a href="classes/core_WithVaultLink/">With Vault Link </a></td>
+<td>Mixin that adds vault link parent, child, and type annotation slots for tracking hierarchical vault relationships.</td>
 <td></td>
 </tr>
 </tbody>
@@ -1407,12 +2576,9 @@
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
-  
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
-      Material for MkDocs
-    </a>
+<div class="md-copyright__highlight">
+      Copyright © Altium
+    </div>
 </div>
 </div>
 </div>
@@ -1421,11 +2587,11 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<div class="md-progress" data-md-component="progress" role="progressbar"></div>
-<script id="__config" type="application/json">{"base": ".", "features": ["content.tabs.link", "content.tooltips", "toc.integrate", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.instant", "navigation.instant.progress", "navigation.sections", "navigation.expand"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": {"experimental": "experimental", "obsolete": "obsolete"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script id="__config" type="application/json">{"base": ".", "features": ["content.tabs.link", "content.tooltips", "navigation.top", "navigation.sections", "navigation.indexes"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": {"experimental": "experimental", "obsolete": "obsolete"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
 <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="javascript/tablesort.js"></script>
+<script src="javascript/copy.js"></script>
 <script src="javascript/mermaid.mjs" type="module"></script>
 </body>
 </html>

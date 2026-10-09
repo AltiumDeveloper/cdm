@@ -27,6 +27,8 @@ A problem found when a BOM is analysed, usually against a particular BOM line: f
 
 ## Referenced by
 
-- [pro_Bom](pro_Bom.md): `issues`
-- [pro_BomItem](pro_BomItem.md): `issues`
-- [pro_BomItemElement](pro_BomItemElement.md): `issues`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [pro_Bom](pro_Bom.md) | issues | * |  |
+| [pro_BomItem](pro_BomItem.md) | issues | * |  |
+| [pro_BomItemElement](pro_BomItemElement.md) | issues | * |  |

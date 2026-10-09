@@ -27,5 +27,7 @@ Represents a software component instance and its dependencies.
 
 ## Referenced by
 
-- [system_SdmPort](system_SdmPort.md): `softwareComponentId`
-- [system_SdmSoftwareModel](system_SdmSoftwareModel.md): `softwareComponents`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmPort](system_SdmPort.md) | softwareComponentId | 0..1 |  |
+| [system_SdmSoftwareModel](system_SdmSoftwareModel.md) | softwareComponents | * |  |

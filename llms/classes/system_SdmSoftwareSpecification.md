@@ -25,4 +25,6 @@ The "blueprint" for a software component. Captures the identity and classificati
 
 ## Referenced by
 
-- [system_SdmSoftwareStackInstance](system_SdmSoftwareStackInstance.md): `specification`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSoftwareStackInstance](system_SdmSoftwareStackInstance.md) | specification | 1 |  |

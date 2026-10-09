@@ -27,4 +27,6 @@ A dependency describing how a configuration value maps to GPIO or alternate func
 
 ## Referenced by
 
-- [dm_PortConfigurationEnumValue](dm_PortConfigurationEnumValue.md): `dependencies`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PortConfigurationEnumValue](dm_PortConfigurationEnumValue.md) | dependencies | * |  |

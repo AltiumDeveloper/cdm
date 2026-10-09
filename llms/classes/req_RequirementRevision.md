@@ -32,5 +32,7 @@ An immutable snapshot of a requirement statement at a specific revision.
 
 ## Referenced by
 
-- [req_Requirement](req_Requirement.md): `revisions`
-- [req_RequirementChangeRequest](req_RequirementChangeRequest.md): `generatesRevisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_Requirement](req_Requirement.md) | revisions | * | core_revisions |
+| [req_RequirementChangeRequest](req_RequirementChangeRequest.md) | generatesRevisions | * |  |

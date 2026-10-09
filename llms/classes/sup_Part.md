@@ -39,6 +39,8 @@ Supply Part represents a market-available instance of a manufactured Part, provi
 
 ## Referenced by
 
-- [pro_BomItemElement](pro_BomItemElement.md): `part`
-- [pro_GlobalBOM](pro_GlobalBOM.md): `usesParts`
-- [sup_PartGroup](sup_PartGroup.md): `parts`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [pro_BomItemElement](pro_BomItemElement.md) | part | 0..1 |  |
+| [pro_GlobalBOM](pro_GlobalBOM.md) | usesParts | * | core_hasInput |
+| [sup_PartGroup](sup_PartGroup.md) | parts | * |  |

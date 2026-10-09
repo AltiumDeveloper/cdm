@@ -32,5 +32,7 @@ A revision of a Footprint: the PCB footprint as saved into the Workspace at one 
 
 ## Referenced by
 
-- [lib_ComponentRevision](lib_ComponentRevision.md): `footprints`
-- [lib_Footprint](lib_Footprint.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_ComponentRevision](lib_ComponentRevision.md) | footprints | * | core_hasPart |
+| [lib_Footprint](lib_Footprint.md) | revisions | * | core_revisions |

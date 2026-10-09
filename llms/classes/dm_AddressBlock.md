@@ -33,4 +33,6 @@ Address block with start, size, and optional registers and peripherals.
 
 ## Referenced by
 
-- [dm_AddressSegment](dm_AddressSegment.md): `blocks`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_AddressSegment](dm_AddressSegment.md) | blocks | * |  |

@@ -1,4 +1,4 @@
-# Bounded context: procurement
+# Bounded context: Procurement
 
 Models bills of materials: BOMs kept in a Workspace and worked on in the BOM Portal (managed and consolidated BOMs) with their releases, global BOMs, which are not tied to a Workspace, and BOM lines with their alternate and substitute parts and the issues found when a BOM is analysed. It corresponds to the Altium 365 BOM Portal.
 

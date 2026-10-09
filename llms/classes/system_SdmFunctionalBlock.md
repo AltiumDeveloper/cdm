@@ -27,6 +27,8 @@ Represents a logical block within a system functional model.
 
 ## Referenced by
 
-- [system_SdmEndpoint](system_SdmEndpoint.md): `functionalBlockId`
-- [system_SdmFunctionalModel](system_SdmFunctionalModel.md): `functionalBlocks`
-- [system_SdmHardwareModel](system_SdmHardwareModel.md): `functionalBlockIds`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmEndpoint](system_SdmEndpoint.md) | functionalBlockId | 1 |  |
+| [system_SdmFunctionalModel](system_SdmFunctionalModel.md) | functionalBlocks | * |  |
+| [system_SdmHardwareModel](system_SdmHardwareModel.md) | functionalBlockIds | * |  |

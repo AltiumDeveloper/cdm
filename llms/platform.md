@@ -1,4 +1,4 @@
-# Bounded context: platform
+# Bounded context: Platform
 
 Models the platform-wide objects that other bounded contexts build on: organizations (Company Accounts) with their users and user groups, Workspaces with their members and groups, applications, event subscriptions, and Renesas 365 solutions with their releases. It also holds the lifecycle definitions (with their stages and states) and revision naming schemes that govern Workspace Items. Organization-level data is managed in the Company Dashboard; Workspace-level configuration, including these definitions and schemes, is managed from Altium Designer or the Workspace browser interface.
 

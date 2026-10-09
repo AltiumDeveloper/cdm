@@ -31,10 +31,12 @@ A manufacturer part, identified by manufacturer and part number, as held in the 
 
 ## Referenced by
 
-- [des_Project](des_Project.md): `usesParts`
-- [ins_PartInsight](ins_PartInsight.md): `part`
-- [lib_ComponentRevision](lib_ComponentRevision.md): `consistsOfParts`
-- [lib_PartChoice](lib_PartChoice.md): `part`
-- [pro_BomItemElement](pro_BomItemElement.md): `part`
-- [pro_BomRelease](pro_BomRelease.md): `consistsOfParts`
-- [pro_BomWIP](pro_BomWIP.md): `usesParts`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_Project](des_Project.md) | usesParts | * | core_hasInput |
+| [ins_PartInsight](ins_PartInsight.md) | part | 1 | core_informs |
+| [lib_ComponentRevision](lib_ComponentRevision.md) | consistsOfParts | * | core_hasPart |
+| [lib_PartChoice](lib_PartChoice.md) | part | 1 |  |
+| [pro_BomItemElement](pro_BomItemElement.md) | part | 0..1 |  |
+| [pro_BomRelease](pro_BomRelease.md) | consistsOfParts | * | core_hasPart |
+| [pro_BomWIP](pro_BomWIP.md) | usesParts | * | core_hasInput |

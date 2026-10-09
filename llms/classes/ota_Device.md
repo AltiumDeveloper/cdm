@@ -27,4 +27,6 @@
 
 ## Referenced by
 
-- [ota_Fleet](ota_Fleet.md): `devices`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ota_Fleet](ota_Fleet.md) | devices | * |  |

@@ -16,4 +16,6 @@ Defines the virtualization model used by a peripheral interface, describing whet
 
 ## Referenced by
 
-- [dm_PeripheralInstance](../classes/dm_PeripheralInstance.md): `virtualization`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PeripheralInstance](../classes/dm_PeripheralInstance.md) | virtualization | 0..1 |  |

@@ -27,4 +27,6 @@ An enumerated value for a register field.
 
 ## Referenced by
 
-- [dm_RegisterField](dm_RegisterField.md): `enums`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_RegisterField](dm_RegisterField.md) | enums | * |  |

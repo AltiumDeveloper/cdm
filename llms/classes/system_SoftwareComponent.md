@@ -25,7 +25,9 @@ Functional in nature, abstracted from but connected to logical implementation.
 
 ## Referenced by
 
-- [system_FunctionalBlock](system_FunctionalBlock.md): `softwareComponents`
-- [system_KeyComponent](system_KeyComponent.md): `childSoftwareComponentsIds`
-- [system_PortAssociation](system_PortAssociation.md): `softwareComponentId`
-- [system_SoftwareProject](system_SoftwareProject.md): `softwareComponents`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_FunctionalBlock](system_FunctionalBlock.md) | softwareComponents | * |  |
+| [system_KeyComponent](system_KeyComponent.md) | childSoftwareComponentsIds | * |  |
+| [system_PortAssociation](system_PortAssociation.md) | softwareComponentId | 1 |  |
+| [system_SoftwareProject](system_SoftwareProject.md) | softwareComponents | * |  |

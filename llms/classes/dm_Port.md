@@ -28,6 +28,8 @@ A physical port on the device, with its functions, configurations, and connectio
 
 ## Referenced by
 
-- [dm_ConfiguredDeviceModel](dm_ConfiguredDeviceModel.md): `ports`
-- [dm_FullStackDeviceModel](dm_FullStackDeviceModel.md): `ports`
-- [system_SdmDeviceModel](system_SdmDeviceModel.md): `ports`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_ConfiguredDeviceModel](dm_ConfiguredDeviceModel.md) | ports | * |  |
+| [dm_FullStackDeviceModel](dm_FullStackDeviceModel.md) | ports | * |  |
+| [system_SdmDeviceModel](system_SdmDeviceModel.md) | ports | * |  |

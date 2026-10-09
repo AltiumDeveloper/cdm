@@ -47,8 +47,10 @@ A single, testable statement of intent or constraint that governs a solution or 
 
 ## Referenced by
 
-- [req_RequirementBaseline](req_RequirementBaseline.md): `includesRequirements`
-- [req_RequirementChangeRequest](req_RequirementChangeRequest.md): `impactsRequirements`
-- [req_RequirementRevision](req_RequirementRevision.md): `revisionOf`
-- [req_RequirementSpecification](req_RequirementSpecification.md): `includesRequirements`
-- [req_VerificationCase](req_VerificationCase.md): `validatesRequirements`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_RequirementBaseline](req_RequirementBaseline.md) | includesRequirements | 1..* | core_hasPart |
+| [req_RequirementChangeRequest](req_RequirementChangeRequest.md) | impactsRequirements | 1..* |  |
+| [req_RequirementRevision](req_RequirementRevision.md) | revisionOf | 1 | core_revisionOf |
+| [req_RequirementSpecification](req_RequirementSpecification.md) | includesRequirements | 1..* | core_hasPart |
+| [req_VerificationCase](req_VerificationCase.md) | validatesRequirements | 1..* |  |

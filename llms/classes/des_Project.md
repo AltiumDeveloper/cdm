@@ -5,6 +5,7 @@
 - Bounded context: [design](../design.md)
 - Kind: Activity
 - Is a: [core_Activity](core_Activity.md)
+- Subclasses: [des_HarnessProject](des_HarnessProject.md), [des_MultiboardProject](des_MultiboardProject.md)
 - Mixins: [plt_SolutionItem](plt_SolutionItem.md)
 - HTML page: [classes/des_Project/](../../classes/des_Project/)
 
@@ -39,9 +40,11 @@ A design project stored in a Workspace, normally under its built-in version cont
 
 ## Referenced by
 
-- [des_MultiboardProject](des_MultiboardProject.md): `projects`
-- [ins_PartInsight](ins_PartInsight.md): `informedBy`
-- [lib_ComponentRevision](lib_ComponentRevision.md): `usedByProjectVariant`
-- [system_FunctionalBlock](system_FunctionalBlock.md): `implementedBy`
-- [system_HardwareProject](system_HardwareProject.md): `implementedBy`
-- [system_SdmHardwareModel](system_SdmHardwareModel.md): `implementedBy`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_MultiboardProject](des_MultiboardProject.md) | projects | * | core_hasPart |
+| [ins_PartInsight](ins_PartInsight.md) | informedBy | * | core_informedBy |
+| [lib_ComponentRevision](lib_ComponentRevision.md) | usedByProjectVariant | * | core_inputOf |
+| [system_FunctionalBlock](system_FunctionalBlock.md) | implementedBy | 0..1 | core_implementedBy |
+| [system_HardwareProject](system_HardwareProject.md) | implementedBy | 0..1 | core_implementedBy |
+| [system_SdmHardwareModel](system_SdmHardwareModel.md) | implementedBy | 0..1 | core_implementedBy |

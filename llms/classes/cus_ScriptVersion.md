@@ -24,4 +24,6 @@
 
 ## Referenced by
 
-- [cus_Script](cus_Script.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [cus_Script](cus_Script.md) | revisions | * | core_revisions |

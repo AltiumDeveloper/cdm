@@ -31,4 +31,6 @@ The configuration of a device (e.g. an MCU placed as a hardware component in an 
 
 ## Referenced by
 
-- [sft_SoftwareProject](sft_SoftwareProject.md): `deviceConfiguration`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sft_SoftwareProject](sft_SoftwareProject.md) | deviceConfiguration | 0..1 | core_hasOutput |

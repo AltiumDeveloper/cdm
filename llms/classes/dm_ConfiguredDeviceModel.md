@@ -29,5 +29,7 @@ A digital twin of an embedded hardware device as configured for a specific use-c
 
 ## Referenced by
 
-- [system_SdmHardwareComponent](system_SdmHardwareComponent.md): `deviceModelId`
-- [system_SdmSoftwareModel](system_SdmSoftwareModel.md): `deviceModelId`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmHardwareComponent](system_SdmHardwareComponent.md) | deviceModelId | 0..1 |  |
+| [system_SdmSoftwareModel](system_SdmSoftwareModel.md) | deviceModelId | 0..1 |  |

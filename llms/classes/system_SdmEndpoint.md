@@ -22,4 +22,6 @@ Represents an endpoint of a connection.
 
 ## Referenced by
 
-- [system_SdmConnection](system_SdmConnection.md): `endpoints`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmConnection](system_SdmConnection.md) | endpoints | * |  |

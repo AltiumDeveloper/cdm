@@ -32,5 +32,7 @@ A revision of a Component Template: the template definition, stored as a *.CMPT 
 
 ## Referenced by
 
-- [lib_ComponentRevision](lib_ComponentRevision.md): `template`
-- [lib_ComponentTemplate](lib_ComponentTemplate.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_ComponentRevision](lib_ComponentRevision.md) | template | 0..1 | core_derivedFrom |
+| [lib_ComponentTemplate](lib_ComponentTemplate.md) | revisions | * | core_revisions |

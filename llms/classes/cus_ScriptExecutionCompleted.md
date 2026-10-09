@@ -9,4 +9,6 @@
 
 ## Referenced by
 
-- [cus_ScriptExecution](cus_ScriptExecution.md): `emits`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [cus_ScriptExecution](cus_ScriptExecution.md) | emits | 0..1 |  |

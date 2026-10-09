@@ -28,5 +28,7 @@ AI model artifact in context of a workspace
 
 ## Referenced by
 
-- [sft_SoftwareProject](sft_SoftwareProject.md): `aiModels`
-- [sft_SoftwareRelease](sft_SoftwareRelease.md): `aiModels`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sft_SoftwareProject](sft_SoftwareProject.md) | aiModels | 0..1 | core_hasInput |
+| [sft_SoftwareRelease](sft_SoftwareRelease.md) | aiModels | 0..1 | core_hasPart |

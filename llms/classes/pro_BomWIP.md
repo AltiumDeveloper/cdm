@@ -5,6 +5,7 @@
 - Bounded context: [procurement](../procurement.md)
 - Kind: Activity, abstract
 - Is a: [core_Activity](core_Activity.md)
+- Subclasses: [pro_ConsolidatedBOM](pro_ConsolidatedBOM.md), [pro_ManagedBOM](pro_ManagedBOM.md)
 - Mixins: [pro_Bom](pro_Bom.md)
 - HTML page: [classes/pro_BomWIP/](../../classes/pro_BomWIP/)
 
@@ -27,4 +28,6 @@ The current, editable working state of a Workspace BOM, as opposed to a BOM rele
 
 ## Referenced by
 
-- [ins_PartInsight](ins_PartInsight.md): `informedBy`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ins_PartInsight](ins_PartInsight.md) | informedBy | * | core_informedBy |

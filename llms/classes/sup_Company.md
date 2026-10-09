@@ -30,4 +30,6 @@ Supply Company represents an organization in the electronics supply chain. Depen
 
 ## Referenced by
 
-- [sup_Part](sup_Part.md): `manufacturer`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sup_Part](sup_Part.md) | manufacturer | 1 |  |

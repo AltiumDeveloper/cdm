@@ -5,6 +5,7 @@
 - Bounded context: [insights](../insights.md)
 - Kind: Activity, abstract
 - Is a: [core_Activity](core_Activity.md)
+- Subclasses: [ins_PartInsight](ins_PartInsight.md)
 - HTML page: [classes/ins_Insight/](../../classes/ins_Insight/)
 
 ## Attributes

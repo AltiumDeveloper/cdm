@@ -31,4 +31,6 @@ A person's membership in a particular Workspace, connecting their Altium Account
 
 ## Referenced by
 
-- [system_SdmSystemModelVersionMetadata](system_SdmSystemModelVersionMetadata.md): `createdBy`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModelVersionMetadata](system_SdmSystemModelVersionMetadata.md) | createdBy | 1 |  |

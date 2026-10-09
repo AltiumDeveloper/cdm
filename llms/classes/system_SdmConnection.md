@@ -25,4 +25,6 @@ Represents a connection between functional blocks.
 
 ## Referenced by
 
-- [system_SdmFunctionalModel](system_SdmFunctionalModel.md): `connections`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmFunctionalModel](system_SdmFunctionalModel.md) | connections | * |  |

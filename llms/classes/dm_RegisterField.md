@@ -30,4 +30,6 @@ A bit field within a register.
 
 ## Referenced by
 
-- [dm_Register](dm_Register.md): `fields`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_Register](dm_Register.md) | fields | * |  |

@@ -25,4 +25,6 @@ Substitute is a replacement of a part by another within an individual BOM.
 
 ## Referenced by
 
-- [pro_BomItem](pro_BomItem.md): `substitutes`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [pro_BomItem](pro_BomItem.md) | substitutes | * |  |

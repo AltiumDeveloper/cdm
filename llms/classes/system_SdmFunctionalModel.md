@@ -26,4 +26,6 @@ Captures the functional aspects of the system design, focusing on the behavior a
 
 ## Referenced by
 
-- [system_SdmSystemModelVersion](system_SdmSystemModelVersion.md): `functionalModel`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModelVersion](system_SdmSystemModelVersion.md) | functionalModel | 0..1 |  |

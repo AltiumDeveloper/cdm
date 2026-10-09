@@ -30,8 +30,10 @@ A concrete instance of a peripheral (e.g., SCI0), including available modes.
 
 ## Referenced by
 
-- [dm_AddressBlock](dm_AddressBlock.md): `peripheralInstance`
-- [dm_Peripheral](dm_Peripheral.md): `instances`
-- [dm_PortFunction](dm_PortFunction.md): `peripheralInstance`
-- [system_SdmPort](system_SdmPort.md): `peripheralInstanceId`
-- [system_SdmSoftwareStackInstance](system_SdmSoftwareStackInstance.md): `peripheralInstanceId`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_AddressBlock](dm_AddressBlock.md) | peripheralInstance | 0..1 |  |
+| [dm_Peripheral](dm_Peripheral.md) | instances | * |  |
+| [dm_PortFunction](dm_PortFunction.md) | peripheralInstance | 0..1 |  |
+| [system_SdmPort](system_SdmPort.md) | peripheralInstanceId | 0..1 |  |
+| [system_SdmSoftwareStackInstance](system_SdmSoftwareStackInstance.md) | peripheralInstanceId | 0..1 |  |

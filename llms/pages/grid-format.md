@@ -52,31 +52,30 @@ A GRID therefore provides:
 The GRID template of every class that declares one, per bounded context. Templates are informational
 and are declared per class in the `grid` annotation.
 
-### collaboration
+### Platform
 
-Bounded context page: [collaboration](../collaboration.md).
+Bounded context page: [Platform](../platform.md).
 
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
-| [Comment Thread](../classes/col_CommentThread.md) | `grid:workspace:{workspace-id}:collaboration:comment-thread/{id}` |
-| [Task](../classes/col_Task.md) | `grid:workspace:{workspace-id}:collaboration:task/{id}` |
+| [Application](../classes/plt_Application.md) | `grid:global::platform:application/{id}` |
+| [Event Subscription](../classes/plt_EventSubscription.md) | `grid:global::events:subscription/{id}` |
+| [Lifecycle Definition](../classes/plt_LifecycleDefinition.md) | `grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}` |
+| [Revision Naming Scheme](../classes/plt_NamingScheme.md) | `grid:workspace:{workspace-id}:platform:revision-naming-scheme/{id}` |
+| [Organization](../classes/plt_Organization.md) | `grid:global::platform:organization/{id}` |
+| [Solution](../classes/plt_Solution.md) | `grid:workspace:{workspace-id}:platform:solution/{id}` |
+| [Solution Release](../classes/plt_SolutionRelease.md) | `grid:workspace:{workspace-id}:platform:solution-release/{id}` |
+| [User](../classes/plt_User.md) | `grid:global::platform:user/{id}` |
+| [User Group](../classes/plt_UserGroup.md) | `grid:global::platform:group/{id}` |
+| [Workspace](../classes/plt_Workspace.md) | `grid:global::platform:workspace/{id}` |
+| [Workspace Group](../classes/plt_WorkspaceGroup.md) | `grid:workspace:{workspace-id}:team:group/{id}` |
+| [Workspace User](../classes/plt_WorkspaceUser.md) | `grid:workspace:{workspace-id}:team:user/{id}` |
 
-### customization
+### Design
 
-Bounded context page: [customization](../customization.md).
+Bounded context page: [Design](../design.md).
 
-| Class | GRID template |
-| --- | --- |
-| [Script](../classes/cus_Script.md) | `grid:workspace:{workspace-id}:scripts:script/{id}` |
-| [Script Execution](../classes/cus_ScriptExecution.md) | `grid:workspace:{workspace-id}:scripts:script-execution/{id}` |
-| [Script Version](../classes/cus_ScriptVersion.md) | `grid:workspace:{workspace-id}:scripts:script-version/{id}` |
-| [Workflow](../classes/cus_Workflow.md) | `grid:workspace:{workspace-id}:customization:workflow/{id}` |
-
-### design
-
-Bounded context page: [design](../design.md).
-
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [Manufacturing Package](../classes/des_ManufacturingPackage.md) | `grid:workspace:{workspace-id}:design:manufacturing-package/{id}` |
 | [Hardware Project](../classes/des_Project.md) | `grid:workspace:{workspace-id}:design:project/{id}` |
@@ -86,27 +85,19 @@ Bounded context page: [design](../design.md).
 | [Rule Check](../classes/des_RuleCheck.md) | `grid:workspace:{workspace-id}:design:rule-check/{id}` |
 | [Rule Check Execution](../classes/des_RuleCheckExecution.md) | `grid:workspace:{workspace-id}:design:rule-check-execution/{id}` |
 
-### deviceModel
+### Insights
 
-Bounded context page: [deviceModel](../deviceModel.md).
+Bounded context page: [Insights](../insights.md).
 
-| Class | GRID template |
-| --- | --- |
-| [FullStackDeviceModel](../classes/dm_FullStackDeviceModel.md) | `grid:global::device-model:fullstack-dm/{id}` |
-
-### insights
-
-Bounded context page: [insights](../insights.md).
-
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [Part Insight](../classes/ins_PartInsight.md) | `grid:workspace:{workspace-id}:insights:insight/{id}` |
 
-### library
+### Library Management
 
-Bounded context page: [library](../library.md).
+Bounded context page: [Library Management](../library.md).
 
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [Component](../classes/lib_Component.md) | `grid:workspace:{workspace-id}:library:component/{id}` |
 | [Component Revision](../classes/lib_ComponentRevision.md) | `grid:workspace:{workspace-id}:library:component-revision/{id}` |
@@ -124,77 +115,31 @@ Bounded context page: [library](../library.md).
 | [Symbol](../classes/lib_Symbol.md) | `grid:workspace:{workspace-id}:library:symbol/{id}` |
 | [Symbol Revision](../classes/lib_SymbolRevision.md) | `grid:workspace:{workspace-id}:library:symbol-revision/{id}` |
 
-### ota
+### Collaboration
 
-Bounded context page: [ota](../ota.md).
+Bounded context page: [Collaboration](../collaboration.md).
 
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
-| [Device](../classes/ota_Device.md) | `grid:workspace:{workspace-id}:ota:device/{id}` |
-| [Fleet](../classes/ota_Fleet.md) | `grid:workspace:{workspace-id}:ota:fleet/{id}` |
-| [Package](../classes/ota_Package.md) | `grid:workspace:{workspace-id}:ota:package/{id}` |
+| [Comment Thread](../classes/col_CommentThread.md) | `grid:workspace:{workspace-id}:collaboration:comment-thread/{id}` |
+| [Task](../classes/col_Task.md) | `grid:workspace:{workspace-id}:collaboration:task/{id}` |
 
-### platform
+### Procurement
 
-Bounded context page: [platform](../platform.md).
+Bounded context page: [Procurement](../procurement.md).
 
-| Class | GRID template |
-| --- | --- |
-| [Application](../classes/plt_Application.md) | `grid:global::platform:application/{id}` |
-| [Event Subscription](../classes/plt_EventSubscription.md) | `grid:global::events:subscription/{id}` |
-| [Lifecycle Definition](../classes/plt_LifecycleDefinition.md) | `grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}` |
-| [Revision Naming Scheme](../classes/plt_NamingScheme.md) | `grid:workspace:{workspace-id}:platform:revision-naming-scheme/{id}` |
-| [Organization](../classes/plt_Organization.md) | `grid:global::platform:organization/{id}` |
-| [Solution](../classes/plt_Solution.md) | `grid:workspace:{workspace-id}:platform:solution/{id}` |
-| [Solution Release](../classes/plt_SolutionRelease.md) | `grid:workspace:{workspace-id}:platform:solution-release/{id}` |
-| [User](../classes/plt_User.md) | `grid:global::platform:user/{id}` |
-| [User Group](../classes/plt_UserGroup.md) | `grid:global::platform:group/{id}` |
-| [Workspace](../classes/plt_Workspace.md) | `grid:global::platform:workspace/{id}` |
-| [Workspace Group](../classes/plt_WorkspaceGroup.md) | `grid:workspace:{workspace-id}:team:group/{id}` |
-| [Workspace User](../classes/plt_WorkspaceUser.md) | `grid:workspace:{workspace-id}:team:user/{id}` |
-
-### procurement
-
-Bounded context page: [procurement](../procurement.md).
-
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [BOM Release](../classes/pro_BomRelease.md) | `grid:workspace:{workspace-id}:procurement:bom-release/{id}` |
 | [Consolidated BOM](../classes/pro_ConsolidatedBOM.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
 | [Global BOM](../classes/pro_GlobalBOM.md) | `grid:global::procurement:bom/{id}` |
 | [Managed BOM](../classes/pro_ManagedBOM.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
 
-### requirements
+### Supply
 
-Bounded context page: [requirements](../requirements.md).
+Bounded context page: [Supply](../supply.md).
 
-| Class | GRID template |
-| --- | --- |
-| [Requirements Project](../classes/req_Project.md) | `grid:workspace:{workspace-id}:requirements:project/{id}` |
-| [Requirement](../classes/req_Requirement.md) | `grid:workspace:{workspace-id}:requirements:requirement/{id}` |
-| [Requirement Baseline](../classes/req_RequirementBaseline.md) | `grid:workspace:{workspace-id}:requirements:baseline/{id}` |
-| [Requirement Change Request](../classes/req_RequirementChangeRequest.md) | `grid:workspace:{workspace-id}:requirements:change-request/{id}` |
-| [Requirement Revision](../classes/req_RequirementRevision.md) | `grid:workspace:{workspace-id}:requirements:requirement-revision/{id}` |
-| [Requirement Specification](../classes/req_RequirementSpecification.md) | `grid:workspace:{workspace-id}:requirements:specification/{id}` |
-| [Verification Case](../classes/req_VerificationCase.md) | `grid:workspace:{workspace-id}:requirements:verification-case/{id}` |
-
-### software
-
-Bounded context page: [software](../software.md).
-
-| Class | GRID template |
-| --- | --- |
-| [AI Model](../classes/sft_AIModel.md) | `grid:workspace:{workspace-id}:software:ai-model/{id}` |
-| [Device Configuration](../classes/sft_DeviceConfiguration.md) | `grid:workspace:{workspace-id}:software:device-configuration/{id}` |
-| [Device Configuration Revision](../classes/sft_DeviceConfigurationRevision.md) | `grid:workspace:{workspace-id}:software:device-configuration-revision/{id}` |
-| [Software Project](../classes/sft_SoftwareProject.md) | `grid:workspace:{workspace-id}:software:software-project/{id}` |
-| [Software Release](../classes/sft_SoftwareRelease.md) | `grid:workspace:{workspace-id}:software:software-release/{id}` |
-
-### supply
-
-Bounded context page: [supply](../supply.md).
-
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [Company](../classes/sup_Company.md) | `grid:supply::platform:company/{id}` |
 | [Evaluation Kit](../classes/sup_EvalKit.md) | `grid:supply::platform:eval-kit/{id}` |
@@ -206,22 +151,77 @@ Bounded context page: [supply](../supply.md).
 | [Software Project](../classes/sup_SoftwareProject.md) | `grid:supply::platform:software-project/{id}` |
 | [Solution Template](../classes/sup_SolutionTemplate.md) | `grid:supply::platform:solution-template/{id}` |
 
-### system
+### Customization
 
-Bounded context page: [system](../system.md).
+Bounded context page: [Customization](../customization.md).
 
-| Class | GRID template |
+| Entity | GRID template |
+| --- | --- |
+| [Script](../classes/cus_Script.md) | `grid:workspace:{workspace-id}:scripts:script/{id}` |
+| [Script Execution](../classes/cus_ScriptExecution.md) | `grid:workspace:{workspace-id}:scripts:script-execution/{id}` |
+| [Script Version](../classes/cus_ScriptVersion.md) | `grid:workspace:{workspace-id}:scripts:script-version/{id}` |
+| [Workflow](../classes/cus_Workflow.md) | `grid:workspace:{workspace-id}:customization:workflow/{id}` |
+
+### System Design
+
+Bounded context page: [System Design](../system.md).
+
+| Entity | GRID template |
 | --- | --- |
 | [ESD Document](../classes/system_ESDDocument.md) | `grid:workspace:{workspace-id}:system-design:esd/{id}` |
 
-### system-sdm
+### System Design - System Data Model
 
-Bounded context page: [system-sdm](../system-sdm.md).
+Bounded context page: [System Design - System Data Model](../system-sdm.md).
 
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [System Model](../classes/system_SdmSystemModel.md) | `grid:workspace:{workspace-id}:system-design:sdm/{id}` |
 | [System Model Version](../classes/system_SdmSystemModelVersion.md) | `grid:workspace:{workspace-id}:system-design:sdm-version/{id}` |
+
+### Requirements
+
+Bounded context page: [Requirements](../requirements.md).
+
+| Entity | GRID template |
+| --- | --- |
+| [Requirements Project](../classes/req_Project.md) | `grid:workspace:{workspace-id}:requirements:project/{id}` |
+| [Requirement](../classes/req_Requirement.md) | `grid:workspace:{workspace-id}:requirements:requirement/{id}` |
+| [Requirement Baseline](../classes/req_RequirementBaseline.md) | `grid:workspace:{workspace-id}:requirements:baseline/{id}` |
+| [Requirement Change Request](../classes/req_RequirementChangeRequest.md) | `grid:workspace:{workspace-id}:requirements:change-request/{id}` |
+| [Requirement Revision](../classes/req_RequirementRevision.md) | `grid:workspace:{workspace-id}:requirements:requirement-revision/{id}` |
+| [Requirement Specification](../classes/req_RequirementSpecification.md) | `grid:workspace:{workspace-id}:requirements:specification/{id}` |
+| [Verification Case](../classes/req_VerificationCase.md) | `grid:workspace:{workspace-id}:requirements:verification-case/{id}` |
+
+### Device Model
+
+Bounded context page: [Device Model](../deviceModel.md).
+
+| Entity | GRID template |
+| --- | --- |
+| [FullStackDeviceModel](../classes/dm_FullStackDeviceModel.md) | `grid:global::device-model:fullstack-dm/{id}` |
+
+### Software
+
+Bounded context page: [Software](../software.md).
+
+| Entity | GRID template |
+| --- | --- |
+| [AI Model](../classes/sft_AIModel.md) | `grid:workspace:{workspace-id}:software:ai-model/{id}` |
+| [Device Configuration](../classes/sft_DeviceConfiguration.md) | `grid:workspace:{workspace-id}:software:device-configuration/{id}` |
+| [Device Configuration Revision](../classes/sft_DeviceConfigurationRevision.md) | `grid:workspace:{workspace-id}:software:device-configuration-revision/{id}` |
+| [Software Project](../classes/sft_SoftwareProject.md) | `grid:workspace:{workspace-id}:software:software-project/{id}` |
+| [Software Release](../classes/sft_SoftwareRelease.md) | `grid:workspace:{workspace-id}:software:software-release/{id}` |
+
+### Over-the-Air Updates
+
+Bounded context page: [Over-the-Air Updates](../ota.md).
+
+| Entity | GRID template |
+| --- | --- |
+| [Device](../classes/ota_Device.md) | `grid:workspace:{workspace-id}:ota:device/{id}` |
+| [Fleet](../classes/ota_Fleet.md) | `grid:workspace:{workspace-id}:ota:fleet/{id}` |
+| [Package](../classes/ota_Package.md) | `grid:workspace:{workspace-id}:ota:package/{id}` |
 
 ## The GRID context is not the CDM subset
 
@@ -274,26 +274,26 @@ Every prefix declared by the schema files, with the bounded context that owns th
 | Prefix | Namespace | Bounded context |
 | --- | --- | --- |
 | `cdm` | `https://w3id.org/altium/cdm/` |  |
-| `col` | `https://w3id.org/altium/cdm/collaboration/` | [collaboration](../collaboration.md) |
-| `con` | `https://w3id.org/altium/cdm/configuration/` | [configuration](../configuration.md) |
-| `core` | `https://w3id.org/altium/cdm/core/` | [core](../core.md) |
-| `cus` | `https://w3id.org/altium/cdm/customization/` | [customization](../customization.md) |
-| `des` | `https://w3id.org/altium/cdm/design/` | [design](../design.md) |
-| `dm` | `https://w3id.org/altium/cdm/deviceModel/` | [deviceModel](../deviceModel.md) |
-| `ins` | `https://w3id.org/altium/cdm/insights/` | [insights](../insights.md) |
-| `lib` | `https://w3id.org/altium/cdm/library/` | [library](../library.md) |
+| `col` | `https://w3id.org/altium/cdm/collaboration/` | [Collaboration](../collaboration.md) |
+| `con` | `https://w3id.org/altium/cdm/configuration/` | [Configuration Management](../configuration.md) |
+| `core` | `https://w3id.org/altium/cdm/core/` | [Core](../core.md) |
+| `cus` | `https://w3id.org/altium/cdm/customization/` | [Customization](../customization.md) |
+| `des` | `https://w3id.org/altium/cdm/design/` | [Design](../design.md) |
+| `dm` | `https://w3id.org/altium/cdm/deviceModel/` | [Device Model](../deviceModel.md) |
+| `ins` | `https://w3id.org/altium/cdm/insights/` | [Insights](../insights.md) |
+| `lib` | `https://w3id.org/altium/cdm/library/` | [Library Management](../library.md) |
 | `linkml` | `https://w3id.org/linkml/` |  |
 | `obo` | `http://purl.obolibrary.org/obo/` |  |
-| `ota` | `https://w3id.org/altium/cdm/ota/` | [ota](../ota.md) |
-| `plt` | `https://w3id.org/altium/cdm/platform/` | [platform](../platform.md) |
-| `pro` | `https://w3id.org/altium/cdm/procurement/` | [procurement](../procurement.md) |
+| `ota` | `https://w3id.org/altium/cdm/ota/` | [Over-the-Air Updates](../ota.md) |
+| `plt` | `https://w3id.org/altium/cdm/platform/` | [Platform](../platform.md) |
+| `pro` | `https://w3id.org/altium/cdm/procurement/` | [Procurement](../procurement.md) |
 | `prov` | `http://www.w3.org/ns/prov#` |  |
-| `req` | `https://w3id.org/altium/cdm/requirement/` | requirement |
+| `req` | `https://w3id.org/altium/cdm/requirement/` | [Requirements](../requirements.md) |
 | `schema` | `http://schema.org/` |  |
-| `sft` | `https://w3id.org/altium/cdm/software/` | [software](../software.md) |
+| `sft` | `https://w3id.org/altium/cdm/software/` | [Software](../software.md) |
 | `shex` | `http://www.w3.org/ns/shex#` |  |
-| `sup` | `https://w3id.org/altium/cdm/supply/` | [supply](../supply.md) |
-| `sys` | `https://w3id.org/altium/cdm/system/` | [system](../system.md) |
+| `sup` | `https://w3id.org/altium/cdm/supply/` | [Supply](../supply.md) |
+| `sys` | `https://w3id.org/altium/cdm/system/` | [System Design](../system.md) |
 | `xsd` | `http://www.w3.org/2001/XMLSchema#` |  |
 
 A new subset prefix needs formal approval of the subset it belongs to (see `AGENTS.md` §6 in the repository). External vocabulary prefixes allow-listed for mappings (`prov:`, `obo:`) are exempt.

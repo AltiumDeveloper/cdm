@@ -23,5 +23,7 @@ None declared.
 
 ## Referenced by
 
-- [sft_SoftwareProject](sft_SoftwareProject.md): `latestBuildArtifacts`
-- [sft_SoftwareRelease](sft_SoftwareRelease.md): `buildArtifacts`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sft_SoftwareProject](sft_SoftwareProject.md) | latestBuildArtifacts | * | core_hasOutput |
+| [sft_SoftwareRelease](sft_SoftwareRelease.md) | buildArtifacts | * | core_hasPart |

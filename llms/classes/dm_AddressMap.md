@@ -21,4 +21,6 @@ Address map for the device including memory and peripheral regions.
 
 ## Referenced by
 
-- [dm_FullStackDeviceModel](dm_FullStackDeviceModel.md): `addressMap`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_FullStackDeviceModel](dm_FullStackDeviceModel.md) | addressMap | 0..1 |  |

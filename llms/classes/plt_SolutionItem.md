@@ -17,4 +17,6 @@ Mixin that marks an entity as an item belonging to a platform Solution.
 
 ## Referenced by
 
-- [plt_Solution](plt_Solution.md): `solutionItems`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [plt_Solution](plt_Solution.md) | solutionItems | * | core_hasPart |

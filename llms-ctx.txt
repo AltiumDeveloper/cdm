@@ -185,31 +185,30 @@ A GRID therefore provides:
 The GRID template of every class that declares one, per bounded context. Templates are informational
 and are declared per class in the `grid` annotation.
 
-### collaboration
+### Platform
 
-Bounded context page: [collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md).
+Bounded context page: [Platform](https://altiumdeveloper.github.io/cdm/llms/platform.md).
 
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
-| [Comment Thread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md) | `grid:workspace:{workspace-id}:collaboration:comment-thread/{id}` |
-| [Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md) | `grid:workspace:{workspace-id}:collaboration:task/{id}` |
+| [Application](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Application.md) | `grid:global::platform:application/{id}` |
+| [Event Subscription](https://altiumdeveloper.github.io/cdm/llms/classes/plt_EventSubscription.md) | `grid:global::events:subscription/{id}` |
+| [Lifecycle Definition](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleDefinition.md) | `grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}` |
+| [Revision Naming Scheme](https://altiumdeveloper.github.io/cdm/llms/classes/plt_NamingScheme.md) | `grid:workspace:{workspace-id}:platform:revision-naming-scheme/{id}` |
+| [Organization](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Organization.md) | `grid:global::platform:organization/{id}` |
+| [Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md) | `grid:workspace:{workspace-id}:platform:solution/{id}` |
+| [Solution Release](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionRelease.md) | `grid:workspace:{workspace-id}:platform:solution-release/{id}` |
+| [User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_User.md) | `grid:global::platform:user/{id}` |
+| [User Group](https://altiumdeveloper.github.io/cdm/llms/classes/plt_UserGroup.md) | `grid:global::platform:group/{id}` |
+| [Workspace](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Workspace.md) | `grid:global::platform:workspace/{id}` |
+| [Workspace Group](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceGroup.md) | `grid:workspace:{workspace-id}:team:group/{id}` |
+| [Workspace User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceUser.md) | `grid:workspace:{workspace-id}:team:user/{id}` |
 
-### customization
+### Design
 
-Bounded context page: [customization](https://altiumdeveloper.github.io/cdm/llms/customization.md).
+Bounded context page: [Design](https://altiumdeveloper.github.io/cdm/llms/design.md).
 
-| Class | GRID template |
-| --- | --- |
-| [Script](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Script.md) | `grid:workspace:{workspace-id}:scripts:script/{id}` |
-| [Script Execution](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecution.md) | `grid:workspace:{workspace-id}:scripts:script-execution/{id}` |
-| [Script Version](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptVersion.md) | `grid:workspace:{workspace-id}:scripts:script-version/{id}` |
-| [Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md) | `grid:workspace:{workspace-id}:customization:workflow/{id}` |
-
-### design
-
-Bounded context page: [design](https://altiumdeveloper.github.io/cdm/llms/design.md).
-
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [Manufacturing Package](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md) | `grid:workspace:{workspace-id}:design:manufacturing-package/{id}` |
 | [Hardware Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) | `grid:workspace:{workspace-id}:design:project/{id}` |
@@ -219,27 +218,19 @@ Bounded context page: [design](https://altiumdeveloper.github.io/cdm/llms/design
 | [Rule Check](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheck.md) | `grid:workspace:{workspace-id}:design:rule-check/{id}` |
 | [Rule Check Execution](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheckExecution.md) | `grid:workspace:{workspace-id}:design:rule-check-execution/{id}` |
 
-### deviceModel
+### Insights
 
-Bounded context page: [deviceModel](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md).
+Bounded context page: [Insights](https://altiumdeveloper.github.io/cdm/llms/insights.md).
 
-| Class | GRID template |
-| --- | --- |
-| [FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md) | `grid:global::device-model:fullstack-dm/{id}` |
-
-### insights
-
-Bounded context page: [insights](https://altiumdeveloper.github.io/cdm/llms/insights.md).
-
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [Part Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) | `grid:workspace:{workspace-id}:insights:insight/{id}` |
 
-### library
+### Library Management
 
-Bounded context page: [library](https://altiumdeveloper.github.io/cdm/llms/library.md).
+Bounded context page: [Library Management](https://altiumdeveloper.github.io/cdm/llms/library.md).
 
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md) | `grid:workspace:{workspace-id}:library:component/{id}` |
 | [Component Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) | `grid:workspace:{workspace-id}:library:component-revision/{id}` |
@@ -257,77 +248,31 @@ Bounded context page: [library](https://altiumdeveloper.github.io/cdm/llms/libra
 | [Symbol](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Symbol.md) | `grid:workspace:{workspace-id}:library:symbol/{id}` |
 | [Symbol Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SymbolRevision.md) | `grid:workspace:{workspace-id}:library:symbol-revision/{id}` |
 
-### ota
+### Collaboration
 
-Bounded context page: [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md).
+Bounded context page: [Collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md).
 
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
-| [Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) | `grid:workspace:{workspace-id}:ota:device/{id}` |
-| [Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md) | `grid:workspace:{workspace-id}:ota:fleet/{id}` |
-| [Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) | `grid:workspace:{workspace-id}:ota:package/{id}` |
+| [Comment Thread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md) | `grid:workspace:{workspace-id}:collaboration:comment-thread/{id}` |
+| [Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md) | `grid:workspace:{workspace-id}:collaboration:task/{id}` |
 
-### platform
+### Procurement
 
-Bounded context page: [platform](https://altiumdeveloper.github.io/cdm/llms/platform.md).
+Bounded context page: [Procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md).
 
-| Class | GRID template |
-| --- | --- |
-| [Application](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Application.md) | `grid:global::platform:application/{id}` |
-| [Event Subscription](https://altiumdeveloper.github.io/cdm/llms/classes/plt_EventSubscription.md) | `grid:global::events:subscription/{id}` |
-| [Lifecycle Definition](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleDefinition.md) | `grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}` |
-| [Revision Naming Scheme](https://altiumdeveloper.github.io/cdm/llms/classes/plt_NamingScheme.md) | `grid:workspace:{workspace-id}:platform:revision-naming-scheme/{id}` |
-| [Organization](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Organization.md) | `grid:global::platform:organization/{id}` |
-| [Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md) | `grid:workspace:{workspace-id}:platform:solution/{id}` |
-| [Solution Release](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionRelease.md) | `grid:workspace:{workspace-id}:platform:solution-release/{id}` |
-| [User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_User.md) | `grid:global::platform:user/{id}` |
-| [User Group](https://altiumdeveloper.github.io/cdm/llms/classes/plt_UserGroup.md) | `grid:global::platform:group/{id}` |
-| [Workspace](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Workspace.md) | `grid:global::platform:workspace/{id}` |
-| [Workspace Group](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceGroup.md) | `grid:workspace:{workspace-id}:team:group/{id}` |
-| [Workspace User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceUser.md) | `grid:workspace:{workspace-id}:team:user/{id}` |
-
-### procurement
-
-Bounded context page: [procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md).
-
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [BOM Release](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomRelease.md) | `grid:workspace:{workspace-id}:procurement:bom-release/{id}` |
 | [Consolidated BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ConsolidatedBOM.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
 | [Global BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_GlobalBOM.md) | `grid:global::procurement:bom/{id}` |
 | [Managed BOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_ManagedBOM.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
 
-### requirements
+### Supply
 
-Bounded context page: [requirements](https://altiumdeveloper.github.io/cdm/llms/requirements.md).
+Bounded context page: [Supply](https://altiumdeveloper.github.io/cdm/llms/supply.md).
 
-| Class | GRID template |
-| --- | --- |
-| [Requirements Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md) | `grid:workspace:{workspace-id}:requirements:project/{id}` |
-| [Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md) | `grid:workspace:{workspace-id}:requirements:requirement/{id}` |
-| [Requirement Baseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md) | `grid:workspace:{workspace-id}:requirements:baseline/{id}` |
-| [Requirement Change Request](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md) | `grid:workspace:{workspace-id}:requirements:change-request/{id}` |
-| [Requirement Revision](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementRevision.md) | `grid:workspace:{workspace-id}:requirements:requirement-revision/{id}` |
-| [Requirement Specification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md) | `grid:workspace:{workspace-id}:requirements:specification/{id}` |
-| [Verification Case](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md) | `grid:workspace:{workspace-id}:requirements:verification-case/{id}` |
-
-### software
-
-Bounded context page: [software](https://altiumdeveloper.github.io/cdm/llms/software.md).
-
-| Class | GRID template |
-| --- | --- |
-| [AI Model](https://altiumdeveloper.github.io/cdm/llms/classes/sft_AIModel.md) | `grid:workspace:{workspace-id}:software:ai-model/{id}` |
-| [Device Configuration](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfiguration.md) | `grid:workspace:{workspace-id}:software:device-configuration/{id}` |
-| [Device Configuration Revision](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfigurationRevision.md) | `grid:workspace:{workspace-id}:software:device-configuration-revision/{id}` |
-| [Software Project](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md) | `grid:workspace:{workspace-id}:software:software-project/{id}` |
-| [Software Release](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareRelease.md) | `grid:workspace:{workspace-id}:software:software-release/{id}` |
-
-### supply
-
-Bounded context page: [supply](https://altiumdeveloper.github.io/cdm/llms/supply.md).
-
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [Company](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Company.md) | `grid:supply::platform:company/{id}` |
 | [Evaluation Kit](https://altiumdeveloper.github.io/cdm/llms/classes/sup_EvalKit.md) | `grid:supply::platform:eval-kit/{id}` |
@@ -339,22 +284,77 @@ Bounded context page: [supply](https://altiumdeveloper.github.io/cdm/llms/supply
 | [Software Project](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SoftwareProject.md) | `grid:supply::platform:software-project/{id}` |
 | [Solution Template](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SolutionTemplate.md) | `grid:supply::platform:solution-template/{id}` |
 
-### system
+### Customization
 
-Bounded context page: [system](https://altiumdeveloper.github.io/cdm/llms/system.md).
+Bounded context page: [Customization](https://altiumdeveloper.github.io/cdm/llms/customization.md).
 
-| Class | GRID template |
+| Entity | GRID template |
+| --- | --- |
+| [Script](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Script.md) | `grid:workspace:{workspace-id}:scripts:script/{id}` |
+| [Script Execution](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecution.md) | `grid:workspace:{workspace-id}:scripts:script-execution/{id}` |
+| [Script Version](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptVersion.md) | `grid:workspace:{workspace-id}:scripts:script-version/{id}` |
+| [Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md) | `grid:workspace:{workspace-id}:customization:workflow/{id}` |
+
+### System Design
+
+Bounded context page: [System Design](https://altiumdeveloper.github.io/cdm/llms/system.md).
+
+| Entity | GRID template |
 | --- | --- |
 | [ESD Document](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md) | `grid:workspace:{workspace-id}:system-design:esd/{id}` |
 
-### system-sdm
+### System Design - System Data Model
 
-Bounded context page: [system-sdm](https://altiumdeveloper.github.io/cdm/llms/system-sdm.md).
+Bounded context page: [System Design - System Data Model](https://altiumdeveloper.github.io/cdm/llms/system-sdm.md).
 
-| Class | GRID template |
+| Entity | GRID template |
 | --- | --- |
 | [System Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md) | `grid:workspace:{workspace-id}:system-design:sdm/{id}` |
 | [System Model Version](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md) | `grid:workspace:{workspace-id}:system-design:sdm-version/{id}` |
+
+### Requirements
+
+Bounded context page: [Requirements](https://altiumdeveloper.github.io/cdm/llms/requirements.md).
+
+| Entity | GRID template |
+| --- | --- |
+| [Requirements Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md) | `grid:workspace:{workspace-id}:requirements:project/{id}` |
+| [Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md) | `grid:workspace:{workspace-id}:requirements:requirement/{id}` |
+| [Requirement Baseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md) | `grid:workspace:{workspace-id}:requirements:baseline/{id}` |
+| [Requirement Change Request](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md) | `grid:workspace:{workspace-id}:requirements:change-request/{id}` |
+| [Requirement Revision](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementRevision.md) | `grid:workspace:{workspace-id}:requirements:requirement-revision/{id}` |
+| [Requirement Specification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md) | `grid:workspace:{workspace-id}:requirements:specification/{id}` |
+| [Verification Case](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md) | `grid:workspace:{workspace-id}:requirements:verification-case/{id}` |
+
+### Device Model
+
+Bounded context page: [Device Model](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md).
+
+| Entity | GRID template |
+| --- | --- |
+| [FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md) | `grid:global::device-model:fullstack-dm/{id}` |
+
+### Software
+
+Bounded context page: [Software](https://altiumdeveloper.github.io/cdm/llms/software.md).
+
+| Entity | GRID template |
+| --- | --- |
+| [AI Model](https://altiumdeveloper.github.io/cdm/llms/classes/sft_AIModel.md) | `grid:workspace:{workspace-id}:software:ai-model/{id}` |
+| [Device Configuration](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfiguration.md) | `grid:workspace:{workspace-id}:software:device-configuration/{id}` |
+| [Device Configuration Revision](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfigurationRevision.md) | `grid:workspace:{workspace-id}:software:device-configuration-revision/{id}` |
+| [Software Project](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md) | `grid:workspace:{workspace-id}:software:software-project/{id}` |
+| [Software Release](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareRelease.md) | `grid:workspace:{workspace-id}:software:software-release/{id}` |
+
+### Over-the-Air Updates
+
+Bounded context page: [Over-the-Air Updates](https://altiumdeveloper.github.io/cdm/llms/ota.md).
+
+| Entity | GRID template |
+| --- | --- |
+| [Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) | `grid:workspace:{workspace-id}:ota:device/{id}` |
+| [Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md) | `grid:workspace:{workspace-id}:ota:fleet/{id}` |
+| [Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) | `grid:workspace:{workspace-id}:ota:package/{id}` |
 
 ## The GRID context is not the CDM subset
 
@@ -407,26 +407,26 @@ Every prefix declared by the schema files, with the bounded context that owns th
 | Prefix | Namespace | Bounded context |
 | --- | --- | --- |
 | `cdm` | `https://w3id.org/altium/cdm/` |  |
-| `col` | `https://w3id.org/altium/cdm/collaboration/` | [collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md) |
-| `con` | `https://w3id.org/altium/cdm/configuration/` | [configuration](https://altiumdeveloper.github.io/cdm/llms/configuration.md) |
-| `core` | `https://w3id.org/altium/cdm/core/` | [core](https://altiumdeveloper.github.io/cdm/llms/core.md) |
-| `cus` | `https://w3id.org/altium/cdm/customization/` | [customization](https://altiumdeveloper.github.io/cdm/llms/customization.md) |
-| `des` | `https://w3id.org/altium/cdm/design/` | [design](https://altiumdeveloper.github.io/cdm/llms/design.md) |
-| `dm` | `https://w3id.org/altium/cdm/deviceModel/` | [deviceModel](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md) |
-| `ins` | `https://w3id.org/altium/cdm/insights/` | [insights](https://altiumdeveloper.github.io/cdm/llms/insights.md) |
-| `lib` | `https://w3id.org/altium/cdm/library/` | [library](https://altiumdeveloper.github.io/cdm/llms/library.md) |
+| `col` | `https://w3id.org/altium/cdm/collaboration/` | [Collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md) |
+| `con` | `https://w3id.org/altium/cdm/configuration/` | [Configuration Management](https://altiumdeveloper.github.io/cdm/llms/configuration.md) |
+| `core` | `https://w3id.org/altium/cdm/core/` | [Core](https://altiumdeveloper.github.io/cdm/llms/core.md) |
+| `cus` | `https://w3id.org/altium/cdm/customization/` | [Customization](https://altiumdeveloper.github.io/cdm/llms/customization.md) |
+| `des` | `https://w3id.org/altium/cdm/design/` | [Design](https://altiumdeveloper.github.io/cdm/llms/design.md) |
+| `dm` | `https://w3id.org/altium/cdm/deviceModel/` | [Device Model](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md) |
+| `ins` | `https://w3id.org/altium/cdm/insights/` | [Insights](https://altiumdeveloper.github.io/cdm/llms/insights.md) |
+| `lib` | `https://w3id.org/altium/cdm/library/` | [Library Management](https://altiumdeveloper.github.io/cdm/llms/library.md) |
 | `linkml` | `https://w3id.org/linkml/` |  |
 | `obo` | `http://purl.obolibrary.org/obo/` |  |
-| `ota` | `https://w3id.org/altium/cdm/ota/` | [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md) |
-| `plt` | `https://w3id.org/altium/cdm/platform/` | [platform](https://altiumdeveloper.github.io/cdm/llms/platform.md) |
-| `pro` | `https://w3id.org/altium/cdm/procurement/` | [procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md) |
+| `ota` | `https://w3id.org/altium/cdm/ota/` | [Over-the-Air Updates](https://altiumdeveloper.github.io/cdm/llms/ota.md) |
+| `plt` | `https://w3id.org/altium/cdm/platform/` | [Platform](https://altiumdeveloper.github.io/cdm/llms/platform.md) |
+| `pro` | `https://w3id.org/altium/cdm/procurement/` | [Procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md) |
 | `prov` | `http://www.w3.org/ns/prov#` |  |
-| `req` | `https://w3id.org/altium/cdm/requirement/` | requirement |
+| `req` | `https://w3id.org/altium/cdm/requirement/` | [Requirements](https://altiumdeveloper.github.io/cdm/llms/requirements.md) |
 | `schema` | `http://schema.org/` |  |
-| `sft` | `https://w3id.org/altium/cdm/software/` | [software](https://altiumdeveloper.github.io/cdm/llms/software.md) |
+| `sft` | `https://w3id.org/altium/cdm/software/` | [Software](https://altiumdeveloper.github.io/cdm/llms/software.md) |
 | `shex` | `http://www.w3.org/ns/shex#` |  |
-| `sup` | `https://w3id.org/altium/cdm/supply/` | [supply](https://altiumdeveloper.github.io/cdm/llms/supply.md) |
-| `sys` | `https://w3id.org/altium/cdm/system/` | [system](https://altiumdeveloper.github.io/cdm/llms/system.md) |
+| `sup` | `https://w3id.org/altium/cdm/supply/` | [Supply](https://altiumdeveloper.github.io/cdm/llms/supply.md) |
+| `sys` | `https://w3id.org/altium/cdm/system/` | [System Design](https://altiumdeveloper.github.io/cdm/llms/system.md) |
 | `xsd` | `http://www.w3.org/2001/XMLSchema#` |  |
 
 A new subset prefix needs formal approval of the subset it belongs to (see `AGENTS.md` §6 in the repository). External vocabulary prefixes allow-listed for mappings (`prov:`, `obo:`) are exempt.
@@ -1146,7 +1146,7 @@ Product terms and class names of the model. A term used by several classes is li
 
 # File: llms/core.md
 
-# Bounded context: core
+# Bounded context: Core
 
 Holds the abstract foundations shared by every bounded context: the base classes Entity (specialised as Artifact and Activity), Resource and Event; the mixins that add annotations such as GRID, maturity and API type; shared slots such as id and name; and the abstract relations (e.g. part of, input of, derived from) that domain relations specialise. It is not a product area and has no product documentation of its own.
 
@@ -1181,7 +1181,7 @@ No public product documentation exists for this bounded context.
 
 # File: llms/platform.md
 
-# Bounded context: platform
+# Bounded context: Platform
 
 Models the platform-wide objects that other bounded contexts build on: organizations (Company Accounts) with their users and user groups, Workspaces with their members and groups, applications, event subscriptions, and Renesas 365 solutions with their releases. It also holds the lifecycle definitions (with their stages and states) and revision naming schemes that govern Workspace Items. Organization-level data is managed in the Company Dashboard; Workspace-level configuration, including these definitions and schemes, is managed from Altium Designer or the Workspace browser interface.
 
@@ -1219,7 +1219,7 @@ HTML page: [subsets/platform/](https://altiumdeveloper.github.io/cdm/subsets/pla
 
 # File: llms/configuration.md
 
-# Bounded context: configuration
+# Bounded context: Configuration Management
 
 Models environment configurations, which restrict the Altium Designer working environment of the Workspace members they target to approved configuration data, together with schematic templates and their revisions stored as Workspace Items. In Altium 365 this corresponds to environment configuration management through the Team Configuration Center.
 
@@ -1239,7 +1239,7 @@ HTML page: [subsets/configuration/](https://altiumdeveloper.github.io/cdm/subset
 
 # File: llms/collaboration.md
 
-# Bounded context: collaboration
+# Bounded context: Collaboration
 
 Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, and tasks that assign work to users or teams. In the product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.
 
@@ -1261,7 +1261,7 @@ HTML page: [subsets/collaboration/](https://altiumdeveloper.github.io/cdm/subset
 
 # File: llms/customization.md
 
-# Bounded context: customization
+# Bounded context: Customization
 
 Models ways to customize and automate a Workspace: process workflows, and scripts with their versions, their executions and the event raised when an execution completes. In the product, each workflow belongs to a process definition that a Workspace administrator creates and manages in the Workspace browser interface.
 
@@ -1284,7 +1284,7 @@ HTML page: [subsets/customization/](https://altiumdeveloper.github.io/cdm/subset
 
 # File: llms/design.md
 
-# Bounded context: design
+# Bounded context: Design
 
 Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, and rule checks run against projects. It corresponds to Workspace projects in Altium 365 and Altium Designer, from project creation through to design release.
 
@@ -1314,7 +1314,7 @@ HTML page: [subsets/design/](https://altiumdeveloper.github.io/cdm/subsets/desig
 
 # File: llms/deviceModel.md
 
-# Bounded context: deviceModel
+# Bounded context: Device Model
 
 Models an embedded device (e.g. an MCU), which the CDM calls a digital twin: its processors; its address map with memories, registers, bit fields and their enumerated values; its peripherals with their instances, modes and configurations; and its pins and ports with the alternative functions of each port. A configured device model filters the full model to one device configuration, which in the product is edited on a hardware component in an ESD document.
 
@@ -1355,7 +1355,7 @@ HTML page: [subsets/deviceModel/](https://altiumdeveloper.github.io/cdm/subsets/
 
 # File: llms/insights.md
 
-# Bounded context: insights
+# Bounded context: Insights
 
 Models insights that can be followed up by tasks. The only concrete kind is the part insight: it concerns one Workspace part, may be informed by BOMs or design projects, and occurs in BOM releases, project releases or component revisions.
 
@@ -1377,7 +1377,7 @@ No public product documentation exists for this bounded context.
 
 # File: llms/library.md
 
-# Bounded context: library
+# Bounded context: Library Management
 
 Models the components stored in a Workspace and their revisions, the symbols, footprints, parameters, datasheets and part choices that make them up, and the component templates they can be created from. It also covers manufacturer parts in the Workspace part catalog, part requests, and reusable design content such as reuse blocks, managed sheets, and schematic and PCB snippets. It corresponds to Workspace components and design reuse in Altium Designer and Altium 365.
 
@@ -1418,7 +1418,7 @@ HTML page: [subsets/library/](https://altiumdeveloper.github.io/cdm/subsets/libr
 
 # File: llms/ota.md
 
-# Bounded context: ota
+# Bounded context: Over-the-Air Updates
 
 Models over-the-air (OTA) firmware and software updates: devices with their status and installed packages, fleets that group devices, and packages with their version, size, checksums and target hardware. All classes are experimental.
 
@@ -1438,7 +1438,7 @@ No public product documentation exists for this bounded context.
 
 # File: llms/procurement.md
 
-# Bounded context: procurement
+# Bounded context: Procurement
 
 Models bills of materials: BOMs kept in a Workspace and worked on in the BOM Portal (managed and consolidated BOMs) with their releases, global BOMs, which are not tied to a Workspace, and BOM lines with their alternate and substitute parts and the issues found when a BOM is analysed. It corresponds to the Altium 365 BOM Portal.
 
@@ -1469,7 +1469,7 @@ HTML page: [subsets/procurement/](https://altiumdeveloper.github.io/cdm/subsets/
 
 # File: llms/supply.md
 
-# Bounded context: supply
+# Bounded context: Supply
 
 Models the supply catalog: manufacturer parts with their aggregated sourcing data and distributor offers, the companies acting as their manufacturers or distributors, and the vendor-specific part family hierarchy, along with catalog content such as reference designs, evaluation kits, solution templates and software projects. Part, offer and company data correspond to the supply chain data that Octopart aggregates and serves through the Octopart API.
 
@@ -1497,7 +1497,7 @@ HTML page: [subsets/supply/](https://altiumdeveloper.github.io/cdm/subsets/suppl
 
 # File: llms/software.md
 
-# Bounded context: software
+# Bounded context: Software
 
 Models the embedded software of a Renesas 365 solution: software projects with their releases and build artifacts, device configurations (with revisions) and their pin assignments, and AI models. In Renesas 365 the software project is the software part of a solution, edited in the built-in Web IDE or in e² studio; a device configuration there also covers the ports, package information and peripherals of a hardware component.
 
@@ -1588,7 +1588,7 @@ HTML page: [subsets/system-sdm/](https://altiumdeveloper.github.io/cdm/subsets/s
 
 # File: llms/requirements.md
 
-# Bounded context: requirements
+# Bounded context: Requirements
 
 Models requirements and their revisions, the specifications that group them, baselines approved for execution, change requests, the requirements projects that scope this work, and verification cases that provide evidence against requirements; most of its classes are experimental. It corresponds to requirements management and verification & validation in the Altium 365 Requirements Portal.
 

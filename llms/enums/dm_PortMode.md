@@ -16,4 +16,6 @@ Defines the primary operational mode of a physical port pin. Determines if the p
 
 ## Referenced by
 
-- [dm_PortConfigurationDependency](../classes/dm_PortConfigurationDependency.md): `portMode`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PortConfigurationDependency](../classes/dm_PortConfigurationDependency.md) | portMode | 0..1 |  |

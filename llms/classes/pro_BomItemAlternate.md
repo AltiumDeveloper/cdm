@@ -30,4 +30,6 @@ An alternate part recorded for one BOM line: another manufacturer part that coul
 
 ## Referenced by
 
-- [pro_BomItem](pro_BomItem.md): `alternates`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [pro_BomItem](pro_BomItem.md) | alternates | * |  |

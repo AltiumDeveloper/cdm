@@ -36,6 +36,8 @@ The software part of a Renesas 365 solution, developed in the built-in Web IDE (
 
 ## Referenced by
 
-- [system_FunctionalBlock](system_FunctionalBlock.md): `implementedBy`
-- [system_SdmSoftwareModel](system_SdmSoftwareModel.md): `implementedBy`
-- [system_SoftwareProject](system_SoftwareProject.md): `implementedBy`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_FunctionalBlock](system_FunctionalBlock.md) | implementedBy | 0..1 | core_implementedBy |
+| [system_SdmSoftwareModel](system_SdmSoftwareModel.md) | implementedBy | 0..1 | core_implementedBy |
+| [system_SoftwareProject](system_SoftwareProject.md) | implementedBy | 0..1 | core_implementedBy |

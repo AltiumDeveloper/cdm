@@ -25,4 +25,6 @@ A connection line in an ESD document representing an interconnection between fun
 
 ## Referenced by
 
-- [system_ESDDocument](system_ESDDocument.md): `connections`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_ESDDocument](system_ESDDocument.md) | connections | * |  |

@@ -24,4 +24,6 @@
 
 ## Referenced by
 
-- [cus_ScriptVersion](cus_ScriptVersion.md): `executions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [cus_ScriptVersion](cus_ScriptVersion.md) | executions | * |  |

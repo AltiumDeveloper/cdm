@@ -23,16 +23,18 @@ Name–value parameter associated with functional blocks, ports, or other system
 
 ## Referenced by
 
-- [system_Connection](system_Connection.md): `parameters`
-- [system_ESDDocument](system_ESDDocument.md): `parameters`
-- [system_FunctionalBlock](system_FunctionalBlock.md): `parameters`
-- [system_KeyComponent](system_KeyComponent.md): `parameters`
-- [system_Port](system_Port.md): `parameters`
-- [system_SdmClientMetadata](system_SdmClientMetadata.md): `parameters`
-- [system_SdmConnection](system_SdmConnection.md): `parameters`
-- [system_SdmFunctionalBlock](system_SdmFunctionalBlock.md): `parameters`
-- [system_SdmHardwareComponent](system_SdmHardwareComponent.md): `parameters`
-- [system_SdmPort](system_SdmPort.md): `parameters`
-- [system_SdmSoftwareComponent](system_SdmSoftwareComponent.md): `parameters`
-- [system_SdmSoftwareStackInstance](system_SdmSoftwareStackInstance.md): `parameters`
-- [system_SoftwareComponent](system_SoftwareComponent.md): `parameters`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_Connection](system_Connection.md) | parameters | * |  |
+| [system_ESDDocument](system_ESDDocument.md) | parameters | * |  |
+| [system_FunctionalBlock](system_FunctionalBlock.md) | parameters | * |  |
+| [system_KeyComponent](system_KeyComponent.md) | parameters | * |  |
+| [system_Port](system_Port.md) | parameters | * |  |
+| [system_SdmClientMetadata](system_SdmClientMetadata.md) | parameters | * |  |
+| [system_SdmConnection](system_SdmConnection.md) | parameters | * |  |
+| [system_SdmFunctionalBlock](system_SdmFunctionalBlock.md) | parameters | * |  |
+| [system_SdmHardwareComponent](system_SdmHardwareComponent.md) | parameters | * |  |
+| [system_SdmPort](system_SdmPort.md) | parameters | * |  |
+| [system_SdmSoftwareComponent](system_SdmSoftwareComponent.md) | parameters | * |  |
+| [system_SdmSoftwareStackInstance](system_SdmSoftwareStackInstance.md) | parameters | * |  |
+| [system_SoftwareComponent](system_SoftwareComponent.md) | parameters | * |  |

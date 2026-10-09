@@ -27,4 +27,6 @@ A memory entry within an address block.
 
 ## Referenced by
 
-- [dm_AddressBlock](dm_AddressBlock.md): `memories`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_AddressBlock](dm_AddressBlock.md) | memories | * |  |

@@ -23,4 +23,6 @@ A specific configuration for a port.
 
 ## Referenced by
 
-- [dm_Port](dm_Port.md): `configurations`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_Port](dm_Port.md) | configurations | * |  |

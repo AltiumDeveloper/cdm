@@ -27,5 +27,7 @@ A named parameter of a Workspace component, holding a value and, optionally, a d
 
 ## Referenced by
 
-- [lib_Component](lib_Component.md): `parameters`
-- [lib_ComponentRevision](lib_ComponentRevision.md): `parameters`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_Component](lib_Component.md) | parameters | * |  |
+| [lib_ComponentRevision](lib_ComponentRevision.md) | parameters | * |  |

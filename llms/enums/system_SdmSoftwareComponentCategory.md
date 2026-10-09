@@ -18,4 +18,6 @@ High-level classification of software components.
 
 ## Referenced by
 
-- [system_SdmSoftwareSpecification](../classes/system_SdmSoftwareSpecification.md): `category`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSoftwareSpecification](../classes/system_SdmSoftwareSpecification.md) | category | 0..1 |  |

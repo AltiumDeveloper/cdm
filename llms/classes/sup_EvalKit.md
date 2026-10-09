@@ -30,5 +30,7 @@ A vendor evaluation kit in the supply catalog, described by its associated devic
 
 ## Referenced by
 
-- [sup_SoftwareProject](sup_SoftwareProject.md): `evalKits`
-- [sup_SolutionTemplate](sup_SolutionTemplate.md): `evalKits`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sup_SoftwareProject](sup_SoftwareProject.md) | evalKits | * | core_hasPart |
+| [sup_SolutionTemplate](sup_SolutionTemplate.md) | evalKits | * | core_hasPart |

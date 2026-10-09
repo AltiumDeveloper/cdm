@@ -27,4 +27,6 @@ A named stage that groups lifecycle states in a lifecycle definition using the A
 
 ## Referenced by
 
-- [plt_LifecycleDefinition](plt_LifecycleDefinition.md): `stages`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [plt_LifecycleDefinition](plt_LifecycleDefinition.md) | stages | * |  |

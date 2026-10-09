@@ -29,4 +29,6 @@ An example design published in the supply catalog, bringing together its design 
 
 ## Referenced by
 
-- [sup_Part](sup_Part.md): `referenceDesigns`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sup_Part](sup_Part.md) | referenceDesigns | * |  |

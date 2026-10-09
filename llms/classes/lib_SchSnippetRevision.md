@@ -28,5 +28,7 @@ None declared.
 
 ## Referenced by
 
-- [lib_ReuseBlockRevision](lib_ReuseBlockRevision.md): `schSnippet`
-- [lib_SchSnippet](lib_SchSnippet.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_ReuseBlockRevision](lib_ReuseBlockRevision.md) | schSnippet | 0..1 | core_hasPart |
+| [lib_SchSnippet](lib_SchSnippet.md) | revisions | * | core_revisions |

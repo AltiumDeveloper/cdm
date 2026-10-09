@@ -26,5 +26,7 @@ A key component of a functional block in an ESD document, shown in the editor as
 
 ## Referenced by
 
-- [system_FunctionalBlock](system_FunctionalBlock.md): `keyComponents`
-- [system_SoftwareComponent](system_SoftwareComponent.md): `parentKeyComponentId`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_FunctionalBlock](system_FunctionalBlock.md) | keyComponents | * |  |
+| [system_SoftwareComponent](system_SoftwareComponent.md) | parentKeyComponentId | 1 |  |

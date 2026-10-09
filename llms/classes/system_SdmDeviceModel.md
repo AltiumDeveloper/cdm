@@ -31,4 +31,6 @@ Represents a device model within the system design.
 
 ## Referenced by
 
-- [system_SdmSystemModelVersion](system_SdmSystemModelVersion.md): `deviceModels`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModelVersion](system_SdmSystemModelVersion.md) | deviceModels | * |  |

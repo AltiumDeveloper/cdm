@@ -27,4 +27,6 @@ A leaf of the part family hierarchy in the supply data, holding the parts that b
 
 ## Referenced by
 
-- [sup_PartFamily](sup_PartFamily.md): `partGroups`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sup_PartFamily](sup_PartFamily.md) | partGroups | * |  |

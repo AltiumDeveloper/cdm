@@ -35,5 +35,7 @@ A static snapshot of a Managed BOM's data, saved under a release name with an in
 
 ## Referenced by
 
-- [ins_PartInsight](ins_PartInsight.md): `occursIn`
-- [pro_BomWIP](pro_BomWIP.md): `releases`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ins_PartInsight](ins_PartInsight.md) | occursIn | * | core_occursIn |
+| [pro_BomWIP](pro_BomWIP.md) | releases | * | core_releases |

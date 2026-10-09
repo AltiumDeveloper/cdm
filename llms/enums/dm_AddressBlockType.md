@@ -16,4 +16,6 @@ Specifies the type of address block within the device's memory map.
 
 ## Referenced by
 
-- [dm_AddressBlock](../classes/dm_AddressBlock.md): `type`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_AddressBlock](../classes/dm_AddressBlock.md) | type | 0..1 |  |

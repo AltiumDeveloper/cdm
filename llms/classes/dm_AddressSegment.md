@@ -28,4 +28,6 @@ A contiguous region of the device's memory map. Each segment can represent eithe
 
 ## Referenced by
 
-- [dm_AddressMap](dm_AddressMap.md): `segments`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_AddressMap](dm_AddressMap.md) | segments | * |  |

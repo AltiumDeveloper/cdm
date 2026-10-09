@@ -26,5 +26,7 @@ Represents a software stack instance and its dependencies.
 
 ## Referenced by
 
-- [system_SdmSoftwareComponent](system_SdmSoftwareComponent.md): `implementedBy`
-- [system_SdmSoftwareModel](system_SdmSoftwareModel.md): `softwareStackInstances`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSoftwareComponent](system_SdmSoftwareComponent.md) | implementedBy | * | core_implementedBy |
+| [system_SdmSoftwareModel](system_SdmSoftwareModel.md) | softwareStackInstances | * |  |

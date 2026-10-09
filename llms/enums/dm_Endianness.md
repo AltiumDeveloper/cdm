@@ -17,4 +17,6 @@ Specifies the byte-ordering convention of the processor. Bi-endian indicates the
 
 ## Referenced by
 
-- [dm_Processor](../classes/dm_Processor.md): `endian`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_Processor](../classes/dm_Processor.md) | endian | 1 |  |

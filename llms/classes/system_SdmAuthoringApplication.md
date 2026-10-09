@@ -19,4 +19,6 @@ Identifies the application used to create a system model version.
 
 ## Referenced by
 
-- [system_SdmSystemModelVersionMetadata](system_SdmSystemModelVersionMetadata.md): `authoringApplication`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModelVersionMetadata](system_SdmSystemModelVersionMetadata.md) | authoringApplication | 1 |  |

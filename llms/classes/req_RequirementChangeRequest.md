@@ -28,6 +28,8 @@ Structured workflow item proposing additions, updates, or removals of requiremen
 
 ## Referenced by
 
-- [req_Project](req_Project.md): `changeRequests`
-- [req_RequirementRevision](req_RequirementRevision.md): `derivesFromChange`
-- [req_VerificationCase](req_VerificationCase.md): `triggersChanges`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_Project](req_Project.md) | changeRequests | * |  |
+| [req_RequirementRevision](req_RequirementRevision.md) | derivesFromChange | 0..1 |  |
+| [req_VerificationCase](req_VerificationCase.md) | triggersChanges | * |  |

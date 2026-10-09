@@ -29,6 +29,8 @@ None declared.
 
 ## Referenced by
 
-- [con_EnvironmentConfiguration](con_EnvironmentConfiguration.md): `schematicTemplates`
-- [con_SchematicTemplate](con_SchematicTemplate.md): `revisions`
-- [lib_ManagedSheetRevision](lib_ManagedSheetRevision.md): `template`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [con_EnvironmentConfiguration](con_EnvironmentConfiguration.md) | schematicTemplates | * | core_hasPart |
+| [con_SchematicTemplate](con_SchematicTemplate.md) | revisions | * | core_revisions |
+| [lib_ManagedSheetRevision](lib_ManagedSheetRevision.md) | template | 0..1 | core_derivedFrom |

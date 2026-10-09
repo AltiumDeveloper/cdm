@@ -1,4 +1,4 @@
-# Bounded context: customization
+# Bounded context: Customization
 
 Models ways to customize and automate a Workspace: process workflows, and scripts with their versions, their executions and the event raised when an execution completes. In the product, each workflow belongs to a process definition that a Workspace administrator creates and manages in the Workspace browser interface.
 

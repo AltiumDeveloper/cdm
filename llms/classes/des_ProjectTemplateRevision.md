@@ -27,4 +27,6 @@ An immutable revision of a project template.
 
 ## Referenced by
 
-- [des_ProjectTemplate](des_ProjectTemplate.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_ProjectTemplate](des_ProjectTemplate.md) | revisions | * | core_revisions |

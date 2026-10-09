@@ -34,5 +34,7 @@ A version-managed release of a specification or subset of requirements approved 
 
 ## Referenced by
 
-- [req_Project](req_Project.md): `baselines`
-- [req_RequirementSpecification](req_RequirementSpecification.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_Project](req_Project.md) | baselines | * | core_hasPart |
+| [req_RequirementSpecification](req_RequirementSpecification.md) | revisions | * | core_revisions |

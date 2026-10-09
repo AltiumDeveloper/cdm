@@ -22,4 +22,6 @@ A pin dependency to port mapping entry within peripheral configuration.
 
 ## Referenced by
 
-- [dm_PeripheralConfiguration](dm_PeripheralConfiguration.md): `pinDependencyConfigs`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PeripheralConfiguration](dm_PeripheralConfiguration.md) | pinDependencyConfigs | * |  |

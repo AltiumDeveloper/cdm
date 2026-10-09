@@ -18,6 +18,8 @@
 
 ## Referenced by
 
-- [system_FunctionalBlock](system_FunctionalBlock.md): `portsAssociations`
-- [system_Port](system_Port.md): `associationId`
-- [system_SoftwareComponent](system_SoftwareComponent.md): `portsAssociationsIds`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_FunctionalBlock](system_FunctionalBlock.md) | portsAssociations | * |  |
+| [system_Port](system_Port.md) | associationId | 0..1 |  |
+| [system_SoftwareComponent](system_SoftwareComponent.md) | portsAssociationsIds | * |  |

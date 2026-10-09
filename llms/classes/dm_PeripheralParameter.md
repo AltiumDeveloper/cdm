@@ -22,4 +22,6 @@ A parameter associated with peripheral instance configuration.
 
 ## Referenced by
 
-- [dm_PeripheralConfiguration](dm_PeripheralConfiguration.md): `parameters`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PeripheralConfiguration](dm_PeripheralConfiguration.md) | parameters | * |  |

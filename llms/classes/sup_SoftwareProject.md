@@ -30,4 +30,6 @@ A software project published in the supply catalog, together with the evaluation
 
 ## Referenced by
 
-- [sup_SolutionTemplate](sup_SolutionTemplate.md): `softwareProjects`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sup_SolutionTemplate](sup_SolutionTemplate.md) | softwareProjects | * | core_hasPart |

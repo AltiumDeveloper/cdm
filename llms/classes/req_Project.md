@@ -41,4 +41,6 @@ The orchestration space for capturing, evolving, and validating requirements sco
 
 ## Referenced by
 
-- [req_RequirementSpecification](req_RequirementSpecification.md): `targetsProjects`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_RequirementSpecification](req_RequirementSpecification.md) | targetsProjects | * |  |

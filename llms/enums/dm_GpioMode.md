@@ -18,4 +18,6 @@ Defines the specific electrical and logical configuration of a pin when PortMode
 
 ## Referenced by
 
-- [dm_PortConfigurationDependency](../classes/dm_PortConfigurationDependency.md): `gpioMode`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PortConfigurationDependency](../classes/dm_PortConfigurationDependency.md) | gpioMode | 0..1 |  |

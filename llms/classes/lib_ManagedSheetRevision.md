@@ -30,4 +30,6 @@ A revision of a Managed Sheet: the schematic sheet as saved into the Workspace a
 
 ## Referenced by
 
-- [lib_ManagedSheet](lib_ManagedSheet.md): `revisions`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_ManagedSheet](lib_ManagedSheet.md) | revisions | * | core_revisions |

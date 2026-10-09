@@ -22,4 +22,6 @@ The list of Part Choices for a component: the manufacturer parts that may be use
 
 ## Referenced by
 
-- [lib_ComponentRevision](lib_ComponentRevision.md): `partChoiceList`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_ComponentRevision](lib_ComponentRevision.md) | partChoiceList | 1 |  |

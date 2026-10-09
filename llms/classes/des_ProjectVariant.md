@@ -21,4 +21,6 @@ A design variant of a project: a named variation of the same base design that is
 
 ## Referenced by
 
-- [des_Project](des_Project.md): `variants`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_Project](des_Project.md) | variants | * |  |

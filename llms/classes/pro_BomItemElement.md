@@ -5,6 +5,7 @@
 - Bounded context: [procurement](../procurement.md)
 - Kind: Resource, abstract
 - Is a: [core_Resource](core_Resource.md)
+- Subclasses: [pro_BomItemAlternate](pro_BomItemAlternate.md), [pro_BomItemSubstitute](pro_BomItemSubstitute.md)
 - HTML page: [classes/pro_BomItemElement/](../../classes/pro_BomItemElement/)
 
 An element (part) that might be used for a particular BOM item.
@@ -29,4 +30,6 @@ An element (part) that might be used for a particular BOM item.
 
 ## Referenced by
 
-- [pro_BomItem](pro_BomItem.md): `primaryElement`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [pro_BomItem](pro_BomItem.md) | primaryElement | 0..1 |  |

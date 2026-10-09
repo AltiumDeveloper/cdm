@@ -21,4 +21,6 @@ A physical pin on the device.
 
 ## Referenced by
 
-- [dm_Port](dm_Port.md): `pin`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_Port](dm_Port.md) | pin | 0..1 |  |

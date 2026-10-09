@@ -27,5 +27,7 @@ A named point in an Item Revision's lifecycle (e.g. Planned, New From Design, In
 
 ## Referenced by
 
-- [plt_HasLifecycle](plt_HasLifecycle.md): `lifecycleState`
-- [plt_LifecycleStage](plt_LifecycleStage.md): `states`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [plt_HasLifecycle](plt_HasLifecycle.md) | lifecycleState | 1 |  |
+| [plt_LifecycleStage](plt_LifecycleStage.md) | states | 1..* |  |

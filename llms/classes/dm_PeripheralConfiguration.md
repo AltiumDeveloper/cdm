@@ -24,4 +24,6 @@ A concrete configuration for a peripheral role, containing pin multiplexing deta
 
 ## Referenced by
 
-- [dm_PeripheralMode](dm_PeripheralMode.md): `configurations`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PeripheralMode](dm_PeripheralMode.md) | configurations | * |  |

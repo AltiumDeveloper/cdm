@@ -22,4 +22,6 @@ A connection from this port to another component or signal.
 
 ## Referenced by
 
-- [dm_Port](dm_Port.md): `connections`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_Port](dm_Port.md) | connections | * |  |

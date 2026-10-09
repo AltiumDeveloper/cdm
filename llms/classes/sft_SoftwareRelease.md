@@ -28,4 +28,6 @@
 
 ## Referenced by
 
-- [sft_SoftwareProject](sft_SoftwareProject.md): `releases`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sft_SoftwareProject](sft_SoftwareProject.md) | releases | * | core_releases |

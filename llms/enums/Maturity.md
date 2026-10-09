@@ -15,4 +15,6 @@
 
 ## Referenced by
 
-- [core_WithMaturity](../classes/core_WithMaturity.md): `maturity`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [core_WithMaturity](../classes/core_WithMaturity.md) | maturity | 0..1 |  |

@@ -40,12 +40,14 @@ Revision of a Component.
 
 ## Referenced by
 
-- [des_Project](des_Project.md): `usesComponents`
-- [des_ProjectRelease](des_ProjectRelease.md): `consistsOfComponents`
-- [ins_PartInsight](ins_PartInsight.md): `occursIn`
-- [lib_Component](lib_Component.md): `revisions`
-- [lib_ManagedSheetRevision](lib_ManagedSheetRevision.md): `consistsOfComponents`
-- [lib_ReuseBlockRevision](lib_ReuseBlockRevision.md): `consistsOfComponents`
-- [pro_BomItemElement](pro_BomItemElement.md): `component`
-- [pro_BomRelease](pro_BomRelease.md): `consistsOfComponents`
-- [pro_BomWIP](pro_BomWIP.md): `usesComponents`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_Project](des_Project.md) | usesComponents | * | core_hasInput |
+| [des_ProjectRelease](des_ProjectRelease.md) | consistsOfComponents | * | core_hasPart |
+| [ins_PartInsight](ins_PartInsight.md) | occursIn | * | core_occursIn |
+| [lib_Component](lib_Component.md) | revisions | * | core_revisions |
+| [lib_ManagedSheetRevision](lib_ManagedSheetRevision.md) | consistsOfComponents | * | core_hasPart |
+| [lib_ReuseBlockRevision](lib_ReuseBlockRevision.md) | consistsOfComponents | * | core_hasPart |
+| [pro_BomItemElement](pro_BomItemElement.md) | component | 0..1 |  |
+| [pro_BomRelease](pro_BomRelease.md) | consistsOfComponents | * | core_hasPart |
+| [pro_BomWIP](pro_BomWIP.md) | usesComponents | * | core_hasInput |

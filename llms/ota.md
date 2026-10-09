@@ -1,4 +1,4 @@
-# Bounded context: ota
+# Bounded context: Over-the-Air Updates
 
 Models over-the-air (OTA) firmware and software updates: devices with their status and installed packages, fleets that group devices, and packages with their version, size, checksums and target hardware. All classes are experimental.
 

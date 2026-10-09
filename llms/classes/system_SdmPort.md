@@ -29,5 +29,7 @@ Represents a port within a system design. It is a logical interface of a functio
 
 ## Referenced by
 
-- [system_SdmEndpoint](system_SdmEndpoint.md): `portId`
-- [system_SdmFunctionalBlock](system_SdmFunctionalBlock.md): `ports`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmEndpoint](system_SdmEndpoint.md) | portId | 1 |  |
+| [system_SdmFunctionalBlock](system_SdmFunctionalBlock.md) | ports | * |  |

@@ -21,4 +21,6 @@ The set of pin assignments of a device, one part of its device configuration alo
 
 ## Referenced by
 
-- [sft_DeviceConfigurationRevision](sft_DeviceConfigurationRevision.md): `pinModel`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sft_DeviceConfigurationRevision](sft_DeviceConfigurationRevision.md) | pinModel | 1 |  |

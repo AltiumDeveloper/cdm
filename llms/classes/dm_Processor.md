@@ -25,4 +25,6 @@ Represents a physical processing core. Defining endianness and clock frequency a
 
 ## Referenced by
 
-- [dm_FullStackDeviceModel](dm_FullStackDeviceModel.md): `processors`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_FullStackDeviceModel](dm_FullStackDeviceModel.md) | processors | * |  |

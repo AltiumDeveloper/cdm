@@ -6,55 +6,57 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://w3id.org/altium/cdm/slots/ota_Device_hardwareId/" rel="canonical"/>
-<link href="../../assets/images/favicon.png" rel="icon"/>
+<link href="../../img/favicon.svg" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
-<title>Field: hardware ID (ota_Device_hardwareId) - Common Data Model (CDM)</title>
+<title>Field: hardware ID - Common Data Model</title>
 <link href="../../assets/stylesheets/main.2a3383ac.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <style>:root{.md-tag.md-tag--experimental{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20448%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%207.0.1%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M288%200H128c-17.7%200-32%2014.3-32%2032s14.3%2032%2032%2032v151.5L7.5%20426.3C2.6%20435%200%20444.7%200%20454.7%200%20486.4%2025.6%20512%2057.3%20512h333.4c31.6%200%2057.3-25.6%2057.3-57.3%200-10-2.6-19.8-7.5-28.4L320%20215.5V64c17.7%200%2032-14.3%2032-32S337.7%200%20320%200zm-96%20215.5V64h64v151.5c0%2011.1%202.9%2022.1%208.4%2031.8L306%20320H142l41.6-72.7c5.5-9.7%208.4-20.6%208.4-31.8%22/%3E%3C/svg%3E');}.md-tag.md-tag--obsolete{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%207.0.1%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M256.5%200c-25.3%200-47.2%2014.7-57.6%2036-7-2.6-14.5-4-22.4-4-35.3%200-64%2028.7-64%2064v165.5l-2.7-2.7c-25-25-65.5-25-90.5%200s-25%2065.5%200%2090.5L107%20437c48%2048%20113.1%2075%20181%2075h16.5c1.5%200%203-.1%204.5-.4%2091.7-6.2%20165-79.4%20171.1-171.1.3-1.5.4-3%20.4-4.5V160c0-35.3-28.7-64-64-64-5.5%200-10.9.7-16%202v-2c0-35.3-28.7-64-64-64-7.9%200-15.4%201.4-22.4%204-10.4-21.3-32.3-36-57.6-36m-16%2096.1V64c0-8.8%207.2-16%2016-16s16%207.2%2016%2016v168c0%2013.3%2010.7%2024%2024%2024s24-10.7%2024-24V96c0-8.8%207.2-16%2016-16s16%207.2%2016%2016v136c0%2013.3%2010.7%2024%2024%2024s24-10.7%2024-24v-72c0-8.8%207.2-16%2016-16s16%207.2%2016%2016v172.9c-.1.6-.1%201.3-.2%201.9-3.4%2069.7-59.3%20125.6-129%20129-.6%200-1.3.1-1.9.2H288c-55.1%200-108-21.9-147-60.9l-87.8-87.8c-6.2-6.2-6.2-16.4%200-22.6s16.4-6.2%2022.6%200l43.7%2043.7c6.9%206.9%2017.2%208.9%2026.2%205.2s14.8-12.5%2014.8-22.2V96c0-8.8%207.2-16%2016-16s16%207.1%2016%2015.9V232c0%2013.3%2010.7%2024%2024%2024s24-10.7%2024-24z%22/%3E%3C/svg%3E');}}</style>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
-<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
 <link href="../../css/custom.css" rel="stylesheet"/>
 <link href="../../css/ansi-colours.css" rel="stylesheet"/>
 <link href="../../css/jupyter-cells.css" rel="stylesheet"/>
 <link href="../../css/pandas-dataframe.css" rel="stylesheet"/>
 <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
-<body dir="ltr">
+<body data-md-color-accent="custom" data-md-color-primary="custom" data-md-color-scheme="default" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#field-hardware-id-ota_device_hardwareid">
+<a class="md-skip" href="#field-hardware-id">
           Skip to content
         </a>
 </div>
 <div data-md-component="announce">
 </div>
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<header class="md-header md-header--shadow" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="Common Data Model (CDM)" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Common Data Model (CDM)">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+<a aria-label="Common Data Model" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Common Data Model">
+<img alt="logo" src="../../img/altium-logo.svg"/>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
 </label>
 <div class="md-header__title" data-md-component="header-title">
-<div class="md-header__ellipsis">
-<div class="md-header__topic">
-<span class="md-ellipsis">
-            Common Data Model (CDM)
-          </span>
+<a class="md-header__site-title" href="../..">
+        Common Data Model - Reference Documentation
+      </a>
 </div>
-<div class="md-header__topic" data-md-component="header-topic">
-<span class="md-ellipsis">
-            
-              Field: hardware ID (ota_Device_hardwareId)
-            
-          </span>
-</div>
-</div>
-</div>
+<ul class="md-header__links">
+<li><a class="md-header__link" href="https://altiumdeveloper.github.io/platform-api-docs/">Altium 365 API</a></li>
+<li><a class="md-header__link" href="https://developer.altium.com/">Developer Center</a></li>
+<li><a class="md-header__link" href="https://github.com/AltiumDeveloper/cdm">GitHub</a></li>
+</ul>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="custom" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="custom" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="custom" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="custom" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
 <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
 <label class="md-header__button md-icon" for="__search">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
@@ -86,86 +88,6 @@
 </div>
 </div>
 </div>
-<div class="md-header__source">
-<a class="md-source" data-md-component="source" href="https://github.com/AltiumDeveloper/cdm" title="Go to repository">
-<div class="md-source__icon md-icon">
-<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
-</div>
-<div class="md-source__repository">
-    GitHub
-  </div>
-</a>
-</div>
-</nav>
-<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
-<div class="md-grid">
-<ul class="md-tabs__list">
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../..">
-        
-  
-  
-    
-  
-  Bounded Contexts
-
-      </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../grid-format/">
-        
-  
-  
-    
-  
-  GRIDs
-
-      </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../domain-model/">
-          
-  
-  
-  Concepts
-
-        </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../glossary/">
-        
-  
-  
-    
-  
-  Glossary
-
-      </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../tags/">
-        
-  
-  
-    
-  
-  Tags
-
-      </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../about/">
-        
-  
-  
-    
-  
-  About
-
-      </a>
-</li>
-</ul>
-</div>
 </nav>
 </header>
 <div class="md-container" data-md-component="container">
@@ -174,12 +96,12 @@
 <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
-<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="Common Data Model (CDM)" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Common Data Model (CDM)">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+<a aria-label="Common Data Model" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Common Data Model">
+<img alt="logo" src="../../img/altium-logo.svg"/>
 </a>
-    Common Data Model (CDM)
+    Common Data Model
   </label>
 <div class="md-nav__source">
 <a class="md-source" data-md-component="source" href="https://github.com/AltiumDeveloper/cdm" title="Go to repository">
@@ -195,7 +117,15 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../..">
 <span class="md-ellipsis">
-    Bounded Contexts
+    Overview
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../about/">
+<span class="md-ellipsis">
+    About
     
   </span>
 </a>
@@ -208,17 +138,17 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
 <span class="md-ellipsis">
     Concepts
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_3">
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
 <span class="md-nav__icon md-icon"></span>
             Concepts
           </label>
@@ -250,6 +180,1087 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+<span class="md-ellipsis">
+    Bounded Contexts
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Bounded Contexts
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item bc-platform md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_1" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/platform/">
+<span class="md-ellipsis">
+    Platform
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_1">
+<span class="md-nav__icon md-icon"></span>
+            Platform
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/plt_Application/">
+<span class="md-ellipsis">
+    Application
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/plt_EventSubscription/">
+<span class="md-ellipsis">
+    Event Subscription
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/plt_LifecycleDefinition/">
+<span class="md-ellipsis">
+    Lifecycle Definition
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/plt_Organization/">
+<span class="md-ellipsis">
+    Organization
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/plt_NamingScheme/">
+<span class="md-ellipsis">
+    Revision Naming Scheme
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/plt_Solution/">
+<span class="md-ellipsis">
+    Solution
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/plt_SolutionRelease/">
+<span class="md-ellipsis">
+    Solution Release
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/plt_User/">
+<span class="md-ellipsis">
+    User
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/plt_UserGroup/">
+<span class="md-ellipsis">
+    User Group
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/plt_Workspace/">
+<span class="md-ellipsis">
+    Workspace
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/plt_WorkspaceGroup/">
+<span class="md-ellipsis">
+    Workspace Group
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/plt_WorkspaceUser/">
+<span class="md-ellipsis">
+    Workspace User
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-design md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/design/">
+<span class="md-ellipsis">
+    Design
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+            Design
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/des_Project/">
+<span class="md-ellipsis">
+    Hardware Project
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../../classes/des_HarnessProject/">
+<span class="md-ellipsis">
+    Harness Project
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../../classes/des_MultiboardProject/">
+<span class="md-ellipsis">
+    Multiboard Project
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/des_ProjectRelease/">
+<span class="md-ellipsis">
+    Hardware Project Release
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/des_ManufacturingPackage/">
+<span class="md-ellipsis">
+    Manufacturing Package
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/des_ProjectTemplate/">
+<span class="md-ellipsis">
+    Project Template
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/des_ProjectTemplateRevision/">
+<span class="md-ellipsis">
+    Project Template Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/des_RuleCheck/">
+<span class="md-ellipsis">
+    Rule Check
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/des_RuleCheckExecution/">
+<span class="md-ellipsis">
+    Rule Check Execution
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-insights md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/insights/">
+<span class="md-ellipsis">
+    Insights
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_3">
+<span class="md-nav__icon md-icon"></span>
+            Insights
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/ins_Insight/">
+<span class="md-ellipsis">
+    Insight
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../../classes/ins_PartInsight/">
+<span class="md-ellipsis">
+    Part Insight
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-library md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/library/">
+<span class="md-ellipsis">
+    Library Management
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_4">
+<span class="md-nav__icon md-icon"></span>
+            Library Management
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_Component/">
+<span class="md-ellipsis">
+    Component
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_ComponentRevision/">
+<span class="md-ellipsis">
+    Component Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_ComponentTemplate/">
+<span class="md-ellipsis">
+    Component Template
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_ComponentTemplateRevision/">
+<span class="md-ellipsis">
+    Component Template Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_Datasheet/">
+<span class="md-ellipsis">
+    Datasheet
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_Footprint/">
+<span class="md-ellipsis">
+    Footprint
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_FootprintRevision/">
+<span class="md-ellipsis">
+    Footprint Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_ManagedSheet/">
+<span class="md-ellipsis">
+    Managed Sheet
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_ManagedSheetRevision/">
+<span class="md-ellipsis">
+    Managed Sheet Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_Part/">
+<span class="md-ellipsis">
+    Part
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_PartRequest/">
+<span class="md-ellipsis">
+    Part Request
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_PcbSnippet/">
+<span class="md-ellipsis">
+    PCB Snippet
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_PcbSnippetRevision/">
+<span class="md-ellipsis">
+    PCB Snippet Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_ReuseBlock/">
+<span class="md-ellipsis">
+    Reuse Block
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_ReuseBlockRevision/">
+<span class="md-ellipsis">
+    Reuse Block Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_SchSnippet/">
+<span class="md-ellipsis">
+    SCH Snippet
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_SchSnippetRevision/">
+<span class="md-ellipsis">
+    SCH Snippet Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_Symbol/">
+<span class="md-ellipsis">
+    Symbol
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/lib_SymbolRevision/">
+<span class="md-ellipsis">
+    Symbol Revision
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-collaboration md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/collaboration/">
+<span class="md-ellipsis">
+    Collaboration
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_5">
+<span class="md-nav__icon md-icon"></span>
+            Collaboration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/col_CommentThread/">
+<span class="md-ellipsis">
+    Comment Thread
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/col_Task/">
+<span class="md-ellipsis">
+    Task
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-configuration md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/configuration/">
+<span class="md-ellipsis">
+    Configuration Management
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_6">
+<span class="md-nav__icon md-icon"></span>
+            Configuration Management
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/con_EnvironmentConfiguration/">
+<span class="md-ellipsis">
+    Environment Configuration
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/con_SchematicTemplate/">
+<span class="md-ellipsis">
+    Schematic Template
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/con_SchematicTemplateRevision/">
+<span class="md-ellipsis">
+    Schematic Template Revision
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-procurement md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/procurement/">
+<span class="md-ellipsis">
+    Procurement
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_7">
+<span class="md-nav__icon md-icon"></span>
+            Procurement
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/pro_BomRelease/">
+<span class="md-ellipsis">
+    BOM Release
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/pro_BomWIP/">
+<span class="md-ellipsis">
+    BOM WIP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../../classes/pro_ConsolidatedBOM/">
+<span class="md-ellipsis">
+    Consolidated BOM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../../classes/pro_ManagedBOM/">
+<span class="md-ellipsis">
+    Managed BOM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/pro_GlobalBOM/">
+<span class="md-ellipsis">
+    Global BOM
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-supply md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_8" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/supply/">
+<span class="md-ellipsis">
+    Supply
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_8">
+<span class="md-nav__icon md-icon"></span>
+            Supply
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/sup_Company/">
+<span class="md-ellipsis">
+    Company
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/sup_EvalKit/">
+<span class="md-ellipsis">
+    Evaluation Kit
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/sup_Offer/">
+<span class="md-ellipsis">
+    Offer
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/sup_Part/">
+<span class="md-ellipsis">
+    Part
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/sup_PartFamily/">
+<span class="md-ellipsis">
+    Part Family
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/sup_PartGroup/">
+<span class="md-ellipsis">
+    Part Group
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/sup_ReferenceDesign/">
+<span class="md-ellipsis">
+    Reference Design
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/sup_SoftwareProject/">
+<span class="md-ellipsis">
+    Software Project
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/sup_SolutionTemplate/">
+<span class="md-ellipsis">
+    Solution Template
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-customization md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_9" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/customization/">
+<span class="md-ellipsis">
+    Customization
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_9">
+<span class="md-nav__icon md-icon"></span>
+            Customization
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/cus_Script/">
+<span class="md-ellipsis">
+    Script
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/cus_ScriptExecution/">
+<span class="md-ellipsis">
+    Script Execution
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/cus_ScriptVersion/">
+<span class="md-ellipsis">
+    Script Version
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/cus_Workflow/">
+<span class="md-ellipsis">
+    Workflow
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-system md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_10" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/system/">
+<span class="md-ellipsis">
+    System Design
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_10_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_10">
+<span class="md-nav__icon md-icon"></span>
+            System Design
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/system_ESDDocument/">
+<span class="md-ellipsis">
+    ESD Document
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-system-sdm md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_11" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/system-sdm/">
+<span class="md-ellipsis">
+    System Design - System Data Model
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_11" id="__nav_5_11_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_11_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_11">
+<span class="md-nav__icon md-icon"></span>
+            System Design - System Data Model
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/system_SdmSystemModel/">
+<span class="md-ellipsis">
+    System Model
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/system_SdmSystemModelVersion/">
+<span class="md-ellipsis">
+    System Model Version
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-requirements md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_12" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/requirements/">
+<span class="md-ellipsis">
+    Requirements
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_12" id="__nav_5_12_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_12_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_12">
+<span class="md-nav__icon md-icon"></span>
+            Requirements
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/req_Requirement/">
+<span class="md-ellipsis">
+    Requirement
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/req_RequirementBaseline/">
+<span class="md-ellipsis">
+    Requirement Baseline
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/req_RequirementChangeRequest/">
+<span class="md-ellipsis">
+    Requirement Change Request
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/req_RequirementRevision/">
+<span class="md-ellipsis">
+    Requirement Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/req_RequirementSpecification/">
+<span class="md-ellipsis">
+    Requirement Specification
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/req_Project/">
+<span class="md-ellipsis">
+    Requirements Project
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/req_VerificationCase/">
+<span class="md-ellipsis">
+    Verification Case
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-deviceModel md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_13" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/deviceModel/">
+<span class="md-ellipsis">
+    Device Model
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_13" id="__nav_5_13_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_13_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_13">
+<span class="md-nav__icon md-icon"></span>
+            Device Model
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/dm_FullStackDeviceModel/">
+<span class="md-ellipsis">
+    FullStackDeviceModel
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-software md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_14" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/software/">
+<span class="md-ellipsis">
+    Software
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_14" id="__nav_5_14_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_14_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_14">
+<span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/sft_AIModel/">
+<span class="md-ellipsis">
+    AI Model
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/sft_BuildArtifact/">
+<span class="md-ellipsis">
+    Build Artifact
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/sft_DeviceConfiguration/">
+<span class="md-ellipsis">
+    Device Configuration
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/sft_DeviceConfigurationRevision/">
+<span class="md-ellipsis">
+    Device Configuration Revision
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/sft_SoftwareProject/">
+<span class="md-ellipsis">
+    Software Project
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/sft_SoftwareRelease/">
+<span class="md-ellipsis">
+    Software Release
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-ota md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_15" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/ota/">
+<span class="md-ellipsis">
+    Over-the-Air Updates
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_15" id="__nav_5_15_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_15_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_15">
+<span class="md-nav__icon md-icon"></span>
+            Over-the-Air Updates
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/ota_Device/">
+<span class="md-ellipsis">
+    Device
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/ota_Fleet/">
+<span class="md-ellipsis">
+    Fleet
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/ota_Package/">
+<span class="md-ellipsis">
+    Package
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item bc-core md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_16" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../subsets/core/">
+<span class="md-ellipsis">
+    Core
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_16" id="__nav_5_16_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_16_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_16">
+<span class="md-nav__icon md-icon"></span>
+            Core
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/core_Activity/">
+<span class="md-ellipsis">
+    Activity
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/core_Artifact/">
+<span class="md-ellipsis">
+    Artifact
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+<span class="md-ellipsis">
+    Reference
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../glossary/">
 <span class="md-ellipsis">
@@ -266,12 +1277,35 @@
   </span>
 </a>
 </li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../about/">
+<a class="md-nav__link" href="#properties">
 <span class="md-ellipsis">
-    About
-    
-  </span>
+      Properties
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#used-by">
+<span class="md-ellipsis">
+      Used by
+    </span>
 </a>
 </li>
 </ul>
@@ -281,18 +1315,30 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="field-hardware-id-ota_device_hardwareid">Field: hardware ID (ota_Device_hardwareId)</h1>
-<p><em>Hardware identifier indicating device type/model</em></p>
-<p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/ota/Device_hardwareId">https://w3id.org/altium/cdm/ota/Device_hardwareId</a></p>
+<div class="doc-row">
+<nav aria-label="Breadcrumbs" class="doc-crumbs">
+<a aria-label="Home" class="doc-crumbs__home" href="../.." title="Home">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+</a>
+<span aria-hidden="true" class="doc-crumbs__sep">›</span>
+<span class="doc-crumbs__current">Field: hardware ID</span>
+</nav>
+</div>
+<h1 id="field-hardware-id">Field: hardware ID</h1>
+<p>Hardware identifier indicating device type/model</p>
 <p>Alias: hardwareId</p>
 <!-- no inheritance hierarchy -->
-<h2 id="applicable-classes">Applicable Classes</h2>
+<h2 id="properties">Properties</h2>
+<ul>
+<li>Range: <a href="../../types/string/">string</a></li>
+</ul>
+<h2 id="used-by">Used by</h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
 <th>Description</th>
-<th>Modifies Slot</th>
+<th>Refines the field</th>
 </tr>
 </thead>
 <tbody>
@@ -303,27 +1349,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>Range: <a href="../../types/string/">string</a></li>
-</ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h2 id="linkml-source">LinkML Source</h2>
-<details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ota_Device_hardwareId</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hardware identifier indicating device type/model</span>
-<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hardware ID</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/altium/cdm/</span>
-<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ota:Device_hardwareId</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hardwareId</span>
-<span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ota_Device</span>
-<span class="nt">domain_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ota_Device</span>
-<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-</code></pre></div>
-</details>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
@@ -338,12 +1363,9 @@
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
-  
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
-      Material for MkDocs
-    </a>
+<div class="md-copyright__highlight">
+      Copyright © Altium
+    </div>
 </div>
 </div>
 </div>
@@ -352,11 +1374,11 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<div class="md-progress" data-md-component="progress" role="progressbar"></div>
-<script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link", "content.tooltips", "toc.integrate", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.instant", "navigation.instant.progress", "navigation.sections", "navigation.expand"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": {"experimental": "experimental", "obsolete": "obsolete"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link", "content.tooltips", "navigation.top", "navigation.sections", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": {"experimental": "experimental", "obsolete": "obsolete"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
 <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../../javascript/tablesort.js"></script>
+<script src="../../javascript/copy.js"></script>
 <script src="../../javascript/mermaid.mjs" type="module"></script>
 </body>
 </html>

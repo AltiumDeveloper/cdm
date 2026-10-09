@@ -22,4 +22,6 @@ A specific mode that a peripheral instance can fulfill,
 
 ## Referenced by
 
-- [dm_PeripheralInstance](dm_PeripheralInstance.md): `modes`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PeripheralInstance](dm_PeripheralInstance.md) | modes | * |  |

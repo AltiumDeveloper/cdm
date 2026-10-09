@@ -23,4 +23,6 @@
 
 ## Referenced by
 
-- [system_SdmAuthoringApplication](system_SdmAuthoringApplication.md): `applicationId`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmAuthoringApplication](system_SdmAuthoringApplication.md) | applicationId | 1 |  |

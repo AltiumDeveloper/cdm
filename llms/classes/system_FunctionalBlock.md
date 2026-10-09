@@ -29,6 +29,8 @@ Represents a logical block within an ESD document (e.g., MCU subsystem, LED driv
 
 ## Referenced by
 
-- [system_ESDDocument](system_ESDDocument.md): `functionalBlocks`
-- [system_Endpoint](system_Endpoint.md): `functionalBlockId`
-- [system_HardwareProject](system_HardwareProject.md): `functionalBlocks`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_ESDDocument](system_ESDDocument.md) | functionalBlocks | * |  |
+| [system_Endpoint](system_Endpoint.md) | functionalBlockId | 1 |  |
+| [system_HardwareProject](system_HardwareProject.md) | functionalBlocks | * |  |

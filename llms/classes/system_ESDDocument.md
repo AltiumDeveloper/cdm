@@ -39,4 +39,6 @@ A system-level block diagram document used in a Renesas 365 solution (listed the
 
 ## Referenced by
 
-- [system_SdmFunctionalModel](system_SdmFunctionalModel.md): `implementedBy`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmFunctionalModel](system_SdmFunctionalModel.md) | implementedBy | 0..1 | core_implementedBy |

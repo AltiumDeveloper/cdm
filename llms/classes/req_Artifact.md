@@ -9,9 +9,11 @@
 
 ## Referenced by
 
-- [req_Project](req_Project.md): `artifacts`
-- [req_Requirement](req_Requirement.md): `satisfiedByArtifacts`
-- [req_Requirement](req_Requirement.md): `tracedFromSources`
-- [req_RequirementSpecification](req_RequirementSpecification.md): `inputs`
-- [req_VerificationCase](req_VerificationCase.md): `generatesEvidence`
-- [req_VerificationCase](req_VerificationCase.md): `usesArtifacts`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [req_Project](req_Project.md) | artifacts | * |  |
+| [req_Requirement](req_Requirement.md) | satisfiedByArtifacts | * |  |
+| [req_Requirement](req_Requirement.md) | tracedFromSources | * |  |
+| [req_RequirementSpecification](req_RequirementSpecification.md) | inputs | * |  |
+| [req_VerificationCase](req_VerificationCase.md) | generatesEvidence | * |  |
+| [req_VerificationCase](req_VerificationCase.md) | usesArtifacts | * |  |

@@ -31,4 +31,6 @@ One line of a BOM: its designators and quantity, the primary manufacturer part u
 
 ## Referenced by
 
-- [pro_Bom](pro_Bom.md): `items`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [pro_Bom](pro_Bom.md) | items | * |  |

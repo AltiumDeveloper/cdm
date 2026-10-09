@@ -31,4 +31,6 @@ None declared.
 
 ## Referenced by
 
-- [plt_Workspace](plt_Workspace.md): `environmentConfigurations`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [plt_Workspace](plt_Workspace.md) | environmentConfigurations | * | core_hasPart |

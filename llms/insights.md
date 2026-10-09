@@ -1,4 +1,4 @@
-# Bounded context: insights
+# Bounded context: Insights
 
 Models insights that can be followed up by tasks. The only concrete kind is the part insight: it concerns one Workspace part, may be informed by BOMs or design projects, and occurs in BOM releases, project releases or component revisions.
 

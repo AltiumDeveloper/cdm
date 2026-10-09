@@ -18,4 +18,6 @@
 
 ## Referenced by
 
-- [ota_Device](../classes/ota_Device.md): `status`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ota_Device](../classes/ota_Device.md) | status | 0..1 |  |

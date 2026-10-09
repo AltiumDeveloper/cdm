@@ -23,4 +23,6 @@ One entry in a component's Part Choice list: a manufacturer part, rather than a 
 
 ## Referenced by
 
-- [lib_PartChoiceList](lib_PartChoiceList.md): `partChoices`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_PartChoiceList](lib_PartChoiceList.md) | partChoices | * |  |

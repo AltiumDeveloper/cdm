@@ -28,5 +28,7 @@ None declared.
 
 ## Referenced by
 
-- [lib_PcbSnippet](lib_PcbSnippet.md): `revisions`
-- [lib_ReuseBlockRevision](lib_ReuseBlockRevision.md): `pcbSnippet`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [lib_PcbSnippet](lib_PcbSnippet.md) | revisions | * | core_revisions |
+| [lib_ReuseBlockRevision](lib_ReuseBlockRevision.md) | pcbSnippet | 0..1 | core_hasPart |

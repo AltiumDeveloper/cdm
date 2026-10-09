@@ -25,4 +25,6 @@ Release of the Solution. This is a formal immutable artifact, representing a spe
 
 ## Referenced by
 
-- [plt_Solution](plt_Solution.md): `releases`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [plt_Solution](plt_Solution.md) | releases | * | core_releases |

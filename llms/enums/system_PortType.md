@@ -28,5 +28,7 @@
 
 ## Referenced by
 
-- [system_PortAssociation](../classes/system_PortAssociation.md): `portLibraryName`
-- [system_SdmPort](../classes/system_SdmPort.md): `portType`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_PortAssociation](../classes/system_PortAssociation.md) | portLibraryName | 1 |  |
+| [system_SdmPort](../classes/system_SdmPort.md) | portType | 0..1 |  |

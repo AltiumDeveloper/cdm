@@ -27,7 +27,9 @@ A single peripheral definition, including its instances and properties.
 
 ## Referenced by
 
-- [dm_AddressSegment](dm_AddressSegment.md): `peripherals`
-- [dm_ConfiguredDeviceModel](dm_ConfiguredDeviceModel.md): `peripherals`
-- [dm_FullStackDeviceModel](dm_FullStackDeviceModel.md): `peripherals`
-- [system_SdmDeviceModel](system_SdmDeviceModel.md): `peripherals`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_AddressSegment](dm_AddressSegment.md) | peripherals | * |  |
+| [dm_ConfiguredDeviceModel](dm_ConfiguredDeviceModel.md) | peripherals | * |  |
+| [dm_FullStackDeviceModel](dm_FullStackDeviceModel.md) | peripherals | * |  |
+| [system_SdmDeviceModel](system_SdmDeviceModel.md) | peripherals | * |  |

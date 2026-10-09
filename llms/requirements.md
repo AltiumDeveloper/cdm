@@ -1,4 +1,4 @@
-# Bounded context: requirements
+# Bounded context: Requirements
 
 Models requirements and their revisions, the specifications that group them, baselines approved for execution, change requests, the requirements projects that scope this work, and verification cases that provide evidence against requirements; most of its classes are experimental. It corresponds to requirements management and verification & validation in the Altium 365 Requirements Portal.
 

@@ -1,4 +1,4 @@
-# Bounded context: core
+# Bounded context: Core
 
 Holds the abstract foundations shared by every bounded context: the base classes Entity (specialised as Artifact and Activity), Resource and Event; the mixins that add annotations such as GRID, maturity and API type; shared slots such as id and name; and the abstract relations (e.g. part of, input of, derived from) that domain relations specialise. It is not a product area and has no product documentation of its own.
 

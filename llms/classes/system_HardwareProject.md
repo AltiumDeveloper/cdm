@@ -19,4 +19,6 @@ An entry of an ESD document for a PCB design project (des_Project) that implemen
 
 ## Referenced by
 
-- [system_ESDDocument](system_ESDDocument.md): `hardwareProjects`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_ESDDocument](system_ESDDocument.md) | hardwareProjects | * |  |

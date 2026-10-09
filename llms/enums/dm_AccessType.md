@@ -17,5 +17,7 @@ Specifies the access permissions for a register or memory region.
 
 ## Referenced by
 
-- [dm_Register](../classes/dm_Register.md): `access`
-- [dm_RegisterField](../classes/dm_RegisterField.md): `access`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_Register](../classes/dm_Register.md) | access | 0..1 |  |
+| [dm_RegisterField](../classes/dm_RegisterField.md) | access | 0..1 |  |

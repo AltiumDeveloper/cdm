@@ -34,4 +34,6 @@ Task represents a discrete unit of work assigned to a user or team within the de
 
 ## Referenced by
 
-- [ins_Insight](ins_Insight.md): `tasks`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ins_Insight](ins_Insight.md) | tasks | * | core_informs |

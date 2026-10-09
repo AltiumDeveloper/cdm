@@ -25,4 +25,6 @@
 
 ## Referenced by
 
-- [ota_Device](ota_Device.md): `packages`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ota_Device](ota_Device.md) | packages | * |  |

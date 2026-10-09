@@ -31,6 +31,8 @@ Represents a hardware component / part.
 
 ## Referenced by
 
-- [system_SdmFunctionalBlock](system_SdmFunctionalBlock.md): `hardwareComponentIds`
-- [system_SdmHardwareModel](system_SdmHardwareModel.md): `hardwareComponents`
-- [system_SdmPort](system_SdmPort.md): `hardwareComponentId`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmFunctionalBlock](system_SdmFunctionalBlock.md) | hardwareComponentIds | * |  |
+| [system_SdmHardwareModel](system_SdmHardwareModel.md) | hardwareComponents | * |  |
+| [system_SdmPort](system_SdmPort.md) | hardwareComponentId | 0..1 |  |

@@ -24,4 +24,6 @@ The assignment of a function to one pin of a device, identified by pin number an
 
 ## Referenced by
 
-- [sft_PinAssignmentModel](sft_PinAssignmentModel.md): `pins`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [sft_PinAssignmentModel](sft_PinAssignmentModel.md) | pins | 1..* |  |

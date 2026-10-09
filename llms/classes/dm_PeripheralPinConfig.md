@@ -26,4 +26,6 @@ A specific pin multiplexing configuration within peripheral configuration.
 
 ## Referenced by
 
-- [dm_PeripheralConfiguration](dm_PeripheralConfiguration.md): `pinConfigs`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [dm_PeripheralConfiguration](dm_PeripheralConfiguration.md) | pinConfigs | * |  |

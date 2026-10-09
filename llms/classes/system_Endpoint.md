@@ -18,4 +18,6 @@ One end of a connection in an ESD document, identified by the functional block a
 
 ## Referenced by
 
-- [system_Connection](system_Connection.md): `endpoints`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_Connection](system_Connection.md) | endpoints | 1..* |  |

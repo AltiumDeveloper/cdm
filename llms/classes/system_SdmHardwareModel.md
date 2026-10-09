@@ -27,4 +27,6 @@ Captures the hardware components and their interactions within the system design
 
 ## Referenced by
 
-- [system_SdmSystemModelVersion](system_SdmSystemModelVersion.md): `hardwareModels`
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [system_SdmSystemModelVersion](system_SdmSystemModelVersion.md) | hardwareModels | * |  |
