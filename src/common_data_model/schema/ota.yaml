@@ -113,7 +113,7 @@ classes:
         slot_uri: ota:Device_status
         alias: status
         title: status
-        description: Current device status
+        description: The current status of the device, set by the provider.
         range: ota_DeviceStatus
         multivalued: false
         required: false
@@ -121,7 +121,9 @@ classes:
         slot_uri: ota:Device_lastSeenAt
         alias: lastSeenAt
         title: last seen at
-        description: The date and time the device last connected, in UTC.
+        description: >-
+          The date and time the device last connected, in UTC, set by the provider. Absent
+          while the device has never connected.
         range: datetime
         multivalued: false
         required: false
@@ -129,7 +131,7 @@ classes:
         slot_uri: ota:Device_createdAt
         alias: createdAt
         title: created at
-        description: The date and time the device was registered, in UTC.
+        description: The date and time the device was registered, in UTC, set by the provider.
         range: datetime
         multivalued: false
         required: false
@@ -137,7 +139,9 @@ classes:
         slot_uri: ota:Device_activatedAt
         alias: activatedAt
         title: activated at
-        description: The date and time the device first connected, in UTC.
+        description: >-
+          The date and time the device first connected, in UTC, set by the provider. Absent
+          while the device has never connected.
         range: datetime
         multivalued: false
         required: false
@@ -145,7 +149,9 @@ classes:
         slot_uri: ota:Device_lastUpdatedAt
         alias: lastUpdatedAt
         title: last updated at
-        description: The date and time the device was last updated, in UTC.
+        description: >-
+          The date and time the device was last updated, in UTC, set by the provider. Absent
+          while the device has never been updated.
         range: datetime
         multivalued: false
         required: false
@@ -182,6 +188,7 @@ classes:
     slot_usage:
       core_name:
         description: The fleet name.
+        required: true
     attributes:
       ota_Fleet_createdAt:
         slot_uri: ota:Fleet_createdAt
@@ -220,6 +227,7 @@ classes:
     slot_usage:
       core_name:
         description: The package name. Packages sharing a name are versions of the same package.
+        required: true
     attributes:
       ota_Package_version:
         slot_uri: ota:Package_version
@@ -228,7 +236,7 @@ classes:
         description: The version identifier assigned to this package.
         range: string
         multivalued: false
-        required: false
+        required: true
       ota_Package_size:
         slot_uri: ota:Package_size
         alias: size
@@ -292,7 +300,7 @@ classes:
         description: The lowercase hash algorithm identifier, for example sha256 or sha512.
         range: string
         multivalued: false
-        required: false
+        required: true
       ota_PackageHash_value:
         slot_uri: ota:PackageHash_value
         alias: value
@@ -302,7 +310,7 @@ classes:
           digest length of the algorithm (64 characters for sha256, 128 for sha512).
         range: string
         multivalued: false
-        required: false
+        required: true
 
   ota_Deployment:
     is_a: core_Activity
@@ -441,7 +449,7 @@ classes:
         description: The target device the result applies to, referenced by its GRID.
         range: ota_Device
         multivalued: false
-        required: false
+        required: true
       ota_DeploymentResult_status:
         slot_uri: ota:DeploymentResult_status
         alias: status
