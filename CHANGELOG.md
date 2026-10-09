@@ -55,6 +55,7 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - Class index tables link API types via the hub data (Nexar types link to the Octopart API docs).
 
 ### Fixed
+- Home page title: the schema title (Common Data Model) instead of "Bounded Contexts", which is a section of the page.
 - Class diagrams render again: Mermaid is pinned (the floating `mermaid@11` tag moved to a release that showed a syntax error on every diagram), diagrams are rendered by `javascript/mermaid.mjs` from their source text, and they use the class `cdm-diagram`, which Material's own Mermaid integration leaves alone.
 - Module ids of collaboration, configuration, customization and supply end with `/`, and core's id no longer has a doubled `/`, so each matches the namespace of its prefix.
 - `hub.json`: an empty `grid` annotation is exported as `null`, not `"None"`.

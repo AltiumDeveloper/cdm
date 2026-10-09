@@ -223,7 +223,7 @@ def test_main_writes_schema_index_as_home_page(tmp_path):
     assert (out / "about.md").read_text(encoding="utf-8") == about.read_text(encoding="utf-8")
     assert not (out / "bounded-contexts.md").exists()
     page = (out / "index.md").read_text(encoding="utf-8")
-    assert page.lstrip().startswith("# Bounded Contexts\n")
+    assert page.lstrip().startswith("# Common Data Model\n")   # the schema title, not a section name
     assert "## Bounded Contexts" in page and "| Name | Description | Platform API |" in page
     assert "( classes/lib_Component.md )" in page
 
