@@ -31,7 +31,7 @@ def _render_macro(macro_name: str, element) -> str:
 def test_class_template_shows_grid_as_plain_text_without_internal_links():
     text = (TEMPLATES / "class.md.jinja2").read_text(encoding="utf-8")
     assert "atlassian.net" not in text
-    assert 'GRID: `{{ element.annotations["grid"].value }}`' in text
+    assert "GRID: `{{ g.value }}`" in text   # own template, else the nearest ancestor's
 
 
 def test_see_also_rendered_once_on_class_page(tmp_path):

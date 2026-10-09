@@ -45,8 +45,11 @@ tags:
 IRI: [{{ iri }}]({{ iri }})
 { .page-subtitle }
 
-{% if 'grid' in element.annotations %}
-GRID: `{{ element.annotations["grid"].value }}`
+{#- The class's own GRID template, else the nearest ancestor's (annotations are not inherited in LinkML) -#}
+{% set g = namespace(value=element.annotations["grid"].value if 'grid' in element.annotations else none, owner=none, c=element.is_a) %}
+{% for _ in range(30) %}{% if g.value is none and g.c %}{% set p = schemaview.get_class(g.c) %}{% if 'grid' in p.annotations %}{% set g.value = p.annotations["grid"].value %}{% set g.owner = g.c %}{% endif %}{% set g.c = p.is_a %}{% endif %}{% endfor %}
+{% if g.value %}
+GRID: `{{ g.value }}`{% if g.owner %} (from {{ class_link(g.owner) }}){% endif %}
 { .page-subtitle }
 {% endif %}
 
