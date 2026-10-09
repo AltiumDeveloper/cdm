@@ -10,6 +10,7 @@ tags:
 ---
 
 {% from "macros.jinja2" import hub_panel with context %}
+{% from "macros.jinja2" import class_link with context %}
 {% from "macros.jinja2" import slot_url with context %}
 {% from "macros.jinja2" import slot_range_url with context %}
 
@@ -44,8 +45,10 @@ tags:
 IRI: [{{ iri }}]({{ iri }})
 { .page-subtitle }
 
-Bounded context: [{{ element.in_subset[0] }}]( ../subsets/{{ element.in_subset[0] }}.md )
+{% if 'grid' in element.annotations %}
+GRID: `{{ element.annotations["grid"].value }}`
 { .page-subtitle }
+{% endif %}
 
 {% if element.description %}
 {% set element_description_lines = element.description.split('\n') %}
@@ -58,15 +61,7 @@ Bounded context: [{{ element.in_subset[0] }}]( ../subsets/{{ element.in_subset[0
 {{ hub_panel(hub(element)) }}
 {% endif %}
 
-<div class="grid" markdown>
 
-!!! quote annotate "GRID (1)"
-    {% if 'grid' in element.annotations %}
-    ```{{ element.annotations["grid"].value }}```
-    {% endif %}
-1.  :man_raising_hand: [GRID — Global Resource ID](https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/grid)
-
-</div>
 
 {%- if header -%}
 {{ header }}
@@ -111,7 +106,17 @@ Bounded context: [{{ element.in_subset[0] }}]( ../subsets/{{ element.in_subset[0
 {% if schemaview.class_parents(element.name) or schemaview.class_children(element.name, mixins=False) %}
 
 ## Inheritance
-{{ gen.inheritance_tree(element, mixins=True) }}
+
+{% set chain = [] %}
+{% set ns = namespace(c=element.is_a) %}
+{% for _ in range(30) %}{% if ns.c %}{% set _ = chain.insert(0, ns.c) %}{% set ns.c = schemaview.get_class(ns.c).is_a %}{% endif %}{% endfor %}
+{% for a in chain -%}
+{{ '    ' * loop.index0 }}* {{ class_link(a) }}
+{% endfor -%}
+{{ '    ' * chain|length }}* **{{ title }}**{% if element.mixins %} (mixins: {% for m in element.mixins %}{{ class_link(m) }}{% if not loop.last %}, {% endif %}{% endfor %}){% endif %}
+{% for c in schemaview.class_children(element.name, mixins=False) -%}
+{{ '    ' * (chain|length + 1) }}* {{ class_link(c) }}
+{% endfor %}
 {% else %}
 <!-- no inheritance hierarchy -->
 {% endif %}
@@ -122,7 +127,7 @@ Bounded context: [{{ element.in_subset[0] }}]( ../subsets/{{ element.in_subset[0
 | ---  | --- | --- | --- | --- |
 {% if gen.get_indirect_slots(element)|length > 0 %}
 {%- for slot in gen.get_indirect_slots(element) -%}
-| {{ slot_url(slot) }} | `{{ gen.cardinality(slot) }}` | {{ compute_range(slot) }} | {{ slot.description }} | {{ gen.links(gen.get_slot_inherited_from(element.name, slot.name))|join(', ') }} |
+| {{ slot_url(slot) }} | `{{ gen.cardinality(slot) }}` | {{ compute_range(slot) }} | {{ slot.description }} | {% for c in gen.get_slot_inherited_from(element.name, slot.name) %}{{ class_link(c) }}{% if not loop.last %}, {% endif %}{% endfor %} |
 {% endfor -%}
 {% endif -%}
 {% if gen.get_direct_slots(element)|length > 0 %}

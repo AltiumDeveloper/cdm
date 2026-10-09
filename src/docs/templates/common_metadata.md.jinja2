@@ -40,6 +40,8 @@
 {% endfor %}
 {% endif -%}
 
+{# Not shown on class, bounded-context and field pages: their identifiers are under the title, or not resolvable #}
+{% if element.__class__.__name__ not in ("ClassDefinition", "SubsetDefinition", "SlotDefinition") %}
 ## Identifier and Mapping Information
 
 {% if false and element.id_prefixes %}
@@ -62,6 +64,8 @@ Instances of this class *should* have identifiers with one of the following pref
 | {{ a }} | {{ element.annotations[a].value }} |
 {% endif -%}
 {% endfor %}
+{% endif %}
+
 {% endif %}
 
 {% if false and element.from_schema or element.imported_from%}

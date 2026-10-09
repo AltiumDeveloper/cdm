@@ -164,7 +164,7 @@ def test_grid_catalogue(env, tmp_path):
     t = (tmp_path / "_snippets/grid-catalogue.md").read_text()
     assert "../" not in t and "\n## " not in t
     assert t.startswith("### alpha\n") and "\n### beta\n" in t and t.index("### alpha") < t.index("### beta")
-    assert "| Class | GRID template |" in t and "GRID context" not in t
+    assert "| Entity | GRID template |" in t and "GRID context" not in t
     assert "| [Port](classes/dm_Port.md) | `grid:global::platform:port/{id}` |" in t
     assert "`dm_Port`" not in t                                          # titles only, no technical names
     assert "Bounded context page: [beta](subsets/beta.md)." in t

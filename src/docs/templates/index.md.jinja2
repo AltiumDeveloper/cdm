@@ -1,4 +1,4 @@
-{% from "macros.jinja2" import api_type_link with context %}
+{% from "macros.jinja2" import api_type_link, subset_title, cdm_kind with context %}
 
 # Bounded Contexts
 
@@ -16,9 +16,22 @@ IRI: [{{ iri }}]({{ iri }})
 ```
 {% endif %}
 
+{% set all_bcs = schemaview.all_subsets().values()|list %}
+{% set ordered_bcs = [] %}
+{% for name in bc_order %}{% for bc in all_bcs if bc.name == name %}{% set _ = ordered_bcs.append(bc) %}{% endfor %}{% endfor %}
+{% for bc in all_bcs|sort(attribute='name') if bc.name not in bc_order %}{% set _ = ordered_bcs.append(bc) %}{% endfor %}
+
+<div class="bc-grid" markdown>
+{% for bc in ordered_bcs %}
+{% set ns = namespace(e=0, r=0) %}{% for c in gen.all_class_objects() if bc.name in c.in_subset and not c.abstract %}{% set k = cdm_kind(c.name) %}{% if k == 'entity' %}{% set ns.e = ns.e + 1 %}{% elif k == 'resource' %}{% set ns.r = ns.r + 1 %}{% endif %}{% endfor %}
+[<span class="bc-icon bc-{{ bc.name }}"></span><strong>{{ subset_title(bc.name) }}</strong> <span>{% set parts = [] %}{% if ns.e %}{% set _ = parts.append(ns.e ~ (' entity' if ns.e == 1 else ' entities')) %}{% endif %}{% if ns.r %}{% set _ = parts.append(ns.r ~ (' resource' if ns.r == 1 else ' resources')) %}{% endif %}{{ parts | join(' · ') if parts else 'Base types' }}</span>](subsets/{{ bc.name }}.md)
+
+{% endfor %}
+</div>
+
 ## Bounded Contexts
-{% for bc in schemaview.all_subsets().values()|sort(attribute='name') %}
-### {{ gen.link(bc, True) }}
+{% for bc in ordered_bcs %}
+### [{{ subset_title(bc.name) }}](subsets/{{ bc.name }}.md) { .bc-heading .bc-{{ bc.name }} }
 
 {% if bc.description %}
 {% set element_description_lines = bc.description.split('\n') %}
@@ -35,7 +48,7 @@ IRI: [{{ iri }}]({{ iri }})
     {%- endif %}
 {% endfor %}
 
-| Class | Description | Platform API |
+| Name | Description | Platform API |
 | --- | --- | --- |
 {% for c in classes_in_subset -%}
 {%- if not c.abstract -%}

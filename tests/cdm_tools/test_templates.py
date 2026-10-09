@@ -10,9 +10,6 @@ TEMPLATES = REPO_ROOT / "src" / "docs" / "templates"
 
 PLATFORM_API_BASE = "https://altiumdeveloper.github.io/platform-api-docs/types"
 OCTOPART_API_DOC = "https://www.altium.com/documentation/altium-developer-center/octopart/api"
-PUBLIC_GRID_DOC = (
-    "https://www.altium.com/documentation/altium-developer-center/altium-365/key-concepts/grid"
-)
 
 
 def _element(**annotations):
@@ -31,10 +28,10 @@ def _render_macro(macro_name: str, element) -> str:
     return template.render(element=element).strip()
 
 
-def test_class_template_links_public_grid_page_only():
+def test_class_template_shows_grid_as_plain_text_without_internal_links():
     text = (TEMPLATES / "class.md.jinja2").read_text(encoding="utf-8")
     assert "atlassian.net" not in text
-    assert PUBLIC_GRID_DOC in text
+    assert 'GRID: `{{ element.annotations["grid"].value }}`' in text
 
 
 def test_see_also_rendered_once_on_class_page(tmp_path):

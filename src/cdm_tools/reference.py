@@ -22,6 +22,7 @@ from cdm_tools.coverage import (
     NO_SUBSET, SubsetCoverage, is_concrete_domain_class, load_findings, subset_coverage, total_coverage,
 )
 from cdm_tools.hub import MAPPING_FIELDS, PREDICATES, build_hub, build_mapping, load_api_layers, schema_namespaces
+from cdm_tools.contexts import subset_sort_key, subset_title
 from cdm_tools.registry import DEFAULT_REGISTRY_PATH, RegistryError, load_registry
 
 FINDINGS_URL = "https://github.com/AltiumDeveloper/cdm/blob/main/MODEL-FINDINGS.md"
@@ -133,14 +134,23 @@ def prefixes_body(sv, prefix: str) -> list[str]:
     for schema in sv.all_schema(imports=True):
         for declared in (schema.prefixes or {}).values():
             prefixes.setdefault(str(declared.prefix_prefix), str(declared.prefix_reference))
+    # namespace of a schema file's default prefix -> the first bounded context that file defines
+    owners: dict[str, str] = {}
+    for schema in sv.all_schema(imports=True):
+        declared = (schema.prefixes or {}).get(str(schema.default_prefix)) if schema.default_prefix else None
+        if declared is not None and schema.subsets:
+            owners.setdefault(str(declared.prefix_reference), sorted(map(str, schema.subsets), key=subset_sort_key)[0])
     subsets = {str(s) for s in sv.all_subsets()}
     rows = []
     for name in sorted(prefixes):
         ns = prefixes[name]
         m = SUBSET_NAMESPACE.match(ns)
         owner = ""
-        if m:
-            owner = f"[{m.group(1)}]({prefix}subsets/{m.group(1)}.md)" if m.group(1) in subsets else m.group(1)
+        subset = owners.get(ns) or (m.group(1) if m else None)
+        if subset in subsets:
+            owner = f"[{_esc(subset_title(sv, subset))}]({prefix}subsets/{subset}.md)"
+        elif m:
+            owner = m.group(1)
         rows.append([f"`{name}`", f"`{ns}`", owner])
     lines = ["Every prefix declared by the schema files, with the bounded context that owns "
              "the namespace where it has the form `https://w3id.org/altium/cdm/<subset>/`.", ""]
@@ -169,11 +179,11 @@ def grid_templates(sv) -> list[tuple[str, str, str, str]]:
 
 
 def _grid_by_subset(sv) -> dict[str, list[tuple[str, str]]]:
-    """Bounded context (first subset) -> sorted (class name, template)."""
+    """Bounded context (first subset) -> sorted (class name, template), contexts in the site's order."""
     groups: dict[str, list[tuple[str, str]]] = {}
     for name, subset, _, template in grid_templates(sv):
         groups.setdefault(subset or NO_SUBSET, []).append((name, template))
-    return {k: sorted(groups[k]) for k in sorted(groups, key=lambda k: (k.casefold(), k))}
+    return {k: sorted(groups[k]) for k in sorted(groups, key=subset_sort_key)}
 
 
 def _subset_page(subset: str, prefix: str, sv, text: str) -> str:
@@ -184,16 +194,17 @@ def grid_catalogue_body(sv, prefix: str) -> list[str]:
     lines: list[str] = []
     classes = sv.all_classes()
     for subset, entries in _grid_by_subset(sv).items():
-        lines += [f"### {subset}", ""]
-        page = _subset_page(subset, prefix, sv, subset)
+        title = subset_title(sv, subset)
+        lines += [f"### {title}", ""]
+        page = _subset_page(subset, prefix, sv, title)
         if page:
             lines += [f"Bounded context page: {page}.", ""]
         rows = []
         for name, template in entries:
-            title = str(classes[name].title or "").strip()
-            cell = f"[{_esc(title)}]({prefix}classes/{name}.md)" if title else _class_link(name, prefix, sv)
+            class_title = str(classes[name].title or "").strip()
+            cell = f"[{_esc(class_title)}]({prefix}classes/{name}.md)" if class_title else _class_link(name, prefix, sv)
             rows.append([cell, f"`{template}`"])
-        lines += _table(["Class", "GRID template"], rows) + [""]
+        lines += _table(["Entity", "GRID template"], rows) + [""]
     return lines[:-1] if lines else ["No class declares a GRID template."]
 
 

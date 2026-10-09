@@ -63,3 +63,32 @@
   {%- elif h.nexar_missing -%}`{{ h.nexar_missing }}` (not in Nexar API snapshot)
   {%- endif -%}
 {%- endmacro -%}
+
+{%- macro subset_title(name) -%}
+  {%- set subsets = schemaview.all_subsets() -%}
+  {{- subsets[name].title if name in subsets and subsets[name].title else name -}}
+{%- endmacro -%}
+
+{#- Link to a class page labelled with the class title (falls back to the class name). -#}
+{%- macro class_link(name, prefix='../') -%}
+  {%- set c = schemaview.get_class(name) -%}
+  [{{ c.title if c and c.title else name }}]({{ prefix }}classes/{{ name }}.md)
+{%- endmacro -%}
+
+{#- Kind of a class as the CDM names it: "entity", "resource" or "event" (descendants of core_Entity, core_Resource,
+    core_Event; the base itself is not counted), otherwise "other" (base types and mixins). -#}
+{%- macro cdm_kind(name) -%}
+  {%- set ancestors = schemaview.class_ancestors(name, mixins=False, reflexive=False) -%}
+  {%- if 'core_Entity' in ancestors -%}entity
+  {%- elif 'core_Resource' in ancestors -%}resource
+  {%- elif 'core_Event' in ancestors -%}event
+  {%- else -%}other
+  {%- endif -%}
+{%- endmacro -%}
+
+{#- Link to a field (slot) page labelled with the field title (falls back to the slot name); prefix is the path to the
+    slots/ directory from the current page. -#}
+{%- macro slot_link(name, prefix='') -%}
+  {%- set sl = schemaview.get_slot(name) -%}
+  [{{ sl.title if sl and sl.title else name }}]({{ prefix }}{{ name }}.md)
+{%- endmacro -%}

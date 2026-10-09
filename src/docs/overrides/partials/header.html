@@ -1,0 +1,48 @@
+{#-
+  Header shared in look with the Altium 365 API reference (AltiumDeveloper/platform-api-docs): black bar,
+  Altium wordmark, one title block, links to the sibling sites, colour-scheme toggle, search, GitHub.
+  Based on Material's partials/header.html (mkdocs-material 9.6); the title no longer swaps to the page title on
+  scroll, the repository widget is a plain link, and the tabs bar is not rendered.
+  Header links come from `extra.header_links` in mkdocs.yml.
+-#}
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
+    <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}" title="{{ config.site_name | e }}" class="md-header__button md-logo" aria-label="{{ config.site_name }}" data-md-component="logo">
+      {% include "partials/logo.html" %}
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      {% set icon = config.theme.icon.menu or "material/menu" %}
+      {% include ".icons/" ~ icon ~ ".svg" %}
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <a class="md-header__site-title" href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}">
+        {{ config.extra.header_title | d(config.site_name) }}
+      </a>
+    </div>
+    {% if config.extra.header_links %}
+      <ul class="md-header__links">
+        {% for link in config.extra.header_links %}
+          <li><a class="md-header__link" href="{{ link.href }}">{{ link.label }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% if config.theme.palette %}
+      {% if not config.theme.palette is mapping %}
+        {% include "partials/palette.html" %}
+      {% endif %}
+    {% endif %}
+    {% if not config.theme.palette is mapping %}
+      {% include "partials/javascripts/palette.html" %}
+    {% endif %}
+    {% if "material/search" in config.plugins %}
+      {% set search = config.plugins["material/search"] | attr("config") %}
+      {% if search.enabled %}
+        <label class="md-header__button md-icon" for="__search">
+          {% set icon = config.theme.icon.search or "material/magnify" %}
+          {% include ".icons/" ~ icon ~ ".svg" %}
+        </label>
+        {% include "partials/search.html" %}
+      {% endif %}
+    {% endif %}
+  </nav>
+</header>
