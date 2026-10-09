@@ -12,6 +12,7 @@ default_prefix: des
 
 subsets:
   design:
+    title: Design
     description: >-
       Models design projects stored in a Workspace, including multi-board and harness projects, with their
       parameters, variants and releases, the manufacturing packages shared from releases, project templates

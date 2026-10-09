@@ -1,4 +1,4 @@
-id: https://w3id.org/altium/cdm/configuration
+id: https://w3id.org/altium/cdm/configuration/
 name: cdm-configuration
 
 prefixes:
@@ -13,6 +13,7 @@ default_prefix: con
 
 subsets:
   configuration:
+    title: Configuration Management
     description: >-
       Models environment configurations, which restrict the Altium Designer working environment of the
       Workspace members they target to approved configuration data, together with schematic templates and

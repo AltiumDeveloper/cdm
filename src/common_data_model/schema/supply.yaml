@@ -1,4 +1,4 @@
-id: https://w3id.org/altium/cdm/supply
+id: https://w3id.org/altium/cdm/supply/
 name: cdm-supply
 
 prefixes:
@@ -13,6 +13,7 @@ default_prefix: sup
 
 subsets:
   supply:
+    title: Supply
     description: >-
       Models the supply catalog: manufacturer parts with their aggregated sourcing data and distributor
       offers, the companies acting as their manufacturers or distributors, and the vendor-specific part family

@@ -11,6 +11,7 @@ default_prefix: ota
 
 subsets:
   ota:
+    title: Over-the-Air Updates
     description: >-
       Models over-the-air (OTA) firmware and software updates: devices with their status and installed
       packages, fleets that group devices, and packages with their version, size, checksums and target

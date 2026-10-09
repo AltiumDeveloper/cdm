@@ -13,6 +13,7 @@ default_prefix: plt
 
 subsets:
   platform:
+    title: Platform
     description: >-
       Models the platform-wide objects that other bounded contexts build on: organizations (Company Accounts)
       with their users and user groups, Workspaces with their members and groups, applications, event

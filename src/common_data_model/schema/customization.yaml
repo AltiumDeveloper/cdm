@@ -1,4 +1,4 @@
-id: https://w3id.org/altium/cdm/customization
+id: https://w3id.org/altium/cdm/customization/
 name: cdm-customization
 
 prefixes:
@@ -13,6 +13,7 @@ default_prefix: cus
 
 subsets:
   customization:
+    title: Customization
     description: >-
       Models ways to customize and automate a Workspace: process workflows, and scripts with their versions,
       their executions and the event raised when an execution completes. In the product, each workflow belongs

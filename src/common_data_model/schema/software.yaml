@@ -13,6 +13,7 @@ default_prefix: sft
 
 subsets:
   software:
+    title: Software
     description: >-
       Models the embedded software of a Renesas 365 solution: software projects with their releases and build
       artifacts, device configurations (with revisions) and their pin assignments, and AI models. In Renesas

@@ -1,4 +1,4 @@
-id: https://w3id.org/altium/cdm//core/
+id: https://w3id.org/altium/cdm/core/
 name: cdm-core
 
 prefixes:
@@ -15,6 +15,7 @@ default_prefix: core
 
 subsets:
   core:
+    title: Core
     description: >-
       Holds the abstract foundations shared by every bounded context: the base classes Entity (specialised as
       Artifact and Activity), Resource and Event; the mixins that add annotations such as GRID, maturity and
