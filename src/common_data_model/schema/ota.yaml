@@ -13,9 +13,10 @@ default_prefix: ota
 subsets:
   ota:
     description: >-
-      Models over-the-air (OTA) firmware and software updates: devices with their ECUs and the software
-      each ECU reports, fleets that group devices, packages with their version, size, checksums and target
-      hardware, and deployments that roll packages out to a device or fleet and record their results.
+      Models over-the-air (OTA) firmware and software updates: devices with the packages installed on
+      them, fleets that group devices, packages with their version, size, checksums and target hardware,
+      deployments that request packages to be rolled out to a device or fleet, and the deployment
+      results that record the outcome on each targeted device.
       All classes are experimental.
     annotations:
       style: "fill:#d29292"
@@ -49,8 +50,8 @@ enums:
     in_subset: ota
     enum_uri: ota:DeploymentStatus
     description: >-
-      The status of a deployment. Success or failure of a completed deployment is reported
-      by isSuccessful on the device and component results.
+      The status of a deployment on one target device, reported by its Deployment Result.
+      Success or failure of a completed deployment is reported by the result's isSuccessful.
     implements:
       - owl:NamedIndividual
     permissible_values:
@@ -64,28 +65,9 @@ enums:
         description: >-
           The deployment finished, either successfully or with a failure. A partially completed
           deployment, where only some ECUs installed successfully, is also Completed, with
-          isSuccessful false and the per-ECU outcome in the component results.
+          isSuccessful false.
       Cancelled:
         description: The deployment was cancelled before it was received by the device.
-
-  ota_DeploymentCreationStatus:
-    is_a: Enumeration
-    in_subset: ota
-    enum_uri: ota:DeploymentCreationStatus
-    description: >-
-      Whether the update for one device of a fleet deployment has been created. Devices whose
-      update was not created are not updated, and the reasons are reported as errors.
-    implements:
-      - owl:NamedIndividual
-    permissible_values:
-      Requested:
-        description: Creating the update for the device has been requested.
-      Creating:
-        description: The update for the device is being created.
-      Created:
-        description: The update for the device was created.
-      NotCreated:
-        description: The update for the device was not created, for example because no ECU is compatible.
 
   ota_PackageCategory:
     is_a: Enumeration
@@ -96,13 +78,13 @@ enums:
       - owl:NamedIndividual
     permissible_values:
       Base:
-        description: The base operating system.
+        description: The base operating system or the application for a primary ECU.
       Bootloader:
         description: The bootloader.
       Applications:
         description: Application software.
       Other:
-        description: Any other software.
+        description: Any other software or the application for a secondary ECU.
 
 classes:
 
@@ -131,7 +113,7 @@ classes:
         description: The device-side identifier provided at provisioning.
         range: string
         multivalued: false
-        required: true
+        required: false
       ota_Device_hardwareId:
         slot_uri: ota:Device_hardwareId
         alias: hardwareId
@@ -139,8 +121,8 @@ classes:
         description: >-
           The hardware type of the device as a whole (for example the product or board type), as
           reported by the provider, when provided. It is independent of the hardware identifiers
-          of the device's ECUs, which packages and assignments are matched against, and it does
-          not identify the primary ECU; use Ecu.isPrimary for that.
+          of the device's ECUs, which Package.hardwareIds and DeploymentAssignment.hardwareId
+          are matched against.
         range: string
         multivalued: false
         required: false
@@ -151,7 +133,7 @@ classes:
         description: Current device status
         range: ota_DeviceStatus
         multivalued: false
-        required: true
+        required: false
       ota_Device_lastSeenAt:
         slot_uri: ota:Device_lastSeenAt
         alias: lastSeenAt
@@ -167,7 +149,7 @@ classes:
         description: The date and time the device was registered, in UTC.
         range: datetime
         multivalued: false
-        required: true
+        required: false
       ota_Device_activatedAt:
         slot_uri: ota:Device_activatedAt
         alias: activatedAt
@@ -192,187 +174,14 @@ classes:
         range: boolean
         multivalued: false
         required: false
-      ota_Device_networkInfo:
-        slot_uri: ota:Device_networkInfo
-        alias: networkInfo
-        title: network info
-        description: The network information last reported by the device.
-        range: ota_DeviceNetworkInfo
-        multivalued: false
-        required: false
-        inlined: true
-      ota_Device_tags:
-        slot_uri: ota:Device_tags
-        alias: tags
-        title: tags
-        description: Key-value tags of the device.
-        range: ota_DeviceTag
-        multivalued: true
-        required: false
-        inlined: true
-        inlined_as_list: true
-      ota_Device_ecus:
-        slot_uri: ota:Device_ecus
-        alias: ecus
-        title: ecus
+      ota_Device_packages:
+        slot_uri: ota:Device_packages
+        alias: packages
+        title: packages
         description: >-
-          The ECUs of the device, including the primary ECU. Providers typically return
-          them from a separate components endpoint, so they may be absent from device listings.
-        range: ota_Ecu
-        multivalued: true
-        required: false
-        inlined: true
-        inlined_as_list: true
-
-  ota_DeviceTag:
-    is_a: core_Resource
-    in_subset: ota
-    class_uri: ota:DeviceTag
-    title: Device Tag
-    description: >-
-      Device Tag is a key-value pair attached to a device for organization and filtering.
-    attributes:
-      ota_DeviceTag_key:
-        slot_uri: ota:DeviceTag_key
-        alias: key
-        title: key
-        description: >-
-          The tag key, unique per device. At most 20 ASCII letters, digits, underscores,
-          or hyphens.
-        range: string
-        multivalued: false
-        required: true
-        key: true
-      ota_DeviceTag_value:
-        slot_uri: ota:DeviceTag_value
-        alias: value
-        title: value
-        description: >-
-          The tag value. At most 50 ASCII letters, digits, underscores, hyphens, slashes,
-          or spaces.
-        range: string
-        multivalued: false
-        required: true
-
-  ota_DeviceNetworkInfo:
-    is_a: core_Resource
-    in_subset: ota
-    class_uri: ota:DeviceNetworkInfo
-    title: Device Network Info
-    description: >-
-      Device Network Info is the network configuration last reported by a device.
-    attributes:
-      ota_DeviceNetworkInfo_localIpV4Address:
-        slot_uri: ota:DeviceNetworkInfo_localIpV4Address
-        alias: localIpV4Address
-        title: local ipv4 address
-        description: The local IPv4 address of the device.
-        range: string
-        multivalued: false
-        required: false
-      ota_DeviceNetworkInfo_hostname:
-        slot_uri: ota:DeviceNetworkInfo_hostname
-        alias: hostname
-        title: hostname
-        description: The hostname of the device.
-        range: string
-        multivalued: false
-        required: false
-      ota_DeviceNetworkInfo_macAddress:
-        slot_uri: ota:DeviceNetworkInfo_macAddress
-        alias: macAddress
-        title: mac address
-        description: The MAC address of the device's network interface.
-        range: string
-        multivalued: false
-        required: false
-
-  ota_Ecu:
-    is_a: core_Resource
-    in_subset: ota
-    class_uri: ota:Ecu
-    title: ECU
-    description: >-
-      ECU represents an electronic control unit within a device. Each device has exactly
-      one primary ECU; secondary ECUs are updated through the primary ECU (Uptane).
-    attributes:
-      ota_Ecu_ecuId:
-        slot_uri: ota:Ecu_ecuId
-        alias: ecuId
-        title: ecu id
-        description: The ECU identifier (serial) unique within the device. At most 64 characters.
-        range: string
-        multivalued: false
-        required: true
-        key: true
-      ota_Ecu_hardwareId:
-        slot_uri: ota:Ecu_hardwareId
-        alias: hardwareId
-        title: hardware id
-        description: >-
-          The hardware identifier indicating the ECU type. Package hardwareIds and assignment
-          hardwareId are matched against it.
-        range: string
-        multivalued: false
-        required: true
-      ota_Ecu_isPrimary:
-        slot_uri: ota:Ecu_isPrimary
-        alias: isPrimary
-        title: is primary
-        description: >-
-          Indicates whether this is the primary ECU of the device. Exactly one ECU of a
-          device must be primary; this is not enforced by the schema and must be checked
-          by the consumer.
-        range: boolean
-        multivalued: false
-        required: false
-      ota_Ecu_installedPackageName:
-        slot_uri: ota:Ecu_installedPackageName
-        alias: installedPackageName
-        title: installed package name
-        description: >-
-          The name of the software currently installed on the ECU, as reported by the device.
-          Always set from the device report, whether or not it matches a registered package.
-        range: string
-        multivalued: false
-        required: false
-      ota_Ecu_installedVersion:
-        slot_uri: ota:Ecu_installedVersion
-        alias: installedVersion
-        title: installed version
-        description: >-
-          The version of the software currently installed on the ECU, as reported by the device.
-          Always set from the device report, whether or not it matches a registered package.
-        range: string
-        multivalued: false
-        required: false
-      ota_Ecu_installedPackage:
-        slot_uri: ota:Ecu_installedPackage
-        alias: installedPackage
-        title: installed package
-        description: >-
-          The registered package matching installedPackageName and installedVersion.
-          Absent when the installed software does not match any registered package.
+          The registered packages installed on the device, when known, referenced by their GRID.
         range: ota_Package
-        multivalued: false
-        required: false
-      ota_Ecu_installedPackageCategory:
-        slot_uri: ota:Ecu_installedPackageCategory
-        alias: installedPackageCategory
-        title: installed package category
-        description: >-
-          The category of the software currently installed on the ECU, as reported by the device.
-          When installedPackage is set, it matches the category of that package.
-        range: ota_PackageCategory
-        multivalued: false
-        required: false
-      ota_Ecu_isAssigned:
-        slot_uri: ota:Ecu_isAssigned
-        alias: isAssigned
-        title: is assigned
-        description: Indicates whether an update is currently assigned to the ECU.
-        range: boolean
-        multivalued: false
+        multivalued: true
         required: false
 
   ota_Fleet:
@@ -390,7 +199,6 @@ classes:
     slot_usage:
       core_name:
         description: The fleet name.
-        required: true
     attributes:
       ota_Fleet_createdAt:
         slot_uri: ota:Fleet_createdAt
@@ -399,7 +207,7 @@ classes:
         description: The date and time the fleet was created, in UTC.
         range: datetime
         multivalued: false
-        required: true
+        required: false
       ota_Fleet_devices:
         slot_uri: ota:Fleet_devices
         alias: devices
@@ -429,7 +237,6 @@ classes:
     slot_usage:
       core_name:
         description: The package name. Packages sharing a name are versions of the same package.
-        required: true
     attributes:
       ota_Package_version:
         slot_uri: ota:Package_version
@@ -437,14 +244,6 @@ classes:
         title: version
         description: The version identifier assigned to this package.
         range: string
-        multivalued: false
-        required: true
-      ota_Package_payloadUri:
-        slot_uri: ota:Package_payloadUri
-        alias: payloadUri
-        title: payload uri
-        description: URI identifying or locating the package payload, when available.
-        range: uri
         multivalued: false
         required: false
       ota_Package_size:
@@ -454,7 +253,7 @@ classes:
         description: The size of the package binary in bytes.
         range: integer
         multivalued: false
-        required: true
+        required: false
       ota_Package_hashes:
         slot_uri: ota:Package_hashes
         alias: hashes
@@ -473,8 +272,8 @@ classes:
         alias: hardwareIds
         title: hardware ids
         description: >-
-          The hardware identifiers of the ECUs compatible with the package, matched against
-          Ecu.hardwareId.
+          The hardware identifiers of the ECU types compatible with the package, matched against
+          the hardware identifiers reported by the ECUs of the target devices.
         range: string
         multivalued: true
         required: false
@@ -486,30 +285,12 @@ classes:
         range: datetime
         multivalued: false
         required: false
-      ota_Package_source:
-        slot_uri: ota:Package_source
-        alias: source
-        title: source
-        description: The source the package was registered from, for example an upload or an external repository.
-        range: string
-        multivalued: false
-        required: false
       ota_Package_packageType:
         slot_uri: ota:Package_packageType
         alias: packageType
         title: package type
         description: The package format reported by the provider, for example ostree or binary.
         range: string
-        multivalued: false
-        required: false
-      ota_Package_category:
-        slot_uri: ota:Package_category
-        alias: category
-        title: category
-        description: >-
-          The category of the software in the package, for example the base operating system or
-          an application. It is independent of packageType, which gives the package format.
-        range: ota_PackageCategory
         multivalued: false
         required: false
 
@@ -528,7 +309,7 @@ classes:
         description: The lowercase hash algorithm identifier, for example sha256 or sha512.
         range: string
         multivalued: false
-        required: true
+        required: false
       ota_PackageHash_value:
         slot_uri: ota:PackageHash_value
         alias: value
@@ -538,7 +319,7 @@ classes:
           digest length of the algorithm (64 characters for sha256, 128 for sha512).
         range: string
         multivalued: false
-        required: true
+        required: false
 
   ota_Deployment:
     is_a: core_Activity
@@ -546,9 +327,11 @@ classes:
     class_uri: ota:Deployment
     title: Deployment
     description: >-
-      Deployment represents an OTA update that assigns packages to the ECUs of its target,
-      either a single device or all devices of a single fleet. Provider-specific
-      scheduling and cancellation restrictions are defined by the corresponding API profile.
+      Deployment represents the request for an OTA update that assigns packages to the ECUs of
+      its target, either a single device or all devices of a single fleet. It records what was
+      requested, not how it was carried out: the outcome on each targeted device is a separate
+      Deployment Result, which refers to the deployment. Provider-specific scheduling and
+      cancellation restrictions are defined by the corresponding API profile.
     annotations:
       grid: grid:workspace:{workspace-id}:ota:deployment/{id}
       maturity: EXPERIMENTAL
@@ -582,23 +365,14 @@ classes:
         range: ota_Fleet
         multivalued: false
         required: false
-      ota_Deployment_status:
-        slot_uri: ota:Deployment_status
-        alias: status
-        title: status
-        description: >-
-          The overall status of the deployment. Set for device deployments. For fleet
-          deployments the status is tracked per device in deviceResults, and providers
-          may not report an overall status.
-        range: ota_DeploymentStatus
-        multivalued: false
-        required: false
       ota_Deployment_createdAt:
         slot_uri: ota:Deployment_createdAt
         alias: createdAt
         title: created at
         description: >-
-          The date and time the deployment was created, in UTC, when reported by the provider.
+          The date and time the deployment was requested, in UTC, when reported by the provider.
+          Some providers report only the creation time of the update for each device, see
+          DeploymentResult.createdAt.
         range: datetime
         multivalued: false
         required: false
@@ -607,14 +381,6 @@ classes:
         alias: scheduledFor
         title: scheduled for
         description: The date and time the deployment is scheduled to start, in UTC.
-        range: datetime
-        multivalued: false
-        required: false
-      ota_Deployment_completedAt:
-        slot_uri: ota:Deployment_completedAt
-        alias: completedAt
-        title: completed at
-        description: The date and time the deployment finished, in UTC.
         range: datetime
         multivalued: false
         required: false
@@ -629,16 +395,6 @@ classes:
         multivalued: true
         minimum_cardinality: 1
         required: true
-        inlined: true
-        inlined_as_list: true
-      ota_Deployment_deviceResults:
-        slot_uri: ota:Deployment_deviceResults
-        alias: deviceResults
-        title: device results
-        description: The per-device execution results of the deployment, not its target declaration.
-        range: ota_DeploymentDeviceResult
-        multivalued: true
-        required: false
         inlined: true
         inlined_as_list: true
 
@@ -668,254 +424,94 @@ classes:
         slot_uri: ota:DeploymentAssignment_package
         alias: package
         title: package
-        description: The package to install on the target ECUs.
+        description: The package to install on the target ECUs, referenced by its GRID.
         range: ota_Package
         multivalued: false
         required: true
 
-  ota_DeploymentDeviceResult:
-    is_a: core_Resource
+  ota_DeploymentResult:
+    is_a: core_Artifact
     in_subset: ota
-    class_uri: ota:DeploymentDeviceResult
-    title: Deployment Device Result
+    class_uri: ota:DeploymentResult
+    title: Deployment Result
     description: >-
-      Deployment Device Result is the outcome of a deployment on one target device.
+      Deployment Result is the outcome of a deployment on one target device, from the time the
+      device is addressed by the deployment, before its update is created. It is kept apart
+      from the deployment, which records the request: the request is fixed when it is created,
+      while the result is updated from the reports of the device as the update progresses. A
+      device deployment has one result; a fleet deployment has one result per device of the fleet.
+    annotations:
+      grid: grid:workspace:{workspace-id}:ota:deployment-result/{id}
+      maturity: EXPERIMENTAL
     attributes:
-      ota_DeploymentDeviceResult_device:
-        slot_uri: ota:DeploymentDeviceResult_device
-        alias: device
-        title: device
-        description: The target device.
-        range: ota_Device
+      ota_DeploymentResult_deployment:
+        is_a: core_outputOf
+        slot_uri: ota:DeploymentResult_deployment
+        alias: deployment
+        title: deployment
+        description: The deployment whose outcome this result records, referenced by its GRID.
+        range: ota_Deployment
         multivalued: false
         required: true
-      ota_DeploymentDeviceResult_creationStatus:
-        slot_uri: ota:DeploymentDeviceResult_creationStatus
-        alias: creationStatus
-        title: creation status
-        description: >-
-          Whether the update for the device has been created. Reported for fleet deployments only.
-        range: ota_DeploymentCreationStatus
+      ota_DeploymentResult_device:
+        slot_uri: ota:DeploymentResult_device
+        alias: device
+        title: device
+        description: The target device the result applies to, referenced by its GRID.
+        range: ota_Device
         multivalued: false
         required: false
-      ota_DeploymentDeviceResult_status:
-        slot_uri: ota:DeploymentDeviceResult_status
+      ota_DeploymentResult_createdAt:
+        slot_uri: ota:DeploymentResult_createdAt
+        alias: createdAt
+        title: created at
+        description: >-
+          The date and time the update for the device was created from the deployment, in UTC.
+          For a fleet deployment the updates of the devices are created after the deployment and
+          at different times, so this can differ from Deployment.createdAt. Absent while the
+          update for the device has not been created yet.
+        range: datetime
+        multivalued: false
+        required: false
+      ota_DeploymentResult_status:
+        slot_uri: ota:DeploymentResult_status
         alias: status
         title: status
-        description: >-
-          The deployment status on the device. Absent while the update for the device has not
-          been created, see creationStatus.
+        description: The status of the deployment on the device.
         range: ota_DeploymentStatus
         multivalued: false
         required: false
-      ota_DeploymentDeviceResult_completedAt:
-        slot_uri: ota:DeploymentDeviceResult_completedAt
+      ota_DeploymentResult_completedAt:
+        slot_uri: ota:DeploymentResult_completedAt
         alias: completedAt
         title: completed at
         description: The date and time the deployment finished on the device, in UTC.
         range: datetime
         multivalued: false
         required: false
-      ota_DeploymentDeviceResult_isSuccessful:
-        slot_uri: ota:DeploymentDeviceResult_isSuccessful
+      ota_DeploymentResult_isSuccessful:
+        slot_uri: ota:DeploymentResult_isSuccessful
         alias: isSuccessful
         title: is successful
-        description: Indicates whether the deployment on the device succeeded, once reported.
+        description: >-
+          Indicates whether the deployment on the device succeeded, once reported. False when
+          any ECU of the device failed to install its package.
         range: boolean
         multivalued: false
         required: false
-      ota_DeploymentDeviceResult_resultCode:
-        slot_uri: ota:DeploymentDeviceResult_resultCode
+      ota_DeploymentResult_resultCode:
+        slot_uri: ota:DeploymentResult_resultCode
         alias: resultCode
         title: result code
         description: The result code reported by the device.
         range: string
         multivalued: false
         required: false
-      ota_DeploymentDeviceResult_resultDescription:
-        slot_uri: ota:DeploymentDeviceResult_resultDescription
+      ota_DeploymentResult_resultDescription:
+        slot_uri: ota:DeploymentResult_resultDescription
         alias: resultDescription
         title: result description
         description: The human-readable result reported by the device.
         range: string
         multivalued: false
         required: false
-      ota_DeploymentDeviceResult_errors:
-        slot_uri: ota:DeploymentDeviceResult_errors
-        alias: errors
-        title: errors
-        description: >-
-          The errors reported for the device, for example the reasons its update was not created.
-        range: ota_DeploymentError
-        multivalued: true
-        required: false
-        inlined: true
-        inlined_as_list: true
-      ota_DeploymentDeviceResult_componentResults:
-        slot_uri: ota:DeploymentDeviceResult_componentResults
-        alias: componentResults
-        title: component results
-        description: The per-ECU results of the deployment on the device.
-        range: ota_DeploymentComponentResult
-        multivalued: true
-        required: false
-        inlined: true
-        inlined_as_list: true
-      ota_DeploymentDeviceResult_events:
-        slot_uri: ota:DeploymentDeviceResult_events
-        alias: events
-        title: events
-        description: The timeline of events reported for the deployment on the device.
-        range: ota_DeploymentEvent
-        multivalued: true
-        required: false
-        inlined: true
-        inlined_as_list: true
-
-  ota_DeploymentError:
-    is_a: core_Resource
-    in_subset: ota
-    class_uri: ota:DeploymentError
-    title: Deployment Error
-    description: >-
-      Deployment Error is an error reported for a device, or for one ECU of a device, during a
-      deployment, for example the reason the update for the device was not created, or that no
-      package of the deployment is compatible with the ECU's hardware.
-    attributes:
-      ota_DeploymentError_ecuId:
-        slot_uri: ota:DeploymentError_ecuId
-        alias: ecuId
-        title: ecu id
-        description: >-
-          The identifier of the ECU the error applies to, when the error concerns one ECU; absent
-          for device-level errors. At most 64 characters.
-        range: string
-        multivalued: false
-        required: false
-      ota_DeploymentError_code:
-        slot_uri: ota:DeploymentError_code
-        alias: code
-        title: code
-        description: The error code reported by the provider, for example device_no_compatible_hardware.
-        range: string
-        multivalued: false
-        required: true
-
-  ota_DeploymentComponentResult:
-    is_a: core_Resource
-    in_subset: ota
-    class_uri: ota:DeploymentComponentResult
-    title: Deployment Component Result
-    description: >-
-      Deployment Component Result is the outcome of a deployment on one ECU (Uptane component)
-      of a target device.
-    attributes:
-      ota_DeploymentComponentResult_ecuId:
-        slot_uri: ota:DeploymentComponentResult_ecuId
-        alias: ecuId
-        title: ecu id
-        description: The identifier of the ECU the package was assigned to. At most 64 characters.
-        range: string
-        multivalued: false
-        required: true
-      ota_DeploymentComponentResult_hardwareId:
-        slot_uri: ota:DeploymentComponentResult_hardwareId
-        alias: hardwareId
-        title: hardware id
-        description: >-
-          The hardware identifier of the ECU when the result was reported. It is kept as part
-          of the result record, even if the ECU is later replaced.
-        range: string
-        multivalued: false
-        required: true
-      ota_DeploymentComponentResult_package:
-        slot_uri: ota:DeploymentComponentResult_package
-        alias: package
-        title: package
-        description: The package assigned to the ECU.
-        range: ota_Package
-        multivalued: false
-        required: true
-      ota_DeploymentComponentResult_isSuccessful:
-        slot_uri: ota:DeploymentComponentResult_isSuccessful
-        alias: isSuccessful
-        title: is successful
-        description: Indicates whether the installation on the ECU succeeded, once reported.
-        range: boolean
-        multivalued: false
-        required: false
-      ota_DeploymentComponentResult_resultCode:
-        slot_uri: ota:DeploymentComponentResult_resultCode
-        alias: resultCode
-        title: result code
-        description: The result code reported for the ECU.
-        range: string
-        multivalued: false
-        required: false
-      ota_DeploymentComponentResult_resultDescription:
-        slot_uri: ota:DeploymentComponentResult_resultDescription
-        alias: resultDescription
-        title: result description
-        description: The human-readable result reported for the ECU.
-        range: string
-        multivalued: false
-        required: false
-
-  ota_DeploymentEvent:
-    is_a: core_Event
-    in_subset: ota
-    class_uri: ota:DeploymentEvent
-    title: Deployment Event
-    description: >-
-      Deployment Event is a single event, such as download or installation progress,
-      reported by an ECU during a deployment.
-    attributes:
-      ota_DeploymentEvent_deviceTime:
-        slot_uri: ota:DeploymentEvent_deviceTime
-        alias: deviceTime
-        title: device time
-        description: The date and time the event occurred according to the device clock, in UTC.
-        range: datetime
-        multivalued: false
-        required: true
-      ota_DeploymentEvent_receivedAt:
-        slot_uri: ota:DeploymentEvent_receivedAt
-        alias: receivedAt
-        title: received at
-        description: The date and time the server received the event, in UTC.
-        range: datetime
-        multivalued: false
-        required: true
-      ota_DeploymentEvent_eventType:
-        slot_uri: ota:DeploymentEvent_eventType
-        alias: eventType
-        title: event type
-        description: The event type identifier, for example EcuDownloadStarted or EcuInstallationCompleted.
-        range: string
-        multivalued: false
-        required: true
-      ota_DeploymentEvent_eventTypeVersion:
-        slot_uri: ota:DeploymentEvent_eventTypeVersion
-        alias: eventTypeVersion
-        title: event type version
-        description: The version of the event type schema.
-        range: integer
-        multivalued: false
-        required: false
-      ota_DeploymentEvent_ecuId:
-        slot_uri: ota:DeploymentEvent_ecuId
-        alias: ecuId
-        title: ecu id
-        description: The identifier of the ECU that reported the event. At most 64 characters.
-        range: string
-        multivalued: false
-        required: false
-      ota_DeploymentEvent_isSuccessful:
-        slot_uri: ota:DeploymentEvent_isSuccessful
-        alias: isSuccessful
-        title: is successful
-        description: Indicates whether the reported step succeeded, when applicable.
-        range: boolean
-        multivalued: false
-        required: false
-
