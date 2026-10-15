@@ -18,7 +18,7 @@ from linkml_runtime.utils.schemaview import SchemaView
 from cdm_tools.api_snapshot import DEFAULT_API_DIR, load_snapshots
 from cdm_tools.coverage import is_concrete_domain_class
 from cdm_tools.hub import build_hub, load_api_layers, schema_namespaces
-from cdm_tools.reference import grid_templates
+from cdm_tools.reference import effective_grid_templates
 from cdm_tools.registry import DEFAULT_REGISTRY_PATH, RegistryError, load_registry
 
 
@@ -28,7 +28,7 @@ def build_export(schema_path: str, *, registry_path: str, api_dir: str) -> dict:
     snapshots = load_snapshots(api_dir)
     platform, nexar_types = load_api_layers(api_dir)
     namespaces = schema_namespaces(sv)
-    grids = {name: template for name, _, _, template in grid_templates(sv)}   # empty templates omitted
+    grids = {name: template for name, (template, _) in effective_grid_templates(sv).items()}   # own or inherited
     classes: dict[str, dict] = {}
     for name, cls in sorted(sv.all_classes().items()):
         if not is_concrete_domain_class(name, cls):

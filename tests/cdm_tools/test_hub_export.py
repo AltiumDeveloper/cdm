@@ -34,6 +34,12 @@ def test_export_content():
     assert data["schema"]["id"] == "https://w3id.org/altium/cdm/"
 
 
+def test_inherited_grid_is_exported():
+    grids = {name: c["grid"] for name, c in _export()["classes"].items()}
+    assert grids["pro_ManagedBOM"] == "grid:workspace:{workspace-id}:procurement:bom/{id}"    # from pro_BomWIP
+    assert grids["des_HarnessProject"] == "grid:workspace:{workspace-id}:design:project/{id}"  # from des_Project
+
+
 def test_main_writes_file(tmp_path):
     out = tmp_path / "hub.json"
     assert main([ROOT, "-o", str(out), "--registry", str(REPO / "src/docs/links/registry.yaml"),

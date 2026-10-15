@@ -62,6 +62,7 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - Class index tables link API types via the hub data (Nexar types link to the Octopart API docs).
 
 ### Fixed
+- The spreadsheet export (`make gen-schema`, new step `cdm-sheet-export`) and `hub.json` include the inherited GRID template of classes that declare none (e.g. Managed BOM and Consolidated BOM from BOM WIP, Harness and Multi-board Project from Hardware Project).
 - Class pages show the GRID template of the nearest ancestor, and which class it comes from, when a class declares none (e.g. Harness Project).
 - Home page title: the schema title (Common Data Model) instead of "Bounded Contexts", which is a section of the page.
 - Class diagrams render again: Mermaid is pinned (the floating `mermaid@11` tag moved to a release that showed a syntax error on every diagram), diagrams are rendered by `javascript/mermaid.mjs` from their source text, and they use the class `cdm-diagram`, which Material's own Mermaid integration leaves alone.

@@ -38,6 +38,7 @@ widoco-docs:
 
 gen-schema: 
 	$(RUN) gen-linkml --useuris --metadata --format json --output google-sheet-schema.json --no-materialize-attributes $(SOURCE_SCHEMA_PATH)
+	$(RUN) cdm-sheet-export $(SOURCE_SCHEMA_PATH) google-sheet-schema.json
 
 ###
 ### JSON schema generation

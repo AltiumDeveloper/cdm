@@ -178,6 +178,21 @@ def grid_templates(sv) -> list[tuple[str, str, str, str]]:
     return rows
 
 
+def effective_grid_templates(sv) -> dict[str, tuple[str, str]]:
+    """Class name -> (template, declaring class): the class's own GRID template, else the nearest is_a ancestor's.
+
+    LinkML does not inherit annotations, so a class such as `pro_ManagedBOM` (template declared on its parent
+    `pro_BomWIP`) has no `grid` of its own; class pages show the inherited template, and exports must too.
+    """
+    own = {name: template for name, _, _, template in grid_templates(sv)}
+    resolved: dict[str, tuple[str, str]] = {}
+    for name in sv.all_classes():
+        owner = next((a for a in sv.class_ancestors(name, mixins=False) if a in own), None)   # reflexive, nearest first
+        if owner:
+            resolved[str(name)] = (own[owner], str(owner))
+    return resolved
+
+
 def _grid_by_subset(sv) -> dict[str, list[tuple[str, str]]]:
     """Bounded context (first subset) -> sorted (class name, template), contexts in the site's order."""
     groups: dict[str, list[tuple[str, str]]] = {}
