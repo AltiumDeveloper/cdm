@@ -1,0 +1,6 @@
+# Example for a valid Design Insight detected in the context of a design review
+---
+id: grid:workspace:8d3c1f0e-5b7a-4e2c-9a61-2f4b8c0d7e19:insights:insight/5d2a7f1c-8e43-4b6a-a9d0-c3f61e8b2a75
+designReview: grid:workspace:8d3c1f0e-5b7a-4e2c-9a61-2f4b8c0d7e19:design:design-review/4b1e6a2c-93d7-4f05-8c3e-71a9d2b5f604
+tasks:
+  - grid:workspace:8d3c1f0e-5b7a-4e2c-9a61-2f4b8c0d7e19:collaboration:task/3e8b1d6f-0c4a-4b92-87d5-f2a6c9e3b018

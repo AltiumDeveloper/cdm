@@ -123,7 +123,7 @@ classes:
     title: Activity
     description: >-
       Abstract base for process and work objects — things that happen, use inputs,
-      and produce outputs. Examples: projects, releases, design workflows.
+      and produce outputs. Examples: projects, design reviews, design workflows.
     is_a: core_Entity
     close_mappings:
       - prov:Activity

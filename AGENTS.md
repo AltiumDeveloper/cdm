@@ -343,6 +343,26 @@ system_FunctionalBlock:
   # in_subset missing → linkml-lint FAIL
 ```
 
+#### Descriptions model the domain, not the UI
+
+A `description` (on classes, slots, enums and permissible values, and their `comments`) defines the concept
+in domain terms: what it is, what it relates to and the rules it follows. It must not describe the product's
+user interface: pages, views, panes, tabs, menus, buttons, dialogs, admin screens, where something is
+"listed" or "shown", or how a user gets to it. Product documentation is supporting context. Link it with
+`see_also` / `structured_aliases` (Section 8) and draw domain facts from it, but don't copy its UI wording into
+definitions.
+
+```yaml
+# ✅ VALID — domain terms
+des_DesignReview_project:
+  description: The design project under review.
+# ❌ INVALID — describes the UI
+des_DesignReview_project:
+  description: The design project under review; the review is listed on the project's Design Reviews page.
+```
+
+The same applies to `title` (a domain label, not a UI caption) and to subset descriptions.
+
 #### platformAPI annotation
 
 `platformAPI` must name an **existing** Altium 365 Platform API type (e.g. `BomWip`, `DesProject`,

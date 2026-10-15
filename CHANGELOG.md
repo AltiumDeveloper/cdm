@@ -8,6 +8,10 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 ## [Unreleased]
 
 ### Added
+- `des_DesignReview` (Design Review, `core_Activity`, design): a structured review of a design project, with its project, review context (project release), Initiator, Reviewers, process workflow, tasks, comment threads and status (`des_DesignReviewStatus`). GRID `grid:workspace:{workspace-id}:design:design-review/{id}`.
+- `ins_DesignInsight` (Design Insight, insights): an insight within the design domain, informed by a design review (`ins_DesignInsight_designReview`, `core_informedBy` → `des_DesignReview`).
+- Description of `ins_Insight`.
+- AGENTS.md: descriptions model the domain, not the product UI; product documentation is supporting context only.
 - Bounded-context titles (`title` on every subset), matching the Altium 365 API reference names where the two differ: library is Library Management, configuration is Configuration Management.
 - Concept pages: Domain Model, Entity Classification and Relation Types.
 - About page (introduction): the model, its bounded contexts and entities, the APIs behind it, the class-page hub panel and `hub.json`.
@@ -37,6 +41,8 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - PR CI builds the documentation (`make gendoc` and `mkdocs build --strict`); `make gendoc` stops at the first failing step.
 
 ### Changed
+- The insight GRID template moves from Part Insight to its parent Insight (same template), which Part Insight and Design Insight share.
+- **BREAKING:** `des_ProjectRelease` is now a `core_Artifact` (was `core_Activity`), like the other release classes; this also resolves the domain/range conflicts of `des_ManufacturingPackage_projectRelease` and `des_Project` `core_releases` (MF-007, MF-070). The `core_Activity` description no longer gives releases as examples.
 - The GRID template of Managed BOM and Consolidated BOM moves to their common parent BOM WIP (same template; both inherit it).
 - Site look aligned with the Altium 365 API reference: Altium header and favicon, self-hosted Inter and JetBrains Mono, Altium blue in light and dark schemes, a sidebar listing every bounded context with its CDM colour and icon (no top tabs), header links to the API reference and the Developer Center, bounded-context cards on the home page, bounded-context titles and chips on subset and class pages.
 - Root schema description: replaces the placeholder with a summary of the model.

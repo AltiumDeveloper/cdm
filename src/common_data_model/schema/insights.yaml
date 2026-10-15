@@ -14,9 +14,10 @@ subsets:
   insights:
     title: Insights
     description: >-
-      Models insights that can be followed up by tasks. The only concrete kind is the part insight: it
-      concerns one Workspace part, may be informed by BOMs or design projects, and occurs in BOM releases,
-      project releases or component revisions.
+      Models insights: findings, detected asynchronously, that give the user insight within one domain area and
+      can be followed up by tasks. There are two concrete kinds. A part insight concerns one Workspace part,
+      may be informed by BOMs or design projects, and occurs in BOM releases, project releases or component
+      revisions. A design insight concerns a design and is informed by a design review.
     annotations:
       style: "fill:#a64d79"
       productDocs: none
@@ -29,8 +30,13 @@ classes:
     abstract: true
     class_uri: ins:Insight
     title: Insight
-    description: >- 
-      TBD
+    description: >-
+      A finding, detected asynchronously, that gives the user insight within one domain area: the library
+      (part insights) or design (design insights). Insights can be followed up by tasks.
+    comments:
+      - Working definition from the model owner; insights have no public product documentation yet.
+    annotations:
+      grid: grid:workspace:{workspace-id}:insights:insight/{id}
     attributes:
       ins_Insight_tasks:
         is_a: core_informs
@@ -50,7 +56,6 @@ classes:
     description: >-
       TBD
     annotations:
-      grid: grid:workspace:{workspace-id}:insights:insight/{id}
       platformAPI: DesWorkspaceInsInsight
     attributes:
       ins_PartInsight_part:
@@ -87,3 +92,24 @@ classes:
           - range: lib_ComponentRevision
         required: false
         multivalued: true
+
+  ins_DesignInsight:
+    is_a: ins_Insight
+    in_subset: insights
+    class_uri: ins:DesignInsight
+    title: Design Insight
+    description: >-
+      An insight within the design domain: a finding, detected asynchronously, about the design under review in
+      a design review. It is informed by that review and can be followed up by tasks.
+    annotations:
+      productDocs: none
+    attributes:
+      ins_DesignInsight_designReview:
+        is_a: core_informedBy
+        slot_uri: ins:DesignInsight_designReview
+        alias: designReview
+        title: design review
+        description: The design review in whose context the insight was detected.
+        range: des_DesignReview
+        required: true
+        multivalued: false

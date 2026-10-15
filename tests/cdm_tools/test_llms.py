@@ -437,7 +437,7 @@ def test_real_schema(real_docs):
     files = build_llms(ROOT, registry_path=REGISTRY, api_dir=API, docs_dir=str(real_docs))
     parsed = llms_txt.parse_llms_file(files["llms.txt"])
     notes = {l["title"]: l["desc"] for l in parsed.sections["Bounded contexts"]}
-    assert notes["insights"].endswith("(1 class; 1 base class or mixin)")
+    assert notes["insights"].endswith("(2 classes; 1 base class or mixin)")
     assert _unresolved(files, _html_pages(sv), "https://altiumdeveloper.github.io/cdm/") == []
     card = files["llms/classes/plt_LifecycleDefinition.md"]
     assert card.startswith("# Lifecycle Definition (plt_LifecycleDefinition)\n")
