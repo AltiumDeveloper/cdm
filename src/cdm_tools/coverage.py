@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Optional, Union
 
 from cdm_tools.api_links import ApiIndex
-from cdm_tools.hub import MAPPING_FIELDS
+from cdm_tools.hub import MAPPING_FIELDS, api_declaration
 
 OPEN_STATUS = "Needs SME"
 PENDING_STATUS = "Fixed — pending review"
@@ -70,12 +70,13 @@ def load_findings(path: Union[str, Path]) -> list[Finding]:
     return findings
 
 
-def _has_api(ann, platform_index: Optional[ApiIndex], nexar_types: Optional[dict]) -> bool:
-    if "platformAPI" in ann:
-        if platform_index is None or platform_index.kind_of(str(ann["platformAPI"].value)) is not None:
+def _has_api(api: dict[str, str], platform_index: Optional[ApiIndex], nexar_types: Optional[dict]) -> bool:
+    """*api*: the class's API annotations, own or inherited (hub.api_declaration)."""
+    if "platformAPI" in api:
+        if platform_index is None or platform_index.kind_of(api["platformAPI"]) is not None:
             return True
-    if "nexarAPI" in ann:
-        if nexar_types is None or str(ann["nexarAPI"].value) in nexar_types:
+    if "nexarAPI" in api:
+        if nexar_types is None or api["nexarAPI"] in nexar_types:
             return True
     return False
 
@@ -92,7 +93,7 @@ def subset_coverage(sv, *, platform_index: Optional[ApiIndex], nexar_types: Opti
         cov.classes += 1
         cov.with_docs += bool(cls.see_also)
         cov.no_docs_declared += "productDocs" in ann and str(ann["productDocs"].value) == "none"
-        cov.with_api += _has_api(ann, platform_index, nexar_types)
+        cov.with_api += _has_api(api_declaration(sv, name)[0], platform_index, nexar_types)
         cov.with_terms += bool(cls.structured_aliases)
         cov.with_mappings += any(getattr(cls, attr, None) for _, attr in MAPPING_FIELDS)
         cov.tbd += str(cls.description or "").strip().upper() in ("", "TBD")

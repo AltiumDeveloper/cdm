@@ -292,7 +292,7 @@ def test_catalogue(files):
     assert classes == [
         f"- [Port](classes/ex_Port.md) (`ex_Port`): A connection point. · Artifact · API DesX · GRID `{PORT_GRID}`",
         "- [Project](classes/ex_Project.md) (`ex_Project`): A project. · Activity",
-        "- [Sub port](classes/ex_SubPort.md) (`ex_SubPort`): A special port. · Artifact",
+        "- [Sub port](classes/ex_SubPort.md) (`ex_SubPort`): A special port. · Artifact · API DesX",
     ]
     base = t.split("## Base classes and mixins")[1]
     assert "- [core_WithX](classes/core_WithX.md): A mixin. · mixin" in base
@@ -341,7 +341,9 @@ def test_class_card(files):
     assert "## GRID\n\nNone declared.\n" in project
     sub = files["llms/classes/ex_SubPort.md"]
     assert "| owner | [ex_Project](ex_Project.md) | 1 | The owning project. | core_partOf | [ex_Port](ex_Port.md) |" in sub
-    assert "## In the product" not in sub and "## In the API" not in sub
+    assert "## In the product" not in sub                             # see_also is not inherited
+    assert "## In the API\n\n- Platform API type: [`DesX`](" in sub        # the API type is, from ex_Port
+    assert "- Inherited from [ex_Port](ex_Port.md).\n" in sub
     assert f"## GRID\n\nNone declared (nearest ancestor `ex_Port`: `{PORT_GRID}`).\n" in sub
     entity = files["llms/classes/core_Entity.md"]
     assert "- Kind: Entity, abstract" in entity and "- Mixins (instantiates): [core_WithX](core_WithX.md)" in entity
@@ -437,7 +439,7 @@ def test_real_schema(real_docs):
     files = build_llms(ROOT, registry_path=REGISTRY, api_dir=API, docs_dir=str(real_docs))
     parsed = llms_txt.parse_llms_file(files["llms.txt"])
     notes = {l["title"]: l["desc"] for l in parsed.sections["Bounded contexts"]}
-    assert notes["insights"].endswith("(1 class; 1 base class or mixin)")
+    assert notes["insights"].endswith("(2 classes; 1 base class or mixin)")
     assert _unresolved(files, _html_pages(sv), "https://altiumdeveloper.github.io/cdm/") == []
     card = files["llms/classes/plt_LifecycleDefinition.md"]
     assert card.startswith("# Lifecycle Definition (plt_LifecycleDefinition)\n")

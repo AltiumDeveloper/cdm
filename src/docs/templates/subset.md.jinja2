@@ -1,4 +1,4 @@
-{% from "macros.jinja2" import subset_title, cdm_kind with context %}
+{% from "macros.jinja2" import subset_title, cdm_kind, enum_link, slot_range_url with context %}
 # {{ subset_title(element.name) }} { .bc-title .bc-{{ element.name }} }
 
 {% set iri = subset_hub(element).iri if subset_hub is defined else none %}
@@ -106,7 +106,7 @@ context.
 | Name | Cardinality and Range | Description |
 | ---  | ---  | --- |
 {% for s in filtered_slots -%}
-| {{ gen.link(s) }} | {{ gen.cardinality(s) }} <br/> {{ gen.link(s.range) }} | {{ s.description|enshorten }} {% if s.identifier %}**identifier**{% endif %} |
+| {{ gen.link(s) }} | {{ gen.cardinality(s) }} <br/> {{ slot_range_url(s.range) }} | {{ s.description|enshorten }} {% if s.identifier %}**identifier**{% endif %} |
 {% endfor %}
 {%- endif %}
 
@@ -135,7 +135,7 @@ context.
 | --- | --- |
 {% for e in enums_in_subset|sort(attribute='name') -%}
 {% if element.name in e.in_subset -%}
-| {{ gen.link(e) }} | {{ e.description|enshorten }} |
+| {{ enum_link(e.name) }} | {{ e.description|enshorten }} |
 {%- endif %}
 {% endfor %}
 

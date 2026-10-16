@@ -1,0 +1,11 @@
+# Example for a valid Global ESD (not workspace-scoped, not part of a solution)
+---
+id: grid:global::system-design:esd/9c4e2b7a-1f3d-4a86-b5e0-7d2a6c8f1e43
+functionalBlocks:
+  - id: fb-motor-control
+    name: Motor Control
+    ports:
+      - id: port-1
+        name: port_1
+      - id: port-2
+        name: port_2

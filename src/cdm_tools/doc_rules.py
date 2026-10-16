@@ -8,8 +8,9 @@ DOC-04 error    *_mappings values must be full http(s) URLs or allow-listed CURI
 DOC-05 warning  PRODUCTION core_Entity class with no see_also and no API type must declare `productDocs: none`
 
 Semantics:
-- Annotations (platformAPI, nexarAPI, productDocs, maturity) and see_also are read from the class itself;
-  they are not inherited. A missing maturity means PRODUCTION.
+- Annotations (productDocs, maturity) and see_also are read from the class itself; they are not inherited.
+  A missing maturity means PRODUCTION. DOC-03 checks the API types a class declares itself; for DOC-05 a class
+  without its own API type inherits that of the nearest is_a ancestor that declares one.
 - DOC-01, DOC-02 and DOC-04 cover classes, slots (top-level and class attributes) and subsets; DOC-03 and
   DOC-05 cover classes only. Enums and schema-level see_also are not checked.
 - DOC-05 applies only to descendants of core_Entity; value objects (core_Resource) and events
@@ -27,6 +28,7 @@ from linkml_runtime.utils.schemaview import SchemaView
 
 from cdm_tools.api_snapshot import load_snapshots
 from cdm_tools.conventions import LintIssue
+from cdm_tools.hub import api_declaration
 from cdm_tools.registry import LinkEntry, load_registry, split_url
 
 Locator = Callable[[str], tuple[str, int]]
@@ -157,7 +159,7 @@ def check_coverage(sv: SchemaView, locate: Locator, is_cdm: IsCdm) -> list[LintI
         maturity = str(ann["maturity"].value) if "maturity" in ann and ann["maturity"].value else "PRODUCTION"
         if maturity != "PRODUCTION":
             continue
-        if cls.see_also or "platformAPI" in ann or "nexarAPI" in ann:
+        if cls.see_also or api_declaration(sv, name)[0]:      # own or inherited API type
             continue
         if "productDocs" in ann and str(ann["productDocs"].value) == "none":
             continue

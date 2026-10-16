@@ -1,0 +1,12 @@
+# Example for a valid Design Review of a project release
+---
+id: grid:workspace:8d3c1f0e-5b7a-4e2c-9a61-2f4b8c0d7e19:design:design-review/4b1e6a2c-93d7-4f05-8c3e-71a9d2b5f604
+project: grid:workspace:8d3c1f0e-5b7a-4e2c-9a61-2f4b8c0d7e19:design:project/c2f7a9e1-6d48-4b3a-b05e-9e8d1c4a7f32
+reviewContext: grid:workspace:8d3c1f0e-5b7a-4e2c-9a61-2f4b8c0d7e19:design:project-release/a6d0b3f8-1e29-4c7d-8f54-3b2e9c6a1d07
+initiator: grid:workspace:8d3c1f0e-5b7a-4e2c-9a61-2f4b8c0d7e19:team:user/e9b4c2d1-7a36-4f8e-b1c5-6d0a3f2e8b94
+reviewers:
+  - grid:workspace:8d3c1f0e-5b7a-4e2c-9a61-2f4b8c0d7e19:team:user/1f5a8c3e-2b9d-4e70-a6c4-8d3b7e1f0a52
+  - grid:workspace:8d3c1f0e-5b7a-4e2c-9a61-2f4b8c0d7e19:team:user/7c2e9a4b-5d18-4f3c-9e06-b4a1d8c5f263
+tasks:
+  - grid:workspace:8d3c1f0e-5b7a-4e2c-9a61-2f4b8c0d7e19:collaboration:task/3e8b1d6f-0c4a-4b92-87d5-f2a6c9e3b018
+status: InProgress

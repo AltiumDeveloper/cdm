@@ -40,8 +40,8 @@
 {% endfor %}
 {% endif -%}
 
-{# Not shown on class, bounded-context and field pages: their identifiers are under the title, or not resolvable #}
-{% if element.__class__.__name__ not in ("ClassDefinition", "SubsetDefinition", "SlotDefinition") %}
+{# Not shown on class, bounded-context, field and enumeration pages: their identifiers are under the title, or not resolvable #}
+{% if element.__class__.__name__ not in ("ClassDefinition", "SubsetDefinition", "SlotDefinition", "EnumDefinition") %}
 ## Identifier and Mapping Information
 
 {% if false and element.id_prefixes %}

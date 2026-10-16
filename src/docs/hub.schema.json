@@ -21,7 +21,7 @@
           "grid": {"type": ["string", "null"]},
           "hub": {
             "type": "object",
-            "required": ["links", "terms", "product_docs_none", "api", "api_missing", "nexar", "nexar_missing", "mappings"],
+            "required": ["links", "terms", "product_docs_none", "api", "api_missing", "nexar", "nexar_missing", "api_from", "mappings"],
             "properties": {
               "links": {"type": "array", "items": {"type": "object", "required": ["text", "url", "primary"]}},
               "terms": {"type": "array", "items": {"type": "object", "required": ["text", "predicate", "contexts", "source"]}},
@@ -30,6 +30,7 @@
               "api_missing": {"type": ["string", "null"]},
               "nexar": {"type": ["object", "null"], "required": ["type_name", "url"]},
               "nexar_missing": {"type": ["string", "null"]},
+              "api_from": {"type": ["string", "null"], "description": "Ancestor class that declares the API type, when inherited"},
               "mappings": {"type": "array", "items": {"type": "object", "required": ["relation", "text", "url"]}}
             }
           }

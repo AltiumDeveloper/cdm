@@ -26,6 +26,7 @@ subsets:
 
 enums:
   dm_Endianness:
+    title: Endianness
     is_a: Enumeration
     in_subset: deviceModel
     enum_uri: dm:Endianness
@@ -45,6 +46,7 @@ enums:
         title: "Bi-endian"
         description: Processor supports switching between little and big endian modes.
   dm_AddressBlockType:
+    title: Address Block Type
     is_a: Enumeration
     in_subset: deviceModel
     enum_uri: dm:AddressBlockType
@@ -60,6 +62,7 @@ enums:
         title: "Peripheral"
         description: Address block represents a peripheral device (e.g., UART, GPIO).
   dm_AccessType:
+    title: Access Type
     is_a: Enumeration
     in_subset: deviceModel
     enum_uri: dm:AccessType
@@ -78,6 +81,7 @@ enums:
         title: "Read-Write"
         description: The register or memory region can be both read from and written to.
   dm_PortMode:
+    title: Port Mode
     is_a: Enumeration
     in_subset: deviceModel
     enum_uri: dm:PortMode
@@ -93,6 +97,7 @@ enums:
       AlternateFunction:
         description: Pin is routed to a specific peripheral internal signal (e.g., UART TX, SPI CLK).
   dm_GpioMode:
+    title: GPIO Mode
     is_a: Enumeration
     in_subset: deviceModel
     enum_uri: dm:GpioMode
@@ -109,6 +114,7 @@ enums:
       OutputHigh:
         description: Pin is configured as a digital output with a default logic high (1) state.
   dm_PeripheralVirtualization:
+    title: Peripheral Virtualization
     is_a: Enumeration
     in_subset: deviceModel
     enum_uri: dm:PeripheralVirtualization

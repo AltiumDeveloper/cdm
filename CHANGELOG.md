@@ -8,6 +8,11 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 ## [Unreleased]
 
 ### Added
+- `system_GlobalESD` (Global ESD, system): an Electronic System Design outside of any Workspace, not part of a solution; GRID `grid:global::system-design:esd/{id}`. It shares the ESD content with `system_ESDDocument` through the new `system_ESD` mixin, as the Global BOM shares the BOM content through `pro_Bom`.
+- `des_DesignReview` (Design Review, `core_Activity`, design): a structured review of a design project, with its project, review context (project release), Initiator, Reviewers, process workflow, tasks, comment threads and status (`des_DesignReviewStatus`). GRID `grid:workspace:{workspace-id}:design:design-review/{id}`.
+- `ins_DesignInsight` (Design Insight, insights): an insight within the design domain, part of a design review (`ins_DesignInsight_designReview`, `core_partOf` → `des_DesignReview`).
+- Description and Platform API type (`DesWorkspaceInsInsight`) of `ins_Insight`.
+- AGENTS.md: descriptions model the domain, not the product UI; product documentation is supporting context only.
 - Bounded-context titles (`title` on every subset), matching the Altium 365 API reference names where the two differ: library is Library Management, configuration is Configuration Management.
 - Concept pages: Domain Model, Entity Classification and Relation Types.
 - About page (introduction): the model, its bounded contexts and entities, the APIs behind it, the class-page hub panel and `hub.json`.
@@ -37,7 +42,13 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - PR CI builds the documentation (`make gendoc` and `mkdocs build --strict`); `make gendoc` stops at the first failing step.
 
 ### Changed
-- The GRID template of Managed BOM and Consolidated BOM moves to their common parent BOM WIP (same template; both inherit it).
+- **BREAKING:** the ESD content moves from `system_ESDDocument` to the `system_ESD` mixin, so its slots are renamed: `system_ESDDocument_functionalBlocks`, `_connections`, `_hardwareProjects`, `_softwareProjects` become `system_ESD_functionalBlocks`, `_connections`, `_hardwareProjects`, `_softwareProjects` (`slot_uri` `sys:ESD_<field>`). The aliases, so Python attributes and JSON keys, are unchanged.
+- Class pages show the API type under the title, as `API:` next to the IRI and the GRID template, instead of an "In the API" box in the hub panel.
+- Enumeration pages follow the class-page layout (title, IRI, description, Values, Used by) and enumerations are referenced by their title everywhere; every enumeration now has a `title`.
+- Design Review description shortened to the main idea of the entity; AGENTS.md: class descriptions are one or two sentences.
+- The insight GRID template moves from Part Insight to its parent Insight (same template), which Part Insight and Design Insight share.
+- **BREAKING:** `des_ProjectRelease` is now a `core_Artifact` (was `core_Activity`), like the other release classes; this also resolves the domain/range conflicts of `des_ManufacturingPackage_projectRelease` and `des_Project` `core_releases` (MF-007, MF-070). The `core_Activity` description no longer gives releases as examples.
+- GRID templates: Managed BOM `grid:workspace:{workspace-id}:procurement:bom/{id}` and Consolidated BOM `grid:workspace:{workspace-id}:procurement:consolidated-bom/{id}` (declared on each; BOM WIP declares none), Application `grid:global::platform:app/{id}` (was `…:platform:application/{id}`), Script Execution `grid:workspace:{workspace-id}:scripts:execution/{id}` (was `…:scripts:script-execution/{id}`).
 - Site look aligned with the Altium 365 API reference: Altium header and favicon, self-hosted Inter and JetBrains Mono, Altium blue in light and dark schemes, a sidebar listing every bounded context with its CDM colour and icon (no top tabs), header links to the API reference and the Developer Center, bounded-context cards on the home page, bounded-context titles and chips on subset and class pages.
 - Root schema description: replaces the placeholder with a summary of the model.
 - Bounded-context pages: the IRI of the context (`https://w3id.org/altium/cdm/<subset>`, resolvable through w3id.org) under the title; the GRID table and the "Identifier and Mapping Information" section are dropped.
@@ -56,6 +67,8 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 - Class index tables link API types via the hub data (Nexar types link to the Octopart API docs).
 
 ### Fixed
+- The spreadsheet export (`make gen-schema`, new step `cdm-sheet-export`) and `hub.json` include the inherited GRID template of classes that declare none (e.g. Harness and Multi-board Project from Hardware Project, Part and Design Insight from Insight).
+- API types (`platformAPI`, `nexarAPI`) are inherited along `is_a` like GRID templates: a class that declares none uses the nearest ancestor's. Class pages ("(from …)"), class index tables, `hub.json` (`api_from`), llms cards, the spreadsheet export, coverage and DOC-05 all use the inherited type. In the model, `BomWip` moves to BOM WIP and the copies on Managed BOM, Consolidated BOM, Harness Project, Multi-board Project and Part Insight are removed.
 - Class pages show the GRID template of the nearest ancestor, and which class it comes from, when a class declares none (e.g. Harness Project).
 - Home page title: the schema title (Common Data Model) instead of "Bounded Contexts", which is a section of the page.
 - Class diagrams render again: Mermaid is pinned (the floating `mermaid@11` tag moved to a release that showed a syntax error on every diagram), diagrams are rendered by `javascript/mermaid.mjs` from their source text, and they use the class `cdm-diagram`, which Material's own Mermaid integration leaves alone.

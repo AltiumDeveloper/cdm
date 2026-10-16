@@ -19,7 +19,6 @@ missing_metadata:
   description:
     - Any
     - system_Connection_endpoints
-    - system_ESDDocument_connections
     - system_Endpoint_functionalBlock
     - system_Endpoint_port
     - system_FunctionalBlock_keyComponents
@@ -236,8 +235,6 @@ missing_metadata:
     - dm_Register_resetValue
     - dm_peripherals
     - dm_ports
-    - system_ESDDocument_hardwareProjects
-    - system_ESDDocument_softwareProjects
     - system_HardwareProject_hardwareComponents
     - system_SdmConnection_endpoints
     - system_SdmFunctionalBlock_hardwareComponents
@@ -258,8 +255,6 @@ missing_metadata:
     - system_SdmSystemModel_softwareModels
     - system_SoftwareProject_softwareComponents
   slot_uri:
-    - system_ESDDocument_hardwareProjects
-    - system_ESDDocument_softwareProjects
     - system_HardwareProject_hardwareComponents
     - system_Parameter_value
     - system_SdmClientMetadata_clientId

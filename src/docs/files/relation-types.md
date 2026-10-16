@@ -46,12 +46,8 @@ The domain and range of the domain slot should stay within those of its parent â
 of `core_hasInput` goes from an Activity to an Artifact. Current exceptions, recorded in
 [MODEL-FINDINGS.md](https://github.com/AltiumDeveloper/cdm/blob/main/MODEL-FINDINGS.md):
 
-- `des_ManufacturingPackage_projectRelease` specialises `core_derivedFrom` (Artifact to Artifact) but its range
-  `des_ProjectRelease` is an Activity, and `des_Project` narrows `core_releases` (range Artifact) to the same
-  class (MF-070).
 - `ins_PartInsight_part` specialises `core_informs` (Activity to Activity) but its range `lib_Part` is an
-  Artifact; `ins_PartInsight_informedBy` and `ins_PartInsight_occursIn` have range `Any`, and the alternatives of
-  `ins_PartInsight_occursIn` include `des_ProjectRelease`, an Activity (MF-075).
+  Artifact; `ins_PartInsight_informedBy` and `ins_PartInsight_occursIn` have range `Any` (MF-075).
 
 ## Declaring a domain relation
 

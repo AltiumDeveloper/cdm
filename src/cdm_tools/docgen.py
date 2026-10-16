@@ -98,7 +98,8 @@ class CdmDocGenerator(DocGenerator):
         )
         namespaces = schema_namespaces(self.schemaview)
         env.globals["hub"] = lambda element: build_hub(
-            element, registry=registry, platform=platform, nexar_types=nexar_types, namespaces=namespaces
+            element, registry=registry, platform=platform, nexar_types=nexar_types, namespaces=namespaces,
+            sv=self.schemaview,
         )
         self._register_subset_hub(env)
 

@@ -54,6 +54,24 @@ def test_platform_api(sv, class_name, expected):
     assert _annotation(sv, class_name, "platformAPI") == expected
 
 
+EXPECTED_INHERITED_PLATFORM_API = {        # declared once on the parent, inherited along is_a
+    "pro_ManagedBOM": ("BomWip", "pro_BomWIP"),
+    "pro_ConsolidatedBOM": ("BomWip", "pro_BomWIP"),
+    "des_HarnessProject": ("DesProject", "des_Project"),
+    "des_MultiboardProject": ("DesProject", "des_Project"),
+    "ins_PartInsight": ("DesWorkspaceInsInsight", "ins_Insight"),
+    "ins_DesignInsight": ("DesWorkspaceInsInsight", "ins_Insight"),
+}
+
+
+@pytest.mark.parametrize("class_name,expected", sorted(EXPECTED_INHERITED_PLATFORM_API.items()))
+def test_inherited_platform_api(sv, class_name, expected):
+    from cdm_tools.hub import api_declaration
+    assert _annotation(sv, class_name, "platformAPI") is None       # not repeated on the subclass
+    api, owner = api_declaration(sv, class_name)
+    assert (api.get("platformAPI"), owner) == expected
+
+
 @pytest.mark.parametrize("class_name,expected", sorted(EXPECTED_NEXAR_API.items()))
 def test_nexar_api(sv, class_name, expected):
     assert _annotation(sv, class_name, "nexarAPI") == expected

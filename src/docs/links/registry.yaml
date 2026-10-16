@@ -169,6 +169,12 @@ https://www.altium.com/documentation/altium-365/processes-workflows:
   product: altium-365
   anchors: []
   last_verified: '2026-09-30'
+https://www.altium.com/documentation/altium-365/project-design-reviews:
+  title: Design Reviews
+  source: altium-docs
+  product: altium-365
+  anchors: []
+  last_verified: '2026-10-15'
 https://www.altium.com/documentation/altium-365/renesas-365:
   title: Renesas 365
   source: altium-docs

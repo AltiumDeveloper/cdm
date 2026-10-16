@@ -57,8 +57,9 @@ def _tree(view: SchemaView, names: list[str]) -> list[tuple[str, int]]:
 
 
 def _bounded_contexts(schema: Path) -> tuple[dict[str, str], dict[str, list[tuple[str, int]]]]:
-    """(title by subset, entity classes by subset as (name, depth) in sidebar order), cached per schema mtime."""
-    key = (schema, schema.stat().st_mtime)
+    """(title by subset, entity classes by subset as (name, depth) in sidebar order), cached until a schema file
+    changes (any module, not only the root, which rarely changes when classes are added)."""
+    key = (schema, tuple(sorted((p.name, p.stat().st_mtime) for p in schema.parent.glob("*.yaml"))))
     if _cache.get("key") != key:
         view = SchemaView(str(schema))
         titles = {name: s.title or name for name, s in view.all_subsets().items()}

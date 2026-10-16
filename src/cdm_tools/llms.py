@@ -108,7 +108,8 @@ class _Model:
         platform, nexar_types = load_api_layers(api_dir)
         namespaces = schema_namespaces(sv)
         self.hubs: dict[str, HubView] = {
-            n: build_hub(c, registry=registry, platform=platform, nexar_types=nexar_types, namespaces=namespaces)
+            n: build_hub(c, registry=registry, platform=platform, nexar_types=nexar_types, namespaces=namespaces,
+                         sv=sv)
             for n, c in self.classes.items()}
         self.retrieved = load_snapshots(api_dir).get("platform", {}).get("retrieved")
         self.grids = {name: template for name, _, _, template in grid_templates(sv)}
@@ -201,6 +202,8 @@ def _hub_sections(hub: HubView) -> list[str]:
         api.append(f"- Nexar type: `{hub.nexar.type_name}` ([Octopart API]({hub.nexar.url}))")
     if hub.nexar_missing:
         api.append(f"- Nexar type `{hub.nexar_missing}` is named by the class but is not in the Nexar snapshot.")
+    if api and hub.api_from:
+        api.append(f"- Inherited from [{hub.api_from}]({hub.api_from}.md).")
     if api:
         lines += ["", "## In the API", ""] + api
     if hub.mappings:
