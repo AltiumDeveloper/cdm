@@ -55,6 +55,9 @@ Product terms and class names of the model. A term used by several classes is li
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
 | Datasheet | [Datasheet](../classes/lib_Datasheet.md) (`lib_Datasheet`) | library | title | [Adding Datasheets to a Component](https://www.altium.com/documentation/altium-designer/components-libraries/adding-datasheets-component) |
+| Deployment | [Deployment](../classes/ota_Deployment.md) (`ota_Deployment`) | ota | title |  |
+| Deployment Assignment | [Deployment Assignment](../classes/ota_DeploymentAssignment.md) (`ota_DeploymentAssignment`) | ota | title |  |
+| Deployment Result | [Deployment Result](../classes/ota_DeploymentResult.md) (`ota_DeploymentResult`) | ota | title |  |
 | design project | [Hardware Project](../classes/des_Project.md) (`des_Project`) | design | related | [Workspace Projects](https://www.altium.com/documentation/altium-365/workspace-projects) |
 | design project release | [Hardware Project Release](../classes/des_ProjectRelease.md) (`des_ProjectRelease`) | design | related | [Design Project Release](https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release) |
 | design variant | [Hardware Project Variant](../classes/des_ProjectVariant.md) (`des_ProjectVariant`) | design | exact | [Design Variants](https://www.altium.com/documentation/altium-designer/design-variants) |
@@ -165,6 +168,7 @@ Product terms and class names of the model. A term used by several classes is li
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
 | Package | [Package](../classes/ota_Package.md) (`ota_Package`) | ota | title |  |
+| Package Hash | [Package Hash](../classes/ota_PackageHash.md) (`ota_PackageHash`) | ota | title |  |
 | Parameter | [Parameter](../classes/system_Parameter.md) (`system_Parameter`) | system | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#accessing_object_properties) |
 | Part Choice | [Part Choice](../classes/lib_PartChoice.md) (`lib_PartChoice`) | library | title | [Adding Supply Chain Information to a Component](https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component#anatomy_of_a_part_choice) |
 | Part Choice List | [Part Choice List](../classes/lib_PartChoiceList.md) (`lib_PartChoiceList`) | library | title | [Adding Supply Chain Information to a Component](https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component#part_choices) |

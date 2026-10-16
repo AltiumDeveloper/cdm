@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://w3id.org/altium/cdm/subsets/ota/" rel="canonical"/>
 <link href="../../classes/sft_SoftwareRelease/" rel="prev"/>
-<link href="../../classes/ota_Device/" rel="next"/>
+<link href="../../classes/ota_Deployment/" rel="next"/>
 <link href="../../img/favicon.svg" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
 <title>Over-the-Air Updates - Common Data Model</title>
@@ -1181,6 +1181,22 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/ota_Deployment/">
+<span class="md-ellipsis">
+    Deployment
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/ota_DeploymentResult/">
+<span class="md-ellipsis">
+    Deployment Result
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../classes/ota_Device/">
 <span class="md-ellipsis">
     Device
@@ -1318,6 +1334,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#resources">
+<span class="md-ellipsis">
+      Resources
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#enumerations-in-bounded-context">
 <span class="md-ellipsis">
       Enumerations in Bounded Context
@@ -1345,7 +1368,7 @@
 </div>
 <h1 class="bc-title bc-ota" id="over-the-air-updates">Over-the-Air Updates</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/ota">https://w3id.org/altium/cdm/ota</a></p>
-<p>Models over-the-air (OTA) firmware and software updates: devices with their status and installed packages, fleets that group devices, and packages with their version, size, checksums and target hardware. All classes are experimental.</p>
+<p>Models over-the-air (OTA) firmware and software updates: devices with the packages installed on them, fleets that group devices, packages with their version, size, checksums and target hardware, deployments that request packages to be rolled out to a device or fleet, and the deployment results that record the outcome on each targeted device. All classes are experimental.</p>
 <h2 id="in-the-product">In the product</h2>
 <p>No public product documentation exists for this bounded context.</p>
 <h2 id="in-the-api">In the API</h2>
@@ -1361,16 +1384,43 @@ context.</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../../classes/ota_Deployment/">Deployment</a></td>
+<td>Deployment represents the request for an OTA update that assigns packages to the ECUs of its target, either a single device or all devices of a single fleet. It records what was requested, not how it was carried out: the outcome on each targeted device is a separate Deployment Result, which refers to the deployment. Provider-specific scheduling and cancellation restrictions are defined by the corresponding API profile.</td>
+</tr>
+<tr>
+<td><a href="../../classes/ota_DeploymentResult/">Deployment Result</a></td>
+<td>Deployment Result is the outcome of a deployment on one target device, from the time the device is addressed by the deployment, before its update is created. It is kept apart from the deployment, which records the request: the request is fixed when it is created, while the result is updated from the reports of the device as the update progresses. A device deployment has one result; a fleet deployment has one result per device of the fleet.</td>
+</tr>
+<tr>
 <td><a href="../../classes/ota_Device/">Device</a></td>
-<td>TBD</td>
+<td>Device represents a physical unit registered for OTA updates. A device consists of one primary ECU and optional secondary ECUs, and may belong to fleets.</td>
 </tr>
 <tr>
 <td><a href="../../classes/ota_Fleet/">Fleet</a></td>
-<td>TBD</td>
+<td>Fleet represents a named group of devices managed and updated together.</td>
 </tr>
 <tr>
 <td><a href="../../classes/ota_Package/">Package</a></td>
-<td>TBD</td>
+<td>Package represents one version of a software package registered for OTA deployment. A package is identified by its name and version; the version list of a package is the set of packages sharing the same name.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="resources">Resources</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../classes/ota_DeploymentAssignment/">Deployment Assignment</a></td>
+<td>Deployment Assignment assigns a package to the ECUs with a given hardware identifier. Deployment requests may name packages only; the provider then resolves the hardware identifier from the package and the target device's ECUs.</td>
+</tr>
+<tr>
+<td><a href="../../classes/ota_PackageHash/">Package Hash</a></td>
+<td>Package Hash is a checksum of a package binary, used for Uptane target metadata.</td>
 </tr>
 </tbody>
 </table>
@@ -1384,8 +1434,12 @@ context.</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../../enums/ota_DeploymentStatus/">ota_DeploymentStatus</a></td>
+<td>The status of a deployment on one target device, reported by its Deployment R...</td>
+</tr>
+<tr>
 <td><a href="../../enums/ota_DeviceStatus/">ota_DeviceStatus</a></td>
-<td></td>
+<td>The OTA update status of a device</td>
 </tr>
 </tbody>
 </table>

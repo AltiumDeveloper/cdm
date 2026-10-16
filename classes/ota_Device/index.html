@@ -6,7 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://w3id.org/altium/cdm/classes/ota_Device/" rel="canonical"/>
-<link href="../../subsets/ota/" rel="prev"/>
+<link href="../ota_DeploymentResult/" rel="prev"/>
 <link href="../ota_Fleet/" rel="next"/>
 <link href="../../img/favicon.svg" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
@@ -1180,6 +1180,22 @@
             Over-the-Air Updates
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ota_Deployment/">
+<span class="md-ellipsis">
+    Deployment
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ota_DeploymentResult/">
+<span class="md-ellipsis">
+    Deployment Result
+    
+  </span>
+</a>
+</li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
@@ -1381,7 +1397,7 @@
 <h1 id="device">Device</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/ota/Device">https://w3id.org/altium/cdm/ota/Device</a></p>
 <p class="page-subtitle">GRID: <code>grid:workspace:{workspace-id}:ota:device/{id}</code></p>
-<p>TBD</p>
+<p>Device represents a physical unit registered for OTA updates. A device consists of one primary ECU and optional secondary ECUs, and may belong to fleets.</p>
 <div class="admonition abstract">
 <p class="admonition-title">In the product</p>
 <p>No product documentation linked yet.</p>
@@ -1421,37 +1437,15 @@
 
 
 
+          ota_Device : description
 
 
 
-
-
-      ota_Device --&gt; "*" ota_Fleet : fleets
-      click ota_Fleet href "../../classes/ota_Fleet/"
-
-
-  class ota_Fleet["Fleet"]
+          ota_Device : device id
 
 
 
-
-
-
-      style ota_Fleet fill:#d29292,stroke:#885f5f,color:#14181f,stroke-width:1px
-
-
-
-
-
-          ota_Device : device ID
-
-
-
-          ota_Device : hardware ID
-
-
-
-          ota_Device : hibernated
+          ota_Device : hardware id
 
 
 
@@ -1474,6 +1468,26 @@
       style ota_DeviceStatus fill:#d29292,stroke:#885f5f,color:#14181f,stroke-width:1px
 
 
+
+
+
+          ota_Device : last seen at
+
+
+
+          ota_Device : created at
+
+
+
+          ota_Device : activated at
+
+
+
+          ota_Device : last updated at
+
+
+
+          ota_Device : hibernated
 
 
 
@@ -1524,6 +1538,40 @@
 
 
 
+
+
+
+  class ota_Deployment["Deployment"]
+
+
+
+
+
+
+      style ota_Deployment fill:#d29292,stroke:#885f5f,color:#14181f,stroke-width:1px
+
+          ota_Deployment --&gt; "0..1" ota_Device: target device 
+          click ota_Deployment href "../../classes/ota_Deployment/"
+
+
+
+
+
+
+  class ota_DeploymentResult["Deployment Result"]
+
+
+
+
+
+
+      style ota_DeploymentResult fill:#d29292,stroke:#885f5f,color:#14181f,stroke-width:1px
+
+          ota_DeploymentResult --&gt; "1" ota_Device: device 
+          click ota_DeploymentResult href "../../classes/ota_DeploymentResult/"
+
+
+
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
@@ -1562,45 +1610,73 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/ota_Device_fleets">fleets</a></td>
-<td><code>*</code></td>
-<td><a href="../ota_Fleet/">Fleet</a></td>
-<td>Fleets this device belongs to</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/ota_Device_deviceId">device ID</a></td>
+<td><a href="../../slots/core_description">description</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../types/string/">string</a></td>
-<td>External device identifier (e.g. Torizon deviceId)</td>
+<td>Free-form notes associated with the device.</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/ota_Device_hardwareId">hardware ID</a></td>
+<td><a href="../../slots/ota_Device_deviceId">device id</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../types/string/">string</a></td>
-<td>Hardware identifier indicating device type/model</td>
+<td>The device-side identifier provided at provisioning.</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/ota_Device_hibernated">hibernated</a></td>
+<td><a href="../../slots/ota_Device_hardwareId">hardware id</a></td>
 <td><code>0..1</code></td>
-<td><a href="../../types/boolean/">boolean</a></td>
-<td>Whether the device is in hibernation (from Torizon DeviceInfoBasic.hibernated)</td>
+<td><a href="../../types/string/">string</a></td>
+<td>The hardware type of the device as a whole (for example the product or board type), as reported by the provider, when provided. It is independent of the hardware identifiers of the device's ECUs, which Package.hardwareIds and DeploymentAssignment.hardwareId are matched against.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/ota_Device_status">status</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../enums/ota_DeviceStatus/">ota_DeviceStatus</a></td>
-<td>Current device status</td>
+<td>The current status of the device, set by the provider.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/ota_Device_lastSeenAt">last seen at</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/datetime/">datetime</a></td>
+<td>The date and time the device last connected, in UTC, set by the provider. Absent while the device has never connected.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/ota_Device_createdAt">created at</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/datetime/">datetime</a></td>
+<td>The date and time the device was registered, in UTC, set by the provider.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/ota_Device_activatedAt">activated at</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/datetime/">datetime</a></td>
+<td>The date and time the device first connected, in UTC, set by the provider. Absent while the device has never connected.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/ota_Device_lastUpdatedAt">last updated at</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/datetime/">datetime</a></td>
+<td>The date and time the device was last updated, in UTC, set by the provider. Absent while the device has never been updated.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/ota_Device_hibernated">hibernated</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/boolean/">boolean</a></td>
+<td>Indicates whether the device is hibernated and excluded from updates.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/ota_Device_packages">packages</a></td>
 <td><code>*</code></td>
 <td><a href="../ota_Package/">Package</a></td>
-<td>Installed packages, if known</td>
+<td>The registered packages installed on the device, when known, referenced by their GRID.</td>
 <td>direct</td>
 </tr>
 </tbody>

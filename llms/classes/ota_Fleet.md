@@ -8,6 +8,8 @@
 - Maturity: EXPERIMENTAL
 - HTML page: [classes/ota_Fleet/](../../classes/ota_Fleet/)
 
+Fleet represents a named group of devices managed and updated together.
+
 ## GRID
 
 `grid:workspace:{workspace-id}:ota:fleet/{id}`
@@ -16,12 +18,13 @@
 
 | Field | Range | Cardinality | Description | Relation | Inherited from |
 | --- | --- | --- | --- | --- | --- |
-| name | string | 0..1 | A short name of the entity. |  |  |
-| devices | [ota_Device](ota_Device.md) | * | Devices in this fleet |  |  |
+| name | string | 1 | The fleet name. |  |  |
+| createdAt | datetime | 0..1 | The date and time the fleet was created, in UTC. |  |  |
+| devices | [ota_Device](ota_Device.md) | * | The devices that are members of this fleet. |  |  |
 | id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](core_Entity.md) |
 
 ## Referenced by
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [ota_Device](ota_Device.md) | fleets | * |  |
+| [ota_Deployment](ota_Deployment.md) | targetFleet | 0..1 | core_occursIn |

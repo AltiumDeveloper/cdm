@@ -218,6 +218,8 @@ Bounded context page: [Over-the-Air Updates](../ota.md).
 
 | Entity | GRID template |
 | --- | --- |
+| [Deployment](../classes/ota_Deployment.md) | `grid:workspace:{workspace-id}:ota:deployment/{id}` |
+| [Deployment Result](../classes/ota_DeploymentResult.md) | `grid:workspace:{workspace-id}:ota:deployment-result/{id}` |
 | [Device](../classes/ota_Device.md) | `grid:workspace:{workspace-id}:ota:device/{id}` |
 | [Fleet](../classes/ota_Fleet.md) | `grid:workspace:{workspace-id}:ota:fleet/{id}` |
 | [Package](../classes/ota_Package.md) | `grid:workspace:{workspace-id}:ota:package/{id}` |

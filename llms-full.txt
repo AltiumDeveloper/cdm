@@ -4,7 +4,7 @@
 
 This file follows https://llmstxt.org/. Its links are absolute; the links in the files under `llms/` are relative to the file that contains them. `llms-ctx.txt` holds this file, the pages and the catalogues in one file, and `llms-full.txt` also the class and enumeration cards; their links are absolute.
 
-The model has 168 classes: 147 concrete domain classes, listed in the catalogues below, and 21 core, abstract and mixin classes, including LinkML's `Any`. 164 of them belong to one of the 16 bounded contexts (LinkML subsets); 4 classes belong to none and are listed in [llms/core.md](https://altiumdeveloper.github.io/cdm/llms/core.md).
+The model has 172 classes: 151 concrete domain classes, listed in the catalogues below, and 21 core, abstract and mixin classes, including LinkML's `Any`. 168 of them belong to one of the 16 bounded contexts (LinkML subsets); 4 classes belong to none and are listed in [llms/core.md](https://altiumdeveloper.github.io/cdm/llms/core.md).
 
 - Class names are `{prefix}_{ClassName}` (`lib_Component`). Each card gives the class IRI; it is usually `{prefix}:{ClassName}` (`lib:Component`) — `system_*` classes use `sys:`, and a few IRIs differ from the name (see [VIOLATIONS.md](https://github.com/AltiumDeveloper/cdm/blob/main/VIOLATIONS.md)).
 - Slot names usually follow `{prefix}_{ClassName}_{fieldName}`; the JSON key is always the slot's `alias` (the Field column of a card).
@@ -33,7 +33,7 @@ The model has 168 classes: 147 concrete domain classes, listed in the catalogues
 - [deviceModel](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md): Models an embedded device (e.g. an MCU), which the CDM calls a digital twin: its processors; its address map with memories, registers, bit fields and their enumerated values; its peripherals with their instances, modes and configurations; and its pins and ports with the alternative functions of each port. (24 classes)
 - [insights](https://altiumdeveloper.github.io/cdm/llms/insights.md): Models insights that can be followed up by tasks. (1 class; 1 base class or mixin)
 - [library](https://altiumdeveloper.github.io/cdm/llms/library.md): Models the components stored in a Workspace and their revisions, the symbols, footprints, parameters, datasheets and part choices that make them up, and the component templates they can be created from. (22 classes)
-- [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md): Models over-the-air (OTA) firmware and software updates: devices with their status and installed packages, fleets that group devices, and packages with their version, size, checksums and target hardware. (3 classes)
+- [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md): Models over-the-air (OTA) firmware and software updates: devices with the packages installed on them, fleets that group devices, packages with their version, size, checksums and target hardware, deployments that request packages to be rolled out to a device or fleet, and the deployment results that record the outcome on each targeted device. (7 classes)
 - [procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md): Models bills of materials: BOMs kept in a Workspace and worked on in the BOM Portal (managed and consolidated BOMs) with their releases, global BOMs, which are not tied to a Workspace, and BOM lines with their alternate and substitute parts and the issues found when a BOM is analysed. (8 classes; 3 base classes and mixins)
 - [supply](https://altiumdeveloper.github.io/cdm/llms/supply.md): Models the supply catalog: manufacturer parts with their aggregated sourcing data and distributor offers, the companies acting as their manufacturers or distributors, and the vendor-specific part family hierarchy, along with catalog content such as reference designs, evaluation kits, solution templates and software projects. (9 classes)
 - [software](https://altiumdeveloper.github.io/cdm/llms/software.md): Models the embedded software of a Renesas 365 solution: software projects with their releases and build artifacts, device configurations (with revisions) and their pin assignments, and AI models. (8 classes)
@@ -350,6 +350,8 @@ Bounded context page: [Over-the-Air Updates](https://altiumdeveloper.github.io/c
 
 | Entity | GRID template |
 | --- | --- |
+| [Deployment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Deployment.md) | `grid:workspace:{workspace-id}:ota:deployment/{id}` |
+| [Deployment Result](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentResult.md) | `grid:workspace:{workspace-id}:ota:deployment-result/{id}` |
 | [Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) | `grid:workspace:{workspace-id}:ota:device/{id}` |
 | [Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md) | `grid:workspace:{workspace-id}:ota:fleet/{id}` |
 | [Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) | `grid:workspace:{workspace-id}:ota:package/{id}` |
@@ -887,6 +889,9 @@ Product terms and class names of the model. A term used by several classes is li
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
 | Datasheet | [Datasheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Datasheet.md) (`lib_Datasheet`) | library | title | [Adding Datasheets to a Component](https://www.altium.com/documentation/altium-designer/components-libraries/adding-datasheets-component) |
+| Deployment | [Deployment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Deployment.md) (`ota_Deployment`) | ota | title |  |
+| Deployment Assignment | [Deployment Assignment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentAssignment.md) (`ota_DeploymentAssignment`) | ota | title |  |
+| Deployment Result | [Deployment Result](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentResult.md) (`ota_DeploymentResult`) | ota | title |  |
 | design project | [Hardware Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) (`des_Project`) | design | related | [Workspace Projects](https://www.altium.com/documentation/altium-365/workspace-projects) |
 | design project release | [Hardware Project Release](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md) (`des_ProjectRelease`) | design | related | [Design Project Release](https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release) |
 | design variant | [Hardware Project Variant](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectVariant.md) (`des_ProjectVariant`) | design | exact | [Design Variants](https://www.altium.com/documentation/altium-designer/design-variants) |
@@ -997,6 +1002,7 @@ Product terms and class names of the model. A term used by several classes is li
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
 | Package | [Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) (`ota_Package`) | ota | title |  |
+| Package Hash | [Package Hash](https://altiumdeveloper.github.io/cdm/llms/classes/ota_PackageHash.md) (`ota_PackageHash`) | ota | title |  |
 | Parameter | [Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/system_Parameter.md) (`system_Parameter`) | system | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#accessing_object_properties) |
 | Part Choice | [Part Choice](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoice.md) (`lib_PartChoice`) | library | title | [Adding Supply Chain Information to a Component](https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component#anatomy_of_a_part_choice) |
 | Part Choice List | [Part Choice List](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoiceList.md) (`lib_PartChoiceList`) | library | title | [Adding Supply Chain Information to a Component](https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component#part_choices) |
@@ -1418,7 +1424,7 @@ HTML page: [subsets/library/](https://altiumdeveloper.github.io/cdm/subsets/libr
 
 # Bounded context: Over-the-Air Updates
 
-Models over-the-air (OTA) firmware and software updates: devices with their status and installed packages, fleets that group devices, and packages with their version, size, checksums and target hardware. All classes are experimental.
+Models over-the-air (OTA) firmware and software updates: devices with the packages installed on them, fleets that group devices, packages with their version, size, checksums and target hardware, deployments that request packages to be rolled out to a device or fleet, and the deployment results that record the outcome on each targeted device. All classes are experimental.
 
 HTML page: [subsets/ota/](https://altiumdeveloper.github.io/cdm/subsets/ota/)
 
@@ -1428,9 +1434,13 @@ No public product documentation exists for this bounded context.
 
 ## Classes
 
-- [Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) (`ota_Device`): Artifact · GRID `grid:workspace:{workspace-id}:ota:device/{id}`
-- [Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md) (`ota_Fleet`): Artifact · GRID `grid:workspace:{workspace-id}:ota:fleet/{id}`
-- [Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) (`ota_Package`): Artifact · GRID `grid:workspace:{workspace-id}:ota:package/{id}`
+- [Deployment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Deployment.md) (`ota_Deployment`): Deployment represents the request for an OTA update that assigns packages to the ECUs of its target, either a single device or all devices of a single fleet. · Activity · GRID `grid:workspace:{workspace-id}:ota:deployment/{id}`
+- [Deployment Assignment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentAssignment.md) (`ota_DeploymentAssignment`): Deployment Assignment assigns a package to the ECUs with a given hardware identifier. · Resource
+- [Deployment Result](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentResult.md) (`ota_DeploymentResult`): Deployment Result is the outcome of a deployment on one target device, from the time the device is addressed by the deployment, before its update is created. · Artifact · GRID `grid:workspace:{workspace-id}:ota:deployment-result/{id}`
+- [Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) (`ota_Device`): Device represents a physical unit registered for OTA updates. · Artifact · GRID `grid:workspace:{workspace-id}:ota:device/{id}`
+- [Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md) (`ota_Fleet`): Fleet represents a named group of devices managed and updated together. · Artifact · GRID `grid:workspace:{workspace-id}:ota:fleet/{id}`
+- [Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) (`ota_Package`): Package represents one version of a software package registered for OTA deployment. · Artifact · GRID `grid:workspace:{workspace-id}:ota:package/{id}`
+- [Package Hash](https://altiumdeveloper.github.io/cdm/llms/classes/ota_PackageHash.md) (`ota_PackageHash`): Package Hash is a checksum of a package binary, used for Uptane target metadata. · Resource
 
 ---
 
@@ -1860,7 +1870,7 @@ None declared.
 - Bounded context: [core](https://altiumdeveloper.github.io/cdm/llms/core.md)
 - Kind: Activity, abstract
 - Is a: [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md)
-- Subclasses: [col_CommentThread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md), [col_Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md), [cus_Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md), [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md), [des_ProjectRelease](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md), [des_RuleCheckExecution](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheckExecution.md), [ins_Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_Insight.md), [lib_PartRequest](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartRequest.md), [plt_Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md), [pro_BomWIP](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomWIP.md), [pro_GlobalBOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_GlobalBOM.md), [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md), [req_RequirementChangeRequest](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md), [req_VerificationCase](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md), [sft_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md), [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md), [system_SdmSystemModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md)
+- Subclasses: [col_CommentThread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md), [col_Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md), [cus_Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md), [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md), [des_ProjectRelease](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md), [des_RuleCheckExecution](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheckExecution.md), [ins_Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_Insight.md), [lib_PartRequest](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartRequest.md), [ota_Deployment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Deployment.md), [plt_Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md), [pro_BomWIP](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomWIP.md), [pro_GlobalBOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_GlobalBOM.md), [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md), [req_RequirementChangeRequest](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md), [req_VerificationCase](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md), [sft_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md), [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md), [system_SdmSystemModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md)
 - HTML page: [classes/core_Activity/](https://altiumdeveloper.github.io/cdm/classes/core_Activity/)
 
 Abstract base for process and work objects — things that happen, use inputs, and produce outputs. Examples: projects, releases, design workflows.
@@ -1893,7 +1903,7 @@ Abstract base for process and work objects — things that happen, use inputs, a
 - Bounded context: [core](https://altiumdeveloper.github.io/cdm/llms/core.md)
 - Kind: Artifact, abstract
 - Is a: [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md)
-- Subclasses: [con_EnvironmentConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/con_EnvironmentConfiguration.md), [con_SchematicTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/con_SchematicTemplate.md), [con_SchematicTemplateRevision](https://altiumdeveloper.github.io/cdm/llms/classes/con_SchematicTemplateRevision.md), [cus_Script](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Script.md), [cus_ScriptExecution](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecution.md), [cus_ScriptVersion](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptVersion.md), [des_ManufacturingPackage](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md), [des_ProjectTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplate.md), [des_ProjectTemplateRevision](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplateRevision.md), [des_RuleCheck](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheck.md), [dm_FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md), [lib_Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md), [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md), [lib_ComponentTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplate.md), [lib_ComponentTemplateRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplateRevision.md), [lib_Datasheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Datasheet.md), [lib_Footprint](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Footprint.md), [lib_FootprintRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_FootprintRevision.md), [lib_ManagedSheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheet.md), [lib_ManagedSheetRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheetRevision.md), [lib_Part](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Part.md), [lib_PcbSnippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippet.md), [lib_PcbSnippetRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippetRevision.md), [lib_ReuseBlock](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlock.md), [lib_ReuseBlockRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlockRevision.md), [lib_SchSnippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippet.md), [lib_SchSnippetRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippetRevision.md), [lib_Symbol](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Symbol.md), [lib_SymbolRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SymbolRevision.md), [ota_Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md), [ota_Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md), [ota_Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md), [plt_Application](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Application.md), [plt_EventSubscription](https://altiumdeveloper.github.io/cdm/llms/classes/plt_EventSubscription.md), [plt_LifecycleDefinition](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleDefinition.md), [plt_NamingScheme](https://altiumdeveloper.github.io/cdm/llms/classes/plt_NamingScheme.md), [plt_Organization](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Organization.md), [plt_SolutionRelease](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionRelease.md), [plt_User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_User.md), [plt_UserGroup](https://altiumdeveloper.github.io/cdm/llms/classes/plt_UserGroup.md), [plt_Workspace](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Workspace.md), [plt_WorkspaceGroup](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceGroup.md), [plt_WorkspaceUser](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceUser.md), [pro_BomRelease](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomRelease.md), [req_Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md), [req_RequirementBaseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md), [req_RequirementRevision](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementRevision.md), [req_RequirementSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md), [sft_AIModel](https://altiumdeveloper.github.io/cdm/llms/classes/sft_AIModel.md), [sft_BuildArtifact](https://altiumdeveloper.github.io/cdm/llms/classes/sft_BuildArtifact.md), [sft_DeviceConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfiguration.md), [sft_DeviceConfigurationRevision](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfigurationRevision.md), [sft_SoftwareRelease](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareRelease.md), [sup_Company](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Company.md), [sup_EvalKit](https://altiumdeveloper.github.io/cdm/llms/classes/sup_EvalKit.md), [sup_Offer](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Offer.md), [sup_Part](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Part.md), [sup_PartFamily](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartFamily.md), [sup_PartGroup](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartGroup.md), [sup_ReferenceDesign](https://altiumdeveloper.github.io/cdm/llms/classes/sup_ReferenceDesign.md), [sup_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SoftwareProject.md), [sup_SolutionTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SolutionTemplate.md), [system_SdmSystemModelVersion](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md)
+- Subclasses: [con_EnvironmentConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/con_EnvironmentConfiguration.md), [con_SchematicTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/con_SchematicTemplate.md), [con_SchematicTemplateRevision](https://altiumdeveloper.github.io/cdm/llms/classes/con_SchematicTemplateRevision.md), [cus_Script](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Script.md), [cus_ScriptExecution](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptExecution.md), [cus_ScriptVersion](https://altiumdeveloper.github.io/cdm/llms/classes/cus_ScriptVersion.md), [des_ManufacturingPackage](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md), [des_ProjectTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplate.md), [des_ProjectTemplateRevision](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplateRevision.md), [des_RuleCheck](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheck.md), [dm_FullStackDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FullStackDeviceModel.md), [lib_Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md), [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md), [lib_ComponentTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplate.md), [lib_ComponentTemplateRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplateRevision.md), [lib_Datasheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Datasheet.md), [lib_Footprint](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Footprint.md), [lib_FootprintRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_FootprintRevision.md), [lib_ManagedSheet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheet.md), [lib_ManagedSheetRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheetRevision.md), [lib_Part](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Part.md), [lib_PcbSnippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippet.md), [lib_PcbSnippetRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippetRevision.md), [lib_ReuseBlock](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlock.md), [lib_ReuseBlockRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlockRevision.md), [lib_SchSnippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippet.md), [lib_SchSnippetRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippetRevision.md), [lib_Symbol](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Symbol.md), [lib_SymbolRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SymbolRevision.md), [ota_DeploymentResult](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentResult.md), [ota_Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md), [ota_Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md), [ota_Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md), [plt_Application](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Application.md), [plt_EventSubscription](https://altiumdeveloper.github.io/cdm/llms/classes/plt_EventSubscription.md), [plt_LifecycleDefinition](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleDefinition.md), [plt_NamingScheme](https://altiumdeveloper.github.io/cdm/llms/classes/plt_NamingScheme.md), [plt_Organization](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Organization.md), [plt_SolutionRelease](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionRelease.md), [plt_User](https://altiumdeveloper.github.io/cdm/llms/classes/plt_User.md), [plt_UserGroup](https://altiumdeveloper.github.io/cdm/llms/classes/plt_UserGroup.md), [plt_Workspace](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Workspace.md), [plt_WorkspaceGroup](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceGroup.md), [plt_WorkspaceUser](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceUser.md), [pro_BomRelease](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomRelease.md), [req_Requirement](https://altiumdeveloper.github.io/cdm/llms/classes/req_Requirement.md), [req_RequirementBaseline](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementBaseline.md), [req_RequirementRevision](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementRevision.md), [req_RequirementSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementSpecification.md), [sft_AIModel](https://altiumdeveloper.github.io/cdm/llms/classes/sft_AIModel.md), [sft_BuildArtifact](https://altiumdeveloper.github.io/cdm/llms/classes/sft_BuildArtifact.md), [sft_DeviceConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfiguration.md), [sft_DeviceConfigurationRevision](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfigurationRevision.md), [sft_SoftwareRelease](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareRelease.md), [sup_Company](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Company.md), [sup_EvalKit](https://altiumdeveloper.github.io/cdm/llms/classes/sup_EvalKit.md), [sup_Offer](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Offer.md), [sup_Part](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Part.md), [sup_PartFamily](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartFamily.md), [sup_PartGroup](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartGroup.md), [sup_ReferenceDesign](https://altiumdeveloper.github.io/cdm/llms/classes/sup_ReferenceDesign.md), [sup_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SoftwareProject.md), [sup_SolutionTemplate](https://altiumdeveloper.github.io/cdm/llms/classes/sup_SolutionTemplate.md), [system_SdmSystemModelVersion](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersion.md)
 - HTML page: [classes/core_Artifact/](https://altiumdeveloper.github.io/cdm/classes/core_Artifact/)
 
 Abstract base for persistent data objects that are created, stored, versioned, and consumed. Examples: components, documents, system models.
@@ -1971,7 +1981,7 @@ Abstract base for all CDM mixin classes. Provides a common root for mixins witho
 - IRI: `core:Resource` (https://w3id.org/altium/cdm/core/Resource)
 - Bounded context: [core](https://altiumdeveloper.github.io/cdm/llms/core.md)
 - Kind: Resource, abstract
-- Subclasses: [col_Comment](https://altiumdeveloper.github.io/cdm/llms/classes/col_Comment.md), [des_ProjectParameter](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectParameter.md), [des_ProjectVariant](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectVariant.md), [dm_AddressBlock](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressBlock.md), [dm_AddressMap](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressMap.md), [dm_AddressSegment](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressSegment.md), [dm_ConfiguredDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_ConfiguredDeviceModel.md), [dm_FieldEnum](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FieldEnum.md), [dm_Memory](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Memory.md), [dm_Peripheral](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Peripheral.md), [dm_PeripheralConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralConfiguration.md), [dm_PeripheralInstance](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralInstance.md), [dm_PeripheralMode](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralMode.md), [dm_PeripheralParameter](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralParameter.md), [dm_PeripheralPinConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinConfig.md), [dm_PeripheralPinDependencyConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinDependencyConfig.md), [dm_Pin](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Pin.md), [dm_Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md), [dm_PortConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfiguration.md), [dm_PortConfigurationDependency](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationDependency.md), [dm_PortConfigurationEnumValue](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationEnumValue.md), [dm_PortConnection](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConnection.md), [dm_PortFunction](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortFunction.md), [dm_Processor](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Processor.md), [dm_Register](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Register.md), [dm_RegisterField](https://altiumdeveloper.github.io/cdm/llms/classes/dm_RegisterField.md), [lib_ComponentParameter](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentParameter.md), [lib_PartChoice](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoice.md), [lib_PartChoiceList](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoiceList.md), [plt_LifecycleStage](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleStage.md), [plt_LifecycleState](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleState.md), [pro_BomIssue](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomIssue.md), [pro_BomItem](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md), [pro_BomItemElement](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemElement.md), [req_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/req_Artifact.md), [sft_PinAssignment](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignment.md), [sft_PinAssignmentModel](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignmentModel.md), [system_Connection](https://altiumdeveloper.github.io/cdm/llms/classes/system_Connection.md), [system_Endpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_Endpoint.md), [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md), [system_HardwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_HardwareProject.md), [system_KeyComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_KeyComponent.md), [system_Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/system_Parameter.md), [system_Port](https://altiumdeveloper.github.io/cdm/llms/classes/system_Port.md), [system_PortAssociation](https://altiumdeveloper.github.io/cdm/llms/classes/system_PortAssociation.md), [system_SdmAuthoringApplication](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmAuthoringApplication.md), [system_SdmClientMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmClientMetadata.md), [system_SdmConnection](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmConnection.md), [system_SdmDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmDeviceModel.md), [system_SdmEndpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmEndpoint.md), [system_SdmFunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalBlock.md), [system_SdmFunctionalModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalModel.md), [system_SdmHardwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareComponent.md), [system_SdmHardwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareModel.md), [system_SdmPort](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md), [system_SdmSoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareComponent.md), [system_SdmSoftwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareModel.md), [system_SdmSoftwareSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareSpecification.md), [system_SdmSoftwareStackInstance](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareStackInstance.md), [system_SdmSystemModelVersionMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersionMetadata.md), [system_SoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareComponent.md), [system_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareProject.md)
+- Subclasses: [col_Comment](https://altiumdeveloper.github.io/cdm/llms/classes/col_Comment.md), [des_ProjectParameter](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectParameter.md), [des_ProjectVariant](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectVariant.md), [dm_AddressBlock](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressBlock.md), [dm_AddressMap](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressMap.md), [dm_AddressSegment](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressSegment.md), [dm_ConfiguredDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_ConfiguredDeviceModel.md), [dm_FieldEnum](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FieldEnum.md), [dm_Memory](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Memory.md), [dm_Peripheral](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Peripheral.md), [dm_PeripheralConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralConfiguration.md), [dm_PeripheralInstance](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralInstance.md), [dm_PeripheralMode](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralMode.md), [dm_PeripheralParameter](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralParameter.md), [dm_PeripheralPinConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinConfig.md), [dm_PeripheralPinDependencyConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinDependencyConfig.md), [dm_Pin](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Pin.md), [dm_Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md), [dm_PortConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfiguration.md), [dm_PortConfigurationDependency](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationDependency.md), [dm_PortConfigurationEnumValue](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationEnumValue.md), [dm_PortConnection](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConnection.md), [dm_PortFunction](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortFunction.md), [dm_Processor](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Processor.md), [dm_Register](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Register.md), [dm_RegisterField](https://altiumdeveloper.github.io/cdm/llms/classes/dm_RegisterField.md), [lib_ComponentParameter](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentParameter.md), [lib_PartChoice](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoice.md), [lib_PartChoiceList](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoiceList.md), [ota_DeploymentAssignment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentAssignment.md), [ota_PackageHash](https://altiumdeveloper.github.io/cdm/llms/classes/ota_PackageHash.md), [plt_LifecycleStage](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleStage.md), [plt_LifecycleState](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleState.md), [pro_BomIssue](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomIssue.md), [pro_BomItem](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md), [pro_BomItemElement](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemElement.md), [req_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/req_Artifact.md), [sft_PinAssignment](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignment.md), [sft_PinAssignmentModel](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignmentModel.md), [system_Connection](https://altiumdeveloper.github.io/cdm/llms/classes/system_Connection.md), [system_Endpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_Endpoint.md), [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md), [system_HardwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_HardwareProject.md), [system_KeyComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_KeyComponent.md), [system_Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/system_Parameter.md), [system_Port](https://altiumdeveloper.github.io/cdm/llms/classes/system_Port.md), [system_PortAssociation](https://altiumdeveloper.github.io/cdm/llms/classes/system_PortAssociation.md), [system_SdmAuthoringApplication](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmAuthoringApplication.md), [system_SdmClientMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmClientMetadata.md), [system_SdmConnection](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmConnection.md), [system_SdmDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmDeviceModel.md), [system_SdmEndpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmEndpoint.md), [system_SdmFunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalBlock.md), [system_SdmFunctionalModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalModel.md), [system_SdmHardwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareComponent.md), [system_SdmHardwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareModel.md), [system_SdmPort](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md), [system_SdmSoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareComponent.md), [system_SdmSoftwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareModel.md), [system_SdmSoftwareSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareSpecification.md), [system_SdmSoftwareStackInstance](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareStackInstance.md), [system_SdmSystemModelVersionMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersionMetadata.md), [system_SoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareComponent.md), [system_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareProject.md)
 - Mixins (instantiates): [core_WithPlatformAPI](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithPlatformAPI.md)
 - HTML page: [classes/core_Resource/](https://altiumdeveloper.github.io/cdm/classes/core_Resource/)
 
@@ -4476,6 +4486,104 @@ A revision of a Symbol: the schematic symbol as saved into the Workspace at one 
 
 ---
 
+# File: llms/classes/ota_Deployment.md
+
+# Deployment (ota_Deployment)
+
+- Name: `ota_Deployment`
+- IRI: `ota:Deployment` (https://w3id.org/altium/cdm/ota/Deployment)
+- Bounded context: [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md)
+- Kind: Activity
+- Is a: [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/ota_Deployment/](https://altiumdeveloper.github.io/cdm/classes/ota_Deployment/)
+
+Deployment represents the request for an OTA update that assigns packages to the ECUs of its target, either a single device or all devices of a single fleet. It records what was requested, not how it was carried out: the outcome on each targeted device is a separate Deployment Result, which refers to the deployment. Provider-specific scheduling and cancellation restrictions are defined by the corresponding API profile.
+
+## GRID
+
+`grid:workspace:{workspace-id}:ota:deployment/{id}`
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| targetDevice | [ota_Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) | 0..1 | The single device targeted by the deployment. | core_occursIn |  |
+| targetFleet | [ota_Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md) | 0..1 | The fleet targeted by the deployment; all devices of the fleet are addressed. | core_occursIn |  |
+| createdAt | datetime | 0..1 | The date and time the deployment was requested, in UTC, when reported by the provider. |  |  |
+| scheduledFor | datetime | 0..1 | The date and time the deployment is scheduled to start, in UTC. |  |  |
+| assignments | [ota_DeploymentAssignment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentAssignment.md) | 1..* | The packages assigned per hardware identifier, at least one. |  |  |
+| id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ota_DeploymentResult](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentResult.md) | deployment | 1 | core_outputOf |
+
+---
+
+# File: llms/classes/ota_DeploymentAssignment.md
+
+# Deployment Assignment (ota_DeploymentAssignment)
+
+- Name: `ota_DeploymentAssignment`
+- IRI: `ota:DeploymentAssignment` (https://w3id.org/altium/cdm/ota/DeploymentAssignment)
+- Bounded context: [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- HTML page: [classes/ota_DeploymentAssignment/](https://altiumdeveloper.github.io/cdm/classes/ota_DeploymentAssignment/)
+
+Deployment Assignment assigns a package to the ECUs with a given hardware identifier. Deployment requests may name packages only; the provider then resolves the hardware identifier from the package and the target device's ECUs.
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| hardwareId | string | 0..1 | The hardware identifier of the target ECUs. |  |  |
+| package | [ota_Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) | 1 | The package to install on the target ECUs, referenced by its GRID. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ota_Deployment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Deployment.md) | assignments | 1..* |  |
+
+---
+
+# File: llms/classes/ota_DeploymentResult.md
+
+# Deployment Result (ota_DeploymentResult)
+
+- Name: `ota_DeploymentResult`
+- IRI: `ota:DeploymentResult` (https://w3id.org/altium/cdm/ota/DeploymentResult)
+- Bounded context: [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md)
+- Kind: Artifact
+- Is a: [core_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/core_Artifact.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/ota_DeploymentResult/](https://altiumdeveloper.github.io/cdm/classes/ota_DeploymentResult/)
+
+Deployment Result is the outcome of a deployment on one target device, from the time the device is addressed by the deployment, before its update is created. It is kept apart from the deployment, which records the request: the request is fixed when it is created, while the result is updated from the reports of the device as the update progresses. A device deployment has one result; a fleet deployment has one result per device of the fleet.
+
+## GRID
+
+`grid:workspace:{workspace-id}:ota:deployment-result/{id}`
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| deployment | [ota_Deployment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Deployment.md) | 1 | The deployment whose outcome this result records, referenced by its GRID. | core_outputOf |  |
+| device | [ota_Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) | 1 | The target device the result applies to, referenced by its GRID. |  |  |
+| status | [ota_DeploymentStatus](https://altiumdeveloper.github.io/cdm/llms/enums/ota_DeploymentStatus.md) | 0..1 | The status of the deployment on the device. |  |  |
+| completedAt | datetime | 0..1 | The date and time the deployment finished on the device, in UTC. |  |  |
+| isSuccessful | boolean | 0..1 | Indicates whether the deployment on the device succeeded, once reported. |  |  |
+| resultCode | string | 0..1 | The result code reported by the device. |  |  |
+| resultDescription | string | 0..1 | The human-readable result reported by the device. |  |  |
+| id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) |
+
+---
+
 # File: llms/classes/ota_Device.md
 
 # Device (ota_Device)
@@ -4488,6 +4596,8 @@ A revision of a Symbol: the schematic symbol as saved into the Workspace at one 
 - Maturity: EXPERIMENTAL
 - HTML page: [classes/ota_Device/](https://altiumdeveloper.github.io/cdm/classes/ota_Device/)
 
+Device represents a physical unit registered for OTA updates. A device consists of one primary ECU and optional secondary ECUs, and may belong to fleets.
+
 ## GRID
 
 `grid:workspace:{workspace-id}:ota:device/{id}`
@@ -4497,18 +4607,24 @@ A revision of a Symbol: the schematic symbol as saved into the Workspace at one 
 | Field | Range | Cardinality | Description | Relation | Inherited from |
 | --- | --- | --- | --- | --- | --- |
 | name | string | 0..1 | A short name of the entity. |  |  |
-| fleets | [ota_Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md) | * | Fleets this device belongs to |  |  |
-| deviceId | string | 0..1 | External device identifier (e.g. Torizon deviceId) |  |  |
-| hardwareId | string | 0..1 | Hardware identifier indicating device type/model |  |  |
-| hibernated | boolean | 0..1 | Whether the device is in hibernation (from Torizon DeviceInfoBasic.hibernated) |  |  |
-| status | [ota_DeviceStatus](https://altiumdeveloper.github.io/cdm/llms/enums/ota_DeviceStatus.md) | 0..1 | Current device status |  |  |
-| packages | [ota_Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) | * | Installed packages, if known |  |  |
+| description | string | 0..1 | Free-form notes associated with the device. |  |  |
+| deviceId | string | 0..1 | The device-side identifier provided at provisioning. |  |  |
+| hardwareId | string | 0..1 | The hardware type of the device as a whole (for example the product or board type), as reported by the provider, when provided. |  |  |
+| status | [ota_DeviceStatus](https://altiumdeveloper.github.io/cdm/llms/enums/ota_DeviceStatus.md) | 0..1 | The current status of the device, set by the provider. |  |  |
+| lastSeenAt | datetime | 0..1 | The date and time the device last connected, in UTC, set by the provider. |  |  |
+| createdAt | datetime | 0..1 | The date and time the device was registered, in UTC, set by the provider. |  |  |
+| activatedAt | datetime | 0..1 | The date and time the device first connected, in UTC, set by the provider. |  |  |
+| lastUpdatedAt | datetime | 0..1 | The date and time the device was last updated, in UTC, set by the provider. |  |  |
+| hibernated | boolean | 0..1 | Indicates whether the device is hibernated and excluded from updates. |  |  |
+| packages | [ota_Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) | * | The registered packages installed on the device, when known, referenced by their GRID. |  |  |
 | id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) |
 
 ## Referenced by
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
+| [ota_Deployment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Deployment.md) | targetDevice | 0..1 | core_occursIn |
+| [ota_DeploymentResult](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentResult.md) | device | 1 |  |
 | [ota_Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md) | devices | * |  |
 
 ---
@@ -4525,6 +4641,8 @@ A revision of a Symbol: the schematic symbol as saved into the Workspace at one 
 - Maturity: EXPERIMENTAL
 - HTML page: [classes/ota_Fleet/](https://altiumdeveloper.github.io/cdm/classes/ota_Fleet/)
 
+Fleet represents a named group of devices managed and updated together.
+
 ## GRID
 
 `grid:workspace:{workspace-id}:ota:fleet/{id}`
@@ -4533,15 +4651,16 @@ A revision of a Symbol: the schematic symbol as saved into the Workspace at one 
 
 | Field | Range | Cardinality | Description | Relation | Inherited from |
 | --- | --- | --- | --- | --- | --- |
-| name | string | 0..1 | A short name of the entity. |  |  |
-| devices | [ota_Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) | * | Devices in this fleet |  |  |
+| name | string | 1 | The fleet name. |  |  |
+| createdAt | datetime | 0..1 | The date and time the fleet was created, in UTC. |  |  |
+| devices | [ota_Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) | * | The devices that are members of this fleet. |  |  |
 | id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) |
 
 ## Referenced by
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [ota_Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) | fleets | * |  |
+| [ota_Deployment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Deployment.md) | targetFleet | 0..1 | core_occursIn |
 
 ---
 
@@ -4557,6 +4676,8 @@ A revision of a Symbol: the schematic symbol as saved into the Workspace at one 
 - Maturity: EXPERIMENTAL
 - HTML page: [classes/ota_Package/](https://altiumdeveloper.github.io/cdm/classes/ota_Package/)
 
+Package represents one version of a software package registered for OTA deployment. A package is identified by its name and version; the version list of a package is the set of packages sharing the same name.
+
 ## GRID
 
 `grid:workspace:{workspace-id}:ota:package/{id}`
@@ -4565,18 +4686,50 @@ A revision of a Symbol: the schematic symbol as saved into the Workspace at one 
 
 | Field | Range | Cardinality | Description | Relation | Inherited from |
 | --- | --- | --- | --- | --- | --- |
-| name | string | 0..1 | A short name of the entity. |  |  |
-| version | string | 0..1 | Package version |  |  |
-| size | integer | 0..1 | Package size in bytes. |  |  |
-| hashes | string | 0..1 | Package checksums as a JSON string map (e.g. {"sha256":"..."}), matching Torizon Package.hashes. |  |  |
-| hardwareIds | string | * | Hardware identifiers this package targets. |  |  |
+| name | string | 1 | The package name. |  |  |
+| description | string | 0..1 | A brief description of the entity. |  |  |
+| version | string | 1 | The version identifier assigned to this package. |  |  |
+| size | integer | 0..1 | The size of the package binary in bytes. |  |  |
+| hashes | [ota_PackageHash](https://altiumdeveloper.github.io/cdm/llms/classes/ota_PackageHash.md) | * | The checksums of the package binary. |  |  |
+| hardwareIds | string | * | The hardware identifiers of the ECU types compatible with the package, matched against the hardware identifiers reported by the ECUs of the target devices. |  |  |
+| createdAt | datetime | 0..1 | The date and time the package was registered, in UTC. |  |  |
+| packageType | string | 0..1 | The package format reported by the provider, for example ostree or binary. |  |  |
 | id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) |
 
 ## Referenced by
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
+| [ota_DeploymentAssignment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentAssignment.md) | package | 1 |  |
 | [ota_Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) | packages | * |  |
+
+---
+
+# File: llms/classes/ota_PackageHash.md
+
+# Package Hash (ota_PackageHash)
+
+- Name: `ota_PackageHash`
+- IRI: `ota:PackageHash` (https://w3id.org/altium/cdm/ota/PackageHash)
+- Bounded context: [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- HTML page: [classes/ota_PackageHash/](https://altiumdeveloper.github.io/cdm/classes/ota_PackageHash/)
+
+Package Hash is a checksum of a package binary, used for Uptane target metadata.
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| algorithm | string | 1 | The lowercase hash algorithm identifier, for example sha256 or sha512. |  |  |
+| value | string | 1 | The hash value encoded as hexadecimal characters. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ota_Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) | hashes | * |  |
 
 ---
 
@@ -7852,6 +8005,35 @@ Defines the primary operational mode of a physical port pin. Determines if the p
 
 ---
 
+# File: llms/enums/ota_DeploymentStatus.md
+
+# ota_DeploymentStatus
+
+- Name: `ota_DeploymentStatus`
+- IRI: `ota:DeploymentStatus` (https://w3id.org/altium/cdm/ota/DeploymentStatus)
+- Kind: enumeration
+- HTML page: [enums/ota_DeploymentStatus/](https://altiumdeveloper.github.io/cdm/enums/ota_DeploymentStatus/)
+
+The status of a deployment on one target device, reported by its Deployment Result. Success or failure of a completed deployment is reported by the result's isSuccessful.
+
+## Values
+
+| Value | Description |
+| --- | --- |
+| `Pending` | The deployment is created and not yet received by the device. |
+| `Scheduled` | The deployment is scheduled to start at a future date and time. |
+| `InProgress` | The device has received the update instructions and is installing. |
+| `Completed` | The deployment finished, either successfully or with a failure. A partially completed deployment, where only some ECUs installed successfully, is also Completed, with isSuccessful false. |
+| `Cancelled` | The deployment was cancelled before it was received by the device. |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ota_DeploymentResult](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentResult.md) | status | 0..1 |  |
+
+---
+
 # File: llms/enums/ota_DeviceStatus.md
 
 # ota_DeviceStatus
@@ -7861,16 +8043,18 @@ Defines the primary operational mode of a physical port pin. Determines if the p
 - Kind: enumeration
 - HTML page: [enums/ota_DeviceStatus/](https://altiumdeveloper.github.io/cdm/enums/ota_DeviceStatus/)
 
+The OTA update status of a device.
+
 ## Values
 
 | Value | Description |
 | --- | --- |
-| `NotSeen` |  |
-| `Error` |  |
-| `UpToDate` |  |
-| `UpdatePending` |  |
-| `Outdated` |  |
-| `UpdateScheduled` |  |
+| `NotSeen` | The device has not connected to the platform yet. |
+| `Error` | The last update reported an error. |
+| `UpToDate` | The installed software matches the assigned software. |
+| `UpdatePending` | An update is assigned and waits to be delivered. |
+| `Outdated` | The installed software differs from the assigned software. |
+| `UpdateScheduled` | An update is scheduled for a future date and time. |
 
 ## Referenced by
 

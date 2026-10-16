@@ -1181,6 +1181,22 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../ota_Deployment/">
+<span class="md-ellipsis">
+    Deployment
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ota_DeploymentResult/">
+<span class="md-ellipsis">
+    Deployment Result
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../ota_Device/">
 <span class="md-ellipsis">
     Device
@@ -1381,7 +1397,7 @@
 <h1 id="package">Package</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/ota/Package">https://w3id.org/altium/cdm/ota/Package</a></p>
 <p class="page-subtitle">GRID: <code>grid:workspace:{workspace-id}:ota:package/{id}</code></p>
-<p>TBD</p>
+<p>Package represents one version of a software package registered for OTA deployment. A package is identified by its name and version; the version list of a package is the set of packages sharing the same name.</p>
 <div class="admonition abstract">
 <p class="admonition-title">In the product</p>
 <p>No product documentation linked yet.</p>
@@ -1421,6 +1437,10 @@
 
 
 
+          ota_Package : description
+
+
+
           ota_Package : version
 
 
@@ -1429,11 +1449,37 @@
 
 
 
-          ota_Package : hashes
 
 
 
-          ota_Package : hardware Ids
+
+
+      ota_Package --&gt; "*" ota_PackageHash : hashes
+      click ota_PackageHash href "../../classes/ota_PackageHash/"
+
+
+  class ota_PackageHash["Package Hash"]
+
+
+
+
+
+
+      style ota_PackageHash fill:#d29292,stroke:#885f5f,color:#14181f,stroke-width:1px
+
+
+
+
+
+          ota_Package : hardware ids
+
+
+
+          ota_Package : created at
+
+
+
+          ota_Package : package type
 
 
 
@@ -1459,6 +1505,23 @@
 
           ota_Device --&gt; "*" ota_Package: packages 
           click ota_Device href "../../classes/ota_Device/"
+
+
+
+
+
+
+  class ota_DeploymentAssignment["Deployment Assignment"]
+
+
+
+
+
+
+      style ota_DeploymentAssignment fill:#d29292,stroke:#885f5f,color:#14181f,stroke-width:1px
+
+          ota_DeploymentAssignment --&gt; "1" ota_Package: package 
+          click ota_DeploymentAssignment href "../../classes/ota_DeploymentAssignment/"
 
 
 
@@ -1494,37 +1557,58 @@
 </tr>
 <tr>
 <td><a href="../../slots/core_name">name</a></td>
+<td><code>1</code></td>
+<td><a href="../../types/string/">string</a></td>
+<td>The package name. Packages sharing a name are versions of the same package.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/core_description">description</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../types/string/">string</a></td>
-<td>A short name of the entity.</td>
+<td>A brief description of the entity.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/ota_Package_version">version</a></td>
-<td><code>0..1</code></td>
+<td><code>1</code></td>
 <td><a href="../../types/string/">string</a></td>
-<td>Package version</td>
+<td>The version identifier assigned to this package.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/ota_Package_size">size</a></td>
 <td><code>0..1</code></td>
 <td><a href="../../types/integer/">integer</a></td>
-<td>Package size in bytes.</td>
+<td>The size of the package binary in bytes.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../../slots/ota_Package_hashes">hashes</a></td>
-<td><code>0..1</code></td>
-<td><a href="../../types/string/">string</a></td>
-<td>Package checksums as a JSON string map (e.g. {"sha256":"..."}), matching Torizon Package.hashes.</td>
+<td><code>*</code></td>
+<td><a href="../ota_PackageHash/">Package Hash</a></td>
+<td>The checksums of the package binary. This is optional in the generic model; integrity-enforcing distribution profiles must require at least one hash and any required signature metadata.</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../../slots/ota_Package_hardwareIds">hardware Ids</a></td>
+<td><a href="../../slots/ota_Package_hardwareIds">hardware ids</a></td>
 <td><code>*</code></td>
 <td><a href="../../types/string/">string</a></td>
-<td>Hardware identifiers this package targets.</td>
+<td>The hardware identifiers of the ECU types compatible with the package, matched against the hardware identifiers reported by the ECUs of the target devices.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/ota_Package_createdAt">created at</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/datetime/">datetime</a></td>
+<td>The date and time the package was registered, in UTC.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/ota_Package_packageType">package type</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/string/">string</a></td>
+<td>The package format reported by the provider, for example ostree or binary.</td>
 <td>direct</td>
 </tr>
 </tbody>

@@ -1319,6 +1319,22 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="classes/ota_Deployment/">
+<span class="md-ellipsis">
+    Deployment
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/ota_DeploymentResult/">
+<span class="md-ellipsis">
+    Deployment Result
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="classes/ota_Device/">
 <span class="md-ellipsis">
     Device
@@ -1590,7 +1606,7 @@
 <p><a href="subsets/requirements/"><span class="bc-icon bc-requirements"></span><strong>Requirements</strong> <span>7 entities · 1 resource</span></a></p>
 <p><a href="subsets/deviceModel/"><span class="bc-icon bc-deviceModel"></span><strong>Device Model</strong> <span>1 entity · 23 resources</span></a></p>
 <p><a href="subsets/software/"><span class="bc-icon bc-software"></span><strong>Software</strong> <span>6 entities · 2 resources</span></a></p>
-<p><a href="subsets/ota/"><span class="bc-icon bc-ota"></span><strong>Over-the-Air Updates</strong> <span>3 entities</span></a></p>
+<p><a href="subsets/ota/"><span class="bc-icon bc-ota"></span><strong>Over-the-Air Updates</strong> <span>5 entities · 2 resources</span></a></p>
 <p><a href="subsets/core/"><span class="bc-icon bc-core"></span><strong>Core</strong> <span>Base types</span></a></p>
 </div>
 <h2 id="bounded-contexts">Bounded Contexts</h2>
@@ -2497,7 +2513,7 @@
 </tbody>
 </table>
 <h3 class="bc-heading bc-ota" id="over-the-air-updates"><a href="subsets/ota/">Over-the-Air Updates</a></h3>
-<p>Models over-the-air (OTA) firmware and software updates: devices with their status and installed packages, fleets that group devices, and packages with their version, size, checksums and target hardware. All classes are experimental.</p>
+<p>Models over-the-air (OTA) firmware and software updates: devices with the packages installed on them, fleets that group devices, packages with their version, size, checksums and target hardware, deployments that request packages to be rolled out to a device or fleet, and the deployment results that record the outcome on each targeted device. All classes are experimental.</p>
 <table>
 <thead>
 <tr>
@@ -2508,18 +2524,38 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="classes/ota_Deployment/">Deployment </a></td>
+<td>Deployment represents the request for an OTA update that assigns packages to the ECUs of its target, either a single device or all devices of a single fleet. It records what was requested, not how it was carried out: the outcome on each targeted device is a separate Deployment Result, which refers to the deployment. Provider-specific scheduling and cancellation restrictions are defined by the corresponding API profile.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/ota_DeploymentAssignment/">Deployment Assignment </a></td>
+<td>Deployment Assignment assigns a package to the ECUs with a given hardware identifier. Deployment requests may name packages only; the provider then resolves the hardware identifier from the package and the target device's ECUs.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/ota_DeploymentResult/">Deployment Result </a></td>
+<td>Deployment Result is the outcome of a deployment on one target device, from the time the device is addressed by the deployment, before its update is created. It is kept apart from the deployment, which records the request: the request is fixed when it is created, while the result is updated from the reports of the device as the update progresses. A device deployment has one result; a fleet deployment has one result per device of the fleet.</td>
+<td></td>
+</tr>
+<tr>
 <td><a href="classes/ota_Device/">Device </a></td>
-<td>TBD</td>
+<td>Device represents a physical unit registered for OTA updates. A device consists of one primary ECU and optional secondary ECUs, and may belong to fleets.</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="classes/ota_Fleet/">Fleet </a></td>
-<td>TBD</td>
+<td>Fleet represents a named group of devices managed and updated together.</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="classes/ota_Package/">Package </a></td>
-<td>TBD</td>
+<td>Package represents one version of a software package registered for OTA deployment. A package is identified by its name and version; the version list of a package is the set of packages sharing the same name.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/ota_PackageHash/">Package Hash </a></td>
+<td>Package Hash is a checksum of a package binary, used for Uptane target metadata.</td>
 <td></td>
 </tr>
 </tbody>

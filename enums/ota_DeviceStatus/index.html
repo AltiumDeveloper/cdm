@@ -1179,6 +1179,22 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/ota_Deployment/">
+<span class="md-ellipsis">
+    Deployment
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/ota_DeploymentResult/">
+<span class="md-ellipsis">
+    Deployment Result
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../classes/ota_Device/">
 <span class="md-ellipsis">
     Device
@@ -1340,6 +1356,7 @@
 <a class="doc-md-link" href="../../llms/enums/ota_DeviceStatus.md" title="Markdown version of this page for AI assistants">View as Markdown</a>
 </div>
 <h1 id="enum-ota_devicestatus">Enum: ota_DeviceStatus</h1>
+<p><em>The OTA update status of a device.</em></p>
 <p>URI: <a href="https://w3id.org/altium/cdm/ota_DeviceStatus">https://w3id.org/altium/cdm/ota_DeviceStatus</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
 <table>
@@ -1354,32 +1371,32 @@
 <tr>
 <td>NotSeen</td>
 <td>None</td>
-<td></td>
+<td>The device has not connected to the platform yet</td>
 </tr>
 <tr>
 <td>Error</td>
 <td>None</td>
-<td></td>
+<td>The last update reported an error</td>
 </tr>
 <tr>
 <td>UpToDate</td>
 <td>None</td>
-<td></td>
+<td>The installed software matches the assigned software</td>
 </tr>
 <tr>
 <td>UpdatePending</td>
 <td>None</td>
-<td></td>
+<td>An update is assigned and waits to be delivered</td>
 </tr>
 <tr>
 <td>Outdated</td>
 <td>None</td>
-<td></td>
+<td>The installed software differs from the assigned software</td>
 </tr>
 <tr>
 <td>UpdateScheduled</td>
 <td>None</td>
-<td></td>
+<td>An update is scheduled for a future date and time</td>
 </tr>
 </tbody>
 </table>
@@ -1394,7 +1411,7 @@
 <tbody>
 <tr>
 <td><a href="../../slots/ota_Device_status/">ota_Device_status</a></td>
-<td>Current device status</td>
+<td>The current status of the device, set by the provider</td>
 </tr>
 </tbody>
 </table>
@@ -1404,6 +1421,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ota_DeviceStatus</span>
 <span class="nt">implements</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">owl:NamedIndividual</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The OTA update status of a device.</span>
 <span class="nt">in_subset</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ota</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/altium/cdm/</span>
@@ -1412,16 +1430,22 @@
 <span class="nt">permissible_values</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">NotSeen</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NotSeen</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The device has not connected to the platform yet.</span>
 <span class="w">  </span><span class="nt">Error</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Error</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The last update reported an error.</span>
 <span class="w">  </span><span class="nt">UpToDate</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UpToDate</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The installed software matches the assigned software.</span>
 <span class="w">  </span><span class="nt">UpdatePending</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UpdatePending</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An update is assigned and waits to be delivered.</span>
 <span class="w">  </span><span class="nt">Outdated</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Outdated</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The installed software differs from the assigned software.</span>
 <span class="w">  </span><span class="nt">UpdateScheduled</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UpdateScheduled</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An update is scheduled for a future date and time.</span>
 </code></pre></div>
 </details>
 </article>

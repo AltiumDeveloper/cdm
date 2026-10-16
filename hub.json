@@ -1861,6 +1861,54 @@
    "subset": "library",
    "title": "Symbol Revision"
   },
+  "ota_Deployment": {
+   "class_uri": "ota:Deployment",
+   "grid": "grid:workspace:{workspace-id}:ota:deployment/{id}",
+   "hub": {
+    "api": null,
+    "api_missing": null,
+    "links": [],
+    "mappings": [],
+    "nexar": null,
+    "nexar_missing": null,
+    "product_docs_none": false,
+    "terms": []
+   },
+   "subset": "ota",
+   "title": "Deployment"
+  },
+  "ota_DeploymentAssignment": {
+   "class_uri": "ota:DeploymentAssignment",
+   "grid": null,
+   "hub": {
+    "api": null,
+    "api_missing": null,
+    "links": [],
+    "mappings": [],
+    "nexar": null,
+    "nexar_missing": null,
+    "product_docs_none": false,
+    "terms": []
+   },
+   "subset": "ota",
+   "title": "Deployment Assignment"
+  },
+  "ota_DeploymentResult": {
+   "class_uri": "ota:DeploymentResult",
+   "grid": "grid:workspace:{workspace-id}:ota:deployment-result/{id}",
+   "hub": {
+    "api": null,
+    "api_missing": null,
+    "links": [],
+    "mappings": [],
+    "nexar": null,
+    "nexar_missing": null,
+    "product_docs_none": false,
+    "terms": []
+   },
+   "subset": "ota",
+   "title": "Deployment Result"
+  },
   "ota_Device": {
    "class_uri": "ota:Device",
    "grid": "grid:workspace:{workspace-id}:ota:device/{id}",
@@ -1908,6 +1956,22 @@
    },
    "subset": "ota",
    "title": "Package"
+  },
+  "ota_PackageHash": {
+   "class_uri": "ota:PackageHash",
+   "grid": null,
+   "hub": {
+    "api": null,
+    "api_missing": null,
+    "links": [],
+    "mappings": [],
+    "nexar": null,
+    "nexar_missing": null,
+    "product_docs_none": false,
+    "terms": []
+   },
+   "subset": "ota",
+   "title": "Package Hash"
   },
   "plt_Application": {
    "class_uri": "plt:Application",
