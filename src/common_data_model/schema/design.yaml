@@ -148,8 +148,6 @@ classes:
         maintaining identity and traceability across design boundaries. It enables engineers to define harnesses, connectors, and 
         mechanical fit at the system level, while preserving the autonomy of each board design, thus supporting codesign, simulation, 
         and integration workflows across ECAD and MCAD domains.
-    annotations:
-      platformAPI: DesProject
     see_also:
       - https://www.altium.com/documentation/altium-designer/multi-board-design#structure_multi_board_design_project
     attributes:
@@ -175,8 +173,6 @@ classes:
       - Harness Project provides a structured representation of connectivity at the physical wiring level, complementing schematic and 
         PCB projects while maintaining its own lifecycle and identity. It enables engineers to design, document, and validate interconnects 
         in a way that is traceable, manufacturable, and tightly integrated with Multiboard and MCAD workflows within the Altium ecosystem.
-    annotations:
-      platformAPI: DesProject
     see_also:
       - https://www.altium.com/documentation/altium-designer/harness-design
 
@@ -305,13 +301,8 @@ classes:
     class_uri: des:DesignReview
     title: Design Review
     description: >-
-      A structured review of a Workspace design project, carried out on a fixed snapshot of the design: the
-      work-in-progress design as it was when the review was created, or a chosen project commit or release (the
-      review context). The Workspace member who creates the review (the Initiator) assigns other Workspace members
-      as Reviewers. Reviewers work through an optional checklist, comment on the design snapshot, raise tasks and
-      approve or reject the design. The Initiator closes the review as Completed or Rejected, or cancels it; a
-      closed review can no longer be changed and remains as a traceable compliance record. A project can have many design
-      reviews, and each follows a process workflow (the built-in Design Review process or a custom one).
+      A structured assessment of a design project, carried out by assigned Reviewers on a fixed snapshot of its
+      design and concluded by the Initiator's decision, which leaves a traceable record of the review.
     annotations:
       grid: grid:workspace:{workspace-id}:design:design-review/{id}
     see_also:

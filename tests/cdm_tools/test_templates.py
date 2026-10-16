@@ -72,11 +72,7 @@ def test_hub_panel_full():
     assert "Known as: **Company Account** (altium-dashboard)" in out
     assert "- [Primary Page](https://a/p) *(primary)*" in out
     assert "- [Other](https://a/o)" in out
-    assert '!!! abstract "In the API"' in out
-    assert "Type: [`DesX`](https://api/types/objects/DesX/)" in out
-    assert "Type: [`DesX`](https://api/types/objects/DesX/) (object)" in out
-    for absent in ("Read:", "Write", "Reached via", "node(id)"):
-        assert absent not in out
+    assert "In the API" not in out and "DesX" not in out          # the API type is under the page title
     assert '!!! abstract "In standards"' in out
     assert "exact: [prov:Entity](http://www.w3.org/ns/prov#Entity)" in out
 
@@ -84,17 +80,24 @@ def test_hub_panel_full():
 def test_hub_panel_empty_states():
     out = _render_panel(HubView(product_docs_none=True))
     assert "No public product documentation exists for this concept." in out
-    assert "No Platform API type." in out
     assert "In standards" not in out
-    out2 = _render_panel(HubView(api_missing="DmProcessor"))
-    assert "No product documentation linked yet." in out2
-    assert "`DmProcessor` is not in the Platform API snapshot." in out2
+    assert "No product documentation linked yet." in _render_panel(HubView())
 
 
-def test_hub_panel_nexar():
-    out = _render_panel(HubView(nexar=NexarView("SupPart", "https://oct/api")))
-    assert "Nexar type: `SupPart` ([Octopart API](https://oct/api))" in out
-    assert "No Platform API type." not in out
+def _render_subtitle(h):
+    env = jinja2.Environment(loader=jinja2.FileSystemLoader(str(TEMPLATES)))
+    t = env.from_string("{% from 'macros.jinja2' import api_subtitle %}{{ api_subtitle(h) }}")
+    return t.render(h=h)
+
+
+def test_api_subtitle():
+    out = _render_subtitle(HubView(api=ApiView("DesX", "OBJECT", "https://api/types/objects/DesX/")))
+    assert out == "API: [`DesX`](https://api/types/objects/DesX/)\n{ .page-subtitle }"
+    assert _render_subtitle(HubView(nexar=NexarView("SupPart", "https://oct/api"))).startswith(
+        "API: [`SupPart`](https://oct/api) (Nexar)")
+    assert "`DmProcessor` (not in Platform API snapshot)" in _render_subtitle(HubView(api_missing="DmProcessor"))
+    assert "`SupX` (not in Nexar API snapshot)" in _render_subtitle(HubView(nexar_missing="SupX"))
+    assert _render_subtitle(HubView()) == ""                      # no API type: no line
 
 
 def _render_link(h):
@@ -108,14 +111,6 @@ def test_api_type_link_cases():
     assert _render_link(HubView(api=ApiView("DesX", "OBJECT", None))) == "[`DesX`]"
     assert _render_link(HubView(api_missing="DmX")) == "[`DmX` (not in Platform API snapshot)]"
     assert _render_link(HubView()) == "[]"
-
-
-def test_hub_panel_nexar_missing_and_no_kind():
-    out = _render_panel(HubView(nexar_missing="SupX"))
-    assert "`SupX` is not in the Nexar API snapshot." in out
-    assert "No Platform API type." not in out
-    out2 = _render_panel(HubView(api=ApiView("DesX", "", None)))
-    assert "Type: `DesX`" in out2 and "()" not in out2
 
 
 def test_api_type_link_nexar_variants():

@@ -283,7 +283,8 @@ def write_glossary(sv, registry, platform, nexar_types, namespaces, path: Path) 
     for name, cls in sorted(sv.all_classes().items()):
         if not is_concrete_domain_class(name, cls):
             continue
-        hub = build_hub(cls, registry=registry, platform=platform, nexar_types=nexar_types, namespaces=namespaces)
+        hub = build_hub(cls, registry=registry, platform=platform, nexar_types=nexar_types, namespaces=namespaces,
+                        sv=sv)
         title = str(cls.title or "").strip()
         terms = ([(title, "title")] if title else []) + [(t.text, t.predicate or "alias") for t in hub.terms]
         for text, kind in terms:

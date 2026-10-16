@@ -39,7 +39,7 @@ def build_export(schema_path: str, *, registry_path: str, api_dir: str) -> dict:
             "subset": str(cls.in_subset[0]) if cls.in_subset else None,
             "grid": grids.get(name),
             "hub": build_hub(cls, registry=registry, platform=platform, nexar_types=nexar_types,
-                             namespaces=namespaces).to_dict(),
+                             namespaces=namespaces, sv=sv).to_dict(),
         }
     return {
         "schema": {"id": sv.schema.id, "name": sv.schema.name,

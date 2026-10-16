@@ -68,7 +68,7 @@ classes:
     title: Script Execution
     description: TBD
     annotations:
-      grid: grid:workspace:{workspace-id}:scripts:script-execution/{id}
+      grid: grid:workspace:{workspace-id}:scripts:execution/{id}
       platformAPI: GloScrScriptExecution
     attributes:
       cus_ScriptExecution_emits:

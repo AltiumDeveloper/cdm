@@ -17,7 +17,7 @@ subsets:
       Models insights: findings, detected asynchronously, that give the user insight within one domain area and
       can be followed up by tasks. There are two concrete kinds. A part insight concerns one Workspace part,
       may be informed by BOMs or design projects, and occurs in BOM releases, project releases or component
-      revisions. A design insight concerns a design and is informed by a design review.
+      revisions. A design insight concerns a design and is part of a design review.
     annotations:
       style: "fill:#a64d79"
       productDocs: none
@@ -37,6 +37,7 @@ classes:
       - Working definition from the model owner; insights have no public product documentation yet.
     annotations:
       grid: grid:workspace:{workspace-id}:insights:insight/{id}
+      platformAPI: DesWorkspaceInsInsight
     attributes:
       ins_Insight_tasks:
         is_a: core_informs
@@ -55,8 +56,6 @@ classes:
     title: Part Insight
     description: >-
       TBD
-    annotations:
-      platformAPI: DesWorkspaceInsInsight
     attributes:
       ins_PartInsight_part:
         is_a: core_informs
@@ -100,16 +99,16 @@ classes:
     title: Design Insight
     description: >-
       An insight within the design domain: a finding, detected asynchronously, about the design under review in
-      a design review. It is informed by that review and can be followed up by tasks.
+      a design review. It is always part of that review and can be followed up by tasks.
     annotations:
       productDocs: none
     attributes:
       ins_DesignInsight_designReview:
-        is_a: core_informedBy
+        is_a: core_partOf
         slot_uri: ins:DesignInsight_designReview
         alias: designReview
         title: design review
-        description: The design review in whose context the insight was detected.
+        description: The design review that the insight is part of.
         range: des_DesignReview
         required: true
         multivalued: false

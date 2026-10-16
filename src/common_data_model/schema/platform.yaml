@@ -98,7 +98,7 @@ classes:
     description: >-
       TBD
     annotations:
-      grid: grid:global::platform:application/{id}
+      grid: grid:global::platform:app/{id}
       platformAPI: GloApp
 
   plt_EventSubscription:

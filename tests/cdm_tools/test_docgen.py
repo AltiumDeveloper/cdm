@@ -94,11 +94,12 @@ def test_rendered_class_page_has_hub_panel(tmp_path):
     gen.serialize(directory=str(tmp_path))
     page = (tmp_path / "classes" / "plt_LifecycleDefinition.md").read_text(encoding="utf-8")
     assert "- [Defining Lifecycle Definitions for a Workspace](https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions) *(primary)*" in page
-    assert "Type: [`DesLifeCycleDefinition`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleDefinition/)" in page
+    assert "API: [`DesLifeCycleDefinition`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleDefinition/)\n{ .page-subtitle }" in page
+    assert "In the API" not in page
     for absent in ("Read:", "Write", "Reached via", "node(id)"):
         assert absent not in page
     sup = (tmp_path / "classes" / "sup_Part.md").read_text(encoding="utf-8")
-    assert "Nexar type: `SupPart`" in sup
+    assert "API: [`SupPart`](" in sup and "(Nexar)" in sup
     assert 'quote "Platform API"' not in page
     index = (tmp_path / "index.md").read_text(encoding="utf-8")
     assert "[`DesLifeCycleDefinition`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleDefinition/)" in index
@@ -282,7 +283,30 @@ def test_class_page_shows_the_nearest_ancestors_grid(tmp_path):
     _serialize(tmp_path, registry_path=str(REPO / "src/docs/links/registry.yaml"), api_dir=str(REPO / "src/docs/api"))
     harness = (tmp_path / "classes" / "des_HarnessProject.md").read_text(encoding="utf-8")
     assert "GRID: `grid:workspace:{workspace-id}:design:project/{id}` (from [Hardware Project](../classes/des_Project.md))" in harness
-    wip = (tmp_path / "classes" / "pro_BomWIP.md").read_text(encoding="utf-8")
+    insight = (tmp_path / "classes" / "ins_Insight.md").read_text(encoding="utf-8")
+    part = (tmp_path / "classes" / "ins_PartInsight.md").read_text(encoding="utf-8")
+    assert "GRID: `grid:workspace:{workspace-id}:insights:insight/{id}`\n" in insight      # declared on Insight
+    assert "(from [Insight](../classes/ins_Insight.md))" in part                            # inherited by Part Insight
+    consolidated = (tmp_path / "classes" / "pro_ConsolidatedBOM.md").read_text(encoding="utf-8")
+    assert "GRID: `grid:workspace:{workspace-id}:procurement:consolidated-bom/{id}`\n" in consolidated  # own
+
+
+def test_class_page_shows_an_inherited_api_type(tmp_path):
+    _serialize(tmp_path, registry_path=str(REPO / "src/docs/links/registry.yaml"), api_dir=str(REPO / "src/docs/api"))
     managed = (tmp_path / "classes" / "pro_ManagedBOM.md").read_text(encoding="utf-8")
-    assert "GRID: `grid:workspace:{workspace-id}:procurement:bom/{id}`\n" in wip            # declared on BOM WIP
-    assert "(from [BOM WIP](../classes/pro_BomWIP.md))" in managed                          # inherited by Managed BOM
+    assert "API: [`BomWip`](" in managed
+    assert "(from [BOM WIP](../classes/pro_BomWIP.md))\n{ .page-subtitle }" in managed
+
+
+def test_enum_page_is_titled_and_enums_are_referenced_by_title(tmp_path):
+    _serialize(tmp_path)
+    enum = (tmp_path / "enums" / "des_DesignReviewStatus.md").read_text(encoding="utf-8")
+    assert "# Design Review Status" in enum and "Enum:" not in enum
+    assert "IRI: [https://w3id.org/altium/cdm/design/DesignReviewStatus](" in enum
+    assert "| `InProgress` | The review is open" in enum                      # no empty Meaning column
+    assert "| [status](../slots/des_DesignReview_status.md) | [Design Review](../classes/des_DesignReview.md) |" in enum
+    assert "Identifier and Mapping Information" not in enum
+    review = (tmp_path / "classes" / "des_DesignReview.md").read_text(encoding="utf-8")
+    assert "[Design Review Status](../enums/des_DesignReviewStatus.md)" in review     # Fields table range
+    design = (tmp_path / "subsets" / "design.md").read_text(encoding="utf-8")
+    assert "| [Design Review Status](../enums/des_DesignReviewStatus.md) |" in design

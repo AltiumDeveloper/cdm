@@ -2,9 +2,10 @@
 ---
 id: "001"
 functionalBlocks:
-  - name: Motor Control
+  - id: fb-motor-control
+    name: Motor Control
     ports:
-      - name: port_1
-        description: Port 1 (GPIO)
-      - name: port_2
-        description: Port 2 (UART)          
+      - id: port-1
+        name: port_1
+      - id: port-2
+        name: port_2          

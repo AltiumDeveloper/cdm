@@ -2,6 +2,8 @@
   {%- set element = schemaview.get_element(slot_range) -%}
   {%- if element.__class__.__name__ == "ClassDefinition" -%}
   [{{ element.title if element.title else gen.name(element) }}]( ../classes/{{ slot_range }}.md )
+  {%- elif element.__class__.__name__ == "EnumDefinition" -%}
+  {{ enum_link(slot_range) }}
   {%- else -%}
   {{ gen.link(slot_range) }} 
   {%- endif -%}
@@ -30,22 +32,7 @@
     No product documentation linked yet.
 {%- endif %}
 
-!!! abstract "In the API"
-{%- if h.api %}
-    Type: {% if h.api.url %}[`{{ h.api.type_name }}`]({{ h.api.url }}){% else %}`{{ h.api.type_name }}`{% endif %} {% if h.api.kind %}({{ h.api.kind | lower }}){% endif %}
-{%- elif h.api_missing %}
-    `{{ h.api_missing }}` is not in the Platform API snapshot.
-{%- elif not h.nexar and not h.nexar_missing %}
-    No Platform API type.
-{%- endif %}
-{%- if h.nexar_missing %}
-
-    `{{ h.nexar_missing }}` is not in the Nexar API snapshot.
-{%- endif %}
-{%- if h.nexar %}
-
-    Nexar type: `{{ h.nexar.type_name }}` ([Octopart API]({{ h.nexar.url }}))
-{%- endif %}
+{#- The API type is not in the panel: class pages show it under the title (api_subtitle) -#}
 {% if h.mappings %}
 
 !!! abstract "In standards"
@@ -64,6 +51,15 @@
   {%- endif -%}
 {%- endmacro -%}
 
+{#- "API:" line under a class page title, next to the IRI and the GRID template; omitted when the class has no API
+    type. An inherited type names its declaring ancestor, as the GRID line does. -#}
+{%- macro api_subtitle(h) -%}
+  {%- if h.api or h.nexar or h.api_missing or h.nexar_missing -%}
+API: {{ api_type_link(h) }}{% if h.api_from %} (from {{ class_link(h.api_from) }}){% endif %}
+{ .page-subtitle }
+  {%- endif -%}
+{%- endmacro -%}
+
 {%- macro subset_title(name) -%}
   {%- set subsets = schemaview.all_subsets() -%}
   {{- subsets[name].title if name in subsets and subsets[name].title else name -}}
@@ -73,6 +69,17 @@
 {%- macro class_link(name, prefix='../') -%}
   {%- set c = schemaview.get_class(name) -%}
   [{{ c.title if c and c.title else name }}]({{ prefix }}classes/{{ name }}.md)
+{%- endmacro -%}
+
+{#- Human-readable name of an enumeration: its title, else its name (as for classes). -#}
+{%- macro enum_title(e) -%}
+  {{- e.title if e and e.title else (e.name if e else '') -}}
+{%- endmacro -%}
+
+{#- Link to an enumeration page labelled with the enumeration title; prefix is the path to the site root. -#}
+{%- macro enum_link(name, prefix='../') -%}
+  {%- set e = schemaview.get_enum(name) -%}
+  [{{ enum_title(e) if e else name }}]({{ prefix }}enums/{{ name }}.md)
 {%- endmacro -%}
 
 {#- Kind of a class as the CDM names it: "entity", "resource" or "event" (descendants of core_Entity, core_Resource,

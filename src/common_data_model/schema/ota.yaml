@@ -23,6 +23,7 @@ subsets:
 enums:
 
   ota_DeviceStatus:
+    title: Device Status
     is_a: Enumeration
     in_subset: ota
     enum_uri: ota:DeviceStatus

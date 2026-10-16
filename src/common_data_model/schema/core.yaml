@@ -28,8 +28,10 @@ subsets:
 enums:
 
   Enumeration:
+    title: Enumeration
 
   Maturity:
+    title: Maturity
     is_a: Enumeration
     enum_uri: core:Maturity
     implements:
@@ -40,6 +42,7 @@ enums:
       OBSOLETE:
 
   VaultContentType:
+    title: Vault Content Type
     is_a: Enumeration
     enum_uri: core:VaultContentType
     implements:

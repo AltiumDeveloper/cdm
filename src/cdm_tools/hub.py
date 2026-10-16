@@ -67,6 +67,7 @@ class HubView:
     api_missing: Optional[str] = None
     nexar: Optional[NexarView] = None
     nexar_missing: Optional[str] = None
+    api_from: Optional[str] = None        # ancestor class that declares the API type, when inherited
     mappings: list[Mapping] = field(default_factory=list)
 
     def to_dict(self) -> dict:
@@ -115,9 +116,32 @@ def schema_namespaces(sv) -> dict[str, str]:
     return ns
 
 
-def build_hub(cls, *, registry: dict[str, LinkEntry], platform: Optional[ApiIndex],
-              nexar_types: Optional[dict], namespaces: dict[str, str]) -> HubView:
+API_ANNOTATIONS = ("platformAPI", "nexarAPI")
+
+
+def _own_api(cls) -> dict[str, str]:
     ann = cls.annotations or {}
+    return {k: str(ann[k].value).strip() for k in API_ANNOTATIONS if k in ann and str(ann[k].value or "").strip()}
+
+
+def api_declaration(sv, name: str) -> tuple[dict[str, str], Optional[str]]:
+    """API annotations (platformAPI / nexarAPI) of class *name*: its own, else those of the nearest is_a ancestor
+    that declares one, as in GRID templates (LinkML does not inherit annotations).
+
+    Returns (annotation -> type name, declaring ancestor or None when the class declares them itself).
+    """
+    for owner in sv.class_ancestors(name, mixins=False):          # reflexive, nearest first
+        api = _own_api(sv.get_class(owner))
+        if api:
+            return api, (None if owner == name else str(owner))
+    return {}, None
+
+
+def build_hub(cls, *, registry: dict[str, LinkEntry], platform: Optional[ApiIndex],
+              nexar_types: Optional[dict], namespaces: dict[str, str], sv=None) -> HubView:
+    """Hub view of *cls*. With *sv*, an API type the class does not declare is inherited (see api_declaration)."""
+    ann = cls.annotations or {}
+    api, api_from = api_declaration(sv, cls.name) if sv is not None else (_own_api(cls), None)
     hub = HubView(
         links=[doc_link(str(u), registry, i == 0) for i, u in enumerate(cls.see_also or [])],
         terms=_terms(cls),
@@ -125,8 +149,9 @@ def build_hub(cls, *, registry: dict[str, LinkEntry], platform: Optional[ApiInde
         mappings=[build_mapping(rel, str(v), registry, namespaces)
                   for rel, attr in MAPPING_FIELDS for v in (getattr(cls, attr, None) or [])],
     )
-    if "platformAPI" in ann:
-        name = str(ann["platformAPI"].value)
+    hub.api_from = api_from
+    if "platformAPI" in api:
+        name = api["platformAPI"]
         kind = platform.kind_of(name) if platform else None
         if platform is None:
             hub.api = ApiView(type_name=name, kind="", url=None)
@@ -134,8 +159,8 @@ def build_hub(cls, *, registry: dict[str, LinkEntry], platform: Optional[ApiInde
             hub.api_missing = name
         else:
             hub.api = ApiView(type_name=name, kind=kind, url=platform.type_url(name))
-    if "nexarAPI" in ann:
-        name = str(ann["nexarAPI"].value)
+    if "nexarAPI" in api:
+        name = api["nexarAPI"]
         if nexar_types is None or name in nexar_types:
             hub.nexar = NexarView(type_name=name, url=OCTOPART_API_DOC)
         else:

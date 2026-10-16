@@ -352,6 +352,10 @@ user interface: pages, views, panes, tabs, menus, buttons, dialogs, admin screen
 `see_also` / `structured_aliases` (Section 8) and draw domain facts from it, but don't copy its UI wording into
 definitions.
 
+Keep a class description to the point: one or two sentences that give the main idea of the entity. Don't
+enumerate everything the product documentation says about it. Details belong on the slots (each relation and
+attribute carries its own description), in enums, or in the linked documentation.
+
 ```yaml
 # ✅ VALID — domain terms
 des_DesignReview_project:
@@ -369,8 +373,17 @@ The same applies to `title` (a domain label, not a UI caption) and to subset des
 `GloOrganization`). Supply-chain types served by the Nexar (Octopart) API use `nexarAPI` instead
 (e.g. `sup_Part` → `nexarAPI: SupPart`). Never invent a type name from naming patterns — check it against
 production introspection. If the entity has no API type yet, **omit the annotation** (e.g. `dm_Processor`)
-and add it once the API type exists. Several classes may share one API type (e.g. `pro_ManagedBOM` and
-`pro_ConsolidatedBOM` → `BomWip`).
+and add it once the API type exists.
+
+`platformAPI` / `nexarAPI` and the `grid` template are **inherited along `is_a`**. A class that doesn't
+declare its own uses the nearest ancestor's, so declare a shared type once, on the common parent:
+`pro_BomWIP` (`BomWip`, inherited by `pro_ManagedBOM` and `pro_ConsolidatedBOM`), `des_Project` (`DesProject`,
+inherited by `des_HarnessProject` and `des_MultiboardProject`) and `ins_Insight` (`DesWorkspaceInsInsight`,
+inherited by `ins_PartInsight` and `ins_DesignInsight`). Declare it on the subclass only when the subclass maps to a
+different API type (e.g. `pro_BomItemAlternate` → `BomItemAlternate`). LinkML itself doesn't inherit annotations. The
+CDM tooling resolves the nearest ancestor (`effective_grid_templates` in `cdm_tools/reference.py`,
+`api_declaration` in `cdm_tools/hub.py`) for class pages, index tables, `hub.json`, llms cards, the spreadsheet
+export, coverage and DOC-05.
 
 ### 4.4 Required Slot Metadata
 
@@ -578,8 +591,8 @@ Every class (and, where applicable, slot and subset) can link three layers: prod
 |---|---|---|
 | `see_also:` | Official product/documentation pages, most relevant first (first = primary). Read from the class itself, not inherited | Each URL (and `#fragment`) must be in `src/docs/links/registry.yaml` (DOC-01). An empty `#` fragment counts as an anchor and must be listed too |
 | `structured_aliases:` | Product terms for the concept, with `predicate`, `contexts`, `source` URL | `source` must be in the registry (DOC-01) |
-| `annotations.platformAPI` | Altium 365 Platform API GraphQL type. Read from the class itself, not inherited | Must exist in `src/docs/api/platform-schema.json` as OBJECT/INTERFACE/UNION (DOC-03) |
-| `annotations.nexarAPI` | Nexar (Octopart) GraphQL type for supply entities. Read from the class itself, not inherited | Must exist in `src/docs/api/nexar-schema.json` as OBJECT/INTERFACE/UNION (DOC-03) |
+| `annotations.platformAPI` | Altium 365 Platform API GraphQL type. Inherited from the nearest `is_a` ancestor that declares one (§4.3) | Must exist in `src/docs/api/platform-schema.json` as OBJECT/INTERFACE/UNION (DOC-03) |
+| `annotations.nexarAPI` | Nexar (Octopart) GraphQL type for supply entities. Inherited like `platformAPI` | Must exist in `src/docs/api/nexar-schema.json` as OBJECT/INTERFACE/UNION (DOC-03) |
 | `exact_mappings` / `close_mappings` / `related_mappings` | External standards (SVD, PDSC, SysML v2, PROV-O, RO/BFO) | Full http(s) URL, or CURIE with prefix `prov:` / `obo:` (DOC-04); full URLs must also be in the registry (DOC-01), with `source: standard` |
 | `annotations.productDocs: none` | Declares that no public product documentation exists (after checking) | Silences DOC-05 |
 
@@ -617,15 +630,20 @@ Registry entries may give `anchor_labels` (fragment → label) so links to diffe
 Never guess an API type name — look it up in the snapshot (`make refresh-api-snapshot` to update).
 Semantic disagreements between the CDM and the docs go to `MODEL-FINDINGS.md`, not silently into the schema.
 
-**Rendering.** Class pages show a *Hub panel* with three boxes.
+**Rendering.** Under the title, class pages show the IRI, the GRID template and the API type (`API:`). The API
+type is the Platform API type, linked to its API reference page, or for supply entities the Nexar type, linked to
+the Octopart API docs and marked "(Nexar)". A type that is not in the snapshot is marked "(not in Platform/Nexar API
+snapshot)". An inherited GRID or API type adds "(from <ancestor>)", and the line is omitted when the class has no
+API type. Below the description, a *Hub panel* has two boxes:
 
 - **In the product** — known-as terms (`structured_aliases`) and `see_also` links titled from the registry, the first
   marked primary. Empty states: "No product documentation linked yet." or, with `productDocs: none`,
   "No public product documentation exists for this concept."
-- **In the API** — the Platform API type (linked to its API reference page), or the Nexar type for supply entities,
-  linked to the Octopart API docs. Empty states: "No Platform API type.", "`X` is not in the Platform API snapshot.",
-  "`X` is not in the Nexar API snapshot."
-- **In standards** — `*_mappings`.
+- **In standards** — `*_mappings` (only when the class has mappings).
+
+Enumeration pages follow the class-page layout: the title (enum `title`, else its name) and IRI, the description, a
+Values table and the fields that use the enumeration. Enumerations are referenced by title everywhere, as classes
+are.
 
 API links are emitted only for pages listed in `src/docs/api/platform-docs-pages.json`; if that file is absent, API
 links are emitted unfiltered, and if the Platform snapshot is absent, the type name is shown without links.

@@ -17,7 +17,8 @@ subsets:
       Models the Electronic System Design (ESD) document of a Renesas 365 solution: a system-level block
       diagram of functional blocks with their key (hardware) and software components, ports and parameters,
       the connections between blocks, and entries for the hardware and software projects that implement the
-      system. It corresponds to Electronic System Design in a Renesas 365 Workspace.
+      system. It corresponds to Electronic System Design in a Renesas 365 Workspace; a Global ESD has the same
+      content outside of any Workspace.
     see_also:
       - https://www.altium.com/documentation/altium-365/esd
       - https://www.altium.com/documentation/altium-365/renesas-365
@@ -41,6 +42,7 @@ subsets:
 enums:
 
   system_PortType:
+    title: Port Type
     is_a: Enumeration
     in_subset: system
     enum_uri: sys:PortType
@@ -66,6 +68,7 @@ enums:
       POWER_MCU:
 
   system_SdmSoftwareComponentCategory:
+    title: Software Component Category
     description: High-level classification of software components.
     permissible_values:
       DRIVER:
@@ -80,6 +83,76 @@ enums:
         description: Static utility code or mathematical libraries.
 
 classes:
+
+  system_ESD:
+    is_a: core_Meta
+    in_subset: system
+    abstract: true
+    mixin: true
+    class_uri: sys:ESD
+    title: ESD
+    description: >-
+      Electronic System Design: a system-level block diagram of functional blocks and the connections between
+      them, together with the hardware and software projects that implement the system.
+    see_also:
+      - https://www.altium.com/documentation/altium-365/esd
+    slots:
+      - system_parameters
+    attributes:
+      system_ESD_functionalBlocks:
+        slot_uri: sys:ESD_functionalBlocks
+        alias: functionalBlocks
+        title: functional blocks
+        description: The functional blocks of the system design.
+        range: system_FunctionalBlock
+        multivalued: true
+        required: false
+        inlined: true
+        inlined_as_list: true
+      system_ESD_connections:
+        slot_uri: sys:ESD_connections
+        alias: connections
+        title: connections
+        description: The connections between functional blocks.
+        range: system_Connection
+        multivalued: true
+        required: false
+        inlined: true
+        inlined_as_list: true
+      system_ESD_hardwareProjects:
+        slot_uri: sys:ESD_hardwareProjects
+        alias: hardwareProjects
+        title: hardware projects
+        description: Hardware projects associated with this system design.
+        range: system_HardwareProject
+        multivalued: true
+        required: false
+        inlined: true
+        inlined_as_list: true
+      system_ESD_softwareProjects:
+        slot_uri: sys:ESD_softwareProjects
+        alias: softwareProjects
+        title: software projects
+        description: Software projects associated with this system design.
+        range: system_SoftwareProject
+        multivalued: true
+        required: false
+        inlined: true
+        inlined_as_list: true
+
+  system_GlobalESD:
+    is_a: core_Activity
+    in_subset: system
+    class_uri: sys:GlobalESD
+    title: Global ESD
+    description: >-
+      An Electronic System Design that resides outside of any Workspace. It has the same content as an ESD
+      document but is not part of a solution.
+    annotations:
+      grid: grid:global::system-design:esd/{id}
+      productDocs: none
+    mixins:
+      - system_ESD
 
   system_ESDDocument:
     is_a: core_Activity
@@ -107,44 +180,7 @@ classes:
         source: https://www.altium.com/documentation/altium-365/renesas-365
     mixins:
       - plt_SolutionItem
-    slots:
-      - system_parameters
-    attributes:
-      system_ESDDocument_functionalBlocks:
-        slot_uri: sys:ESDDocument_functionalBlocks
-        alias: functionalBlocks
-        title: functional blocks
-        description: TBD
-        range: system_FunctionalBlock
-        multivalued: true
-        required: false
-        inlined: true
-        inlined_as_list: true
-      system_ESDDocument_connections:
-        slot_uri: sys:ESDDocument_connections
-        alias: connections
-        title: connections
-        range: system_Connection
-        multivalued: true
-        required: false
-        inlined: true
-        inlined_as_list: true
-      system_ESDDocument_hardwareProjects:
-        alias: hardwareProjects
-        title: hardware projects
-        description: Hardware projects associated with this ESD document.
-        range: system_HardwareProject
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-      system_ESDDocument_softwareProjects:
-        alias: softwareProjects
-        title: software projects
-        description: Software projects associated with this ESD document.
-        range: system_SoftwareProject
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
+      - system_ESD
 
   system_FunctionalBlock:
     is_a: core_Resource

@@ -9,7 +9,7 @@ tags:
 
 ---
 
-{% from "macros.jinja2" import hub_panel with context %}
+{% from "macros.jinja2" import hub_panel, api_subtitle with context %}
 {% from "macros.jinja2" import class_link with context %}
 {% from "macros.jinja2" import slot_url with context %}
 {% from "macros.jinja2" import slot_range_url with context %}
@@ -51,6 +51,10 @@ IRI: [{{ iri }}]({{ iri }})
 {% if g.value %}
 GRID: `{{ g.value }}`{% if g.owner %} (from {{ class_link(g.owner) }}){% endif %}
 { .page-subtitle }
+{% endif %}
+
+{% if hub is defined %}
+{{ api_subtitle(hub(element)) }}
 {% endif %}
 
 {% if element.description %}
