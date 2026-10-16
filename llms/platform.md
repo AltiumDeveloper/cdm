@@ -12,7 +12,7 @@ HTML page: [subsets/platform/](../subsets/platform/)
 
 ## Classes
 
-- [Application](classes/plt_Application.md) (`plt_Application`): Artifact · API GloApp · GRID `grid:global::platform:application/{id}`
+- [Application](classes/plt_Application.md) (`plt_Application`): Artifact · API GloApp · GRID `grid:global::platform:app/{id}`
 - [Event Subscription](classes/plt_EventSubscription.md) (`plt_EventSubscription`): Artifact · API GloEvtSubscription · GRID `grid:global::events:subscription/{id}`
 - [Lifecycle Definition](classes/plt_LifecycleDefinition.md) (`plt_LifecycleDefinition`): Defines the set of states that an entity can transition through in its lifecycle. · Artifact · API DesLifeCycleDefinition · GRID `grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}`
 - [Lifecycle Stage](classes/plt_LifecycleStage.md) (`plt_LifecycleStage`): A named stage that groups lifecycle states in a lifecycle definition using the Advanced management style (e.g. Design, Prototype, Production), indicating how far a revision has progressed in its development. · Resource · API DesLifeCycleStage

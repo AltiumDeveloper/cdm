@@ -12,7 +12,7 @@ HTML page: [subsets/customization/](../subsets/customization/)
 ## Classes
 
 - [Script](classes/cus_Script.md) (`cus_Script`): Artifact · API GloScrScript · GRID `grid:workspace:{workspace-id}:scripts:script/{id}`
-- [Script Execution](classes/cus_ScriptExecution.md) (`cus_ScriptExecution`): Artifact · API GloScrScriptExecution · GRID `grid:workspace:{workspace-id}:scripts:script-execution/{id}`
+- [Script Execution](classes/cus_ScriptExecution.md) (`cus_ScriptExecution`): Artifact · API GloScrScriptExecution · GRID `grid:workspace:{workspace-id}:scripts:execution/{id}`
 - [Script Execution Completed](classes/cus_ScriptExecutionCompleted.md) (`cus_ScriptExecutionCompleted`): Event
 - [Script Version](classes/cus_ScriptVersion.md) (`cus_ScriptVersion`): Artifact · API GloScrScriptVersion · GRID `grid:workspace:{workspace-id}:scripts:script-version/{id}`
 - [Workflow](classes/cus_Workflow.md) (`cus_Workflow`): A process workflow of an Altium 365 Workspace: the workflow that belongs to a process definition and steps designers through an everyday design process (e.g. requesting a new part, a design review or creating a new project). · Activity · API DesWorkflowDefinition · GRID `grid:workspace:{workspace-id}:customization:workflow/{id}`

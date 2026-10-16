@@ -125,6 +125,10 @@
          <lastmod>2026-10-16</lastmod>
     </url>
     <url>
+         <loc>https://w3id.org/altium/cdm/classes/des_DesignReview/</loc>
+         <lastmod>2026-10-16</lastmod>
+    </url>
+    <url>
          <loc>https://w3id.org/altium/cdm/classes/des_HarnessProject/</loc>
          <lastmod>2026-10-16</lastmod>
     </url>
@@ -266,6 +270,10 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/dm_RegisterField/</loc>
+         <lastmod>2026-10-16</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/ins_DesignInsight/</loc>
          <lastmod>2026-10-16</lastmod>
     </url>
     <url>
@@ -605,6 +613,10 @@
          <lastmod>2026-10-16</lastmod>
     </url>
     <url>
+         <loc>https://w3id.org/altium/cdm/classes/system_ESD/</loc>
+         <lastmod>2026-10-16</lastmod>
+    </url>
+    <url>
          <loc>https://w3id.org/altium/cdm/classes/system_ESDDocument/</loc>
          <lastmod>2026-10-16</lastmod>
     </url>
@@ -614,6 +626,10 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/classes/system_FunctionalBlock/</loc>
+         <lastmod>2026-10-16</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/classes/system_GlobalESD/</loc>
          <lastmod>2026-10-16</lastmod>
     </url>
     <url>
@@ -730,6 +746,10 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/enums/VaultContentType/</loc>
+         <lastmod>2026-10-16</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/enums/des_DesignReviewStatus/</loc>
          <lastmod>2026-10-16</lastmod>
     </url>
     <url>
@@ -878,6 +898,38 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/cus_ScriptVersion_executions/</loc>
+         <lastmod>2026-10-16</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/des_DesignReview_commentThreads/</loc>
+         <lastmod>2026-10-16</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/des_DesignReview_initiator/</loc>
+         <lastmod>2026-10-16</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/des_DesignReview_project/</loc>
+         <lastmod>2026-10-16</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/des_DesignReview_reviewContext/</loc>
+         <lastmod>2026-10-16</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/des_DesignReview_reviewers/</loc>
+         <lastmod>2026-10-16</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/des_DesignReview_status/</loc>
+         <lastmod>2026-10-16</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/des_DesignReview_tasks/</loc>
+         <lastmod>2026-10-16</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/des_DesignReview_workflow/</loc>
          <lastmod>2026-10-16</lastmod>
     </url>
     <url>
@@ -1230,6 +1282,10 @@
     </url>
     <url>
          <loc>https://w3id.org/altium/cdm/slots/grid/</loc>
+         <lastmod>2026-10-16</lastmod>
+    </url>
+    <url>
+         <loc>https://w3id.org/altium/cdm/slots/ins_DesignInsight_designReview/</loc>
          <lastmod>2026-10-16</lastmod>
     </url>
     <url>
@@ -1861,19 +1917,19 @@
          <lastmod>2026-10-16</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/system_ESDDocument_connections/</loc>
+         <loc>https://w3id.org/altium/cdm/slots/system_ESD_connections/</loc>
          <lastmod>2026-10-16</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/system_ESDDocument_functionalBlocks/</loc>
+         <loc>https://w3id.org/altium/cdm/slots/system_ESD_functionalBlocks/</loc>
          <lastmod>2026-10-16</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/system_ESDDocument_hardwareProjects/</loc>
+         <loc>https://w3id.org/altium/cdm/slots/system_ESD_hardwareProjects/</loc>
          <lastmod>2026-10-16</lastmod>
     </url>
     <url>
-         <loc>https://w3id.org/altium/cdm/slots/system_ESDDocument_softwareProjects/</loc>
+         <loc>https://w3id.org/altium/cdm/slots/system_ESD_softwareProjects/</loc>
          <lastmod>2026-10-16</lastmod>
     </url>
     <url>

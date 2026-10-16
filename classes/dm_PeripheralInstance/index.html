@@ -333,6 +333,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../des_DesignReview/">
+<span class="md-ellipsis">
+    Design Review
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../des_Project/">
 <span class="md-ellipsis">
     Hardware Project
@@ -430,6 +438,14 @@
 <a class="md-nav__link" href="../ins_Insight/">
 <span class="md-ellipsis">
     Insight
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../ins_DesignInsight/">
+<span class="md-ellipsis">
+    Design Insight
     
   </span>
 </a>
@@ -940,6 +956,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../system_GlobalESD/">
+<span class="md-ellipsis">
+    Global ESD
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1350,14 +1374,11 @@
 </div>
 <h1 id="peripheralinstance">PeripheralInstance</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/deviceModel/PeripheralInstance">https://w3id.org/altium/cdm/deviceModel/PeripheralInstance</a></p>
+<p class="page-subtitle">API: <a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmPeripheralInstance/"><code>DmPeripheralInstance</code></a></p>
 <p>A concrete instance of a peripheral (e.g., SCI0), including available modes.</p>
 <div class="admonition abstract">
 <p class="admonition-title">In the product</p>
 <p>No product documentation linked yet.</p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">In the API</p>
-<p>Type: <a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmPeripheralInstance/"><code>DmPeripheralInstance</code></a> (object)</p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">In standards</p>
@@ -1439,7 +1460,7 @@
       click dm_PeripheralVirtualization href "../../enums/dm_PeripheralVirtualization/"
 
 
-  class dm_PeripheralVirtualization["dm_PeripheralVirtualization"]
+  class dm_PeripheralVirtualization["Peripheral Virtualization"]
 
 
 
@@ -1599,7 +1620,7 @@
 <tr>
 <td><a href="../../slots/dm_PeripheralInstance_virtualization">virtualization</a></td>
 <td><code>0..1</code></td>
-<td><a href="../../enums/dm_PeripheralVirtualization/">dm_PeripheralVirtualization</a></td>
+<td><a href="../../enums/dm_PeripheralVirtualization/">Peripheral Virtualization</a></td>
 <td>Specifies how this peripheral instance is virtualized, indicating whether the instance represents a single, non-virtualized peripheral or a channel-virtualized peripheral where individual functions act as separate interface instances.</td>
 <td>direct</td>
 </tr>

@@ -3,8 +3,8 @@
 - Name: `des_ProjectRelease`
 - IRI: `des:ProjectRelease` (https://w3id.org/altium/cdm/design/ProjectRelease)
 - Bounded context: [design](../design.md)
-- Kind: Activity
-- Is a: [core_Activity](core_Activity.md)
+- Kind: Artifact
+- Is a: [core_Artifact](core_Artifact.md)
 - Mixins: [plt_HasLifecycle](plt_HasLifecycle.md)
 - HTML page: [classes/des_ProjectRelease/](../../classes/des_ProjectRelease/)
 
@@ -40,6 +40,7 @@ Project Release captures an immutable snapshot of a PCB design project at a spec
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
+| [des_DesignReview](des_DesignReview.md) | reviewContext | 0..1 | core_occursIn |
 | [des_ManufacturingPackage](des_ManufacturingPackage.md) | projectRelease | 1 | core_derivedFrom |
 | [des_Project](des_Project.md) | releases | * | core_releases |
 | [ins_PartInsight](ins_PartInsight.md) | occursIn | * | core_occursIn |

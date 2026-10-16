@@ -36,4 +36,5 @@ Task represents a discrete unit of work assigned to a user or team within the de
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
+| [des_DesignReview](des_DesignReview.md) | tasks | * | core_informs |
 | [ins_Insight](ins_Insight.md) | tasks | * | core_informs |

@@ -1,4 +1,4 @@
-# dm_PeripheralVirtualization
+# Peripheral Virtualization (dm_PeripheralVirtualization)
 
 - Name: `dm_PeripheralVirtualization`
 - IRI: `dm:PeripheralVirtualization` (https://w3id.org/altium/cdm/deviceModel/PeripheralVirtualization)

@@ -333,6 +333,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../des_DesignReview/">
+<span class="md-ellipsis">
+    Design Review
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../des_Project/">
 <span class="md-ellipsis">
     Hardware Project
@@ -430,6 +438,14 @@
 <a class="md-nav__link" href="../ins_Insight/">
 <span class="md-ellipsis">
     Insight
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../ins_DesignInsight/">
+<span class="md-ellipsis">
+    Design Insight
     
   </span>
 </a>
@@ -940,6 +956,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../system_GlobalESD/">
+<span class="md-ellipsis">
+    Global ESD
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1355,10 +1379,6 @@
 <p class="admonition-title">In the product</p>
 <p>No product documentation linked yet.</p>
 </div>
-<div class="admonition abstract">
-<p class="admonition-title">In the API</p>
-<p>No Platform API type.</p>
-</div>
 <h2 id="diagram">Diagram</h2>
 <pre class="cdm-diagram"><code>---
   config:
@@ -1431,6 +1451,26 @@
 
 
 
+
+
+
+
+
+
+
+
+
+  class system_GlobalESD["Global ESD"]
+
+
+
+
+
+
+      style system_GlobalESD fill:#f1c232,stroke:#9d7e20,color:#14181f,stroke-width:1px
+
+          system_GlobalESD --&gt; "*" system_SoftwareProject: software projects 
+          click system_GlobalESD href "../../classes/system_GlobalESD/"
 
 
 

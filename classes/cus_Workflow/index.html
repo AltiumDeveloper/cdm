@@ -335,6 +335,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../des_DesignReview/">
+<span class="md-ellipsis">
+    Design Review
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../des_Project/">
 <span class="md-ellipsis">
     Hardware Project
@@ -432,6 +440,14 @@
 <a class="md-nav__link" href="../ins_Insight/">
 <span class="md-ellipsis">
     Insight
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../ins_DesignInsight/">
+<span class="md-ellipsis">
+    Design Insight
     
   </span>
 </a>
@@ -979,6 +995,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../system_GlobalESD/">
+<span class="md-ellipsis">
+    Global ESD
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1394,6 +1418,7 @@
 <h1 id="workflow">Workflow</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/customization/Workflow">https://w3id.org/altium/cdm/customization/Workflow</a></p>
 <p class="page-subtitle">GRID: <code>grid:workspace:{workspace-id}:customization:workflow/{id}</code></p>
+<p class="page-subtitle">API: <a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkflowDefinition/"><code>DesWorkflowDefinition</code></a></p>
 <p>A process workflow of an Altium 365 Workspace: the workflow that belongs to a process definition and steps designers through an everyday design process (e.g. requesting a new part, a design review or creating a new project). Workspace administrators build process definitions in the Process Workflow Editor, grouped by process theme (Part Requests, Project Activities, Project Creations), and activate them; each started instance of a process follows the workflow and creates tasks for the users whose action is needed to move it on.</p>
 <div class="admonition abstract">
 <p class="admonition-title">In the product</p>
@@ -1403,10 +1428,6 @@
 <li><a href="https://www.altium.com/documentation/altium-365/creating-managing-processes">Create &amp; Manage Electronics Design Processes</a></li>
 <li><a href="https://www.altium.com/documentation/altium-365/defining-process-workflow">Defining a Process Workflow</a></li>
 </ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">In the API</p>
-<p>Type: <a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkflowDefinition/"><code>DesWorkflowDefinition</code></a> (object)</p>
 </div>
 <h2 id="diagram">Diagram</h2>
 <pre class="cdm-diagram"><code>---
@@ -1438,6 +1459,25 @@
           cus_Workflow : id
 
 
+
+
+
+
+
+
+
+
+  class des_DesignReview["Design Review"]
+
+
+
+
+
+
+      style des_DesignReview fill:#93c47d,stroke:#607f51,color:#14181f,stroke-width:1px
+
+          des_DesignReview --&gt; "0..1" cus_Workflow: workflow 
+          click des_DesignReview href "../../classes/des_DesignReview/"
 
 
 

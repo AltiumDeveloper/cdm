@@ -13,7 +13,7 @@
 
 ## GRID
 
-`grid:workspace:{workspace-id}:scripts:script-execution/{id}`
+`grid:workspace:{workspace-id}:scripts:execution/{id}`
 
 ## Attributes
 

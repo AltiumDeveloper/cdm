@@ -1,4 +1,4 @@
-# dm_AccessType
+# Access Type (dm_AccessType)
 
 - Name: `dm_AccessType`
 - IRI: `dm:AccessType` (https://w3id.org/altium/cdm/deviceModel/AccessType)

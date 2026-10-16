@@ -1,4 +1,4 @@
-# dm_PortMode
+# Port Mode (dm_PortMode)
 
 - Name: `dm_PortMode`
 - IRI: `dm:PortMode` (https://w3id.org/altium/cdm/deviceModel/PortMode)

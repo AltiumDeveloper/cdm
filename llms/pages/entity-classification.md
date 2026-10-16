@@ -124,25 +124,23 @@ A recurring pattern is a working Activity paired with Artifact snapshots of it:
 - `system_SdmSystemModel` → `system_SdmSystemModelVersion`, linked by the slots `system_SdmSystemModel_versions`
   and `system_SdmSystemModel_latestVersion` (which specialise no core relation); the version is described as the
   state of the system model at a point in time.
-- `pro_BomWIP` (and so `pro_ManagedBOM`, `pro_ConsolidatedBOM`) → `pro_BomRelease`, `plt_Solution` →
-  `plt_SolutionRelease` and `sft_SoftwareProject` → `sft_SoftwareRelease`, linked by `core_releases`. The BOM
-  release and the solution release are described as snapshots of the BOM and the solution; the software release
-  has no description yet, so for it the pairing rests only on the name and the `core_releases` slot.
+- `des_Project` → `des_ProjectRelease`, `pro_BomWIP` (and so `pro_ManagedBOM`, `pro_ConsolidatedBOM`) →
+  `pro_BomRelease`, `plt_Solution` → `plt_SolutionRelease` and `sft_SoftwareProject` → `sft_SoftwareRelease`,
+  linked by `core_releases`. The project release, the BOM release and the solution release are described as
+  snapshots of the project, the BOM and the solution; the software release has no description yet, so for it the
+  pairing rests only on the name and the `core_releases` slot.
 
 It is a pattern, not a rule that splits design work from released data. Exceptions and open questions, tracked
 in [MODEL-FINDINGS.md](https://github.com/AltiumDeveloper/cdm/blob/main/MODEL-FINDINGS.md):
 
-- [des_ProjectRelease](../classes/des_ProjectRelease.md) is described as an immutable snapshot yet is an Activity
-  (MF-007, MF-070); the other release classes are Artifacts.
 - The run of a script ([cus_ScriptExecution](../classes/cus_ScriptExecution.md)) is an Artifact, while the run of a
   rule check is an Activity (MF-073).
 - [cus_Workflow](../classes/cus_Workflow.md) is an Activity, but its Platform API type is a workflow definition
   (MF-026).
 - [ins_PartInsight](../classes/ins_PartInsight.md) is an Activity without a description, so none of the criteria
   explains the choice, and its relations do not fit the domains and ranges of the core relations (MF-075).
-- The description of `core_Activity` in `core.yaml` names releases as examples, although every release class
-  except `des_ProjectRelease` is an Artifact; the description of `core_Artifact` names system models, although
-  `system_SdmSystemModel` is an Activity (MF-077).
+- The description of `core_Artifact` in `core.yaml` names system models as examples, although
+  `system_SdmSystemModel` is an Activity (its versions are Artifacts) (MF-077).
 
 ## Ontological basis
 

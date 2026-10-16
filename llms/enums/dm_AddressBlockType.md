@@ -1,4 +1,4 @@
-# dm_AddressBlockType
+# Address Block Type (dm_AddressBlockType)
 
 - Name: `dm_AddressBlockType`
 - IRI: `dm:AddressBlockType` (https://w3id.org/altium/cdm/deviceModel/AddressBlockType)

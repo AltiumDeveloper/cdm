@@ -21,10 +21,11 @@ A bill of materials kept in a Workspace and worked on in the BOM Portal, where i
 ## In the API
 
 - Platform API type: [`BomWip`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomWip/) (object)
+- Inherited from [pro_BomWIP](pro_BomWIP.md).
 
 ## GRID
 
-None declared (nearest ancestor `pro_BomWIP`: `grid:workspace:{workspace-id}:procurement:bom/{id}`).
+`grid:workspace:{workspace-id}:procurement:bom/{id}`
 
 ## Attributes
 

@@ -10,10 +10,11 @@
 ## In the API
 
 - Platform API type: [`DesWorkspaceInsInsight`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceInsInsight/) (object)
+- Inherited from [ins_Insight](ins_Insight.md).
 
 ## GRID
 
-`grid:workspace:{workspace-id}:insights:insight/{id}`
+None declared (nearest ancestor `ins_Insight`: `grid:workspace:{workspace-id}:insights:insight/{id}`).
 
 ## Attributes
 

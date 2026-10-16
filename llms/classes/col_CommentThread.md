@@ -33,3 +33,9 @@ Comment Thread represents a structured discussion linked to a specific design ob
 | --- | --- | --- | --- | --- | --- |
 | comments | [col_Comment](col_Comment.md) | 1..* |  |  |  |
 | id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](core_Entity.md) |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_DesignReview](des_DesignReview.md) | commentThreads | * | core_hasPart |

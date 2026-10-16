@@ -1,4 +1,4 @@
-# dm_Endianness
+# Endianness (dm_Endianness)
 
 - Name: `dm_Endianness`
 - IRI: `dm:Endianness` (https://w3id.org/altium/cdm/deviceModel/Endianness)

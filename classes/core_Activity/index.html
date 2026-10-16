@@ -335,6 +335,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../des_DesignReview/">
+<span class="md-ellipsis">
+    Design Review
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../des_Project/">
 <span class="md-ellipsis">
     Hardware Project
@@ -432,6 +440,14 @@
 <a class="md-nav__link" href="../ins_Insight/">
 <span class="md-ellipsis">
     Insight
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../ins_DesignInsight/">
+<span class="md-ellipsis">
+    Design Insight
     
   </span>
 </a>
@@ -942,6 +958,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../system_GlobalESD/">
+<span class="md-ellipsis">
+    Global ESD
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1393,14 +1417,10 @@
 </div>
 <h1 id="activity">Activity</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/core/Activity">https://w3id.org/altium/cdm/core/Activity</a></p>
-<p>Abstract base for process and work objects — things that happen, use inputs, and produce outputs. Examples: projects, releases, design workflows.</p>
+<p>Abstract base for process and work objects — things that happen, use inputs, and produce outputs. Examples: projects, design reviews, design workflows.</p>
 <div class="admonition abstract">
 <p class="admonition-title">In the product</p>
 <p>No product documentation linked yet.</p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">In the API</p>
-<p>No Platform API type.</p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">In standards</p>
@@ -1499,19 +1519,6 @@
         click des_Project href "../../classes/des_Project/"
 
 
-  class des_ProjectRelease["Hardware Project Release"]
-
-
-
-
-
-
-      style des_ProjectRelease fill:#93c47d,stroke:#607f51,color:#14181f,stroke-width:1px
-
-        core_Activity &lt;|-- des_ProjectRelease
-        click des_ProjectRelease href "../../classes/des_ProjectRelease/"
-
-
   class des_RuleCheckExecution["Rule Check Execution"]
 
 
@@ -1523,6 +1530,19 @@
 
         core_Activity &lt;|-- des_RuleCheckExecution
         click des_RuleCheckExecution href "../../classes/des_RuleCheckExecution/"
+
+
+  class des_DesignReview["Design Review"]
+
+
+
+
+
+
+      style des_DesignReview fill:#93c47d,stroke:#607f51,color:#14181f,stroke-width:1px
+
+        core_Activity &lt;|-- des_DesignReview
+        click des_DesignReview href "../../classes/des_DesignReview/"
 
 
   class ins_Insight["Insight"]
@@ -1601,6 +1621,19 @@
 
         core_Activity &lt;|-- sft_SoftwareProject
         click sft_SoftwareProject href "../../classes/sft_SoftwareProject/"
+
+
+  class system_GlobalESD["Global ESD"]
+
+
+
+
+
+
+      style system_GlobalESD fill:#f1c232,stroke:#9d7e20,color:#14181f,stroke-width:1px
+
+        core_Activity &lt;|-- system_GlobalESD
+        click system_GlobalESD href "../../classes/system_GlobalESD/"
 
 
   class system_ESDDocument["ESD Document"]
@@ -1685,14 +1718,15 @@
 <li><a href="../col_CommentThread/">Comment Thread</a></li>
 <li><a href="../cus_Workflow/">Workflow</a></li>
 <li><a href="../des_Project/">Hardware Project</a></li>
-<li><a href="../des_ProjectRelease/">Hardware Project Release</a></li>
 <li><a href="../des_RuleCheckExecution/">Rule Check Execution</a></li>
+<li><a href="../des_DesignReview/">Design Review</a></li>
 <li><a href="../ins_Insight/">Insight</a></li>
 <li><a href="../lib_PartRequest/">Part Request</a></li>
 <li><a href="../ota_Deployment/">Deployment</a></li>
 <li><a href="../pro_BomWIP/">BOM WIP</a></li>
 <li><a href="../pro_GlobalBOM/">Global BOM</a></li>
 <li><a href="../sft_SoftwareProject/">Software Project</a></li>
+<li><a href="../system_GlobalESD/">Global ESD</a></li>
 <li><a href="../system_ESDDocument/">ESD Document</a></li>
 <li><a href="../system_SdmSystemModel/">System Model</a></li>
 <li><a href="../req_RequirementChangeRequest/">Requirement Change Request</a></li>

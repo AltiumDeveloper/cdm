@@ -21,4 +21,4 @@ An entry of an ESD document for a software project (sft_SoftwareProject) that im
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [system_ESDDocument](system_ESDDocument.md) | softwareProjects | * |  |
+| [system_ESD](system_ESD.md) | softwareProjects | * |  |

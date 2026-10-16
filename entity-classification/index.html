@@ -418,6 +418,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../classes/des_DesignReview/">
+<span class="md-ellipsis">
+    Design Review
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../classes/des_Project/">
 <span class="md-ellipsis">
     Hardware Project
@@ -515,6 +523,14 @@
 <a class="md-nav__link" href="../classes/ins_Insight/">
 <span class="md-ellipsis">
     Insight
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../classes/ins_DesignInsight/">
+<span class="md-ellipsis">
+    Design Insight
     
   </span>
 </a>
@@ -1021,6 +1037,14 @@
 <a class="md-nav__link" href="../classes/system_ESDDocument/">
 <span class="md-ellipsis">
     ESD Document
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../classes/system_GlobalESD/">
+<span class="md-ellipsis">
+    Global ESD
     
   </span>
 </a>
@@ -1622,25 +1646,23 @@ and no versioning lifecycle. The schema currently has one event class,
 <li><code>system_SdmSystemModel</code> → <code>system_SdmSystemModelVersion</code>, linked by the slots <code>system_SdmSystemModel_versions</code>
   and <code>system_SdmSystemModel_latestVersion</code> (which specialise no core relation); the version is described as the
   state of the system model at a point in time.</li>
-<li><code>pro_BomWIP</code> (and so <code>pro_ManagedBOM</code>, <code>pro_ConsolidatedBOM</code>) → <code>pro_BomRelease</code>, <code>plt_Solution</code> →
-  <code>plt_SolutionRelease</code> and <code>sft_SoftwareProject</code> → <code>sft_SoftwareRelease</code>, linked by <code>core_releases</code>. The BOM
-  release and the solution release are described as snapshots of the BOM and the solution; the software release
-  has no description yet, so for it the pairing rests only on the name and the <code>core_releases</code> slot.</li>
+<li><code>des_Project</code> → <code>des_ProjectRelease</code>, <code>pro_BomWIP</code> (and so <code>pro_ManagedBOM</code>, <code>pro_ConsolidatedBOM</code>) →
+  <code>pro_BomRelease</code>, <code>plt_Solution</code> → <code>plt_SolutionRelease</code> and <code>sft_SoftwareProject</code> → <code>sft_SoftwareRelease</code>,
+  linked by <code>core_releases</code>. The project release, the BOM release and the solution release are described as
+  snapshots of the project, the BOM and the solution; the software release has no description yet, so for it the
+  pairing rests only on the name and the <code>core_releases</code> slot.</li>
 </ul>
 <p>It is a pattern, not a rule that splits design work from released data. Exceptions and open questions, tracked
 in <a href="https://github.com/AltiumDeveloper/cdm/blob/main/MODEL-FINDINGS.md">MODEL-FINDINGS.md</a>:</p>
 <ul>
-<li><a href="../classes/des_ProjectRelease/">des_ProjectRelease</a> is described as an immutable snapshot yet is an Activity
-  (MF-007, MF-070); the other release classes are Artifacts.</li>
 <li>The run of a script (<a href="../classes/cus_ScriptExecution/">cus_ScriptExecution</a>) is an Artifact, while the run of a
   rule check is an Activity (MF-073).</li>
 <li><a href="../classes/cus_Workflow/">cus_Workflow</a> is an Activity, but its Platform API type is a workflow definition
   (MF-026).</li>
 <li><a href="../classes/ins_PartInsight/">ins_PartInsight</a> is an Activity without a description, so none of the criteria
   explains the choice, and its relations do not fit the domains and ranges of the core relations (MF-075).</li>
-<li>The description of <code>core_Activity</code> in <code>core.yaml</code> names releases as examples, although every release class
-  except <code>des_ProjectRelease</code> is an Artifact; the description of <code>core_Artifact</code> names system models, although
-  <code>system_SdmSystemModel</code> is an Activity (MF-077).</li>
+<li>The description of <code>core_Artifact</code> in <code>core.yaml</code> names system models as examples, although
+  <code>system_SdmSystemModel</code> is an Activity (its versions are Artifacts) (MF-077).</li>
 </ul>
 <h2 id="ontological-basis">Ontological basis</h2>
 <p>The Artifact/Activity split is aligned with the entity/activity distinction of the W3C provenance ontology

@@ -30,3 +30,9 @@ A process workflow of an Altium 365 Workspace: the workflow that belongs to a pr
 | Field | Range | Cardinality | Description | Relation | Inherited from |
 | --- | --- | --- | --- | --- | --- |
 | id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](core_Entity.md) |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_DesignReview](des_DesignReview.md) | workflow | 0..1 | core_informedBy |

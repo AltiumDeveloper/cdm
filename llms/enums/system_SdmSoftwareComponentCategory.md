@@ -1,4 +1,4 @@
-# system_SdmSoftwareComponentCategory
+# Software Component Category (system_SdmSoftwareComponentCategory)
 
 - Name: `system_SdmSoftwareComponentCategory`
 - Kind: enumeration

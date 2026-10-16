@@ -372,6 +372,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../des_DesignReview/">
+<span class="md-ellipsis">
+    Design Review
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../des_Project/">
 <span class="md-ellipsis">
     Hardware Project
@@ -469,6 +477,14 @@
 <a class="md-nav__link" href="../ins_Insight/">
 <span class="md-ellipsis">
     Insight
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../ins_DesignInsight/">
+<span class="md-ellipsis">
+    Design Insight
     
   </span>
 </a>
@@ -979,6 +995,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../system_GlobalESD/">
+<span class="md-ellipsis">
+    Global ESD
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1394,6 +1418,7 @@
 <h1 id="workspace-user">Workspace User</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/platform/WorkspaceUser">https://w3id.org/altium/cdm/platform/WorkspaceUser</a></p>
 <p class="page-subtitle">GRID: <code>grid:workspace:{workspace-id}:team:user/{id}</code></p>
+<p class="page-subtitle">API: <a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceUser/"><code>DesWorkspaceUser</code></a></p>
 <p>A person's membership in a particular Workspace, connecting their Altium Account to that Workspace and to the Workspace groups they are assigned to. Members can come from the organization that owns the Workspace or from other organizations, and inviting an outside user does not add them to the owning organization. People who only have a project shared with them (External Share guests) are not members.</p>
 <div class="admonition abstract">
 <p class="admonition-title">In the product</p>
@@ -1402,10 +1427,6 @@
 <li><a href="https://www.altium.com/documentation/altium-365/managing-workspace-membership#workspace_members">Managing Workspace Membership</a> <em>(primary)</em></li>
 <li><a href="https://www.altium.com/documentation/altium-365/inviting-users">Inviting other Users to Your Workspace</a></li>
 </ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">In the API</p>
-<p>Type: <a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceUser/"><code>DesWorkspaceUser</code></a> (object)</p>
 </div>
 <h2 id="diagram">Diagram</h2>
 <pre class="cdm-diagram"><code>---
@@ -1439,6 +1460,40 @@
 
 
 
+
+
+
+
+
+
+  class des_DesignReview["Design Review"]
+
+
+
+
+
+
+      style des_DesignReview fill:#93c47d,stroke:#607f51,color:#14181f,stroke-width:1px
+
+          des_DesignReview --&gt; "1" plt_WorkspaceUser: initiator 
+          click des_DesignReview href "../../classes/des_DesignReview/"
+
+
+
+
+
+
+  class des_DesignReview["Design Review"]
+
+
+
+
+
+
+      style des_DesignReview fill:#93c47d,stroke:#607f51,color:#14181f,stroke-width:1px
+
+          des_DesignReview --&gt; "*" plt_WorkspaceUser: reviewers 
+          click des_DesignReview href "../../classes/des_DesignReview/"
 
 
 

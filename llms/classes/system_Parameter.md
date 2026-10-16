@@ -26,7 +26,7 @@ Name–value parameter associated with functional blocks, ports, or other system
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
 | [system_Connection](system_Connection.md) | parameters | * |  |
-| [system_ESDDocument](system_ESDDocument.md) | parameters | * |  |
+| [system_ESD](system_ESD.md) | parameters | * |  |
 | [system_FunctionalBlock](system_FunctionalBlock.md) | parameters | * |  |
 | [system_KeyComponent](system_KeyComponent.md) | parameters | * |  |
 | [system_Port](system_Port.md) | parameters | * |  |

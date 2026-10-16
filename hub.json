@@ -9,6 +9,7 @@
      "type_name": "DesComment",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComment/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -35,6 +36,7 @@
      "type_name": "DesCommentThread",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesCommentThread/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -66,6 +68,7 @@
      "type_name": "DesTask",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesTask/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -88,6 +91,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -115,6 +119,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -137,6 +142,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -163,6 +169,7 @@
      "type_name": "GloScrScript",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloScrScript/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -176,13 +183,14 @@
   },
   "cus_ScriptExecution": {
    "class_uri": "cus:ScriptExecution",
-   "grid": "grid:workspace:{workspace-id}:scripts:script-execution/{id}",
+   "grid": "grid:workspace:{workspace-id}:scripts:execution/{id}",
    "hub": {
     "api": {
      "kind": "OBJECT",
      "type_name": "GloScrScriptExecution",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloScrScriptExecution/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -199,6 +207,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -219,6 +228,7 @@
      "type_name": "GloScrScriptVersion",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloScrScriptVersion/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -239,6 +249,7 @@
      "type_name": "DesWorkflowDefinition",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkflowDefinition/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -283,15 +294,39 @@
    "subset": "customization",
    "title": "Workflow"
   },
+  "des_DesignReview": {
+   "class_uri": "des:DesignReview",
+   "grid": "grid:workspace:{workspace-id}:design:design-review/{id}",
+   "hub": {
+    "api": null,
+    "api_from": null,
+    "api_missing": null,
+    "links": [
+     {
+      "primary": true,
+      "text": "Design Reviews",
+      "url": "https://www.altium.com/documentation/altium-365/project-design-reviews"
+     }
+    ],
+    "mappings": [],
+    "nexar": null,
+    "nexar_missing": null,
+    "product_docs_none": false,
+    "terms": []
+   },
+   "subset": "design",
+   "title": "Design Review"
+  },
   "des_HarnessProject": {
    "class_uri": "des:HarnessProject",
-   "grid": null,
+   "grid": "grid:workspace:{workspace-id}:design:project/{id}",
    "hub": {
     "api": {
      "kind": "OBJECT",
      "type_name": "DesProject",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProject/"
     },
+    "api_from": "des_Project",
     "api_missing": null,
     "links": [
      {
@@ -314,6 +349,7 @@
    "grid": "grid:workspace:{workspace-id}:design:manufacturing-package/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -347,13 +383,14 @@
   },
   "des_MultiboardProject": {
    "class_uri": "des:MultiboardProject",
-   "grid": null,
+   "grid": "grid:workspace:{workspace-id}:design:project/{id}",
    "hub": {
     "api": {
      "kind": "OBJECT",
      "type_name": "DesProject",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProject/"
     },
+    "api_from": "des_Project",
     "api_missing": null,
     "links": [
      {
@@ -380,6 +417,7 @@
      "type_name": "DesProject",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProject/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -430,6 +468,7 @@
      "type_name": "DesProjectParameter",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProjectParameter/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -461,6 +500,7 @@
      "type_name": "DesRelease",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesRelease/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -501,6 +541,7 @@
      "type_name": "DesProjectTemplate",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProjectTemplate/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -527,6 +568,7 @@
      "type_name": "DesProjectTemplateRevision",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProjectTemplateRevision/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -547,6 +589,7 @@
      "type_name": "DesWipVariant",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWipVariant/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -587,6 +630,7 @@
      "type_name": "RuleCheck",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/RuleCheck/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -607,6 +651,7 @@
      "type_name": "RuleCheckExecution",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/RuleCheckExecution/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -627,6 +672,7 @@
      "type_name": "DmAddressBlock",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmAddressBlock/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [
@@ -653,6 +699,7 @@
      "type_name": "DmAddressMapModel",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmAddressMapModel/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -673,6 +720,7 @@
      "type_name": "DmAddressSegment",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmAddressSegment/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -693,6 +741,7 @@
      "type_name": "DmDeviceModelAsConfigured",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmDeviceModelAsConfigured/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -719,6 +768,7 @@
      "type_name": "DmAmFieldEnum",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmAmFieldEnum/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [
@@ -745,6 +795,7 @@
      "type_name": "DmFullStackDeviceModel",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmFullStackDeviceModel/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [
@@ -776,6 +827,7 @@
      "type_name": "DmAmMemory",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmAmMemory/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [
@@ -802,6 +854,7 @@
      "type_name": "DmPeripheral",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmPeripheral/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [
@@ -824,6 +877,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": "DmPeripheralConfiguration",
     "links": [],
     "mappings": [],
@@ -844,6 +898,7 @@
      "type_name": "DmPeripheralInstance",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmPeripheralInstance/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [
@@ -870,6 +925,7 @@
      "type_name": "DmPeripheralMode",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmPeripheralMode/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -886,6 +942,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": "DmPeripheralParameters",
     "links": [],
     "mappings": [],
@@ -902,6 +959,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": "DmPeripheralPinConfig",
     "links": [],
     "mappings": [],
@@ -918,6 +976,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": "DmPeripheralPinDependencyConfig",
     "links": [],
     "mappings": [],
@@ -938,6 +997,7 @@
      "type_name": "DmPin",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmPin/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -958,6 +1018,7 @@
      "type_name": "DmPort",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmPort/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -978,6 +1039,7 @@
      "type_name": "DmPortConfiguration",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmPortConfiguration/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -998,6 +1060,7 @@
      "type_name": "DmConfigDependency",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmConfigDependency/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -1018,6 +1081,7 @@
      "type_name": "DmConfigEnumValue",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmConfigEnumValue/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -1038,6 +1102,7 @@
      "type_name": "DmPortConnection",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmPortConnection/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -1058,6 +1123,7 @@
      "type_name": "DmPortFunction",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmPortFunction/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1080,6 +1146,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [
@@ -1111,6 +1178,7 @@
      "type_name": "DmAmRegister",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmAmRegister/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [
@@ -1137,6 +1205,7 @@
      "type_name": "DmAmRegisterField",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DmAmRegisterField/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [
@@ -1154,6 +1223,27 @@
    "subset": "deviceModel",
    "title": "RegisterField"
   },
+  "ins_DesignInsight": {
+   "class_uri": "ins:DesignInsight",
+   "grid": "grid:workspace:{workspace-id}:insights:insight/{id}",
+   "hub": {
+    "api": {
+     "kind": "OBJECT",
+     "type_name": "DesWorkspaceInsInsight",
+     "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceInsInsight/"
+    },
+    "api_from": "ins_Insight",
+    "api_missing": null,
+    "links": [],
+    "mappings": [],
+    "nexar": null,
+    "nexar_missing": null,
+    "product_docs_none": true,
+    "terms": []
+   },
+   "subset": "insights",
+   "title": "Design Insight"
+  },
   "ins_PartInsight": {
    "class_uri": "ins:PartInsight",
    "grid": "grid:workspace:{workspace-id}:insights:insight/{id}",
@@ -1163,6 +1253,7 @@
      "type_name": "DesWorkspaceInsInsight",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceInsInsight/"
     },
+    "api_from": "ins_Insight",
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -1179,6 +1270,7 @@
    "grid": "grid:workspace:{workspace-id}:library:component/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1241,6 +1333,7 @@
      "type_name": "DesComponentParameter",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComponentParameter/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1267,6 +1360,7 @@
      "type_name": "DesComponent",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComponent/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1303,6 +1397,7 @@
      "type_name": "DesComponentTemplate",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComponentTemplate/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1329,6 +1424,7 @@
      "type_name": "DesComponentTemplateRevision",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesComponentTemplateRevision/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1360,6 +1456,7 @@
      "type_name": "DesDatasheet",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesDatasheet/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1382,6 +1479,7 @@
    "grid": "grid:workspace:{workspace-id}:library:footprint/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1425,6 +1523,7 @@
      "type_name": "DesFootprint",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesFootprint/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1452,6 +1551,7 @@
    "grid": "grid:workspace:{workspace-id}:library:managed-sheet/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1483,6 +1583,7 @@
    "grid": "grid:workspace:{workspace-id}:library:managed-sheet-revision/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1514,6 +1615,7 @@
      "type_name": "DesPart",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesPart/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1551,6 +1653,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1578,6 +1681,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1605,6 +1709,7 @@
    "grid": "grid:workspace:{workspace-id}:library:part-request/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1632,6 +1737,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1654,6 +1760,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1685,6 +1792,7 @@
      "type_name": "DesReuseBlock",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesReuseBlock/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1711,6 +1819,7 @@
      "type_name": "DesReuseBlockRevision",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesReuseBlockRevision/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1738,6 +1847,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1769,6 +1879,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1796,6 +1907,7 @@
    "grid": "grid:workspace:{workspace-id}:library:symbol/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1839,6 +1951,7 @@
      "type_name": "DesSymbol",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesSymbol/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -1866,6 +1979,7 @@
    "grid": "grid:workspace:{workspace-id}:ota:deployment/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -1882,6 +1996,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -1898,6 +2013,7 @@
    "grid": "grid:workspace:{workspace-id}:ota:deployment-result/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -1914,6 +2030,7 @@
    "grid": "grid:workspace:{workspace-id}:ota:device/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -1930,6 +2047,7 @@
    "grid": "grid:workspace:{workspace-id}:ota:fleet/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -1946,6 +2064,7 @@
    "grid": "grid:workspace:{workspace-id}:ota:package/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -1962,6 +2081,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -1975,13 +2095,14 @@
   },
   "plt_Application": {
    "class_uri": "plt:Application",
-   "grid": "grid:global::platform:application/{id}",
+   "grid": "grid:global::platform:app/{id}",
    "hub": {
     "api": {
      "kind": "OBJECT",
      "type_name": "GloApp",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloApp/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -2002,6 +2123,7 @@
      "type_name": "GloEvtSubscription",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/interfaces/GloEvtSubscription/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -2022,6 +2144,7 @@
      "type_name": "DesLifeCycleDefinition",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleDefinition/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2053,6 +2176,7 @@
      "type_name": "DesLifeCycleStage",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleStage/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2084,6 +2208,7 @@
      "type_name": "DesLifeCycleState",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLifeCycleState/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2120,6 +2245,7 @@
      "type_name": "DesRevisionNamingScheme",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesRevisionNamingScheme/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2146,6 +2272,7 @@
      "type_name": "GloOrganization",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloOrganization/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2186,6 +2313,7 @@
      "type_name": "SolSolution",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SolSolution/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2223,6 +2351,7 @@
    "grid": "grid:workspace:{workspace-id}:platform:solution-release/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -2243,6 +2372,7 @@
      "type_name": "GloUser",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloUser/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2279,6 +2409,7 @@
      "type_name": "GloUserGroup",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/GloUserGroup/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2305,6 +2436,7 @@
      "type_name": "DesWorkspace",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspace/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2350,6 +2482,7 @@
      "type_name": "DesWorkspaceGroup",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceGroup/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2376,6 +2509,7 @@
      "type_name": "DesWorkspaceUser",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceUser/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2416,6 +2550,7 @@
      "type_name": "BomIssue",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomIssue/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2442,6 +2577,7 @@
      "type_name": "BomItem",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomItem/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2477,6 +2613,7 @@
      "type_name": "BomItemAlternate",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomItemAlternate/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2512,6 +2649,7 @@
      "type_name": "BomItemSubstitute",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomItemSubstitute/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -2532,6 +2670,7 @@
      "type_name": "BomRelease",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomRelease/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2551,13 +2690,14 @@
   },
   "pro_ConsolidatedBOM": {
    "class_uri": "pro:ConsolidatedBOM",
-   "grid": null,
+   "grid": "grid:workspace:{workspace-id}:procurement:consolidated-bom/{id}",
    "hub": {
     "api": {
      "kind": "OBJECT",
      "type_name": "BomWip",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomWip/"
     },
+    "api_from": "pro_BomWIP",
     "api_missing": null,
     "links": [
      {
@@ -2580,6 +2720,7 @@
    "grid": "grid:global::procurement:bom/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -2593,13 +2734,14 @@
   },
   "pro_ManagedBOM": {
    "class_uri": "pro:ManagedBOM",
-   "grid": null,
+   "grid": "grid:workspace:{workspace-id}:procurement:bom/{id}",
    "hub": {
     "api": {
      "kind": "OBJECT",
      "type_name": "BomWip",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomWip/"
     },
+    "api_from": "pro_BomWIP",
     "api_missing": null,
     "links": [
      {
@@ -2627,6 +2769,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -2643,6 +2786,7 @@
    "grid": "grid:workspace:{workspace-id}:requirements:project/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2675,6 +2819,7 @@
    "grid": "grid:workspace:{workspace-id}:requirements:requirement/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2707,6 +2852,7 @@
    "grid": "grid:workspace:{workspace-id}:requirements:baseline/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2738,6 +2884,7 @@
    "grid": "grid:workspace:{workspace-id}:requirements:change-request/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -2754,6 +2901,7 @@
    "grid": "grid:workspace:{workspace-id}:requirements:requirement-revision/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2776,6 +2924,7 @@
    "grid": "grid:workspace:{workspace-id}:requirements:specification/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2807,6 +2956,7 @@
    "grid": "grid:workspace:{workspace-id}:requirements:verification-case/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2843,6 +2993,7 @@
    "grid": "grid:workspace:{workspace-id}:software:ai-model/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -2859,6 +3010,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -2879,6 +3031,7 @@
      "type_name": "SftDevCfgDeviceConfiguration",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SftDevCfgDeviceConfiguration/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2910,6 +3063,7 @@
      "type_name": "SftDevCfgDeviceConfigurationRevision",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SftDevCfgDeviceConfigurationRevision/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -2926,6 +3080,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2948,6 +3103,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -2974,6 +3130,7 @@
      "type_name": "SftSoftwareProject",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SftSoftwareProject/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3001,6 +3158,7 @@
    "grid": "grid:workspace:{workspace-id}:software:software-release/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3017,6 +3175,7 @@
    "grid": "grid:supply::platform:company/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3040,6 +3199,7 @@
      "type_name": "SupEvalKit",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupEvalKit/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3071,6 +3231,7 @@
    "grid": "grid:supply::platform:part/{id}/offer/{offerID}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3110,6 +3271,7 @@
    "grid": "grid:supply::platform:part/{id}",
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3153,6 +3315,7 @@
      "type_name": "SupPartFamily",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupPartFamily/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3173,6 +3336,7 @@
      "type_name": "SupPartGroup",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupPartGroup/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3193,6 +3357,7 @@
      "type_name": "SupRefDesign",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupRefDesign/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3219,6 +3384,7 @@
      "type_name": "SupSoftwareProject",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupSoftwareProject/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3245,6 +3411,7 @@
      "type_name": "SupSolutionTemplate",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SupSolutionTemplate/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3261,6 +3428,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3292,6 +3460,7 @@
      "type_name": "SysEsdDocument",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysEsdDocument/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3333,6 +3502,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3349,6 +3519,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3371,11 +3542,29 @@
    "subset": "system",
    "title": "Functional Block"
   },
+  "system_GlobalESD": {
+   "class_uri": "sys:GlobalESD",
+   "grid": "grid:global::system-design:esd/{id}",
+   "hub": {
+    "api": null,
+    "api_from": null,
+    "api_missing": null,
+    "links": [],
+    "mappings": [],
+    "nexar": null,
+    "nexar_missing": null,
+    "product_docs_none": true,
+    "terms": []
+   },
+   "subset": "system",
+   "title": "Global ESD"
+  },
   "system_HardwareProject": {
    "class_uri": "sys:HardwareProject",
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3392,6 +3581,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3428,6 +3618,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3450,6 +3641,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3477,6 +3669,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3493,6 +3686,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3509,6 +3703,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3529,6 +3724,7 @@
      "type_name": "SysSdmConnection",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmConnection/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3549,6 +3745,7 @@
      "type_name": "SysSdmDeviceModel",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmDeviceModel/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3580,6 +3777,7 @@
      "type_name": "SysSdmEndpoint",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmEndpoint/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3600,6 +3798,7 @@
      "type_name": "SysSdmFunctionalBlock",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmFunctionalBlock/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3620,6 +3819,7 @@
      "type_name": "SysSdmFunctionalModel",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmFunctionalModel/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3640,6 +3840,7 @@
      "type_name": "SysSdmHardwareComponent",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmHardwareComponent/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3671,6 +3872,7 @@
      "type_name": "SysSdmHardwareModel",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmHardwareModel/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3691,6 +3893,7 @@
      "type_name": "SysSdmPort",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmPort/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3711,6 +3914,7 @@
      "type_name": "SysSdmSoftwareComponent",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSoftwareComponent/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3731,6 +3935,7 @@
      "type_name": "SysSdmSoftwareModel",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSoftwareModel/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3751,6 +3956,7 @@
      "type_name": "SysSdmSoftwareSpecification",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSoftwareSpecification/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3771,6 +3977,7 @@
      "type_name": "SysSdmSoftwareStackInstance",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSoftwareStackInstance/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3791,6 +3998,7 @@
      "type_name": "SysSdmSystemModel",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSystemModel/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3846,6 +4054,7 @@
      "type_name": "SysSdmSystemModelVersion",
      "url": "https://altiumdeveloper.github.io/platform-api-docs/types/objects/SysSdmSystemModelVersion/"
     },
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3862,6 +4071,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],
@@ -3878,6 +4088,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [
      {
@@ -3900,6 +4111,7 @@
    "grid": null,
    "hub": {
     "api": null,
+    "api_from": null,
     "api_missing": null,
     "links": [],
     "mappings": [],

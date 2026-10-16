@@ -58,8 +58,10 @@ Product terms and class names of the model. A term used by several classes is li
 | Deployment | [Deployment](../classes/ota_Deployment.md) (`ota_Deployment`) | ota | title |  |
 | Deployment Assignment | [Deployment Assignment](../classes/ota_DeploymentAssignment.md) (`ota_DeploymentAssignment`) | ota | title |  |
 | Deployment Result | [Deployment Result](../classes/ota_DeploymentResult.md) (`ota_DeploymentResult`) | ota | title |  |
+| Design Insight | [Design Insight](../classes/ins_DesignInsight.md) (`ins_DesignInsight`) | insights | title |  |
 | design project | [Hardware Project](../classes/des_Project.md) (`des_Project`) | design | related | [Workspace Projects](https://www.altium.com/documentation/altium-365/workspace-projects) |
 | design project release | [Hardware Project Release](../classes/des_ProjectRelease.md) (`des_ProjectRelease`) | design | related | [Design Project Release](https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release) |
+| Design Review | [Design Review](../classes/des_DesignReview.md) (`des_DesignReview`) | design | title | [Design Reviews](https://www.altium.com/documentation/altium-365/project-design-reviews) |
 | design variant | [Hardware Project Variant](../classes/des_ProjectVariant.md) (`des_ProjectVariant`) | design | exact | [Design Variants](https://www.altium.com/documentation/altium-designer/design-variants) |
 | Device | [Device](../classes/ota_Device.md) (`ota_Device`) | ota | title |  |
 | Device Configuration | [Device Configuration](../classes/sft_DeviceConfiguration.md) (`sft_DeviceConfiguration`) | software | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration) |
@@ -103,6 +105,7 @@ Product terms and class names of the model. A term used by several classes is li
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
 | Global BOM | [Global BOM](../classes/pro_GlobalBOM.md) (`pro_GlobalBOM`) | procurement | title |  |
+| Global ESD | [Global ESD](../classes/system_GlobalESD.md) (`system_GlobalESD`) | system | title |  |
 
 ## H
 

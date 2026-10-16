@@ -335,6 +335,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../des_DesignReview/">
+<span class="md-ellipsis">
+    Design Review
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../des_Project/">
 <span class="md-ellipsis">
     Hardware Project
@@ -432,6 +440,14 @@
 <a class="md-nav__link" href="../ins_Insight/">
 <span class="md-ellipsis">
     Insight
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../ins_DesignInsight/">
+<span class="md-ellipsis">
+    Design Insight
     
   </span>
 </a>
@@ -986,6 +1002,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../system_GlobalESD/">
+<span class="md-ellipsis">
+    Global ESD
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1407,7 +1431,8 @@
 </div>
 <h1 id="managed-bom">Managed BOM</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/procurement/ManagedBOM">https://w3id.org/altium/cdm/procurement/ManagedBOM</a></p>
-<p class="page-subtitle">GRID: <code>grid:workspace:{workspace-id}:procurement:bom/{id}</code> (from <a href="../pro_BomWIP/">BOM WIP</a>)</p>
+<p class="page-subtitle">GRID: <code>grid:workspace:{workspace-id}:procurement:bom/{id}</code></p>
+<p class="page-subtitle">API: <a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomWip/"><code>BomWip</code></a> (from <a href="../pro_BomWIP/">BOM WIP</a>)</p>
 <p>A bill of materials kept in a Workspace and worked on in the BOM Portal, where its lines are enriched with manufacturer and supplier data for review and procurement. It can be created from a design project (one of its variants or releases) or uploaded as a CSV/XLS file from any source. A Managed BOM made from a project keeps a link to that project, so it can be updated when the project changes, either in place or as a new revision; snapshots of its data at a point in time are kept as BOM releases.</p>
 <div class="admonition abstract">
 <p class="admonition-title">In the product</p>
@@ -1415,10 +1440,6 @@
 <li><a href="https://www.altium.com/documentation/altium-365/bom-portal">BOM Portal</a> <em>(primary)</em></li>
 <li><a href="https://www.altium.com/documentation/altium-365/workspace-projects#uploading_or_creating_a_managed_bom">Workspace Projects</a></li>
 </ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">In the API</p>
-<p>Type: <a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomWip/"><code>BomWip</code></a> (object)</p>
 </div>
 <h2 id="diagram">Diagram</h2>
 <pre class="cdm-diagram"><code>---

@@ -6,7 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://w3id.org/altium/cdm/classes/des_Project/" rel="canonical"/>
-<link href="../../subsets/design/" rel="prev"/>
+<link href="../des_DesignReview/" rel="prev"/>
 <link href="../des_HarnessProject/" rel="next"/>
 <link href="../../img/favicon.svg" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
@@ -334,6 +334,14 @@
             Design
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../des_DesignReview/">
+<span class="md-ellipsis">
+    Design Review
+    
+  </span>
+</a>
+</li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
@@ -476,6 +484,14 @@
 <a class="md-nav__link" href="../ins_Insight/">
 <span class="md-ellipsis">
     Insight
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../ins_DesignInsight/">
+<span class="md-ellipsis">
+    Design Insight
     
   </span>
 </a>
@@ -986,6 +1002,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../system_GlobalESD/">
+<span class="md-ellipsis">
+    Global ESD
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1408,6 +1432,7 @@
 <h1 id="hardware-project">Hardware Project</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/design/Project">https://w3id.org/altium/cdm/design/Project</a></p>
 <p class="page-subtitle">GRID: <code>grid:workspace:{workspace-id}:design:project/{id}</code></p>
+<p class="page-subtitle">API: <a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProject/"><code>DesProject</code></a></p>
 <p>A design project stored in a Workspace, normally under its built-in version control, such as a PCB project. It groups the design documents that together define one implementation of a product, along with its project parameters and variants; it is the source from which releases are made and from which Managed BOMs can be created.</p>
 <div class="admonition abstract">
 <p class="admonition-title">In the product</p>
@@ -1416,10 +1441,6 @@
 <li><a href="https://www.altium.com/documentation/altium-365/workspace-projects">Workspace Projects</a> <em>(primary)</em></li>
 <li><a href="https://www.altium.com/documentation/altium-designer/creating-projects-documents">Creating Projects and Documents</a></li>
 </ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">In the API</p>
-<p>Type: <a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProject/"><code>DesProject</code></a> (object)</p>
 </div>
 <h2 id="diagram">Diagram</h2>
 <pre class="cdm-diagram"><code>---
@@ -1629,6 +1650,23 @@
 
           des_MultiboardProject --&gt; "*" des_Project: projects 
           click des_MultiboardProject href "../../classes/des_MultiboardProject/"
+
+
+
+
+
+
+  class des_DesignReview["Design Review"]
+
+
+
+
+
+
+      style des_DesignReview fill:#93c47d,stroke:#607f51,color:#14181f,stroke-width:1px
+
+          des_DesignReview --&gt; "1" des_Project: project 
+          click des_DesignReview href "../../classes/des_DesignReview/"
 
 
 

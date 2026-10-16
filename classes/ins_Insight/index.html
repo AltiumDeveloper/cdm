@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://w3id.org/altium/cdm/classes/ins_Insight/" rel="canonical"/>
 <link href="../../subsets/insights/" rel="prev"/>
-<link href="../ins_PartInsight/" rel="next"/>
+<link href="../ins_DesignInsight/" rel="next"/>
 <link href="../../img/favicon.svg" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
 <title>Insight - Common Data Model</title>
@@ -335,6 +335,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../des_DesignReview/">
+<span class="md-ellipsis">
+    Design Review
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../des_Project/">
 <span class="md-ellipsis">
     Hardware Project
@@ -457,6 +465,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#comments">
+<span class="md-ellipsis">
+      Comments
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#inheritance">
 <span class="md-ellipsis">
       Inheritance
@@ -472,6 +487,14 @@
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../ins_DesignInsight/">
+<span class="md-ellipsis">
+    Design Insight
+    
+  </span>
+</a>
 </li>
 <li class="md-nav__item md-nav__item--depth-1">
 <a class="md-nav__link" href="../ins_PartInsight/">
@@ -979,6 +1002,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../system_GlobalESD/">
+<span class="md-ellipsis">
+    Global ESD
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1357,6 +1388,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#comments">
+<span class="md-ellipsis">
+      Comments
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#inheritance">
 <span class="md-ellipsis">
       Inheritance
@@ -1393,14 +1431,12 @@
 </div>
 <h1 id="insight">Insight</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/insights/Insight">https://w3id.org/altium/cdm/insights/Insight</a></p>
-<p>TBD</p>
+<p class="page-subtitle">GRID: <code>grid:workspace:{workspace-id}:insights:insight/{id}</code></p>
+<p class="page-subtitle">API: <a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceInsInsight/"><code>DesWorkspaceInsInsight</code></a></p>
+<p>A finding, detected asynchronously, that gives the user insight within one domain area: the library (part insights) or design (design insights). Insights can be followed up by tasks.</p>
 <div class="admonition abstract">
 <p class="admonition-title">In the product</p>
 <p>No product documentation linked yet.</p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">In the API</p>
-<p>No Platform API type.</p>
 </div>
 <p>*NOTE: this is an abstract class and should not be instantiated directly</p>
 <h2 id="diagram">Diagram</h2>
@@ -1442,6 +1478,19 @@
         click ins_PartInsight href "../../classes/ins_PartInsight/"
 
 
+  class ins_DesignInsight["Design Insight"]
+
+
+
+
+
+
+      style ins_DesignInsight fill:#a64d79,stroke:#6c324f,color:#ffffff,stroke-width:1px
+
+        ins_Insight &lt;|-- ins_DesignInsight
+        click ins_DesignInsight href "../../classes/ins_DesignInsight/"
+
+
 
 
 
@@ -1472,12 +1521,15 @@
 
 
 </code></pre>
+<h2 id="comments">Comments</h2>
+<p>Working definition from the model owner; insights have no public product documentation yet.</p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../core_Entity/">Entity</a><ul>
 <li><a href="../core_Activity/">Activity</a><ul>
 <li><strong>Insight</strong><ul>
 <li><a href="../ins_PartInsight/">Part Insight</a></li>
+<li><a href="../ins_DesignInsight/">Design Insight</a></li>
 </ul>
 </li>
 </ul>

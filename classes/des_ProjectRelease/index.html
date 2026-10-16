@@ -335,6 +335,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../des_DesignReview/">
+<span class="md-ellipsis">
+    Design Review
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../des_Project/">
 <span class="md-ellipsis">
     Hardware Project
@@ -476,6 +484,14 @@
 <a class="md-nav__link" href="../ins_Insight/">
 <span class="md-ellipsis">
     Insight
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../ins_DesignInsight/">
+<span class="md-ellipsis">
+    Design Insight
     
   </span>
 </a>
@@ -986,6 +1002,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../system_GlobalESD/">
+<span class="md-ellipsis">
+    Global ESD
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1408,6 +1432,7 @@
 <h1 id="hardware-project-release">Hardware Project Release</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/design/ProjectRelease">https://w3id.org/altium/cdm/design/ProjectRelease</a></p>
 <p class="page-subtitle">GRID: <code>grid:workspace:{workspace-id}:design:project-release/{id}</code></p>
+<p class="page-subtitle">API: <a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesRelease/"><code>DesRelease</code></a></p>
 <p>Project Release captures an immutable snapshot of a PCB design project at a specific point in its lifecycle, packaging all design data, outputs, and metadata required for manufacturing, assembly, and downstream processes.</p>
 <div class="admonition abstract">
 <p class="admonition-title">In the product</p>
@@ -1416,10 +1441,6 @@
 <li><a href="https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release">Design Project Release</a> <em>(primary)</em></li>
 <li><a href="https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release/workspace">Releasing to a Workspace</a></li>
 </ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">In the API</p>
-<p>Type: <a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesRelease/"><code>DesRelease</code></a> (object)</p>
 </div>
 <h2 id="diagram">Diagram</h2>
 <pre class="cdm-diagram"><code>---
@@ -1572,6 +1593,23 @@
 
 
 
+  class des_DesignReview["Design Review"]
+
+
+
+
+
+
+      style des_DesignReview fill:#93c47d,stroke:#607f51,color:#14181f,stroke-width:1px
+
+          des_DesignReview --&gt; "0..1" des_ProjectRelease: review context 
+          click des_DesignReview href "../../classes/des_DesignReview/"
+
+
+
+
+
+
   class ins_PartInsight["Part Insight"]
 
 
@@ -1609,7 +1647,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../core_Entity/">Entity</a><ul>
-<li><a href="../core_Activity/">Activity</a><ul>
+<li><a href="../core_Artifact/">Artifact</a><ul>
 <li><strong>Hardware Project Release</strong> (mixins: <a href="../plt_HasLifecycle/">Has Lifecycle</a>)</li>
 </ul>
 </li>

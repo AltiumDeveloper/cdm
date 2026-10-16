@@ -20,10 +20,11 @@ Consolidated BOM represents the aggregated bill of materials across one or more 
 ## In the API
 
 - Platform API type: [`BomWip`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomWip/) (object)
+- Inherited from [pro_BomWIP](pro_BomWIP.md).
 
 ## GRID
 
-None declared (nearest ancestor `pro_BomWIP`: `grid:workspace:{workspace-id}:procurement:bom/{id}`).
+`grid:workspace:{workspace-id}:procurement:consolidated-bom/{id}`
 
 ## Attributes
 

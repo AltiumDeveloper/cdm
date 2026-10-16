@@ -15,9 +15,9 @@ The current, editable working state of a Workspace BOM, as opposed to a BOM rele
 
 - Term: **WIP BOM** (related; altium-365)
 
-## GRID
+## In the API
 
-`grid:workspace:{workspace-id}:procurement:bom/{id}`
+- Platform API type: [`BomWip`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/BomWip/) (object)
 
 ## Attributes
 

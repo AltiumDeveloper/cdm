@@ -20,6 +20,7 @@ Harness Project defines the design of a cable and wiring harness as a standalone
 ## In the API
 
 - Platform API type: [`DesProject`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProject/) (object)
+- Inherited from [des_Project](des_Project.md).
 
 ## GRID
 

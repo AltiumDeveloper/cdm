@@ -1,4 +1,4 @@
-# system_PortType
+# Port Type (system_PortType)
 
 - Name: `system_PortType`
 - IRI: `sys:PortType` (https://w3id.org/altium/cdm/system/PortType)

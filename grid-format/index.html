@@ -517,6 +517,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../classes/des_DesignReview/">
+<span class="md-ellipsis">
+    Design Review
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../classes/des_Project/">
 <span class="md-ellipsis">
     Hardware Project
@@ -614,6 +622,14 @@
 <a class="md-nav__link" href="../classes/ins_Insight/">
 <span class="md-ellipsis">
     Insight
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="../classes/ins_DesignInsight/">
+<span class="md-ellipsis">
+    Design Insight
     
   </span>
 </a>
@@ -1120,6 +1136,14 @@
 <a class="md-nav__link" href="../classes/system_ESDDocument/">
 <span class="md-ellipsis">
     ESD Document
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../classes/system_GlobalESD/">
+<span class="md-ellipsis">
+    Global ESD
     
   </span>
 </a>
@@ -1734,7 +1758,7 @@ and are declared per class in the <code>grid</code> annotation.</p>
 <tbody>
 <tr>
 <td><a href="../classes/plt_Application/">Application</a></td>
-<td><code>grid:global::platform:application/{id}</code></td>
+<td><code>grid:global::platform:app/{id}</code></td>
 </tr>
 <tr>
 <td><a href="../classes/plt_EventSubscription/">Event Subscription</a></td>
@@ -1793,6 +1817,10 @@ and are declared per class in the <code>grid</code> annotation.</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../classes/des_DesignReview/">Design Review</a></td>
+<td><code>grid:workspace:{workspace-id}:design:design-review/{id}</code></td>
+</tr>
+<tr>
 <td><a href="../classes/des_ManufacturingPackage/">Manufacturing Package</a></td>
 <td><code>grid:workspace:{workspace-id}:design:manufacturing-package/{id}</code></td>
 </tr>
@@ -1833,7 +1861,7 @@ and are declared per class in the <code>grid</code> annotation.</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../classes/ins_PartInsight/">Part Insight</a></td>
+<td><a href="../classes/ins_Insight/">Insight</a></td>
 <td><code>grid:workspace:{workspace-id}:insights:insight/{id}</code></td>
 </tr>
 </tbody>
@@ -1945,12 +1973,16 @@ and are declared per class in the <code>grid</code> annotation.</p>
 <td><code>grid:workspace:{workspace-id}:procurement:bom-release/{id}</code></td>
 </tr>
 <tr>
-<td><a href="../classes/pro_BomWIP/">BOM WIP</a></td>
-<td><code>grid:workspace:{workspace-id}:procurement:bom/{id}</code></td>
+<td><a href="../classes/pro_ConsolidatedBOM/">Consolidated BOM</a></td>
+<td><code>grid:workspace:{workspace-id}:procurement:consolidated-bom/{id}</code></td>
 </tr>
 <tr>
 <td><a href="../classes/pro_GlobalBOM/">Global BOM</a></td>
 <td><code>grid:global::procurement:bom/{id}</code></td>
+</tr>
+<tr>
+<td><a href="../classes/pro_ManagedBOM/">Managed BOM</a></td>
+<td><code>grid:workspace:{workspace-id}:procurement:bom/{id}</code></td>
 </tr>
 </tbody>
 </table>
@@ -2018,7 +2050,7 @@ and are declared per class in the <code>grid</code> annotation.</p>
 </tr>
 <tr>
 <td><a href="../classes/cus_ScriptExecution/">Script Execution</a></td>
-<td><code>grid:workspace:{workspace-id}:scripts:script-execution/{id}</code></td>
+<td><code>grid:workspace:{workspace-id}:scripts:execution/{id}</code></td>
 </tr>
 <tr>
 <td><a href="../classes/cus_ScriptVersion/">Script Version</a></td>
@@ -2043,6 +2075,10 @@ and are declared per class in the <code>grid</code> annotation.</p>
 <tr>
 <td><a href="../classes/system_ESDDocument/">ESD Document</a></td>
 <td><code>grid:workspace:{workspace-id}:system-design:esd/{id}</code></td>
+</tr>
+<tr>
+<td><a href="../classes/system_GlobalESD/">Global ESD</a></td>
+<td><code>grid:global::system-design:esd/{id}</code></td>
 </tr>
 </tbody>
 </table>

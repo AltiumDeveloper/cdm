@@ -473,6 +473,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="classes/des_DesignReview/">
+<span class="md-ellipsis">
+    Design Review
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="classes/des_Project/">
 <span class="md-ellipsis">
     Hardware Project
@@ -570,6 +578,14 @@
 <a class="md-nav__link" href="classes/ins_Insight/">
 <span class="md-ellipsis">
     Insight
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--depth-1">
+<a class="md-nav__link" href="classes/ins_DesignInsight/">
+<span class="md-ellipsis">
+    Design Insight
     
   </span>
 </a>
@@ -1076,6 +1092,14 @@
 <a class="md-nav__link" href="classes/system_ESDDocument/">
 <span class="md-ellipsis">
     ESD Document
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/system_GlobalESD/">
+<span class="md-ellipsis">
+    Global ESD
     
   </span>
 </a>
@@ -1593,15 +1617,15 @@
 <p>The Altium Common Data Model (CDM) describes the entities of the Altium platform, such as projects, components, BOMs, tasks and users, grouped into bounded contexts. For each class it records what the entity is, how it relates to other entities, how it is identified by a GRID (Global Resource ID) and, where one exists, its type in the Altium 365 API.</p>
 <div class="bc-grid">
 <p><a href="subsets/platform/"><span class="bc-icon bc-platform"></span><strong>Platform</strong> <span>12 entities · 2 resources</span></a></p>
-<p><a href="subsets/design/"><span class="bc-icon bc-design"></span><strong>Design</strong> <span>9 entities · 2 resources</span></a></p>
-<p><a href="subsets/insights/"><span class="bc-icon bc-insights"></span><strong>Insights</strong> <span>1 entity</span></a></p>
+<p><a href="subsets/design/"><span class="bc-icon bc-design"></span><strong>Design</strong> <span>10 entities · 2 resources</span></a></p>
+<p><a href="subsets/insights/"><span class="bc-icon bc-insights"></span><strong>Insights</strong> <span>2 entities</span></a></p>
 <p><a href="subsets/library/"><span class="bc-icon bc-library"></span><strong>Library Management</strong> <span>19 entities · 3 resources</span></a></p>
 <p><a href="subsets/collaboration/"><span class="bc-icon bc-collaboration"></span><strong>Collaboration</strong> <span>2 entities · 1 resource</span></a></p>
 <p><a href="subsets/configuration/"><span class="bc-icon bc-configuration"></span><strong>Configuration Management</strong> <span>3 entities</span></a></p>
 <p><a href="subsets/procurement/"><span class="bc-icon bc-procurement"></span><strong>Procurement</strong> <span>4 entities · 4 resources</span></a></p>
 <p><a href="subsets/supply/"><span class="bc-icon bc-supply"></span><strong>Supply</strong> <span>9 entities</span></a></p>
 <p><a href="subsets/customization/"><span class="bc-icon bc-customization"></span><strong>Customization</strong> <span>4 entities</span></a></p>
-<p><a href="subsets/system/"><span class="bc-icon bc-system"></span><strong>System Design</strong> <span>1 entity · 10 resources</span></a></p>
+<p><a href="subsets/system/"><span class="bc-icon bc-system"></span><strong>System Design</strong> <span>2 entities · 10 resources</span></a></p>
 <p><a href="subsets/system-sdm/"><span class="bc-icon bc-system-sdm"></span><strong>System Design - System Data Model</strong> <span>2 entities · 15 resources</span></a></p>
 <p><a href="subsets/requirements/"><span class="bc-icon bc-requirements"></span><strong>Requirements</strong> <span>7 entities · 1 resource</span></a></p>
 <p><a href="subsets/deviceModel/"><span class="bc-icon bc-deviceModel"></span><strong>Device Model</strong> <span>1 entity · 23 resources</span></a></p>
@@ -1694,7 +1718,7 @@
 </tbody>
 </table>
 <h3 class="bc-heading bc-design" id="design"><a href="subsets/design/">Design</a></h3>
-<p>Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, and rule checks run against projects. It corresponds to Workspace projects in Altium 365 and Altium Designer, from project creation through to design release.</p>
+<p>Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, rule checks run against projects, and design reviews of projects. It corresponds to Workspace projects in Altium 365 and Altium Designer, from project creation through to design release.</p>
 <table>
 <thead>
 <tr>
@@ -1704,6 +1728,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="classes/des_DesignReview/">Design Review </a></td>
+<td>A structured assessment of a design project, carried out by assigned Reviewers on a fixed snapshot of its design and concluded by the Initiator's decision, which leaves a traceable record of the review.</td>
+<td></td>
+</tr>
 <tr>
 <td><a href="classes/des_HarnessProject/">Harness Project </a></td>
 <td>Harness Project defines the design of a cable and wiring harness as a standalone yet integrable artifact, capturing connectors, wires, splices, and pin-to-pin mappings required to implement electrical interconnects between boards and system elements.</td>
@@ -1762,7 +1791,7 @@
 </tbody>
 </table>
 <h3 class="bc-heading bc-insights" id="insights"><a href="subsets/insights/">Insights</a></h3>
-<p>Models insights that can be followed up by tasks. The only concrete kind is the part insight: it concerns one Workspace part, may be informed by BOMs or design projects, and occurs in BOM releases, project releases or component revisions.</p>
+<p>Models insights: findings, detected asynchronously, that give the user insight within one domain area and can be followed up by tasks. There are two concrete kinds. A part insight concerns one Workspace part, may be informed by BOMs or design projects, and occurs in BOM releases, project releases or component revisions. A design insight concerns a design and is part of a design review.</p>
 <table>
 <thead>
 <tr>
@@ -1772,6 +1801,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="classes/ins_DesignInsight/">Design Insight </a></td>
+<td>An insight within the design domain: a finding, detected asynchronously, about the design under review in a design review. It is always part of that review and can be followed up by tasks.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWorkspaceInsInsight/"><code>DesWorkspaceInsInsight</code></a></td>
+</tr>
 <tr>
 <td><a href="classes/ins_PartInsight/">Part Insight </a></td>
 <td>TBD</td>
@@ -2108,7 +2142,7 @@
 </tbody>
 </table>
 <h3 class="bc-heading bc-system" id="system-design"><a href="subsets/system/">System Design</a></h3>
-<p>Models the Electronic System Design (ESD) document of a Renesas 365 solution: a system-level block diagram of functional blocks with their key (hardware) and software components, ports and parameters, the connections between blocks, and entries for the hardware and software projects that implement the system. It corresponds to Electronic System Design in a Renesas 365 Workspace.</p>
+<p>Models the Electronic System Design (ESD) document of a Renesas 365 solution: a system-level block diagram of functional blocks with their key (hardware) and software components, ports and parameters, the connections between blocks, and entries for the hardware and software projects that implement the system. It corresponds to Electronic System Design in a Renesas 365 Workspace; a Global ESD has the same content outside of any Workspace.</p>
 <table>
 <thead>
 <tr>
@@ -2136,6 +2170,11 @@
 <tr>
 <td><a href="classes/system_FunctionalBlock/">Functional Block </a></td>
 <td>Represents a logical block within an ESD document (e.g., MCU subsystem, LED driver block) that stands for a function, operation or device of the system, including parameters, key components, software components, ports, and associations. In the ESD editor a functional block can also contain other blocks; this nesting is not modelled here.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/system_GlobalESD/">Global ESD </a></td>
+<td>An Electronic System Design that resides outside of any Workspace. It has the same content as an ESD document but is not part of a solution.</td>
 <td></td>
 </tr>
 <tr>

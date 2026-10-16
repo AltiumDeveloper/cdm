@@ -1,4 +1,4 @@
-# ota_DeviceStatus
+# Device Status (ota_DeviceStatus)
 
 - Name: `ota_DeviceStatus`
 - IRI: `ota:DeviceStatus` (https://w3id.org/altium/cdm/ota/DeviceStatus)

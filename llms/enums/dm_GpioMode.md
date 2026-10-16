@@ -1,4 +1,4 @@
-# dm_GpioMode
+# GPIO Mode (dm_GpioMode)
 
 - Name: `dm_GpioMode`
 - IRI: `dm:GpioMode` (https://w3id.org/altium/cdm/deviceModel/GpioMode)

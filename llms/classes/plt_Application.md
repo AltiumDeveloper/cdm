@@ -13,7 +13,7 @@
 
 ## GRID
 
-`grid:global::platform:application/{id}`
+`grid:global::platform:app/{id}`
 
 ## Attributes
 

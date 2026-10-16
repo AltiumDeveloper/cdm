@@ -38,8 +38,9 @@ See [Entity Classification](entity-classification.md).
 
 ## How class pages link out
 
-Each class page has a hub panel: **In the product** (links to the product documentation and the product terms
-for the concept), **In the API** (the Platform API or Nexar type) and, where the class has mappings,
+Under its title, each class page shows the class IRI, its GRID template and its API type (the Platform API or
+Nexar type; an inherited one names the class that declares it). The hub panel below has **In the product** (links
+to the product documentation and the product terms for the concept) and, where the class has mappings,
 **In standards** (mappings to external standards and ontologies). The hub data of the domain classes is also
 published for tools as [`hub.json`](../../hub.json), described by the JSON Schema [`hub.schema.json`](../../hub.schema.json).
 

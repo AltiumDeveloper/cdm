@@ -1,4 +1,4 @@
-# VaultContentType
+# Vault Content Type (VaultContentType)
 
 - Name: `VaultContentType`
 - IRI: `core:VaultContentType` (https://w3id.org/altium/cdm/core/VaultContentType)

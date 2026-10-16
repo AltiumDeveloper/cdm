@@ -58,7 +58,7 @@ Bounded context page: [Platform](../platform.md).
 
 | Entity | GRID template |
 | --- | --- |
-| [Application](../classes/plt_Application.md) | `grid:global::platform:application/{id}` |
+| [Application](../classes/plt_Application.md) | `grid:global::platform:app/{id}` |
 | [Event Subscription](../classes/plt_EventSubscription.md) | `grid:global::events:subscription/{id}` |
 | [Lifecycle Definition](../classes/plt_LifecycleDefinition.md) | `grid:workspace:{workspace-id}:platform:lifecycle-definition/{id}` |
 | [Revision Naming Scheme](../classes/plt_NamingScheme.md) | `grid:workspace:{workspace-id}:platform:revision-naming-scheme/{id}` |
@@ -77,6 +77,7 @@ Bounded context page: [Design](../design.md).
 
 | Entity | GRID template |
 | --- | --- |
+| [Design Review](../classes/des_DesignReview.md) | `grid:workspace:{workspace-id}:design:design-review/{id}` |
 | [Manufacturing Package](../classes/des_ManufacturingPackage.md) | `grid:workspace:{workspace-id}:design:manufacturing-package/{id}` |
 | [Hardware Project](../classes/des_Project.md) | `grid:workspace:{workspace-id}:design:project/{id}` |
 | [Hardware Project Release](../classes/des_ProjectRelease.md) | `grid:workspace:{workspace-id}:design:project-release/{id}` |
@@ -91,7 +92,7 @@ Bounded context page: [Insights](../insights.md).
 
 | Entity | GRID template |
 | --- | --- |
-| [Part Insight](../classes/ins_PartInsight.md) | `grid:workspace:{workspace-id}:insights:insight/{id}` |
+| [Insight](../classes/ins_Insight.md) | `grid:workspace:{workspace-id}:insights:insight/{id}` |
 
 ### Library Management
 
@@ -131,8 +132,9 @@ Bounded context page: [Procurement](../procurement.md).
 | Entity | GRID template |
 | --- | --- |
 | [BOM Release](../classes/pro_BomRelease.md) | `grid:workspace:{workspace-id}:procurement:bom-release/{id}` |
-| [BOM WIP](../classes/pro_BomWIP.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
+| [Consolidated BOM](../classes/pro_ConsolidatedBOM.md) | `grid:workspace:{workspace-id}:procurement:consolidated-bom/{id}` |
 | [Global BOM](../classes/pro_GlobalBOM.md) | `grid:global::procurement:bom/{id}` |
+| [Managed BOM](../classes/pro_ManagedBOM.md) | `grid:workspace:{workspace-id}:procurement:bom/{id}` |
 
 ### Supply
 
@@ -157,7 +159,7 @@ Bounded context page: [Customization](../customization.md).
 | Entity | GRID template |
 | --- | --- |
 | [Script](../classes/cus_Script.md) | `grid:workspace:{workspace-id}:scripts:script/{id}` |
-| [Script Execution](../classes/cus_ScriptExecution.md) | `grid:workspace:{workspace-id}:scripts:script-execution/{id}` |
+| [Script Execution](../classes/cus_ScriptExecution.md) | `grid:workspace:{workspace-id}:scripts:execution/{id}` |
 | [Script Version](../classes/cus_ScriptVersion.md) | `grid:workspace:{workspace-id}:scripts:script-version/{id}` |
 | [Workflow](../classes/cus_Workflow.md) | `grid:workspace:{workspace-id}:customization:workflow/{id}` |
 
@@ -168,6 +170,7 @@ Bounded context page: [System Design](../system.md).
 | Entity | GRID template |
 | --- | --- |
 | [ESD Document](../classes/system_ESDDocument.md) | `grid:workspace:{workspace-id}:system-design:esd/{id}` |
+| [Global ESD](../classes/system_GlobalESD.md) | `grid:global::system-design:esd/{id}` |
 
 ### System Design - System Data Model
 

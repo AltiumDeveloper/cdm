@@ -1,6 +1,6 @@
 # Bounded context: System Design
 
-Models the Electronic System Design (ESD) document of a Renesas 365 solution: a system-level block diagram of functional blocks with their key (hardware) and software components, ports and parameters, the connections between blocks, and entries for the hardware and software projects that implement the system. It corresponds to Electronic System Design in a Renesas 365 Workspace.
+Models the Electronic System Design (ESD) document of a Renesas 365 solution: a system-level block diagram of functional blocks with their key (hardware) and software components, ports and parameters, the connections between blocks, and entries for the hardware and software projects that implement the system. It corresponds to Electronic System Design in a Renesas 365 Workspace; a Global ESD has the same content outside of any Workspace.
 
 HTML page: [subsets/system/](../subsets/system/)
 
@@ -15,6 +15,7 @@ HTML page: [subsets/system/](../subsets/system/)
 - [Endpoint](classes/system_Endpoint.md) (`system_Endpoint`): One end of a connection in an ESD document, identified by the functional block and the port where the connection line starts or ends. · Resource
 - [ESD Document](classes/system_ESDDocument.md) (`system_ESDDocument`): A system-level block diagram document used in a Renesas 365 solution (listed there as a System Design project) to describe the architecture of the system at a functional level. · Activity · API SysEsdDocument · GRID `grid:workspace:{workspace-id}:system-design:esd/{id}`
 - [Functional Block](classes/system_FunctionalBlock.md) (`system_FunctionalBlock`): Represents a logical block within an ESD document (e.g., MCU subsystem, LED driver block) that stands for a function, operation or device of the system, including parameters, key components, software components, ports, and associations. · Resource
+- [Global ESD](classes/system_GlobalESD.md) (`system_GlobalESD`): An Electronic System Design that resides outside of any Workspace. · Activity · GRID `grid:global::system-design:esd/{id}`
 - [Hardware Project](classes/system_HardwareProject.md) (`system_HardwareProject`): An entry of an ESD document for a PCB design project (des_Project) that implements part of the system, listing the functional blocks that project covers. · Resource
 - [Key Component](classes/system_KeyComponent.md) (`system_KeyComponent`): A key component of a functional block in an ESD document, shown in the editor as a hardware component (e.g. a Renesas RA MCU chosen with the RA Explorer). · Resource
 - [Parameter](classes/system_Parameter.md) (`system_Parameter`): Name–value parameter associated with functional blocks, ports, or other system design resources. · Resource
@@ -22,3 +23,7 @@ HTML page: [subsets/system/](../subsets/system/)
 - [Port Association](classes/system_PortAssociation.md) (`system_PortAssociation`): Resource
 - [Software Component](classes/system_SoftwareComponent.md) (`system_SoftwareComponent`): Functional in nature, abstracted from but connected to logical implementation. · Resource
 - [Software Project](classes/system_SoftwareProject.md) (`system_SoftwareProject`): An entry of an ESD document for a software project (sft_SoftwareProject) that implements part of the system, listing the software components that project covers. · Resource
+
+## Base classes and mixins
+
+- [ESD](classes/system_ESD.md) (`system_ESD`): Electronic System Design: a system-level block diagram of functional blocks and the connections between them, together with the hardware and software projects that implement the system. · abstract, mixin
