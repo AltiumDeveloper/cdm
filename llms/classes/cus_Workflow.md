@@ -35,4 +35,4 @@ A process workflow of an Altium 365 Workspace: the workflow that belongs to a pr
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [des_DesignReview](des_DesignReview.md) | workflow | 0..1 | core_informedBy |
+| [col_DesignReview](col_DesignReview.md) | workflow | 0..1 | core_informedBy |

@@ -27,9 +27,9 @@ The model has 176 classes: 154 concrete domain classes, listed in the catalogues
 - [core](https://altiumdeveloper.github.io/cdm/llms/core.md): Holds the abstract foundations shared by every bounded context: the base classes Entity (specialised as Artifact and Activity), Resource and Event; the mixins that add annotations such as GRID, maturity and API type; shared slots such as id and name; and the abstract relations (e.g. part of, input of, derived from) that domain relations specialise. (11 base classes and mixins)
 - [platform](https://altiumdeveloper.github.io/cdm/llms/platform.md): Models the platform-wide objects that other bounded contexts build on: organizations (Company Accounts) with their users and user groups, Workspaces with their members and groups, applications, event subscriptions, and Renesas 365 solutions with their releases. (14 classes; 2 base classes and mixins)
 - [configuration](https://altiumdeveloper.github.io/cdm/llms/configuration.md): Models environment configurations, which restrict the Altium Designer working environment of the Workspace members they target to approved configuration data, together with schematic templates and their revisions stored as Workspace Items. (3 classes)
-- [collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md): Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, and tasks that assign work to users or teams. (3 classes)
+- [collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md): Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, tasks that assign work to users or teams, and design reviews in which assigned reviewers assess a snapshot of a design project. (4 classes)
 - [customization](https://altiumdeveloper.github.io/cdm/llms/customization.md): Models ways to customize and automate a Workspace: process workflows, and scripts with their versions, their executions and the event raised when an execution completes. (5 classes)
-- [design](https://altiumdeveloper.github.io/cdm/llms/design.md): Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, rule checks run against projects, and design reviews of projects. (12 classes)
+- [design](https://altiumdeveloper.github.io/cdm/llms/design.md): Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, and rule checks run against projects. (11 classes)
 - [deviceModel](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md): Models an embedded device (e.g. an MCU), which the CDM calls a digital twin: its processors; its address map with memories, registers, bit fields and their enumerated values; its peripherals with their instances, modes and configurations; and its pins and ports with the alternative functions of each port. (24 classes)
 - [insights](https://altiumdeveloper.github.io/cdm/llms/insights.md): Models insights: findings, detected asynchronously, that give the user insight within one domain area and can be followed up by tasks. (2 classes; 1 base class or mixin)
 - [library](https://altiumdeveloper.github.io/cdm/llms/library.md): Models the components stored in a Workspace and their revisions, the symbols, footprints, parameters, datasheets and part choices that make them up, and the component templates they can be created from. (22 classes)
@@ -210,7 +210,6 @@ Bounded context page: [Design](https://altiumdeveloper.github.io/cdm/llms/design
 
 | Entity | GRID template |
 | --- | --- |
-| [Design Review](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignReview.md) | `grid:workspace:{workspace-id}:design:design-review/{id}` |
 | [Manufacturing Package](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md) | `grid:workspace:{workspace-id}:design:manufacturing-package/{id}` |
 | [Hardware Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) | `grid:workspace:{workspace-id}:design:project/{id}` |
 | [Hardware Project Release](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md) | `grid:workspace:{workspace-id}:design:project-release/{id}` |
@@ -256,6 +255,7 @@ Bounded context page: [Collaboration](https://altiumdeveloper.github.io/cdm/llms
 | Entity | GRID template |
 | --- | --- |
 | [Comment Thread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md) | `grid:workspace:{workspace-id}:collaboration:comment-thread/{id}` |
+| [Design Review](https://altiumdeveloper.github.io/cdm/llms/classes/col_DesignReview.md) | `grid:workspace:{workspace-id}:collaboration:design-review/{id}` |
 | [Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md) | `grid:workspace:{workspace-id}:collaboration:task/{id}` |
 
 ### Procurement
@@ -893,7 +893,7 @@ Product terms and class names of the model. A term used by several classes is li
 | Design Insight | [Design Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_DesignInsight.md) (`ins_DesignInsight`) | insights | title |  |
 | design project | [Hardware Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) (`des_Project`) | design | related | [Workspace Projects](https://www.altium.com/documentation/altium-365/workspace-projects) |
 | design project release | [Hardware Project Release](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md) (`des_ProjectRelease`) | design | related | [Design Project Release](https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release) |
-| Design Review | [Design Review](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignReview.md) (`des_DesignReview`) | design | title | [Design Reviews](https://www.altium.com/documentation/altium-365/project-design-reviews) |
+| Design Review | [Design Review](https://altiumdeveloper.github.io/cdm/llms/classes/col_DesignReview.md) (`col_DesignReview`) | collaboration | title | [Design Reviews](https://www.altium.com/documentation/altium-365/project-design-reviews) |
 | design variant | [Hardware Project Variant](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectVariant.md) (`des_ProjectVariant`) | design | exact | [Design Variants](https://www.altium.com/documentation/altium-designer/design-variants) |
 | Device | [Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) (`ota_Device`) | ota | title |  |
 | Device Configuration | [Device Configuration](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfiguration.md) (`sft_DeviceConfiguration`) | software | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration) |
@@ -1246,7 +1246,7 @@ HTML page: [subsets/configuration/](https://altiumdeveloper.github.io/cdm/subset
 
 # Bounded context: Collaboration
 
-Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, and tasks that assign work to users or teams. In the product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.
+Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, tasks that assign work to users or teams, and design reviews in which assigned reviewers assess a snapshot of a design project. In the product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.
 
 HTML page: [subsets/collaboration/](https://altiumdeveloper.github.io/cdm/subsets/collaboration/)
 
@@ -1260,6 +1260,7 @@ HTML page: [subsets/collaboration/](https://altiumdeveloper.github.io/cdm/subset
 
 - [Comment](https://altiumdeveloper.github.io/cdm/llms/classes/col_Comment.md) (`col_Comment`): A single entry in a comment thread: either the initial comment, pinned to a point, an object or an area of a design document (or to a BOM line), or a reply to it. · Resource · API DesComment
 - [Comment Thread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md) (`col_CommentThread`): Comment Thread represents a structured discussion linked to a specific design object, document, or workspace item, capturing feedback, decisions, and context directly within the collaborative design environment. · Activity · API DesCommentThread · GRID `grid:workspace:{workspace-id}:collaboration:comment-thread/{id}`
+- [Design Review](https://altiumdeveloper.github.io/cdm/llms/classes/col_DesignReview.md) (`col_DesignReview`): A structured assessment of a design project, carried out by assigned Reviewers on a fixed snapshot of its design and concluded by the Initiator's decision, which leaves a traceable record of the review. · Activity · GRID `grid:workspace:{workspace-id}:collaboration:design-review/{id}`
 - [Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md) (`col_Task`): Task represents a discrete unit of work assigned to a user or team within the design workflow, used to track progress, responsibility, and completion status for design, review, or management activities. · Activity · API DesTask · GRID `grid:workspace:{workspace-id}:collaboration:task/{id}`
 
 ---
@@ -1291,7 +1292,7 @@ HTML page: [subsets/customization/](https://altiumdeveloper.github.io/cdm/subset
 
 # Bounded context: Design
 
-Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, rule checks run against projects, and design reviews of projects. It corresponds to Workspace projects in Altium 365 and Altium Designer, from project creation through to design release.
+Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, and rule checks run against projects. It corresponds to Workspace projects in Altium 365 and Altium Designer, from project creation through to design release.
 
 HTML page: [subsets/design/](https://altiumdeveloper.github.io/cdm/subsets/design/)
 
@@ -1303,7 +1304,6 @@ HTML page: [subsets/design/](https://altiumdeveloper.github.io/cdm/subsets/desig
 
 ## Classes
 
-- [Design Review](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignReview.md) (`des_DesignReview`): A structured assessment of a design project, carried out by assigned Reviewers on a fixed snapshot of its design and concluded by the Initiator's decision, which leaves a traceable record of the review. · Activity · GRID `grid:workspace:{workspace-id}:design:design-review/{id}`
 - [Hardware Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) (`des_Project`): A design project stored in a Workspace, normally under its built-in version control, such as a PCB project. · Activity · API DesProject · GRID `grid:workspace:{workspace-id}:design:project/{id}`
 - [Hardware Project Release](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md) (`des_ProjectRelease`): Project Release captures an immutable snapshot of a PCB design project at a specific point in its lifecycle, packaging all design data, outputs, and metadata required for manufacturing, assembly, and downstream processes. · Artifact · API DesRelease · GRID `grid:workspace:{workspace-id}:design:project-release/{id}`
 - [Hardware Project Variant](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectVariant.md) (`des_ProjectVariant`): A design variant of a project: a named variation of the same base design that is assembled with a different set of components. · Resource · API DesWipVariant
@@ -1711,7 +1711,50 @@ Comment Thread represents a structured discussion linked to a specific design ob
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [des_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignReview.md) | commentThreads | * | core_hasPart |
+| [col_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/col_DesignReview.md) | commentThreads | * | core_hasPart |
+
+---
+
+# File: llms/classes/col_DesignReview.md
+
+# Design Review (col_DesignReview)
+
+- Name: `col_DesignReview`
+- IRI: `col:DesignReview` (https://w3id.org/altium/cdm/collaboration/DesignReview)
+- Bounded context: [collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md)
+- Kind: Activity
+- Is a: [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md)
+- HTML page: [classes/col_DesignReview/](https://altiumdeveloper.github.io/cdm/classes/col_DesignReview/)
+
+A structured assessment of a design project, carried out by assigned Reviewers on a fixed snapshot of its design and concluded by the Initiator's decision, which leaves a traceable record of the review.
+
+## In the product
+
+- [Design Reviews](https://www.altium.com/documentation/altium-365/project-design-reviews) (primary)
+
+## GRID
+
+`grid:workspace:{workspace-id}:collaboration:design-review/{id}`
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| project | [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) | 1 | The design project under review. | core_partOf |  |
+| reviewContext | [des_ProjectRelease](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md) | 0..1 | The project release under review, when the review context is a release. | core_occursIn |  |
+| initiator | [plt_WorkspaceUser](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceUser.md) | 1 | The Workspace member who created the review. |  |  |
+| reviewers | [plt_WorkspaceUser](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceUser.md) | * | The Workspace members asked to review the design. |  |  |
+| workflow | [cus_Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md) | 0..1 | The process workflow that the review follows: the built-in Design Review process or a custom design review process. | core_informedBy |  |
+| tasks | [col_Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md) | * | Tasks of the review: the process tasks created for the Initiator and the Reviewers, and tasks raised from comments placed on the design snapshot. | core_informs |  |
+| commentThreads | [col_CommentThread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md) | * | Comment threads placed on the design snapshot of the review, including those about checklist items. | core_hasPart |  |
+| status | [col_DesignReviewStatus](https://altiumdeveloper.github.io/cdm/llms/enums/col_DesignReviewStatus.md) | 1 | The state of the review, from In Progress to its closed state. |  |  |
+| id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [ins_DesignInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_DesignInsight.md) | designReview | 1 | core_partOf |
 
 ---
 
@@ -1755,7 +1798,7 @@ Task represents a discrete unit of work assigned to a user or team within the de
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [des_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignReview.md) | tasks | * | core_informs |
+| [col_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/col_DesignReview.md) | tasks | * | core_informs |
 | [ins_Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_Insight.md) | tasks | * | core_informs |
 
 ---
@@ -1885,7 +1928,7 @@ None declared.
 - Bounded context: [core](https://altiumdeveloper.github.io/cdm/llms/core.md)
 - Kind: Activity, abstract
 - Is a: [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md)
-- Subclasses: [col_CommentThread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md), [col_Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md), [cus_Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md), [des_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignReview.md), [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md), [des_RuleCheckExecution](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheckExecution.md), [ins_Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_Insight.md), [lib_PartRequest](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartRequest.md), [ota_Deployment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Deployment.md), [plt_Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md), [pro_BomWIP](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomWIP.md), [pro_GlobalBOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_GlobalBOM.md), [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md), [req_RequirementChangeRequest](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md), [req_VerificationCase](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md), [sft_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md), [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md), [system_GlobalESD](https://altiumdeveloper.github.io/cdm/llms/classes/system_GlobalESD.md), [system_SdmSystemModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md)
+- Subclasses: [col_CommentThread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md), [col_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/col_DesignReview.md), [col_Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md), [cus_Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md), [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md), [des_RuleCheckExecution](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheckExecution.md), [ins_Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_Insight.md), [lib_PartRequest](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartRequest.md), [ota_Deployment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Deployment.md), [plt_Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md), [pro_BomWIP](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomWIP.md), [pro_GlobalBOM](https://altiumdeveloper.github.io/cdm/llms/classes/pro_GlobalBOM.md), [req_Project](https://altiumdeveloper.github.io/cdm/llms/classes/req_Project.md), [req_RequirementChangeRequest](https://altiumdeveloper.github.io/cdm/llms/classes/req_RequirementChangeRequest.md), [req_VerificationCase](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md), [sft_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/sft_SoftwareProject.md), [system_ESDDocument](https://altiumdeveloper.github.io/cdm/llms/classes/system_ESDDocument.md), [system_GlobalESD](https://altiumdeveloper.github.io/cdm/llms/classes/system_GlobalESD.md), [system_SdmSystemModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModel.md)
 - HTML page: [classes/core_Activity/](https://altiumdeveloper.github.io/cdm/classes/core_Activity/)
 
 Abstract base for process and work objects — things that happen, use inputs, and produce outputs. Examples: projects, design reviews, design workflows.
@@ -2266,50 +2309,7 @@ A process workflow of an Altium 365 Workspace: the workflow that belongs to a pr
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [des_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignReview.md) | workflow | 0..1 | core_informedBy |
-
----
-
-# File: llms/classes/des_DesignReview.md
-
-# Design Review (des_DesignReview)
-
-- Name: `des_DesignReview`
-- IRI: `des:DesignReview` (https://w3id.org/altium/cdm/design/DesignReview)
-- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
-- Kind: Activity
-- Is a: [core_Activity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Activity.md)
-- HTML page: [classes/des_DesignReview/](https://altiumdeveloper.github.io/cdm/classes/des_DesignReview/)
-
-A structured assessment of a design project, carried out by assigned Reviewers on a fixed snapshot of its design and concluded by the Initiator's decision, which leaves a traceable record of the review.
-
-## In the product
-
-- [Design Reviews](https://www.altium.com/documentation/altium-365/project-design-reviews) (primary)
-
-## GRID
-
-`grid:workspace:{workspace-id}:design:design-review/{id}`
-
-## Attributes
-
-| Field | Range | Cardinality | Description | Relation | Inherited from |
-| --- | --- | --- | --- | --- | --- |
-| project | [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) | 1 | The design project under review. | core_partOf |  |
-| reviewContext | [des_ProjectRelease](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md) | 0..1 | The project release under review, when the review context is a release. | core_occursIn |  |
-| initiator | [plt_WorkspaceUser](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceUser.md) | 1 | The Workspace member who created the review. |  |  |
-| reviewers | [plt_WorkspaceUser](https://altiumdeveloper.github.io/cdm/llms/classes/plt_WorkspaceUser.md) | * | The Workspace members asked to review the design. |  |  |
-| workflow | [cus_Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md) | 0..1 | The process workflow that the review follows: the built-in Design Review process or a custom design review process. | core_informedBy |  |
-| tasks | [col_Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md) | * | Tasks of the review: the process tasks created for the Initiator and the Reviewers, and tasks raised from comments placed on the design snapshot. | core_informs |  |
-| commentThreads | [col_CommentThread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md) | * | Comment threads placed on the design snapshot of the review, including those about checklist items. | core_hasPart |  |
-| status | [des_DesignReviewStatus](https://altiumdeveloper.github.io/cdm/llms/enums/des_DesignReviewStatus.md) | 1 | The state of the review, from In Progress to its closed state. |  |  |
-| id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) |
-
-## Referenced by
-
-| From | Field | Cardinality | Relation |
-| --- | --- | --- | --- |
-| [ins_DesignInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_DesignInsight.md) | designReview | 1 | core_partOf |
+| [col_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/col_DesignReview.md) | workflow | 0..1 | core_informedBy |
 
 ---
 
@@ -2480,7 +2480,7 @@ A design project stored in a Workspace, normally under its built-in version cont
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [des_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignReview.md) | project | 1 | core_partOf |
+| [col_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/col_DesignReview.md) | project | 1 | core_partOf |
 | [des_MultiboardProject](https://altiumdeveloper.github.io/cdm/llms/classes/des_MultiboardProject.md) | projects | * | core_hasPart |
 | [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) | informedBy | * | core_informedBy |
 | [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) | usedByProjectVariant | * | core_inputOf |
@@ -2571,7 +2571,7 @@ Project Release captures an immutable snapshot of a PCB design project at a spec
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [des_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignReview.md) | reviewContext | 0..1 | core_occursIn |
+| [col_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/col_DesignReview.md) | reviewContext | 0..1 | core_occursIn |
 | [des_ManufacturingPackage](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md) | projectRelease | 1 | core_derivedFrom |
 | [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) | releases | * | core_releases |
 | [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) | occursIn | * | core_occursIn |
@@ -3674,7 +3674,7 @@ None declared (nearest ancestor `ins_Insight`: `grid:workspace:{workspace-id}:in
 
 | Field | Range | Cardinality | Description | Relation | Inherited from |
 | --- | --- | --- | --- | --- | --- |
-| designReview | [des_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignReview.md) | 1 | The design review that the insight is part of. | core_partOf |  |
+| designReview | [col_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/col_DesignReview.md) | 1 | The design review that the insight is part of. | core_partOf |  |
 | tasks | [col_Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md) | * | Task associated with this insight | core_informs | [ins_Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_Insight.md) |
 | id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) |
 
@@ -5404,8 +5404,8 @@ A person's membership in a particular Workspace, connecting their Altium Account
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [des_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignReview.md) | initiator | 1 |  |
-| [des_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignReview.md) | reviewers | * |  |
+| [col_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/col_DesignReview.md) | initiator | 1 |  |
+| [col_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/col_DesignReview.md) | reviewers | * |  |
 | [system_SdmSystemModelVersionMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersionMetadata.md) | createdBy | 1 |  |
 
 ---
@@ -8031,14 +8031,14 @@ An entry of an ESD document for a software project (sft_SoftwareProject) that im
 
 ---
 
-# File: llms/enums/des_DesignReviewStatus.md
+# File: llms/enums/col_DesignReviewStatus.md
 
-# Design Review Status (des_DesignReviewStatus)
+# Design Review Status (col_DesignReviewStatus)
 
-- Name: `des_DesignReviewStatus`
-- IRI: `des:DesignReviewStatus` (https://w3id.org/altium/cdm/design/DesignReviewStatus)
+- Name: `col_DesignReviewStatus`
+- IRI: `col:DesignReviewStatus` (https://w3id.org/altium/cdm/collaboration/DesignReviewStatus)
 - Kind: enumeration
-- HTML page: [enums/des_DesignReviewStatus/](https://altiumdeveloper.github.io/cdm/enums/des_DesignReviewStatus/)
+- HTML page: [enums/col_DesignReviewStatus/](https://altiumdeveloper.github.io/cdm/enums/col_DesignReviewStatus/)
 
 The state of a design review.
 
@@ -8055,7 +8055,7 @@ The state of a design review.
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [des_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignReview.md) | status | 1 |  |
+| [col_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/col_DesignReview.md) | status | 1 |  |
 
 ---
 

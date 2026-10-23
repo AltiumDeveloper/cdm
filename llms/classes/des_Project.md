@@ -42,7 +42,7 @@ A design project stored in a Workspace, normally under its built-in version cont
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [des_DesignReview](des_DesignReview.md) | project | 1 | core_partOf |
+| [col_DesignReview](col_DesignReview.md) | project | 1 | core_partOf |
 | [des_MultiboardProject](des_MultiboardProject.md) | projects | * | core_hasPart |
 | [ins_PartInsight](ins_PartInsight.md) | informedBy | * | core_informedBy |
 | [lib_ComponentRevision](lib_ComponentRevision.md) | usedByProjectVariant | * | core_inputOf |

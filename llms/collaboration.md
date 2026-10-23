@@ -1,6 +1,6 @@
 # Bounded context: Collaboration
 
-Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, and tasks that assign work to users or teams. In the product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.
+Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, tasks that assign work to users or teams, and design reviews in which assigned reviewers assess a snapshot of a design project. In the product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.
 
 HTML page: [subsets/collaboration/](../subsets/collaboration/)
 
@@ -14,4 +14,5 @@ HTML page: [subsets/collaboration/](../subsets/collaboration/)
 
 - [Comment](classes/col_Comment.md) (`col_Comment`): A single entry in a comment thread: either the initial comment, pinned to a point, an object or an area of a design document (or to a BOM line), or a reply to it. · Resource · API DesComment
 - [Comment Thread](classes/col_CommentThread.md) (`col_CommentThread`): Comment Thread represents a structured discussion linked to a specific design object, document, or workspace item, capturing feedback, decisions, and context directly within the collaborative design environment. · Activity · API DesCommentThread · GRID `grid:workspace:{workspace-id}:collaboration:comment-thread/{id}`
+- [Design Review](classes/col_DesignReview.md) (`col_DesignReview`): A structured assessment of a design project, carried out by assigned Reviewers on a fixed snapshot of its design and concluded by the Initiator's decision, which leaves a traceable record of the review. · Activity · GRID `grid:workspace:{workspace-id}:collaboration:design-review/{id}`
 - [Task](classes/col_Task.md) (`col_Task`): Task represents a discrete unit of work assigned to a user or team within the design workflow, used to track progress, responsibility, and completion status for design, review, or management activities. · Activity · API DesTask · GRID `grid:workspace:{workspace-id}:collaboration:task/{id}`

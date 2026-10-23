@@ -335,14 +335,6 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../classes/des_DesignReview/">
-<span class="md-ellipsis">
-    Design Review
-    
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="../../classes/des_Project/">
 <span class="md-ellipsis">
     Hardware Project
@@ -660,6 +652,14 @@
 <a class="md-nav__link" href="../../classes/col_CommentThread/">
 <span class="md-ellipsis">
     Comment Thread
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/col_DesignReview/">
+<span class="md-ellipsis">
+    Design Review
     
   </span>
 </a>
@@ -1364,6 +1364,13 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enumerations-in-bounded-context">
+<span class="md-ellipsis">
+      Enumerations in Bounded Context
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </div>
@@ -1385,7 +1392,7 @@
 </div>
 <h1 class="bc-title bc-collaboration" id="collaboration">Collaboration</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/collaboration">https://w3id.org/altium/cdm/collaboration</a></p>
-<p>Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, and tasks that assign work to users or teams. In the product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.</p>
+<p>Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, tasks that assign work to users or teams, and design reviews in which assigned reviewers assess a snapshot of a design project. In the product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.</p>
 <h2 id="in-the-product">In the product</h2>
 <ul>
 <li>
@@ -1415,6 +1422,10 @@ context.</p>
 <td>Comment Thread represents a structured discussion linked to a specific design object, document, or workspace item,  capturing feedback, decisions, and context directly within the collaborative design environment.</td>
 </tr>
 <tr>
+<td><a href="../../classes/col_DesignReview/">Design Review</a></td>
+<td>A structured assessment of a design project, carried out by assigned Reviewers on a fixed snapshot of its design and concluded by the Initiator's decision, which leaves a traceable record of the review.</td>
+</tr>
+<tr>
 <td><a href="../../classes/col_Task/">Task</a></td>
 <td>Task represents a discrete unit of work assigned to a user or team within the design workflow,  used to track progress, responsibility, and completion status for design, review, or management activities.</td>
 </tr>
@@ -1432,6 +1443,21 @@ context.</p>
 <tr>
 <td><a href="../../classes/col_Comment/">Comment</a></td>
 <td>A single entry in a comment thread: either the initial comment, pinned to a point, an object or an area of a design document (or to a BOM line), or a reply to it. A comment can mention people or groups using @, and it can be assigned to a Workspace member as a task, either when it is posted or later by converting it. Only the author can edit or delete a comment, and deleting the initial comment also deletes its replies.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumerations-in-bounded-context">Enumerations in Bounded Context</h2>
+<table>
+<thead>
+<tr>
+<th>Enumeration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../enums/col_DesignReviewStatus/">Design Review Status</a></td>
+<td>The state of a design review</td>
 </tr>
 </tbody>
 </table>

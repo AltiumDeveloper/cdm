@@ -473,14 +473,6 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="classes/des_DesignReview/">
-<span class="md-ellipsis">
-    Design Review
-    
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="classes/des_Project/">
 <span class="md-ellipsis">
     Hardware Project
@@ -798,6 +790,14 @@
 <a class="md-nav__link" href="classes/col_CommentThread/">
 <span class="md-ellipsis">
     Comment Thread
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="classes/col_DesignReview/">
+<span class="md-ellipsis">
+    Design Review
     
   </span>
 </a>
@@ -1617,10 +1617,10 @@
 <p>The Altium Common Data Model (CDM) describes the entities of the Altium platform, such as projects, components, BOMs, tasks and users, grouped into bounded contexts. For each class it records what the entity is, how it relates to other entities, how it is identified by a GRID (Global Resource ID) and, where one exists, its type in the Altium 365 API.</p>
 <div class="bc-grid">
 <p><a href="subsets/platform/"><span class="bc-icon bc-platform"></span><strong>Platform</strong> <span>12 entities · 2 resources</span></a></p>
-<p><a href="subsets/design/"><span class="bc-icon bc-design"></span><strong>Design</strong> <span>10 entities · 2 resources</span></a></p>
+<p><a href="subsets/design/"><span class="bc-icon bc-design"></span><strong>Design</strong> <span>9 entities · 2 resources</span></a></p>
 <p><a href="subsets/insights/"><span class="bc-icon bc-insights"></span><strong>Insights</strong> <span>2 entities</span></a></p>
 <p><a href="subsets/library/"><span class="bc-icon bc-library"></span><strong>Library Management</strong> <span>19 entities · 3 resources</span></a></p>
-<p><a href="subsets/collaboration/"><span class="bc-icon bc-collaboration"></span><strong>Collaboration</strong> <span>2 entities · 1 resource</span></a></p>
+<p><a href="subsets/collaboration/"><span class="bc-icon bc-collaboration"></span><strong>Collaboration</strong> <span>3 entities · 1 resource</span></a></p>
 <p><a href="subsets/configuration/"><span class="bc-icon bc-configuration"></span><strong>Configuration Management</strong> <span>3 entities</span></a></p>
 <p><a href="subsets/procurement/"><span class="bc-icon bc-procurement"></span><strong>Procurement</strong> <span>4 entities · 4 resources</span></a></p>
 <p><a href="subsets/supply/"><span class="bc-icon bc-supply"></span><strong>Supply</strong> <span>9 entities</span></a></p>
@@ -1718,7 +1718,7 @@
 </tbody>
 </table>
 <h3 class="bc-heading bc-design" id="design"><a href="subsets/design/">Design</a></h3>
-<p>Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, rule checks run against projects, and design reviews of projects. It corresponds to Workspace projects in Altium 365 and Altium Designer, from project creation through to design release.</p>
+<p>Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, and rule checks run against projects. It corresponds to Workspace projects in Altium 365 and Altium Designer, from project creation through to design release.</p>
 <table>
 <thead>
 <tr>
@@ -1728,11 +1728,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="classes/des_DesignReview/">Design Review </a></td>
-<td>A structured assessment of a design project, carried out by assigned Reviewers on a fixed snapshot of its design and concluded by the Initiator's decision, which leaves a traceable record of the review.</td>
-<td></td>
-</tr>
 <tr>
 <td><a href="classes/des_HarnessProject/">Harness Project </a></td>
 <td>Harness Project defines the design of a cable and wiring harness as a standalone yet integrable artifact, capturing connectors, wires, splices, and pin-to-pin mappings required to implement electrical interconnects between boards and system elements.</td>
@@ -1937,7 +1932,7 @@
 </tbody>
 </table>
 <h3 class="bc-heading bc-collaboration" id="collaboration"><a href="subsets/collaboration/">Collaboration</a></h3>
-<p>Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, and tasks that assign work to users or teams. In the product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.</p>
+<p>Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, tasks that assign work to users or teams, and design reviews in which assigned reviewers assess a snapshot of a design project. In the product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.</p>
 <table>
 <thead>
 <tr>
@@ -1956,6 +1951,11 @@
 <td><a href="classes/col_CommentThread/">Comment Thread </a></td>
 <td>Comment Thread represents a structured discussion linked to a specific design object, document, or workspace item,  capturing feedback, decisions, and context directly within the collaborative design environment.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesCommentThread/"><code>DesCommentThread</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/col_DesignReview/">Design Review </a></td>
+<td>A structured assessment of a design project, carried out by assigned Reviewers on a fixed snapshot of its design and concluded by the Initiator's decision, which leaves a traceable record of the review.</td>
+<td></td>
 </tr>
 <tr>
 <td><a href="classes/col_Task/">Task </a></td>

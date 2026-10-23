@@ -33,6 +33,6 @@ A person's membership in a particular Workspace, connecting their Altium Account
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [des_DesignReview](des_DesignReview.md) | initiator | 1 |  |
-| [des_DesignReview](des_DesignReview.md) | reviewers | * |  |
+| [col_DesignReview](col_DesignReview.md) | initiator | 1 |  |
+| [col_DesignReview](col_DesignReview.md) | reviewers | * |  |
 | [system_SdmSystemModelVersionMetadata](system_SdmSystemModelVersionMetadata.md) | createdBy | 1 |  |

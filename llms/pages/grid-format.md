@@ -77,7 +77,6 @@ Bounded context page: [Design](../design.md).
 
 | Entity | GRID template |
 | --- | --- |
-| [Design Review](../classes/des_DesignReview.md) | `grid:workspace:{workspace-id}:design:design-review/{id}` |
 | [Manufacturing Package](../classes/des_ManufacturingPackage.md) | `grid:workspace:{workspace-id}:design:manufacturing-package/{id}` |
 | [Hardware Project](../classes/des_Project.md) | `grid:workspace:{workspace-id}:design:project/{id}` |
 | [Hardware Project Release](../classes/des_ProjectRelease.md) | `grid:workspace:{workspace-id}:design:project-release/{id}` |
@@ -123,6 +122,7 @@ Bounded context page: [Collaboration](../collaboration.md).
 | Entity | GRID template |
 | --- | --- |
 | [Comment Thread](../classes/col_CommentThread.md) | `grid:workspace:{workspace-id}:collaboration:comment-thread/{id}` |
+| [Design Review](../classes/col_DesignReview.md) | `grid:workspace:{workspace-id}:collaboration:design-review/{id}` |
 | [Task](../classes/col_Task.md) | `grid:workspace:{workspace-id}:collaboration:task/{id}` |
 
 ### Procurement

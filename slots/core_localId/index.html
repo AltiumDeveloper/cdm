@@ -333,14 +333,6 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../classes/des_DesignReview/">
-<span class="md-ellipsis">
-    Design Review
-    
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="../../classes/des_Project/">
 <span class="md-ellipsis">
     Hardware Project
@@ -658,6 +650,14 @@
 <a class="md-nav__link" href="../../classes/col_CommentThread/">
 <span class="md-ellipsis">
     Comment Thread
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../classes/col_DesignReview/">
+<span class="md-ellipsis">
+    Design Review
     
   </span>
 </a>
@@ -1388,33 +1388,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/system_SdmConnection/">Connection </a></td>
-<td>Represents a connection between functional blocks</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_HardwareProject/">Hardware Project </a></td>
-<td>An entry of an ESD document for a PCB design project (des_Project) that imple...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_FunctionalBlock/">Functional Block </a></td>
-<td>Represents a logical block within an ESD document (e</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/dm_PortConnection/">PortConnection </a></td>
-<td>A connection from this port to another component or signal</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_SdmSoftwareStackInstance/">Software Stack Instance </a></td>
-<td>Represents a software stack instance and its dependencies</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_SdmSoftwareComponent/">Software Component </a></td>
-<td>Represents a software component instance and its dependencies</td>
+<td><a href="../../classes/dm_PeripheralInstance/">PeripheralInstance </a></td>
+<td>A concrete instance of a peripheral (e</td>
 <td>no</td>
 </tr>
 <tr>
@@ -1423,23 +1398,23 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/dm_PortConfigurationEnumValue/">PortConfigurationEnumValue </a></td>
-<td>An enumerated value for a port configuration</td>
+<td><a href="../../classes/dm_ConfiguredDeviceModel/">ConfiguredDeviceModel </a></td>
+<td>A digital twin of an embedded hardware device as configured for a specific us...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/dm_PeripheralInstance/">PeripheralInstance </a></td>
-<td>A concrete instance of a peripheral (e</td>
+<td><a href="../../classes/system_Connection/">Connection </a></td>
+<td>A connection line in an ESD document representing an interconnection between ...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_KeyComponent/">Key Component </a></td>
-<td>A key component of a functional block in an ESD document, shown in the editor...</td>
+<td><a href="../../classes/system_HardwareProject/">Hardware Project </a></td>
+<td>An entry of an ESD document for a PCB design project (des_Project) that imple...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_PortAssociation/">Port Association </a></td>
-<td>TBD</td>
+<td><a href="../../classes/system_SoftwareComponent/">Software Component </a></td>
+<td>Functional in nature, abstracted from but connected to logical implementation</td>
 <td>no</td>
 </tr>
 <tr>
@@ -1448,8 +1423,23 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_Parameter/">Parameter </a></td>
-<td>Name–value parameter associated with functional blocks, ports, or other syste...</td>
+<td><a href="../../classes/dm_PortConnection/">PortConnection </a></td>
+<td>A connection from this port to another component or signal</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_PortAssociation/">Port Association </a></td>
+<td>TBD</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SdmMappableEntity/">system_SdmMappableEntity </a></td>
+<td>A mixin for entities within the System Data Model (SDM) that are mappable to ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_KeyComponent/">Key Component </a></td>
+<td>A key component of a functional block in an ESD document, shown in the editor...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -1458,8 +1448,18 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SoftwareComponent/">Software Component </a></td>
-<td>Functional in nature, abstracted from but connected to logical implementation</td>
+<td><a href="../../classes/system_Parameter/">Parameter </a></td>
+<td>Name–value parameter associated with functional blocks, ports, or other syste...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SdmDeviceModel/">Device Model </a></td>
+<td>Represents a device model within the system design</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/system_SdmFunctionalModel/">Functional Model </a></td>
+<td>Captures the functional aspects of the system design, focusing on the behavio...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -1478,13 +1478,13 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SdmPort/">Port </a></td>
-<td>Represents a port within a system design</td>
+<td><a href="../../classes/system_SdmSoftwareComponent/">Software Component </a></td>
+<td>Represents a software component instance and its dependencies</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SdmFunctionalModel/">Functional Model </a></td>
-<td>Captures the functional aspects of the system design, focusing on the behavio...</td>
+<td><a href="../../classes/system_SdmPort/">Port </a></td>
+<td>Represents a port within a system design</td>
 <td>no</td>
 </tr>
 <tr>
@@ -1493,23 +1493,18 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_Connection/">Connection </a></td>
-<td>A connection line in an ESD document representing an interconnection between ...</td>
+<td><a href="../../classes/system_FunctionalBlock/">Functional Block </a></td>
+<td>Represents a logical block within an ESD document (e</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/dm_ConfiguredDeviceModel/">ConfiguredDeviceModel </a></td>
-<td>A digital twin of an embedded hardware device as configured for a specific us...</td>
+<td><a href="../../classes/dm_PeripheralConfiguration/">PeripheralConfiguration </a></td>
+<td>A concrete configuration for a peripheral role, containing pin multiplexing d...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/system_SdmMappableEntity/">system_SdmMappableEntity </a></td>
-<td>A mixin for entities within the System Data Model (SDM) that are mappable to ...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/system_SdmDeviceModel/">Device Model </a></td>
-<td>Represents a device model within the system design</td>
+<td><a href="../../classes/system_SdmConnection/">Connection </a></td>
+<td>Represents a connection between functional blocks</td>
 <td>no</td>
 </tr>
 <tr>
@@ -1518,8 +1513,13 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/dm_PeripheralConfiguration/">PeripheralConfiguration </a></td>
-<td>A concrete configuration for a peripheral role, containing pin multiplexing d...</td>
+<td><a href="../../classes/system_SdmSoftwareStackInstance/">Software Stack Instance </a></td>
+<td>Represents a software stack instance and its dependencies</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/dm_PortConfigurationEnumValue/">PortConfigurationEnumValue </a></td>
+<td>An enumerated value for a port configuration</td>
 <td>no</td>
 </tr>
 <tr>

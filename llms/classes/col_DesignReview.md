@@ -1,11 +1,11 @@
-# Design Review (des_DesignReview)
+# Design Review (col_DesignReview)
 
-- Name: `des_DesignReview`
-- IRI: `des:DesignReview` (https://w3id.org/altium/cdm/design/DesignReview)
-- Bounded context: [design](../design.md)
+- Name: `col_DesignReview`
+- IRI: `col:DesignReview` (https://w3id.org/altium/cdm/collaboration/DesignReview)
+- Bounded context: [collaboration](../collaboration.md)
 - Kind: Activity
 - Is a: [core_Activity](core_Activity.md)
-- HTML page: [classes/des_DesignReview/](../../classes/des_DesignReview/)
+- HTML page: [classes/col_DesignReview/](../../classes/col_DesignReview/)
 
 A structured assessment of a design project, carried out by assigned Reviewers on a fixed snapshot of its design and concluded by the Initiator's decision, which leaves a traceable record of the review.
 
@@ -15,7 +15,7 @@ A structured assessment of a design project, carried out by assigned Reviewers o
 
 ## GRID
 
-`grid:workspace:{workspace-id}:design:design-review/{id}`
+`grid:workspace:{workspace-id}:collaboration:design-review/{id}`
 
 ## Attributes
 
@@ -28,7 +28,7 @@ A structured assessment of a design project, carried out by assigned Reviewers o
 | workflow | [cus_Workflow](cus_Workflow.md) | 0..1 | The process workflow that the review follows: the built-in Design Review process or a custom design review process. | core_informedBy |  |
 | tasks | [col_Task](col_Task.md) | * | Tasks of the review: the process tasks created for the Initiator and the Reviewers, and tasks raised from comments placed on the design snapshot. | core_informs |  |
 | commentThreads | [col_CommentThread](col_CommentThread.md) | * | Comment threads placed on the design snapshot of the review, including those about checklist items. | core_hasPart |  |
-| status | [des_DesignReviewStatus](../enums/des_DesignReviewStatus.md) | 1 | The state of the review, from In Progress to its closed state. |  |  |
+| status | [col_DesignReviewStatus](../enums/col_DesignReviewStatus.md) | 1 | The state of the review, from In Progress to its closed state. |  |  |
 | id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](core_Entity.md) |
 
 ## Referenced by

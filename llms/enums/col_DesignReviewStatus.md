@@ -1,9 +1,9 @@
-# Design Review Status (des_DesignReviewStatus)
+# Design Review Status (col_DesignReviewStatus)
 
-- Name: `des_DesignReviewStatus`
-- IRI: `des:DesignReviewStatus` (https://w3id.org/altium/cdm/design/DesignReviewStatus)
+- Name: `col_DesignReviewStatus`
+- IRI: `col:DesignReviewStatus` (https://w3id.org/altium/cdm/collaboration/DesignReviewStatus)
 - Kind: enumeration
-- HTML page: [enums/des_DesignReviewStatus/](../../enums/des_DesignReviewStatus/)
+- HTML page: [enums/col_DesignReviewStatus/](../../enums/col_DesignReviewStatus/)
 
 The state of a design review.
 
@@ -20,4 +20,4 @@ The state of a design review.
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [des_DesignReview](../classes/des_DesignReview.md) | status | 1 |  |
+| [col_DesignReview](../classes/col_DesignReview.md) | status | 1 |  |

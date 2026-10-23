@@ -26,6 +26,6 @@ None declared (nearest ancestor `ins_Insight`: `grid:workspace:{workspace-id}:in
 
 | Field | Range | Cardinality | Description | Relation | Inherited from |
 | --- | --- | --- | --- | --- | --- |
-| designReview | [des_DesignReview](des_DesignReview.md) | 1 | The design review that the insight is part of. | core_partOf |  |
+| designReview | [col_DesignReview](col_DesignReview.md) | 1 | The design review that the insight is part of. | core_partOf |  |
 | tasks | [col_Task](col_Task.md) | * | Task associated with this insight | core_informs | [ins_Insight](ins_Insight.md) |
 | id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](core_Entity.md) |

@@ -38,4 +38,4 @@ Comment Thread represents a structured discussion linked to a specific design ob
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [des_DesignReview](des_DesignReview.md) | commentThreads | * | core_hasPart |
+| [col_DesignReview](col_DesignReview.md) | commentThreads | * | core_hasPart |

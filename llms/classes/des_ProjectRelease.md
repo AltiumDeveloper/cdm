@@ -40,7 +40,7 @@ Project Release captures an immutable snapshot of a PCB design project at a spec
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
-| [des_DesignReview](des_DesignReview.md) | reviewContext | 0..1 | core_occursIn |
+| [col_DesignReview](col_DesignReview.md) | reviewContext | 0..1 | core_occursIn |
 | [des_ManufacturingPackage](des_ManufacturingPackage.md) | projectRelease | 1 | core_derivedFrom |
 | [des_Project](des_Project.md) | releases | * | core_releases |
 | [ins_PartInsight](ins_PartInsight.md) | occursIn | * | core_occursIn |

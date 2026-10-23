@@ -59,6 +59,29 @@
    "subset": "collaboration",
    "title": "Comment Thread"
   },
+  "col_DesignReview": {
+   "class_uri": "col:DesignReview",
+   "grid": "grid:workspace:{workspace-id}:collaboration:design-review/{id}",
+   "hub": {
+    "api": null,
+    "api_from": null,
+    "api_missing": null,
+    "links": [
+     {
+      "primary": true,
+      "text": "Design Reviews",
+      "url": "https://www.altium.com/documentation/altium-365/project-design-reviews"
+     }
+    ],
+    "mappings": [],
+    "nexar": null,
+    "nexar_missing": null,
+    "product_docs_none": false,
+    "terms": []
+   },
+   "subset": "collaboration",
+   "title": "Design Review"
+  },
   "col_Task": {
    "class_uri": "col:Task",
    "grid": "grid:workspace:{workspace-id}:collaboration:task/{id}",
@@ -293,29 +316,6 @@
    },
    "subset": "customization",
    "title": "Workflow"
-  },
-  "des_DesignReview": {
-   "class_uri": "des:DesignReview",
-   "grid": "grid:workspace:{workspace-id}:design:design-review/{id}",
-   "hub": {
-    "api": null,
-    "api_from": null,
-    "api_missing": null,
-    "links": [
-     {
-      "primary": true,
-      "text": "Design Reviews",
-      "url": "https://www.altium.com/documentation/altium-365/project-design-reviews"
-     }
-    ],
-    "mappings": [],
-    "nexar": null,
-    "nexar_missing": null,
-    "product_docs_none": false,
-    "terms": []
-   },
-   "subset": "design",
-   "title": "Design Review"
   },
   "des_HarnessProject": {
    "class_uri": "des:HarnessProject",
