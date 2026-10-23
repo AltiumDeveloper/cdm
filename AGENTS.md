@@ -358,10 +358,10 @@ attribute carries its own description), in enums, or in the linked documentation
 
 ```yaml
 # ✅ VALID — domain terms
-des_DesignReview_project:
+col_DesignReview_project:
   description: The design project under review.
 # ❌ INVALID — describes the UI
-des_DesignReview_project:
+col_DesignReview_project:
   description: The design project under review; the review is listed on the project's Design Reviews page.
 ```
 

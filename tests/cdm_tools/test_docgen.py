@@ -300,13 +300,13 @@ def test_class_page_shows_an_inherited_api_type(tmp_path):
 
 def test_enum_page_is_titled_and_enums_are_referenced_by_title(tmp_path):
     _serialize(tmp_path)
-    enum = (tmp_path / "enums" / "des_DesignReviewStatus.md").read_text(encoding="utf-8")
+    enum = (tmp_path / "enums" / "col_DesignReviewStatus.md").read_text(encoding="utf-8")
     assert "# Design Review Status" in enum and "Enum:" not in enum
-    assert "IRI: [https://w3id.org/altium/cdm/design/DesignReviewStatus](" in enum
+    assert "IRI: [https://w3id.org/altium/cdm/collaboration/DesignReviewStatus](" in enum
     assert "| `InProgress` | The review is open" in enum                      # no empty Meaning column
-    assert "| [status](../slots/des_DesignReview_status.md) | [Design Review](../classes/des_DesignReview.md) |" in enum
+    assert "| [status](../slots/col_DesignReview_status.md) | [Design Review](../classes/col_DesignReview.md) |" in enum
     assert "Identifier and Mapping Information" not in enum
-    review = (tmp_path / "classes" / "des_DesignReview.md").read_text(encoding="utf-8")
-    assert "[Design Review Status](../enums/des_DesignReviewStatus.md)" in review     # Fields table range
-    design = (tmp_path / "subsets" / "design.md").read_text(encoding="utf-8")
-    assert "| [Design Review Status](../enums/des_DesignReviewStatus.md) |" in design
+    review = (tmp_path / "classes" / "col_DesignReview.md").read_text(encoding="utf-8")
+    assert "[Design Review Status](../enums/col_DesignReviewStatus.md)" in review     # Fields table range
+    collaboration = (tmp_path / "subsets" / "collaboration.md").read_text(encoding="utf-8")
+    assert "| [Design Review Status](../enums/col_DesignReviewStatus.md) |" in collaboration

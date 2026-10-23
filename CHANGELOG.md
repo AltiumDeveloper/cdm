@@ -9,8 +9,8 @@ Breaking changes (renames, removals, cardinality or parent-class changes) are pr
 
 ### Added
 - `system_GlobalESD` (Global ESD, system): an Electronic System Design outside of any Workspace, not part of a solution; GRID `grid:global::system-design:esd/{id}`. It shares the ESD content with `system_ESDDocument` through the new `system_ESD` mixin, as the Global BOM shares the BOM content through `pro_Bom`.
-- `des_DesignReview` (Design Review, `core_Activity`, design): a structured review of a design project, with its project, review context (project release), Initiator, Reviewers, process workflow, tasks, comment threads and status (`des_DesignReviewStatus`). GRID `grid:workspace:{workspace-id}:design:design-review/{id}`.
-- `ins_DesignInsight` (Design Insight, insights): an insight within the design domain, part of a design review (`ins_DesignInsight_designReview`, `core_partOf` → `des_DesignReview`).
+- `col_DesignReview` (Design Review, `core_Activity`, collaboration): a structured review of a design project, with its project, review context (project release), Initiator, Reviewers, process workflow, tasks, comment threads and status (`col_DesignReviewStatus`). GRID `grid:workspace:{workspace-id}:collaboration:design-review/{id}`.
+- `ins_DesignInsight` (Design Insight, insights): an insight within the design domain, part of a design review (`ins_DesignInsight_designReview`, `core_partOf` → `col_DesignReview`).
 - Description and Platform API type (`DesWorkspaceInsInsight`) of `ins_Insight`.
 - AGENTS.md: descriptions model the domain, not the product UI; product documentation is supporting context only.
 - Bounded-context titles (`title` on every subset), matching the Altium 365 API reference names where the two differ: library is Library Management, configuration is Configuration Management.

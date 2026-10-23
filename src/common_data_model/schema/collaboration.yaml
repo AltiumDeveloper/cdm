@@ -16,7 +16,8 @@ subsets:
     title: Collaboration
     description: >-
       Models collaboration on Workspace content: comment threads attached to a point, object or area of a
-      document, the individual comments in each thread, and tasks that assign work to users or teams. In the
+      document, the individual comments in each thread, tasks that assign work to users or teams, and design
+      reviews in which assigned reviewers assess a snapshot of a design project. In the
       product, comments are placed on documents of Workspace projects (e.g. through the Comments and Tasks
       panel in Altium Designer), and tasks are tracked on the Tasks page of a Workspace.
     see_also:
@@ -88,3 +89,120 @@ classes:
       platformAPI: DesComment
     see_also:
       - https://www.altium.com/documentation/altium-365/viewers/web-viewer#comment_placement
+
+  col_DesignReview:
+    is_a: core_Activity
+    in_subset: collaboration
+    class_uri: col:DesignReview
+    title: Design Review
+    description: >-
+      A structured assessment of a design project, carried out by assigned Reviewers on a fixed snapshot of its
+      design and concluded by the Initiator's decision, which leaves a traceable record of the review.
+    annotations:
+      grid: grid:workspace:{workspace-id}:collaboration:design-review/{id}
+    see_also:
+      - https://www.altium.com/documentation/altium-365/project-design-reviews
+    attributes:
+      col_DesignReview_project:
+        is_a: core_partOf
+        slot_uri: col:DesignReview_project
+        alias: project
+        title: project
+        description: The design project under review.
+        range: des_Project
+        multivalued: false
+        required: true
+      col_DesignReview_reviewContext:
+        is_a: core_occursIn
+        slot_uri: col:DesignReview_reviewContext
+        alias: reviewContext
+        title: review context
+        description: >-
+          The project release under review, when the review context is a release. Absent when the review applies
+          to a snapshot of the work-in-progress design or to a project commit, which are not modelled yet.
+        range: des_ProjectRelease
+        multivalued: false
+        required: false
+      col_DesignReview_initiator:
+        slot_uri: col:DesignReview_initiator
+        alias: initiator
+        title: initiator
+        description: >-
+          The Workspace member who created the review. Only the Initiator or a Workspace administrator can
+          finalize it.
+        range: plt_WorkspaceUser
+        inlined: false
+        multivalued: false
+        required: true
+      col_DesignReview_reviewers:
+        slot_uri: col:DesignReview_reviewers
+        alias: reviewers
+        title: reviewers
+        description: >-
+          The Workspace members asked to review the design. Each must have access to the project, and a review
+          task is created for each of them.
+        range: plt_WorkspaceUser
+        inlined: false
+        multivalued: true
+        required: false
+      col_DesignReview_workflow:
+        is_a: core_informedBy
+        slot_uri: col:DesignReview_workflow
+        alias: workflow
+        title: workflow
+        description: >-
+          The process workflow that the review follows: the built-in Design Review process or a custom design
+          review process.
+        range: cus_Workflow
+        multivalued: false
+        required: false
+      col_DesignReview_tasks:
+        is_a: core_informs
+        slot_uri: col:DesignReview_tasks
+        alias: tasks
+        title: tasks
+        description: >-
+          Tasks of the review: the process tasks created for the Initiator and the Reviewers, and tasks raised
+          from comments placed on the design snapshot.
+        range: col_Task
+        multivalued: true
+        required: false
+      col_DesignReview_commentThreads:
+        is_a: core_hasPart
+        slot_uri: col:DesignReview_commentThreads
+        alias: commentThreads
+        title: comment threads
+        description: >-
+          Comment threads placed on the design snapshot of the review, including those about checklist items.
+        range: col_CommentThread
+        multivalued: true
+        required: false
+      col_DesignReview_status:
+        slot_uri: col:DesignReview_status
+        alias: status
+        title: status
+        description: The state of the review, from In Progress to its closed state.
+        range: col_DesignReviewStatus
+        multivalued: false
+        required: true
+
+enums:
+
+  col_DesignReviewStatus:
+    is_a: Enumeration
+    in_subset: collaboration
+    enum_uri: col:DesignReviewStatus
+    title: Design Review Status
+    description: The state of a design review.
+    implements:
+      - owl:NamedIndividual
+    permissible_values:
+      InProgress:
+        description: The review is open; Reviewers can complete their tasks.
+      Completed:
+        description: The Initiator closed the review as completed; it can no longer be changed.
+      Rejected:
+        description: The Initiator closed the review as rejected; it can no longer be changed.
+      Cancelled:
+        description: >-
+          The Initiator or a Reviewer cancelled the review; its tasks are resolved and it can no longer be changed.

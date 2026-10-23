@@ -109,6 +109,6 @@ classes:
         alias: designReview
         title: design review
         description: The design review that the insight is part of.
-        range: des_DesignReview
+        range: col_DesignReview
         required: true
         multivalued: false
