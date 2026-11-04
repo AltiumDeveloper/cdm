@@ -16,8 +16,8 @@ subsets:
     description: >-
       Models over-the-air (OTA) firmware and software updates: devices with the packages installed on
       them, fleets that group devices, packages with their version, size, checksums and target hardware,
-      deployments that request packages to be rolled out to a device or fleet, and the deployment
-      results that record the outcome on each targeted device.
+      deployments that request packages to be rolled out to a device or fleet, the deployment
+      results that record the outcome on each targeted device, and the metrics reported by devices.
       All classes are experimental.
     annotations:
       style: "fill:#d29292"
@@ -70,6 +70,30 @@ enums:
           isSuccessful false.
       Cancelled:
         description: The deployment was cancelled before it was received by the device.
+
+  ota_MetricAggregationMethod:
+    title: Metric Aggregation Method
+    is_a: Enumeration
+    in_subset: ota
+    enum_uri: ota:MetricAggregationMethod
+    description: The method used to aggregate the values a device reported within one time bucket.
+    implements:
+      - owl:NamedIndividual
+    permissible_values:
+      Last:
+        description: The last value reported in the bucket.
+      Average:
+        description: The average of the values reported in the bucket.
+      Max:
+        description: The highest value reported in the bucket.
+      Min:
+        description: The lowest value reported in the bucket.
+      Count:
+        description: The number of values reported in the bucket.
+      Raw:
+        description: >-
+          The values are not aggregated; each data point is a reported value. Corresponds to
+          none in provider APIs.
 
 classes:
 
@@ -492,5 +516,99 @@ classes:
         title: result description
         description: The human-readable result reported by the device.
         range: string
+        multivalued: false
+        required: false
+
+  ota_DeviceMetrics:
+    is_a: core_Resource
+    in_subset: ota
+    class_uri: ota:DeviceMetrics
+    title: Device Metrics
+    description: The metric series reported by one device.
+    attributes:
+      ota_DeviceMetrics_device:
+        slot_uri: ota:DeviceMetrics_device
+        alias: device
+        title: device
+        description: The device associated with the metrics.
+        range: ota_Device
+        multivalued: false
+        required: true
+      ota_DeviceMetrics_series:
+        slot_uri: ota:DeviceMetrics_series
+        alias: series
+        title: series
+        description: The metric series reported by the device.
+        range: ota_MetricSeries
+        multivalued: true
+        required: false
+        inlined: true
+        inlined_as_list: true
+
+  ota_MetricSeries:
+    is_a: core_Resource
+    in_subset: ota
+    class_uri: ota:MetricSeries
+    title: Metric Series
+    description: >-
+      Metric Series is the time series of one metric reported by a device, with the values in each
+      time bucket aggregated by one method.
+    attributes:
+      ota_MetricSeries_name:
+        slot_uri: ota:MetricSeries_name
+        alias: name
+        title: name
+        description: The metric name, for example mem_free.
+        range: string
+        multivalued: false
+        required: true
+      ota_MetricSeries_aggregationMethod:
+        slot_uri: ota:MetricSeries_aggregationMethod
+        alias: aggregationMethod
+        title: aggregation method
+        description: The method used to aggregate values within each time bucket.
+        range: ota_MetricAggregationMethod
+        multivalued: false
+        required: false
+      ota_MetricSeries_aggregationBucket:
+        slot_uri: ota:MetricSeries_aggregationBucket
+        alias: aggregationBucket
+        title: aggregation bucket
+        description: The length of each aggregation bucket as reported by the provider.
+        range: string
+        multivalued: false
+        required: false
+      ota_MetricSeries_dataPoints:
+        slot_uri: ota:MetricSeries_dataPoints
+        alias: dataPoints
+        title: data points
+        description: The data points of the metric series.
+        range: ota_MetricDataPoint
+        multivalued: true
+        required: false
+        inlined: true
+        inlined_as_list: true
+
+  ota_MetricDataPoint:
+    is_a: core_Resource
+    in_subset: ota
+    class_uri: ota:MetricDataPoint
+    title: Metric Data Point
+    description: Metric Data Point is the value of a metric at a point in time.
+    attributes:
+      ota_MetricDataPoint_timestamp:
+        slot_uri: ota:MetricDataPoint_timestamp
+        alias: timestamp
+        title: timestamp
+        description: The timestamp of the data point, in UTC.
+        range: datetime
+        multivalued: false
+        required: true
+      ota_MetricDataPoint_value:
+        slot_uri: ota:MetricDataPoint_value
+        alias: value
+        title: value
+        description: The metric value. Absent when no value is available.
+        range: float
         multivalued: false
         required: false
