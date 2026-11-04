@@ -2042,6 +2042,23 @@
    "subset": "ota",
    "title": "Device"
   },
+  "ota_DeviceMetrics": {
+   "class_uri": "ota:DeviceMetrics",
+   "grid": null,
+   "hub": {
+    "api": null,
+    "api_from": null,
+    "api_missing": null,
+    "links": [],
+    "mappings": [],
+    "nexar": null,
+    "nexar_missing": null,
+    "product_docs_none": false,
+    "terms": []
+   },
+   "subset": "ota",
+   "title": "Device Metrics"
+  },
   "ota_Fleet": {
    "class_uri": "ota:Fleet",
    "grid": "grid:workspace:{workspace-id}:ota:fleet/{id}",
@@ -2058,6 +2075,40 @@
    },
    "subset": "ota",
    "title": "Fleet"
+  },
+  "ota_MetricDataPoint": {
+   "class_uri": "ota:MetricDataPoint",
+   "grid": null,
+   "hub": {
+    "api": null,
+    "api_from": null,
+    "api_missing": null,
+    "links": [],
+    "mappings": [],
+    "nexar": null,
+    "nexar_missing": null,
+    "product_docs_none": false,
+    "terms": []
+   },
+   "subset": "ota",
+   "title": "Metric Data Point"
+  },
+  "ota_MetricSeries": {
+   "class_uri": "ota:MetricSeries",
+   "grid": null,
+   "hub": {
+    "api": null,
+    "api_from": null,
+    "api_missing": null,
+    "links": [],
+    "mappings": [],
+    "nexar": null,
+    "nexar_missing": null,
+    "product_docs_none": false,
+    "terms": []
+   },
+   "subset": "ota",
+   "title": "Metric Series"
   },
   "ota_Package": {
    "class_uri": "ota:Package",

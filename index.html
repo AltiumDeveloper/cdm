@@ -1630,7 +1630,7 @@
 <p><a href="subsets/requirements/"><span class="bc-icon bc-requirements"></span><strong>Requirements</strong> <span>7 entities · 1 resource</span></a></p>
 <p><a href="subsets/deviceModel/"><span class="bc-icon bc-deviceModel"></span><strong>Device Model</strong> <span>1 entity · 23 resources</span></a></p>
 <p><a href="subsets/software/"><span class="bc-icon bc-software"></span><strong>Software</strong> <span>6 entities · 2 resources</span></a></p>
-<p><a href="subsets/ota/"><span class="bc-icon bc-ota"></span><strong>Over-the-Air Updates</strong> <span>5 entities · 2 resources</span></a></p>
+<p><a href="subsets/ota/"><span class="bc-icon bc-ota"></span><strong>Over-the-Air Updates</strong> <span>5 entities · 5 resources</span></a></p>
 <p><a href="subsets/core/"><span class="bc-icon bc-core"></span><strong>Core</strong> <span>Base types</span></a></p>
 </div>
 <h2 id="bounded-contexts">Bounded Contexts</h2>
@@ -2552,7 +2552,7 @@
 </tbody>
 </table>
 <h3 class="bc-heading bc-ota" id="over-the-air-updates"><a href="subsets/ota/">Over-the-Air Updates</a></h3>
-<p>Models over-the-air (OTA) firmware and software updates: devices with the packages installed on them, fleets that group devices, packages with their version, size, checksums and target hardware, deployments that request packages to be rolled out to a device or fleet, and the deployment results that record the outcome on each targeted device. All classes are experimental.</p>
+<p>Models over-the-air (OTA) firmware and software updates: devices with the packages installed on them, fleets that group devices, packages with their version, size, checksums and target hardware, deployments that request packages to be rolled out to a device or fleet, the deployment results that record the outcome on each targeted device, and the metrics reported by devices. All classes are experimental.</p>
 <table>
 <thead>
 <tr>
@@ -2583,8 +2583,23 @@
 <td></td>
 </tr>
 <tr>
+<td><a href="classes/ota_DeviceMetrics/">Device Metrics </a></td>
+<td>The metric series reported by one device.</td>
+<td></td>
+</tr>
+<tr>
 <td><a href="classes/ota_Fleet/">Fleet </a></td>
 <td>Fleet represents a named group of devices managed and updated together.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/ota_MetricDataPoint/">Metric Data Point </a></td>
+<td>Metric Data Point is the value of a metric at a point in time.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/ota_MetricSeries/">Metric Series </a></td>
+<td>Metric Series is the time series of one metric reported by a device, with the values in each time bucket aggregated by one method.</td>
 <td></td>
 </tr>
 <tr>

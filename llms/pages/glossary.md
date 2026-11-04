@@ -66,6 +66,7 @@ Product terms and class names of the model. A term used by several classes is li
 | Device | [Device](../classes/ota_Device.md) (`ota_Device`) | ota | title |  |
 | Device Configuration | [Device Configuration](../classes/sft_DeviceConfiguration.md) (`sft_DeviceConfiguration`) | software | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration) |
 | Device Configuration Revision | [Device Configuration Revision](../classes/sft_DeviceConfigurationRevision.md) (`sft_DeviceConfigurationRevision`) | software | title |  |
+| Device Metrics | [Device Metrics](../classes/ota_DeviceMetrics.md) (`ota_DeviceMetrics`) | ota | title |  |
 | Device Model | [Device Model](../classes/system_SdmDeviceModel.md) (`system_SdmDeviceModel`) | system-sdm | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration) |
 | Domain Metadata | [Domain Metadata](../classes/system_SdmClientMetadata.md) (`system_SdmClientMetadata`) | system-sdm | title |  |
 
@@ -152,6 +153,8 @@ Product terms and class names of the model. A term used by several classes is li
 | Managed Sheet Revision | [Managed Sheet Revision](../classes/lib_ManagedSheetRevision.md) (`lib_ManagedSheetRevision`) | library | title | [Working with Managed Schematic Sheets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/workspace-managed-schematic-sheets#just_what_is_a_managed_schematic_sheet) |
 | Manufacturing Package | [Manufacturing Package](../classes/des_ManufacturingPackage.md) (`des_ManufacturingPackage`) | design | title | [Viewing Manufacturing Packages](https://www.altium.com/documentation/altium-365/viewers/manufacturing-package-viewer) |
 | Memory | [Memory](../classes/dm_Memory.md) (`dm_Memory`) | deviceModel | title |  |
+| Metric Data Point | [Metric Data Point](../classes/ota_MetricDataPoint.md) (`ota_MetricDataPoint`) | ota | title |  |
+| Metric Series | [Metric Series](../classes/ota_MetricSeries.md) (`ota_MetricSeries`) | ota | title |  |
 | Multiboard Project | [Multiboard Project](../classes/des_MultiboardProject.md) (`des_MultiboardProject`) | design | title | [Designing with Multiple PCBs](https://www.altium.com/documentation/altium-designer/multi-board-design#structure_multi_board_design_project) |
 
 **Manufacturer Part — 2 meanings**

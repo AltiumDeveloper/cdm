@@ -4,7 +4,7 @@
 
 This file follows https://llmstxt.org/. Its links are absolute; the links in the files under `llms/` are relative to the file that contains them. `llms-ctx.txt` holds this file, the pages and the catalogues in one file, and `llms-full.txt` also the class and enumeration cards; their links are absolute.
 
-The model has 176 classes: 154 concrete domain classes, listed in the catalogues below, and 22 core, abstract and mixin classes, including LinkML's `Any`. 172 of them belong to one of the 16 bounded contexts (LinkML subsets); 4 classes belong to none and are listed in [llms/core.md](https://altiumdeveloper.github.io/cdm/llms/core.md).
+The model has 179 classes: 157 concrete domain classes, listed in the catalogues below, and 22 core, abstract and mixin classes, including LinkML's `Any`. 175 of them belong to one of the 16 bounded contexts (LinkML subsets); 4 classes belong to none and are listed in [llms/core.md](https://altiumdeveloper.github.io/cdm/llms/core.md).
 
 - Class names are `{prefix}_{ClassName}` (`lib_Component`). Each card gives the class IRI; it is usually `{prefix}:{ClassName}` (`lib:Component`) — `system_*` classes use `sys:`, and a few IRIs differ from the name (see [VIOLATIONS.md](https://github.com/AltiumDeveloper/cdm/blob/main/VIOLATIONS.md)).
 - Slot names usually follow `{prefix}_{ClassName}_{fieldName}`; the JSON key is always the slot's `alias` (the Field column of a card).
@@ -33,7 +33,7 @@ The model has 176 classes: 154 concrete domain classes, listed in the catalogues
 - [deviceModel](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md): Models an embedded device (e.g. an MCU), which the CDM calls a digital twin: its processors; its address map with memories, registers, bit fields and their enumerated values; its peripherals with their instances, modes and configurations; and its pins and ports with the alternative functions of each port. (24 classes)
 - [insights](https://altiumdeveloper.github.io/cdm/llms/insights.md): Models insights: findings, detected asynchronously, that give the user insight within one domain area and can be followed up by tasks. (2 classes; 1 base class or mixin)
 - [library](https://altiumdeveloper.github.io/cdm/llms/library.md): Models the components stored in a Workspace and their revisions, the symbols, footprints, parameters, datasheets and part choices that make them up, and the component templates they can be created from. (22 classes)
-- [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md): Models over-the-air (OTA) firmware and software updates: devices with the packages installed on them, fleets that group devices, packages with their version, size, checksums and target hardware, deployments that request packages to be rolled out to a device or fleet, and the deployment results that record the outcome on each targeted device. (7 classes)
+- [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md): Models over-the-air (OTA) firmware and software updates: devices with the packages installed on them, fleets that group devices, packages with their version, size, checksums and target hardware, deployments that request packages to be rolled out to a device or fleet, the deployment results that record the outcome on each targeted device, and the metrics reported by devices. (10 classes)
 - [procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md): Models bills of materials: BOMs kept in a Workspace and worked on in the BOM Portal (managed and consolidated BOMs) with their releases, global BOMs, which are not tied to a Workspace, and BOM lines with their alternate and substitute parts and the issues found when a BOM is analysed. (8 classes; 3 base classes and mixins)
 - [supply](https://altiumdeveloper.github.io/cdm/llms/supply.md): Models the supply catalog: manufacturer parts with their aggregated sourcing data and distributor offers, the companies acting as their manufacturers or distributors, and the vendor-specific part family hierarchy, along with catalog content such as reference designs, evaluation kits, solution templates and software projects. (9 classes)
 - [software](https://altiumdeveloper.github.io/cdm/llms/software.md): Models the embedded software of a Renesas 365 solution: software projects with their releases and build artifacts, device configurations (with revisions) and their pin assignments, and AI models. (8 classes)
@@ -898,6 +898,7 @@ Product terms and class names of the model. A term used by several classes is li
 | Device | [Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) (`ota_Device`) | ota | title |  |
 | Device Configuration | [Device Configuration](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfiguration.md) (`sft_DeviceConfiguration`) | software | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration) |
 | Device Configuration Revision | [Device Configuration Revision](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfigurationRevision.md) (`sft_DeviceConfigurationRevision`) | software | title |  |
+| Device Metrics | [Device Metrics](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeviceMetrics.md) (`ota_DeviceMetrics`) | ota | title |  |
 | Device Model | [Device Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmDeviceModel.md) (`system_SdmDeviceModel`) | system-sdm | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration) |
 | Domain Metadata | [Domain Metadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmClientMetadata.md) (`system_SdmClientMetadata`) | system-sdm | title |  |
 
@@ -984,6 +985,8 @@ Product terms and class names of the model. A term used by several classes is li
 | Managed Sheet Revision | [Managed Sheet Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheetRevision.md) (`lib_ManagedSheetRevision`) | library | title | [Working with Managed Schematic Sheets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/workspace-managed-schematic-sheets#just_what_is_a_managed_schematic_sheet) |
 | Manufacturing Package | [Manufacturing Package](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md) (`des_ManufacturingPackage`) | design | title | [Viewing Manufacturing Packages](https://www.altium.com/documentation/altium-365/viewers/manufacturing-package-viewer) |
 | Memory | [Memory](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Memory.md) (`dm_Memory`) | deviceModel | title |  |
+| Metric Data Point | [Metric Data Point](https://altiumdeveloper.github.io/cdm/llms/classes/ota_MetricDataPoint.md) (`ota_MetricDataPoint`) | ota | title |  |
+| Metric Series | [Metric Series](https://altiumdeveloper.github.io/cdm/llms/classes/ota_MetricSeries.md) (`ota_MetricSeries`) | ota | title |  |
 | Multiboard Project | [Multiboard Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_MultiboardProject.md) (`des_MultiboardProject`) | design | title | [Designing with Multiple PCBs](https://www.altium.com/documentation/altium-designer/multi-board-design#structure_multi_board_design_project) |
 
 **Manufacturer Part — 2 meanings**
@@ -1427,7 +1430,7 @@ HTML page: [subsets/library/](https://altiumdeveloper.github.io/cdm/subsets/libr
 
 # Bounded context: Over-the-Air Updates
 
-Models over-the-air (OTA) firmware and software updates: devices with the packages installed on them, fleets that group devices, packages with their version, size, checksums and target hardware, deployments that request packages to be rolled out to a device or fleet, and the deployment results that record the outcome on each targeted device. All classes are experimental.
+Models over-the-air (OTA) firmware and software updates: devices with the packages installed on them, fleets that group devices, packages with their version, size, checksums and target hardware, deployments that request packages to be rolled out to a device or fleet, the deployment results that record the outcome on each targeted device, and the metrics reported by devices. All classes are experimental.
 
 HTML page: [subsets/ota/](https://altiumdeveloper.github.io/cdm/subsets/ota/)
 
@@ -1441,7 +1444,10 @@ No public product documentation exists for this bounded context.
 - [Deployment Assignment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentAssignment.md) (`ota_DeploymentAssignment`): Deployment Assignment assigns a package to the ECUs with a given hardware identifier. · Resource
 - [Deployment Result](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentResult.md) (`ota_DeploymentResult`): Deployment Result is the outcome of a deployment on one target device, from the time the device is addressed by the deployment, before its update is created. · Artifact · GRID `grid:workspace:{workspace-id}:ota:deployment-result/{id}`
 - [Device](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Device.md) (`ota_Device`): Device represents a physical unit registered for OTA updates. · Artifact · GRID `grid:workspace:{workspace-id}:ota:device/{id}`
+- [Device Metrics](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeviceMetrics.md) (`ota_DeviceMetrics`): The metric series reported by one device. · Resource
 - [Fleet](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Fleet.md) (`ota_Fleet`): Fleet represents a named group of devices managed and updated together. · Artifact · GRID `grid:workspace:{workspace-id}:ota:fleet/{id}`
+- [Metric Data Point](https://altiumdeveloper.github.io/cdm/llms/classes/ota_MetricDataPoint.md) (`ota_MetricDataPoint`): Metric Data Point is the value of a metric at a point in time. · Resource
+- [Metric Series](https://altiumdeveloper.github.io/cdm/llms/classes/ota_MetricSeries.md) (`ota_MetricSeries`): Metric Series is the time series of one metric reported by a device, with the values in each time bucket aggregated by one method. · Resource
 - [Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) (`ota_Package`): Package represents one version of a software package registered for OTA deployment. · Artifact · GRID `grid:workspace:{workspace-id}:ota:package/{id}`
 - [Package Hash](https://altiumdeveloper.github.io/cdm/llms/classes/ota_PackageHash.md) (`ota_PackageHash`): Package Hash is a checksum of a package binary, used for Uptane target metadata. · Resource
 

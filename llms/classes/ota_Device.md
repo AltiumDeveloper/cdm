@@ -37,4 +37,5 @@ Device represents a physical unit registered for OTA updates. A device consists 
 | --- | --- | --- | --- |
 | [ota_Deployment](ota_Deployment.md) | targetDevice | 0..1 | core_occursIn |
 | [ota_DeploymentResult](ota_DeploymentResult.md) | device | 1 |  |
+| [ota_DeviceMetrics](ota_DeviceMetrics.md) | device | 1 |  |
 | [ota_Fleet](ota_Fleet.md) | devices | * |  |
