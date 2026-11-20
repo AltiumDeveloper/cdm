@@ -298,6 +298,7 @@ naming_exempt_annotations:
   - grid
   - maturity
   - nexarAPI
+  - adSDK
   - platformAPI
   - vaultLinkChild
   - vaultLinkParent

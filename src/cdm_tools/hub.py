@@ -13,6 +13,7 @@ from typing import Optional, Union
 
 from cdm_tools.api_links import ApiIndex
 from cdm_tools.api_snapshot import load_docs_pages, load_snapshots
+from cdm_tools import ad_sdk_snapshot
 from cdm_tools.registry import LinkEntry, split_url
 
 OCTOPART_API_DOC = "https://www.altium.com/documentation/altium-developer-center/octopart/api"
@@ -46,6 +47,12 @@ class ApiView:
 
 
 @dataclass
+class SdkView:
+    type_name: str      # namespace-qualified, e.g. PCB.IPCB_Track
+    url: str
+
+
+@dataclass
 class NexarView:
     type_name: str
     url: str
@@ -68,6 +75,8 @@ class HubView:
     nexar: Optional[NexarView] = None
     nexar_missing: Optional[str] = None
     api_from: Optional[str] = None        # ancestor class that declares the API type, when inherited
+    ad_sdk: list[SdkView] = field(default_factory=list)          # Altium Designer SDK types (adSDK annotation)
+    ad_sdk_missing: list[str] = field(default_factory=list)      # named but not in the AD SDK snapshot
     mappings: list[Mapping] = field(default_factory=list)
 
     def to_dict(self) -> dict:
@@ -138,7 +147,8 @@ def api_declaration(sv, name: str) -> tuple[dict[str, str], Optional[str]]:
 
 
 def build_hub(cls, *, registry: dict[str, LinkEntry], platform: Optional[ApiIndex],
-              nexar_types: Optional[dict], namespaces: dict[str, str], sv=None) -> HubView:
+              nexar_types: Optional[dict], namespaces: dict[str, str], sv=None,
+              ad_sdk: Optional[dict[str, set[str]]] = None) -> HubView:
     """Hub view of *cls*. With *sv*, an API type the class does not declare is inherited (see api_declaration)."""
     ann = cls.annotations or {}
     api, api_from = api_declaration(sv, cls.name) if sv is not None else (_own_api(cls), None)
@@ -165,4 +175,10 @@ def build_hub(cls, *, registry: dict[str, LinkEntry], platform: Optional[ApiInde
             hub.nexar = NexarView(type_name=name, url=OCTOPART_API_DOC)
         else:
             hub.nexar_missing = name
+    if "adSDK" in ann and str(ann["adSDK"].value or "").strip():     # own annotation only, not inherited
+        for qualified in ad_sdk_snapshot.split_annotation(ann["adSDK"].value):
+            if ad_sdk_snapshot.resolves(qualified, ad_sdk):
+                hub.ad_sdk.append(SdkView(type_name=qualified, url=ad_sdk_snapshot.type_url(qualified)))
+            else:
+                hub.ad_sdk_missing.append(qualified)
     return hub

@@ -19,6 +19,7 @@ from linkml_runtime.utils.schemaview import SchemaView
 
 from cdm_tools.api_snapshot import DEFAULT_API_DIR
 from cdm_tools.contexts import BC_ORDER, api_context
+from cdm_tools.ad_sdk_snapshot import load_ad_sdk
 from cdm_tools.hub import build_hub, load_api_layers, schema_namespaces
 from cdm_tools.reference import grid_templates
 from cdm_tools.registry import DEFAULT_REGISTRY_PATH, LinkEntry, RegistryError, load_registry, split_url
@@ -97,9 +98,10 @@ class CdmDocGenerator(DocGenerator):
             load_api_layers(self.api_dir) if self.api_dir and Path(self.api_dir).is_dir() else (None, None)
         )
         namespaces = schema_namespaces(self.schemaview)
+        ad_sdk = load_ad_sdk(self.api_dir) if self.api_dir and Path(self.api_dir).is_dir() else None
         env.globals["hub"] = lambda element: build_hub(
             element, registry=registry, platform=platform, nexar_types=nexar_types, namespaces=namespaces,
-            sv=self.schemaview,
+            sv=self.schemaview, ad_sdk=ad_sdk,
         )
         self._register_subset_hub(env)
 

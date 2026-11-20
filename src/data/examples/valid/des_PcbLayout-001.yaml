@@ -1,0 +1,41 @@
+# Example for a valid PCB layout: a two-layer board with one placed resistor, its two pads, one track and one via
+# (values are illustrative; lengths in millimetres)
+---
+documentId: 7f3a9c1e-2b4d-4e6f-8a0b-1c2d3e4f5a6b
+documentName: Sensor-Board.PcbDoc
+origin: {x: 0, y: 0}
+outline:
+  - {x: 0, y: 0}
+  - {x: 50, y: 0}
+  - {x: 50, y: 30}
+  - {x: 0, y: 30}
+area: 1500
+stackup:
+  stackupType: Standard
+  stacks:
+    - name: Board Layer Stack
+      layers:
+        - {name: Top Overlay, layerType: Overlay}
+        - {name: Top Solder, layerType: SolderMask, thickness: 0.01}
+        - {name: Top Layer, layerType: Signal, thickness: 0.035, copperWeight: 1, material: Copper}
+        - {name: Dielectric 1, layerType: Core, thickness: 1.5, dielectricConstant: 4.8, material: FR-4}
+        - {name: Bottom Layer, layerType: Signal, thickness: 0.035, copperWeight: 1, material: Copper}
+        - {name: Bottom Solder, layerType: SolderMask, thickness: 0.01}
+components:
+  - designator: R1
+    footprintName: RESC1608X55N
+    position: {x: 10, y: 10}
+    rotation: 90
+    boundingBox: {left: 9.2, bottom: 8.6, right: 10.8, top: 11.4}
+    pads:
+      - {designator: "1", globalDesignator: R1-1, padType: Smd, shape: RoundedRectangle, sizeX: 0.9, sizeY: 0.95,
+         holeSize: 0, position: {x: 10, y: 9.2}, rotation: 90}
+      - {designator: "2", globalDesignator: R1-2, padType: Smd, shape: RoundedRectangle, sizeX: 0.9, sizeY: 0.95,
+         holeSize: 0, position: {x: 10, y: 10.8}, rotation: 90}
+nets:
+  - name: VCC_3V3
+    routedLength: 4.2
+tracks:
+  - {begin: {x: 10, y: 10.8}, end: {x: 10, y: 15}, width: 0.25}
+vias:
+  - {position: {x: 10, y: 15}, holeDiameter: 0.3, padDiameter: 0.6, shape: Round}

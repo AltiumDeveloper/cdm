@@ -44,6 +44,7 @@ classes:
     annotations:
       grid: grid:workspace:{workspace-id}:design:project/{id}
       platformAPI: DesProject
+      adSDK: EDP.IProject
     see_also:
       - https://www.altium.com/documentation/altium-365/workspace-projects
       - https://www.altium.com/documentation/altium-designer/creating-projects-documents
@@ -126,6 +127,7 @@ classes:
       share one bare board, whereas fabrication variants also change overlay information and so need a different board.
     annotations:
       platformAPI: DesWipVariant
+      adSDK: EDP.IProjectVariant
     see_also:
       - https://www.altium.com/documentation/altium-designer/design-variants
       - https://www.altium.com/documentation/altium-designer/variant-manager
@@ -295,4 +297,1588 @@ classes:
       platformAPI: RuleCheckExecution
       maturity: EXPERIMENTAL
 
+
+  # ---------------------------------------------------------------------------------------------------------------
+  # Design content (compiled design). EXPERIMENTAL draft, refresh of pull request 23 (UDM modelling).
+  # Models the compiled, connectivity-level view of a design (what agents read), not the drawing.
+  # ---------------------------------------------------------------------------------------------------------------
+
+  des_CompiledDesign:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:CompiledDesign
+    title: Compiled Design
+    description: >-
+      The compiled, connectivity-level view of a design project at one revision: its schematic sheets, the
+      components placed on them, their pins and the nets that connect those pins, resolved across the sheet
+      hierarchy. It is what is read when the logical design is analysed, as opposed to the drawing objects that are
+      edited in the schematic editor. It is identified by its project and revision.
+    comments:
+      - Refresh of pull request 23 (UDM modelling). Open question Q1 is whether this should be a Resource of the project
+        (as here), an Artifact, or part of a new project revision class.
+      - Design data is only available for revisions where design data generation has run.
+    aliases:
+      - design data
+      - unified data model
+    annotations:
+      platformAPI: DesignData_Preview
+      adSDK: EDP.IProject
+      maturity: EXPERIMENTAL
+    attributes:
+      des_CompiledDesign_project:
+        slot_uri: des:CompiledDesign_project
+        alias: project
+        title: project
+        description: The design project this compiled design belongs to.
+        range: des_Project
+        required: true
+        multivalued: false
+      des_CompiledDesign_revisionId:
+        slot_uri: des:CompiledDesign_revisionId
+        alias: revisionId
+        title: revision ID
+        description: The version-control revision of the project that was compiled.
+        range: string
+        required: true
+        multivalued: false
+      des_CompiledDesign_sheets:
+        slot_uri: des:CompiledDesign_sheets
+        alias: sheets
+        title: sheets
+        description: The root schematic sheets of the design; sub-sheets are reached through their parents.
+        range: des_SchematicSheet
+        multivalued: true
+        required: false
+      des_CompiledDesign_components:
+        slot_uri: des:CompiledDesign_components
+        alias: components
+        title: components
+        description: All components placed in the design.
+        range: des_PlacedComponent
+        multivalued: true
+        required: false
+      des_CompiledDesign_nets:
+        slot_uri: des:CompiledDesign_nets
+        alias: nets
+        title: nets
+        description: All nets of the design, power and signal, resolved across sheets.
+        range: des_Net
+        multivalued: true
+        required: false
+      des_CompiledDesign_netClasses:
+        slot_uri: des:CompiledDesign_netClasses
+        alias: netClasses
+        title: net classes
+        description: The net classes defined in the design.
+        range: des_NetClass
+        multivalued: true
+        required: false
+      des_CompiledDesign_variations:
+        slot_uri: des:CompiledDesign_variations
+        alias: variations
+        title: variations
+        description: Per-component variations defined by the project variants.
+        range: des_VariantVariation
+        multivalued: true
+        required: false
+      des_CompiledDesign_boards:
+        slot_uri: des:CompiledDesign_boards
+        alias: boards
+        title: boards
+        description: The PCB layouts of the project at this revision.
+        range: des_PcbLayout
+        required: false
+        multivalued: true
+
+  des_SchematicSheet:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:SchematicSheet
+    title: Schematic Sheet
+    description: >-
+      A schematic document of the design. Sheets form a hierarchy: a sheet can reference sub-sheets, and a repeated
+      (multi-channel) sub-sheet appears under each parent that references it.
+    aliases:
+      - schematic document
+    annotations:
+      platformAPI: DesignDataSchematicDocument_Preview
+      adSDK: EDP.IDocument, SCH.ISch_Sheet
+      maturity: EXPERIMENTAL
+    attributes:
+      des_SchematicSheet_documentId:
+        slot_uri: des:SchematicSheet_documentId
+        alias: documentId
+        title: document ID
+        description: Stable identifier of the sheet within the project.
+        range: string
+        required: true
+        multivalued: false
+      des_SchematicSheet_fileName:
+        slot_uri: des:SchematicSheet_fileName
+        alias: fileName
+        title: file name
+        description: File name of the sheet, e.g. MCU.SchDoc.
+        range: string
+        multivalued: false
+        required: false
+      des_SchematicSheet_children:
+        slot_uri: des:SchematicSheet_children
+        alias: children
+        title: children
+        description: Sub-sheets referenced from this sheet.
+        range: des_SchematicSheet
+        multivalued: true
+        required: false
+      des_SchematicSheet_width:
+        slot_uri: des:SchematicSheet_width
+        alias: width
+        title: width
+        description: The sheet width, in millimetres. Not served by the Platform API; AD SDK ISch_Document.SheetSizeX.
+        range: decimal
+        required: false
+        multivalued: false
+      des_SchematicSheet_height:
+        slot_uri: des:SchematicSheet_height
+        alias: height
+        title: height
+        description: The sheet height, in millimetres. Not served by the Platform API; AD SDK ISch_Document.SheetSizeY.
+        range: decimal
+        required: false
+        multivalued: false
+
+  des_PlacedComponent:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:PlacedComponent
+    title: Placed Component
+    description: >-
+      A component instance placed in the design, identified by its designator. When the design uses managed
+      components, it is derived from a library component revision; when it uses a file-based library, there is no
+      Workspace library item to follow and only its parameters (for example manufacturer and part number) describe it.
+    comments:
+      - Replaces udm_DesignComponent and des_design_component from pull request 23.
+    aliases:
+      - component instance
+    annotations:
+      platformAPI: DesignDataComponent_Preview
+      adSDK: EDP.IComponent, SCH.ISch_Component
+      maturity: EXPERIMENTAL
+    attributes:
+      des_PlacedComponent_uniqueId:
+        slot_uri: des:PlacedComponent_uniqueId
+        alias: uniqueId
+        title: unique ID
+        description: Identifier of the placed component, unique within the design.
+        range: string
+        multivalued: false
+        required: false
+      des_PlacedComponent_logicalDesignator:
+        slot_uri: des:PlacedComponent_logicalDesignator
+        alias: logicalDesignator
+        title: logical designator
+        description: The designator as placed on the schematic, e.g. U3.
+        range: string
+        required: true
+        multivalued: false
+      des_PlacedComponent_physicalDesignator:
+        slot_uri: des:PlacedComponent_physicalDesignator
+        alias: physicalDesignator
+        title: physical designator
+        description: The designator after multi-channel annotation, e.g. U3_CH1.
+        range: string
+        multivalued: false
+        required: false
+      des_PlacedComponent_sheet:
+        slot_uri: des:PlacedComponent_sheet
+        alias: sheet
+        title: sheet
+        description: The sheet the component is placed on.
+        range: des_SchematicSheet
+        multivalued: false
+        required: false
+      des_PlacedComponent_parts:
+        slot_uri: des:PlacedComponent_parts
+        alias: parts
+        title: parts
+        description: The parts (sections) of a multi-part component; a single-part component has one.
+        range: des_ComponentPart
+        multivalued: true
+        required: false
+      des_PlacedComponent_parameters:
+        slot_uri: des:PlacedComponent_parameters
+        alias: parameters
+        title: parameters
+        description: Name/value parameters of the placed component.
+        range: des_DesignParameter
+        multivalued: true
+        required: false
+      des_PlacedComponent_librarySource:
+        slot_uri: des:PlacedComponent_librarySource
+        alias: librarySource
+        title: library source
+        description: The library component revision this placed component was taken from, when it is a managed component.
+        range: lib_ComponentRevision
+        multivalued: false
+        required: false
+      des_PlacedComponent_librarySourceKind:
+        slot_uri: des:PlacedComponent_librarySourceKind
+        alias: librarySourceKind
+        title: library source kind
+        description: Whether the component comes from a managed Workspace library or a file-based library.
+        range: des_LibrarySourceKind
+        multivalued: false
+        required: false
+      des_PlacedComponent_location:
+        slot_uri: des:PlacedComponent_location
+        alias: location
+        title: location
+        description: The location on its schematic sheet.
+        range: des_Point2D
+        required: false
+        multivalued: false
+      des_PlacedComponent_boundingBox:
+        slot_uri: des:PlacedComponent_boundingBox
+        alias: boundingBox
+        title: bounding box
+        description: The bounding box on its schematic sheet.
+        range: des_Rectangle2D
+        required: false
+        multivalued: false
+
+  des_ComponentPart:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:ComponentPart
+    title: Component Part
+    description: >-
+      One part (section) of a placed component. Multi-part components, such as a quad op-amp, are drawn as several
+      parts that may sit on different sheets; each part carries a subset of the component's pins.
+    annotations:
+      platformAPI: DesignDataPart_Preview
+      adSDK: EDP.IPart
+      maturity: EXPERIMENTAL
+    attributes:
+      des_ComponentPart_uniqueId:
+        slot_uri: des:ComponentPart_uniqueId
+        alias: uniqueId
+        title: unique ID
+        description: Identifier of the part, unique within the design.
+        range: string
+        multivalued: false
+        required: false
+      des_ComponentPart_sheet:
+        slot_uri: des:ComponentPart_sheet
+        alias: sheet
+        title: sheet
+        description: The sheet the part is drawn on.
+        range: des_SchematicSheet
+        multivalued: false
+        required: false
+      des_ComponentPart_pins:
+        slot_uri: des:ComponentPart_pins
+        alias: pins
+        title: pins
+        description: The pins of this part.
+        range: des_PinInstance
+        multivalued: true
+        required: false
+      des_ComponentPart_location:
+        slot_uri: des:ComponentPart_location
+        alias: location
+        title: location
+        description: The location on its schematic sheet.
+        range: des_Point2D
+        required: false
+        multivalued: false
+      des_ComponentPart_boundingBox:
+        slot_uri: des:ComponentPart_boundingBox
+        alias: boundingBox
+        title: bounding box
+        description: The bounding box on its schematic sheet.
+        range: des_Rectangle2D
+        required: false
+        multivalued: false
+
+  des_PinInstance:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:PinInstance
+    title: Pin Instance
+    description: >-
+      A pin of a placed component in the design. It takes its number, name and electrical type from the library pin
+      definition and is connected to at most one net.
+    comments:
+      - Replaces udm_DesignPin and des_design_pin from pull request 23.
+    annotations:
+      platformAPI: DesignDataPin_Preview
+      adSDK: EDP.INetItem, SCH.ISch_Pin
+      maturity: EXPERIMENTAL
+    attributes:
+      des_PinInstance_number:
+        slot_uri: des:PinInstance_number
+        alias: number
+        title: number
+        description: Pin number, e.g. 14 or A3.
+        range: string
+        required: true
+        multivalued: false
+      des_PinInstance_name:
+        slot_uri: des:PinInstance_name
+        alias: name
+        title: name
+        description: Pin name, e.g. PA5.
+        range: string
+        multivalued: false
+        required: false
+      des_PinInstance_electricalType:
+        slot_uri: des:PinInstance_electricalType
+        alias: electricalType
+        title: electrical type
+        description: Electrical type of the pin, used by electrical rule checks.
+        range: lib_PinElectricalType
+        multivalued: false
+        required: false
+      des_PinInstance_functions:
+        slot_uri: des:PinInstance_functions
+        alias: functions
+        title: functions
+        description: Alternate functions the pin can serve.
+        range: string
+        multivalued: true
+        required: false
+      des_PinInstance_definedBy:
+        slot_uri: des:PinInstance_definedBy
+        alias: definedBy
+        title: defined by
+        description: The library pin definition this pin instance comes from, when the component is managed.
+        range: lib_Pin
+        multivalued: false
+        required: false
+      des_PinInstance_location:
+        slot_uri: des:PinInstance_location
+        alias: location
+        title: location
+        description: The location on its schematic sheet.
+        range: des_Point2D
+        required: false
+        multivalued: false
+      des_PinInstance_boundingBox:
+        slot_uri: des:PinInstance_boundingBox
+        alias: boundingBox
+        title: bounding box
+        description: The bounding box on its schematic sheet.
+        range: des_Rectangle2D
+        required: false
+        multivalued: false
+
+  des_Net:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:Net
+    title: Net
+    description: >-
+      An electrical net of the compiled design: a set of component pins that are electrically connected, resolved
+      across the sheet hierarchy. Its scope says whether it is local to one sheet, part of a sheet interface or global.
+      Net names are not necessarily unique.
+    comments:
+      - Replaces udm_DesignNet and des_design_net from pull request 23; nets are design-wide rather than per sheet.
+      - Open question Q2 is which relation from the relation dictionary (if any) expresses that a net connects pins.
+    annotations:
+      platformAPI: DesignDataNet_Preview
+      adSDK: EDP.INet
+      maturity: EXPERIMENTAL
+    attributes:
+      des_Net_name:
+        slot_uri: des:Net_name
+        alias: name
+        title: name
+        description: Net name, e.g. GND or SPI1_CLK.
+        range: string
+        required: true
+        multivalued: false
+      des_Net_scope:
+        slot_uri: des:Net_scope
+        alias: scope
+        title: scope
+        description: Whether the net is local to a sheet, a sheet interface, or global.
+        range: des_NetScope
+        multivalued: false
+        required: false
+      des_Net_isPower:
+        slot_uri: des:Net_isPower
+        alias: isPower
+        title: is power
+        description: True when the net carries power, including ground.
+        range: boolean
+        multivalued: false
+        required: false
+      des_Net_connects:
+        slot_uri: des:Net_connects
+        alias: connects
+        title: connects
+        description: The component pins connected by this net.
+        range: des_PinInstance
+        multivalued: true
+        required: false
+      des_Net_netItems:
+        slot_uri: des:Net_netItems
+        alias: netItems
+        title: net items
+        description: The connection objects that make up the net, such as net labels, ports, sheet entries and power objects.
+        range: des_NetItem
+        multivalued: true
+        required: false
+      des_Net_netClasses:
+        slot_uri: des:Net_netClasses
+        alias: netClasses
+        title: net classes
+        description: The net classes this net belongs to.
+        range: des_NetClass
+        multivalued: true
+        required: false
+      des_Net_differentialPair:
+        slot_uri: des:Net_differentialPair
+        alias: differentialPair
+        title: differential pair
+        description: The differential pair this net is one side of, if any.
+        range: des_DifferentialPair
+        multivalued: false
+        required: false
+      des_Net_wires:
+        slot_uri: des:Net_wires
+        alias: wires
+        title: wires
+        description: The wires drawn for this net on schematic sheets.
+        range: des_Wire
+        required: false
+        multivalued: true
+
+  des_NetItem:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:NetItem
+    title: Net Item
+    description: >-
+      A connection object that contributes to a net, such as a net label, a port, a sheet entry or a power object.
+    annotations:
+      platformAPI: DesignDataNetItem_Preview
+      adSDK: EDP.INetItem
+      maturity: EXPERIMENTAL
+    attributes:
+      des_NetItem_kind:
+        slot_uri: des:NetItem_kind
+        alias: kind
+        title: kind
+        description: The kind of connection object.
+        range: des_NetItemKind
+        required: true
+        multivalued: false
+      des_NetItem_name:
+        slot_uri: des:NetItem_name
+        alias: name
+        title: name
+        description: The name carried by the object, e.g. a port name.
+        range: string
+        multivalued: false
+        required: false
+      des_NetItem_location:
+        slot_uri: des:NetItem_location
+        alias: location
+        title: location
+        description: The location on its schematic sheet.
+        range: des_Point2D
+        required: false
+        multivalued: false
+      des_NetItem_boundingBox:
+        slot_uri: des:NetItem_boundingBox
+        alias: boundingBox
+        title: bounding box
+        description: The bounding box on its schematic sheet.
+        range: des_Rectangle2D
+        required: false
+        multivalued: false
+
+  des_NetClass:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:NetClass
+    title: Net Class
+    description: >-
+      A named group of nets that share design rules, for example DDR3 or HighSpeed.
+    annotations:
+      adSDK: EDP.INetClass
+      maturity: EXPERIMENTAL
+    attributes:
+      des_NetClass_name:
+        slot_uri: des:NetClass_name
+        alias: name
+        title: name
+        description: Net class name.
+        range: string
+        required: true
+        multivalued: false
+
+  des_DifferentialPair:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:DifferentialPair
+    title: Differential Pair
+    description: >-
+      Two nets that carry a differential signal together, for example USB_D_P and USB_D_N.
+    annotations:
+      platformAPI: DesignDataDifferentialPair_Preview
+      adSDK: EDP.IDifferentialPair
+      maturity: EXPERIMENTAL
+    attributes:
+      des_DifferentialPair_name:
+        slot_uri: des:DifferentialPair_name
+        alias: name
+        title: name
+        description: Differential pair name, e.g. USB_D.
+        range: string
+        required: true
+        multivalued: false
+      des_DifferentialPair_positive:
+        slot_uri: des:DifferentialPair_positive
+        alias: positive
+        title: positive net
+        description: The positive net of the pair.
+        range: des_Net
+        multivalued: false
+        required: false
+      des_DifferentialPair_negative:
+        slot_uri: des:DifferentialPair_negative
+        alias: negative
+        title: negative net
+        description: The negative net of the pair.
+        range: des_Net
+        multivalued: false
+        required: false
+
+  des_VariantVariation:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:VariantVariation
+    title: Variant Variation
+    description: >-
+      How one placed component differs in a project variant: not fitted, or replaced by an alternate component.
+    comments:
+      - Replaces udm_DesignVariant and des_design_variant_variation from pull request 23.
+    annotations:
+      platformAPI: DesignDataVariation_Preview
+      adSDK: EDP.IComponentVariation
+      maturity: EXPERIMENTAL
+    attributes:
+      des_VariantVariation_variant:
+        slot_uri: des:VariantVariation_variant
+        alias: variant
+        title: variant
+        description: The project variant that defines the variation.
+        range: des_ProjectVariant
+        required: true
+        multivalued: false
+      des_VariantVariation_component:
+        slot_uri: des:VariantVariation_component
+        alias: component
+        title: component
+        description: The placed component that varies.
+        range: des_PlacedComponent
+        required: true
+        multivalued: false
+      des_VariantVariation_kind:
+        slot_uri: des:VariantVariation_kind
+        alias: kind
+        title: kind
+        description: How the component varies.
+        range: des_ComponentVariationKind
+        required: true
+        multivalued: false
+      des_VariantVariation_alternate:
+        slot_uri: des:VariantVariation_alternate
+        alias: alternate
+        title: alternate
+        description: The component revision used instead, for an alternate variation.
+        range: lib_ComponentRevision
+        multivalued: false
+        required: false
+
+  des_DesignParameter:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:DesignParameter
+    title: Design Parameter
+    description: >-
+      A name/value parameter of an object in the compiled design, such as a placed component.
+    annotations:
+      adSDK: EDP.IParameter
+      maturity: EXPERIMENTAL
+    attributes:
+      des_DesignParameter_name:
+        slot_uri: des:DesignParameter_name
+        alias: name
+        title: name
+        description: Parameter name.
+        range: string
+        required: true
+        multivalued: false
+      des_DesignParameter_value:
+        slot_uri: des:DesignParameter_value
+        alias: value
+        title: value
+        description: Parameter value.
+        range: string
+        multivalued: false
+        required: false
+
+  des_Point2D:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:Point2D
+    title: Point 2D
+    description: A point in the coordinate system of a schematic sheet or PCB document.
+    comments:
+    - The Platform API serves PCB positions in internal units, mils and millimetres (DesPosition2D); the AD SDK uses internal
+      units of 10,000 per mil. The integer x/y of DesignDataLocation_Preview (schematic design data) has no unit stated
+      in the API snapshot; this is open question Q7.
+    annotations:
+      platformAPI: DesPosition2D
+      adSDK: PCB.ICoordPoint
+      maturity: EXPERIMENTAL
+    attributes:
+      des_Point2D_x:
+        slot_uri: des:Point2D_x
+        alias: x
+        title: x
+        description: The X coordinate, in millimetres.
+        range: decimal
+        required: true
+        multivalued: false
+      des_Point2D_y:
+        slot_uri: des:Point2D_y
+        alias: y
+        title: y
+        description: The Y coordinate, in millimetres.
+        range: decimal
+        required: true
+        multivalued: false
+
+  des_Rectangle2D:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:Rectangle2D
+    title: Rectangle 2D
+    description: An axis-aligned rectangle, used for bounding boxes of drawing objects.
+    comments:
+    - Platform API PCB items give two corners (DesRectangle pos1/pos2); schematic design data gives left/bottom/right/top
+      (DesignDataRectangle_Preview).
+    annotations:
+      platformAPI: DesRectangle
+      adSDK: PCB.ICoordRect
+      maturity: EXPERIMENTAL
+    attributes:
+      des_Rectangle2D_left:
+        slot_uri: des:Rectangle2D_left
+        alias: left
+        title: left
+        description: The left edge, in millimetres.
+        range: decimal
+        required: true
+        multivalued: false
+      des_Rectangle2D_bottom:
+        slot_uri: des:Rectangle2D_bottom
+        alias: bottom
+        title: bottom
+        description: The bottom edge, in millimetres.
+        range: decimal
+        required: true
+        multivalued: false
+      des_Rectangle2D_right:
+        slot_uri: des:Rectangle2D_right
+        alias: right
+        title: right
+        description: The right edge, in millimetres.
+        range: decimal
+        required: true
+        multivalued: false
+      des_Rectangle2D_top:
+        slot_uri: des:Rectangle2D_top
+        alias: top
+        title: top
+        description: The top edge, in millimetres.
+        range: decimal
+        required: true
+        multivalued: false
+
+  des_PcbLayout:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:PcbLayout
+    title: PCB Layout
+    description: 'The physical design of one board in a design project at one revision: its outline, layer stack, placed
+      components, pads, tracks and vias, and the copper nets they form.'
+    comments:
+    - The Platform API serves it per variant (DesWipVariant.pcb, DesReleaseVariant.pcb), not under DesignData_Preview; it
+      is attached to Compiled Design here so that one traversal reaches both the logical and the physical design (see G7,
+      two schematic paths).
+    - Arcs, polygons (copper pours), regions, fills, text, dimensions, rooms and design rules are available in the AD SDK
+      (IPCB_Arc, IPCB_Polygon, IPCB_Region, ...) but not in the Platform API, and are out of scope of this draft.
+    - DesPcb.mesh3D is marked PROTOTYPE in the Platform API and is out of scope.
+    aliases:
+    - board
+    - PCB document
+    annotations:
+      platformAPI: DesPcb
+      adSDK: PCB.IPCB_Board
+      maturity: EXPERIMENTAL
+    attributes:
+      des_PcbLayout_documentId:
+        slot_uri: des:PcbLayout_documentId
+        alias: documentId
+        title: document id
+        description: The identifier of the PCB document.
+        range: string
+        required: true
+        multivalued: false
+      des_PcbLayout_documentName:
+        slot_uri: des:PcbLayout_documentName
+        alias: documentName
+        title: document name
+        description: The PCB document file name.
+        range: string
+        required: false
+        multivalued: false
+      des_PcbLayout_origin:
+        slot_uri: des:PcbLayout_origin
+        alias: origin
+        title: origin
+        description: The location of the coordinate system origin.
+        range: des_Point2D
+        required: false
+        multivalued: false
+      des_PcbLayout_outline:
+        slot_uri: des:PcbLayout_outline
+        alias: outline
+        title: outline
+        description: The vertices of the board outline, in order.
+        range: des_Point2D
+        required: false
+        multivalued: true
+      des_PcbLayout_area:
+        slot_uri: des:PcbLayout_area
+        alias: area
+        title: area
+        description: The area enclosed by the board outline, in square millimetres.
+        range: decimal
+        required: false
+        multivalued: false
+      des_PcbLayout_stackup:
+        slot_uri: des:PcbLayout_stackup
+        alias: stackup
+        title: stackup
+        description: The layer structure of the board.
+        range: des_Stackup
+        required: false
+        multivalued: false
+      des_PcbLayout_components:
+        slot_uri: des:PcbLayout_components
+        alias: components
+        title: components
+        description: The components placed on the board.
+        range: des_PcbComponent
+        required: false
+        multivalued: true
+      des_PcbLayout_nets:
+        slot_uri: des:PcbLayout_nets
+        alias: nets
+        title: nets
+        description: The electrically connected copper regions of the board.
+        range: des_PcbNet
+        required: false
+        multivalued: true
+      des_PcbLayout_pads:
+        slot_uri: des:PcbLayout_pads
+        alias: pads
+        title: pads
+        description: All pads on the board, including free pads.
+        range: des_Pad
+        required: false
+        multivalued: true
+      des_PcbLayout_tracks:
+        slot_uri: des:PcbLayout_tracks
+        alias: tracks
+        title: tracks
+        description: All conductor segments on the board.
+        range: des_Track
+        required: false
+        multivalued: true
+      des_PcbLayout_vias:
+        slot_uri: des:PcbLayout_vias
+        alias: vias
+        title: vias
+        description: All vias on the board.
+        range: des_Via
+        required: false
+        multivalued: true
+
+  des_Stackup:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:Stackup
+    title: Layer Stackup
+    description: 'The layer structure of a board: one or more layer stacks (more than one for rigid-flex boards).'
+    annotations:
+      platformAPI: DesStackup
+      adSDK: PCB.IPCB_MasterLayerStack
+      maturity: EXPERIMENTAL
+    attributes:
+      des_Stackup_stackupType:
+        slot_uri: des:Stackup_stackupType
+        alias: stackupType
+        title: stackup type
+        description: The stackup type as reported by the Platform API.
+        range: string
+        required: false
+        multivalued: false
+      des_Stackup_stacks:
+        slot_uri: des:Stackup_stacks
+        alias: stacks
+        title: stacks
+        description: The layer stacks (substacks) of the board.
+        range: des_LayerStack
+        required: false
+        multivalued: true
+
+  des_LayerStack:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:LayerStack
+    title: Layer Stack
+    description: One stack of layers of a board, ordered from top to bottom; a rigid-flex board has one per rigid or flex
+      region type.
+    annotations:
+      platformAPI: DesStack
+      adSDK: PCB.IPCB_LayerStack
+      maturity: EXPERIMENTAL
+    attributes:
+      des_LayerStack_name:
+        slot_uri: des:LayerStack_name
+        alias: name
+        title: name
+        description: The stack name.
+        range: string
+        required: true
+        multivalued: false
+      des_LayerStack_layers:
+        slot_uri: des:LayerStack_layers
+        alias: layers
+        title: layers
+        description: The layers of the stack, ordered from top to bottom.
+        range: des_BoardLayer
+        required: false
+        multivalued: true
+
+  des_BoardLayer:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:BoardLayer
+    title: Board Layer
+    description: 'A physical or logical layer of a board: copper (signal or plane), dielectric, mask, overlay, paste or
+      mechanical.'
+    annotations:
+      platformAPI: DesLayer
+      adSDK: PCB.IPCB_LayerObject, PCB.IPCB_ElectricalLayer, PCB.IPCB_DielectricLayer
+      maturity: EXPERIMENTAL
+    attributes:
+      des_BoardLayer_name:
+        slot_uri: des:BoardLayer_name
+        alias: name
+        title: name
+        description: The layer name.
+        range: string
+        required: true
+        multivalued: false
+      des_BoardLayer_layerType:
+        slot_uri: des:BoardLayer_layerType
+        alias: layerType
+        title: layer type
+        description: The kind of layer.
+        range: des_LayerType
+        required: true
+        multivalued: false
+      des_BoardLayer_material:
+        slot_uri: des:BoardLayer_material
+        alias: material
+        title: material
+        description: The layer material.
+        range: string
+        required: false
+        multivalued: false
+      des_BoardLayer_thickness:
+        slot_uri: des:BoardLayer_thickness
+        alias: thickness
+        title: thickness
+        description: The layer thickness, in millimetres.
+        range: decimal
+        required: false
+        multivalued: false
+      des_BoardLayer_copperWeight:
+        slot_uri: des:BoardLayer_copperWeight
+        alias: copperWeight
+        title: copper weight
+        description: The copper weight of a copper layer, in ounces.
+        range: decimal
+        required: false
+        multivalued: false
+      des_BoardLayer_dielectricConstant:
+        slot_uri: des:BoardLayer_dielectricConstant
+        alias: dielectricConstant
+        title: dielectric constant
+        description: The dielectric constant of a dielectric layer.
+        range: decimal
+        required: false
+        multivalued: false
+
+  des_PcbComponent:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:PcbComponent
+    title: PCB Component
+    description: 'A component as placed on a board: its footprint instance with position, rotation, side and pads.'
+    comments:
+    - The Platform API gives the schematic and PCB identifiers of a design item (DesDesignItem.schId, pcbId) but does not
+      state how they join to DesignDataComponent_Preview; the AD SDK gives IPCB_Component.SourceUniqueId and SourceDesignator.
+      The join is open question Q8.
+    - The Platform API gives the footprint by name only (DesDesignItem.footprintName); the AD SDK gives IPCB_Component.ItemGUID
+      / ItemRevisionGUID / VaultGUID, which can resolve a managed footprint.
+    annotations:
+      platformAPI: DesDesignItem
+      adSDK: PCB.IPCB_Component
+      maturity: EXPERIMENTAL
+    attributes:
+      des_PcbComponent_designator:
+        slot_uri: des:PcbComponent_designator
+        alias: designator
+        title: designator
+        description: The component designator on the board.
+        range: string
+        required: true
+        multivalued: false
+      des_PcbComponent_footprintName:
+        slot_uri: des:PcbComponent_footprintName
+        alias: footprintName
+        title: footprint name
+        description: The name of the footprint used.
+        range: string
+        required: false
+        multivalued: false
+      des_PcbComponent_position:
+        slot_uri: des:PcbComponent_position
+        alias: position
+        title: position
+        description: The placement location.
+        range: des_Point2D
+        required: false
+        multivalued: false
+      des_PcbComponent_rotation:
+        slot_uri: des:PcbComponent_rotation
+        alias: rotation
+        title: rotation
+        description: The rotation, in degrees.
+        range: decimal
+        required: false
+        multivalued: false
+      des_PcbComponent_layer:
+        slot_uri: des:PcbComponent_layer
+        alias: layer
+        title: layer
+        description: The layer the component is placed on (top or bottom side).
+        range: des_BoardLayer
+        required: false
+        multivalued: false
+      des_PcbComponent_boundingBox:
+        slot_uri: des:PcbComponent_boundingBox
+        alias: boundingBox
+        title: bounding box
+        description: The bounding box of the component on the board.
+        range: des_Rectangle2D
+        required: false
+        multivalued: false
+      des_PcbComponent_pads:
+        slot_uri: des:PcbComponent_pads
+        alias: pads
+        title: pads
+        description: The pads of the footprint instance.
+        range: des_Pad
+        required: false
+        multivalued: true
+      des_PcbComponent_placedComponent:
+        slot_uri: des:PcbComponent_placedComponent
+        alias: placedComponent
+        title: placed component
+        description: The component in the compiled schematic design that this board component implements.
+        range: des_PlacedComponent
+        required: false
+        multivalued: false
+      des_PcbComponent_footprint:
+        slot_uri: des:PcbComponent_footprint
+        alias: footprint
+        title: footprint
+        description: The Workspace footprint revision used, when the footprint is managed.
+        range: lib_FootprintRevision
+        required: false
+        multivalued: false
+
+  des_PcbNet:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:PcbNet
+    title: PCB Net
+    description: 'A net as realised in copper on a board: the pads, tracks and vias that carry it, the layers it is routed
+      on and its routed length.'
+    comments:
+    - The AD SDK links a PCB net to its logical net (IPCB_Net.GetLogicalNet); the Platform API has no such link, so a consumer
+      can only join on the net name.
+    annotations:
+      platformAPI: DesNet
+      adSDK: PCB.IPCB_Net
+      maturity: EXPERIMENTAL
+    attributes:
+      des_PcbNet_name:
+        slot_uri: des:PcbNet_name
+        alias: name
+        title: name
+        description: The net name.
+        range: string
+        required: true
+        multivalued: false
+      des_PcbNet_routedLength:
+        slot_uri: des:PcbNet_routedLength
+        alias: routedLength
+        title: routed length
+        description: The cumulative routed length, in millimetres.
+        range: decimal
+        required: false
+        multivalued: false
+      des_PcbNet_layers:
+        slot_uri: des:PcbNet_layers
+        alias: layers
+        title: layers
+        description: The layers the net is routed on.
+        range: des_BoardLayer
+        required: false
+        multivalued: true
+      des_PcbNet_pads:
+        slot_uri: des:PcbNet_pads
+        alias: pads
+        title: pads
+        description: The pads on the net.
+        range: des_Pad
+        required: false
+        multivalued: true
+      des_PcbNet_tracks:
+        slot_uri: des:PcbNet_tracks
+        alias: tracks
+        title: tracks
+        description: The tracks on the net.
+        range: des_Track
+        required: false
+        multivalued: true
+      des_PcbNet_vias:
+        slot_uri: des:PcbNet_vias
+        alias: vias
+        title: vias
+        description: The vias on the net.
+        range: des_Via
+        required: false
+        multivalued: true
+      des_PcbNet_logicalNet:
+        slot_uri: des:PcbNet_logicalNet
+        alias: logicalNet
+        title: logical net
+        description: The net of the compiled schematic design that this copper net implements.
+        range: des_Net
+        required: false
+        multivalued: false
+
+  des_Pad:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:Pad
+    title: Pad
+    description: A connection target on a board, usually one pin of a placed component; a free pad belongs to no component.
+    comments:
+    - Neither API states the pad-to-pin join explicitly; the AD SDK exposes IPCB_Pad.PinDescriptorString and OwnerPart_ID.
+      This is part of open question Q8.
+    annotations:
+      platformAPI: DesPad
+      adSDK: PCB.IPCB_Pad
+      maturity: EXPERIMENTAL
+    attributes:
+      des_Pad_designator:
+        slot_uri: des:Pad_designator
+        alias: designator
+        title: designator
+        description: The pad designator within its component (for example 1, A3).
+        range: string
+        required: false
+        multivalued: false
+      des_Pad_globalDesignator:
+        slot_uri: des:Pad_globalDesignator
+        alias: globalDesignator
+        title: global designator
+        description: The pad designator qualified by its component designator.
+        range: string
+        required: false
+        multivalued: false
+      des_Pad_padType:
+        slot_uri: des:Pad_padType
+        alias: padType
+        title: pad type
+        description: Whether the pad is surface-mount or free.
+        range: des_PadType
+        required: true
+        multivalued: false
+      des_Pad_shape:
+        slot_uri: des:Pad_shape
+        alias: shape
+        title: shape
+        description: The pad shape.
+        range: des_PrimitiveShape
+        required: false
+        multivalued: false
+      des_Pad_sizeX:
+        slot_uri: des:Pad_sizeX
+        alias: sizeX
+        title: size x
+        description: The pad size along X, in millimetres.
+        range: decimal
+        required: false
+        multivalued: false
+      des_Pad_sizeY:
+        slot_uri: des:Pad_sizeY
+        alias: sizeY
+        title: size y
+        description: The pad size along Y, in millimetres.
+        range: decimal
+        required: false
+        multivalued: false
+      des_Pad_holeSize:
+        slot_uri: des:Pad_holeSize
+        alias: holeSize
+        title: hole size
+        description: The hole size, in millimetres; zero for surface-mount pads.
+        range: decimal
+        required: false
+        multivalued: false
+      des_Pad_isPlated:
+        slot_uri: des:Pad_isPlated
+        alias: isPlated
+        title: is plated
+        description: Whether the hole is plated.
+        range: boolean
+        required: false
+        multivalued: false
+      des_Pad_position:
+        slot_uri: des:Pad_position
+        alias: position
+        title: position
+        description: The pad location.
+        range: des_Point2D
+        required: true
+        multivalued: false
+      des_Pad_rotation:
+        slot_uri: des:Pad_rotation
+        alias: rotation
+        title: rotation
+        description: The rotation, in degrees.
+        range: decimal
+        required: false
+        multivalued: false
+      des_Pad_layer:
+        slot_uri: des:Pad_layer
+        alias: layer
+        title: layer
+        description: The layer of the pad; multi-layer for through-hole pads.
+        range: des_BoardLayer
+        required: false
+        multivalued: false
+      des_Pad_net:
+        slot_uri: des:Pad_net
+        alias: net
+        title: net
+        description: The net the pad is on.
+        range: des_PcbNet
+        required: false
+        multivalued: false
+      des_Pad_pin:
+        slot_uri: des:Pad_pin
+        alias: pin
+        title: pin
+        description: The pin of the compiled schematic design that this pad realises.
+        range: des_PinInstance
+        required: false
+        multivalued: false
+
+  des_Track:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:Track
+    title: Track
+    description: A straight conductor segment on a board layer, with a width.
+    annotations:
+      platformAPI: DesTrack
+      adSDK: PCB.IPCB_Track
+      maturity: EXPERIMENTAL
+    attributes:
+      des_Track_begin:
+        slot_uri: des:Track_begin
+        alias: begin
+        title: begin
+        description: The first end point.
+        range: des_Point2D
+        required: true
+        multivalued: false
+      des_Track_end:
+        slot_uri: des:Track_end
+        alias: end
+        title: end
+        description: The second end point.
+        range: des_Point2D
+        required: true
+        multivalued: false
+      des_Track_width:
+        slot_uri: des:Track_width
+        alias: width
+        title: width
+        description: The track width, in millimetres.
+        range: decimal
+        required: true
+        multivalued: false
+      des_Track_layer:
+        slot_uri: des:Track_layer
+        alias: layer
+        title: layer
+        description: The layer of the track.
+        range: des_BoardLayer
+        required: false
+        multivalued: false
+      des_Track_net:
+        slot_uri: des:Track_net
+        alias: net
+        title: net
+        description: The net the track is on.
+        range: des_PcbNet
+        required: false
+        multivalued: false
+
+  des_Via:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:Via
+    title: Via
+    description: A plated hole that connects copper on two or more layers of a board.
+    annotations:
+      platformAPI: DesVia
+      adSDK: PCB.IPCB_Via
+      maturity: EXPERIMENTAL
+    attributes:
+      des_Via_name:
+        slot_uri: des:Via_name
+        alias: name
+        title: name
+        description: The via name, if any.
+        range: string
+        required: false
+        multivalued: false
+      des_Via_position:
+        slot_uri: des:Via_position
+        alias: position
+        title: position
+        description: The via location.
+        range: des_Point2D
+        required: true
+        multivalued: false
+      des_Via_holeDiameter:
+        slot_uri: des:Via_holeDiameter
+        alias: holeDiameter
+        title: hole diameter
+        description: The hole diameter, in millimetres.
+        range: decimal
+        required: true
+        multivalued: false
+      des_Via_padDiameter:
+        slot_uri: des:Via_padDiameter
+        alias: padDiameter
+        title: pad diameter
+        description: The pad diameter, in millimetres.
+        range: decimal
+        required: true
+        multivalued: false
+      des_Via_shape:
+        slot_uri: des:Via_shape
+        alias: shape
+        title: shape
+        description: The via pad shape.
+        range: des_PrimitiveShape
+        required: false
+        multivalued: false
+      des_Via_startLayer:
+        slot_uri: des:Via_startLayer
+        alias: startLayer
+        title: start layer
+        description: The first layer the via connects.
+        range: des_BoardLayer
+        required: false
+        multivalued: false
+      des_Via_endLayer:
+        slot_uri: des:Via_endLayer
+        alias: endLayer
+        title: end layer
+        description: The last layer the via connects.
+        range: des_BoardLayer
+        required: false
+        multivalued: false
+      des_Via_net:
+        slot_uri: des:Via_net
+        alias: net
+        title: net
+        description: The net the via is on.
+        range: des_PcbNet
+        required: false
+        multivalued: false
+
+  des_Wire:
+    is_a: core_Resource
+    in_subset: design
+    class_uri: des:Wire
+    title: Wire
+    description: A wire drawn on a schematic sheet, part of one net.
+    comments:
+    - '[interpretation] DesignDataNet_Preview.lines is read as the wires of the net: the AD SDK equivalent, INet.DM_Lines,
+      returns ILine, described as a line object on a schematic document.'
+    - The Platform API serves only location and bounding rectangle; vertices are available from the AD SDK (ISch_Wire inherits
+      Vertex / VerticesCount from ISch_Polygon).
+    annotations:
+      platformAPI: DesignDataLine_Preview
+      adSDK: EDP.ILine, SCH.ISch_Wire
+      maturity: EXPERIMENTAL
+    attributes:
+      des_Wire_uniqueId:
+        slot_uri: des:Wire_uniqueId
+        alias: uniqueId
+        title: unique id
+        description: The unique identifier of the wire.
+        range: string
+        required: false
+        multivalued: false
+      des_Wire_sheet:
+        slot_uri: des:Wire_sheet
+        alias: sheet
+        title: sheet
+        description: The sheet the wire is drawn on.
+        range: des_SchematicSheet
+        required: false
+        multivalued: false
+      des_Wire_location:
+        slot_uri: des:Wire_location
+        alias: location
+        title: location
+        description: The reference location of the wire.
+        range: des_Point2D
+        required: false
+        multivalued: false
+      des_Wire_boundingBox:
+        slot_uri: des:Wire_boundingBox
+        alias: boundingBox
+        title: bounding box
+        description: The bounding box of the wire.
+        range: des_Rectangle2D
+        required: false
+        multivalued: false
+      des_Wire_vertices:
+        slot_uri: des:Wire_vertices
+        alias: vertices
+        title: vertices
+        description: The vertices of the wire, in order.
+        range: des_Point2D
+        required: false
+        multivalued: true
+
 slots:
+
+enums:
+
+  des_NetScope:
+    is_a: Enumeration
+    in_subset: design
+    enum_uri: des:NetScope
+    title: Net Scope
+    description: How far a net reaches in the sheet hierarchy.
+    implements:
+      - owl:NamedIndividual
+    permissible_values:
+      Local:
+        description: The net exists on one sheet only.
+      SheetInterface:
+        description: The net connects a sheet to its parent through ports or sheet entries.
+      Global:
+        description: The net is global to the design, e.g. a power net.
+      Unknown:
+        description: The scope could not be determined.
+
+  des_NetItemKind:
+    is_a: Enumeration
+    in_subset: design
+    enum_uri: des:NetItemKind
+    title: Net Item Kind
+    description: The kind of connection object that contributes to a net.
+    implements:
+      - owl:NamedIndividual
+    permissible_values:
+      Pin:
+        description: A component pin.
+      SheetEntry:
+        description: A sheet entry on a sheet symbol.
+      NetLabel:
+        description: A net label.
+      Port:
+        description: A sheet port.
+      PowerObject:
+        description: A power port object, such as GND or VCC.
+
+  des_ComponentVariationKind:
+    is_a: Enumeration
+    in_subset: design
+    enum_uri: des:ComponentVariationKind
+    title: Component Variation Kind
+    description: How a placed component varies in a project variant.
+    implements:
+      - owl:NamedIndividual
+    permissible_values:
+      NotFitted:
+        description: The component is not assembled in this variant.
+      Alternate:
+        description: An alternate component is used in this variant.
+
+  des_LibrarySourceKind:
+    is_a: Enumeration
+    in_subset: design
+    enum_uri: des:LibrarySourceKind
+    title: Library Source Kind
+    description: Where a placed component was taken from.
+    implements:
+      - owl:NamedIndividual
+    permissible_values:
+      Managed:
+        description: A managed component from the Workspace library, traceable to a component revision.
+      FileLibrary:
+        description: A component from a file-based library (for example a SchLib), with no Workspace library item.
+      Unknown:
+        description: The source could not be determined.
+
+  des_LayerType:
+    is_a: Enumeration
+    in_subset: design
+    enum_uri: des:LayerType
+    title: Layer Type
+    description: The kind of a board layer, as classified by the Platform API (DesLayerType).
+    annotations:
+      platformAPI: DesLayerType
+    implements:
+    - owl:NamedIndividual
+    permissible_values:
+      Abstract:
+        description: Platform API ABSTRACT.
+      Adhesive:
+        description: Platform API ADHESIVE.
+      BikiniCoverlay:
+        description: Platform API BIKINI_COVERLAY.
+      Conductive:
+        description: Platform API CONDUCTIVE.
+      Core:
+        description: Platform API CORE.
+      Dielectric:
+        description: Platform API DIELECTRIC.
+      Foil:
+        description: Platform API FOIL.
+      Mechanical:
+        description: Platform API MECHANICAL.
+      Misc:
+        description: Platform API MISC.
+      NonConductive:
+        description: Platform API NON_CONDUCTIVE.
+      Overlay:
+        description: Platform API OVERLAY.
+      PasteMask:
+        description: Platform API PASTE_MASK.
+      PeLayer:
+        description: Platform API PE_LAYER.
+      Physical:
+        description: Platform API PHYSICAL.
+      Plane:
+        description: Platform API PLANE.
+      Plating:
+        description: Platform API PLATING.
+      Prepreg:
+        description: Platform API PREPREG.
+      Signal:
+        description: Platform API SIGNAL.
+      SolderMask:
+        description: Platform API SOLDER_MASK.
+      Stiffener:
+        description: Platform API STIFFENER.
+      SurfaceFinish:
+        description: Platform API SURFACE_FINISH.
+      Unknown:
+        description: Platform API UNKNOWN.
+
+  des_PadType:
+    is_a: Enumeration
+    in_subset: design
+    enum_uri: des:PadType
+    title: Pad Type
+    description: 'Whether a pad is surface-mount or free (Platform API DesPadType: "Pad type: SMD or free.").'
+    annotations:
+      platformAPI: DesPadType
+    implements:
+    - owl:NamedIndividual
+    permissible_values:
+      Smd:
+        description: Platform API SMD.
+      Free:
+        description: Platform API FREE.
+
+  des_PrimitiveShape:
+    is_a: Enumeration
+    in_subset: design
+    enum_uri: des:PrimitiveShape
+    title: Primitive Shape
+    description: The shape of a pad or via (Platform API DesPrimitiveShape).
+    annotations:
+      platformAPI: DesPrimitiveShape
+      adSDK: PCB.TShape
+    implements:
+    - owl:NamedIndividual
+    permissible_values:
+      None:
+        description: Platform API NONE. AD SDK TShape.eNoShape (matched by name, [interpretation]).
+      Round:
+        description: Platform API ROUND. AD SDK TShape.eRounded (matched by name, [interpretation]).
+      Rectangle:
+        description: Platform API RECTANGLE. AD SDK TShape.eRectangular (matched by name, [interpretation]).
+      Octagon:
+        description: Platform API OCTAGON. AD SDK TShape.eOctagonal (matched by name, [interpretation]).
+      Circle:
+        description: Platform API CIRCLE. AD SDK TShape.eCircleShape (matched by name, [interpretation]).
+      Arc:
+        description: Platform API ARC. AD SDK TShape.eArcShape (matched by name, [interpretation]).
+      Terminator:
+        description: Platform API TERMINATOR. AD SDK TShape.eTerminator (matched by name, [interpretation]).
+      RoundRectangle:
+        description: Platform API ROUND_RECTANGLE. AD SDK TShape.eRoundRectShape (matched by name, [interpretation]).
+      RotatedRectangle:
+        description: Platform API ROTATED_RECTANGLE. AD SDK TShape.eRotatedRectShape (matched by name, [interpretation]).
+      RoundedRectangle:
+        description: Platform API ROUNDED_RECTANGLE. AD SDK TShape.eRoundedRectangular (matched by name, [interpretation]).
+      Custom:
+        description: Platform API CUSTOM. AD SDK TShape.eCustomShape (matched by name, [interpretation]).

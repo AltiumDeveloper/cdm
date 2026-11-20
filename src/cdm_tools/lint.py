@@ -277,6 +277,7 @@ _NAMING_EXEMPT_ANNOTATIONS: frozenset[str] = frozenset(
         "grid",
         "platformAPI",
         "nexarAPI",
+        "adSDK",
         "maturity",
         "contentType",
         "vaultLinkParent",
