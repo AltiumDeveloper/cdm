@@ -1374,7 +1374,7 @@
 </div>
 <h1 id="with-platform-api">With Platform API</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/core/WithPlatformAPI">https://w3id.org/altium/cdm/core/WithPlatformAPI</a></p>
-<p>Mixin that adds API type annotations: platformAPI names the Altium 365 Platform API GraphQL type; nexarAPI names the Nexar (Octopart) GraphQL type for supply-chain entities served by Nexar rather than the Platform API.</p>
+<p>Mixin that adds API type annotations: platformAPI names the Altium 365 Platform API GraphQL type; nexarAPI names the Nexar (Octopart) GraphQL type for supply-chain entities served by Nexar rather than the Platform API; adSDK names the Altium Designer SDK types (namespace-qualified, comma-separated, e.g. "EDP.INet, PCB.IPCB_Net") that expose the same concept inside Altium Designer.</p>
 <div class="admonition abstract">
 <p class="admonition-title">In the product</p>
 <p>No product documentation linked yet.</p>
@@ -1424,6 +1424,10 @@
 
 
 
+          core_WithPlatformAPI : adSDK
+
+
+
 
 
 </code></pre>
@@ -1458,6 +1462,13 @@
 <td><code>0..1</code></td>
 <td><a href="../../types/string/">string</a></td>
 <td>Nexar (Octopart) API type name.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../../slots/adSDK">adSDK</a></td>
+<td><code>0..1</code></td>
+<td><a href="../../types/string/">string</a></td>
+<td>Altium Designer SDK type names, namespace-qualified and comma-separated (reference https://altiumdeveloper.github.io/ad-sdk-docs/reference/).</td>
 <td>direct</td>
 </tr>
 </tbody>

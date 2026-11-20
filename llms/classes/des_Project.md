@@ -21,6 +21,7 @@ A design project stored in a Workspace, normally under its built-in version cont
 ## In the API
 
 - Platform API type: [`DesProject`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProject/) (object)
+- Altium Designer SDK type: [`EDP.IProject`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/IProject/)
 
 ## GRID
 
@@ -43,6 +44,7 @@ A design project stored in a Workspace, normally under its built-in version cont
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
 | [col_DesignReview](col_DesignReview.md) | project | 1 | core_partOf |
+| [des_CompiledDesign](des_CompiledDesign.md) | project | 1 |  |
 | [des_MultiboardProject](des_MultiboardProject.md) | projects | * | core_hasPart |
 | [ins_PartInsight](ins_PartInsight.md) | informedBy | * | core_informedBy |
 | [lib_ComponentRevision](lib_ComponentRevision.md) | usedByProjectVariant | * | core_inputOf |

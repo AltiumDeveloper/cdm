@@ -4,7 +4,7 @@
 
 This file follows https://llmstxt.org/. Its links are absolute; the links in the files under `llms/` are relative to the file that contains them. `llms-ctx.txt` holds this file, the pages and the catalogues in one file, and `llms-full.txt` also the class and enumeration cards; their links are absolute.
 
-The model has 179 classes: 157 concrete domain classes, listed in the catalogues below, and 22 core, abstract and mixin classes, including LinkML's `Any`. 175 of them belong to one of the 16 bounded contexts (LinkML subsets); 4 classes belong to none and are listed in [llms/core.md](https://altiumdeveloper.github.io/cdm/llms/core.md).
+The model has 203 classes: 181 concrete domain classes, listed in the catalogues below, and 22 core, abstract and mixin classes, including LinkML's `Any`. 199 of them belong to one of the 16 bounded contexts (LinkML subsets); 4 classes belong to none and are listed in [llms/core.md](https://altiumdeveloper.github.io/cdm/llms/core.md).
 
 - Class names are `{prefix}_{ClassName}` (`lib_Component`). Each card gives the class IRI; it is usually `{prefix}:{ClassName}` (`lib:Component`) — `system_*` classes use `sys:`, and a few IRIs differ from the name (see [VIOLATIONS.md](https://github.com/AltiumDeveloper/cdm/blob/main/VIOLATIONS.md)).
 - Slot names usually follow `{prefix}_{ClassName}_{fieldName}`; the JSON key is always the slot's `alias` (the Field column of a card).
@@ -29,10 +29,10 @@ The model has 179 classes: 157 concrete domain classes, listed in the catalogues
 - [configuration](https://altiumdeveloper.github.io/cdm/llms/configuration.md): Models environment configurations, which restrict the Altium Designer working environment of the Workspace members they target to approved configuration data, together with schematic templates and their revisions stored as Workspace Items. (3 classes)
 - [collaboration](https://altiumdeveloper.github.io/cdm/llms/collaboration.md): Models collaboration on Workspace content: comment threads attached to a point, object or area of a document, the individual comments in each thread, tasks that assign work to users or teams, and design reviews in which assigned reviewers assess a snapshot of a design project. (4 classes)
 - [customization](https://altiumdeveloper.github.io/cdm/llms/customization.md): Models ways to customize and automate a Workspace: process workflows, and scripts with their versions, their executions and the event raised when an execution completes. (5 classes)
-- [design](https://altiumdeveloper.github.io/cdm/llms/design.md): Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, and rule checks run against projects. (11 classes)
+- [design](https://altiumdeveloper.github.io/cdm/llms/design.md): Models design projects stored in a Workspace, including multi-board and harness projects, with their parameters, variants and releases, the manufacturing packages shared from releases, project templates with their revisions, and rule checks run against projects. (34 classes)
 - [deviceModel](https://altiumdeveloper.github.io/cdm/llms/deviceModel.md): Models an embedded device (e.g. an MCU), which the CDM calls a digital twin: its processors; its address map with memories, registers, bit fields and their enumerated values; its peripherals with their instances, modes and configurations; and its pins and ports with the alternative functions of each port. (24 classes)
 - [insights](https://altiumdeveloper.github.io/cdm/llms/insights.md): Models insights: findings, detected asynchronously, that give the user insight within one domain area and can be followed up by tasks. (2 classes; 1 base class or mixin)
-- [library](https://altiumdeveloper.github.io/cdm/llms/library.md): Models the components stored in a Workspace and their revisions, the symbols, footprints, parameters, datasheets and part choices that make them up, and the component templates they can be created from. (22 classes)
+- [library](https://altiumdeveloper.github.io/cdm/llms/library.md): Models the components stored in a Workspace and their revisions, the symbols, footprints, parameters, datasheets and part choices that make them up, and the component templates they can be created from. (23 classes)
 - [ota](https://altiumdeveloper.github.io/cdm/llms/ota.md): Models over-the-air (OTA) firmware and software updates: devices with the packages installed on them, fleets that group devices, packages with their version, size, checksums and target hardware, deployments that request packages to be rolled out to a device or fleet, the deployment results that record the outcome on each targeted device, and the metrics reported by devices. (10 classes)
 - [procurement](https://altiumdeveloper.github.io/cdm/llms/procurement.md): Models bills of materials: BOMs kept in a Workspace and worked on in the BOM Portal (managed and consolidated BOMs) with their releases, global BOMs, which are not tied to a Workspace, and BOM lines with their alternate and substitute parts and the issues found when a BOM is analysed. (8 classes; 3 base classes and mixins)
 - [supply](https://altiumdeveloper.github.io/cdm/llms/supply.md): Models the supply catalog: manufacturer parts with their aggregated sourcing data and distributor offers, the companies acting as their manufacturers or distributors, and the vendor-specific part family hierarchy, along with catalog content such as reference designs, evaluation kits, solution templates and software projects. (9 classes)
@@ -852,6 +852,7 @@ Product terms and class names of the model. A term used by several classes is li
 
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
+| Board Layer | [Board Layer](https://altiumdeveloper.github.io/cdm/llms/classes/des_BoardLayer.md) (`des_BoardLayer`) | design | title |  |
 | BOM Issue | [BOM Issue](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomIssue.md) (`pro_BomIssue`) | procurement | title | [BOM Error Detection and Correction](https://www.altium.com/documentation/altium-365/bom-portal/error-detection-correction) |
 | BOM Item | [BOM Item](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md) (`pro_BomItem`) | procurement | title | [Configuration and Options](https://www.altium.com/documentation/altium-365/bom-portal/configuration-options#bom-structure-features) |
 | BOM Item Alternate | [BOM Item Alternate](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemAlternate.md) (`pro_BomItemAlternate`) | procurement | title | [Configuration and Options](https://www.altium.com/documentation/altium-365/bom-portal/configuration-options#add_alternate) |
@@ -869,8 +870,10 @@ Product terms and class names of the model. A term used by several classes is li
 | Comment Thread | [Comment Thread](https://altiumdeveloper.github.io/cdm/llms/classes/col_CommentThread.md) (`col_CommentThread`) | collaboration | title | [Web Viewer](https://www.altium.com/documentation/altium-365/viewers/web-viewer#commenting) |
 | Company | [Company](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Company.md) (`sup_Company`) | supply | title |  |
 | Company Account | [Organization](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Organization.md) (`plt_Organization`) | platform | exact | [Company Dashboard](https://www.altium.com/documentation/altium-dashboard) |
+| Compiled Design | [Compiled Design](https://altiumdeveloper.github.io/cdm/llms/classes/des_CompiledDesign.md) (`des_CompiledDesign`) | design | title |  |
 | Component | [Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md) (`lib_Component`) | library | title | [Building & Maintaining Your Components and Libraries](https://www.altium.com/documentation/altium-designer/components-libraries#WSL) |
 | Component Parameter | [Component Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentParameter.md) (`lib_ComponentParameter`) | library | title | [Component Templates](https://www.altium.com/documentation/altium-designer/components-libraries/workspace-component-templates#UACPDT) |
+| Component Part | [Component Part](https://altiumdeveloper.github.io/cdm/llms/classes/des_ComponentPart.md) (`des_ComponentPart`) | design | title |  |
 | Component Revision | [Component Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) (`lib_ComponentRevision`) | library | title | [Building & Maintaining Your Components and Libraries](https://www.altium.com/documentation/altium-designer/components-libraries#WSL) |
 | Component Template | [Component Template](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplate.md) (`lib_ComponentTemplate`) | library | title | [Component Templates](https://www.altium.com/documentation/altium-designer/components-libraries/workspace-component-templates) |
 | Component Template Revision | [Component Template Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentTemplateRevision.md) (`lib_ComponentTemplateRevision`) | library | title | [Component Templates](https://www.altium.com/documentation/altium-designer/components-libraries/workspace-component-templates) |
@@ -891,6 +894,7 @@ Product terms and class names of the model. A term used by several classes is li
 | Deployment Assignment | [Deployment Assignment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentAssignment.md) (`ota_DeploymentAssignment`) | ota | title |  |
 | Deployment Result | [Deployment Result](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentResult.md) (`ota_DeploymentResult`) | ota | title |  |
 | Design Insight | [Design Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_DesignInsight.md) (`ins_DesignInsight`) | insights | title |  |
+| Design Parameter | [Design Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignParameter.md) (`des_DesignParameter`) | design | title |  |
 | design project | [Hardware Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) (`des_Project`) | design | related | [Workspace Projects](https://www.altium.com/documentation/altium-365/workspace-projects) |
 | design project release | [Hardware Project Release](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md) (`des_ProjectRelease`) | design | related | [Design Project Release](https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release) |
 | Design Review | [Design Review](https://altiumdeveloper.github.io/cdm/llms/classes/col_DesignReview.md) (`col_DesignReview`) | collaboration | title | [Design Reviews](https://www.altium.com/documentation/altium-365/project-design-reviews) |
@@ -900,6 +904,7 @@ Product terms and class names of the model. A term used by several classes is li
 | Device Configuration Revision | [Device Configuration Revision](https://altiumdeveloper.github.io/cdm/llms/classes/sft_DeviceConfigurationRevision.md) (`sft_DeviceConfigurationRevision`) | software | title |  |
 | Device Metrics | [Device Metrics](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeviceMetrics.md) (`ota_DeviceMetrics`) | ota | title |  |
 | Device Model | [Device Model](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmDeviceModel.md) (`system_SdmDeviceModel`) | system-sdm | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration) |
+| Differential Pair | [Differential Pair](https://altiumdeveloper.github.io/cdm/llms/classes/des_DifferentialPair.md) (`des_DifferentialPair`) | design | title |  |
 | Domain Metadata | [Domain Metadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmClientMetadata.md) (`system_SdmClientMetadata`) | system-sdm | title |  |
 
 ## E
@@ -969,6 +974,8 @@ Product terms and class names of the model. A term used by several classes is li
 
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
+| Layer Stack | [Layer Stack](https://altiumdeveloper.github.io/cdm/llms/classes/des_LayerStack.md) (`des_LayerStack`) | design | title |  |
+| Layer Stackup | [Layer Stackup](https://altiumdeveloper.github.io/cdm/llms/classes/des_Stackup.md) (`des_Stackup`) | design | title |  |
 | library component | [Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md) (`lib_Component`) | library | exact | [Building & Maintaining Your Components and Libraries](https://www.altium.com/documentation/altium-designer/components-libraries#WSL) |
 | Lifecycle Definition | [Lifecycle Definition](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleDefinition.md) (`plt_LifecycleDefinition`) | platform | title | [Defining Lifecycle Definitions for a Workspace](https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions) |
 | Lifecycle Stage | [Lifecycle Stage](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleStage.md) (`plt_LifecycleStage`) | platform | title | [Defining Lifecycle Definitions for a Workspace](https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions) |
@@ -994,6 +1001,14 @@ Product terms and class names of the model. A term used by several classes is li
 - [Part](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Part.md) (`lib_Part`) — library. A manufacturer part, identified by manufacturer and part number, as held in the Workspace's Part Catalog together with the supplier parts through which it is sold.
 - [Part](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Part.md) (`sup_Part`) — supply. Supply Part represents a market-available instance of a manufactured Part, providing aggregated sourcing data such as pricing, stock levels, and supplier offers.
 
+## N
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| Net | [Net](https://altiumdeveloper.github.io/cdm/llms/classes/des_Net.md) (`des_Net`) | design | title |  |
+| Net Class | [Net Class](https://altiumdeveloper.github.io/cdm/llms/classes/des_NetClass.md) (`des_NetClass`) | design | title |  |
+| Net Item | [Net Item](https://altiumdeveloper.github.io/cdm/llms/classes/des_NetItem.md) (`des_NetItem`) | design | title |  |
+
 ## O
 
 | Term | Class | Bounded context | Kind | Product documentation |
@@ -1007,6 +1022,7 @@ Product terms and class names of the model. A term used by several classes is li
 | --- | --- | --- | --- | --- |
 | Package | [Package](https://altiumdeveloper.github.io/cdm/llms/classes/ota_Package.md) (`ota_Package`) | ota | title |  |
 | Package Hash | [Package Hash](https://altiumdeveloper.github.io/cdm/llms/classes/ota_PackageHash.md) (`ota_PackageHash`) | ota | title |  |
+| Pad | [Pad](https://altiumdeveloper.github.io/cdm/llms/classes/des_Pad.md) (`des_Pad`) | design | title |  |
 | Parameter | [Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/system_Parameter.md) (`system_Parameter`) | system | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#accessing_object_properties) |
 | Part Choice | [Part Choice](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoice.md) (`lib_PartChoice`) | library | title | [Adding Supply Chain Information to a Component](https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component#anatomy_of_a_part_choice) |
 | Part Choice List | [Part Choice List](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoiceList.md) (`lib_PartChoiceList`) | library | title | [Adding Supply Chain Information to a Component](https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component#part_choices) |
@@ -1014,7 +1030,10 @@ Product terms and class names of the model. A term used by several classes is li
 | Part Group | [Part Group](https://altiumdeveloper.github.io/cdm/llms/classes/sup_PartGroup.md) (`sup_PartGroup`) | supply | title |  |
 | Part Insight | [Part Insight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) (`ins_PartInsight`) | insights | title |  |
 | Part Request | [Part Request](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartRequest.md) (`lib_PartRequest`) | library | title | [Part Requests](https://www.altium.com/documentation/altium-365/workflow-part-requests) |
+| PCB Component | [PCB Component](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbComponent.md) (`des_PcbComponent`) | design | title |  |
 | PCB footprint | [Footprint](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Footprint.md) (`lib_Footprint`) | library | related | [Creating a PCB Footprint](https://www.altium.com/documentation/altium-designer/components-libraries/creating-pcb-footprint) |
+| PCB Layout | [PCB Layout](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbLayout.md) (`des_PcbLayout`) | design | title |  |
+| PCB Net | [PCB Net](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbNet.md) (`des_PcbNet`) | design | title |  |
 | PCB Snippet | [PCB Snippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippet.md) (`lib_PcbSnippet`) | library | title | [Working with Snippets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets) |
 | PCB Snippet Revision | [PCB Snippet Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippetRevision.md) (`lib_PcbSnippetRevision`) | library | title | [Working with Snippets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets) |
 | Peripheral | [Peripheral](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Peripheral.md) (`dm_Peripheral`) | deviceModel | title |  |
@@ -1024,9 +1043,11 @@ Product terms and class names of the model. A term used by several classes is li
 | PeripheralParameter | [PeripheralParameter](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralParameter.md) (`dm_PeripheralParameter`) | deviceModel | title |  |
 | PeripheralPinConfig | [PeripheralPinConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinConfig.md) (`dm_PeripheralPinConfig`) | deviceModel | title |  |
 | PeripheralPinDependencyConfig | [PeripheralPinDependencyConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinDependencyConfig.md) (`dm_PeripheralPinDependencyConfig`) | deviceModel | title |  |
-| Pin | [Pin](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Pin.md) (`dm_Pin`) | deviceModel | title |  |
 | Pin Assignment | [Pin Assignment](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignment.md) (`sft_PinAssignment`) | software | title | [Working with Renesas 365 Solutions](https://www.altium.com/documentation/altium-designer/working-renesas-365-solutions#pulling_sdm_into_a_hardware_project) |
 | Pin Assignment Model | [Pin Assignment Model](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignmentModel.md) (`sft_PinAssignmentModel`) | software | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration) |
+| Pin Instance | [Pin Instance](https://altiumdeveloper.github.io/cdm/llms/classes/des_PinInstance.md) (`des_PinInstance`) | design | title |  |
+| Placed Component | [Placed Component](https://altiumdeveloper.github.io/cdm/llms/classes/des_PlacedComponent.md) (`des_PlacedComponent`) | design | title |  |
+| Point 2D | [Point 2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md) (`des_Point2D`) | design | title |  |
 | Port Association | [Port Association](https://altiumdeveloper.github.io/cdm/llms/classes/system_PortAssociation.md) (`system_PortAssociation`) | system | title |  |
 | PortConfiguration | [PortConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfiguration.md) (`dm_PortConfiguration`) | deviceModel | title |  |
 | PortConfigurationDependency | [PortConfigurationDependency](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationDependency.md) (`dm_PortConfigurationDependency`) | deviceModel | title |  |
@@ -1045,6 +1066,11 @@ Product terms and class names of the model. A term used by several classes is li
 - [Part](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Part.md) (`lib_Part`) — library. A manufacturer part, identified by manufacturer and part number, as held in the Workspace's Part Catalog together with the supplier parts through which it is sold.
 - [Part](https://altiumdeveloper.github.io/cdm/llms/classes/sup_Part.md) (`sup_Part`) — supply. Supply Part represents a market-available instance of a manufactured Part, providing aggregated sourcing data such as pricing, stock levels, and supplier offers.
 
+**Pin — 2 meanings**
+
+- [Pin](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Pin.md) (`dm_Pin`) — deviceModel. A physical pin on the device.
+- [Pin](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Pin.md) (`lib_Pin`) — library. A pin definition on a schematic symbol: one electrical connection point with its designator, name and electrical type, and optionally alternate functions.
+
 **Port — 3 meanings**
 
 - [Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md) (`dm_Port`) — deviceModel. A physical port on the device, with its functions, configurations, and connections.
@@ -1055,6 +1081,7 @@ Product terms and class names of the model. A term used by several classes is li
 
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
+| Rectangle 2D | [Rectangle 2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Rectangle2D.md) (`des_Rectangle2D`) | design | title |  |
 | Reference Design | [Reference Design](https://altiumdeveloper.github.io/cdm/llms/classes/sup_ReferenceDesign.md) (`sup_ReferenceDesign`) | supply | title | [Renesas 365](https://www.altium.com/documentation/altium-365/renesas-365#import_project) |
 | Register | [Register](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Register.md) (`dm_Register`) | deviceModel | title |  |
 | RegisterField | [RegisterField](https://altiumdeveloper.github.io/cdm/llms/classes/dm_RegisterField.md) (`dm_RegisterField`) | deviceModel | title |  |
@@ -1079,6 +1106,7 @@ Product terms and class names of the model. A term used by several classes is li
 | --- | --- | --- | --- | --- |
 | SCH Snippet | [SCH Snippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippet.md) (`lib_SchSnippet`) | library | title | [Working with Snippets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets) |
 | SCH Snippet Revision | [SCH Snippet Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippetRevision.md) (`lib_SchSnippetRevision`) | library | title | [Working with Snippets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets) |
+| Schematic Sheet | [Schematic Sheet](https://altiumdeveloper.github.io/cdm/llms/classes/des_SchematicSheet.md) (`des_SchematicSheet`) | design | title |  |
 | schematic snippet | [SCH Snippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippet.md) (`lib_SchSnippet`) | library | exact | [Working with Snippets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets) |
 | schematic symbol | [Symbol](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Symbol.md) (`lib_Symbol`) | library | related | [Creating a Schematic Symbol](https://www.altium.com/documentation/altium-designer/components-libraries/creating-schematic-symbol) |
 | Schematic Template | [Schematic Template](https://altiumdeveloper.github.io/cdm/llms/classes/con_SchematicTemplate.md) (`con_SchematicTemplate`) | configuration | title | [Creating a Schematic Template](https://www.altium.com/documentation/altium-designer/schematic/creating-templates) |
@@ -1121,6 +1149,7 @@ Product terms and class names of the model. A term used by several classes is li
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
 | Task | [Task](https://altiumdeveloper.github.io/cdm/llms/classes/col_Task.md) (`col_Task`) | collaboration | title | [Working with Tasks](https://www.altium.com/documentation/altium-365/tasks) |
+| Track | [Track](https://altiumdeveloper.github.io/cdm/llms/classes/des_Track.md) (`des_Track`) | design | title |  |
 
 ## U
 
@@ -1134,12 +1163,15 @@ Product terms and class names of the model. A term used by several classes is li
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
 | V&V Activity | [Verification Case](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md) (`req_VerificationCase`) | requirements | related | [Verification & Validation Module](https://www.altium.com/documentation/altium-365/requirements-portal/verification-validation-module) |
+| Variant Variation | [Variant Variation](https://altiumdeveloper.github.io/cdm/llms/classes/des_VariantVariation.md) (`des_VariantVariation`) | design | title |  |
 | Verification Case | [Verification Case](https://altiumdeveloper.github.io/cdm/llms/classes/req_VerificationCase.md) (`req_VerificationCase`) | requirements | title | [Verification & Validation Module](https://www.altium.com/documentation/altium-365/requirements-portal/verification-validation-module) |
+| Via | [Via](https://altiumdeveloper.github.io/cdm/llms/classes/des_Via.md) (`des_Via`) | design | title |  |
 
 ## W
 
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
+| Wire | [Wire](https://altiumdeveloper.github.io/cdm/llms/classes/des_Wire.md) (`des_Wire`) | design | title |  |
 | Workflow | [Workflow](https://altiumdeveloper.github.io/cdm/llms/classes/cus_Workflow.md) (`cus_Workflow`) | customization | title | [Processes & Workflows](https://www.altium.com/documentation/altium-365/processes-workflows) |
 | Workspace | [Workspace](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Workspace.md) (`plt_Workspace`) | platform | title | [Altium 365 Workspace](https://www.altium.com/documentation/altium-365/workspace) |
 | Workspace component | [Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md) (`lib_Component`) | library | exact | [Building & Maintaining Your Components and Libraries](https://www.altium.com/documentation/altium-designer/components-libraries#WSL) |
@@ -1174,7 +1206,7 @@ No public product documentation exists for this bounded context.
 - [Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md) (`core_Resource`): Abstract base for lightweight platform-accessible objects that have API access but are not Entities; they carry no GRID and no versioning lifecycle. · Resource, abstract
 - [With GRID](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithGRID.md) (`core_WithGRID`): Mixin that adds a GRID annotation slot to a class. · mixin
 - [With Maturity](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithMaturity.md) (`core_WithMaturity`): Mixin that adds a maturity annotation slot indicating the lifecycle readiness level. · mixin
-- [With Platform API](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithPlatformAPI.md) (`core_WithPlatformAPI`): Mixin that adds API type annotations: platformAPI names the Altium 365 Platform API GraphQL type; nexarAPI names the Nexar (Octopart) GraphQL type for supply-chain entities served by Nexar rather than the Platform API. · mixin
+- [With Platform API](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithPlatformAPI.md) (`core_WithPlatformAPI`): Mixin that adds API type annotations: platformAPI names the Altium 365 Platform API GraphQL type; nexarAPI names the Nexar (Octopart) GraphQL type for supply-chain entities served by Nexar rather than the Platform API; adSDK names the Altium Designer SDK types (namespace-qualified, comma-separated, e.g. "EDP.INet, PCB.IPCB_Net") that expose the same concept inside Altium Designer. · mixin
 - [With Vault](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithVault.md) (`core_WithVault`): Mixin that adds a vault content type annotation to a class, indicating how its content is stored in the platform vault. · mixin
 - [With Vault Link](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithVaultLink.md) (`core_WithVaultLink`): Mixin that adds vault link parent, child, and type annotation slots for tracking hierarchical vault relationships. · mixin
 
@@ -1307,17 +1339,40 @@ HTML page: [subsets/design/](https://altiumdeveloper.github.io/cdm/subsets/desig
 
 ## Classes
 
+- [Board Layer](https://altiumdeveloper.github.io/cdm/llms/classes/des_BoardLayer.md) (`des_BoardLayer`): A physical or logical layer of a board: copper (signal or plane), dielectric, mask, overlay, paste or mechanical. · Resource · API DesLayer
+- [Compiled Design](https://altiumdeveloper.github.io/cdm/llms/classes/des_CompiledDesign.md) (`des_CompiledDesign`): The compiled, connectivity-level view of a design project at one revision: its schematic sheets, the components placed on them, their pins and the nets that connect those pins, resolved across the sheet hierarchy. · Resource · API DesignData_Preview
+- [Component Part](https://altiumdeveloper.github.io/cdm/llms/classes/des_ComponentPart.md) (`des_ComponentPart`): One part (section) of a placed component. · Resource · API DesignDataPart_Preview
+- [Design Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignParameter.md) (`des_DesignParameter`): A name/value parameter of an object in the compiled design, such as a placed component. · Resource
+- [Differential Pair](https://altiumdeveloper.github.io/cdm/llms/classes/des_DifferentialPair.md) (`des_DifferentialPair`): Two nets that carry a differential signal together, for example USB_D_P and USB_D_N. · Resource · API DesignDataDifferentialPair_Preview
 - [Hardware Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) (`des_Project`): A design project stored in a Workspace, normally under its built-in version control, such as a PCB project. · Activity · API DesProject · GRID `grid:workspace:{workspace-id}:design:project/{id}`
 - [Hardware Project Release](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md) (`des_ProjectRelease`): Project Release captures an immutable snapshot of a PCB design project at a specific point in its lifecycle, packaging all design data, outputs, and metadata required for manufacturing, assembly, and downstream processes. · Artifact · API DesRelease · GRID `grid:workspace:{workspace-id}:design:project-release/{id}`
 - [Hardware Project Variant](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectVariant.md) (`des_ProjectVariant`): A design variant of a project: a named variation of the same base design that is assembled with a different set of components. · Resource · API DesWipVariant
 - [Harness Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_HarnessProject.md) (`des_HarnessProject`): Harness Project defines the design of a cable and wiring harness as a standalone yet integrable artifact, capturing connectors, wires, splices, and pin-to-pin mappings required to implement electrical interconnects between boards and system elements. · Activity · API DesProject
+- [Layer Stack](https://altiumdeveloper.github.io/cdm/llms/classes/des_LayerStack.md) (`des_LayerStack`): One stack of layers of a board, ordered from top to bottom; a rigid-flex board has one per rigid or flex region type. · Resource · API DesStack
+- [Layer Stackup](https://altiumdeveloper.github.io/cdm/llms/classes/des_Stackup.md) (`des_Stackup`): The layer structure of a board: one or more layer stacks (more than one for rigid-flex boards). · Resource · API DesStackup
 - [Manufacturing Package](https://altiumdeveloper.github.io/cdm/llms/classes/des_ManufacturingPackage.md) (`des_ManufacturingPackage`): A read-only package that contains a subset of Project Release artifacts that is typically shared with an external party for the purposes of manufacturing the board (e.g. Manufacturing Package may contain fabrication/assembly files required by the factories, but not the sources of the project) · Artifact · GRID `grid:workspace:{workspace-id}:design:manufacturing-package/{id}`
 - [Multiboard Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_MultiboardProject.md) (`des_MultiboardProject`): Multiboard Project represents the coordinated design of multiple interconnected PCB projects assembled into a single system, capturing both their logical interconnects and physical arrangements. · Activity · API DesProject
+- [Net](https://altiumdeveloper.github.io/cdm/llms/classes/des_Net.md) (`des_Net`): An electrical net of the compiled design: a set of component pins that are electrically connected, resolved across the sheet hierarchy. · Resource · API DesignDataNet_Preview
+- [Net Class](https://altiumdeveloper.github.io/cdm/llms/classes/des_NetClass.md) (`des_NetClass`): A named group of nets that share design rules, for example DDR3 or HighSpeed. · Resource
+- [Net Item](https://altiumdeveloper.github.io/cdm/llms/classes/des_NetItem.md) (`des_NetItem`): A connection object that contributes to a net, such as a net label, a port, a sheet entry or a power object. · Resource · API DesignDataNetItem_Preview
+- [Pad](https://altiumdeveloper.github.io/cdm/llms/classes/des_Pad.md) (`des_Pad`): A connection target on a board, usually one pin of a placed component; a free pad belongs to no component. · Resource · API DesPad
+- [PCB Component](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbComponent.md) (`des_PcbComponent`): A component as placed on a board: its footprint instance with position, rotation, side and pads. · Resource · API DesDesignItem
+- [PCB Layout](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbLayout.md) (`des_PcbLayout`): The physical design of one board in a design project at one revision: its outline, layer stack, placed components, pads, tracks and vias, and the copper nets they form. · Resource · API DesPcb
+- [PCB Net](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbNet.md) (`des_PcbNet`): A net as realised in copper on a board: the pads, tracks and vias that carry it, the layers it is routed on and its routed length. · Resource · API DesNet
+- [Pin Instance](https://altiumdeveloper.github.io/cdm/llms/classes/des_PinInstance.md) (`des_PinInstance`): A pin of a placed component in the design. · Resource · API DesignDataPin_Preview
+- [Placed Component](https://altiumdeveloper.github.io/cdm/llms/classes/des_PlacedComponent.md) (`des_PlacedComponent`): A component instance placed in the design, identified by its designator. · Resource · API DesignDataComponent_Preview
+- [Point 2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md) (`des_Point2D`): A point in the coordinate system of a schematic sheet or PCB document. · Resource · API DesPosition2D
 - [Project Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectParameter.md) (`des_ProjectParameter`): A name/value parameter defined at the level of a design project. · Resource · API DesProjectParameter
 - [Project Template](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplate.md) (`des_ProjectTemplate`): A reusable starting point for new design projects that bundles the documents, files and project settings a team wants to apply again and again. · Artifact · API DesProjectTemplate · GRID `grid:workspace:{workspace-id}:design:project-template/{id}`
 - [Project Template Revision](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectTemplateRevision.md) (`des_ProjectTemplateRevision`): An immutable revision of a project template. · Artifact · API DesProjectTemplateRevision · GRID `grid:workspace:{workspace-id}:design:project-template-revision/{id}`
+- [Rectangle 2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Rectangle2D.md) (`des_Rectangle2D`): An axis-aligned rectangle, used for bounding boxes of drawing objects. · Resource · API DesRectangle
 - [Rule Check](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheck.md) (`des_RuleCheck`): Rule check definitions that can be executed against a project to validate design integrity and compliance with specified constraints. · Artifact · API RuleCheck · GRID `grid:workspace:{workspace-id}:design:rule-check/{id}`
 - [Rule Check Execution](https://altiumdeveloper.github.io/cdm/llms/classes/des_RuleCheckExecution.md) (`des_RuleCheckExecution`): Execution of a rule check against a project to validate design integrity and compliance with specified constraints. · Activity · API RuleCheckExecution · GRID `grid:workspace:{workspace-id}:design:rule-check-execution/{id}`
+- [Schematic Sheet](https://altiumdeveloper.github.io/cdm/llms/classes/des_SchematicSheet.md) (`des_SchematicSheet`): A schematic document of the design. · Resource · API DesignDataSchematicDocument_Preview
+- [Track](https://altiumdeveloper.github.io/cdm/llms/classes/des_Track.md) (`des_Track`): A straight conductor segment on a board layer, with a width. · Resource · API DesTrack
+- [Variant Variation](https://altiumdeveloper.github.io/cdm/llms/classes/des_VariantVariation.md) (`des_VariantVariation`): How one placed component differs in a project variant: not fitted, or replaced by an alternate component. · Resource · API DesignDataVariation_Preview
+- [Via](https://altiumdeveloper.github.io/cdm/llms/classes/des_Via.md) (`des_Via`): A plated hole that connects copper on two or more layers of a board. · Resource · API DesVia
+- [Wire](https://altiumdeveloper.github.io/cdm/llms/classes/des_Wire.md) (`des_Wire`): A wire drawn on a schematic sheet, part of one net. · Resource · API DesignDataLine_Preview
 
 ---
 
@@ -1417,6 +1472,7 @@ HTML page: [subsets/library/](https://altiumdeveloper.github.io/cdm/subsets/libr
 - [Part Request](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartRequest.md) (`lib_PartRequest`): Part Request represents a formal demand from a designer to introduce a new Component or Part into the managed library, typically triggered when an item is not yet available in the workspace. · Activity · GRID `grid:workspace:{workspace-id}:library:part-request/{id}`
 - [PCB Snippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippet.md) (`lib_PcbSnippet`): A selection of circuitry from a PCB design, including its components and routing, saved so that it can be placed in other PCB documents. · Artifact
 - [PCB Snippet Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PcbSnippetRevision.md) (`lib_PcbSnippetRevision`): A revision of a PCB snippet as saved into the Workspace at one point in time. · Artifact
+- [Pin](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Pin.md) (`lib_Pin`): A pin definition on a schematic symbol: one electrical connection point with its designator, name and electrical type, and optionally alternate functions. · Resource · API DesPin
 - [Reuse Block](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlock.md) (`lib_ReuseBlock`): A reusable section of a design stored in a Workspace, typically combining schematic circuitry with its PCB representation; a block can also be schematic-only or PCB-only. · Artifact · API DesReuseBlock · GRID `grid:workspace:{workspace-id}:library:reuse-block/{id}`
 - [Reuse Block Revision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ReuseBlockRevision.md) (`lib_ReuseBlockRevision`): A revision of a Reuse Block: its schematic and/or PCB content as saved into the Workspace at one point in time, with its own lifecycle state. · Artifact · API DesReuseBlockRevision · GRID `grid:workspace:{workspace-id}:library:reuse-block-revision/{id}`
 - [SCH Snippet](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SchSnippet.md) (`lib_SchSnippet`): A selection of circuitry from a single schematic sheet, including its components, saved so that it can be placed in other designs. · Artifact
@@ -2045,7 +2101,7 @@ Abstract base for all CDM mixin classes. Provides a common root for mixins witho
 - IRI: `core:Resource` (https://w3id.org/altium/cdm/core/Resource)
 - Bounded context: [core](https://altiumdeveloper.github.io/cdm/llms/core.md)
 - Kind: Resource, abstract
-- Subclasses: [col_Comment](https://altiumdeveloper.github.io/cdm/llms/classes/col_Comment.md), [des_ProjectParameter](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectParameter.md), [des_ProjectVariant](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectVariant.md), [dm_AddressBlock](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressBlock.md), [dm_AddressMap](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressMap.md), [dm_AddressSegment](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressSegment.md), [dm_ConfiguredDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_ConfiguredDeviceModel.md), [dm_FieldEnum](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FieldEnum.md), [dm_Memory](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Memory.md), [dm_Peripheral](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Peripheral.md), [dm_PeripheralConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralConfiguration.md), [dm_PeripheralInstance](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralInstance.md), [dm_PeripheralMode](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralMode.md), [dm_PeripheralParameter](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralParameter.md), [dm_PeripheralPinConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinConfig.md), [dm_PeripheralPinDependencyConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinDependencyConfig.md), [dm_Pin](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Pin.md), [dm_Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md), [dm_PortConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfiguration.md), [dm_PortConfigurationDependency](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationDependency.md), [dm_PortConfigurationEnumValue](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationEnumValue.md), [dm_PortConnection](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConnection.md), [dm_PortFunction](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortFunction.md), [dm_Processor](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Processor.md), [dm_Register](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Register.md), [dm_RegisterField](https://altiumdeveloper.github.io/cdm/llms/classes/dm_RegisterField.md), [lib_ComponentParameter](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentParameter.md), [lib_PartChoice](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoice.md), [lib_PartChoiceList](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoiceList.md), [ota_DeploymentAssignment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentAssignment.md), [ota_DeviceMetrics](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeviceMetrics.md), [ota_MetricDataPoint](https://altiumdeveloper.github.io/cdm/llms/classes/ota_MetricDataPoint.md), [ota_MetricSeries](https://altiumdeveloper.github.io/cdm/llms/classes/ota_MetricSeries.md), [ota_PackageHash](https://altiumdeveloper.github.io/cdm/llms/classes/ota_PackageHash.md), [plt_LifecycleStage](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleStage.md), [plt_LifecycleState](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleState.md), [pro_BomIssue](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomIssue.md), [pro_BomItem](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md), [pro_BomItemElement](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemElement.md), [req_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/req_Artifact.md), [sft_PinAssignment](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignment.md), [sft_PinAssignmentModel](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignmentModel.md), [system_Connection](https://altiumdeveloper.github.io/cdm/llms/classes/system_Connection.md), [system_Endpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_Endpoint.md), [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md), [system_HardwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_HardwareProject.md), [system_KeyComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_KeyComponent.md), [system_Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/system_Parameter.md), [system_Port](https://altiumdeveloper.github.io/cdm/llms/classes/system_Port.md), [system_PortAssociation](https://altiumdeveloper.github.io/cdm/llms/classes/system_PortAssociation.md), [system_SdmAuthoringApplication](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmAuthoringApplication.md), [system_SdmClientMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmClientMetadata.md), [system_SdmConnection](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmConnection.md), [system_SdmDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmDeviceModel.md), [system_SdmEndpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmEndpoint.md), [system_SdmFunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalBlock.md), [system_SdmFunctionalModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalModel.md), [system_SdmHardwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareComponent.md), [system_SdmHardwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareModel.md), [system_SdmPort](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md), [system_SdmSoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareComponent.md), [system_SdmSoftwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareModel.md), [system_SdmSoftwareSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareSpecification.md), [system_SdmSoftwareStackInstance](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareStackInstance.md), [system_SdmSystemModelVersionMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersionMetadata.md), [system_SoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareComponent.md), [system_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareProject.md)
+- Subclasses: [col_Comment](https://altiumdeveloper.github.io/cdm/llms/classes/col_Comment.md), [des_BoardLayer](https://altiumdeveloper.github.io/cdm/llms/classes/des_BoardLayer.md), [des_CompiledDesign](https://altiumdeveloper.github.io/cdm/llms/classes/des_CompiledDesign.md), [des_ComponentPart](https://altiumdeveloper.github.io/cdm/llms/classes/des_ComponentPart.md), [des_DesignParameter](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignParameter.md), [des_DifferentialPair](https://altiumdeveloper.github.io/cdm/llms/classes/des_DifferentialPair.md), [des_LayerStack](https://altiumdeveloper.github.io/cdm/llms/classes/des_LayerStack.md), [des_Net](https://altiumdeveloper.github.io/cdm/llms/classes/des_Net.md), [des_NetClass](https://altiumdeveloper.github.io/cdm/llms/classes/des_NetClass.md), [des_NetItem](https://altiumdeveloper.github.io/cdm/llms/classes/des_NetItem.md), [des_Pad](https://altiumdeveloper.github.io/cdm/llms/classes/des_Pad.md), [des_PcbComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbComponent.md), [des_PcbLayout](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbLayout.md), [des_PcbNet](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbNet.md), [des_PinInstance](https://altiumdeveloper.github.io/cdm/llms/classes/des_PinInstance.md), [des_PlacedComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PlacedComponent.md), [des_Point2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md), [des_ProjectParameter](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectParameter.md), [des_ProjectVariant](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectVariant.md), [des_Rectangle2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Rectangle2D.md), [des_SchematicSheet](https://altiumdeveloper.github.io/cdm/llms/classes/des_SchematicSheet.md), [des_Stackup](https://altiumdeveloper.github.io/cdm/llms/classes/des_Stackup.md), [des_Track](https://altiumdeveloper.github.io/cdm/llms/classes/des_Track.md), [des_VariantVariation](https://altiumdeveloper.github.io/cdm/llms/classes/des_VariantVariation.md), [des_Via](https://altiumdeveloper.github.io/cdm/llms/classes/des_Via.md), [des_Wire](https://altiumdeveloper.github.io/cdm/llms/classes/des_Wire.md), [dm_AddressBlock](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressBlock.md), [dm_AddressMap](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressMap.md), [dm_AddressSegment](https://altiumdeveloper.github.io/cdm/llms/classes/dm_AddressSegment.md), [dm_ConfiguredDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/dm_ConfiguredDeviceModel.md), [dm_FieldEnum](https://altiumdeveloper.github.io/cdm/llms/classes/dm_FieldEnum.md), [dm_Memory](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Memory.md), [dm_Peripheral](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Peripheral.md), [dm_PeripheralConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralConfiguration.md), [dm_PeripheralInstance](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralInstance.md), [dm_PeripheralMode](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralMode.md), [dm_PeripheralParameter](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralParameter.md), [dm_PeripheralPinConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinConfig.md), [dm_PeripheralPinDependencyConfig](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PeripheralPinDependencyConfig.md), [dm_Pin](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Pin.md), [dm_Port](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Port.md), [dm_PortConfiguration](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfiguration.md), [dm_PortConfigurationDependency](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationDependency.md), [dm_PortConfigurationEnumValue](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationEnumValue.md), [dm_PortConnection](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConnection.md), [dm_PortFunction](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortFunction.md), [dm_Processor](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Processor.md), [dm_Register](https://altiumdeveloper.github.io/cdm/llms/classes/dm_Register.md), [dm_RegisterField](https://altiumdeveloper.github.io/cdm/llms/classes/dm_RegisterField.md), [lib_ComponentParameter](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentParameter.md), [lib_PartChoice](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoice.md), [lib_PartChoiceList](https://altiumdeveloper.github.io/cdm/llms/classes/lib_PartChoiceList.md), [lib_Pin](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Pin.md), [ota_DeploymentAssignment](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeploymentAssignment.md), [ota_DeviceMetrics](https://altiumdeveloper.github.io/cdm/llms/classes/ota_DeviceMetrics.md), [ota_MetricDataPoint](https://altiumdeveloper.github.io/cdm/llms/classes/ota_MetricDataPoint.md), [ota_MetricSeries](https://altiumdeveloper.github.io/cdm/llms/classes/ota_MetricSeries.md), [ota_PackageHash](https://altiumdeveloper.github.io/cdm/llms/classes/ota_PackageHash.md), [plt_LifecycleStage](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleStage.md), [plt_LifecycleState](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleState.md), [pro_BomIssue](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomIssue.md), [pro_BomItem](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItem.md), [pro_BomItemElement](https://altiumdeveloper.github.io/cdm/llms/classes/pro_BomItemElement.md), [req_Artifact](https://altiumdeveloper.github.io/cdm/llms/classes/req_Artifact.md), [sft_PinAssignment](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignment.md), [sft_PinAssignmentModel](https://altiumdeveloper.github.io/cdm/llms/classes/sft_PinAssignmentModel.md), [system_Connection](https://altiumdeveloper.github.io/cdm/llms/classes/system_Connection.md), [system_Endpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_Endpoint.md), [system_FunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_FunctionalBlock.md), [system_HardwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_HardwareProject.md), [system_KeyComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_KeyComponent.md), [system_Parameter](https://altiumdeveloper.github.io/cdm/llms/classes/system_Parameter.md), [system_Port](https://altiumdeveloper.github.io/cdm/llms/classes/system_Port.md), [system_PortAssociation](https://altiumdeveloper.github.io/cdm/llms/classes/system_PortAssociation.md), [system_SdmAuthoringApplication](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmAuthoringApplication.md), [system_SdmClientMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmClientMetadata.md), [system_SdmConnection](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmConnection.md), [system_SdmDeviceModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmDeviceModel.md), [system_SdmEndpoint](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmEndpoint.md), [system_SdmFunctionalBlock](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalBlock.md), [system_SdmFunctionalModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmFunctionalModel.md), [system_SdmHardwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareComponent.md), [system_SdmHardwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmHardwareModel.md), [system_SdmPort](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmPort.md), [system_SdmSoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareComponent.md), [system_SdmSoftwareModel](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareModel.md), [system_SdmSoftwareSpecification](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareSpecification.md), [system_SdmSoftwareStackInstance](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSoftwareStackInstance.md), [system_SdmSystemModelVersionMetadata](https://altiumdeveloper.github.io/cdm/llms/classes/system_SdmSystemModelVersionMetadata.md), [system_SoftwareComponent](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareComponent.md), [system_SoftwareProject](https://altiumdeveloper.github.io/cdm/llms/classes/system_SoftwareProject.md)
 - Mixins (instantiates): [core_WithPlatformAPI](https://altiumdeveloper.github.io/cdm/llms/classes/core_WithPlatformAPI.md)
 - HTML page: [classes/core_Resource/](https://altiumdeveloper.github.io/cdm/classes/core_Resource/)
 
@@ -2106,7 +2162,7 @@ Mixin that adds a maturity annotation slot indicating the lifecycle readiness le
 - Is a: [core_Meta](https://altiumdeveloper.github.io/cdm/llms/classes/core_Meta.md)
 - HTML page: [classes/core_WithPlatformAPI/](https://altiumdeveloper.github.io/cdm/classes/core_WithPlatformAPI/)
 
-Mixin that adds API type annotations: platformAPI names the Altium 365 Platform API GraphQL type; nexarAPI names the Nexar (Octopart) GraphQL type for supply-chain entities served by Nexar rather than the Platform API.
+Mixin that adds API type annotations: platformAPI names the Altium 365 Platform API GraphQL type; nexarAPI names the Nexar (Octopart) GraphQL type for supply-chain entities served by Nexar rather than the Platform API; adSDK names the Altium Designer SDK types (namespace-qualified, comma-separated, e.g. "EDP.INet, PCB.IPCB_Net") that expose the same concept inside Altium Designer.
 
 ## Attributes
 
@@ -2114,6 +2170,7 @@ Mixin that adds API type annotations: platformAPI names the Altium 365 Platform 
 | --- | --- | --- | --- | --- | --- |
 | platformAPI | string | 0..1 | Altium 365 Platform API type name. |  |  |
 | nexarAPI | string | 0..1 | Nexar (Octopart) API type name. |  |  |
+| adSDK | string | 0..1 | Altium Designer SDK type names, namespace-qualified and comma-separated (reference https://altiumdeveloper.github.io/ad-sdk-docs/reference/). |  |  |
 
 ---
 
@@ -2319,6 +2376,196 @@ A process workflow of an Altium 365 Workspace: the workflow that belongs to a pr
 
 ---
 
+# File: llms/classes/des_BoardLayer.md
+
+# Board Layer (des_BoardLayer)
+
+- Name: `des_BoardLayer`
+- IRI: `des:BoardLayer` (https://w3id.org/altium/cdm/design/BoardLayer)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_BoardLayer/](https://altiumdeveloper.github.io/cdm/classes/des_BoardLayer/)
+
+A physical or logical layer of a board: copper (signal or plane), dielectric, mask, overlay, paste or mechanical.
+
+## In the API
+
+- Platform API type: [`DesLayer`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLayer/) (object)
+- Altium Designer SDK type: [`PCB.IPCB_LayerObject`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/pcb/IPCB_LayerObject/)
+- Altium Designer SDK type: [`PCB.IPCB_ElectricalLayer`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/pcb/IPCB_ElectricalLayer/)
+- Altium Designer SDK type: [`PCB.IPCB_DielectricLayer`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/pcb/IPCB_DielectricLayer/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| name | string | 1 | The layer name. |  |  |
+| layerType | [des_LayerType](https://altiumdeveloper.github.io/cdm/llms/enums/des_LayerType.md) | 1 | The kind of layer. |  |  |
+| material | string | 0..1 | The layer material. |  |  |
+| thickness | decimal | 0..1 | The layer thickness, in millimetres. |  |  |
+| copperWeight | decimal | 0..1 | The copper weight of a copper layer, in ounces. |  |  |
+| dielectricConstant | decimal | 0..1 | The dielectric constant of a dielectric layer. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_LayerStack](https://altiumdeveloper.github.io/cdm/llms/classes/des_LayerStack.md) | layers | * |  |
+| [des_Pad](https://altiumdeveloper.github.io/cdm/llms/classes/des_Pad.md) | layer | 0..1 |  |
+| [des_PcbComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbComponent.md) | layer | 0..1 |  |
+| [des_PcbNet](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbNet.md) | layers | * |  |
+| [des_Track](https://altiumdeveloper.github.io/cdm/llms/classes/des_Track.md) | layer | 0..1 |  |
+| [des_Via](https://altiumdeveloper.github.io/cdm/llms/classes/des_Via.md) | endLayer | 0..1 |  |
+| [des_Via](https://altiumdeveloper.github.io/cdm/llms/classes/des_Via.md) | startLayer | 0..1 |  |
+
+---
+
+# File: llms/classes/des_CompiledDesign.md
+
+# Compiled Design (des_CompiledDesign)
+
+- Name: `des_CompiledDesign`
+- IRI: `des:CompiledDesign` (https://w3id.org/altium/cdm/design/CompiledDesign)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_CompiledDesign/](https://altiumdeveloper.github.io/cdm/classes/des_CompiledDesign/)
+
+The compiled, connectivity-level view of a design project at one revision: its schematic sheets, the components placed on them, their pins and the nets that connect those pins, resolved across the sheet hierarchy. It is what is read when the logical design is analysed, as opposed to the drawing objects that are edited in the schematic editor. It is identified by its project and revision.
+
+## Comments
+
+- Refresh of pull request 23 (UDM modelling). Open question Q1 is whether this should be a Resource of the project (as here), an Artifact, or part of a new project revision class.
+- Design data is only available for revisions where design data generation has run.
+
+## In the API
+
+- Platform API type: [`DesignData_Preview`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignData_Preview/) (object)
+- Altium Designer SDK type: [`EDP.IProject`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/IProject/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| project | [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) | 1 | The design project this compiled design belongs to. |  |  |
+| revisionId | string | 1 | The version-control revision of the project that was compiled. |  |  |
+| sheets | [des_SchematicSheet](https://altiumdeveloper.github.io/cdm/llms/classes/des_SchematicSheet.md) | * | The root schematic sheets of the design; sub-sheets are reached through their parents. |  |  |
+| components | [des_PlacedComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PlacedComponent.md) | * | All components placed in the design. |  |  |
+| nets | [des_Net](https://altiumdeveloper.github.io/cdm/llms/classes/des_Net.md) | * | All nets of the design, power and signal, resolved across sheets. |  |  |
+| netClasses | [des_NetClass](https://altiumdeveloper.github.io/cdm/llms/classes/des_NetClass.md) | * | The net classes defined in the design. |  |  |
+| variations | [des_VariantVariation](https://altiumdeveloper.github.io/cdm/llms/classes/des_VariantVariation.md) | * | Per-component variations defined by the project variants. |  |  |
+| boards | [des_PcbLayout](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbLayout.md) | * | The PCB layouts of the project at this revision. |  |  |
+
+---
+
+# File: llms/classes/des_ComponentPart.md
+
+# Component Part (des_ComponentPart)
+
+- Name: `des_ComponentPart`
+- IRI: `des:ComponentPart` (https://w3id.org/altium/cdm/design/ComponentPart)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_ComponentPart/](https://altiumdeveloper.github.io/cdm/classes/des_ComponentPart/)
+
+One part (section) of a placed component. Multi-part components, such as a quad op-amp, are drawn as several parts that may sit on different sheets; each part carries a subset of the component's pins.
+
+## In the API
+
+- Platform API type: [`DesignDataPart_Preview`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataPart_Preview/) (object)
+- Altium Designer SDK type: [`EDP.IPart`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/IPart/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| uniqueId | string | 0..1 | Identifier of the part, unique within the design. |  |  |
+| sheet | [des_SchematicSheet](https://altiumdeveloper.github.io/cdm/llms/classes/des_SchematicSheet.md) | 0..1 | The sheet the part is drawn on. |  |  |
+| pins | [des_PinInstance](https://altiumdeveloper.github.io/cdm/llms/classes/des_PinInstance.md) | * | The pins of this part. |  |  |
+| location | [des_Point2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md) | 0..1 | The location on its schematic sheet. |  |  |
+| boundingBox | [des_Rectangle2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Rectangle2D.md) | 0..1 | The bounding box on its schematic sheet. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_PlacedComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PlacedComponent.md) | parts | * |  |
+
+---
+
+# File: llms/classes/des_DesignParameter.md
+
+# Design Parameter (des_DesignParameter)
+
+- Name: `des_DesignParameter`
+- IRI: `des:DesignParameter` (https://w3id.org/altium/cdm/design/DesignParameter)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_DesignParameter/](https://altiumdeveloper.github.io/cdm/classes/des_DesignParameter/)
+
+A name/value parameter of an object in the compiled design, such as a placed component.
+
+## In the API
+
+- Altium Designer SDK type: [`EDP.IParameter`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/IParameter/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| name | string | 1 | Parameter name. |  |  |
+| value | string | 0..1 | Parameter value. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_PlacedComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PlacedComponent.md) | parameters | * |  |
+
+---
+
+# File: llms/classes/des_DifferentialPair.md
+
+# Differential Pair (des_DifferentialPair)
+
+- Name: `des_DifferentialPair`
+- IRI: `des:DifferentialPair` (https://w3id.org/altium/cdm/design/DifferentialPair)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_DifferentialPair/](https://altiumdeveloper.github.io/cdm/classes/des_DifferentialPair/)
+
+Two nets that carry a differential signal together, for example USB_D_P and USB_D_N.
+
+## In the API
+
+- Platform API type: [`DesignDataDifferentialPair_Preview`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataDifferentialPair_Preview/) (object)
+- Altium Designer SDK type: [`EDP.IDifferentialPair`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/IDifferentialPair/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| name | string | 1 | Differential pair name, e.g. USB_D. |  |  |
+| positive | [des_Net](https://altiumdeveloper.github.io/cdm/llms/classes/des_Net.md) | 0..1 | The positive net of the pair. |  |  |
+| negative | [des_Net](https://altiumdeveloper.github.io/cdm/llms/classes/des_Net.md) | 0..1 | The negative net of the pair. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_Net](https://altiumdeveloper.github.io/cdm/llms/classes/des_Net.md) | differentialPair | 0..1 |  |
+
+---
+
 # File: llms/classes/des_HarnessProject.md
 
 # Harness Project (des_HarnessProject)
@@ -2360,6 +2607,40 @@ None declared (nearest ancestor `des_Project`: `grid:workspace:{workspace-id}:de
 | variants | [des_ProjectVariant](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectVariant.md) | * |  |  | [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) |
 | partOfSolution | [plt_Solution](https://altiumdeveloper.github.io/cdm/llms/classes/plt_Solution.md) | * |  | core_partOf | [plt_SolutionItem](https://altiumdeveloper.github.io/cdm/llms/classes/plt_SolutionItem.md) |
 | id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) |
+
+---
+
+# File: llms/classes/des_LayerStack.md
+
+# Layer Stack (des_LayerStack)
+
+- Name: `des_LayerStack`
+- IRI: `des:LayerStack` (https://w3id.org/altium/cdm/design/LayerStack)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_LayerStack/](https://altiumdeveloper.github.io/cdm/classes/des_LayerStack/)
+
+One stack of layers of a board, ordered from top to bottom; a rigid-flex board has one per rigid or flex region type.
+
+## In the API
+
+- Platform API type: [`DesStack`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesStack/) (object)
+- Altium Designer SDK type: [`PCB.IPCB_LayerStack`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/pcb/IPCB_LayerStack/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| name | string | 1 | The stack name. |  |  |
+| layers | [des_BoardLayer](https://altiumdeveloper.github.io/cdm/llms/classes/des_BoardLayer.md) | * | The layers of the stack, ordered from top to bottom. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_Stackup](https://altiumdeveloper.github.io/cdm/llms/classes/des_Stackup.md) | stacks | * |  |
 
 ---
 
@@ -2440,6 +2721,460 @@ None declared (nearest ancestor `des_Project`: `grid:workspace:{workspace-id}:de
 
 ---
 
+# File: llms/classes/des_Net.md
+
+# Net (des_Net)
+
+- Name: `des_Net`
+- IRI: `des:Net` (https://w3id.org/altium/cdm/design/Net)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_Net/](https://altiumdeveloper.github.io/cdm/classes/des_Net/)
+
+An electrical net of the compiled design: a set of component pins that are electrically connected, resolved across the sheet hierarchy. Its scope says whether it is local to one sheet, part of a sheet interface or global. Net names are not necessarily unique.
+
+## Comments
+
+- Replaces udm_DesignNet and des_design_net from pull request 23; nets are design-wide rather than per sheet.
+- Open question Q2 is which relation from the relation dictionary (if any) expresses that a net connects pins.
+
+## In the API
+
+- Platform API type: [`DesignDataNet_Preview`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataNet_Preview/) (object)
+- Altium Designer SDK type: [`EDP.INet`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/INet/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| name | string | 1 | Net name, e.g. GND or SPI1_CLK. |  |  |
+| scope | [des_NetScope](https://altiumdeveloper.github.io/cdm/llms/enums/des_NetScope.md) | 0..1 | Whether the net is local to a sheet, a sheet interface, or global. |  |  |
+| isPower | boolean | 0..1 | True when the net carries power, including ground. |  |  |
+| connects | [des_PinInstance](https://altiumdeveloper.github.io/cdm/llms/classes/des_PinInstance.md) | * | The component pins connected by this net. |  |  |
+| netItems | [des_NetItem](https://altiumdeveloper.github.io/cdm/llms/classes/des_NetItem.md) | * | The connection objects that make up the net, such as net labels, ports, sheet entries and power objects. |  |  |
+| netClasses | [des_NetClass](https://altiumdeveloper.github.io/cdm/llms/classes/des_NetClass.md) | * | The net classes this net belongs to. |  |  |
+| differentialPair | [des_DifferentialPair](https://altiumdeveloper.github.io/cdm/llms/classes/des_DifferentialPair.md) | 0..1 | The differential pair this net is one side of, if any. |  |  |
+| wires | [des_Wire](https://altiumdeveloper.github.io/cdm/llms/classes/des_Wire.md) | * | The wires drawn for this net on schematic sheets. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_CompiledDesign](https://altiumdeveloper.github.io/cdm/llms/classes/des_CompiledDesign.md) | nets | * |  |
+| [des_DifferentialPair](https://altiumdeveloper.github.io/cdm/llms/classes/des_DifferentialPair.md) | negative | 0..1 |  |
+| [des_DifferentialPair](https://altiumdeveloper.github.io/cdm/llms/classes/des_DifferentialPair.md) | positive | 0..1 |  |
+| [des_PcbNet](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbNet.md) | logicalNet | 0..1 |  |
+
+---
+
+# File: llms/classes/des_NetClass.md
+
+# Net Class (des_NetClass)
+
+- Name: `des_NetClass`
+- IRI: `des:NetClass` (https://w3id.org/altium/cdm/design/NetClass)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_NetClass/](https://altiumdeveloper.github.io/cdm/classes/des_NetClass/)
+
+A named group of nets that share design rules, for example DDR3 or HighSpeed.
+
+## In the API
+
+- Altium Designer SDK type: [`EDP.INetClass`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/INetClass/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| name | string | 1 | Net class name. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_CompiledDesign](https://altiumdeveloper.github.io/cdm/llms/classes/des_CompiledDesign.md) | netClasses | * |  |
+| [des_Net](https://altiumdeveloper.github.io/cdm/llms/classes/des_Net.md) | netClasses | * |  |
+
+---
+
+# File: llms/classes/des_NetItem.md
+
+# Net Item (des_NetItem)
+
+- Name: `des_NetItem`
+- IRI: `des:NetItem` (https://w3id.org/altium/cdm/design/NetItem)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_NetItem/](https://altiumdeveloper.github.io/cdm/classes/des_NetItem/)
+
+A connection object that contributes to a net, such as a net label, a port, a sheet entry or a power object.
+
+## In the API
+
+- Platform API type: [`DesignDataNetItem_Preview`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataNetItem_Preview/) (object)
+- Altium Designer SDK type: [`EDP.INetItem`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/INetItem/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| kind | [des_NetItemKind](https://altiumdeveloper.github.io/cdm/llms/enums/des_NetItemKind.md) | 1 | The kind of connection object. |  |  |
+| name | string | 0..1 | The name carried by the object, e.g. a port name. |  |  |
+| location | [des_Point2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md) | 0..1 | The location on its schematic sheet. |  |  |
+| boundingBox | [des_Rectangle2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Rectangle2D.md) | 0..1 | The bounding box on its schematic sheet. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_Net](https://altiumdeveloper.github.io/cdm/llms/classes/des_Net.md) | netItems | * |  |
+
+---
+
+# File: llms/classes/des_Pad.md
+
+# Pad (des_Pad)
+
+- Name: `des_Pad`
+- IRI: `des:Pad` (https://w3id.org/altium/cdm/design/Pad)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_Pad/](https://altiumdeveloper.github.io/cdm/classes/des_Pad/)
+
+A connection target on a board, usually one pin of a placed component; a free pad belongs to no component.
+
+## Comments
+
+- Neither API states the pad-to-pin join explicitly; the AD SDK exposes IPCB_Pad.PinDescriptorString and OwnerPart_ID. This is part of open question Q8.
+
+## In the API
+
+- Platform API type: [`DesPad`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesPad/) (object)
+- Altium Designer SDK type: [`PCB.IPCB_Pad`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/pcb/IPCB_Pad/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| designator | string | 0..1 | The pad designator within its component (for example 1, A3). |  |  |
+| globalDesignator | string | 0..1 | The pad designator qualified by its component designator. |  |  |
+| padType | [des_PadType](https://altiumdeveloper.github.io/cdm/llms/enums/des_PadType.md) | 1 | Whether the pad is surface-mount or free. |  |  |
+| shape | [des_PrimitiveShape](https://altiumdeveloper.github.io/cdm/llms/enums/des_PrimitiveShape.md) | 0..1 | The pad shape. |  |  |
+| sizeX | decimal | 0..1 | The pad size along X, in millimetres. |  |  |
+| sizeY | decimal | 0..1 | The pad size along Y, in millimetres. |  |  |
+| holeSize | decimal | 0..1 | The hole size, in millimetres; zero for surface-mount pads. |  |  |
+| isPlated | boolean | 0..1 | Whether the hole is plated. |  |  |
+| position | [des_Point2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md) | 1 | The pad location. |  |  |
+| rotation | decimal | 0..1 | The rotation, in degrees. |  |  |
+| layer | [des_BoardLayer](https://altiumdeveloper.github.io/cdm/llms/classes/des_BoardLayer.md) | 0..1 | The layer of the pad; multi-layer for through-hole pads. |  |  |
+| net | [des_PcbNet](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbNet.md) | 0..1 | The net the pad is on. |  |  |
+| pin | [des_PinInstance](https://altiumdeveloper.github.io/cdm/llms/classes/des_PinInstance.md) | 0..1 | The pin of the compiled schematic design that this pad realises. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_PcbComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbComponent.md) | pads | * |  |
+| [des_PcbLayout](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbLayout.md) | pads | * |  |
+| [des_PcbNet](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbNet.md) | pads | * |  |
+
+---
+
+# File: llms/classes/des_PcbComponent.md
+
+# PCB Component (des_PcbComponent)
+
+- Name: `des_PcbComponent`
+- IRI: `des:PcbComponent` (https://w3id.org/altium/cdm/design/PcbComponent)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_PcbComponent/](https://altiumdeveloper.github.io/cdm/classes/des_PcbComponent/)
+
+A component as placed on a board: its footprint instance with position, rotation, side and pads.
+
+## Comments
+
+- The Platform API gives the schematic and PCB identifiers of a design item (DesDesignItem.schId, pcbId) but does not state how they join to DesignDataComponent_Preview; the AD SDK gives IPCB_Component.SourceUniqueId and SourceDesignator. The join is open question Q8.
+- The Platform API gives the footprint by name only (DesDesignItem.footprintName); the AD SDK gives IPCB_Component.ItemGUID / ItemRevisionGUID / VaultGUID, which can resolve a managed footprint.
+
+## In the API
+
+- Platform API type: [`DesDesignItem`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesDesignItem/) (object)
+- Altium Designer SDK type: [`PCB.IPCB_Component`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/pcb/IPCB_Component/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| designator | string | 1 | The component designator on the board. |  |  |
+| footprintName | string | 0..1 | The name of the footprint used. |  |  |
+| position | [des_Point2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md) | 0..1 | The placement location. |  |  |
+| rotation | decimal | 0..1 | The rotation, in degrees. |  |  |
+| layer | [des_BoardLayer](https://altiumdeveloper.github.io/cdm/llms/classes/des_BoardLayer.md) | 0..1 | The layer the component is placed on (top or bottom side). |  |  |
+| boundingBox | [des_Rectangle2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Rectangle2D.md) | 0..1 | The bounding box of the component on the board. |  |  |
+| pads | [des_Pad](https://altiumdeveloper.github.io/cdm/llms/classes/des_Pad.md) | * | The pads of the footprint instance. |  |  |
+| placedComponent | [des_PlacedComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PlacedComponent.md) | 0..1 | The component in the compiled schematic design that this board component implements. |  |  |
+| footprint | [lib_FootprintRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_FootprintRevision.md) | 0..1 | The Workspace footprint revision used, when the footprint is managed. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_PcbLayout](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbLayout.md) | components | * |  |
+
+---
+
+# File: llms/classes/des_PcbLayout.md
+
+# PCB Layout (des_PcbLayout)
+
+- Name: `des_PcbLayout`
+- IRI: `des:PcbLayout` (https://w3id.org/altium/cdm/design/PcbLayout)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_PcbLayout/](https://altiumdeveloper.github.io/cdm/classes/des_PcbLayout/)
+
+The physical design of one board in a design project at one revision: its outline, layer stack, placed components, pads, tracks and vias, and the copper nets they form.
+
+## Comments
+
+- The Platform API serves it per variant (DesWipVariant.pcb, DesReleaseVariant.pcb), not under DesignData_Preview; it is attached to Compiled Design here so that one traversal reaches both the logical and the physical design (see G7, two schematic paths).
+- Arcs, polygons (copper pours), regions, fills, text, dimensions, rooms and design rules are available in the AD SDK (IPCB_Arc, IPCB_Polygon, IPCB_Region, ...) but not in the Platform API, and are out of scope of this draft.
+- DesPcb.mesh3D is marked PROTOTYPE in the Platform API and is out of scope.
+
+## In the API
+
+- Platform API type: [`DesPcb`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesPcb/) (object)
+- Altium Designer SDK type: [`PCB.IPCB_Board`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/pcb/IPCB_Board/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| documentId | string | 1 | The identifier of the PCB document. |  |  |
+| documentName | string | 0..1 | The PCB document file name. |  |  |
+| origin | [des_Point2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md) | 0..1 | The location of the coordinate system origin. |  |  |
+| outline | [des_Point2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md) | * | The vertices of the board outline, in order. |  |  |
+| area | decimal | 0..1 | The area enclosed by the board outline, in square millimetres. |  |  |
+| stackup | [des_Stackup](https://altiumdeveloper.github.io/cdm/llms/classes/des_Stackup.md) | 0..1 | The layer structure of the board. |  |  |
+| components | [des_PcbComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbComponent.md) | * | The components placed on the board. |  |  |
+| nets | [des_PcbNet](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbNet.md) | * | The electrically connected copper regions of the board. |  |  |
+| pads | [des_Pad](https://altiumdeveloper.github.io/cdm/llms/classes/des_Pad.md) | * | All pads on the board, including free pads. |  |  |
+| tracks | [des_Track](https://altiumdeveloper.github.io/cdm/llms/classes/des_Track.md) | * | All conductor segments on the board. |  |  |
+| vias | [des_Via](https://altiumdeveloper.github.io/cdm/llms/classes/des_Via.md) | * | All vias on the board. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_CompiledDesign](https://altiumdeveloper.github.io/cdm/llms/classes/des_CompiledDesign.md) | boards | * |  |
+
+---
+
+# File: llms/classes/des_PcbNet.md
+
+# PCB Net (des_PcbNet)
+
+- Name: `des_PcbNet`
+- IRI: `des:PcbNet` (https://w3id.org/altium/cdm/design/PcbNet)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_PcbNet/](https://altiumdeveloper.github.io/cdm/classes/des_PcbNet/)
+
+A net as realised in copper on a board: the pads, tracks and vias that carry it, the layers it is routed on and its routed length.
+
+## Comments
+
+- The AD SDK links a PCB net to its logical net (IPCB_Net.GetLogicalNet); the Platform API has no such link, so a consumer can only join on the net name.
+
+## In the API
+
+- Platform API type: [`DesNet`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesNet/) (object)
+- Altium Designer SDK type: [`PCB.IPCB_Net`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/pcb/IPCB_Net/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| name | string | 1 | The net name. |  |  |
+| routedLength | decimal | 0..1 | The cumulative routed length, in millimetres. |  |  |
+| layers | [des_BoardLayer](https://altiumdeveloper.github.io/cdm/llms/classes/des_BoardLayer.md) | * | The layers the net is routed on. |  |  |
+| pads | [des_Pad](https://altiumdeveloper.github.io/cdm/llms/classes/des_Pad.md) | * | The pads on the net. |  |  |
+| tracks | [des_Track](https://altiumdeveloper.github.io/cdm/llms/classes/des_Track.md) | * | The tracks on the net. |  |  |
+| vias | [des_Via](https://altiumdeveloper.github.io/cdm/llms/classes/des_Via.md) | * | The vias on the net. |  |  |
+| logicalNet | [des_Net](https://altiumdeveloper.github.io/cdm/llms/classes/des_Net.md) | 0..1 | The net of the compiled schematic design that this copper net implements. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_Pad](https://altiumdeveloper.github.io/cdm/llms/classes/des_Pad.md) | net | 0..1 |  |
+| [des_PcbLayout](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbLayout.md) | nets | * |  |
+| [des_Track](https://altiumdeveloper.github.io/cdm/llms/classes/des_Track.md) | net | 0..1 |  |
+| [des_Via](https://altiumdeveloper.github.io/cdm/llms/classes/des_Via.md) | net | 0..1 |  |
+
+---
+
+# File: llms/classes/des_PinInstance.md
+
+# Pin Instance (des_PinInstance)
+
+- Name: `des_PinInstance`
+- IRI: `des:PinInstance` (https://w3id.org/altium/cdm/design/PinInstance)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_PinInstance/](https://altiumdeveloper.github.io/cdm/classes/des_PinInstance/)
+
+A pin of a placed component in the design. It takes its number, name and electrical type from the library pin definition and is connected to at most one net.
+
+## Comments
+
+- Replaces udm_DesignPin and des_design_pin from pull request 23.
+
+## In the API
+
+- Platform API type: [`DesignDataPin_Preview`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataPin_Preview/) (object)
+- Altium Designer SDK type: [`EDP.INetItem`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/INetItem/)
+- Altium Designer SDK type: [`SCH.ISch_Pin`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/sch/ISch_Pin/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| number | string | 1 | Pin number, e.g. 14 or A3. |  |  |
+| name | string | 0..1 | Pin name, e.g. PA5. |  |  |
+| electricalType | [lib_PinElectricalType](https://altiumdeveloper.github.io/cdm/llms/enums/lib_PinElectricalType.md) | 0..1 | Electrical type of the pin, used by electrical rule checks. |  |  |
+| functions | string | * | Alternate functions the pin can serve. |  |  |
+| definedBy | [lib_Pin](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Pin.md) | 0..1 | The library pin definition this pin instance comes from, when the component is managed. |  |  |
+| location | [des_Point2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md) | 0..1 | The location on its schematic sheet. |  |  |
+| boundingBox | [des_Rectangle2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Rectangle2D.md) | 0..1 | The bounding box on its schematic sheet. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_ComponentPart](https://altiumdeveloper.github.io/cdm/llms/classes/des_ComponentPart.md) | pins | * |  |
+| [des_Net](https://altiumdeveloper.github.io/cdm/llms/classes/des_Net.md) | connects | * |  |
+| [des_Pad](https://altiumdeveloper.github.io/cdm/llms/classes/des_Pad.md) | pin | 0..1 |  |
+
+---
+
+# File: llms/classes/des_PlacedComponent.md
+
+# Placed Component (des_PlacedComponent)
+
+- Name: `des_PlacedComponent`
+- IRI: `des:PlacedComponent` (https://w3id.org/altium/cdm/design/PlacedComponent)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_PlacedComponent/](https://altiumdeveloper.github.io/cdm/classes/des_PlacedComponent/)
+
+A component instance placed in the design, identified by its designator. When the design uses managed components, it is derived from a library component revision; when it uses a file-based library, there is no Workspace library item to follow and only its parameters (for example manufacturer and part number) describe it.
+
+## Comments
+
+- Replaces udm_DesignComponent and des_design_component from pull request 23.
+
+## In the API
+
+- Platform API type: [`DesignDataComponent_Preview`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataComponent_Preview/) (object)
+- Altium Designer SDK type: [`EDP.IComponent`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/IComponent/)
+- Altium Designer SDK type: [`SCH.ISch_Component`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/sch/ISch_Component/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| uniqueId | string | 0..1 | Identifier of the placed component, unique within the design. |  |  |
+| logicalDesignator | string | 1 | The designator as placed on the schematic, e.g. U3. |  |  |
+| physicalDesignator | string | 0..1 | The designator after multi-channel annotation, e.g. U3_CH1. |  |  |
+| sheet | [des_SchematicSheet](https://altiumdeveloper.github.io/cdm/llms/classes/des_SchematicSheet.md) | 0..1 | The sheet the component is placed on. |  |  |
+| parts | [des_ComponentPart](https://altiumdeveloper.github.io/cdm/llms/classes/des_ComponentPart.md) | * | The parts (sections) of a multi-part component; a single-part component has one. |  |  |
+| parameters | [des_DesignParameter](https://altiumdeveloper.github.io/cdm/llms/classes/des_DesignParameter.md) | * | Name/value parameters of the placed component. |  |  |
+| librarySource | [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) | 0..1 | The library component revision this placed component was taken from, when it is a managed component. |  |  |
+| librarySourceKind | [des_LibrarySourceKind](https://altiumdeveloper.github.io/cdm/llms/enums/des_LibrarySourceKind.md) | 0..1 | Whether the component comes from a managed Workspace library or a file-based library. |  |  |
+| location | [des_Point2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md) | 0..1 | The location on its schematic sheet. |  |  |
+| boundingBox | [des_Rectangle2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Rectangle2D.md) | 0..1 | The bounding box on its schematic sheet. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_CompiledDesign](https://altiumdeveloper.github.io/cdm/llms/classes/des_CompiledDesign.md) | components | * |  |
+| [des_PcbComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbComponent.md) | placedComponent | 0..1 |  |
+| [des_VariantVariation](https://altiumdeveloper.github.io/cdm/llms/classes/des_VariantVariation.md) | component | 1 |  |
+
+---
+
+# File: llms/classes/des_Point2D.md
+
+# Point 2D (des_Point2D)
+
+- Name: `des_Point2D`
+- IRI: `des:Point2D` (https://w3id.org/altium/cdm/design/Point2D)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_Point2D/](https://altiumdeveloper.github.io/cdm/classes/des_Point2D/)
+
+A point in the coordinate system of a schematic sheet or PCB document.
+
+## Comments
+
+- The Platform API serves PCB positions in internal units, mils and millimetres (DesPosition2D); the AD SDK uses internal units of 10,000 per mil. The integer x/y of DesignDataLocation_Preview (schematic design data) has no unit stated in the API snapshot; this is open question Q7.
+
+## In the API
+
+- Platform API type: [`DesPosition2D`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesPosition2D/) (object)
+- Altium Designer SDK type: [`PCB.ICoordPoint`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/pcb/ICoordPoint/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| x | decimal | 1 | The X coordinate, in millimetres. |  |  |
+| y | decimal | 1 | The Y coordinate, in millimetres. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_ComponentPart](https://altiumdeveloper.github.io/cdm/llms/classes/des_ComponentPart.md) | location | 0..1 |  |
+| [des_NetItem](https://altiumdeveloper.github.io/cdm/llms/classes/des_NetItem.md) | location | 0..1 |  |
+| [des_Pad](https://altiumdeveloper.github.io/cdm/llms/classes/des_Pad.md) | position | 1 |  |
+| [des_PcbComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbComponent.md) | position | 0..1 |  |
+| [des_PcbLayout](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbLayout.md) | origin | 0..1 |  |
+| [des_PcbLayout](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbLayout.md) | outline | * |  |
+| [des_PinInstance](https://altiumdeveloper.github.io/cdm/llms/classes/des_PinInstance.md) | location | 0..1 |  |
+| [des_PlacedComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PlacedComponent.md) | location | 0..1 |  |
+| [des_Track](https://altiumdeveloper.github.io/cdm/llms/classes/des_Track.md) | begin | 1 |  |
+| [des_Track](https://altiumdeveloper.github.io/cdm/llms/classes/des_Track.md) | end | 1 |  |
+| [des_Via](https://altiumdeveloper.github.io/cdm/llms/classes/des_Via.md) | position | 1 |  |
+| [des_Wire](https://altiumdeveloper.github.io/cdm/llms/classes/des_Wire.md) | location | 0..1 |  |
+| [des_Wire](https://altiumdeveloper.github.io/cdm/llms/classes/des_Wire.md) | vertices | * |  |
+
+---
+
 # File: llms/classes/des_Project.md
 
 # Hardware Project (des_Project)
@@ -2465,6 +3200,7 @@ A design project stored in a Workspace, normally under its built-in version cont
 ## In the API
 
 - Platform API type: [`DesProject`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProject/) (object)
+- Altium Designer SDK type: [`EDP.IProject`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/IProject/)
 
 ## GRID
 
@@ -2487,6 +3223,7 @@ A design project stored in a Workspace, normally under its built-in version cont
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
 | [col_DesignReview](https://altiumdeveloper.github.io/cdm/llms/classes/col_DesignReview.md) | project | 1 | core_partOf |
+| [des_CompiledDesign](https://altiumdeveloper.github.io/cdm/llms/classes/des_CompiledDesign.md) | project | 1 |  |
 | [des_MultiboardProject](https://altiumdeveloper.github.io/cdm/llms/classes/des_MultiboardProject.md) | projects | * | core_hasPart |
 | [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) | informedBy | * | core_informedBy |
 | [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) | usedByProjectVariant | * | core_inputOf |
@@ -2683,12 +3420,59 @@ A design variant of a project: a named variation of the same base design that is
 ## In the API
 
 - Platform API type: [`DesWipVariant`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWipVariant/) (object)
+- Altium Designer SDK type: [`EDP.IProjectVariant`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/IProjectVariant/)
 
 ## Referenced by
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
 | [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) | variants | * |  |
+| [des_VariantVariation](https://altiumdeveloper.github.io/cdm/llms/classes/des_VariantVariation.md) | variant | 1 |  |
+
+---
+
+# File: llms/classes/des_Rectangle2D.md
+
+# Rectangle 2D (des_Rectangle2D)
+
+- Name: `des_Rectangle2D`
+- IRI: `des:Rectangle2D` (https://w3id.org/altium/cdm/design/Rectangle2D)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_Rectangle2D/](https://altiumdeveloper.github.io/cdm/classes/des_Rectangle2D/)
+
+An axis-aligned rectangle, used for bounding boxes of drawing objects.
+
+## Comments
+
+- Platform API PCB items give two corners (DesRectangle pos1/pos2); schematic design data gives left/bottom/right/top (DesignDataRectangle_Preview).
+
+## In the API
+
+- Platform API type: [`DesRectangle`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesRectangle/) (object)
+- Altium Designer SDK type: [`PCB.ICoordRect`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/pcb/ICoordRect/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| left | decimal | 1 | The left edge, in millimetres. |  |  |
+| bottom | decimal | 1 | The bottom edge, in millimetres. |  |  |
+| right | decimal | 1 | The right edge, in millimetres. |  |  |
+| top | decimal | 1 | The top edge, in millimetres. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_ComponentPart](https://altiumdeveloper.github.io/cdm/llms/classes/des_ComponentPart.md) | boundingBox | 0..1 |  |
+| [des_NetItem](https://altiumdeveloper.github.io/cdm/llms/classes/des_NetItem.md) | boundingBox | 0..1 |  |
+| [des_PcbComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbComponent.md) | boundingBox | 0..1 |  |
+| [des_PinInstance](https://altiumdeveloper.github.io/cdm/llms/classes/des_PinInstance.md) | boundingBox | 0..1 |  |
+| [des_PlacedComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PlacedComponent.md) | boundingBox | 0..1 |  |
+| [des_Wire](https://altiumdeveloper.github.io/cdm/llms/classes/des_Wire.md) | boundingBox | 0..1 |  |
 
 ---
 
@@ -2749,6 +3533,243 @@ Execution of a rule check against a project to validate design integrity and com
 | Field | Range | Cardinality | Description | Relation | Inherited from |
 | --- | --- | --- | --- | --- | --- |
 | id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) |
+
+---
+
+# File: llms/classes/des_SchematicSheet.md
+
+# Schematic Sheet (des_SchematicSheet)
+
+- Name: `des_SchematicSheet`
+- IRI: `des:SchematicSheet` (https://w3id.org/altium/cdm/design/SchematicSheet)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_SchematicSheet/](https://altiumdeveloper.github.io/cdm/classes/des_SchematicSheet/)
+
+A schematic document of the design. Sheets form a hierarchy: a sheet can reference sub-sheets, and a repeated (multi-channel) sub-sheet appears under each parent that references it.
+
+## In the API
+
+- Platform API type: [`DesignDataSchematicDocument_Preview`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataSchematicDocument_Preview/) (object)
+- Altium Designer SDK type: [`EDP.IDocument`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/IDocument/)
+- Altium Designer SDK type: [`SCH.ISch_Sheet`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/sch/ISch_Sheet/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| documentId | string | 1 | Stable identifier of the sheet within the project. |  |  |
+| fileName | string | 0..1 | File name of the sheet, e.g. MCU.SchDoc. |  |  |
+| children | [des_SchematicSheet](https://altiumdeveloper.github.io/cdm/llms/classes/des_SchematicSheet.md) | * | Sub-sheets referenced from this sheet. |  |  |
+| width | decimal | 0..1 | The sheet width, in millimetres. |  |  |
+| height | decimal | 0..1 | The sheet height, in millimetres. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_CompiledDesign](https://altiumdeveloper.github.io/cdm/llms/classes/des_CompiledDesign.md) | sheets | * |  |
+| [des_ComponentPart](https://altiumdeveloper.github.io/cdm/llms/classes/des_ComponentPart.md) | sheet | 0..1 |  |
+| [des_PlacedComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PlacedComponent.md) | sheet | 0..1 |  |
+| [des_Wire](https://altiumdeveloper.github.io/cdm/llms/classes/des_Wire.md) | sheet | 0..1 |  |
+
+---
+
+# File: llms/classes/des_Stackup.md
+
+# Layer Stackup (des_Stackup)
+
+- Name: `des_Stackup`
+- IRI: `des:Stackup` (https://w3id.org/altium/cdm/design/Stackup)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_Stackup/](https://altiumdeveloper.github.io/cdm/classes/des_Stackup/)
+
+The layer structure of a board: one or more layer stacks (more than one for rigid-flex boards).
+
+## In the API
+
+- Platform API type: [`DesStackup`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesStackup/) (object)
+- Altium Designer SDK type: [`PCB.IPCB_MasterLayerStack`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/pcb/IPCB_MasterLayerStack/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| stackupType | string | 0..1 | The stackup type as reported by the Platform API. |  |  |
+| stacks | [des_LayerStack](https://altiumdeveloper.github.io/cdm/llms/classes/des_LayerStack.md) | * | The layer stacks (substacks) of the board. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_PcbLayout](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbLayout.md) | stackup | 0..1 |  |
+
+---
+
+# File: llms/classes/des_Track.md
+
+# Track (des_Track)
+
+- Name: `des_Track`
+- IRI: `des:Track` (https://w3id.org/altium/cdm/design/Track)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_Track/](https://altiumdeveloper.github.io/cdm/classes/des_Track/)
+
+A straight conductor segment on a board layer, with a width.
+
+## In the API
+
+- Platform API type: [`DesTrack`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesTrack/) (object)
+- Altium Designer SDK type: [`PCB.IPCB_Track`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/pcb/IPCB_Track/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| begin | [des_Point2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md) | 1 | The first end point. |  |  |
+| end | [des_Point2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md) | 1 | The second end point. |  |  |
+| width | decimal | 1 | The track width, in millimetres. |  |  |
+| layer | [des_BoardLayer](https://altiumdeveloper.github.io/cdm/llms/classes/des_BoardLayer.md) | 0..1 | The layer of the track. |  |  |
+| net | [des_PcbNet](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbNet.md) | 0..1 | The net the track is on. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_PcbLayout](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbLayout.md) | tracks | * |  |
+| [des_PcbNet](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbNet.md) | tracks | * |  |
+
+---
+
+# File: llms/classes/des_VariantVariation.md
+
+# Variant Variation (des_VariantVariation)
+
+- Name: `des_VariantVariation`
+- IRI: `des:VariantVariation` (https://w3id.org/altium/cdm/design/VariantVariation)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_VariantVariation/](https://altiumdeveloper.github.io/cdm/classes/des_VariantVariation/)
+
+How one placed component differs in a project variant: not fitted, or replaced by an alternate component.
+
+## Comments
+
+- Replaces udm_DesignVariant and des_design_variant_variation from pull request 23.
+
+## In the API
+
+- Platform API type: [`DesignDataVariation_Preview`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataVariation_Preview/) (object)
+- Altium Designer SDK type: [`EDP.IComponentVariation`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/IComponentVariation/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| variant | [des_ProjectVariant](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectVariant.md) | 1 | The project variant that defines the variation. |  |  |
+| component | [des_PlacedComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PlacedComponent.md) | 1 | The placed component that varies. |  |  |
+| kind | [des_ComponentVariationKind](https://altiumdeveloper.github.io/cdm/llms/enums/des_ComponentVariationKind.md) | 1 | How the component varies. |  |  |
+| alternate | [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) | 0..1 | The component revision used instead, for an alternate variation. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_CompiledDesign](https://altiumdeveloper.github.io/cdm/llms/classes/des_CompiledDesign.md) | variations | * |  |
+
+---
+
+# File: llms/classes/des_Via.md
+
+# Via (des_Via)
+
+- Name: `des_Via`
+- IRI: `des:Via` (https://w3id.org/altium/cdm/design/Via)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_Via/](https://altiumdeveloper.github.io/cdm/classes/des_Via/)
+
+A plated hole that connects copper on two or more layers of a board.
+
+## In the API
+
+- Platform API type: [`DesVia`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesVia/) (object)
+- Altium Designer SDK type: [`PCB.IPCB_Via`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/pcb/IPCB_Via/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| name | string | 0..1 | The via name, if any. |  |  |
+| position | [des_Point2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md) | 1 | The via location. |  |  |
+| holeDiameter | decimal | 1 | The hole diameter, in millimetres. |  |  |
+| padDiameter | decimal | 1 | The pad diameter, in millimetres. |  |  |
+| shape | [des_PrimitiveShape](https://altiumdeveloper.github.io/cdm/llms/enums/des_PrimitiveShape.md) | 0..1 | The via pad shape. |  |  |
+| startLayer | [des_BoardLayer](https://altiumdeveloper.github.io/cdm/llms/classes/des_BoardLayer.md) | 0..1 | The first layer the via connects. |  |  |
+| endLayer | [des_BoardLayer](https://altiumdeveloper.github.io/cdm/llms/classes/des_BoardLayer.md) | 0..1 | The last layer the via connects. |  |  |
+| net | [des_PcbNet](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbNet.md) | 0..1 | The net the via is on. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_PcbLayout](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbLayout.md) | vias | * |  |
+| [des_PcbNet](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbNet.md) | vias | * |  |
+
+---
+
+# File: llms/classes/des_Wire.md
+
+# Wire (des_Wire)
+
+- Name: `des_Wire`
+- IRI: `des:Wire` (https://w3id.org/altium/cdm/design/Wire)
+- Bounded context: [design](https://altiumdeveloper.github.io/cdm/llms/design.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/des_Wire/](https://altiumdeveloper.github.io/cdm/classes/des_Wire/)
+
+A wire drawn on a schematic sheet, part of one net.
+
+## Comments
+
+- [interpretation] DesignDataNet_Preview.lines is read as the wires of the net: the AD SDK equivalent, INet.DM_Lines, returns ILine, described as a line object on a schematic document.
+- The Platform API serves only location and bounding rectangle; vertices are available from the AD SDK (ISch_Wire inherits Vertex / VerticesCount from ISch_Polygon).
+
+## In the API
+
+- Platform API type: [`DesignDataLine_Preview`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataLine_Preview/) (object)
+- Altium Designer SDK type: [`EDP.ILine`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/ILine/)
+- Altium Designer SDK type: [`SCH.ISch_Wire`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/sch/ISch_Wire/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| uniqueId | string | 0..1 | The unique identifier of the wire. |  |  |
+| sheet | [des_SchematicSheet](https://altiumdeveloper.github.io/cdm/llms/classes/des_SchematicSheet.md) | 0..1 | The sheet the wire is drawn on. |  |  |
+| location | [des_Point2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md) | 0..1 | The reference location of the wire. |  |  |
+| boundingBox | [des_Rectangle2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Rectangle2D.md) | 0..1 | The bounding box of the wire. |  |  |
+| vertices | [des_Point2D](https://altiumdeveloper.github.io/cdm/llms/classes/des_Point2D.md) | * | The vertices of the wire, in order. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_Net](https://altiumdeveloper.github.io/cdm/llms/classes/des_Net.md) | wires | * |  |
 
 ---
 
@@ -3877,8 +4898,10 @@ Revision of a Component.
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
+| [des_PlacedComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PlacedComponent.md) | librarySource | 0..1 |  |
 | [des_Project](https://altiumdeveloper.github.io/cdm/llms/classes/des_Project.md) | usesComponents | * | core_hasInput |
 | [des_ProjectRelease](https://altiumdeveloper.github.io/cdm/llms/classes/des_ProjectRelease.md) | consistsOfComponents | * | core_hasPart |
+| [des_VariantVariation](https://altiumdeveloper.github.io/cdm/llms/classes/des_VariantVariation.md) | alternate | 0..1 |  |
 | [ins_PartInsight](https://altiumdeveloper.github.io/cdm/llms/classes/ins_PartInsight.md) | occursIn | * | core_occursIn |
 | [lib_Component](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Component.md) | revisions | * | core_revisions |
 | [lib_ManagedSheetRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ManagedSheetRevision.md) | consistsOfComponents | * | core_hasPart |
@@ -4032,6 +5055,10 @@ Footprint represents the physical layout definition of a Component on a PCB, spe
 - Term: **Workspace Footprint** (exact; altium-designer)
 - Term: **PCB footprint** (related; altium-designer)
 
+## In the API
+
+- Altium Designer SDK type: [`PCB.IPCB_LibComponent`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/pcb/IPCB_LibComponent/)
+
 ## GRID
 
 `grid:workspace:{workspace-id}:library:footprint/{id}`
@@ -4083,6 +5110,7 @@ A revision of a Footprint: the PCB footprint as saved into the Workspace at one 
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
+| [des_PcbComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PcbComponent.md) | footprint | 0..1 |  |
 | [lib_ComponentRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_ComponentRevision.md) | footprints | * | core_hasPart |
 | [lib_Footprint](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Footprint.md) | revisions | * | core_revisions |
 
@@ -4378,6 +5406,47 @@ None declared.
 
 ---
 
+# File: llms/classes/lib_Pin.md
+
+# Pin (lib_Pin)
+
+- Name: `lib_Pin`
+- IRI: `lib:Pin` (https://w3id.org/altium/cdm/library/Pin)
+- Bounded context: [library](https://altiumdeveloper.github.io/cdm/llms/library.md)
+- Kind: Resource
+- Is a: [core_Resource](https://altiumdeveloper.github.io/cdm/llms/classes/core_Resource.md)
+- Maturity: EXPERIMENTAL
+- HTML page: [classes/lib_Pin/](https://altiumdeveloper.github.io/cdm/classes/lib_Pin/)
+
+A pin definition on a schematic symbol: one electrical connection point with its designator, name and electrical type, and optionally alternate functions. Pins placed in a design take their definition from here.
+
+## Comments
+
+- From udm_Pin in pull request 23 (UDM modelling).
+
+## In the API
+
+- Platform API type: [`DesPin`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesPin/) (object)
+- Altium Designer SDK type: [`SCH.ISch_Pin`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/sch/ISch_Pin/)
+
+## Attributes
+
+| Field | Range | Cardinality | Description | Relation | Inherited from |
+| --- | --- | --- | --- | --- | --- |
+| designator | string | 1 | Pin designator, unique within the symbol, e.g. 1 or A3. |  |  |
+| name | string | 0..1 | Pin name, e.g. VCC or PA5. |  |  |
+| electricalType | [lib_PinElectricalType](https://altiumdeveloper.github.io/cdm/llms/enums/lib_PinElectricalType.md) | 0..1 | Electrical type of the pin, used by electrical rule checks. |  |  |
+| functions | string | * | Alternate functions the pin can serve, e.g. SPI1_CLK or UART2_TX. |  |  |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_PinInstance](https://altiumdeveloper.github.io/cdm/llms/classes/des_PinInstance.md) | definedBy | 0..1 |  |
+| [lib_SymbolRevision](https://altiumdeveloper.github.io/cdm/llms/classes/lib_SymbolRevision.md) | pins | * | core_hasPart |
+
+---
+
 # File: llms/classes/lib_ReuseBlock.md
 
 # Reuse Block (lib_ReuseBlock)
@@ -4599,6 +5668,7 @@ A revision of a Symbol: the schematic symbol as saved into the Workspace at one 
 
 | Field | Range | Cardinality | Description | Relation | Inherited from |
 | --- | --- | --- | --- | --- | --- |
+| pins | [lib_Pin](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Pin.md) | * | The pin definitions of the symbol. | core_hasPart |  |
 | lifecycleState | [plt_LifecycleState](https://altiumdeveloper.github.io/cdm/llms/classes/plt_LifecycleState.md) | 1 | The current lifecycle state assigned to this entity. |  | [plt_HasLifecycle](https://altiumdeveloper.github.io/cdm/llms/classes/plt_HasLifecycle.md) |
 | id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](https://altiumdeveloper.github.io/cdm/llms/classes/core_Entity.md) |
 
@@ -8146,6 +9216,224 @@ The state of a design review.
 
 ---
 
+# File: llms/enums/des_ComponentVariationKind.md
+
+# Component Variation Kind (des_ComponentVariationKind)
+
+- Name: `des_ComponentVariationKind`
+- IRI: `des:ComponentVariationKind` (https://w3id.org/altium/cdm/design/ComponentVariationKind)
+- Kind: enumeration
+- HTML page: [enums/des_ComponentVariationKind/](https://altiumdeveloper.github.io/cdm/enums/des_ComponentVariationKind/)
+
+How a placed component varies in a project variant.
+
+## Values
+
+| Value | Description |
+| --- | --- |
+| `NotFitted` | The component is not assembled in this variant. |
+| `Alternate` | An alternate component is used in this variant. |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_VariantVariation](https://altiumdeveloper.github.io/cdm/llms/classes/des_VariantVariation.md) | kind | 1 |  |
+
+---
+
+# File: llms/enums/des_LayerType.md
+
+# Layer Type (des_LayerType)
+
+- Name: `des_LayerType`
+- IRI: `des:LayerType` (https://w3id.org/altium/cdm/design/LayerType)
+- Kind: enumeration
+- HTML page: [enums/des_LayerType/](https://altiumdeveloper.github.io/cdm/enums/des_LayerType/)
+
+The kind of a board layer, as classified by the Platform API (DesLayerType).
+
+## Values
+
+| Value | Description |
+| --- | --- |
+| `Abstract` | Platform API ABSTRACT. |
+| `Adhesive` | Platform API ADHESIVE. |
+| `BikiniCoverlay` | Platform API BIKINI_COVERLAY. |
+| `Conductive` | Platform API CONDUCTIVE. |
+| `Core` | Platform API CORE. |
+| `Dielectric` | Platform API DIELECTRIC. |
+| `Foil` | Platform API FOIL. |
+| `Mechanical` | Platform API MECHANICAL. |
+| `Misc` | Platform API MISC. |
+| `NonConductive` | Platform API NON_CONDUCTIVE. |
+| `Overlay` | Platform API OVERLAY. |
+| `PasteMask` | Platform API PASTE_MASK. |
+| `PeLayer` | Platform API PE_LAYER. |
+| `Physical` | Platform API PHYSICAL. |
+| `Plane` | Platform API PLANE. |
+| `Plating` | Platform API PLATING. |
+| `Prepreg` | Platform API PREPREG. |
+| `Signal` | Platform API SIGNAL. |
+| `SolderMask` | Platform API SOLDER_MASK. |
+| `Stiffener` | Platform API STIFFENER. |
+| `SurfaceFinish` | Platform API SURFACE_FINISH. |
+| `Unknown` | Platform API UNKNOWN. |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_BoardLayer](https://altiumdeveloper.github.io/cdm/llms/classes/des_BoardLayer.md) | layerType | 1 |  |
+
+---
+
+# File: llms/enums/des_LibrarySourceKind.md
+
+# Library Source Kind (des_LibrarySourceKind)
+
+- Name: `des_LibrarySourceKind`
+- IRI: `des:LibrarySourceKind` (https://w3id.org/altium/cdm/design/LibrarySourceKind)
+- Kind: enumeration
+- HTML page: [enums/des_LibrarySourceKind/](https://altiumdeveloper.github.io/cdm/enums/des_LibrarySourceKind/)
+
+Where a placed component was taken from.
+
+## Values
+
+| Value | Description |
+| --- | --- |
+| `Managed` | A managed component from the Workspace library, traceable to a component revision. |
+| `FileLibrary` | A component from a file-based library (for example a SchLib), with no Workspace library item. |
+| `Unknown` | The source could not be determined. |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_PlacedComponent](https://altiumdeveloper.github.io/cdm/llms/classes/des_PlacedComponent.md) | librarySourceKind | 0..1 |  |
+
+---
+
+# File: llms/enums/des_NetItemKind.md
+
+# Net Item Kind (des_NetItemKind)
+
+- Name: `des_NetItemKind`
+- IRI: `des:NetItemKind` (https://w3id.org/altium/cdm/design/NetItemKind)
+- Kind: enumeration
+- HTML page: [enums/des_NetItemKind/](https://altiumdeveloper.github.io/cdm/enums/des_NetItemKind/)
+
+The kind of connection object that contributes to a net.
+
+## Values
+
+| Value | Description |
+| --- | --- |
+| `Pin` | A component pin. |
+| `SheetEntry` | A sheet entry on a sheet symbol. |
+| `NetLabel` | A net label. |
+| `Port` | A sheet port. |
+| `PowerObject` | A power port object, such as GND or VCC. |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_NetItem](https://altiumdeveloper.github.io/cdm/llms/classes/des_NetItem.md) | kind | 1 |  |
+
+---
+
+# File: llms/enums/des_NetScope.md
+
+# Net Scope (des_NetScope)
+
+- Name: `des_NetScope`
+- IRI: `des:NetScope` (https://w3id.org/altium/cdm/design/NetScope)
+- Kind: enumeration
+- HTML page: [enums/des_NetScope/](https://altiumdeveloper.github.io/cdm/enums/des_NetScope/)
+
+How far a net reaches in the sheet hierarchy.
+
+## Values
+
+| Value | Description |
+| --- | --- |
+| `Local` | The net exists on one sheet only. |
+| `SheetInterface` | The net connects a sheet to its parent through ports or sheet entries. |
+| `Global` | The net is global to the design, e.g. a power net. |
+| `Unknown` | The scope could not be determined. |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_Net](https://altiumdeveloper.github.io/cdm/llms/classes/des_Net.md) | scope | 0..1 |  |
+
+---
+
+# File: llms/enums/des_PadType.md
+
+# Pad Type (des_PadType)
+
+- Name: `des_PadType`
+- IRI: `des:PadType` (https://w3id.org/altium/cdm/design/PadType)
+- Kind: enumeration
+- HTML page: [enums/des_PadType/](https://altiumdeveloper.github.io/cdm/enums/des_PadType/)
+
+Whether a pad is surface-mount or free (Platform API DesPadType: "Pad type: SMD or free.").
+
+## Values
+
+| Value | Description |
+| --- | --- |
+| `Smd` | Platform API SMD. |
+| `Free` | Platform API FREE. |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_Pad](https://altiumdeveloper.github.io/cdm/llms/classes/des_Pad.md) | padType | 1 |  |
+
+---
+
+# File: llms/enums/des_PrimitiveShape.md
+
+# Primitive Shape (des_PrimitiveShape)
+
+- Name: `des_PrimitiveShape`
+- IRI: `des:PrimitiveShape` (https://w3id.org/altium/cdm/design/PrimitiveShape)
+- Kind: enumeration
+- HTML page: [enums/des_PrimitiveShape/](https://altiumdeveloper.github.io/cdm/enums/des_PrimitiveShape/)
+
+The shape of a pad or via (Platform API DesPrimitiveShape).
+
+## Values
+
+| Value | Description |
+| --- | --- |
+| `None` | Platform API NONE. AD SDK TShape.eNoShape (matched by name, [interpretation]). |
+| `Round` | Platform API ROUND. AD SDK TShape.eRounded (matched by name, [interpretation]). |
+| `Rectangle` | Platform API RECTANGLE. AD SDK TShape.eRectangular (matched by name, [interpretation]). |
+| `Octagon` | Platform API OCTAGON. AD SDK TShape.eOctagonal (matched by name, [interpretation]). |
+| `Circle` | Platform API CIRCLE. AD SDK TShape.eCircleShape (matched by name, [interpretation]). |
+| `Arc` | Platform API ARC. AD SDK TShape.eArcShape (matched by name, [interpretation]). |
+| `Terminator` | Platform API TERMINATOR. AD SDK TShape.eTerminator (matched by name, [interpretation]). |
+| `RoundRectangle` | Platform API ROUND_RECTANGLE. AD SDK TShape.eRoundRectShape (matched by name, [interpretation]). |
+| `RotatedRectangle` | Platform API ROTATED_RECTANGLE. AD SDK TShape.eRotatedRectShape (matched by name, [interpretation]). |
+| `RoundedRectangle` | Platform API ROUNDED_RECTANGLE. AD SDK TShape.eRoundedRectangular (matched by name, [interpretation]). |
+| `Custom` | Platform API CUSTOM. AD SDK TShape.eCustomShape (matched by name, [interpretation]). |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_Pad](https://altiumdeveloper.github.io/cdm/llms/classes/des_Pad.md) | shape | 0..1 |  |
+| [des_Via](https://altiumdeveloper.github.io/cdm/llms/classes/des_Via.md) | shape | 0..1 |  |
+
+---
+
 # File: llms/enums/dm_AccessType.md
 
 # Access Type (dm_AccessType)
@@ -8304,6 +9592,39 @@ Defines the primary operational mode of a physical port pin. Determines if the p
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
 | [dm_PortConfigurationDependency](https://altiumdeveloper.github.io/cdm/llms/classes/dm_PortConfigurationDependency.md) | portMode | 0..1 |  |
+
+---
+
+# File: llms/enums/lib_PinElectricalType.md
+
+# Pin Electrical Type (lib_PinElectricalType)
+
+- Name: `lib_PinElectricalType`
+- IRI: `lib:PinElectricalType` (https://w3id.org/altium/cdm/library/PinElectricalType)
+- Kind: enumeration
+- HTML page: [enums/lib_PinElectricalType/](https://altiumdeveloper.github.io/cdm/enums/lib_PinElectricalType/)
+
+The electrical type of a pin, used by electrical rule checks.
+
+## Values
+
+| Value | Description |
+| --- | --- |
+| `Input` | Input pin. |
+| `Output` | Output pin. |
+| `InputOutput` | Bidirectional pin. |
+| `OpenCollector` | Open collector output. |
+| `OpenEmitter` | Open emitter output. |
+| `HiZ` | High-impedance (tri-state) pin. |
+| `Passive` | Passive pin, e.g. on a resistor. |
+| `Power` | Power or ground pin. |
+
+## Referenced by
+
+| From | Field | Cardinality | Relation |
+| --- | --- | --- | --- |
+| [des_PinInstance](https://altiumdeveloper.github.io/cdm/llms/classes/des_PinInstance.md) | electricalType | 0..1 |  |
+| [lib_Pin](https://altiumdeveloper.github.io/cdm/llms/classes/lib_Pin.md) | electricalType | 0..1 |  |
 
 ---
 

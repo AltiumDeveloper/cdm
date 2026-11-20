@@ -20,6 +20,7 @@ Product terms and class names of the model. A term used by several classes is li
 
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
+| Board Layer | [Board Layer](../classes/des_BoardLayer.md) (`des_BoardLayer`) | design | title |  |
 | BOM Issue | [BOM Issue](../classes/pro_BomIssue.md) (`pro_BomIssue`) | procurement | title | [BOM Error Detection and Correction](https://www.altium.com/documentation/altium-365/bom-portal/error-detection-correction) |
 | BOM Item | [BOM Item](../classes/pro_BomItem.md) (`pro_BomItem`) | procurement | title | [Configuration and Options](https://www.altium.com/documentation/altium-365/bom-portal/configuration-options#bom-structure-features) |
 | BOM Item Alternate | [BOM Item Alternate](../classes/pro_BomItemAlternate.md) (`pro_BomItemAlternate`) | procurement | title | [Configuration and Options](https://www.altium.com/documentation/altium-365/bom-portal/configuration-options#add_alternate) |
@@ -37,8 +38,10 @@ Product terms and class names of the model. A term used by several classes is li
 | Comment Thread | [Comment Thread](../classes/col_CommentThread.md) (`col_CommentThread`) | collaboration | title | [Web Viewer](https://www.altium.com/documentation/altium-365/viewers/web-viewer#commenting) |
 | Company | [Company](../classes/sup_Company.md) (`sup_Company`) | supply | title |  |
 | Company Account | [Organization](../classes/plt_Organization.md) (`plt_Organization`) | platform | exact | [Company Dashboard](https://www.altium.com/documentation/altium-dashboard) |
+| Compiled Design | [Compiled Design](../classes/des_CompiledDesign.md) (`des_CompiledDesign`) | design | title |  |
 | Component | [Component](../classes/lib_Component.md) (`lib_Component`) | library | title | [Building & Maintaining Your Components and Libraries](https://www.altium.com/documentation/altium-designer/components-libraries#WSL) |
 | Component Parameter | [Component Parameter](../classes/lib_ComponentParameter.md) (`lib_ComponentParameter`) | library | title | [Component Templates](https://www.altium.com/documentation/altium-designer/components-libraries/workspace-component-templates#UACPDT) |
+| Component Part | [Component Part](../classes/des_ComponentPart.md) (`des_ComponentPart`) | design | title |  |
 | Component Revision | [Component Revision](../classes/lib_ComponentRevision.md) (`lib_ComponentRevision`) | library | title | [Building & Maintaining Your Components and Libraries](https://www.altium.com/documentation/altium-designer/components-libraries#WSL) |
 | Component Template | [Component Template](../classes/lib_ComponentTemplate.md) (`lib_ComponentTemplate`) | library | title | [Component Templates](https://www.altium.com/documentation/altium-designer/components-libraries/workspace-component-templates) |
 | Component Template Revision | [Component Template Revision](../classes/lib_ComponentTemplateRevision.md) (`lib_ComponentTemplateRevision`) | library | title | [Component Templates](https://www.altium.com/documentation/altium-designer/components-libraries/workspace-component-templates) |
@@ -59,6 +62,7 @@ Product terms and class names of the model. A term used by several classes is li
 | Deployment Assignment | [Deployment Assignment](../classes/ota_DeploymentAssignment.md) (`ota_DeploymentAssignment`) | ota | title |  |
 | Deployment Result | [Deployment Result](../classes/ota_DeploymentResult.md) (`ota_DeploymentResult`) | ota | title |  |
 | Design Insight | [Design Insight](../classes/ins_DesignInsight.md) (`ins_DesignInsight`) | insights | title |  |
+| Design Parameter | [Design Parameter](../classes/des_DesignParameter.md) (`des_DesignParameter`) | design | title |  |
 | design project | [Hardware Project](../classes/des_Project.md) (`des_Project`) | design | related | [Workspace Projects](https://www.altium.com/documentation/altium-365/workspace-projects) |
 | design project release | [Hardware Project Release](../classes/des_ProjectRelease.md) (`des_ProjectRelease`) | design | related | [Design Project Release](https://www.altium.com/documentation/altium-designer/preparing-for-manufacture/design-release) |
 | Design Review | [Design Review](../classes/col_DesignReview.md) (`col_DesignReview`) | collaboration | title | [Design Reviews](https://www.altium.com/documentation/altium-365/project-design-reviews) |
@@ -68,6 +72,7 @@ Product terms and class names of the model. A term used by several classes is li
 | Device Configuration Revision | [Device Configuration Revision](../classes/sft_DeviceConfigurationRevision.md) (`sft_DeviceConfigurationRevision`) | software | title |  |
 | Device Metrics | [Device Metrics](../classes/ota_DeviceMetrics.md) (`ota_DeviceMetrics`) | ota | title |  |
 | Device Model | [Device Model](../classes/system_SdmDeviceModel.md) (`system_SdmDeviceModel`) | system-sdm | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration) |
+| Differential Pair | [Differential Pair](../classes/des_DifferentialPair.md) (`des_DifferentialPair`) | design | title |  |
 | Domain Metadata | [Domain Metadata](../classes/system_SdmClientMetadata.md) (`system_SdmClientMetadata`) | system-sdm | title |  |
 
 ## E
@@ -137,6 +142,8 @@ Product terms and class names of the model. A term used by several classes is li
 
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
+| Layer Stack | [Layer Stack](../classes/des_LayerStack.md) (`des_LayerStack`) | design | title |  |
+| Layer Stackup | [Layer Stackup](../classes/des_Stackup.md) (`des_Stackup`) | design | title |  |
 | library component | [Component](../classes/lib_Component.md) (`lib_Component`) | library | exact | [Building & Maintaining Your Components and Libraries](https://www.altium.com/documentation/altium-designer/components-libraries#WSL) |
 | Lifecycle Definition | [Lifecycle Definition](../classes/plt_LifecycleDefinition.md) (`plt_LifecycleDefinition`) | platform | title | [Defining Lifecycle Definitions for a Workspace](https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions) |
 | Lifecycle Stage | [Lifecycle Stage](../classes/plt_LifecycleStage.md) (`plt_LifecycleStage`) | platform | title | [Defining Lifecycle Definitions for a Workspace](https://www.altium.com/documentation/altium-designer/connected-workspace/defining-lifecycle-definitions) |
@@ -162,6 +169,14 @@ Product terms and class names of the model. A term used by several classes is li
 - [Part](../classes/lib_Part.md) (`lib_Part`) — library. A manufacturer part, identified by manufacturer and part number, as held in the Workspace's Part Catalog together with the supplier parts through which it is sold.
 - [Part](../classes/sup_Part.md) (`sup_Part`) — supply. Supply Part represents a market-available instance of a manufactured Part, providing aggregated sourcing data such as pricing, stock levels, and supplier offers.
 
+## N
+
+| Term | Class | Bounded context | Kind | Product documentation |
+| --- | --- | --- | --- | --- |
+| Net | [Net](../classes/des_Net.md) (`des_Net`) | design | title |  |
+| Net Class | [Net Class](../classes/des_NetClass.md) (`des_NetClass`) | design | title |  |
+| Net Item | [Net Item](../classes/des_NetItem.md) (`des_NetItem`) | design | title |  |
+
 ## O
 
 | Term | Class | Bounded context | Kind | Product documentation |
@@ -175,6 +190,7 @@ Product terms and class names of the model. A term used by several classes is li
 | --- | --- | --- | --- | --- |
 | Package | [Package](../classes/ota_Package.md) (`ota_Package`) | ota | title |  |
 | Package Hash | [Package Hash](../classes/ota_PackageHash.md) (`ota_PackageHash`) | ota | title |  |
+| Pad | [Pad](../classes/des_Pad.md) (`des_Pad`) | design | title |  |
 | Parameter | [Parameter](../classes/system_Parameter.md) (`system_Parameter`) | system | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#accessing_object_properties) |
 | Part Choice | [Part Choice](../classes/lib_PartChoice.md) (`lib_PartChoice`) | library | title | [Adding Supply Chain Information to a Component](https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component#anatomy_of_a_part_choice) |
 | Part Choice List | [Part Choice List](../classes/lib_PartChoiceList.md) (`lib_PartChoiceList`) | library | title | [Adding Supply Chain Information to a Component](https://www.altium.com/documentation/altium-designer/components-libraries/adding-supply-chain-information-component#part_choices) |
@@ -182,7 +198,10 @@ Product terms and class names of the model. A term used by several classes is li
 | Part Group | [Part Group](../classes/sup_PartGroup.md) (`sup_PartGroup`) | supply | title |  |
 | Part Insight | [Part Insight](../classes/ins_PartInsight.md) (`ins_PartInsight`) | insights | title |  |
 | Part Request | [Part Request](../classes/lib_PartRequest.md) (`lib_PartRequest`) | library | title | [Part Requests](https://www.altium.com/documentation/altium-365/workflow-part-requests) |
+| PCB Component | [PCB Component](../classes/des_PcbComponent.md) (`des_PcbComponent`) | design | title |  |
 | PCB footprint | [Footprint](../classes/lib_Footprint.md) (`lib_Footprint`) | library | related | [Creating a PCB Footprint](https://www.altium.com/documentation/altium-designer/components-libraries/creating-pcb-footprint) |
+| PCB Layout | [PCB Layout](../classes/des_PcbLayout.md) (`des_PcbLayout`) | design | title |  |
+| PCB Net | [PCB Net](../classes/des_PcbNet.md) (`des_PcbNet`) | design | title |  |
 | PCB Snippet | [PCB Snippet](../classes/lib_PcbSnippet.md) (`lib_PcbSnippet`) | library | title | [Working with Snippets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets) |
 | PCB Snippet Revision | [PCB Snippet Revision](../classes/lib_PcbSnippetRevision.md) (`lib_PcbSnippetRevision`) | library | title | [Working with Snippets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets) |
 | Peripheral | [Peripheral](../classes/dm_Peripheral.md) (`dm_Peripheral`) | deviceModel | title |  |
@@ -192,9 +211,11 @@ Product terms and class names of the model. A term used by several classes is li
 | PeripheralParameter | [PeripheralParameter](../classes/dm_PeripheralParameter.md) (`dm_PeripheralParameter`) | deviceModel | title |  |
 | PeripheralPinConfig | [PeripheralPinConfig](../classes/dm_PeripheralPinConfig.md) (`dm_PeripheralPinConfig`) | deviceModel | title |  |
 | PeripheralPinDependencyConfig | [PeripheralPinDependencyConfig](../classes/dm_PeripheralPinDependencyConfig.md) (`dm_PeripheralPinDependencyConfig`) | deviceModel | title |  |
-| Pin | [Pin](../classes/dm_Pin.md) (`dm_Pin`) | deviceModel | title |  |
 | Pin Assignment | [Pin Assignment](../classes/sft_PinAssignment.md) (`sft_PinAssignment`) | software | title | [Working with Renesas 365 Solutions](https://www.altium.com/documentation/altium-designer/working-renesas-365-solutions#pulling_sdm_into_a_hardware_project) |
 | Pin Assignment Model | [Pin Assignment Model](../classes/sft_PinAssignmentModel.md) (`sft_PinAssignmentModel`) | software | title | [Electronic System Design](https://www.altium.com/documentation/altium-365/esd#using_the_device_configuration) |
+| Pin Instance | [Pin Instance](../classes/des_PinInstance.md) (`des_PinInstance`) | design | title |  |
+| Placed Component | [Placed Component](../classes/des_PlacedComponent.md) (`des_PlacedComponent`) | design | title |  |
+| Point 2D | [Point 2D](../classes/des_Point2D.md) (`des_Point2D`) | design | title |  |
 | Port Association | [Port Association](../classes/system_PortAssociation.md) (`system_PortAssociation`) | system | title |  |
 | PortConfiguration | [PortConfiguration](../classes/dm_PortConfiguration.md) (`dm_PortConfiguration`) | deviceModel | title |  |
 | PortConfigurationDependency | [PortConfigurationDependency](../classes/dm_PortConfigurationDependency.md) (`dm_PortConfigurationDependency`) | deviceModel | title |  |
@@ -213,6 +234,11 @@ Product terms and class names of the model. A term used by several classes is li
 - [Part](../classes/lib_Part.md) (`lib_Part`) — library. A manufacturer part, identified by manufacturer and part number, as held in the Workspace's Part Catalog together with the supplier parts through which it is sold.
 - [Part](../classes/sup_Part.md) (`sup_Part`) — supply. Supply Part represents a market-available instance of a manufactured Part, providing aggregated sourcing data such as pricing, stock levels, and supplier offers.
 
+**Pin — 2 meanings**
+
+- [Pin](../classes/dm_Pin.md) (`dm_Pin`) — deviceModel. A physical pin on the device.
+- [Pin](../classes/lib_Pin.md) (`lib_Pin`) — library. A pin definition on a schematic symbol: one electrical connection point with its designator, name and electrical type, and optionally alternate functions.
+
 **Port — 3 meanings**
 
 - [Port](../classes/dm_Port.md) (`dm_Port`) — deviceModel. A physical port on the device, with its functions, configurations, and connections.
@@ -223,6 +249,7 @@ Product terms and class names of the model. A term used by several classes is li
 
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
+| Rectangle 2D | [Rectangle 2D](../classes/des_Rectangle2D.md) (`des_Rectangle2D`) | design | title |  |
 | Reference Design | [Reference Design](../classes/sup_ReferenceDesign.md) (`sup_ReferenceDesign`) | supply | title | [Renesas 365](https://www.altium.com/documentation/altium-365/renesas-365#import_project) |
 | Register | [Register](../classes/dm_Register.md) (`dm_Register`) | deviceModel | title |  |
 | RegisterField | [RegisterField](../classes/dm_RegisterField.md) (`dm_RegisterField`) | deviceModel | title |  |
@@ -247,6 +274,7 @@ Product terms and class names of the model. A term used by several classes is li
 | --- | --- | --- | --- | --- |
 | SCH Snippet | [SCH Snippet](../classes/lib_SchSnippet.md) (`lib_SchSnippet`) | library | title | [Working with Snippets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets) |
 | SCH Snippet Revision | [SCH Snippet Revision](../classes/lib_SchSnippetRevision.md) (`lib_SchSnippetRevision`) | library | title | [Working with Snippets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets) |
+| Schematic Sheet | [Schematic Sheet](../classes/des_SchematicSheet.md) (`des_SchematicSheet`) | design | title |  |
 | schematic snippet | [SCH Snippet](../classes/lib_SchSnippet.md) (`lib_SchSnippet`) | library | exact | [Working with Snippets](https://www.altium.com/documentation/altium-designer/schematic/design-reuse/snippets) |
 | schematic symbol | [Symbol](../classes/lib_Symbol.md) (`lib_Symbol`) | library | related | [Creating a Schematic Symbol](https://www.altium.com/documentation/altium-designer/components-libraries/creating-schematic-symbol) |
 | Schematic Template | [Schematic Template](../classes/con_SchematicTemplate.md) (`con_SchematicTemplate`) | configuration | title | [Creating a Schematic Template](https://www.altium.com/documentation/altium-designer/schematic/creating-templates) |
@@ -289,6 +317,7 @@ Product terms and class names of the model. A term used by several classes is li
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
 | Task | [Task](../classes/col_Task.md) (`col_Task`) | collaboration | title | [Working with Tasks](https://www.altium.com/documentation/altium-365/tasks) |
+| Track | [Track](../classes/des_Track.md) (`des_Track`) | design | title |  |
 
 ## U
 
@@ -302,12 +331,15 @@ Product terms and class names of the model. A term used by several classes is li
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
 | V&V Activity | [Verification Case](../classes/req_VerificationCase.md) (`req_VerificationCase`) | requirements | related | [Verification & Validation Module](https://www.altium.com/documentation/altium-365/requirements-portal/verification-validation-module) |
+| Variant Variation | [Variant Variation](../classes/des_VariantVariation.md) (`des_VariantVariation`) | design | title |  |
 | Verification Case | [Verification Case](../classes/req_VerificationCase.md) (`req_VerificationCase`) | requirements | title | [Verification & Validation Module](https://www.altium.com/documentation/altium-365/requirements-portal/verification-validation-module) |
+| Via | [Via](../classes/des_Via.md) (`des_Via`) | design | title |  |
 
 ## W
 
 | Term | Class | Bounded context | Kind | Product documentation |
 | --- | --- | --- | --- | --- |
+| Wire | [Wire](../classes/des_Wire.md) (`des_Wire`) | design | title |  |
 | Workflow | [Workflow](../classes/cus_Workflow.md) (`cus_Workflow`) | customization | title | [Processes & Workflows](https://www.altium.com/documentation/altium-365/processes-workflows) |
 | Workspace | [Workspace](../classes/plt_Workspace.md) (`plt_Workspace`) | platform | title | [Altium 365 Workspace](https://www.altium.com/documentation/altium-365/workspace) |
 | Workspace component | [Component](../classes/lib_Component.md) (`lib_Component`) | library | exact | [Building & Maintaining Your Components and Libraries](https://www.altium.com/documentation/altium-designer/components-libraries#WSL) |

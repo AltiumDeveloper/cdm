@@ -27,6 +27,7 @@ A revision of a Symbol: the schematic symbol as saved into the Workspace at one 
 
 | Field | Range | Cardinality | Description | Relation | Inherited from |
 | --- | --- | --- | --- | --- | --- |
+| pins | [lib_Pin](lib_Pin.md) | * | The pin definitions of the symbol. | core_hasPart |  |
 | lifecycleState | [plt_LifecycleState](plt_LifecycleState.md) | 1 | The current lifecycle state assigned to this entity. |  | [plt_HasLifecycle](plt_HasLifecycle.md) |
 | id | GRID | 1 | Globally unique identifier across the whole platform. |  | [core_Entity](core_Entity.md) |
 

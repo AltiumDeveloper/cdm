@@ -18,7 +18,7 @@ No public product documentation exists for this bounded context.
 - [Resource](classes/core_Resource.md) (`core_Resource`): Abstract base for lightweight platform-accessible objects that have API access but are not Entities; they carry no GRID and no versioning lifecycle. · Resource, abstract
 - [With GRID](classes/core_WithGRID.md) (`core_WithGRID`): Mixin that adds a GRID annotation slot to a class. · mixin
 - [With Maturity](classes/core_WithMaturity.md) (`core_WithMaturity`): Mixin that adds a maturity annotation slot indicating the lifecycle readiness level. · mixin
-- [With Platform API](classes/core_WithPlatformAPI.md) (`core_WithPlatformAPI`): Mixin that adds API type annotations: platformAPI names the Altium 365 Platform API GraphQL type; nexarAPI names the Nexar (Octopart) GraphQL type for supply-chain entities served by Nexar rather than the Platform API. · mixin
+- [With Platform API](classes/core_WithPlatformAPI.md) (`core_WithPlatformAPI`): Mixin that adds API type annotations: platformAPI names the Altium 365 Platform API GraphQL type; nexarAPI names the Nexar (Octopart) GraphQL type for supply-chain entities served by Nexar rather than the Platform API; adSDK names the Altium Designer SDK types (namespace-qualified, comma-separated, e.g. "EDP.INet, PCB.IPCB_Net") that expose the same concept inside Altium Designer. · mixin
 - [With Vault](classes/core_WithVault.md) (`core_WithVault`): Mixin that adds a vault content type annotation to a class, indicating how its content is stored in the platform vault. · mixin
 - [With Vault Link](classes/core_WithVaultLink.md) (`core_WithVaultLink`): Mixin that adds vault link parent, child, and type annotation slots for tracking hierarchical vault relationships. · mixin
 

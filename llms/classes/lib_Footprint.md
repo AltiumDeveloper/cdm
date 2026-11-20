@@ -20,6 +20,10 @@ Footprint represents the physical layout definition of a Component on a PCB, spe
 - Term: **Workspace Footprint** (exact; altium-designer)
 - Term: **PCB footprint** (related; altium-designer)
 
+## In the API
+
+- Altium Designer SDK type: [`PCB.IPCB_LibComponent`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/pcb/IPCB_LibComponent/)
+
 ## GRID
 
 `grid:workspace:{workspace-id}:library:footprint/{id}`

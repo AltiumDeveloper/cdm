@@ -1364,6 +1364,13 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enumerations-in-bounded-context">
+<span class="md-ellipsis">
+      Enumerations in Bounded Context
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </div>
@@ -1458,12 +1465,143 @@ context.</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../../classes/des_BoardLayer/">Board Layer</a></td>
+<td>A physical or logical layer of a board: copper (signal or plane), dielectric, mask, overlay, paste or mechanical.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_CompiledDesign/">Compiled Design</a></td>
+<td>The compiled, connectivity-level view of a design project at one revision: its schematic sheets, the components placed on them, their pins and the nets that connect those pins, resolved across the sheet hierarchy. It is what is read when the logical design is analysed, as opposed to the drawing objects that are edited in the schematic editor. It is identified by its project and revision.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_ComponentPart/">Component Part</a></td>
+<td>One part (section) of a placed component. Multi-part components, such as a quad op-amp, are drawn as several parts that may sit on different sheets; each part carries a subset of the component's pins.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_DesignParameter/">Design Parameter</a></td>
+<td>A name/value parameter of an object in the compiled design, such as a placed component.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_DifferentialPair/">Differential Pair</a></td>
+<td>Two nets that carry a differential signal together, for example USB_D_P and USB_D_N.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_LayerStack/">Layer Stack</a></td>
+<td>One stack of layers of a board, ordered from top to bottom; a rigid-flex board has one per rigid or flex region type.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_Net/">Net</a></td>
+<td>An electrical net of the compiled design: a set of component pins that are electrically connected, resolved across the sheet hierarchy. Its scope says whether it is local to one sheet, part of a sheet interface or global. Net names are not necessarily unique.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_NetClass/">Net Class</a></td>
+<td>A named group of nets that share design rules, for example DDR3 or HighSpeed.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_NetItem/">Net Item</a></td>
+<td>A connection object that contributes to a net, such as a net label, a port, a sheet entry or a power object.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_Pad/">Pad</a></td>
+<td>A connection target on a board, usually one pin of a placed component; a free pad belongs to no component.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_PcbComponent/">PCB Component</a></td>
+<td>A component as placed on a board: its footprint instance with position, rotation, side and pads.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_PcbLayout/">PCB Layout</a></td>
+<td>The physical design of one board in a design project at one revision: its outline, layer stack, placed components, pads, tracks and vias, and the copper nets they form.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_PcbNet/">PCB Net</a></td>
+<td>A net as realised in copper on a board: the pads, tracks and vias that carry it, the layers it is routed on and its routed length.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_PinInstance/">Pin Instance</a></td>
+<td>A pin of a placed component in the design. It takes its number, name and electrical type from the library pin definition and is connected to at most one net.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_PlacedComponent/">Placed Component</a></td>
+<td>A component instance placed in the design, identified by its designator. When the design uses managed components, it is derived from a library component revision; when it uses a file-based library, there is no Workspace library item to follow and only its parameters (for example manufacturer and part number) describe it.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_Point2D/">Point 2D</a></td>
+<td>A point in the coordinate system of a schematic sheet or PCB document.</td>
+</tr>
+<tr>
 <td><a href="../../classes/des_ProjectParameter/">Project Parameter</a></td>
 <td>A name/value parameter defined at the level of a design project. It is either a Workspace-side (server-side) parameter, kept with the project in the Workspace and editable only there, or a design-side parameter, kept in the project file (e.g. *.PrjPcb) and editable in Altium Designer. Both kinds appear in the project options and can be used as special strings in design documents.</td>
 </tr>
 <tr>
 <td><a href="../../classes/des_ProjectVariant/">Hardware Project Variant</a></td>
 <td>A design variant of a project: a named variation of the same base design that is assembled with a different set of components. Within a variant, each component can be fitted, not fitted, fitted with varied parameters, or replaced by an alternate part, and the variant can define its own variant-level parameters. Assembly variants share one bare board, whereas fabrication variants also change overlay information and so need a different board.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_Rectangle2D/">Rectangle 2D</a></td>
+<td>An axis-aligned rectangle, used for bounding boxes of drawing objects.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_SchematicSheet/">Schematic Sheet</a></td>
+<td>A schematic document of the design. Sheets form a hierarchy: a sheet can reference sub-sheets, and a repeated (multi-channel) sub-sheet appears under each parent that references it.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_Stackup/">Layer Stackup</a></td>
+<td>The layer structure of a board: one or more layer stacks (more than one for rigid-flex boards).</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_Track/">Track</a></td>
+<td>A straight conductor segment on a board layer, with a width.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_VariantVariation/">Variant Variation</a></td>
+<td>How one placed component differs in a project variant: not fitted, or replaced by an alternate component.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_Via/">Via</a></td>
+<td>A plated hole that connects copper on two or more layers of a board.</td>
+</tr>
+<tr>
+<td><a href="../../classes/des_Wire/">Wire</a></td>
+<td>A wire drawn on a schematic sheet, part of one net.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumerations-in-bounded-context">Enumerations in Bounded Context</h2>
+<table>
+<thead>
+<tr>
+<th>Enumeration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../enums/des_ComponentVariationKind/">Component Variation Kind</a></td>
+<td>How a placed component varies in a project variant</td>
+</tr>
+<tr>
+<td><a href="../../enums/des_LayerType/">Layer Type</a></td>
+<td>The kind of a board layer, as classified by the Platform API (DesLayerType)</td>
+</tr>
+<tr>
+<td><a href="../../enums/des_LibrarySourceKind/">Library Source Kind</a></td>
+<td>Where a placed component was taken from</td>
+</tr>
+<tr>
+<td><a href="../../enums/des_NetItemKind/">Net Item Kind</a></td>
+<td>The kind of connection object that contributes to a net</td>
+</tr>
+<tr>
+<td><a href="../../enums/des_NetScope/">Net Scope</a></td>
+<td>How far a net reaches in the sheet hierarchy</td>
+</tr>
+<tr>
+<td><a href="../../enums/des_PadType/">Pad Type</a></td>
+<td>Whether a pad is surface-mount or free (Platform API DesPadType: "Pad type: S...</td>
+</tr>
+<tr>
+<td><a href="../../enums/des_PrimitiveShape/">Primitive Shape</a></td>
+<td>The shape of a pad or via (Platform API DesPrimitiveShape)</td>
 </tr>
 </tbody>
 </table>

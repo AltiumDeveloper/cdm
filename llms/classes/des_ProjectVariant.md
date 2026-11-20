@@ -18,9 +18,11 @@ A design variant of a project: a named variation of the same base design that is
 ## In the API
 
 - Platform API type: [`DesWipVariant`](https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWipVariant/) (object)
+- Altium Designer SDK type: [`EDP.IProjectVariant`](https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/IProjectVariant/)
 
 ## Referenced by
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
 | [des_Project](des_Project.md) | variants | * |  |
+| [des_VariantVariation](des_VariantVariation.md) | variant | 1 |  |

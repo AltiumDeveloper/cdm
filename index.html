@@ -1617,9 +1617,9 @@
 <p>The Altium Common Data Model (CDM) describes the entities of the Altium platform, such as projects, components, BOMs, tasks and users, grouped into bounded contexts. For each class it records what the entity is, how it relates to other entities, how it is identified by a GRID (Global Resource ID) and, where one exists, its type in the Altium 365 API.</p>
 <div class="bc-grid">
 <p><a href="subsets/platform/"><span class="bc-icon bc-platform"></span><strong>Platform</strong> <span>12 entities · 2 resources</span></a></p>
-<p><a href="subsets/design/"><span class="bc-icon bc-design"></span><strong>Design</strong> <span>9 entities · 2 resources</span></a></p>
+<p><a href="subsets/design/"><span class="bc-icon bc-design"></span><strong>Design</strong> <span>9 entities · 25 resources</span></a></p>
 <p><a href="subsets/insights/"><span class="bc-icon bc-insights"></span><strong>Insights</strong> <span>2 entities</span></a></p>
-<p><a href="subsets/library/"><span class="bc-icon bc-library"></span><strong>Library Management</strong> <span>19 entities · 3 resources</span></a></p>
+<p><a href="subsets/library/"><span class="bc-icon bc-library"></span><strong>Library Management</strong> <span>19 entities · 4 resources</span></a></p>
 <p><a href="subsets/collaboration/"><span class="bc-icon bc-collaboration"></span><strong>Collaboration</strong> <span>3 entities · 1 resource</span></a></p>
 <p><a href="subsets/configuration/"><span class="bc-icon bc-configuration"></span><strong>Configuration Management</strong> <span>3 entities</span></a></p>
 <p><a href="subsets/procurement/"><span class="bc-icon bc-procurement"></span><strong>Procurement</strong> <span>4 entities · 4 resources</span></a></p>
@@ -1729,9 +1729,39 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="classes/des_BoardLayer/">Board Layer </a></td>
+<td>A physical or logical layer of a board: copper (signal or plane), dielectric, mask, overlay, paste or mechanical.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesLayer/"><code>DesLayer</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_CompiledDesign/">Compiled Design </a></td>
+<td>The compiled, connectivity-level view of a design project at one revision: its schematic sheets, the components placed on them, their pins and the nets that connect those pins, resolved across the sheet hierarchy. It is what is read when the logical design is analysed, as opposed to the drawing objects that are edited in the schematic editor. It is identified by its project and revision.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignData_Preview/"><code>DesignData_Preview</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_ComponentPart/">Component Part </a></td>
+<td>One part (section) of a placed component. Multi-part components, such as a quad op-amp, are drawn as several parts that may sit on different sheets; each part carries a subset of the component's pins.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataPart_Preview/"><code>DesignDataPart_Preview</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_DesignParameter/">Design Parameter </a></td>
+<td>A name/value parameter of an object in the compiled design, such as a placed component.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/des_DifferentialPair/">Differential Pair </a></td>
+<td>Two nets that carry a differential signal together, for example USB_D_P and USB_D_N.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataDifferentialPair_Preview/"><code>DesignDataDifferentialPair_Preview</code></a></td>
+</tr>
+<tr>
 <td><a href="classes/des_HarnessProject/">Harness Project </a></td>
 <td>Harness Project defines the design of a cable and wiring harness as a standalone yet integrable artifact, capturing connectors, wires, splices, and pin-to-pin mappings required to implement electrical interconnects between boards and system elements.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProject/"><code>DesProject</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_LayerStack/">Layer Stack </a></td>
+<td>One stack of layers of a board, ordered from top to bottom; a rigid-flex board has one per rigid or flex region type.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesStack/"><code>DesStack</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/des_ManufacturingPackage/">Manufacturing Package </a></td>
@@ -1742,6 +1772,56 @@
 <td><a href="classes/des_MultiboardProject/">Multiboard Project </a></td>
 <td>Multiboard Project represents the coordinated design of multiple interconnected PCB projects assembled into a single system, capturing both their logical interconnects and physical arrangements.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesProject/"><code>DesProject</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_Net/">Net </a></td>
+<td>An electrical net of the compiled design: a set of component pins that are electrically connected, resolved across the sheet hierarchy. Its scope says whether it is local to one sheet, part of a sheet interface or global. Net names are not necessarily unique.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataNet_Preview/"><code>DesignDataNet_Preview</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_NetClass/">Net Class </a></td>
+<td>A named group of nets that share design rules, for example DDR3 or HighSpeed.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="classes/des_NetItem/">Net Item </a></td>
+<td>A connection object that contributes to a net, such as a net label, a port, a sheet entry or a power object.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataNetItem_Preview/"><code>DesignDataNetItem_Preview</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_Pad/">Pad </a></td>
+<td>A connection target on a board, usually one pin of a placed component; a free pad belongs to no component.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesPad/"><code>DesPad</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_PcbComponent/">PCB Component </a></td>
+<td>A component as placed on a board: its footprint instance with position, rotation, side and pads.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesDesignItem/"><code>DesDesignItem</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_PcbLayout/">PCB Layout </a></td>
+<td>The physical design of one board in a design project at one revision: its outline, layer stack, placed components, pads, tracks and vias, and the copper nets they form.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesPcb/"><code>DesPcb</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_PcbNet/">PCB Net </a></td>
+<td>A net as realised in copper on a board: the pads, tracks and vias that carry it, the layers it is routed on and its routed length.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesNet/"><code>DesNet</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_PinInstance/">Pin Instance </a></td>
+<td>A pin of a placed component in the design. It takes its number, name and electrical type from the library pin definition and is connected to at most one net.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataPin_Preview/"><code>DesignDataPin_Preview</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_PlacedComponent/">Placed Component </a></td>
+<td>A component instance placed in the design, identified by its designator. When the design uses managed components, it is derived from a library component revision; when it uses a file-based library, there is no Workspace library item to follow and only its parameters (for example manufacturer and part number) describe it.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataComponent_Preview/"><code>DesignDataComponent_Preview</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_Point2D/">Point 2D </a></td>
+<td>A point in the coordinate system of a schematic sheet or PCB document.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesPosition2D/"><code>DesPosition2D</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/des_Project/">Hardware Project </a></td>
@@ -1774,6 +1854,11 @@
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWipVariant/"><code>DesWipVariant</code></a></td>
 </tr>
 <tr>
+<td><a href="classes/des_Rectangle2D/">Rectangle 2D </a></td>
+<td>An axis-aligned rectangle, used for bounding boxes of drawing objects.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesRectangle/"><code>DesRectangle</code></a></td>
+</tr>
+<tr>
 <td><a href="classes/des_RuleCheck/">Rule Check </a></td>
 <td>Rule check definitions that can be executed against a project to validate design integrity and compliance with specified constraints.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/RuleCheck/"><code>RuleCheck</code></a></td>
@@ -1782,6 +1867,36 @@
 <td><a href="classes/des_RuleCheckExecution/">Rule Check Execution </a></td>
 <td>Execution of a rule check against a project to validate design integrity and compliance with specified constraints.</td>
 <td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/RuleCheckExecution/"><code>RuleCheckExecution</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_SchematicSheet/">Schematic Sheet </a></td>
+<td>A schematic document of the design. Sheets form a hierarchy: a sheet can reference sub-sheets, and a repeated (multi-channel) sub-sheet appears under each parent that references it.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataSchematicDocument_Preview/"><code>DesignDataSchematicDocument_Preview</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_Stackup/">Layer Stackup </a></td>
+<td>The layer structure of a board: one or more layer stacks (more than one for rigid-flex boards).</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesStackup/"><code>DesStackup</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_Track/">Track </a></td>
+<td>A straight conductor segment on a board layer, with a width.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesTrack/"><code>DesTrack</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_VariantVariation/">Variant Variation </a></td>
+<td>How one placed component differs in a project variant: not fitted, or replaced by an alternate component.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataVariation_Preview/"><code>DesignDataVariation_Preview</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_Via/">Via </a></td>
+<td>A plated hole that connects copper on two or more layers of a board.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesVia/"><code>DesVia</code></a></td>
+</tr>
+<tr>
+<td><a href="classes/des_Wire/">Wire </a></td>
+<td>A wire drawn on a schematic sheet, part of one net.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesignDataLine_Preview/"><code>DesignDataLine_Preview</code></a></td>
 </tr>
 </tbody>
 </table>
@@ -1898,6 +2013,11 @@
 <td><a href="classes/lib_PcbSnippetRevision/">PCB Snippet Revision </a></td>
 <td>A revision of a PCB snippet as saved into the Workspace at one point in time. Editing a Workspace snippet saves it into the next revision.</td>
 <td></td>
+</tr>
+<tr>
+<td><a href="classes/lib_Pin/">Pin </a></td>
+<td>A pin definition on a schematic symbol: one electrical connection point with its designator, name and electrical type, and optionally alternate functions. Pins placed in a design take their definition from here.</td>
+<td><a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesPin/"><code>DesPin</code></a></td>
 </tr>
 <tr>
 <td><a href="classes/lib_ReuseBlock/">Reuse Block </a></td>
@@ -2637,7 +2757,7 @@
 </tr>
 <tr>
 <td><a href="classes/core_WithPlatformAPI/">With Platform API </a></td>
-<td>Mixin that adds API type annotations: platformAPI names the Altium 365 Platform API GraphQL type; nexarAPI names the Nexar (Octopart) GraphQL type for supply-chain entities served by Nexar rather than the Platform API.</td>
+<td>Mixin that adds API type annotations: platformAPI names the Altium 365 Platform API GraphQL type; nexarAPI names the Nexar (Octopart) GraphQL type for supply-chain entities served by Nexar rather than the Platform API; adSDK names the Altium Designer SDK types (namespace-qualified, comma-separated, e.g. "EDP.INet, PCB.IPCB_Net") that expose the same concept inside Altium Designer.</td>
 <td></td>
 </tr>
 <tr>

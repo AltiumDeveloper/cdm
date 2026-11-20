@@ -42,8 +42,10 @@ Revision of a Component.
 
 | From | Field | Cardinality | Relation |
 | --- | --- | --- | --- |
+| [des_PlacedComponent](des_PlacedComponent.md) | librarySource | 0..1 |  |
 | [des_Project](des_Project.md) | usesComponents | * | core_hasInput |
 | [des_ProjectRelease](des_ProjectRelease.md) | consistsOfComponents | * | core_hasPart |
+| [des_VariantVariation](des_VariantVariation.md) | alternate | 0..1 |  |
 | [ins_PartInsight](ins_PartInsight.md) | occursIn | * | core_occursIn |
 | [lib_Component](lib_Component.md) | revisions | * | core_revisions |
 | [lib_ManagedSheetRevision](lib_ManagedSheetRevision.md) | consistsOfComponents | * | core_hasPart |

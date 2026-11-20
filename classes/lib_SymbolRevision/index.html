@@ -1460,6 +1460,28 @@
 
 
 
+      lib_SymbolRevision --&gt; "*" lib_Pin : pins
+      click lib_Pin href "../../classes/lib_Pin/"
+
+
+  class lib_Pin["Pin"]
+
+
+
+
+
+
+      style lib_Pin fill:#ffe599,stroke:#a69563,color:#14181f,stroke-width:1px
+
+
+
+
+
+
+
+
+
+
       lib_SymbolRevision --&gt; "1" plt_LifecycleState : lifecycle state
       click plt_LifecycleState href "../../classes/plt_LifecycleState/"
 
@@ -1555,6 +1577,13 @@
 <td><a href="../../types/GRID/">GRID</a></td>
 <td>Globally unique identifier across the whole platform.</td>
 <td><a href="../core_Entity/">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../../slots/lib_SymbolRevision_pins">pins</a></td>
+<td><code>*</code></td>
+<td><a href="../lib_Pin/">Pin</a></td>
+<td>The pin definitions of the symbol.</td>
+<td>direct</td>
 </tr>
 </tbody>
 </table>

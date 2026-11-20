@@ -1374,7 +1374,7 @@
 </div>
 <h1 id="hardware-project-variant">Hardware Project Variant</h1>
 <p class="page-subtitle">IRI: <a href="https://w3id.org/altium/cdm/design/ProjectVariant">https://w3id.org/altium/cdm/design/ProjectVariant</a></p>
-<p class="page-subtitle">API: <a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWipVariant/"><code>DesWipVariant</code></a></p>
+<p class="page-subtitle">API: <a href="https://altiumdeveloper.github.io/platform-api-docs/types/objects/DesWipVariant/"><code>DesWipVariant</code></a> · AD SDK: <a href="https://altiumdeveloper.github.io/ad-sdk-docs/reference/edp/IProjectVariant/"><code>EDP.IProjectVariant</code></a></p>
 <p>A design variant of a project: a named variation of the same base design that is assembled with a different set of components. Within a variant, each component can be fitted, not fitted, fitted with varied parameters, or replaced by an alternate part, and the variant can define its own variant-level parameters. Assembly variants share one bare board, whereas fabrication variants also change overlay information and so need a different board.</p>
 <div class="admonition abstract">
 <p class="admonition-title">In the product</p>
@@ -1463,6 +1463,23 @@
 
           des_HarnessProject --&gt; "*" des_ProjectVariant: variants 
           click des_HarnessProject href "../../classes/des_HarnessProject/"
+
+
+
+
+
+
+  class des_VariantVariation["Variant Variation"]
+
+
+
+
+
+
+      style des_VariantVariation fill:#93c47d,stroke:#607f51,color:#14181f,stroke-width:1px
+
+          des_VariantVariation --&gt; "1" des_ProjectVariant: variant 
+          click des_VariantVariation href "../../classes/des_VariantVariation/"
 
 
 
