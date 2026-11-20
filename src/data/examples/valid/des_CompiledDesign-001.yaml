@@ -1,0 +1,30 @@
+# Example for a valid compiled design: one sheet, one placed resistor with schematic geometry, and the net and wire
+# on its pin 2 (values are illustrative; lengths in millimetres)
+---
+project: grid:workspace:8d3c1f0e-5b7a-4e2c-9a61-2f4b8c0d7e19:design:project/c2f7a9e1-6d48-4b3a-b05e-9e8d1c4a7f32
+revisionId: 35822dfe0c1b4a7e9d3f2a6b8c0d1e2f3a4b5c6d
+sheets:
+  - {documentId: 5d1e2f3a-4b5c-4d6e-8f70-a1b2c3d4e5f6, fileName: Power.SchDoc, width: 420, height: 297}
+components:
+  - logicalDesignator: R1
+    physicalDesignator: R1
+    librarySourceKind: Managed
+    location: {x: 101.6, y: 152.4}
+    boundingBox: {left: 99.06, bottom: 144.78, right: 104.14, top: 160.02}
+    parts:
+      - location: {x: 101.6, y: 152.4}
+        pins:
+          - {number: "1", name: "1", electricalType: Passive, location: {x: 101.6, y: 144.78}}
+          - {number: "2", name: "2", electricalType: Passive, location: {x: 101.6, y: 160.02}}
+nets:
+  - name: VCC_3V3
+    scope: Global
+    isPower: true
+    netItems:
+      - {kind: PowerObject, name: VCC_3V3, location: {x: 101.6, y: 170.18}}
+    wires:
+      - location: {x: 101.6, y: 160.02}
+        boundingBox: {left: 101.6, bottom: 160.02, right: 101.6, top: 170.18}
+        vertices:
+          - {x: 101.6, y: 160.02}
+          - {x: 101.6, y: 170.18}

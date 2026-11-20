@@ -202,6 +202,10 @@ def _hub_sections(hub: HubView) -> list[str]:
         api.append(f"- Nexar type: `{hub.nexar.type_name}` ([Octopart API]({hub.nexar.url}))")
     if hub.nexar_missing:
         api.append(f"- Nexar type `{hub.nexar_missing}` is named by the class but is not in the Nexar snapshot.")
+    for t in hub.ad_sdk:
+        api.append(f"- Altium Designer SDK type: [`{t.type_name}`]({t.url})")
+    for t in hub.ad_sdk_missing:
+        api.append(f"- Altium Designer SDK type `{t}` is named by the class but is not in the AD SDK snapshot.")
     if api and hub.api_from:
         api.append(f"- Inherited from [{hub.api_from}]({hub.api_from}.md).")
     if api:

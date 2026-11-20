@@ -53,9 +53,16 @@
 
 {#- "API:" line under a class page title, next to the IRI and the GRID template; omitted when the class has no API
     type. An inherited type names its declaring ancestor, as the GRID line does. -#}
+{%- macro ad_sdk_links(h) -%}
+  {%- for t in h.ad_sdk -%}{% if not loop.first %}, {% endif %}[`{{ t.type_name }}`]({{ t.url }}){%- endfor -%}
+  {%- for t in h.ad_sdk_missing -%}{% if h.ad_sdk or not loop.first %}, {% endif %}`{{ t }}` (not in AD SDK snapshot){%- endfor -%}
+{%- endmacro -%}
+
 {%- macro api_subtitle(h) -%}
-  {%- if h.api or h.nexar or h.api_missing or h.nexar_missing -%}
-API: {{ api_type_link(h) }}{% if h.api_from %} (from {{ class_link(h.api_from) }}){% endif %}
+  {%- set has_api = h.api or h.nexar or h.api_missing or h.nexar_missing -%}
+  {%- set has_sdk = h.ad_sdk or h.ad_sdk_missing -%}
+  {%- if has_api or has_sdk -%}
+{% if has_api %}API: {{ api_type_link(h) }}{% if h.api_from %} (from {{ class_link(h.api_from) }}){% endif %}{% endif %}{% if has_api and has_sdk %} · {% endif %}{% if has_sdk %}AD SDK: {{ ad_sdk_links(h) }}{% endif %}
 { .page-subtitle }
   {%- endif -%}
 {%- endmacro -%}

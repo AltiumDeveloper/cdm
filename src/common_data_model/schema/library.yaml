@@ -290,6 +290,66 @@ classes:
     see_also:
       - https://www.altium.com/documentation/altium-designer/components-libraries/creating-schematic-symbol
       - https://www.altium.com/documentation/altium-designer/connected-workspace/items
+    attributes:
+      lib_SymbolRevision_pins:
+        is_a: core_hasPart
+        slot_uri: lib:SymbolRevision_pins
+        alias: pins
+        title: pins
+        description: The pin definitions of the symbol.
+        range: lib_Pin
+        multivalued: true
+        required: false
+        annotations:
+          maturity: EXPERIMENTAL
+
+  lib_Pin:
+    is_a: core_Resource
+    in_subset: library
+    class_uri: lib:Pin
+    title: Pin
+    description: >-
+      A pin definition on a schematic symbol: one electrical connection point with its designator, name and
+      electrical type, and optionally alternate functions. Pins placed in a design take their definition from here.
+    comments:
+      - From udm_Pin in pull request 23 (UDM modelling).
+    annotations:
+      platformAPI: DesPin
+      adSDK: SCH.ISch_Pin
+      maturity: EXPERIMENTAL
+    attributes:
+      lib_Pin_designator:
+        slot_uri: lib:Pin_designator
+        alias: designator
+        title: designator
+        description: Pin designator, unique within the symbol, e.g. 1 or A3.
+        range: string
+        required: true
+        multivalued: false
+      lib_Pin_name:
+        slot_uri: lib:Pin_name
+        alias: name
+        title: name
+        description: Pin name, e.g. VCC or PA5.
+        range: string
+        multivalued: false
+        required: false
+      lib_Pin_electricalType:
+        slot_uri: lib:Pin_electricalType
+        alias: electricalType
+        title: electrical type
+        description: Electrical type of the pin, used by electrical rule checks.
+        range: lib_PinElectricalType
+        multivalued: false
+        required: false
+      lib_Pin_functions:
+        slot_uri: lib:Pin_functions
+        alias: functions
+        title: functions
+        description: Alternate functions the pin can serve, e.g. SPI1_CLK or UART2_TX.
+        range: string
+        multivalued: true
+        required: false
 
   lib_Footprint:
     is_a: core_Artifact
@@ -304,6 +364,7 @@ classes:
       - It binds the abstract logical design to its physical implementation, ensuring accurate placement, routing, 
         and compatibility with fabrication and MCAD workflows within Altium Designer and Altium 365.
     annotations:
+      adSDK: PCB.IPCB_LibComponent
       grid: grid:workspace:{workspace-id}:library:footprint/{id}
     see_also:
       - https://www.altium.com/documentation/altium-designer/components-libraries/creating-pcb-footprint
@@ -686,3 +747,33 @@ slots:
     multivalued: true
 
   ###
+
+enums:
+
+  lib_PinElectricalType:
+    is_a: Enumeration
+    in_subset: library
+    enum_uri: lib:PinElectricalType
+    annotations:
+      adSDK: EDP.TPinElectrical
+    title: Pin Electrical Type
+    description: The electrical type of a pin, used by electrical rule checks.
+    implements:
+      - owl:NamedIndividual
+    permissible_values:
+      Input:
+        description: Input pin.
+      Output:
+        description: Output pin.
+      InputOutput:
+        description: Bidirectional pin.
+      OpenCollector:
+        description: Open collector output.
+      OpenEmitter:
+        description: Open emitter output.
+      HiZ:
+        description: High-impedance (tri-state) pin.
+      Passive:
+        description: Passive pin, e.g. on a resistor.
+      Power:
+        description: Power or ground pin.
